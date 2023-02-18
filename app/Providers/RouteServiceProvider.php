@@ -34,6 +34,8 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        $this->registerEnumRouteMethods();
     }
 
     /**
@@ -44,5 +46,34 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+    }
+
+    /**
+     * Registers additional route methods on the Route Facade.
+     *  - Route::getFromEnum(...$args),
+     *  - Route::postFromEnum(...$args),
+     *  - .etc
+     *
+     * These methods can be useful when you want to:
+     *  - use an Enum to define your routes
+     *  - name the routes based on the Enum name
+     *
+     * If an Enum is passed for the first argument:
+     *  - the Enum is used for the uri
+     *  - the Enum name is used for the route name
+     *
+     * If no Enum is passed, behavior is not modified.
+     */
+    protected function registerEnumRouteMethods(): void
+    {
+        foreach (['get', 'post', 'put', 'patch', 'delete', 'options', 'any'] as $method) {
+            Route::macro($method . 'FromEnum', function ($uri, array|string|callable|null $action = null) use ($method) {
+                if ($uri instanceof \UnitEnum) {
+                    return Route::$method($uri->value, $action)->name($uri->name);
+                }
+
+                return Route::$method($uri, $action);
+            });
+        }
     }
 }

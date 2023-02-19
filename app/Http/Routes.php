@@ -6,4 +6,5 @@ enum Routes: string
 {
     case welcome = '/';
     case blog = '/blog';
+    case connect = '/connect';
 }

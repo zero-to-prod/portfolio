@@ -1,12 +1,17 @@
 /** @type {import('tailwindcss').Config} */
+const typography = require('@tailwindcss/typography')
+const aspectRatio = require('@tailwindcss/aspect-ratio')
 module.exports = {
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+    theme: {
+        extend: {},
+    },
+    plugins: [
+        typography,
+        aspectRatio,
+    ],
 }

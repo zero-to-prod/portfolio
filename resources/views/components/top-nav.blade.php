@@ -3,11 +3,17 @@
 use App\Http\Routes;
 
 ?>
-<nav id="nav" class="sticky top-0 z-50 bg-white shadow transition-all duration-500 hover:bg-white hover:shadow">
+<nav id="nav"
+    @class([
+   'sticky top-0 z-50',
+   'bg-sky-200 transition-all duration-500 hover:bg-white hover:shadow' => route_name_is(Routes::welcome),
+   'bg-white shadow' => !route_name_is(Routes::welcome),
+   ])
+>
     <div class="mx-auto max-w-7xl px-4">
         <div class="flex h-16 justify-between">
             <div class="flex">
-                <a href="{{Routes::welcome->value}}" class="flex items-center"><span >david</span><span
+                <a href="{{Routes::welcome->value}}" class="flex items-center"><span>david</span><span
                         class="font-bold text-sky-500">DESIGN</span></a>
                 <div class="ml-6 flex space-x-8">
                     <a href="{{Routes::welcome->value}}"
@@ -27,10 +33,10 @@ use App\Http\Routes;
                 </div>
             </div>
             <div class="ml-6 flex items-center">
-                <button type="button"
-                        class="inline-flex items-center rounded-md border border-transparent bg-sky-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2">
-                    Contact
-                </button>
+                <a href="{{route(Routes::connect->name)}}"
+                   class="inline-flex items-center rounded-md border border-transparent bg-sky-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2">
+                    Connect
+                </a>
             </div>
         </div>
     </div>

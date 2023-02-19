@@ -1,17 +1,27 @@
-/* This functionality applies styles on page load then removes them when scrolling. */
+/* This functionality applies css classes on page load then removes them when scrolling. */
 
 const e = document.querySelector('#nav');
-e.classList.add('bg-sky-200');
+/* Used for performance concerns */
 let scrolling = true;
+const classList = ['shadow', 'bg-white']
 
-document.addEventListener('scroll', () => {
+function mutateClassList() {
     const {scrollTop} = document.documentElement;
 
     if (scrollTop === 0) {
-        e.classList.remove('bg-white', 'shadow');
+        e.classList.remove(...classList);
         scrolling = true;
-    } else if (scrolling) {
-        e.classList.add('bg-white', 'shadow');
+        return;
+    }
+
+    if (scrolling) {
+        e.classList.add(...classList);
         scrolling = false;
     }
-});
+}
+
+document.addEventListener('scroll', mutateClassList);
+
+/* This applies the correct classes if the page is not at the top when loaded */
+document.addEventListener('DOMContentLoaded', mutateClassList);
+

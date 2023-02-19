@@ -4,7 +4,8 @@ namespace App\Http;
 
 enum Views: string
 {
-    case welcome = 'welcome';
-    case connect = 'connect';
+    case cv = 'cv';
     case blog = 'blog';
+    case connect = 'connect';
+    case welcome = 'welcome';
 }

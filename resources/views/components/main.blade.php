@@ -9,7 +9,7 @@
 </head>
 <body>
 <x-top-nav/>
-<main class="mx-auto">
+<main>
     {{$slot}}
 </main>
 </body>

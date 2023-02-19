@@ -23,13 +23,13 @@ use App\Http\Routes;
                             'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' => !route_name_is(Routes::welcome),
                             ])
                     >Home</a>
-                    <a href="{{Routes::blog->value}}"
+                    <a href="{{Routes::cv->value}}"
                         @class([
                             'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium',
-                            'border-sky-500 text-gray-900' => route_name_is(Routes::blog),
-                            'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' => !route_name_is(Routes::blog),
+                            'border-sky-500 text-gray-900' => route_name_is(Routes::cv),
+                            'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' => !route_name_is(Routes::cv),
                             ])
-                    >Blog</a>
+                    >CV</a>
                 </div>
             </div>
             <div class="ml-6 flex items-center">

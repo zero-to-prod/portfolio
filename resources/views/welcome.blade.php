@@ -4,12 +4,12 @@ use App\Http\Routes;
 ?>
 
 <x-main>
-    <div class="relative px-6 lg:px-8 bg-gradient-to-b from-sky-200 to-white ">
+    <div class="relative px-6 lg:px-8 bg-gradient-to-b from-sky-200 to-white">
         <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
             <div class="text-center">
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">Simple Things Are Hard</h1>
-                <p class="mt-6 text-lg leading-8 text-gray-600">Here, I aim to showcase some of my work,
-                    experience, and thoughts as I endeavor to simplify my life and provide value for others.</p>
+                <p class="mt-6 text-lg leading-8 text-gray-600">Here, I showcase some of my work,
+                    experience, and thoughts as I endeavor to simplify complexity in a way that provides value for others.</p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
                     <a href="#about-me"
                        class="rounded-md bg-sky-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">About

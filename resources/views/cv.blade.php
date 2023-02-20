@@ -1,12 +1,12 @@
 <x-main>
     <nav aria-label="Progress" class="mx-auto max-w-7xl p-4">
         <ol role="list" class="overflow-hidden">
+
             <li class="relative pb-10">
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
                 <div class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
-                    <span
-                        class="relative z-10 flex h-20 w-20 items-center justify-center">
+                    <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/viewrail.jpg') }}" alt="viewrail logo"/>
                     </span>
                   </span>
@@ -106,8 +106,7 @@
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
                 <div class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
-                    <span
-                        class="relative z-10 flex h-20 w-20 items-center justify-center">
+                    <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/viewrail.jpg') }}" alt="viewrail logo"/>
                     </span>
                   </span>
@@ -154,8 +153,7 @@
                 <div class="absolute top-12 left-12 -ml-px mt-0.5 h-full w-0.5 bg-sky-600" aria-hidden="true"></div>
                 <div class="group relative flex items-start">
                   <span class="flex m-2 items-center shadow-lg">
-                    <span
-                        class="relative z-10 flex h-20 w-20 items-center justify-center">
+                    <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/viewrail.jpg') }}" alt="viewrail logo"/>
                     </span>
                   </span>
@@ -169,116 +167,74 @@
                                 <p class="mt-2"> An incomplete list of Technologies I used while at ViewRail </p>
                                 <h3> Frontend: </h3>
                                 <ul>
-                                    <li><a target="_blank" href="https://reactjs.org/">React (functional components)</a>
-                                    </li>
-                                    <li><a target="_blank" href="https://www.typescriptlang.org/">TypeScript</a></li>
-                                    <li><a target="_blank" href="https://material-ui.com/">MATERIAL-UI</a></li>
-                                    <li><a target="_blank"
-                                           href="https://formik.org/">Formik</a></li>
-                                    <li><a target="_blank" href="https://graphql.org/">GraphQL</a>
-                                    </li>
-                                    <li><a target="_blank"
-                                           href="https://www.apollographql.com/">Apollo-GraphQL</a></li>
-                                    <li><a target="_blank"
-                                           href="https://www.graphql-code-generator.com/">GraphQL-Codegen</a></li>
-                                    <li><a target="_blank"
-                                           href="https://create-react-app.dev/">create-react-app</a></li>
-                                    <li><a target="_blank" href="https://recharts.org/">Recharts</a>
-                                    </li>
-                                    <li><a target="_blank" href="https://momentjs.com/">Moment.js</a>
-                                    </li>
-                                    <li><a target="_blank" href="https://prettier.io/">Prettier</a>
-                                    </li>
-                                    <li><a target="_blank"
-                                           href="https://nodejs.org/">NodeJs</a></li>
-                                    <li><a target="_blank"
-                                           href="https://babeljs.io/">BABEL</a></li>
-                                    <li><a target="_blank"
-                                           href="https://www.npmjs.com/">npm</a></li>
-                                    <li><a target="_blank"
-                                           href="https://www.json.org/json-en.html">JSON</a></li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/remix-run/react-router">react-router</a></li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/jquense/yup/tree/pre-v1">yup</a></li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/react-dropzone/react-dropzone/">react-dropzone</a>
+                                    <li><a href="https://reactjs.org/">React (functional components)</a> </li>
+                                    <li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
+                                    <li><a href="https://material-ui.com/">MATERIAL-UI</a></li>
+                                    <li><a href="https://formik.org/">Formik</a></li>
+                                    <li><a href="https://graphql.org/">GraphQL</a> </li>
+                                    <li><a href="https://www.apollographql.com/">Apollo-GraphQL</a></li>
+                                    <li><a href="https://www.graphql-code-generator.com/">GraphQL-Codegen</a></li>
+                                    <li><a href="https://create-react-app.dev/">create-react-app</a></li>
+                                    <li><a href="https://recharts.org/">Recharts</a> </li>
+                                    <li><a href="https://momentjs.com/">Moment.js</a> </li>
+                                    <li><a href="https://prettier.io/">Prettier</a> </li>
+                                    <li><a href="https://nodejs.org/">NodeJs</a></li>
+                                    <li><a href="https://babeljs.io/">BABEL</a></li>
+                                    <li><a href="https://www.npmjs.com/">npm</a></li>
+                                    <li><a href="https://www.json.org/json-en.html">JSON</a></li>
+                                    <li><a href="https://github.com/remix-run/react-router">react-router</a></li>
+                                    <li><a href="https://github.com/jquense/yup/tree/pre-v1">yup</a></li>
+                                    <li><a href="https://github.com/react-dropzone/react-dropzone/">react-dropzone</a>
                                     </li>
                                 </ul>
                                 <h3> Backend: </h3>
                                 <ul>
-                                    <li><a target="_blank" href="https://www.php.net/">PHP
-                                            8.1</a></li>
-                                    <li><a target="_blank"
-                                           href="https://www.nginx.com/">NGINX</a>
+                                    <li><a href="https://www.php.net/">PHP 8.1</a></li>
+                                    <li><a href="https://www.nginx.com/">NGINX</a></li>
+                                    <li><a href="https://laravel.com">Laravel</a></li>
+                                    <li><a href="https://laravel.com/docs/master/passport">Passport</a></li>
+                                    <li><a href="https://lighthouse-php.com/">Lighthouse</a></li>
+                                    <li><a href="https://phpunit.de/">PHP Unit</a></li>
+                                    <li><a href="https://carbon.nesbot.com/">Carbon</a></li>
+                                    <li><a href="https://github.com/HubSpot/hubspot-api-php">hubspot/api-client</a></li>
+                                    <li><a href="https://github.com/sendgrid/sendgrid-php">sendgrid/sendgrid</a></li>
+                                    <li><a href="https://github.com/yidas/google-maps-services-php">yidas/google-maps-services</a>
                                     </li>
-                                    <li><a target="_blank" href="https://laravel.com">Laravel</a>
+                                    <li><a href="https://github.com/aws/aws-sdk-php-laravel">aws/aws-sdk-php-laravel</a>
                                     </li>
-                                    <li><a target="_blank"
-                                           href="https://laravel.com/docs/master/passport">Passport</a></li>
-                                    <li><a target="_blank"
-                                           href="https://lighthouse-php.com/">Lighthouse</a></li>
-                                    <li><a target="_blank" href="https://phpunit.de/">PHP
-                                            Unit</a></li>
-                                    <li><a target="_blank"
-                                           href="https://carbon.nesbot.com/">Carbon</a></li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/HubSpot/hubspot-api-php">hubspot/api-client</a></li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/sendgrid/sendgrid-php">sendgrid/sendgrid</a></li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/yidas/google-maps-services-php">yidas/google-maps-services</a>
+                                    <li><a href="https://github.com/chelout/laravel-relationship-events">chelout/laravel-relationship-events</a>
                                     </li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/aws/aws-sdk-php-laravel">aws/aws-sdk-php-laravel</a>
+                                    <li><a href="https://github.com/doctrine/dbal">doctrine/dbal</a></li>
+                                    <li><a href="https://github.com/guzzle/guzzle">guzzlehttp/guzzle</a></li>
+                                    <li><a href="https://packagist.org/packages/owen-it/laravel-auditing">owen-it/laravel-auditing</a>
                                     </li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/chelout/laravel-relationship-events">chelout/laravel-relationship-events</a>
-                                    </li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/doctrine/dbal">doctrine/dbal</a></li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/guzzle/guzzle">guzzlehttp/guzzle</a></li>
-                                    <li><a target="_blank"
-                                           href="https://packagist.org/packages/owen-it/laravel-auditing">owen-it/laravel-auditing</a>
-                                    </li>
-                                    <li><a target="_blank"
-                                           href="https://github.com/barryvdh/laravel-ide-helper">barryvdh/laravel-ide-helper</a>
+                                    <li><a href="https://github.com/barryvdh/laravel-ide-helper">barryvdh/laravel-ide-helper</a>
                                     </li>
                                 </ul>
                                 <h3> Source Control: </h3>
                                 <ul>
-                                    <li><a target="_blank"
-                                           href="https://git-scm.com/">git</a></li>
+                                    <li><a href="https://git-scm.com/">git</a></li>
                                 </ul>
                                 <h3> Authentication: </h3>
                                 <ul>
-                                    <li><a target="_blank" href="https://oauth.net/2/">Oauth2.0</a>
-                                    </li>
+                                    <li><a href="https://oauth.net/2/">Oauth2.0</a> </li>
                                 </ul>
                                 <h3> PaaS: </h3>
                                 <ul>
-                                    <li><a target="_blank"
-                                           href="https://www.docker.com/">Docker</a>
-                                    </li>
+                                    <li><a href="https://www.docker.com/">Docker</a> </li>
                                 </ul>
                                 <h3> Cloud Hosting </h3>
                                 <ul>
-                                    <li><a target="_blank"
-                                           href="https://www.linode.com/">Linode</a>
-                                    </li>
+                                    <li><a href="https://www.linode.com/">Linode</a> </li>
                                 </ul>
                                 <h3> Databases </h3>
                                 <ul>
-                                    <li><a target="_blank" href="https://mariadb.com/">MariaDB</a>
-                                    </li>
+                                    <li><a href="https://mariadb.com/">MariaDB</a> </li>
                                 </ul>
                                 <h3> Development Tools </h3>
                                 <ul>
-                                    <li><a target="_blank"
-                                           href="https://www.jetbrains.com/phpstorm/">PhpStorm</a></li>
-                                    <li><a target="_blank"
-                                           href="https://xdebug.org/">Xdebug</a></li>
+                                    <li><a href="https://www.jetbrains.com/phpstorm/">PhpStorm</a></li>
+                                    <li><a href="https://xdebug.org/">Xdebug</a></li>
                                 </ul>
                                 <h3> Operating Systems </h3>
                                 <ul>
@@ -295,8 +251,7 @@
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
                 <a href="#" class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
-                    <span
-                        class="relative z-10 flex h-20 w-20 items-center justify-center">
+                    <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/rcp.jpg') }}" alt="real clear politics logo"/>
                     </span>
                   </span>
@@ -311,8 +266,7 @@
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
                 <a href="#" class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
-                    <span
-                        class="relative z-10 flex h-20 w-20 items-center justify-center">
+                    <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/generic-logo.jpg') }}" alt="zero to prod logo"/>
                     </span>
                   </span>
@@ -327,8 +281,7 @@
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
                 <a href="#" class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
-                    <span
-                        class="relative z-10 flex h-20 w-20 items-center justify-center">
+                    <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/emn.jpg') }}" alt="edge my neighborhood logo"/>
                     </span>
                   </span>
@@ -342,8 +295,7 @@
             <li class="relative pb-10">
                 <a href="#" class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
-                    <span
-                        class="relative z-10 flex h-20 w-20 items-center justify-center">
+                    <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/generic-logo.jpg') }}"
                            alt="innovation machining logo"/>
                     </span>

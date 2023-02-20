@@ -18,9 +18,7 @@
         <div class="relative mx-auto max-w-7xl py-16 px-4">
             <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
                 <div>
-                    <h2 class="text-lg font-semibold text-sky-500">About Me</h2>
-                    <h3 class="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">Meet
-                        david</h3>
+                    <h3 class="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">About Me</h3>
                 </div>
             </div>
             <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
@@ -47,7 +45,7 @@
                 </div>
                 <div class="mt-8 lg:mt-0">
                     <div class="mx-auto max-w-prose text-base lg:max-w-none">
-                        <p class="text-lg text-gray-500">My name is David Smith and I'm a <span class="text-sky-500">Full Stack Web Developer</span>
+                        <p class="text-lg text-gray-500">I'm David Smith, a <span class="text-sky-500">Full Stack Web Developer</span>
                             based in Granger, Indiana.</p>
                     </div>
                     <div
@@ -62,7 +60,8 @@
                         <ul role="list">
                             <li>Spin up a <span class="text-sky-500">fresh new </span>website</li>
                             <li>Give your old site a <span class="text-sky-500">makeover</span></li>
-                            <li>Make sure you can be found on <span class="text-sky-500">Google</span> and other search
+                            <li>Make sure your business is found on <span class="text-sky-500">Google</span> and other
+                                search
                                 engines
                             </li>
                             <li>Hook up <span class="text-sky-500">payments</span> and other services to your website
@@ -71,10 +70,9 @@
                                     class="text-sky-500">make money</span> with it
                             </li>
                         </ul>
-
                         <p>
-                            Here is a recent example of my work: <a href="https://interior-gardens.com/"
-                                                                    target="_blank">Interior Gardens</a>.
+                            Here is a recent example of my work:
+                            <a href="https://interior-gardens.com/" target="_blank">Interior Gardens</a>.
                         </p>
                         <p>
                             I am currently accepting new clients and job opportunities. If you are interested in

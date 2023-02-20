@@ -1,15 +1,11 @@
-<?php
-
-use App\Http\Routes;
-?>
-
 <x-main>
     <div class="relative px-6 lg:px-8 bg-gradient-to-b from-sky-200 to-white">
         <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
             <div class="text-center">
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">Simple Things Are Hard</h1>
                 <p class="mt-6 text-lg leading-8 text-gray-600">Here, I showcase some of my work,
-                    experience, and thoughts as I endeavor to simplify complexity in a way that provides value for others.</p>
+                    experience, and thoughts as I endeavor to simplify complexity in a way that provides value for
+                    others.</p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
                     <a href="#about-me"
                        class="rounded-md bg-sky-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">About
@@ -33,8 +29,8 @@ use App\Http\Routes;
                         <figure>
                             <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
                                 <img class="rounded-lg object-cover object-center shadow-lg"
-                                     src="https://images.unsplash.com/photo-1546913199-55e06682967e?ixlib=rb-1.2.1&auto=format&fit=crop&crop=focalpoint&fp-x=.735&fp-y=.55&w=1184&h=1376&q=80"
-                                     alt="Whitney leaning against a railing on a downtown street" width="1184"
+                                     src=""
+                                     alt="Portrait" width="1184"
                                      height="1376">
                             </div>
                             <figcaption class="mt-3 flex text-sm text-gray-500">
@@ -56,24 +52,34 @@ use App\Http\Routes;
                     </div>
                     <div
                         class="prose prose-sky mx-auto mt-5 text-gray-500 lg:col-start-1 lg:row-start-1 lg:max-w-none">
-                        <p>I help <span class="text-sky-500">small businesses</span> with their web and technology needs.</p>
-                        <p>I love tackling tough challenges and finding <span class="text-sky-500">budget-friendly</span> fixes with my clients.</p>
-                        <p>I mainly work with <span class="text-sky-500">web technologies</span>, but I also handle IT and hardware support.</p>
+                        <p>I help <span class="text-sky-500">small businesses</span> with their web and technology
+                            needs.</p>
+                        <p>I love tackling tough challenges and finding <span
+                                class="text-sky-500">budget-friendly</span> fixes with my clients.</p>
+                        <p>I mainly work with <span class="text-sky-500">web technologies</span>, but I also handle IT
+                            and hardware support.</p>
                         <p>Here are some things I can do for you:</p>
                         <ul role="list">
                             <li>Spin up a <span class="text-sky-500">fresh new </span>website</li>
-                            <li>Give your old site a <span class="text-sky-500">makeover</span> </li>
-                            <li>Make sure you can be found on <span class="text-sky-500">Google</span> and other search engines</li>
-                            <li>Hook up <span class="text-sky-500">payments</span> and other services to your website</li>
-                            <li>Get your <span class="text-sky-500">email list</span> up and running and <span class="text-sky-500">make money</span> with it</li>
+                            <li>Give your old site a <span class="text-sky-500">makeover</span></li>
+                            <li>Make sure you can be found on <span class="text-sky-500">Google</span> and other search
+                                engines
+                            </li>
+                            <li>Hook up <span class="text-sky-500">payments</span> and other services to your website
+                            </li>
+                            <li>Get your <span class="text-sky-500">email list</span> up and running and <span
+                                    class="text-sky-500">make money</span> with it
+                            </li>
                         </ul>
-                        <p>
-                            I am currently accepting new clients and job opportunities. If you are interested in connecting, please <a href="{{route(Routes::connect->name)}}">contact me</a>.
-                        </p>
-                        <p>
-                            On my <a href="{{route(Routes::blog->name)}}">blog</a> you will find my articles on <span class="text-sky-500">web development</span> and other topics I am interested in.
-                        </p>
 
+                        <p>
+                            Here is a recent example of my work: <a href="https://interior-gardens.com/"
+                                                                    target="_blank">Interior Gardens</a>.
+                        </p>
+                        <p>
+                            I am currently accepting new clients and job opportunities. If you are interested in
+                            connecting, please <a href="{{route(Routes::connect->name)}}">contact me</a>.
+                        </p>
                     </div>
                 </div>
             </div>

@@ -8,16 +8,14 @@
     <div class="mx-auto max-w-7xl px-4">
         <div class="flex h-16 justify-between">
             <div class="flex">
-                <a href="{{Routes::welcome->value}}" class="flex items-center"><span>david</span><span
-                        class="font-bold text-sky-500">DESIGN</span></a>
-                <div class="ml-6 flex space-x-8">
+                <div class="flex space-x-8">
                     <a href="{{Routes::welcome->value}}"
                         @class([
                             'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium',
                             'border-sky-500 text-gray-900' => route_name_is(Routes::welcome),
                             'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' => route_name_isnt(Routes::welcome),
                             ])
-                    >Home</a>
+                    >davidDESIGN</a>
                     <a href="{{Routes::cv->value}}"
                         @class([
                             'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium',

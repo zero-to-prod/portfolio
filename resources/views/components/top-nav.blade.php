@@ -1,13 +1,8 @@
-<?php
-
-use App\Http\Routes;
-
-?>
 <nav id="nav"
     @class([
    'sticky top-0 z-50',
    'bg-sky-200 transition-all duration-500 hover:bg-white hover:shadow' => route_name_is(Routes::welcome),
-   'bg-white shadow' => !route_name_is(Routes::welcome),
+   'bg-white shadow' => route_name_isnt(Routes::welcome),
    ])
 >
     <div class="mx-auto max-w-7xl px-4">
@@ -20,14 +15,14 @@ use App\Http\Routes;
                         @class([
                             'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium',
                             'border-sky-500 text-gray-900' => route_name_is(Routes::welcome),
-                            'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' => !route_name_is(Routes::welcome),
+                            'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' => route_name_isnt(Routes::welcome),
                             ])
                     >Home</a>
                     <a href="{{Routes::cv->value}}"
                         @class([
                             'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium',
                             'border-sky-500 text-gray-900' => route_name_is(Routes::cv),
-                            'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' => !route_name_is(Routes::cv),
+                            'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' => route_name_isnt(Routes::cv),
                             ])
                     >CV</a>
                 </div>

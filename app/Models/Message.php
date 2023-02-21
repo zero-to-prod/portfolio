@@ -20,6 +20,8 @@ class Message extends Model
     use SoftDeleteColumn;
     use MessageColumns;
 
+    protected $fillable = [self::subject, self::body];
+
     public function contact(): BelongsTo
     {
         return $this->belongsTo(Contact::class);

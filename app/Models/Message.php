@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Support\HasRules;
 use App\Models\Support\IdColumn;
 use App\Models\Support\MessageColumns;
+use App\Models\Support\MessageRules;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @mixin IdeHelperMessage
  */
-class Message extends Model
+class Message extends Model implements HasRules
 {
     use HasFactory;
     use IdColumn;
@@ -21,6 +23,7 @@ class Message extends Model
     use SoftDeletes;
     use SoftDeleteColumn;
     use MessageColumns;
+    use MessageRules;
 
     protected $fillable = [self::subject, self::body];
 

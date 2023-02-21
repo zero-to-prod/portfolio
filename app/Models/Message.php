@@ -2,26 +2,26 @@
 
 namespace App\Models;
 
-use App\Models\Support\ContactColumns;
 use App\Models\Support\IdColumn;
+use App\Models\Support\MessageColumns;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Contact extends Model
+class Message extends Model
 {
     use HasFactory;
     use IdColumn;
     use TimeStampColumns;
     use SoftDeletes;
     use SoftDeleteColumn;
-    use ContactColumns;
+    use MessageColumns;
 
-    public function messages(): HasMany
+    public function contact(): BelongsTo
     {
-        return $this->hasMany(Message::class);
+        return $this->belongsTo(Contact::class);
     }
 }

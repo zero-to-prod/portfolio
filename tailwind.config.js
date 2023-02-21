@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const typography = require('@tailwindcss/typography')
 const aspectRatio = require('@tailwindcss/aspect-ratio')
+const forms = require('@tailwindcss/forms')
 module.exports = {
     content: [
         "./resources/**/*.blade.php",
@@ -13,5 +14,6 @@ module.exports = {
     plugins: [
         typography,
         aspectRatio,
+        forms,
     ],
 }

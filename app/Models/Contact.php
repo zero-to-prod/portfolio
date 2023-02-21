@@ -20,6 +20,8 @@ class Contact extends Model
     use SoftDeleteColumn;
     use ContactColumns;
 
+    protected $fillable = [self::email];
+
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class);

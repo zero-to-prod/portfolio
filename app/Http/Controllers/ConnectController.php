@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\Message;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -12,7 +13,7 @@ class ConnectController extends Controller
     /**
      * @see ConnectControllerTest
      */
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             Contact::email => Contact::rules(Contact::email),
@@ -27,6 +28,6 @@ class ConnectController extends Controller
             Message::body => $validated[Message::body],
         ]);
 
-        return new Response();
+        return back()->with('email', $validated[Contact::email]);
     }
 }

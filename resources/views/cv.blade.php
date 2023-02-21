@@ -21,7 +21,7 @@
                                 <p>I had the pleasure of working at ViewRail as a Developer for ten months before being
                                     promoted to Senior Full Stack Developer.</p>
                                 <p>During this time, I was entrusted with a project that required more structure, as it
-                                    started as a side project but gradually went into production.</p>
+                                    started as a side project that gradually went into production.</p>
                                 <p>Together with the team, we recognized our vulnerabilities and weaknesses and made
                                     improvements that positively impacted both the system and culture.</p>
                                 <p>Some of the improvements I helped facilitate were:</p>
@@ -35,17 +35,17 @@
                                         culture.
                                     </li>
                                     <li>Successfully updating software dependencies that were up to two major versions
-                                        behind with the team's help and cooperation.
+                                        behind. This could not be done without the team's fantastic help and cooperation.
                                     </li>
                                 </ul>
-                                <p>With all these changes, we could implement changes, update our dependencies more
+                                <p>With all these changes, we could implement features quicker, update our dependencies more
                                     frequently, and significantly improve our confidence in deployment.</p>
-                                <p>Some of the diagnostic tools that I built that added to this confidence were:</p>
+                                <p>Some of the diagnostic tools that added to this confidence were:</p>
                                 <ul>
                                     <li>Real-time monitoring of exceptions and logs.</li>
                                     <li>A UI that monitored the job queue</li>
                                     <li>A UI that provided audits in the form of a tree</li>
-                                    <li>A tree-based explorer for our models their relationships</li>
+                                    <li>A tree-based explorer for our models and their relationships</li>
                                     <li>A dashboard that showed mission-critical diagnostic data</li>
                                 </ul>
                                 <h2>Personal Development</h2>
@@ -54,7 +54,7 @@
                                     Understand a problem in a deep and empathic way before implementing a solution.
                                 </blockquote>
                                 <p> Working with the amazing people at ViewRail taught me an invaluable lesson - the
-                                    importance of deeply empathizing with a problem. This understanding was critical
+                                    importance of deeply understanding a problem and empathising with the people it effects. This understanding was critical
                                     when collaborating with various teams. Often, a problem seemed isolated to one team,
                                     but as I worked with stakeholders, I discovered that it impacted other areas as
                                     well.</p>
@@ -93,7 +93,7 @@
                                     <li>Simplified the database through schema changes and data migrations</li>
                                     <li>Was the primary person responsible for keeping the systems running and available
                                     </li>
-                                    <li>Was responsible for code reviews, training, collaboration .etc</li>
+                                    <li>Was responsible for code reviews, training, collaboration etc.</li>
                                 </ul>
                             </div>
 

@@ -47,7 +47,7 @@
         <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Let's Connect</h2>
         </div>
-        <form action="{{route(Routes::connect->name)}}" method="post" class="mx-auto mt-16  sm:mt-20">
+        <form action="{{route(Routes::connect_store->name)}}" method="post" class="mx-auto mt-16  sm:mt-20">
             @csrf
             <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
                 <div class="sm:col-span-2">

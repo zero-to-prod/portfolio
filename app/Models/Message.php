@@ -20,4 +20,8 @@ class Message extends Model
     use SoftDeleteColumn;
     use MessageColumns;
 
+    public function contact(): BelongsTo
+    {
+        return $this->belongsTo(Contact::class);
+    }
 }

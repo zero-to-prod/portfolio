@@ -8,6 +8,7 @@ use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contact extends Model
@@ -18,4 +19,9 @@ class Contact extends Model
     use SoftDeletes;
     use SoftDeleteColumn;
     use ContactColumns;
+
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
 }

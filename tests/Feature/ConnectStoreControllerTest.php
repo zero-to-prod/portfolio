@@ -8,13 +8,13 @@ use App\Models\Message;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ConnectControllerTest extends TestCase
+class ConnectStoreControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
      * @test
-     * @see ConnectController::__invoke
+     * @see ConnectStoreController::__invoke
      */
     public function stores_a_message_and_creates_a_related_contact(): void
     {
@@ -50,7 +50,7 @@ class ConnectControllerTest extends TestCase
 
     /**
      * @test
-     * @see ConnectController::__invoke
+     * @see ConnectStoreController::__invoke
      */
     public function fails_if_nothing_is_not_passed(): void
     {

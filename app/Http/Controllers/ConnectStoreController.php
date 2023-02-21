@@ -8,10 +8,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class ConnectController extends Controller
+class ConnectStoreController extends Controller
 {
     /**
-     * @see ConnectControllerTest
+     * @see ConnectStoreControllerTest
      */
     public function __invoke(Request $request): RedirectResponse
     {

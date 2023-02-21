@@ -6,6 +6,7 @@
     <meta name="description" content="davidDESIGN david design">
     <title>davidDESIGN</title>
     @vite(['resources/css/app.css'])
+    <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
 </head>
 <body>
 <x-top-nav/>

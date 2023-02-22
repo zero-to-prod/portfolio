@@ -3,9 +3,11 @@
 namespace Tests\Feature;
 
 use App\Http\Routes;
+use App\Mail\ConnectRequest;
 use App\Models\Contact;
 use App\Models\Message;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Mail;
 use Tests\TestCase;
 
 class ConnectStoreControllerTest extends TestCase
@@ -18,6 +20,8 @@ class ConnectStoreControllerTest extends TestCase
      */
     public function stores_a_message_and_creates_a_related_contact(): void
     {
+        Mail::fake();
+
         $email = 'test@domain.com';
         $subject = '315437194327983';
         $data = [
@@ -46,6 +50,7 @@ class ConnectStoreControllerTest extends TestCase
         $this->postRoute(Routes::connect_store, $data)->assertRedirect();
 
         self::assertEquals(2, $contact->messages()->count(), 'The contact does not have the correct number of messages.');
+        Mail::assertQueued(ConnectRequest::class, 2);
     }
 
     /**

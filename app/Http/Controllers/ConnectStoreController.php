@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ConnectRequest;
 use App\Models\Contact;
 use App\Models\Message;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Mail;
 
 class ConnectStoreController extends Controller
 {
@@ -21,12 +22,15 @@ class ConnectStoreController extends Controller
             Message::body => Message::rules(Message::body),
         ]);
 
-        Contact::firstOrCreate([
+        /** @var Message $message */
+        $message = Contact::firstOrCreate([
             Contact::email => $validated[Contact::email],
         ])->messages()->create([
             Message::subject => $validated[Message::subject],
             Message::body => $validated[Message::body],
-        ]);
+        ])->load('contact');
+
+        Mail::queue(new ConnectRequest($message));
 
         return back()->with('email', $validated[Contact::email]);
     }

@@ -2,6 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 
+if (!function_exists('named_route')) {
+
+    function named_route($route, $parameters = [], $absolute = true): string
+    {
+        if ($route instanceof \UnitEnum) {
+            return route($route->name, $parameters, $absolute);
+        }
+
+        return route($route, $parameters, $absolute);
+    }
+}
+
 if (!function_exists('route_name_is')) {
 
     function route_name_is($route): bool

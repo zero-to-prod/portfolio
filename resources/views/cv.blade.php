@@ -82,9 +82,8 @@
                                     </blockquote>
                                     <figcaption>Kent Beck
                                         <cite>
-                                            <a href="https://medium.com/@kentbeck_7670/software-design-is-human-relationships-part-1-of-3-perspective-1bcd53855557"
-                                               target="_blank">Software Design is Human Relationships: Part 1 of 3,
-                                                Perspective</a>
+                                            <a href="https://medium.com/@kentbeck_7670/software-design-is-human-relationships-part-1-of-3-perspective-1bcd53855557">
+                                                Software Design is Human Relationships: Part 1 of 3, Perspective</a>
                                         </cite>
                                     </figcaption>
                                 </figure>
@@ -265,7 +264,7 @@
 
             <li class="relative pb-10">
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
-                <a href="#" class="relative flex items-start group">
+                <div class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
                     <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/rcp.jpg') }}" alt="real clear politics logo"/>
@@ -276,11 +275,11 @@
                         <span class="text-gray-800">RealClearPolitics Full-time </span>
                         <span class="text-gray-500">Aug 2019 - Apr 2021 · 1 yr 9 mos</span>
                     </span>
-                </a>
+                </div>
             </li>
             <li class="relative pb-10">
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
-                <a href="#" class="relative flex items-start group">
+                <div class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
                     <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/generic-logo.jpg') }}" alt="zero to prod logo"/>
@@ -291,11 +290,11 @@
                         <span class="text-gray-800">ZeroToProd (Software Development Company)</span>
                         <span class="text-gray-500">Apr 2019 - Ongoing</span>
                     </span>
-                </a>
+                </div>
             </li>
             <li class="relative pb-10">
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
-                <a href="#" class="relative flex items-start group">
+                <div class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
                     <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/emn.jpg') }}" alt="edge my neighborhood logo"/>
@@ -306,10 +305,10 @@
                         <span class="text-gray-800">EdgeMyNeighborhood</span>
                         <span class="text-gray-500">Jan 2017 - Apr 2019 · 2 yr 3 mos</span>
                     </span>
-                </a>
+                </div>
             </li>
             <li class="relative pb-10">
-                <a href="#" class="relative flex items-start group">
+                <div class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
                     <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/generic-logo.jpg') }}"
@@ -321,7 +320,7 @@
                         <span class="text-gray-800">Innovation Machining</span>
                         <span class="text-gray-500">Apr 2003 - August 2019 · 13 yr 4 mos</span>
                     </span>
-                </a>
+                </div>
             </li>
         </ol>
     </nav>

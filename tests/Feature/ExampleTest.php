@@ -13,7 +13,7 @@ class ExampleTest extends TestCase
      */
     public function test_the_application_returns_a_successful_response(): void
     {
-        $response = $this->get(route(Routes::welcome->name));
+        $response = $this->get(named_route(Routes::welcome));
 
         $response->assertStatus(200);
     }

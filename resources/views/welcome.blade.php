@@ -72,11 +72,11 @@
                         </ul>
                         <p>
                             Here is a recent example of my work:
-                            <a href="https://interior-gardens.com/" target="_blank">Interior Gardens</a>.
+                            <a href="https://interior-gardens.com/">Interior Gardens</a>.
                         </p>
                         <p>
                             I am currently accepting new clients and job opportunities. If you are interested in
-                            connecting, please <a href="{{route(Routes::connect->name)}}">contact me</a>.
+                            connecting, please <a href="{{named_route(Routes::connect)}}">contact me</a>.
                         </p>
                     </div>
                 </div>

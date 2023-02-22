@@ -5,9 +5,11 @@
             <div class="mx-auto max-w-2xl lg:mx-0">
                 <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">CV and Work History</h1>
                 <p class="mt-6 text-lg leading-8 text-gray-600">On this page, I'm excited to share my
-                    professional journey and the various businesses I've had the pleasure of owning. You'll find more
-                    information about each event in the timeline, so feel free to explore and learn more about my
-                    experiences.</p>
+                    <span class="font-bold">professional journey</span> and the <span class="font-bold">various businesses</span>
+                    I've had the pleasure of owning. You'll find more information about each event in the
+                    <span class="font-bold">timeline</span>, so feel free to <span class="font-bold">explore</span> and
+                    learn more about my experiences.
+                </p>
             </div>
         </div>
     </div>
@@ -27,41 +29,68 @@
                         <span class="font-medium">Senior Full Stack Developer</span>
                         <span class="text-gray-800">ViewRail Full-time </span>
                         <span class="text-gray-500">Jan 2022 - Feb 2023 · 1 yr 2 mos</span>
-                        <details class="text-gray-800 prose">
+                        <details open class="text-gray-800 prose">
                             <summary class="font-medium cursor-pointer py-2">Click to see more details</summary>
                             <div class="-ml-10">
-                                <h2>Promotion and Team Building</h2>
+                                <h2 class="mb-1">Advancement at ViewRail</h2>
+                                <p class="italic font-sm text-sm text-gray-600">
+                                    Promotion and Taking on a Challenging Project
+                                </p>
                                 <p>I had the pleasure of working at ViewRail as a Developer for ten months before being
-                                    promoted to Senior Full Stack Developer.</p>
-                                <p>During this time, I was entrusted with a project that required more structure, as it
-                                    started as a side project that gradually went into production.</p>
-                                <p>Together with the team, we recognized our vulnerabilities and weaknesses and made
-                                    improvements that positively impacted both the system and culture.</p>
+                                    <span class="font-bold">promoted</span> to Full Stack Developer.
+                                </p>
+                                <p>During this time, I was <span class="font-bold">entrusted</span> with a project that
+                                    required more structure, as it started small and gradually went into production.
+                                </p>
+                                <h2 class="mb-1">Team Building</h2>
+                                <p class="italic font-sm text-sm text-gray-600">
+                                    Successful Process Improvements that Boosted System and Culture
+                                </p>
+
+                                <p>Together with the team, we
+                                    <span class="font-bold">recognized our vulnerabilities</span> and weaknesses and
+                                    made <span class="font-bold">improvements</span> to our process that
+                                    <span class="font-bold">positively impacted</span> both the system and culture.
+                                </p>
                                 <p>Some of the improvements I helped facilitate were:</p>
                                 <ul>
-                                    <li>Developing a robust deployment process that included using a staging site in the
-                                        pipeline.
+                                    <li>Developing a <span class="font-bold">robust deployment process</span> that
+                                        included using a staging site in the pipeline.
                                     </li>
-                                    <li>Adding automated tests that protected mission-critical processes.</li>
-                                    <li>Building a code review process from scratch with the team's help.</li>
-                                    <li>Developing the idea of Total Ownership that positively impacted the team
-                                        culture.
+                                    <li>Adding <span class="font-bold">automated tests</span> that protected
+                                        <span class="font-bold">mission-critical</span> processes.
                                     </li>
-                                    <li>Successfully updating software dependencies that were up to two major versions
-                                        behind. This could not be done without the team's fantastic help and
-                                        cooperation.
+                                    <li>Building a <span class="font-bold">code review</span> process from scratch with
+                                        the team's help.</li>
+                                    <li>Developing the idea of <span class="font-bold">Total Ownership</span> that
+                                        positively impacted the team
+                                        <span class="font-bold">culture</span>.
+                                    </li>
+                                    <li>Successfully <span class="font-bold">updated software dependencies</span> that
+                                        were up to <span class="font-bold">two major versions</span> behind.
+                                        This could not have been done without the team's fantastic help and cooperation.
                                     </li>
                                 </ul>
-                                <p>With all these changes, we could implement features quicker, update our dependencies
-                                    more
-                                    frequently, and significantly improve our confidence in deployment.</p>
+                                <h2 class="mb-1">Tool Building for Improved Productivity and Confidence</h2>
+                                <p class="italic font-sm text-sm text-gray-600">
+                                    Real-time Monitoring, Innovative UI, and Dashboard for Mission-critical Diagnostic Data
+                                </p>
+                                <p>
+                                    With all of the remarkable changes we made, our productivity improved significantly.
+                                    We were able to implement features more quickly and update our dependencies more
+                                    frequently. In addition, we have gained an unwavering confidence in our deployment
+                                    process.
+                                </p>
                                 <p>Some of the diagnostic tools that added to this confidence were:</p>
                                 <ul>
-                                    <li>Real-time monitoring of exceptions and logs.</li>
-                                    <li>A UI that monitored the job queue</li>
-                                    <li>A UI that provided audits in the form of a tree</li>
-                                    <li>A tree-based explorer for our models and their relationships</li>
-                                    <li>A dashboard that showed mission-critical diagnostic data</li>
+                                    <li><span class="font-bold">Real-time</span> monitoring of exceptions and logs.</li>
+                                    <li>An innovative UI that monitored the <span
+                                            class="font-bold">job queue</span></li>
+                                    <li>A concise page that provided <span class="font-bold">comprehensive</span> audits</li>
+                                    <li>A <span class="font-bold">unique</span> tree-based explorer for our models and
+                                        their relationships</li>
+                                    <li>A dashboard that showed <span class="font-bold">mission-critical</span>
+                                        diagnostic data</li>
                                 </ul>
                                 <h2>Personal Development</h2>
                                 <h3>Empathy</h3>
@@ -73,7 +102,8 @@
                                     effects. This understanding was critical
                                     when collaborating with various teams. Often, a problem seemed isolated to one team,
                                     but as I worked with stakeholders, I discovered that it impacted other areas as
-                                    well.</p>
+                                    well.
+                                </p>
                                 <p> Empathy requires that they be a part of the solution.</p>
                                 <h3>Human Relationships</h3>
                                 <figure>
@@ -94,7 +124,8 @@
                                     building relationships and seeking feedback, I gained valuable insights into the
                                     problem. This allowed me to create a solid understanding of the current state of
                                     things. I strengthened my relationships further by working collaboratively with my
-                                    colleagues to develop effective solutions.</p>
+                                    colleagues to develop effective solutions.
+                                </p>
                                 <p>Ultimately, the result was better than anything I could have done alone.</p>
                                 <h2>Responsibilities: </h2>
                                 <ul>
@@ -130,15 +161,16 @@
                         <span class="text-gray-800">ViewRail Full-time </span>
                         <span class="text-gray-500">Apr 2021 - Jan 2022 · 10 mos</span>
                         <details class="text-gray-800 prose">
-                            <summary class="font-medium cursor-pointer py-2">Click to see a deep dive</summary>
+                            <summary class="font-medium cursor-pointer py-2">Click to see more details</summary>
                             <div class="-ml-10">
                                 <h2>Previous Experience</h2>
                                 <p>Following my experience at RealClearPolitics, I arrived at ViewRail with valuable
                                     backend knowledge. I was well-acquainted with the project and its goal of
                                     transferring features from a legacy ColdFusion project to a contemporary tech
-                                    stack.</p>
+                                    stack.
+                                </p>
                                 <h2>Personal Development</h2>
-                                <p> ViewRail's Technology stack impressed me with its advanced features, including: </p>
+                                <p> ViewRail's Technology stack impressed me with its advanced features, including:</p>
                                 <ul>
                                     <li>GraphQL</li>
                                     <li>React</li>
@@ -146,9 +178,11 @@
                                 </ul>
                                 <p> I was thrilled to have the opportunity to work with these new technologies, and I
                                     had the pleasure of being mentored by an exceptional individual who helped me expand
-                                    my knowledge of web development.</p>
+                                    my knowledge of web development.
+                                </p>
                                 <p>Thanks to this experience, I now understand the importance of type safety and how
-                                    functional programming can effectively manage state.</p>
+                                    functional programming can effectively manage state.
+                                </p>
                                 <h2>Responsibilities</h2>
                                 <ul>
                                     <li>Front end features</li>
@@ -179,7 +213,7 @@
                         <details class="text-gray-800 ">
                             <summary class="font-medium cursor-pointer py-2">Click to see more details</summary>
                             <div class="prose">
-                                <p class="mt-2"> An incomplete list of Technologies I used while at ViewRail </p>
+                                <p class="mt-2"> An incomplete list of Technologies I used while at ViewRail</p>
                                 <h3> Frontend: </h3>
                                 <ul>
                                     <li><a href="https://reactjs.org/">React (functional components)</a> </li>

@@ -1,11 +1,13 @@
 <x-main>
-    <div class="relative px-6 lg:px-8 bg-gradient-to-b from-sky-200 to-white">
-        <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-            <div class="text-center">
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">Simple Things Are Hard</h1>
-                <p class="mt-6 text-lg leading-8 text-gray-600">Here, I showcase some of my work,
-                    experience, and thoughts as I endeavor to simplify complexity in a way that provides value for
-                    others.</p>
+    <div class="bg-gradient-to-b from-sky-200 to-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:mx-0">
+                <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">Simple Things Are Hard</h1>
+                <p class="mt-6 text-lg leading-8 text-gray-600">Here, I <span class="font-bold">showcase</span> some of
+                    my <span class="font-bold">work</span>, experience, and <span class="font-bold">thoughts</span>
+                    as I endeavor to <span class="font-bold">simplify complexity</span> in a way that provides
+                    <span class="font-bold">value</span> for others.
+                </p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
                     <a href="#about-me"
                        class="rounded-md bg-sky-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">About
@@ -45,29 +47,31 @@
                 </div>
                 <div class="mt-8 lg:mt-0">
                     <div class="mx-auto max-w-prose text-base lg:max-w-none">
-                        <p class="text-lg text-gray-500">I'm David Smith, a <span class="text-sky-500">Full Stack Web Developer</span>
+                        <p class="text-lg text-gray-500">I'm David Smith, a <span class="font-bold">Full Stack Web Developer</span>
                             based in Granger, Indiana.</p>
                     </div>
                     <div
                         class="prose prose-sky mx-auto mt-5 text-gray-500 lg:col-start-1 lg:row-start-1 lg:max-w-none">
-                        <p>I help <span class="text-sky-500">small businesses</span> with their web and technology
-                            needs.</p>
-                        <p>I love tackling tough challenges and finding <span
-                                class="text-sky-500">budget-friendly</span> fixes with my clients.</p>
-                        <p>I mainly work with <span class="text-sky-500">web technologies</span>, but I also handle IT
-                            and hardware support.</p>
+                        <p>
+                            I help <span class="font-bold">small businesses</span> with their <span class="font-bold">web and technology</span>
+                            needs.
+                        </p>
+                        <p>I love tackling <span class="font-bold">tough challenges</span> and finding <span
+                                class="font-bold">budget-friendly</span> fixes with my clients.</p>
+                        <p>I mainly work with <span class="font-bold">web technologies</span>, but I also handle
+                            <span class="font-bold">IT and hardware support</span>.</p>
                         <p>Here are some things I can do for you:</p>
                         <ul role="list">
-                            <li>Spin up a <span class="text-sky-500">fresh new </span>website</li>
-                            <li>Give your old site a <span class="text-sky-500">makeover</span></li>
-                            <li>Make sure your business is found on <span class="text-sky-500">Google</span> and other
+                            <li>Spin up a <span class="font-bold">fresh new </span>website</li>
+                            <li>Give your old site a <span class="font-bold">makeover</span></li>
+                            <li>Make sure your business is <span class="font-bold">found on Google</span> and other
                                 search
                                 engines
                             </li>
-                            <li>Hook up <span class="text-sky-500">payments</span> and other services to your website
+                            <li>Hook up <span class="font-bold">payments</span> and other services to your website
                             </li>
-                            <li>Get your <span class="text-sky-500">email list</span> up and running and <span
-                                    class="text-sky-500">make money</span> with it
+                            <li>Get your <span class="font-bold">email list</span> up and running and <span
+                                    class="font-bold">make money</span> with it
                             </li>
                         </ul>
                         <p>
@@ -76,7 +80,7 @@
                         </p>
                         <p>
                             I am currently accepting new clients and job opportunities. If you are interested in
-                            connecting, please <a href="{{named_route(Routes::connect)}}">contact me</a>.
+                            connecting, please get in <a href="{{named_route(Routes::connect)}}">touch with me.</a>
                         </p>
                     </div>
                 </div>

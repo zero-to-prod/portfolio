@@ -1,4 +1,17 @@
 <x-main>
+
+    <div class="bg-gradient-to-b from-sky-200 to-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:mx-0">
+                <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">CV and Work History</h1>
+                <p class="mt-6 text-lg leading-8 text-gray-600">On this page, I'm excited to share my
+                    professional journey and the various businesses I've had the pleasure of owning. You'll find more
+                    information about each event in the timeline, so feel free to explore and learn more about my
+                    experiences.</p>
+            </div>
+        </div>
+    </div>
+
     <nav aria-label="Progress" class="mx-auto max-w-7xl p-4">
         <ol role="list" class="overflow-hidden">
 
@@ -15,7 +28,7 @@
                         <span class="text-gray-800">ViewRail Full-time </span>
                         <span class="text-gray-500">Jan 2022 - Feb 2023 · 1 yr 2 mos</span>
                         <details class="text-gray-800 prose">
-                            <summary class="font-medium cursor-pointer py-2">Details</summary>
+                            <summary class="font-medium cursor-pointer py-2">Click to see more details</summary>
                             <div class="-ml-10">
                                 <h2>Promotion and Team Building</h2>
                                 <p>I had the pleasure of working at ViewRail as a Developer for ten months before being
@@ -35,10 +48,12 @@
                                         culture.
                                     </li>
                                     <li>Successfully updating software dependencies that were up to two major versions
-                                        behind. This could not be done without the team's fantastic help and cooperation.
+                                        behind. This could not be done without the team's fantastic help and
+                                        cooperation.
                                     </li>
                                 </ul>
-                                <p>With all these changes, we could implement features quicker, update our dependencies more
+                                <p>With all these changes, we could implement features quicker, update our dependencies
+                                    more
                                     frequently, and significantly improve our confidence in deployment.</p>
                                 <p>Some of the diagnostic tools that added to this confidence were:</p>
                                 <ul>
@@ -54,7 +69,8 @@
                                     Understand a problem in a deep and empathic way before implementing a solution.
                                 </blockquote>
                                 <p> Working with the amazing people at ViewRail taught me an invaluable lesson - the
-                                    importance of deeply understanding a problem and empathising with the people it effects. This understanding was critical
+                                    importance of deeply understanding a problem and empathising with the people it
+                                    effects. This understanding was critical
                                     when collaborating with various teams. Often, a problem seemed isolated to one team,
                                     but as I worked with stakeholders, I discovered that it impacted other areas as
                                     well.</p>
@@ -115,7 +131,7 @@
                         <span class="text-gray-800">ViewRail Full-time </span>
                         <span class="text-gray-500">Apr 2021 - Jan 2022 · 10 mos</span>
                         <details class="text-gray-800 prose">
-                            <summary class="font-medium cursor-pointer py-2">Details</summary>
+                            <summary class="font-medium cursor-pointer py-2">Click to see a deep dive</summary>
                             <div class="-ml-10">
                                 <h2>Previous Experience</h2>
                                 <p>Following my experience at RealClearPolitics, I arrived at ViewRail with valuable
@@ -162,7 +178,7 @@
                         <span class="text-gray-800">Docker, React/TS, Laravel, Graphql</span>
                         <span class="text-gray-500">Apr 2021 - Feb 2023 · ~2 years</span>
                         <details class="text-gray-800 ">
-                            <summary class="font-medium cursor-pointer py-2">Details</summary>
+                            <summary class="font-medium cursor-pointer py-2">Click to see more details</summary>
                             <div class="prose">
                                 <p class="mt-2"> An incomplete list of Technologies I used while at ViewRail </p>
                                 <h3> Frontend: </h3>

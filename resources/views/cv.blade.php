@@ -325,4 +325,5 @@
             </li>
         </ol>
     </nav>
+    @vite('resources/js/top_nav_scroll.js')
 </x-main>

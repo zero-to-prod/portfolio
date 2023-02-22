@@ -2,11 +2,11 @@
     <div class="bg-gradient-to-b from-sky-200 to-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl lg:mx-0">
-                <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">Simple Things Are Hard</h1>
-                <p class="mt-6 text-lg leading-8 text-gray-600">Here, I <span class="font-bold">showcase</span> some of
-                    my <span class="font-bold">work</span>, experience, and <span class="font-bold">thoughts</span>
-                    as I endeavor to <span class="font-bold">simplify complexity</span> in a way that provides
-                    <span class="font-bold">value</span> for others.
+                <h1 class="mt-2 text-3xl font-semibold tracking-tight text-gray-900 sm:text-6xl">Simple Things Are Hard</h1>
+                <p class="mt-6 text-lg leading-8 text-gray-600">Here, I <span class="font-semibold">showcase</span> some of
+                    my <span class="font-semibold">work</span>, experience, and <span class="font-semibold">thoughts</span>
+                    as I endeavor to <span class="font-semibold">simplify complexity</span> in a way that provides
+                    <span class="font-semibold">value</span> for others.
                 </p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
                     <a href="#about-me"
@@ -20,7 +20,7 @@
         <div class="relative mx-auto max-w-7xl py-16 px-4">
             <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
                 <div>
-                    <h3 class="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">About Me</h3>
+                    <h3 class="mt-2 text-3xl font-semibold leading-8 tracking-tight text-gray-900 sm:text-4xl">About Me</h3>
                 </div>
             </div>
             <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
@@ -47,31 +47,31 @@
                 </div>
                 <div class="mt-8 lg:mt-0">
                     <div class="mx-auto max-w-prose text-base lg:max-w-none">
-                        <p class="text-lg text-gray-500">I'm David Smith, a <span class="font-bold">Full Stack Web Developer</span>
+                        <p class="text-lg text-gray-500">I'm David Smith, a <span class="font-semibold">Full Stack Web Developer</span>
                             based in Granger, Indiana.</p>
                     </div>
                     <div
                         class="prose prose-sky mx-auto mt-5 text-gray-500 lg:col-start-1 lg:row-start-1 lg:max-w-none">
                         <p>
-                            I help <span class="font-bold">small businesses</span> with their <span class="font-bold">web and technology</span>
+                            I help <span class="font-semibold">small businesses</span> with their <span class="font-semibold">web and technology</span>
                             needs.
                         </p>
-                        <p>I love tackling <span class="font-bold">tough challenges</span> and finding <span
-                                class="font-bold">budget-friendly</span> fixes with my clients.</p>
-                        <p>I mainly work with <span class="font-bold">web technologies</span>, but I also handle
-                            <span class="font-bold">IT and hardware support</span>.</p>
+                        <p>I love tackling <span class="font-semibold">tough challenges</span> and finding <span
+                                class="font-semibold">budget-friendly</span> fixes with my clients.</p>
+                        <p>I mainly work with <span class="font-semibold">web technologies</span>, but I also handle
+                            <span class="font-semibold">IT and hardware support</span>.</p>
                         <p>Here are some things I can do for you:</p>
                         <ul role="list">
-                            <li>Spin up a <span class="font-bold">fresh new </span>website</li>
-                            <li>Give your old site a <span class="font-bold">makeover</span></li>
-                            <li>Make sure your business is <span class="font-bold">found on Google</span> and other
+                            <li>Spin up a <span class="font-semibold">fresh new </span>website</li>
+                            <li>Give your old site a <span class="font-semibold">makeover</span></li>
+                            <li>Make sure your business is <span class="font-semibold">found on Google</span> and other
                                 search
                                 engines
                             </li>
-                            <li>Hook up <span class="font-bold">payments</span> and other services to your website
+                            <li>Hook up <span class="font-semibold">payments</span> and other services to your website
                             </li>
-                            <li>Get your <span class="font-bold">email list</span> up and running and <span
-                                    class="font-bold">make money</span> with it
+                            <li>Get your <span class="font-semibold">email list</span> up and running and <span
+                                    class="font-semibold">make money</span> with it
                             </li>
                         </ul>
                         <p>

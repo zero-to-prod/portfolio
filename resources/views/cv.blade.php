@@ -30,60 +30,83 @@
                         <span class="text-gray-800">ViewRail Full-time </span>
                         <span class="text-gray-500">Jan 2022 - Feb 2023 · 1 yr 2 mos</span>
                         <details open class="text-gray-800 prose">
-                            <summary class="font-medium cursor-pointer py-2">Click to see more details</summary>
-                            <div class="-ml-10">
-                                <h2 class="mb-1">Advancement at ViewRail</h2>
-                                <p class="italic font-sm text-sm text-gray-600">
-                                    Promotion and Taking on a Challenging Project
+                            <summary class="cursor-pointer py-2 font-medium">Click to hide details</summary>
+                            <div class="-ml-10 sm:ml-0">
+                                <h2 class="mt-4 mb-1">Professional Growth at ViewRail</h2>
+                                <p class="text-sm italic text-gray-600 font-sm">
+                                    Building a New Development Process for Improved Flexibility and Confidence
                                 </p>
-                                <p>I had the pleasure of working at ViewRail as a Developer for ten months before being
-                                    <span class="font-bold">promoted</span> to Full Stack Developer.
+                                <p>
+                                    I greatly <span class="font-bold">enjoyed</span> working at ViewRail as a developer
+                                    for ten months before being <span class="font-bold">promoted</span> to a <span
+                                        class="font-bold">senior</span> position.
+
                                 </p>
-                                <p>During this time, I was <span class="font-bold">entrusted</span> with a project that
-                                    required more structure, as it started small and gradually went into production.
+                                <p>
+                                    The company <span class="font-bold">entrusted</span> me to <span class="font-bold">lead</span>
+                                    the development of
+                                    their production <span class="font-bold">ERP</span> system, demonstrating their
+                                    <span class="font-bold">confidence</span> in my abilities.
+                                </p>
+                                <p>The development of this system presented a unique
+                                    <span class="font-bold">opportunity</span>. Our development style
+                                    needed <span class="font-bold">structure</span> as the project was still
+                                    young. With the team's <span class="font-bold">support</span>, we started
+                                    building a process to enhance our <span class="font-bold">confidence</span>
+                                    in deployment while optimizing for
+                                    <span class="font-bold">responsiveness</span> and
+                                    <span class="font-bold">flexibility</span>.
                                 </p>
                                 <h2 class="mb-1">Team Building</h2>
-                                <p class="italic font-sm text-sm text-gray-600">
-                                    Successful Process Improvements that Boosted System and Culture
+                                <p class="text-sm italic text-gray-600 font-sm">
+                                    Improving our Development Process and Work Culture
                                 </p>
 
-                                <p>Together with the team, we
-                                    <span class="font-bold">recognized our vulnerabilities</span> and weaknesses and
-                                    made <span class="font-bold">improvements</span> to our process that
-                                    <span class="font-bold">positively impacted</span> both the system and culture.
+                                <p>
+                                    With the team's help, we <span class="font-bold">proactively</span> identified areas
+                                    of <span class="font-bold">vulnerability</span> and <span
+                                        class="font-bold">weakness</span> and <span
+                                        class="font-bold">worked together</span> to enhance our workflow. Our <span
+                                        class="font-bold">efforts</span> resulted in a significant <span
+                                        class="font-bold">improvement</span> in our development process and work <span
+                                        class="font-bold">culture</span>.
                                 </p>
-                                <p>Some of the improvements I helped facilitate were:</p>
+                                <p>Some of the improvements were:</p>
                                 <ul>
-                                    <li>Developing a <span class="font-bold">robust deployment process</span> that
-                                        included using a staging site in the pipeline.
+                                    <li>Developing a <span class="font-bold">robust</span> deployment process that
+                                        included the use of a staging site in the deployment pipeline
                                     </li>
                                     <li>Adding <span class="font-bold">automated tests</span> that protected
-                                        <span class="font-bold">mission-critical</span> processes.
+                                        <span class="font-bold">mission-critical</span> processes
                                     </li>
-                                    <li>Building a <span class="font-bold">code review</span> process from scratch with
-                                        the team's help.</li>
+                                    <li>Building a <span class="font-bold">code review</span> process from scratch</li>
                                     <li>Developing the idea of <span class="font-bold">Total Ownership</span> that
                                         positively impacted the team
                                         <span class="font-bold">culture</span>.
                                     </li>
                                     <li>Successfully <span class="font-bold">updated software dependencies</span> that
                                         were up to <span class="font-bold">two major versions</span> behind.
-                                        This could not have been done without the team's fantastic help and cooperation.
                                     </li>
                                 </ul>
-                                <h2 class="mb-1">Tool Building for Improved Productivity and Confidence</h2>
-                                <p class="italic font-sm text-sm text-gray-600">
-                                    Real-time Monitoring, Innovative UI, and Dashboard for Mission-critical Diagnostic Data
+
+                                <h2 class="mb-1">Improved Productivity and Confidence</h2>
+                                <p class="text-sm italic text-gray-600 font-sm">
+                                    Tool Building: Real-time Monitoring and Dashboards for Mission-critical Diagnostics
                                 </p>
                                 <p>
-                                    With all of the remarkable changes we made, our productivity improved significantly.
-                                    We were able to implement features more quickly and update our dependencies more
-                                    frequently. In addition, we have gained an unwavering confidence in our deployment
-                                    process.
+                                    With all of the remarkable changes we made, our
+                                    <span class="font-bold">productivity</span> improved significantly. We were able to
+                                    implement features more <span class="font-bold">quickly</span> and update our
+                                    dependencies more <span class="font-bold">frequently</span>.
+                                </p>
+                                <p>
+                                    Ultimately our efforts gave us reliable <span class="font-bold">confidence</span>
+                                    when we
+                                    <span class="font-bold">deployed</span> changes into production.
                                 </p>
                                 <p>Some of the diagnostic tools that added to this confidence were:</p>
                                 <ul>
-                                    <li><span class="font-bold">Real-time</span> monitoring of exceptions and logs.</li>
+                                    <li><span class="font-bold">Real-time</span> monitoring of exceptions and logs</li>
                                     <li>An innovative UI that monitored the <span
                                             class="font-bold">job queue</span></li>
                                     <li>A concise page that provided <span class="font-bold">comprehensive</span> audits</li>
@@ -93,19 +116,58 @@
                                         diagnostic data</li>
                                 </ul>
                                 <h2>Personal Development</h2>
-                                <h3>Empathy</h3>
+                                <h3 class="mb-1">A Lesson in Empathy</h3>
+                                <p class="text-sm italic text-gray-600 font-sm">
+                                    How Understanding the Bigger Picture Leads to Better Solutions
+                                </p>
+                                <p>
+                                    I had the <span class="font-bold">privilege</span> of working with the <span
+                                        class="font-bold">fantastic</span> people at ViewRail, who taught me an
+                                    invaluable <span class="font-bold">lesson</span> about the importance of <span
+                                        class="font-bold">deeply</span> understanding a problem and <span
+                                        class="font-bold">empathizing</span> with the people it affects.
+                                </p>
+                                <p>Understanding the bigger picture was <span class="font-bold">critical</span> in my
+                                    <span class="font-bold">collaborations</span> with various teams. Often, a problem
+                                    seemed <span class="font-bold">isolated</span> to one group, but as I <span
+                                        class="font-bold">worked</span> with stakeholders, I <span class="font-bold">discovered</span>
+                                    it also impacted other areas. In such cases, <span class="font-bold">empathy</span>
+                                    proved to be a powerful tool to <span class="font-bold">unite</span> everyone and be
+                                    a part of the <span class="font-bold">solution</span>.
+                                </p>
+                                <p>I learned to:</p>
                                 <blockquote>
                                     Understand a problem in a deep and empathic way before implementing a solution.
                                 </blockquote>
-                                <p> Working with the amazing people at ViewRail taught me an invaluable lesson - the
-                                    importance of deeply understanding a problem and empathising with the people it
-                                    effects. This understanding was critical
-                                    when collaborating with various teams. Often, a problem seemed isolated to one team,
-                                    but as I worked with stakeholders, I discovered that it impacted other areas as
-                                    well.
+                                <h3 class="mb-1">Human Relationships</h3>
+                                <p class="text-sm italic text-gray-600 font-sm">
+                                    The Key to Unlocking Super-Human Solutions
                                 </p>
-                                <p> Empathy requires that they be a part of the solution.</p>
-                                <h3>Human Relationships</h3>
+                                <p>
+                                    I had a profound and <span class="font-bold">meaningful</span> realization during my
+                                    time at ViewRail. Software <span class="font-bold">development</span> is about <span
+                                        class="font-bold">people</span>.
+                                </p>
+                                <p>
+                                    As I attempted to solve <span class="font-bold">problems</span>, I encountered
+                                    various <span class="font-bold">interconnected</span> processes and legacy systems
+                                    that made it <span class="font-bold">challenging</span> to implement sound <span
+                                        class="font-bold">solutions</span>.
+                                </p>
+                                <p> One of the ways I <span class="font-bold">overcame</span> this challenge was to
+                                    build <span class="font-bold">relationships</span> with the people the solution
+                                    <span class="font-bold">affected</span> most. As I worked to solve the problem, I
+                                    used my <span class="font-bold">rapport</span> to seek feedback at <span
+                                        class="font-bold">critical</span> times. This feedback gave me valuable insights
+                                    into <span class="font-bold">nuances</span> I needed to know. By gathering these
+                                    <span class="font-bold">insights</span>, I created a solid <span class="font-bold">understanding</span>
+                                    of the current state of things. My relationships with my colleagues became stronger
+                                    as we worked <span class="font-bold">collaboratively</span>, which reinforced the
+                                    <span class="font-bold">effectiveness</span> of our efforts.
+                                </p>
+                                <p>Ultimately, the result was <span class="font-bold">better</span> than anything I
+                                    could have done <span class="font-bold">alone</span>.
+                                </p>
                                 <figure>
                                     <blockquote>
                                         Software Development is an exercise in human relationships.
@@ -117,29 +179,28 @@
                                         </cite>
                                     </figcaption>
                                 </figure>
-
-                                <p>I had a profound and meaningful realization during my time at ViewRail. Software
-                                    development is about people. I encountered various interconnected processes and
-                                    legacy systems that made it challenging to implement sound solutions. But, through
-                                    building relationships and seeking feedback, I gained valuable insights into the
-                                    problem. This allowed me to create a solid understanding of the current state of
-                                    things. I strengthened my relationships further by working collaboratively with my
-                                    colleagues to develop effective solutions.
+                                <h2 class="mb-1">Responsibilities: </h2>
+                                <p class="text-sm italic text-gray-600 font-sm">
+                                    Primary Responsibilities While at ViewRail
                                 </p>
-                                <p>Ultimately, the result was better than anything I could have done alone.</p>
-                                <h2>Responsibilities: </h2>
                                 <ul>
-                                    <li>Led the architecting and implementation of the company's legacy ERP system into
-                                        a modern technology stack
+                                    <li>Led the <span class="font-bold">architecting</span> and implementation of the
+                                        company's <span class="font-bold">legacy</span> ERP system into
+                                        a <span class="font-bold">modern</span> technology stack
                                     </li>
-                                    <li>Worked with the many teams and stakeholders of the company to move features into
-                                        the new system
+                                    <li>Worked with the many <span class="font-bold">teams</span> and stakeholders of
+                                        the company to <span class="font-bold">move</span> features into
+                                        the <span class="font-bold">new</span> system
                                     </li>
-                                    <li>Implemented automated testing and improved the deployment pipeline</li>
-                                    <li>Simplified the database through schema changes and data migrations</li>
-                                    <li>Was the primary person responsible for keeping the systems running and available
+                                    <li>Implemented <span class="font-bold">automated</span> testing and improved the
+                                        <span class="font-bold">deployment</span> pipeline</li>
+                                    <li><span class="font-bold">Simplified</span> the database through schema changes
+                                        and <span class="font-bold">data</span> migrations</li>
+                                    <li>Was the primary person <span class="font-bold">responsible</span> for keeping
+                                        the systems <span class="font-bold">running</span> and <span class="font-bold">available</span>
                                     </li>
-                                    <li>Was responsible for code reviews, training, collaboration etc.</li>
+                                    <li>Was <span class="font-bold">responsible</span> for code reviews, training, <span
+                                            class="font-bold">collaboration</span>, etc</li>
                                 </ul>
                             </div>
 
@@ -160,10 +221,10 @@
                         <span class="font-medium">Full Stack Developer</span>
                         <span class="text-gray-800">ViewRail Full-time </span>
                         <span class="text-gray-500">Apr 2021 - Jan 2022 · 10 mos</span>
-                        <details class="text-gray-800 prose">
-                            <summary class="font-medium cursor-pointer py-2">Click to see more details</summary>
-                            <div class="-ml-10">
-                                <h2>Previous Experience</h2>
+                        <details open class="text-gray-800 prose">
+                            <summary class="cursor-pointer py-2 font-medium">Click to hide details</summary>
+                            <div class="-ml-10 sm:ml-0">
+                                <h2 class="mt-4 mb-1">Previous Experience</h2>
                                 <p>Following my experience at RealClearPolitics, I arrived at ViewRail with valuable
                                     backend knowledge. I was well-acquainted with the project and its goal of
                                     transferring features from a legacy ColdFusion project to a contemporary tech
@@ -199,9 +260,9 @@
             </li>
 
             <li class="relative pb-10">
-                <div class="absolute top-12 left-12 -ml-px mt-0.5 h-full w-0.5 bg-sky-600" aria-hidden="true"></div>
-                <div class="group relative flex items-start">
-                  <span class="flex m-2 items-center shadow-lg">
+                <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
+                <div class="relative flex items-start group">
+                  <span class="m-2 flex items-center shadow-lg">
                     <span class="relative z-10 flex h-20 w-20 items-center justify-center">
                       <img src="{{ Vite::asset('resources/images/viewrail.jpg') }}" alt="viewrail logo"/>
                     </span>
@@ -210,11 +271,11 @@
                         <span class="font-medium">Technologies I used while at ViewRail</span>
                         <span class="text-gray-800">Docker, React/TS, Laravel, Graphql</span>
                         <span class="text-gray-500">Apr 2021 - Feb 2023 · ~2 years</span>
-                        <details class="text-gray-800 ">
-                            <summary class="font-medium cursor-pointer py-2">Click to see more details</summary>
-                            <div class="prose">
+                        <details class="text-gray-800">
+                            <summary class="cursor-pointer py-2 font-medium">Click to see more details</summary>
+                            <div class="-ml-10 prose sm:ml-0">
                                 <p class="mt-2"> An incomplete list of Technologies I used while at ViewRail</p>
-                                <h3> Frontend: </h3>
+                                <h2 class="mt-4 mb-1"> Frontend: </h2>
                                 <ul>
                                     <li><a href="https://reactjs.org/">React (functional components)</a> </li>
                                     <li><a href="https://www.typescriptlang.org/">TypeScript</a></li>

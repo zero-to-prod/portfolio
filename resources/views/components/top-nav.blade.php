@@ -3,14 +3,14 @@
         <div class="flex h-16 justify-between">
             <div class="flex">
                 <div class="flex">
-                    <a href="{{Routes::welcome->value}}"
+                    <a href="{{named_route(Routes::welcome)}}"
                         @class([
                             'inline-flex items-center border-b-2 sm:text-lg',
                             'border-sky-500 text-gray-900' => route_name_is(Routes::welcome),
                             'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' => route_name_isnt(Routes::welcome),
                             ])
                     >david<span class="text-sky-500">DESIGN</span></a>
-                    <a href="{{Routes::cv->value}}"
+                    <a href="{{named_route(Routes::cv)}}"
                         @class([
                             'inline-flex items-center border-b-2 text-sm font-medium px-8',
                             'border-sky-500 text-gray-900' => route_name_is(Routes::cv),
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="ml-6 flex items-center">
-                <a href="{{route(Routes::connect->name)}}"
+                <a href="{{named_route(Routes::connect)}}"
                    class="inline-flex items-center rounded-md border border-transparent bg-sky-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2">
                     Connect
                 </a>

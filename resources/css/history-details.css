@@ -1,0 +1,10 @@
+@layer components {
+    [data-history-details="details"] h2, h3 {
+        @apply mt-4 mb-1;
+    }
+    [data-history-details="details"] .subtitle {
+        @apply text-sm italic text-gray-600;
+    }
+}
+
+

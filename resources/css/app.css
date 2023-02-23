@@ -1,9 +1,9 @@
-@import "header-section.css";
 @import "button.css";
+@import "em.css";
+@import "header-section.css";
+@import "history-details.css";
 @import "toast.css";
+
 @tailwind base;
-em {
-    @apply not-italic font-semibold;
-}
 @tailwind components;
 @tailwind utilities;

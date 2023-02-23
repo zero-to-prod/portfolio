@@ -14,8 +14,8 @@
         <div class="relative mx-auto max-w-7xl py-16 px-4">
             <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
                 <div>
-                    <h3 class="mt-2 text-3xl font-semibold leading-8 tracking-tight text-gray-900 sm:text-4xl">About
-                        Me</h3>
+                    <h2 class="mt-2 text-3xl font-semibold leading-8 tracking-tight text-gray-900 sm:text-4xl">About
+                        Me</h2>
                 </div>
             </div>
             <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">

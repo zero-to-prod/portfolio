@@ -1,5 +1,6 @@
 @import "header-section.css";
 @import "button.css";
+@import "toast.css";
 @tailwind base;
 em {
     @apply not-italic font-semibold;

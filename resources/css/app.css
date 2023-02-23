@@ -1,7 +1,11 @@
 @import "button.css";
 @import "em.css";
+@import "error.css";
+@import "form-control.css";
 @import "header-section.css";
 @import "history-details.css";
+@import "input.css";
+@import "label.css";
 @import "toast.css";
 
 @tailwind base;

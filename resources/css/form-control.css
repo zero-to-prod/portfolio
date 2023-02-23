@@ -1,0 +1,11 @@
+@layer components {
+    [data-form-control="control"] input, textarea {
+        @apply input mt-2.5;
+    }
+    [data-form-control="control"] label {
+        @apply label;
+    }
+    [data-form-control="control"] p {
+        @apply error mt-2 text-sm text-red-600;
+    }
+}

@@ -11,6 +11,10 @@
     .btn-xs {
         @apply text-sm leading-4 px-3 py-2 ;
     }
+
+    .btn-wide {
+        @apply block w-full text-center;
+    }
 }
 
 

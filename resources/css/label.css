@@ -1,0 +1,5 @@
+@layer components {
+    .label {
+        @apply block text-sm font-semibold leading-6 text-gray-900;
+    }
+}

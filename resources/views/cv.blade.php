@@ -1,16 +1,15 @@
-<x-layouts.main>
-
+<x-layouts.main :title="'CV'">
     <x-header-section>
         <h1>CV and Work History</h1>
-        <p>
+        <p aria-label="Page Description">
             On this page, I'm excited to share my <em>professional journey</em> and the
             <em>various businesses</em> I've enjoyed owning. You'll find more information about each event in the
             <em>timeline</em>, so feel free to <em>explore</em> and learn more about my experiences.
         </p>
     </x-header-section>
 
-    <nav aria-label="Progress" class="mx-auto max-w-7xl p-4">
-        <ol role="list" class="overflow-hidden">
+    <nav aria-label="Work History Section" class="mx-auto max-w-7xl p-4">
+        <ol aria-label="Work History List" role="list" class="overflow-hidden">
 
             <li class="relative pb-10">
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
@@ -21,69 +20,58 @@
                     </span>
                   </span>
                     <div class="mt-3 ml-4 flex min-w-0 flex-col">
-                        <span class="font-medium">Senior Full Stack Developer</span>
-                        <span class="text-gray-800">ViewRail Full-time </span>
-                        <span class="text-gray-500">Jan 2022 - Feb 2023 · 1 yr 2 mos</span>
-                        <details open class="text-gray-800 prose">
+                        <span aria-label="Position" class="font-medium">Senior Full Stack Developer</span>
+                        <span aria-label="Company and Work Type" class="text-gray-800">ViewRail Full-time </span>
+                        <span aria-label="Work Dates" class="text-gray-500">Jan 2022 - Feb 2023 · 1 yr 2 mos</span>
+                        <details aria-label="Details" open class="text-gray-800 prose">
                             <summary class="cursor-pointer py-2 font-medium">Click to hide details</summary>
                             <div class="-ml-10 sm:ml-0">
                                 <h2 class="mt-4 mb-1">Professional Growth at ViewRail</h2>
                                 <p class="text-sm italic text-gray-600 font-sm">
                                     Building a New Development Process for Improved Flexibility and Confidence
                                 </p>
-                                <p>
-                                    I greatly
-                                    <span class="font-semibold">enjoyed</span> working at ViewRail as a developer for
-                                    ten months before being
-                                    <span class="font-semibold">promoted</span> to a <span
-                                        class="font-semibold">senior</span> position.
-
+                                <p> I greatly <em>enjoyed</em> working at ViewRail as a developer for ten months before
+                                    being <em>promoted</em> to a <em>senior</em> position.
+                                </p>
+                                <p> The company <em>entrusted</em> me to <em>lead</em> the development of their
+                                    production <em>ERP</em> system, demonstrating their <em>confidence</em> in my
+                                    abilities.
                                 </p>
                                 <p>
-                                    The company <span class="font-semibold">entrusted</span> me to
-                                    <span class="font-semibold">lead</span> the development of their production
-                                    <span class="font-semibold">ERP</span> system, demonstrating their
-                                    <span class="font-semibold">confidence</span> in my abilities.
-                                </p>
-                                <p>The development of this system presented a unique
-                                    <span class="font-semibold">opportunity</span>. Our development style needed
-                                    <span class="font-semibold">structure</span> as the project was still young. With
-                                    the team's
-                                    <span class="font-semibold">support</span>, we started building a process to enhance
-                                    our
-                                    <span class="font-semibold">confidence</span> in deployment while optimizing for
-                                    <span class="font-semibold">responsiveness</span> and <span class="font-semibold">flexibility</span>.
+                                    The development of this system presented a unique <em>opportunity</em>. Our
+                                    development style needed <em>structure</em> as the project was still young. With the
+                                    team's <em>support</em>, we started building a process to enhance our
+                                    <em>confidence</em> in deployment while optimizing for <em>responsiveness</em> and
+                                    <em>flexibility</em>.
                                 </p>
                                 <h2 class="mb-1">Team Building</h2>
                                 <p class="text-sm italic text-gray-600 font-sm">
                                     Improving our Development Process and Work Culture
                                 </p>
 
-                                <p> With the team's help, we <span class="font-semibold">proactively</span> identified
-                                    areas of <span class="font-semibold">vulnerability</span> and <span
-                                        class="font-semibold">weakness</span> and <span class="font-semibold">worked together</span>
-                                    to enhance our workflow. Our <span class="font-semibold">efforts</span> resulted in
-                                    a significant <span class="font-semibold">improvement</span> in our development
-                                    process and work <span class="font-semibold">culture</span>.
+                                <p> With the team's help, we <em>proactively</em> identified areas of
+                                    <em>vulnerability</em> and <em>weakness</em> and <em>worked together</em> to enhance
+                                    our workflow. Our <em>efforts</em> resulted in a significant <em>improvement</em> in
+                                    our development process and work <em>culture</em>.
                                 </p>
                                 <p>Some of the improvements were:</p>
-                                <ul>
-                                    <li> Developing a <span class="font-semibold">robust</span> deployment process that
+                                <ul role="list">
+                                    <li> Developing a <em>robust</em> deployment process that
                                         included the use of a staging site in the deployment pipeline
                                     </li>
-                                    <li>Adding <span class="font-semibold">automated tests</span> that protected
-                                        <span class="font-semibold">mission-critical</span> processes
+                                    <li>Adding <em>automated tests</em> that protected <em>mission-critical</em>
+                                        processes
                                     </li>
                                     <li>
-                                        Building a <span class="font-semibold">code review</span> process from scratch
+                                        Building a <em>code review</em> process from scratch
                                     </li>
                                     <li>
-                                        Developing the idea of <span class="font-semibold">Total Ownership</span> that
-                                        positively impacted the team <span class="font-semibold">culture</span>.
+                                        Developing the idea of <em>Total Ownership</em> that positively impacted the
+                                        team <em>culture</em>.
                                     </li>
                                     <li>
-                                        Successfully <span class="font-semibold">updated software dependencies</span>
-                                        that were up to <span class="font-semibold">two major versions</span> behind.
+                                        Successfully <em>updated software dependencies</em>
+                                        that were up to <em>two major versions</em> behind.
                                     </li>
                                 </ul>
 
@@ -91,113 +79,71 @@
                                 <p class="text-sm italic text-gray-600 font-sm">
                                     Tool Building: Real-time Monitoring and Dashboards for Mission-critical Diagnostics
                                 </p>
-                                <p>
-                                    With all of the remarkable changes we made, our
-                                    <span class="font-semibold">productivity</span> improved significantly. We were able
-                                    to implement features more
-                                    <span class="font-semibold">quickly</span> and update our dependencies more
-                                    <span class="font-semibold">frequently</span>.
+                                <p> With all of the remarkable changes we made, our <em>productivity</em> improved
+                                    significantly. We were able to implement features more <em>quickly</em> and update
+                                    our dependencies more <em>frequently</em>.
                                 </p>
                                 <p>
-                                    Ultimately our efforts gave us reliable <span
-                                        class="font-semibold">confidence</span> when we
-                                    <span class="font-semibold">deployed</span> changes into production.
+                                    Ultimately our efforts gave us reliable <em>confidence</em> when we
+                                    <em>deployed</em> changes into production.
                                 </p>
                                 <p>Some of the diagnostic tools that added to this confidence were:</p>
-                                <ul>
-                                    <li><span class="font-semibold">Real-time</span> monitoring of exceptions and
-                                        logs
+                                <ul role="list">
+                                    <li><em>Real-time</em> monitoring of exceptions and logs</li>
+                                    <li>An innovative UI that monitored the <em>job queue</em></li>
+                                    <li>A concise page that provided <em>comprehensive</em> audits</li>
+                                    <li>A <em>unique</em> tree-based explorer for our models and their relationships
                                     </li>
-                                    <li>An innovative UI that monitored the <span class="font-semibold">job queue</span>
-                                    </li>
-                                    <li>A concise page that provided <span class="font-semibold">comprehensive</span>
-                                        audits
-                                    </li>
-                                    <li>A
-                                        <span class="font-semibold">unique</span> tree-based explorer for our models and
-                                        their relationships
-                                    </li>
-                                    <li>A dashboard that showed <span class="font-semibold">mission-critical</span>
-                                        diagnostic data
-                                    </li>
+                                    <li>A dashboard that showed <em>mission-critical</em> diagnostic data</li>
                                 </ul>
                                 <h2>Personal Development</h2>
                                 <h3 class="mb-1">A Lesson in Empathy</h3>
                                 <p class="text-sm italic text-gray-600 font-sm">
                                     How Human Relationships Build Better Solutions
                                 </p>
-                                <p>
-                                    I had the <span class="font-semibold">privilege</span> of working with the
-                                    <span class="font-semibold">fantastic</span> people at ViewRail, who taught me an
-                                    invaluable
-                                    <span class="font-semibold">lesson</span> about the importance of
-                                    <span class="font-semibold">deeply</span> understanding a problem and
-                                    <span class="font-semibold">empathizing</span> with those it affects.
+                                <p> I had the <em>privilege</em> of working with the <em>fantastic</em> people at
+                                    ViewRail, who taught me an invaluable <em>lesson</em> about the importance of <em>deeply</em>
+                                    understanding a problem and <em>empathizing</em> with those it affects.
                                 </p>
-                                <p>Understanding the bigger picture was <span class="font-semibold">critical</span> in
-                                    my
-                                    <span class="font-semibold">collaborations</span> with various teams. Often, a
-                                    problem seemed
-                                    <span class="font-semibold">isolated</span> to one group, but as I
-                                    <span class="font-semibold">worked</span> with stakeholders, I
-                                    <span class="font-semibold">discovered</span> it also impacted other areas. In such
-                                    cases,
-                                    <span class="font-semibold">empathy</span> proved to be a powerful tool to
-                                    <span class="font-semibold">unite</span> everyone and be a part of the
-                                    <span class="font-semibold">solution</span>.
+                                <p> Understanding the bigger picture was <em>critical</em> in my <em>collaborations</em>
+                                    with various teams. Often, a problem seemed <em>isolated</em> to one group, but as I
+                                    <em>worked</em> with stakeholders, I <em>discovered</em> it also impacted other
+                                    areas. In such cases, <em>empathy</em> proved to be a powerful tool to
+                                    <em>unite</em> everyone and be a part of the <em>solution</em>.
                                 </p>
                                 <p>I learned to:</p>
                                 <blockquote>
-                                    <span class="font-semibold"></span> Understand a problem in a deep and empathic way
-                                    before implementing a solution.
+                                    Understand a problem in a deep and empathic way before implementing a solution.
                                 </blockquote>
                                 <h3 class="mb-1">Human Relationships</h3>
                                 <p class="text-sm italic text-gray-600 font-sm">
                                     Software: Much More than Code
                                 </p>
-                                <p> I had the <span class="font-semibold">privilege</span> of working with the
-                                    <span class="font-semibold">fantastic</span> people at ViewRail, who taught me an
-                                    <span class="font-semibold">invaluable</span> lesson about the importance of
-                                    <span class="font-semibold">deeply</span> understanding a problem and
-                                    <span class="font-semibold">empathizing</span> with those it affects.
-                                </p>
-
-                                <p>
-                                    To <span class="font-semibold">understand</span> a problem, I needed to
-                                    <span class="font-semibold">broaden</span> my understanding and
-                                    <span class="font-semibold">perspective</span>. Doing so made me better
-                                    <span class="font-semibold">equipped</span> to collaborate with
-                                    <span class="font-semibold">diverse</span> teams and stakeholders. Often, what may
-                                    have
-                                    <span class="font-semibold">initially</span> seemed like a problem affecting only
-                                    one
-                                    <span class="font-semibold">group</span>, turned out to have
-                                    <span class="font-semibold">broader</span> implications across multiple areas.
-                                    Through my
-                                    <span class="font-semibold">experiences</span>, I've learned to truly take the time
-                                    to
-                                    <span class="font-semibold">understand</span> the full
-                                    <span class="font-semibold">scope</span> of a situation.
+                                <p> I had the <em>privilege</em> of working with the <em>fantastic</em> people at
+                                    ViewRail, who taught me an <em>invaluable</em> lesson about the importance of <em>deeply</em>
+                                    understanding a problem and <em>empathizing</em> with those it affects.
                                 </p>
                                 <p>
-                                    <span class="font-semibold">Empathy</span> is crucial to building and maintaining
-                                    <span class="font-semibold">dependable</span> relationships. When you experience a
-                                    user's
-                                    <span class="font-semibold">struggles</span> with them, it creates a
-                                    <span class="font-semibold">powerful</span> collaboration that can
-                                    <span class="font-semibold">leverage</span> their valuable
-                                    <span class="font-semibold">insights</span>. This <span class="font-semibold">collaboration</span>
-                                    is
-                                    <span class="font-semibold">priceless</span> and helps
-                                    <span class="font-semibold">uncover</span> the technical
-                                    <span class="font-semibold">realities</span> essential to
-                                    <span class="font-semibold">providing</span> a helpful <span class="font-semibold">solution</span>.
+                                    To <em>understand</em> a problem, I needed to<em>broaden</em> my understanding
+                                    and<em>perspective</em>. Doing so made me better<em>equipped</em> to collaborate
+                                    with<em>diverse</em> teams and stakeholders. Often, what may have<em>initially</em>
+                                    seemed like a problem affecting only one<em>group</em>, turned out to have<em>broader</em>
+                                    implications across multiple areas. Through my<em>experiences</em>, I've learned to
+                                    truly take the time to<em>understand</em> the full<em>scope</em> of a situation.
                                 </p>
                                 <p>
-                                    <span class="font-semibold">Software</span> is more than
-                                    <span class="font-semibold">code</span>; it is about
-                                    <span class="font-semibold">people</span> and how they work together to solve
-                                    <span class="font-semibold">problems</span>.
+                                    <em>Empathy</em> is crucial to building and maintaining <em>dependable</em>
+                                    relationships. When you experience a user's <em>struggles</em> with them, it creates
+                                    a <em>powerful</em> collaboration that can <em>leverage</em> their valuable <em>insights</em>.
+                                    This <em>collaboration</em> is <em>priceless</em> and helps <em>uncover</em> the
+                                    technical <em>realities</em> essential to <em>providing</em> a helpful
+                                    <em>solution</em>.
+                                </p>
+                                <p>
+                                    <em>Software</em> is more than
+                                    <em>code</em>; it is about
+                                    <em>people</em> and how they work together to solve
+                                    <em>problems</em>.
                                 </p>
                                 <figure>
                                     <blockquote>
@@ -213,39 +159,29 @@
                                 <p class="text-sm italic text-gray-600 font-sm">
                                     Primary Responsibilities While at ViewRail
                                 </p>
-                                <ul>
-                                    <li>Led the <span class="font-semibold">architecting</span> and implementation of
-                                        the company's
-                                        <span class="font-semibold">legacy</span> ERP system into a
-                                        <span class="font-semibold">modern</span> technology stack
+                                <ul role="list">
+                                    <li> Led the <em>architecting</em> and implementation of the company's
+                                        <em>legacy</em> ERP system into a <em>modern</em> technology stack
                                     </li>
-                                    <li>Worked with
-                                        the many
-                                        <span class="font-semibold">teams</span> and stakeholders of the company to
-                                        <span class="font-semibold">move</span> features into the
-                                        <span class="font-semibold">new</span> system
+                                    <li> Worked with the many <em>teams</em> and stakeholders of the company to
+                                        <em>move</em> features into the <em>new</em> system
                                     </li>
-                                    <li>Implemented
-                                        <span class="font-semibold">automated</span> testing and improved the
-                                        <span class="font-semibold">deployment</span> pipeline
+                                    <li>
+                                        Implemented <em>automated</em> testing and improved the <em>deployment</em>
+                                        pipeline
                                     </li>
-                                    <li><span class="font-semibold">Simplified</span> the database through schema
-                                        changes and
-                                        <span class="font-semibold">data</span> migrations
+                                    <li>
+                                        <em>Simplified</em> the database through schema changes and <em>data</em>
+                                        migrations
                                     </li>
-                                    <li>Was the primary
-                                        person
-                                        <span class="font-semibold">responsible</span> for keeping the systems
-                                        <span class="font-semibold">running</span> and <span
-                                            class="font-semibold">available</span>
+                                    <li> Was the primary person <em>responsible</em> for keeping the systems
+                                        <em>running</em> and <em>available</em>
                                     </li>
-                                    <li>Was
-                                        <span class="font-semibold">responsible</span> for code reviews, training,
-                                        <span class="font-semibold">collaboration</span>, etc
+                                    <li>
+                                        Was<em>responsible</em> for code reviews, training,<em>collaboration</em>, etc
                                     </li>
                                 </ul>
                             </div>
-
                         </details>
                     </div>
                 </div>
@@ -266,36 +202,33 @@
                             <summary class="cursor-pointer py-2 font-medium">Click to hide details</summary>
                             <div class="-ml-10 sm:ml-0">
                                 <h2 class="mt-4 mb-1">Previous Experience</h2>
-                                <p>Following my experience at
-                                    <span class="font-semibold">RealClearPolitics</span>, I arrived at ViewRail with
-                                    <span class="font-semibold">valuable</span> backend knowledge. I was well-acquainted
-                                    with the project and its goal of
-                                    <span class="font-semibold">transferring</span> features from a legacy
-                                    <span class="font-semibold">ColdFusion</span> project to a
-                                    <span class="font-semibold">modern</span> tech stack.
+                                <p>
+                                    Following my experience at<em>RealClearPolitics</em>, I arrived at ViewRail with<em>valuable</em>
+                                    backend knowledge. I was well-acquainted with the project and its goal of<em>transferring</em>
+                                    features from a legacy<em>ColdFusion</em> project to a<em>modern</em> tech stack.
                                 </p>
                                 <h2>Personal Development</h2>
-                                <p> ViewRail's Technology stack <span class="font-semibold">impressed</span> me with its
-                                    <span class="font-semibold">advanced</span> features, including:
+                                <p>
+                                    ViewRail's Technology stack <em>impressed</em> me with its <em>advanced</em>
+                                    features, including:
                                 </p>
-                                <ul>
+                                <ul role="list">
                                     <li>GraphQL</li>
                                     <li>React</li>
                                     <li>TypeScript</li>
                                 </ul>
-                                <p> I was <span class="font-semibold">thrilled</span> to have the opportunity to work
-                                    with these <span class="font-semibold">new</span> technologies, and I
-                                    had the pleasure of being <span class="font-semibold">mentored</span> by an <span
-                                        class="font-semibold">exceptional</span> individual who helped me expand
-                                    my <span class="font-semibold">knowledge</span> of web development.
+                                <p>
+                                    I was <em>thrilled</em> to have the opportunity to work with these <em>new</em>
+                                    technologies, and I had the pleasure of being <em>mentored</em> by an <em>exceptional</em>
+                                    individual who helped me expand my <em>knowledge</em> of web development.
                                 </p>
-                                <p>Thanks to this <span class="font-semibold">experience</span>, I now understand the
-                                    importance of <span class="font-semibold">type safety</span> and how
-                                    <span class="font-semibold">functional</span> programming can effectively manage
-                                    <span class="font-semibold">state</span>.
+                                <p>
+                                    Thanks to this <em>experience</em>, I now understand the importance of
+                                    <em>type safety</em> and how <em>functional</em> programming can effectively manage
+                                    <em>state</em>.
                                 </p>
                                 <h2>Responsibilities</h2>
-                                <ul>
+                                <ul role="list">
                                     <li>Front end features</li>
                                     <li>Front end pages</li>
                                     <li>Back end functionality</li>
@@ -326,7 +259,7 @@
                             <div class="-ml-10 prose sm:ml-0">
                                 <p class="mt-2"> An incomplete list of Technologies I used while at ViewRail</p>
                                 <h2 class="mt-4 mb-1"> Frontend: </h2>
-                                <ul>
+                                <ul role="list">
                                     <li><a href="https://reactjs.org/">React (functional components)</a></li>
                                     <li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
                                     <li><a href="https://material-ui.com/">MATERIAL-UI</a></li>
@@ -349,7 +282,7 @@
                                     </li>
                                 </ul>
                                 <h3> Backend: </h3>
-                                <ul>
+                                <ul role="list">
                                     <li><a href="https://www.php.net/">PHP 8.1</a></li>
                                     <li><a href="https://www.nginx.com/">NGINX</a></li>
                                     <li><a
@@ -374,32 +307,32 @@
                                     </li>
                                 </ul>
                                 <h3> Source Control: </h3>
-                                <ul>
+                                <ul role="list">
                                     <li><a href="https://git-scm.com/">git</a></li>
                                 </ul>
                                 <h3> Authentication: </h3>
-                                <ul>
+                                <ul role="list">
                                     <li><a href="https://oauth.net/2/">Oauth2.0</a></li>
                                 </ul>
                                 <h3> PaaS: </h3>
-                                <ul>
+                                <ul role="list">
                                     <li><a href="https://www.docker.com/">Docker</a></li>
                                 </ul>
                                 <h3> Cloud Hosting </h3>
-                                <ul>
+                                <ul role="list">
                                     <li><a href="https://www.linode.com/">Linode</a></li>
                                 </ul>
                                 <h3> Databases </h3>
-                                <ul>
+                                <ul role="list">
                                     <li><a href="https://mariadb.com/">MariaDB</a></li>
                                 </ul>
                                 <h3> Development Tools </h3>
-                                <ul>
+                                <ul role="list">
                                     <li><a href="https://www.jetbrains.com/phpstorm/">PhpStorm</a></li>
                                     <li><a href="https://xdebug.org/">Xdebug</a></li>
                                 </ul>
                                 <h3> Operating Systems </h3>
-                                <ul>
+                                <ul role="list">
                                     <li>Linux</li>
                                     <li>Windows/WSL</li>
                                 </ul>

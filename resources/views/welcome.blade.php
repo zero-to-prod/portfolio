@@ -42,41 +42,37 @@
                 </div>
                 <div class="mt-8 lg:mt-0">
                     <div class="mx-auto max-w-prose text-base lg:max-w-none">
-                        <p class="text-lg text-gray-500">I'm David Smith, a <span class="font-semibold">Full Stack Web Developer</span>
+                        <p class="text-lg text-gray-500">I'm David Smith, a <em>Full Stack Web Developer</em>
                             based in Granger, Indiana.</p>
                     </div>
                     <div
                         class="prose prose-sky mx-auto mt-5 text-gray-500 lg:col-start-1 lg:row-start-1 lg:max-w-none">
                         <p>
-                            I help <span class="font-semibold">small businesses</span> with their <span
-                                class="font-semibold">web and technology</span>
-                            needs.
+                            I help <em>small businesses</em> with their <em>web and technology</em> needs.
                         </p>
-                        <p>I love tackling <span class="font-semibold">tough challenges</span> and finding <span
-                                class="font-semibold">budget-friendly</span> fixes with my clients.</p>
-                        <p>I mainly work with <span class="font-semibold">web technologies</span>, but I also handle
-                            <span class="font-semibold">IT and hardware support</span>.</p>
+                        <p>
+                            I love tackling <em>tough challenges</em> and finding <em>budget-friendly</em> fixes with my
+                            clients.
+                        </p>
+                        <p>
+                            I mainly work with <em>web technologies</em>, but I also handle
+                            <em>IT and hardware support</em>.
+                        </p>
                         <p>Here are some things I can do for you:</p>
                         <ul role="list">
-                            <li>Spin up a <span class="font-semibold">fresh new </span>website</li>
-                            <li>Give your old site a <span class="font-semibold">makeover</span></li>
-                            <li>Make sure your business is <span class="font-semibold">found on Google</span> and other
-                                search
-                                engines
-                            </li>
-                            <li>Hook up <span class="font-semibold">payments</span> and other services to your website
-                            </li>
-                            <li>Get your <span class="font-semibold">email list</span> up and running and <span
-                                    class="font-semibold">make money</span> with it
-                            </li>
+                            <li>Spin up a <em>fresh</em>new website</li>
+                            <li>Give your old site a <em>makeover</em></li>
+                            <li>Make sure your business is <em>found on Google</em> and other search engines</li>
+                            <li>Hook up <em>payments</em> and other services to your website</li>
+                            <li>Get your <em>email list</em> up and running and <em>make money</em> with it</li>
                         </ul>
                         <p>
                             Here is a recent example of my work:
-                            <a href="https://interior-gardens.com/">Interior Gardens</a>.
+                            <a class="text-blue-700" href="https://interior-gardens.com/">Interior Gardens</a>.
                         </p>
                         <p>
-                            I am currently accepting new clients and job opportunities. If you are interested in
-                            connecting, please get in <a href="{{named_route(Routes::connect)}}">touch with me.</a>
+                            I am currently <em>accepting</em> new clients and job opportunities. If you are interested
+                            in connecting, please get in <a class="text-blue-700" href="{{named_route(Routes::connect)}}">touch with me.</a>
                         </p>
                     </div>
                 </div>

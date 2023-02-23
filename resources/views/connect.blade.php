@@ -1,4 +1,4 @@
-<x-main>
+<x-layouts.main>
   @if(session()->has('email'))
     <div id="toast" aria-live="assertive" class="z-50 opacity-0 transition duration-500 pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
       <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
@@ -89,5 +89,5 @@
     </div>
   </div>
   @vite('resources/js/top_nav_scroll.js')
-</x-main>
+</x-layouts.main>
 

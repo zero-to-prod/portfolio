@@ -1,3 +1,8 @@
+@import "header-section.css";
+@import "button.css";
 @tailwind base;
+em {
+    @apply not-italic font-semibold;
+}
 @tailwind components;
 @tailwind utilities;

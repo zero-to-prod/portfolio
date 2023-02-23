@@ -1,26 +1,21 @@
-<x-main>
-    <div class="bg-gradient-to-b from-sky-200 to-white py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:mx-0">
-                <h1 class="mt-2 text-3xl font-semibold tracking-tight text-gray-900 sm:text-6xl">Simple Things Are Hard</h1>
-                <p class="mt-6 text-lg leading-8 text-gray-600">Here, I <span class="font-semibold">showcase</span> some of
-                    my <span class="font-semibold">work</span>, experience, and <span class="font-semibold">thoughts</span>
-                    as I endeavor to <span class="font-semibold">simplify complexity</span> in a way that provides
-                    <span class="font-semibold">value</span> for others.
-                </p>
-                <div class="mt-10 flex items-center justify-center gap-x-6">
-                    <a href="#about-me"
-                       class="rounded-md bg-sky-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">About
-                        Me</a>
-                </div>
-            </div>
+<x-layouts.main>
+    <x-header-section>
+        <h1>Simple Things Are Hard</h1>
+        <p>
+            Here, I <em>showcase</em> some of my <em>work</em>, experience, and <em>thoughts</em> as I endeavor to
+            <em>simplify complexity</em> in a way that provides <em>value</em> for others.
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+            <a href="#about-me" class="btn">About Me</a>
         </div>
-    </div>
+    </x-header-section>
+
     <div id="about-me" class="overflow-hidden bg-white">
         <div class="relative mx-auto max-w-7xl py-16 px-4">
             <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
                 <div>
-                    <h3 class="mt-2 text-3xl font-semibold leading-8 tracking-tight text-gray-900 sm:text-4xl">About Me</h3>
+                    <h3 class="mt-2 text-3xl font-semibold leading-8 tracking-tight text-gray-900 sm:text-4xl">About
+                        Me</h3>
                 </div>
             </div>
             <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
@@ -53,7 +48,8 @@
                     <div
                         class="prose prose-sky mx-auto mt-5 text-gray-500 lg:col-start-1 lg:row-start-1 lg:max-w-none">
                         <p>
-                            I help <span class="font-semibold">small businesses</span> with their <span class="font-semibold">web and technology</span>
+                            I help <span class="font-semibold">small businesses</span> with their <span
+                                class="font-semibold">web and technology</span>
                             needs.
                         </p>
                         <p>I love tackling <span class="font-semibold">tough challenges</span> and finding <span
@@ -89,4 +85,4 @@
     </div>
 
     @vite('resources/js/top_nav_scroll.js')
-</x-main>
+</x-layouts.main>

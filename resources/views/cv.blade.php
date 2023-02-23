@@ -1,19 +1,13 @@
-<x-main>
+<x-layouts.main>
 
-    <div class="bg-gradient-to-b from-sky-200 to-white py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:mx-0">
-                <h1 class="mt-2 text-3xl font-semibold tracking-tight text-gray-900 sm:text-6xl">CV and Work
-                    History</h1>
-                <p class="mt-6 text-lg leading-8 text-gray-600"> On this page, I'm excited to share my <span
-                        class="font-semibold">professional journey</span> and the <span class="font-semibold">various businesses</span>
-                    I've enjoyed owning. You'll find more information about each event in the <span
-                        class="font-semibold">timeline</span>, so feel free to <span
-                        class="font-semibold">explore</span> and learn more about my experiences.
-                </p>
-            </div>
-        </div>
-    </div>
+    <x-header-section>
+        <h1>CV and Work History</h1>
+        <p>
+            On this page, I'm excited to share my <em>professional journey</em> and the
+            <em>various businesses</em> I've enjoyed owning. You'll find more information about each event in the
+            <em>timeline</em>, so feel free to <em>explore</em> and learn more about my experiences.
+        </p>
+    </x-header-section>
 
     <nav aria-label="Progress" class="mx-auto max-w-7xl p-4">
         <ol role="list" class="overflow-hidden">
@@ -112,14 +106,20 @@
                                 <p>Some of the diagnostic tools that added to this confidence were:</p>
                                 <ul>
                                     <li><span class="font-semibold">Real-time</span> monitoring of exceptions and
-                                        logs</li>
-                                    <li>An innovative UI that monitored the <span class="font-semibold">job queue</span></li>
+                                        logs
+                                    </li>
+                                    <li>An innovative UI that monitored the <span class="font-semibold">job queue</span>
+                                    </li>
                                     <li>A concise page that provided <span class="font-semibold">comprehensive</span>
-                                        audits</li> <li>A
+                                        audits
+                                    </li>
+                                    <li>A
                                         <span class="font-semibold">unique</span> tree-based explorer for our models and
-                                        their relationships</li>
+                                        their relationships
+                                    </li>
                                     <li>A dashboard that showed <span class="font-semibold">mission-critical</span>
-                                        diagnostic data</li>
+                                        diagnostic data
+                                    </li>
                                 </ul>
                                 <h2>Personal Development</h2>
                                 <h3 class="mb-1">A Lesson in Empathy</h3>
@@ -217,16 +217,23 @@
                                     <li>Led the <span class="font-semibold">architecting</span> and implementation of
                                         the company's
                                         <span class="font-semibold">legacy</span> ERP system into a
-                                        <span class="font-semibold">modern</span> technology stack </li> <li>Worked with
+                                        <span class="font-semibold">modern</span> technology stack
+                                    </li>
+                                    <li>Worked with
                                         the many
                                         <span class="font-semibold">teams</span> and stakeholders of the company to
                                         <span class="font-semibold">move</span> features into the
-                                        <span class="font-semibold">new</span> system </li> <li>Implemented
+                                        <span class="font-semibold">new</span> system
+                                    </li>
+                                    <li>Implemented
                                         <span class="font-semibold">automated</span> testing and improved the
-                                        <span class="font-semibold">deployment</span> pipeline</li>
+                                        <span class="font-semibold">deployment</span> pipeline
+                                    </li>
                                     <li><span class="font-semibold">Simplified</span> the database through schema
                                         changes and
-                                        <span class="font-semibold">data</span> migrations</li> <li>Was the primary
+                                        <span class="font-semibold">data</span> migrations
+                                    </li>
+                                    <li>Was the primary
                                         person
                                         <span class="font-semibold">responsible</span> for keeping the systems
                                         <span class="font-semibold">running</span> and <span
@@ -320,18 +327,20 @@
                                 <p class="mt-2"> An incomplete list of Technologies I used while at ViewRail</p>
                                 <h2 class="mt-4 mb-1"> Frontend: </h2>
                                 <ul>
-                                    <li><a href="https://reactjs.org/">React (functional components)</a> </li>
+                                    <li><a href="https://reactjs.org/">React (functional components)</a></li>
                                     <li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
                                     <li><a href="https://material-ui.com/">MATERIAL-UI</a></li>
-                                    <li><a href="https://formik.org/">Formik</a></li> <li><a
-                                            href="https://graphql.org/">GraphQL</a> </li>
+                                    <li><a href="https://formik.org/">Formik</a></li>
+                                    <li><a
+                                            href="https://graphql.org/">GraphQL</a></li>
                                     <li><a href="https://www.apollographql.com/">Apollo-GraphQL</a></li>
                                     <li><a href="https://www.graphql-code-generator.com/">GraphQL-Codegen</a></li>
                                     <li><a href="https://create-react-app.dev/">create-react-app</a></li>
-                                    <li><a href="https://recharts.org/">Recharts</a> </li>
-                                    <li><a href="https://momentjs.com/">Moment.js</a> </li>
-                                    <li><a href="https://prettier.io/">Prettier</a> </li>
-                                    <li><a href="https://nodejs.org/">NodeJs</a></li> <li><a href="https://babeljs.io/">BABEL</a></li>
+                                    <li><a href="https://recharts.org/">Recharts</a></li>
+                                    <li><a href="https://momentjs.com/">Moment.js</a></li>
+                                    <li><a href="https://prettier.io/">Prettier</a></li>
+                                    <li><a href="https://nodejs.org/">NodeJs</a></li>
+                                    <li><a href="https://babeljs.io/">BABEL</a></li>
                                     <li><a href="https://www.npmjs.com/">npm</a></li>
                                     <li><a href="https://www.json.org/json-en.html">JSON</a></li>
                                     <li><a href="https://github.com/remix-run/react-router">react-router</a></li>
@@ -342,7 +351,8 @@
                                 <h3> Backend: </h3>
                                 <ul>
                                     <li><a href="https://www.php.net/">PHP 8.1</a></li>
-                                    <li><a href="https://www.nginx.com/">NGINX</a></li> <li><a
+                                    <li><a href="https://www.nginx.com/">NGINX</a></li>
+                                    <li><a
                                             href="https://laravel.com">Laravel</a></li>
                                     <li><a href="https://laravel.com/docs/master/passport">Passport</a></li>
                                     <li><a href="https://lighthouse-php.com/">Lighthouse</a></li>
@@ -355,10 +365,12 @@
                                     <li><a href="https://github.com/aws/aws-sdk-php-laravel">aws/aws-sdk-php-laravel</a>
                                     </li>
                                     <li><a href="https://github.com/chelout/laravel-relationship-events">chelout/laravel-relationship-events</a>
-                                    </li> <li><a href="https://github.com/doctrine/dbal">doctrine/dbal</a></li>
+                                    </li>
+                                    <li><a href="https://github.com/doctrine/dbal">doctrine/dbal</a></li>
                                     <li><a href="https://github.com/guzzle/guzzle">guzzlehttp/guzzle</a></li>
                                     <li><a href="https://packagist.org/packages/owen-it/laravel-auditing">owen-it/laravel-auditing</a>
-                                    </li> <li><a href="https://github.com/barryvdh/laravel-ide-helper">barryvdh/laravel-ide-helper</a>
+                                    </li>
+                                    <li><a href="https://github.com/barryvdh/laravel-ide-helper">barryvdh/laravel-ide-helper</a>
                                     </li>
                                 </ul>
                                 <h3> Source Control: </h3>
@@ -367,19 +379,19 @@
                                 </ul>
                                 <h3> Authentication: </h3>
                                 <ul>
-                                    <li><a href="https://oauth.net/2/">Oauth2.0</a> </li>
+                                    <li><a href="https://oauth.net/2/">Oauth2.0</a></li>
                                 </ul>
                                 <h3> PaaS: </h3>
                                 <ul>
-                                    <li><a href="https://www.docker.com/">Docker</a> </li>
+                                    <li><a href="https://www.docker.com/">Docker</a></li>
                                 </ul>
                                 <h3> Cloud Hosting </h3>
                                 <ul>
-                                    <li><a href="https://www.linode.com/">Linode</a> </li>
+                                    <li><a href="https://www.linode.com/">Linode</a></li>
                                 </ul>
                                 <h3> Databases </h3>
                                 <ul>
-                                    <li><a href="https://mariadb.com/">MariaDB</a> </li>
+                                    <li><a href="https://mariadb.com/">MariaDB</a></li>
                                 </ul>
                                 <h3> Development Tools </h3>
                                 <ul>
@@ -388,7 +400,8 @@
                                 </ul>
                                 <h3> Operating Systems </h3>
                                 <ul>
-                                    <li>Linux</li> <li>Windows/WSL</li>
+                                    <li>Linux</li>
+                                    <li>Windows/WSL</li>
                                 </ul>
                             </div>
                         </details>
@@ -409,7 +422,8 @@
                         <span class="text-gray-500">Aug 2019 - Apr 2021 · 1 yr 9 mos</span>
                     </span>
                 </div>
-            </li> <li class="relative pb-10">
+            </li>
+            <li class="relative pb-10">
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
                 <div class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
@@ -422,7 +436,8 @@
                         <span class="text-gray-500">Apr 2019 - Ongoing</span>
                     </span>
                 </div>
-            </li> <li class="relative pb-10">
+            </li>
+            <li class="relative pb-10">
                 <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
                 <div class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
@@ -435,7 +450,8 @@
                         <span class="text-gray-500">Jan 2017 - Apr 2019 · 2 yr 3 mos</span>
                     </span>
                 </div>
-            </li> <li class="relative pb-10">
+            </li>
+            <li class="relative pb-10">
                 <div class="relative flex items-start group">
                   <span class="m-2 flex items-center shadow-lg">
                     <span class="relative z-10 flex h-20 w-20 items-center justify-center">
@@ -452,4 +468,4 @@
         </ol>
     </nav>
     @vite('resources/js/top_nav_scroll.js')
-</x-main>
+</x-layouts.main>

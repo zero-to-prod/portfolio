@@ -117,12 +117,12 @@
                         understanding a problem and <em>empathizing</em> with those it affects.
                     </p>
                     <p>
-                        To <em>understand</em> a problem, I needed to<em>broaden</em> my understanding
-                        and<em>perspective</em>. Doing so made me better<em>equipped</em> to collaborate
-                        with<em>diverse</em> teams and stakeholders. Often, what may have<em>initially</em>
-                        seemed like a problem affecting only one<em>group</em>, turned out to have<em>broader</em>
-                        implications across multiple areas. Through my<em>experiences</em>, I've learned to
-                        truly take the time to<em>understand</em> the full<em>scope</em> of a situation.
+                        To <em>understand</em> a problem, I needed to <em>broaden</em> my understanding
+                        and <em>perspective</em>. Doing so made me better <em>equipped</em> to collaborate
+                        with <em>diverse</em> teams and stakeholders. Often, what may have <em>initially</em>
+                        seemed like a problem affecting only one <em>group</em>, turned out to have <em>broader</em>
+                        implications across multiple areas. Through my <em>experiences</em>, I've learned to
+                        truly take the time to <em>understand</em> the full <em>scope</em> of a situation.
                     </p>
                     <p>
                         <em>Empathy</em> is crucial to building and maintaining <em>dependable</em>
@@ -171,7 +171,7 @@
                             <em>running</em> and <em>available</em>
                         </li>
                         <li>
-                            Was<em>responsible</em> for code reviews, training,<em>collaboration</em>, etc
+                            Was <em>responsible</em> for code reviews, training, <em>collaboration</em>, etc
                         </li>
                     </ul>
                 </x-history-details>
@@ -188,10 +188,10 @@
                 <x-history-details>
                     <h2>Previous Experience</h2>
                     <p>
-                        Following my experience at<em>RealClearPolitics</em>, I arrived at ViewRail
-                        with<em>valuable</em>
-                        backend knowledge. I was well-acquainted with the project and its goal of<em>transferring</em>
-                        features from a legacy<em>ColdFusion</em> project to a<em>modern</em> tech stack.
+                        Following my experience at <em>RealClearPolitics</em>, I arrived at ViewRail
+                        with <em>valuable</em> backend knowledge. I was well-acquainted with the project and its goal
+                        of <em>transferring</em> features from a legacy <em>ColdFusion</em> project to a <em>modern</em>
+                        tech stack.
                     </p>
                     <h2>Personal Development</h2>
                     <p>

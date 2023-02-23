@@ -22,21 +22,12 @@
                 <div class="relative lg:col-start-2 lg:row-start-1">
                     <div class="relative mx-auto max-w-prose text-base lg:max-w-none">
                         <figure>
-                            <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
-                                <img class="rounded-lg object-cover object-center shadow-lg"
-                                     src=""
+                            <div class="aspect-w-1 aspect-h-1">
+                                <img class="rounded-lg object-cover object-top shadow-lg"
+                                     src="{{ Vite::asset('resources/images/portrait.jpg') }}"
                                      alt="Portrait" width="1184"
                                      height="1376">
                             </div>
-                            <figcaption class="mt-3 flex text-sm text-gray-500">
-                                <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                     aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                          d="M1 8a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 018.07 3h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0016.07 6H17a2 2 0 012 2v7a2 2 0 01-2 2H3a2 2 0 01-2-2V8zm13.5 3a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM10 14a3 3 0 100-6 3 3 0 000 6z"
-                                          clip-rule="evenodd"/>
-                                </svg>
-                                <span class="ml-2">Photograph by April Smith</span>
-                            </figcaption>
                         </figure>
                     </div>
                 </div>
@@ -60,7 +51,7 @@
                         </p>
                         <p>Here are some things I can do for you:</p>
                         <ul role="list">
-                            <li>Spin up a <em>fresh</em>new website</li>
+                            <li>Spin up a <em>fresh</em> new website</li>
                             <li>Give your old site a <em>makeover</em></li>
                             <li>Make sure your business is <em>found on Google</em> and other search engines</li>
                             <li>Hook up <em>payments</em> and other services to your website</li>

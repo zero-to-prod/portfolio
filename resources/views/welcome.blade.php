@@ -1,12 +1,11 @@
 <x-layouts.main>
     <x-header-section>
-        <h1>Simple Things Are Hard</h1>
+        <h1>Give Your Business a Boost</h1>
         <p>
-            Here, I <em>showcase</em> some of my <em>work</em>, experience, and <em>thoughts</em> as I endeavor to
-            <em>simplify complexity</em> in a way that provides <em>value</em> for others.
+            <em>Strengthen</em> your company's potential and <em>increase</em> revenue by improving your online <em>presence</em>.
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="#about-me" class="btn">About Me</a>
+            <a href="{{named_route(Routes::connect)}}" class="btn">Let's Connect</a>
         </div>
     </x-header-section>
 

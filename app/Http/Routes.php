@@ -11,7 +11,7 @@ enum Routes: string
     case dashboard = '/dashboard';
 
     /* Auth */
-    case profile_edit = '/profile';
+    case profile_edit = '/profile/edit';
     case verification_notice = 'verify-email';
     case verification_verify = 'verify-email/{id}/{hash}';
     case password_confirm = 'confirm-password';

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Routes;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -16,7 +17,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->get('/profile');
+            ->get(Routes::profile_edit->value);
 
         $response->assertOk();
     }
@@ -34,7 +35,7 @@ class ProfileTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect(Routes::profile_edit->value);
 
         $user->refresh();
 
@@ -56,7 +57,7 @@ class ProfileTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect(Routes::profile_edit->value);
 
         $this->assertNotNull($user->refresh()->email_verified_at);
     }

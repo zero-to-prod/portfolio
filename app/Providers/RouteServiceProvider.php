@@ -6,6 +6,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -42,6 +43,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->registerEnumRouteMethods();
+        $this->registerEnumRedirectMethod();
     }
 
     /**
@@ -81,5 +83,25 @@ class RouteServiceProvider extends ServiceProvider
                 return Route::$method($uri, $action);
             });
         }
+    }
+
+    /**
+     * Registers additional route method on the Route Facade.
+     *  - routeFromEnum(...$args)
+     *
+     * If an Enum is passed for the first argument:
+     *  - the Enum is used for the uri
+     *
+     * If no Enum is passed, behavior is not modified.
+     */
+    protected function registerEnumRedirectMethod(): void
+    {
+        Redirect::macro('routeFromEnum', function ($route, $parameters = [], $status = 302, $headers = []) {
+            if ($route instanceof \UnitEnum) {
+                return Redirect::route($route->name, $parameters, $status, $headers);
+            }
+
+            return Redirect::route($route, $parameters, $status, $headers);
+        });
     }
 }

@@ -8,4 +8,7 @@ enum Routes: string
     case connect = '/connect';
     case connect_store = '/connect/store';
     case welcome = '/';
+
+    /* Auth */
+    case profile_edit = '/profile';
 }

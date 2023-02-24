@@ -15,7 +15,7 @@ use App\Http\Routes;
         </p>
     </header>
 
-    <form id="send-verification" method="post" action="{{ named_route(Routes::verification_send) }}">
+    <form id="send-verification" method="post" action="{{ named_route(Routes::email_verificationNotification) }}">
         @csrf
     </form>
 

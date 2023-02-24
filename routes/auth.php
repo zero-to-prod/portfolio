@@ -15,7 +15,7 @@ Route::getFromEnum(Routes::profile_edit, [ProfileController::class, 'edit']);
 Route::patchFromEnum(Routes::profile_update, [ProfileController::class, 'update']);
 Route::deleteFromEnum(Routes::profile_destroy, [ProfileController::class, 'destroy']);
 Route::getFromEnum(Routes::verification_notice, EmailVerificationPromptController::class);
-Route::getFromEnum(Routes::verification_verify, VerifyEmailController::class)->middleware(['signed', 'throttle:6,1']);
+Route::getFromEnum(Routes::email_verify, VerifyEmailController::class)->middleware(['signed', 'throttle:6,1']);
 Route::postFromEnum(Routes::email_verificationNotification, [EmailVerificationNotificationController::class, 'store'])->middleware('throttle:6,1');
 Route::getFromEnum(Routes::password_confirm, [ConfirmablePasswordController::class, 'show']);
 Route::postFromEnum(Routes::password_store, [ConfirmablePasswordController::class, 'store']);

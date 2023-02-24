@@ -16,7 +16,7 @@ Route::patchFromEnum(Routes::profile_update, [ProfileController::class, 'update'
 Route::deleteFromEnum(Routes::profile_destroy, [ProfileController::class, 'destroy']);
 Route::getFromEnum(Routes::verification_notice, EmailVerificationPromptController::class);
 Route::getFromEnum(Routes::verification_verify, VerifyEmailController::class)->middleware(['signed', 'throttle:6,1']);
-Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->middleware('throttle:6,1')->name('verification.send');
+Route::postFromEnum(Routes::verification_send, [EmailVerificationNotificationController::class, 'store'])->middleware('throttle:6,1');
 Route::getFromEnum(Routes::password_confirm, [ConfirmablePasswordController::class, 'show']);
 Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 Route::put('password', [PasswordController::class, 'update'])->name('password.update');

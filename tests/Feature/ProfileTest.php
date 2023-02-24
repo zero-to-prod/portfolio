@@ -68,13 +68,13 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->delete('/profile', [
+            ->delete(Routes::profile_destroy->value, [
                 'password' => 'password',
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/');
+            ->assertRedirect(Routes::welcome->value);
 
         $this->assertGuest();
         $this->assertNull($user->fresh());
@@ -86,14 +86,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->from('/profile')
-            ->delete('/profile', [
+            ->from(Routes::profile_edit->value)
+            ->delete(Routes::profile_destroy->value, [
                 'password' => 'wrong-password',
             ]);
 
         $response
             ->assertSessionHasErrorsIn('userDeletion', 'password')
-            ->assertRedirect('/profile');
+            ->assertRedirect(Routes::profile_edit->value);
 
         $this->assertNotNull($user->fresh());
     }

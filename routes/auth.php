@@ -18,6 +18,6 @@ Route::getFromEnum(Routes::verification_notice, EmailVerificationPromptControlle
 Route::getFromEnum(Routes::verification_verify, VerifyEmailController::class)->middleware(['signed', 'throttle:6,1']);
 Route::postFromEnum(Routes::verification_send, [EmailVerificationNotificationController::class, 'store'])->middleware('throttle:6,1');
 Route::getFromEnum(Routes::password_confirm, [ConfirmablePasswordController::class, 'show']);
-Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
+Route::postFromEnum(Routes::password_store, [ConfirmablePasswordController::class, 'store']);
 Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

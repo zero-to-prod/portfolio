@@ -17,4 +17,5 @@ enum Routes: string
     case verification_send = 'email/verification-notification';
     case verification_verify = 'verify-email/{id}/{hash}';
     case password_confirm = 'confirm-password';
+    case password_store = 'password/store';
 }

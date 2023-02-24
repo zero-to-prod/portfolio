@@ -23,10 +23,10 @@ if (!function_exists('named_redirect')) {
     function named_redirect($to = null, $status = 302, $headers = [], $secure = null): Redirector|RedirectResponse|Application
     {
         if ($to instanceof \UnitEnum) {
-            return redirect($to->name, $status, $headers, $secure);
+            return redirect($to->value, $status, $headers, $secure);
         }
 
-        return redirect($to->name, $status, $headers, $secure);
+        return redirect($to->value, $status, $headers, $secure);
     }
 }
 

@@ -9,7 +9,7 @@ use App\Http\Routes;
 
 Route::getFromEnum(Routes::register, [RegisteredUserController::class, 'create']);
 Route::postFromEnum(Routes::register_store, [RegisteredUserController::class, 'store']);
-Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::getFromEnum(Routes::login, [AuthenticatedSessionController::class, 'create']);
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
 Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');

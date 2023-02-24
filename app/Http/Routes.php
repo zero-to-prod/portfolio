@@ -18,4 +18,5 @@ enum Routes: string
     case verification_verify = 'verify-email/{id}/{hash}';
     case password_confirm = 'password/confirm';
     case password_store = 'password/store';
+    case password_update = 'password/update';
 }

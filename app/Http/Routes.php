@@ -22,4 +22,7 @@ enum Routes: string
     case profile_destroy = '/profile/destroy';
     case profile_edit = '/profile/edit';
     case profile_update = '/profile/update';
+
+    /* Guest */
+    case register = 'register';
 }

@@ -1,5 +1,11 @@
+<?php
+
+    use App\Http\Routes;
+
+?>
+
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ named_route(Routes::register) }}">
         @csrf
 
         <!-- Name -->

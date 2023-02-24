@@ -21,7 +21,7 @@ class EmailVerificationTest extends TestCase
             'email_verified_at' => null,
         ]);
 
-        $response = $this->actingAs($user)->get('/verify-email');
+        $response = $this->actingAs($user)->get(Routes::email_verificationNotice->value);
 
         $response->assertStatus(200);
     }

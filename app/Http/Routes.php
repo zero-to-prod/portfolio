@@ -25,4 +25,5 @@ enum Routes: string
 
     /* Guest */
     case register = 'register';
+    case register_store = 'register/store';
 }

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Routes;
 
 Route::getFromEnum(Routes::register, [RegisteredUserController::class, 'create']);
-Route::post('register', [RegisteredUserController::class, 'store']);
+Route::postFromEnum(Routes::register_store, [RegisteredUserController::class, 'store']);
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');

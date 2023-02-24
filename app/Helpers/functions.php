@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Route;
 
 if (!function_exists('named_route')) {
@@ -11,6 +14,19 @@ if (!function_exists('named_route')) {
         }
 
         return route($route, $parameters, $absolute);
+    }
+}
+
+
+if (!function_exists('named_redirect')) {
+
+    function named_redirect($to = null, $status = 302, $headers = [], $secure = null): Redirector|RedirectResponse|Application
+    {
+        if ($to instanceof \UnitEnum) {
+            return redirect($to->name, $status, $headers, $secure);
+        }
+
+        return redirect($to->name, $status, $headers, $secure);
     }
 }
 

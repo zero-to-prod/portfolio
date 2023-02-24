@@ -7,7 +7,6 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
-use UnitEnum;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -34,6 +33,12 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            Route::middleware(['web', 'auth'])
+                ->group(base_path('routes/auth.php'));
+
+            Route::middleware(['web', 'guest'])
+                ->group(base_path('routes/guest.php'));
         });
 
         $this->registerEnumRouteMethods();
@@ -69,7 +74,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         foreach (['get', 'post', 'put', 'patch', 'delete', 'options', 'any'] as $method) {
             Route::macro($method . 'FromEnum', function ($uri, array|string|callable|null $action = null) use ($method) {
-                if ($uri instanceof UnitEnum) {
+                if ($uri instanceof \UnitEnum) {
                     return Route::$method($uri->value, $action)->name($uri->name);
                 }
 

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Http\Routes;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
@@ -34,7 +35,7 @@ class EmailVerificationTest extends TestCase
         Event::fake();
 
         $verificationUrl = URL::temporarySignedRoute(
-            'verification.verify',
+            Routes::verification_verify->name,
             now()->addMinutes(60),
             ['id' => $user->id, 'hash' => sha1($user->email)]
         );
@@ -53,7 +54,7 @@ class EmailVerificationTest extends TestCase
         ]);
 
         $verificationUrl = URL::temporarySignedRoute(
-            'verification.verify',
+            Routes::verification_verify->name,
             now()->addMinutes(60),
             ['id' => $user->id, 'hash' => sha1('wrong-email')]
         );

@@ -27,5 +27,6 @@ enum Routes: string
     case register = 'register';
     case register_store = 'register/store';
     case login = 'login';
+    case login_store = 'login/store';
 
 }

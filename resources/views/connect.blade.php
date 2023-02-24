@@ -1,3 +1,8 @@
+<?php
+
+use App\Http\Routes;
+
+?>
 <x-layouts.main>
     @if(session()->has('email'))
         <x-toast>

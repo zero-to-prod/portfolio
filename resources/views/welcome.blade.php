@@ -1,3 +1,9 @@
+<?php
+
+use App\Http\Routes;
+
+?>
+
 <x-layouts.main>
     <x-header-section>
         <h1>Give Your Business a Boost</h1>

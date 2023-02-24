@@ -17,7 +17,7 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
 Route::getFromEnum(Routes::verification_notice, EmailVerificationPromptController::class);
 Route::getFromEnum(Routes::verification_verify, VerifyEmailController::class)->middleware(['signed', 'throttle:6,1']);
 Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->middleware('throttle:6,1')->name('verification.send');
-Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
+Route::getFromEnum(Routes::password_confirm, [ConfirmablePasswordController::class, 'show']);
 Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

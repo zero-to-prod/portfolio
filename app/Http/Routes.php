@@ -14,4 +14,5 @@ enum Routes: string
     case profile_edit = '/profile';
     case verification_notice = 'verify-email';
     case verification_verify = 'verify-email/{id}/{hash}';
+    case password_confirm = 'confirm-password';
 }

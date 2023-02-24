@@ -10,7 +10,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Routes;
 
-Route::get('/dashboard', fn() => view('dashboard'))->middleware(['verified'])->name('dashboard');
+Route::getFromEnum(Routes::dashboard, fn() => view('dashboard'))->middleware(['verified']);
 Route::getFromEnum(Routes::profile_edit, [ProfileController::class, 'edit']);
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

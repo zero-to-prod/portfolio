@@ -10,8 +10,8 @@ enum Routes: string
     case welcome = '/';
     case dashboard = '/dashboard';
 
-    /* Auth */
     case profile_edit = '/profile/edit';
+    case profile_update = '/profile/update';
     case verification_notice = 'verify-email';
     case verification_verify = 'verify-email/{id}/{hash}';
     case password_confirm = 'confirm-password';

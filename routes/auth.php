@@ -12,7 +12,7 @@ use App\Http\Routes;
 
 Route::getFromEnum(Routes::dashboard, fn() => view('dashboard'))->middleware(['verified']);
 Route::getFromEnum(Routes::profile_edit, [ProfileController::class, 'edit']);
-Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::patchFromEnum(Routes::profile_update, [ProfileController::class, 'update']);
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 Route::getFromEnum(Routes::verification_notice, EmailVerificationPromptController::class);
 Route::getFromEnum(Routes::verification_verify, VerifyEmailController::class)->middleware(['signed', 'throttle:6,1']);

@@ -28,7 +28,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
+            ->patch(Routes::profile_update->value, [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
             ]);
@@ -50,7 +50,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
+            ->patch(Routes::profile_update->value, [
                 'name' => 'Test User',
                 'email' => $user->email,
             ]);

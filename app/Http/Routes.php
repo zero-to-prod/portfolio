@@ -13,6 +13,7 @@ enum Routes: string
     case profile_edit = '/profile/edit';
     case profile_update = '/profile/update';
     case profile_destroy = '/profile/destroy';
+    case logout = 'logout';
     case verification_notice = 'verify-email';
     case verification_send = 'email/verification-notification';
     case verification_verify = 'verify-email/{id}/{hash}';

@@ -20,4 +20,4 @@ Route::postFromEnum(Routes::verification_send, [EmailVerificationNotificationCon
 Route::getFromEnum(Routes::password_confirm, [ConfirmablePasswordController::class, 'show']);
 Route::postFromEnum(Routes::password_store, [ConfirmablePasswordController::class, 'store']);
 Route::putFromEnum(Routes::password_update, [PasswordController::class, 'update']);
-Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+Route::postFromEnum(Routes::logout, [AuthenticatedSessionController::class, 'destroy']);

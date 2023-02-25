@@ -10,7 +10,7 @@ use App\Http\Routes
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')"/>
 
-    <form method="POST" action="{{ named_route(Routes::password_email) }}">
+    <form method="POST" action="{{ named_route(Routes::passwordReset_store) }}">
         @csrf
 
         <!-- Email Address -->

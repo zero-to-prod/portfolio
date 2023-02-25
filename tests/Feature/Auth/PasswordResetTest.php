@@ -15,7 +15,7 @@ class PasswordResetTest extends TestCase
 
     public function test_reset_password_link_screen_can_be_rendered(): void
     {
-        $response = $this->get(Routes::password_request->value);
+        $response = $this->get(Routes::passwordReset_request->value);
 
         $response->assertStatus(200);
     }
@@ -26,7 +26,7 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->postRoute(Routes::password_email, ['email' => $user->email]);
+        $this->postRoute(Routes::passwordReset_store, ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class);
     }
@@ -37,10 +37,10 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->postRoute(Routes::password_email, ['email' => $user->email]);
+        $this->postRoute(Routes::passwordReset_store, ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
-            $response = $this->get(Routes::password_reset->value.$notification->token);
+            $response = $this->get(Routes::passwordNew_create->value.$notification->token);
 
             $response->assertStatus(200);
 
@@ -54,7 +54,7 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->postRoute(Routes::password_email, ['email' => $user->email]);
+        $this->postRoute(Routes::passwordReset_store, ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
             $response = $this->post('/reset-password', [

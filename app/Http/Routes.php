@@ -19,9 +19,9 @@ enum Routes: string
     case password_confirm = 'password/confirm';
     case password_store = 'password/store';
     case password_update = 'password/update';
-    case password_request = 'password/request';
-    case password_email = 'password/email';
-    case password_reset = 'password/reset/{token}';
+    case passwordReset_request = 'password-reset/request';
+    case passwordReset_store = 'password-reset/email';
+    case passwordNew_create = 'password-new/{token}';
     case profile_destroy = '/profile/destroy';
     case profile_edit = '/profile/edit';
     case profile_update = '/profile/update';

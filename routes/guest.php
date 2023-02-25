@@ -11,8 +11,8 @@ Route::getFromEnum(Routes::register, [RegisteredUserController::class, 'create']
 Route::postFromEnum(Routes::register_store, [RegisteredUserController::class, 'store']);
 Route::getFromEnum(Routes::login, [AuthenticatedSessionController::class, 'create']);
 Route::postFromEnum(Routes::login_store, [AuthenticatedSessionController::class, 'store']);
-Route::get(Routes::password_request->value, [PasswordResetLinkController::class, 'create'])->name('password.request');
-Route::postFromEnum(Routes::password_email, [PasswordResetLinkController::class, 'store']);
-Route::getFromEnum(Routes::password_reset, [NewPasswordController::class, 'create']);
+Route::get(Routes::passwordReset_request->value, [PasswordResetLinkController::class, 'create'])->name('password.request');
+Route::postFromEnum(Routes::passwordReset_store, [PasswordResetLinkController::class, 'store']);
+Route::getFromEnum(Routes::passwordNew_create, [NewPasswordController::class, 'create']);
 Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
 

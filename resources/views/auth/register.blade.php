@@ -5,7 +5,7 @@
 ?>
 
 <x-guest-layout>
-    <form method="POST" action="{{ named_route(Routes::register) }}">
+    <form method="POST" action="{{ named_route(Routes::register_store) }}">
         @csrf
 
         <!-- Name -->

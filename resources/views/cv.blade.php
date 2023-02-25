@@ -1,4 +1,4 @@
-<x-layouts.main :title="'CV'">
+<x-main-layout :title="'CV'">
     <x-header-section>
         <h1 role="heading">CV and Work History</h1>
         <p aria-label="Subtitle" role="doc-subtitle">
@@ -353,4 +353,4 @@
         </x-history-list>
     </nav>
     @vite('resources/js/top_nav_scroll.js')
-</x-layouts.main>
+</x-main-layout>

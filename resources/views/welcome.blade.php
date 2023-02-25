@@ -4,7 +4,7 @@ use App\Http\Routes;
 
 ?>
 
-<x-layouts.main>
+<x-main-layout>
     <x-header-section>
         <h1>Give Your Business a Boost</h1>
         <p>
@@ -77,4 +77,4 @@ use App\Http\Routes;
     </div>
 
     @vite('resources/js/top_nav_scroll.js')
-</x-layouts.main>
+</x-main-layout>

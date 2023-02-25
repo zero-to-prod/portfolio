@@ -36,7 +36,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::routeFromEnum(Routes::profile_edit)->with('status', 'profile-updated');
+        return Redirect::routeNamed(Routes::profile_edit)->with('status', 'profile-updated');
     }
 
     /**
@@ -57,6 +57,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::toFromEnum(Routes::welcome);
+        return Redirect::toRoute(Routes::welcome);
     }
 }

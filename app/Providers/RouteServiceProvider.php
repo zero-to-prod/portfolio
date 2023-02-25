@@ -49,9 +49,9 @@ class RouteServiceProvider extends ServiceProvider
 
         });
 
-        $this->registerRouteMethods();
-        $this->registerRouteNamed();
-        $this->registerToRoute();
+        $this->registerAsMethods();
+        $this->registerRouteAs();
+        $this->registerToAs();
     }
 
     /**
@@ -66,8 +66,8 @@ class RouteServiceProvider extends ServiceProvider
 
     /**
      * Registers additional route methods on the Route Facade.
-     *  - Route::getNamed(...$args),
-     *  - Route::postNamed(...$args),
+     *  - Route::getAs(...$args),
+     *  - Route::postAs(...$args),
      *  - .etc
      *
      * These methods can be useful when you want to:
@@ -80,10 +80,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * If no Enum is passed, behavior is not modified.
      */
-    protected function registerRouteMethods(): void
+    protected function registerAsMethods(): void
     {
         foreach (['get', 'post', 'put', 'patch', 'delete', 'options', 'any'] as $method) {
-            Route::macro($method . 'Route', function ($uri, array|string|callable|null|\UnitEnum $action = null, $cached = false) use ($method) {
+            Route::macro($method . 'As', function ($uri, array|string|callable|null|\UnitEnum $action = null, $cached = false) use ($method) {
                 if (!$uri instanceof \UnitEnum) {
                     return Route::$method($uri, $action);
                 }
@@ -96,23 +96,23 @@ class RouteServiceProvider extends ServiceProvider
                     return Route::$method($uri->value, fn() => cached_view($action))->name($uri->name);
                 }
 
-                return Route::$method($uri->value, fn() => named_view($action))->name($uri->name);
+                return Route::$method($uri->value, fn() => view_as($action))->name($uri->name);
             });
         }
     }
 
     /**
      * Registers additional route method on the Route Facade.
-     *  - routeNamed(...$args)
+     *  - routeAs(...$args)
      *
      * If an Enum is passed for the first argument:
      *  - the Enum is used for the uri
      *
      * If no Enum is passed, behavior is not modified.
      */
-    protected function registerRouteNamed(): void
+    protected function registerRouteAs(): void
     {
-        Redirect::macro('routeNamed', function ($route, $parameters = [], $status = 302, $headers = []) {
+        Redirect::macro('routeAs', function ($route, $parameters = [], $status = 302, $headers = []) {
             if ($route instanceof \UnitEnum) {
                 return Redirect::route($route->name, $parameters, $status, $headers);
             }
@@ -130,10 +130,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * If no Enum is passed, behavior is not modified.
      */
-    protected function registerToRoute(): void
+    protected function registerToAs(): void
     {
-        Redirect::macro('toRoute', function ($path, $status = 302, $headers = [], $secure = null) {
-            return Redirect::to(named_route($path), $status, $headers, $secure);
+        Redirect::macro('toAs', function ($path, $status = 302, $headers = [], $secure = null) {
+            return Redirect::to(route_as($path), $status, $headers, $secure);
         });
     }
 }

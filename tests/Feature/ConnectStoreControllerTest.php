@@ -30,7 +30,7 @@ class ConnectStoreControllerTest extends TestCase
             Message::body => 'body',
         ];
 
-        $this->postRoute(Routes::connect_store, $data)->assertRedirect()->assertSessionHas('email', $email);
+        $this->postAs(Routes::connect_store, $data)->assertRedirect()->assertSessionHas('email', $email);
 
         $message = Message::whereSubject($subject)->first();
         $contact = $message?->contact;
@@ -47,7 +47,7 @@ class ConnectStoreControllerTest extends TestCase
             Message::body => 'body',
         ];
 
-        $this->postRoute(Routes::connect_store, $data)->assertRedirect();
+        $this->postAs(Routes::connect_store, $data)->assertRedirect();
 
         self::assertEquals(2, $contact->messages()->count(), 'The contact does not have the correct number of messages.');
         Mail::assertQueued(ConnectRequest::class, 2);
@@ -59,6 +59,6 @@ class ConnectStoreControllerTest extends TestCase
      */
     public function fails_if_nothing_is_not_passed(): void
     {
-        $this->postRoute(Routes::connect_store)->assertFound();
+        $this->postAs(Routes::connect_store)->assertFound();
     }
 }

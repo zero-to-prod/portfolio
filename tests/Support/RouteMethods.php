@@ -6,19 +6,19 @@ use Illuminate\Testing\TestResponse;
 
 trait RouteMethods
 {
-    protected function postRoute($route, array $data = [], array $headers = [], array $parameters = [], $absolute = true): TestResponse
+    protected function postAs($route, array $data = [], array $headers = [], array $parameters = [], $absolute = true): TestResponse
     {
         if ($route instanceof \UnitEnum) {
-            return $this->post(named_route($route, $parameters, $absolute), $data, $headers);
+            return $this->post(route_as($route, $parameters, $absolute), $data, $headers);
         }
 
         return $this->post($route, $data, $headers);
     }
 
-    protected function getRoute($uri, array $headers = []): TestResponse
+    protected function getAs($uri, array $headers = []): TestResponse
     {
         if ($uri instanceof \UnitEnum) {
-            return $this->get(named_route($uri, $headers));
+            return $this->get(route_as($uri, $headers));
         }
 
         return $this->get($uri, $headers);

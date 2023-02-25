@@ -15,7 +15,7 @@ use App\Http\Routes;
     @endif
 
     <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{ named_route(Routes::email_verificationNotification) }}">
+        <form method="POST" action="{{ route_as(Routes::email_verificationNotification) }}">
             @csrf
 
             <div>
@@ -25,7 +25,7 @@ use App\Http\Routes;
             </div>
         </form>
 
-        <form method="POST" action="{{ named_route(Routes::logout) }}">
+        <form method="POST" action="{{ route_as(Routes::logout) }}">
             @csrf
 
             <button type="submit"

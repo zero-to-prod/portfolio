@@ -1,3 +1,9 @@
+<?php
+
+use App\Http\Routes;
+
+?>
+
 <section class="space-y-6">
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
@@ -15,7 +21,7 @@
     >{{ __('Delete Account') }}</x-danger-button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-        <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+        <form method="post" action="{{ named_route(Routes::profile_destroy) }}" class="p-6">
             @csrf
             @method('delete')
 

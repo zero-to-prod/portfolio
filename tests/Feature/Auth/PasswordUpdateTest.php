@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Http\Routes;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
@@ -17,8 +18,8 @@ class PasswordUpdateTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->from('/profile')
-            ->put('/password', [
+            ->from(Routes::profile_edit->value)
+            ->put(Routes::password_update->value, [
                 'current_password' => 'password',
                 'password' => 'new-password',
                 'password_confirmation' => 'new-password',
@@ -26,7 +27,7 @@ class PasswordUpdateTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect(Routes::profile_edit->value);
 
         $this->assertTrue(Hash::check('new-password', $user->refresh()->password));
     }
@@ -37,8 +38,8 @@ class PasswordUpdateTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->from('/profile')
-            ->put('/password', [
+            ->from(Routes::profile_edit->value)
+            ->put(Routes::password_update->value, [
                 'current_password' => 'wrong-password',
                 'password' => 'new-password',
                 'password_confirmation' => 'new-password',
@@ -46,6 +47,6 @@ class PasswordUpdateTest extends TestCase
 
         $response
             ->assertSessionHasErrorsIn('updatePassword', 'current_password')
-            ->assertRedirect('/profile');
+            ->assertRedirect(Routes::profile_edit->value);
     }
 }

@@ -1,3 +1,9 @@
+<?php
+
+use App\Http\Routes;
+
+?>
+
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
@@ -9,7 +15,7 @@
         </p>
     </header>
 
-    <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ named_route(Routes::password_update) }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
 

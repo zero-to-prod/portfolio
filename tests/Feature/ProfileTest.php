@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Routes;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -16,7 +17,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->get('/profile');
+            ->get(Routes::profile_edit->value);
 
         $response->assertOk();
     }
@@ -27,14 +28,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
+            ->patch(Routes::profile_update->value, [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect(Routes::profile_edit->value);
 
         $user->refresh();
 
@@ -49,14 +50,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
+            ->patch(Routes::profile_update->value, [
                 'name' => 'Test User',
                 'email' => $user->email,
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect(Routes::profile_edit->value);
 
         $this->assertNotNull($user->refresh()->email_verified_at);
     }
@@ -67,13 +68,13 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->delete('/profile', [
+            ->delete(Routes::profile_destroy->value, [
                 'password' => 'password',
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/');
+            ->assertRedirect(Routes::welcome->value);
 
         $this->assertGuest();
         $this->assertNull($user->fresh());
@@ -85,14 +86,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->from('/profile')
-            ->delete('/profile', [
+            ->from(Routes::profile_edit->value)
+            ->delete(Routes::profile_destroy->value, [
                 'password' => 'wrong-password',
             ]);
 
         $response
             ->assertSessionHasErrorsIn('userDeletion', 'password')
-            ->assertRedirect('/profile');
+            ->assertRedirect(Routes::profile_edit->value);
 
         $this->assertNotNull($user->fresh());
     }

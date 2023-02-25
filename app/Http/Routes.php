@@ -19,18 +19,18 @@ enum Routes: string
     case password_confirm = 'password/confirm';
     case password_store = 'password/store';
     case password_update = 'password/update';
-    case passwordReset_request = 'password-reset/request';
-    case passwordReset_store = 'password-reset/email';
-    case passwordNew_create = 'password-new/{token}';
-    case passwordNew_store = 'password-new/store';
     case profile_destroy = '/profile/destroy';
     case profile_edit = '/profile/edit';
     case profile_update = '/profile/update';
 
     /* Guest */
-    case register = 'register';
-    case register_store = 'register/store';
     case login = 'login';
     case login_store = 'login/store';
+    case passwordNew_create = 'password-new/{token}';
+    case passwordNew_store = 'password-new/store';
+    case passwordReset_request = 'password-reset/request';
+    case passwordReset_store = 'password-reset/email';
+    case register = 'register';
+    case register_store = 'register/store';
 
 }

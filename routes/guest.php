@@ -13,6 +13,6 @@ Route::getFromEnum(Routes::login, [AuthenticatedSessionController::class, 'creat
 Route::postFromEnum(Routes::login_store, [AuthenticatedSessionController::class, 'store']);
 Route::get(Routes::password_request->value, [PasswordResetLinkController::class, 'create'])->name('password.request');
 Route::postFromEnum(Routes::password_email, [PasswordResetLinkController::class, 'store']);
-Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+Route::getFromEnum(Routes::password_reset, [NewPasswordController::class, 'create']);
 Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,18 @@ if (!function_exists('named_redirect')) {
         }
 
         return redirect($to->value, $status, $headers, $secure);
+    }
+}
+
+if (!function_exists('named_view')) {
+
+    function named_view($view = null, $data = [], $mergeData = []): \Illuminate\Contracts\View\View|Factory|Application
+    {
+        if ($view instanceof \UnitEnum) {
+            return view($view->value, $data, $mergeData);
+        }
+
+        return view($view, $data, $mergeData);
     }
 }
 

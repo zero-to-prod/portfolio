@@ -43,7 +43,8 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->registerEnumRouteMethods();
-        $this->registerEnumRedirectMethod();
+        $this->registerEnumRedirectRouteMethod();
+        $this->registerEnumRedirectToMethod();
     }
 
     /**
@@ -94,7 +95,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * If no Enum is passed, behavior is not modified.
      */
-    protected function registerEnumRedirectMethod(): void
+    protected function registerEnumRedirectRouteMethod(): void
     {
         Redirect::macro('routeFromEnum', function ($route, $parameters = [], $status = 302, $headers = []) {
             if ($route instanceof \UnitEnum) {
@@ -102,6 +103,26 @@ class RouteServiceProvider extends ServiceProvider
             }
 
             return Redirect::route($route, $parameters, $status, $headers);
+        });
+    }
+
+    /**
+     * Registers additional route method on the Route Facade.
+     *  - toFromEnum(...$args)
+     *
+     * If an Enum is passed for the first argument:
+     *  - the Enum is used for the uri
+     *
+     * If no Enum is passed, behavior is not modified.
+     */
+    protected function registerEnumRedirectToMethod(): void
+    {
+        Redirect::macro('toFromEnum', function ($path, $status = 302, $headers = [], $secure = null) {
+            if ($path instanceof \UnitEnum) {
+                return Redirect::to(named_route($path), $status, $headers, $secure);
+            }
+
+            return Redirect::to($path->value, $status, $headers, $secure);
         });
     }
 }

@@ -7,10 +7,11 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Views;
 use Illuminate\Support\Facades\Route;
 use App\Http\Routes;
 
-Route::getFromEnum(Routes::dashboard, fn() => view('dashboard'))->middleware(['verified']);
+Route::getFromEnum(Routes::dashboard, fn() => named_view(Views::dashboard))->middleware(['verified']);
 Route::getFromEnum(Routes::profile_edit, [ProfileController::class, 'edit']);
 Route::patchFromEnum(Routes::profile_update, [ProfileController::class, 'update']);
 Route::deleteFromEnum(Routes::profile_destroy, [ProfileController::class, 'destroy']);

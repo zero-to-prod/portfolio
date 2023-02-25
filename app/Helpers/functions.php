@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Views;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -48,6 +47,10 @@ if (!function_exists('cached_view')) {
 
     function cached_view($view = null, $data = [], $mergeData = [], DateTimeInterface|DateInterval|int|null $ttl = null)
     {
+        if (App::environment(['local', 'testing'])) {
+            return named_view($view, $data, $mergeData);
+        }
+
         if (Cache::hasView($view)) {
             return Cache::getView($view, $data);
         }

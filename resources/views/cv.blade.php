@@ -16,14 +16,14 @@
                     <img src="{{ Vite::asset('resources/images/viewrail.jpg') }}" alt="viewrail logo"/>
                 </x-slot>
                 <x-slot name="title">Senior Full Stack Developer</x-slot>
-                <x-slot name="company">ViewRail Full-time</x-slot>
+                <x-slot name="company">Viewrail Full-time</x-slot>
                 <x-slot name="dates">Jan 2022 - Feb 2023 · 1 yr 2 mos</x-slot>
                 <x-history-details>
-                    <h2>Professional Growth at ViewRail</h2>
+                    <h2>Professional Growth at Viewrail</h2>
                     <p class="subtitle">
                         Building a New Development Process for Improved Flexibility and Confidence
                     </p>
-                    <p> I greatly <em>enjoyed</em> working at ViewRail as a developer for ten months before
+                    <p> I greatly <em>enjoyed</em> working at Viewrail as a developer for ten months before
                         being <em>promoted</em> to a <em>senior</em> position.
                     </p>
                     <p> The company <em>entrusted</em> me to <em>lead</em> the development of their
@@ -95,7 +95,7 @@
                         How Human Relationships Build Better Solutions
                     </p>
                     <p> I had the <em>privilege</em> of working with the <em>fantastic</em> people at
-                        ViewRail, who taught me an invaluable <em>lesson</em> about the importance of <em>deeply</em>
+                        Viewrail, who taught me an invaluable <em>lesson</em> about the importance of <em>deeply</em>
                         understanding a problem and <em>empathizing</em> with those it affects.
                     </p>
                     <p> Understanding the bigger picture was <em>critical</em> in my <em>collaborations</em>
@@ -113,7 +113,7 @@
                         Software: Much More than Code
                     </p>
                     <p> I had the <em>privilege</em> of working with the <em>fantastic</em> people at
-                        ViewRail, who taught me an <em>invaluable</em> lesson about the importance of <em>deeply</em>
+                        Viewrail, who taught me an <em>invaluable</em> lesson about the importance of <em>deeply</em>
                         understanding a problem and <em>empathizing</em> with those it affects.
                     </p>
                     <p>
@@ -150,7 +150,7 @@
                     </figure>
                     <h2>Responsibilities: </h2>
                     <p class="subtitle">
-                        Primary Responsibilities While at ViewRail
+                        Primary Responsibilities While at Viewrail
                     </p>
                     <ul role="list">
                         <li> Led the <em>architecting</em> and implementation of the company's
@@ -183,19 +183,19 @@
                     <img src="{{ Vite::asset('resources/images/viewrail.jpg') }}" alt="viewrail logo"/>
                 </x-slot>
                 <x-slot name="title">Full Stack Developer</x-slot>
-                <x-slot name="company">ViewRail Full-time</x-slot>
+                <x-slot name="company">Viewrail Full-time</x-slot>
                 <x-slot name="dates">Apr 2021 - Jan 2022 · 10 mos</x-slot>
                 <x-history-details>
                     <h2>Previous Experience</h2>
                     <p>
-                        Following my experience at <em>RealClearPolitics</em>, I arrived at ViewRail
+                        Following my experience at <em>RealClearPolitics</em>, I arrived at Viewrail
                         with <em>valuable</em> backend knowledge. I was well-acquainted with the project and its goal
                         of <em>transferring</em> features from a legacy <em>ColdFusion</em> project to a <em>modern</em>
                         tech stack.
                     </p>
                     <h2>Personal Development</h2>
                     <p>
-                        ViewRail's Technology stack <em>impressed</em> me with its <em>advanced</em>
+                        Viewrail's Technology stack <em>impressed</em> me with its <em>advanced</em>
                         features, including:
                     </p>
                     <ul role="list">
@@ -230,11 +230,11 @@
                 <x-slot name="image">
                     <img src="{{ Vite::asset('resources/images/viewrail.jpg') }}" alt="viewrail logo"/>
                 </x-slot>
-                <x-slot name="title">Technologies I used while at ViewRail</x-slot>
+                <x-slot name="title">Technologies I used while at Viewrail</x-slot>
                 <x-slot name="company">Docker, React/TS, Laravel, Graphql</x-slot>
                 <x-slot name="dates">Apr 2021 - Feb 2023 · ~2 years</x-slot>
                 <x-history-details>
-                    <p> An incomplete list of Technologies I used while at ViewRail</p>
+                    <p> An incomplete list of Technologies I used while at Viewrail</p>
                     <h2> Frontend: </h2>
                     <ul role="list">
                         <li><a href="https://reactjs.org/">React (functional components)</a></li>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -38,8 +39,11 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware(['web', 'auth'])
                 ->group(base_path('routes/auth.php'));
 
-//            Route::middleware(['web', 'guest'])
-//                ->group(base_path('routes/guest.php'));
+            if (App::environment('testing')) {
+                Route::middleware(['web', 'guest'])
+                    ->group(base_path('routes/guest.php'));
+            }
+
         });
 
         $this->registerEnumRouteMethods();

@@ -20,6 +20,7 @@ enum Routes: string
     case password_store = 'password/store';
     case password_update = 'password/update';
     case password_request = 'password/request';
+    case password_email = 'password/email';
     case profile_destroy = '/profile/destroy';
     case profile_edit = '/profile/edit';
     case profile_update = '/profile/update';

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Views;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -40,6 +41,21 @@ if (!function_exists('named_view')) {
         }
 
         return view($view, $data, $mergeData);
+    }
+}
+
+if (!function_exists('cached_view')) {
+
+    function cached_view($view = null, $data = [], $mergeData = [], DateTimeInterface|DateInterval|int|null $ttl = null)
+    {
+        if (Cache::hasView($view)) {
+            return Cache::getView($view, $data);
+        }
+
+        $value = named_view($view, $data, $mergeData)->render();
+        Cache::putView($view, $value, $ttl);
+
+        return $value;
     }
 }
 

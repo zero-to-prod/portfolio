@@ -22,6 +22,7 @@ enum Routes: string
     case passwordReset_request = 'password-reset/request';
     case passwordReset_store = 'password-reset/email';
     case passwordNew_create = 'password-new/{token}';
+    case passwordNew_store = 'password-new/store';
     case profile_destroy = '/profile/destroy';
     case profile_edit = '/profile/edit';
     case profile_update = '/profile/update';

@@ -18,6 +18,18 @@ if (!function_exists('route_as')) {
     }
 }
 
+if (!function_exists('route_is')) {
+
+    function route_is($route): bool
+    {
+        if ($route instanceof \UnitEnum) {
+            return request()?->routeIs($route->name);
+        }
+
+        return route(...$route);
+    }
+}
+
 
 if (!function_exists('redirect_as')) {
 

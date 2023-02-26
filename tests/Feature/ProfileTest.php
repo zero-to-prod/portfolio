@@ -17,7 +17,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->get(Routes::profile_edit->value);
+            ->getAs(Routes::profile_edit);
 
         $response->assertOk();
     }

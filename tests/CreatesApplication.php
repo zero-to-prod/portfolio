@@ -22,9 +22,6 @@ trait CreatesApplication
         return $app;
     }
 
-    /**
-     * @return void
-     */
     protected function registerAssertRedirectHome(): void
     {
         TestResponse::macro('assertRedirectHome', function (string|null $query_string = null) {

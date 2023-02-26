@@ -6,9 +6,9 @@ use App\Http\Routes;
 
 <x-main-layout>
     <x-header-section>
-        <h1>Give Your Business a Boost</h1>
-        <p>
-            <em>Strengthen</em> your company's potential and <em>increase</em> revenue by improving your online <em>presence</em>.
+        <h1 class="text-center">Portfolio</h1>
+        <p class="text-center">
+            All about me and my work.
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
             <a href="{{route_as(Routes::connect)}}" class="btn">Let's Connect</a>

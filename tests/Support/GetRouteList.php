@@ -6,8 +6,12 @@ use Route;
 
 trait GetRouteList
 {
-    protected function getRouteList(string $middleware): array
+    protected function getRouteList($middleware): array
     {
+        if ($middleware instanceof \UnitEnum) {
+            $middleware = $middleware->value;
+        }
+
         $this->setUp();
         $routes = [];
         foreach (Route::getRoutes() as $route) {

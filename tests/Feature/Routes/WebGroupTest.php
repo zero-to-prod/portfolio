@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Routes;
 
+use App\Http\Middleware;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
 
@@ -20,6 +21,6 @@ class WebGroupTest extends TestCase
 
     public function getRoutes(): array
     {
-        return $this->getRouteList('web_group');
+        return $this->getRouteList(Middleware::web_group);
     }
 }

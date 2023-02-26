@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App;
+use App\Http\Middleware;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -19,26 +20,27 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::middleware('api')
+            Route::middlewareAs(Middleware::api)
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware(['web', 'web_group'])
+            Route::middlewareAs([Middleware::web, Middleware::web_group])
                 ->group(base_path('routes/web.php'));
 
-            Route::middleware(['web', 'auth', 'auth_group'])
+            Route::middlewareAs([Middleware::web, Middleware::auth, Middleware::auth_group])
                 ->group(base_path('routes/auth.php'));
 
-            Route::middleware(['web', 'guest_group'])
+            Route::middlewareAs([Middleware::web, Middleware::guest_group])
                 ->group(base_path('routes/guest.php'));
 
             if (App::environment('testing')) {
-                Route::middleware(['web', 'guest', 'register_group'])
+                Route::middlewareAs([Middleware::web, Middleware::guest, Middleware::register_group])
                     ->group(base_path('routes/register.php'));
             }
         });
 
         $this->registerAsMethods();
+        $this->registerMiddlewareAs();
     }
 
     /**
@@ -72,19 +74,42 @@ class RouteServiceProvider extends ServiceProvider
         foreach (['get', 'post', 'put', 'patch', 'delete', 'options', 'any'] as $method) {
             Route::macro($method . 'As', function ($uri, array|string|callable|null|\UnitEnum $action = null, $cached = false) use ($method) {
                 if (!$uri instanceof \UnitEnum) {
-                    return Route::$method($uri, $action);
+                    Route::$method($uri, $action);
+
+                    return $this;
                 }
 
                 if (!$action instanceof \UnitEnum) {
-                    return Route::$method($uri->value, $action)->name($uri->name);
+                    Route::$method($uri->value, $action)->name($uri->name);
+
+                    return $this;
                 }
 
                 if ($cached) {
-                    return Route::$method($uri->value, fn () => cached_view($action))->name($uri->name);
+                    Route::$method($uri->value, fn() => cached_view($action))->name($uri->name);
+
+                    return $this;
                 }
 
-                return Route::$method($uri->value, fn () => view_as($action))->name($uri->name);
+                Route::$method($uri->value, fn() => view_as($action))->name($uri->name);
+
+                return $this;
             });
         }
+    }
+
+    protected function registerMiddlewareAs(): void
+    {
+        Route::macro('middlewareAs', function ($middleware) {
+            if ($middleware instanceof \UnitEnum) {
+                return Route::middleware($middleware->value);
+            }
+
+            if (is_array($middleware)) {
+                return Route::middleware(array_map(fn($m) => $m instanceof \UnitEnum ? $m->value : $m, $middleware));
+            }
+
+            return Route::middleware($middleware);
+        });
     }
 }

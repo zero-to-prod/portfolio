@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(config('auth.home'));
+                return redirect()->home();
             }
         }
 

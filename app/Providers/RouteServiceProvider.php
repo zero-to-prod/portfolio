@@ -44,6 +44,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->registerRouteAs();
         $this->registerToAs();
         $this->registerIntendedAs();
+        $this->registerHome();
     }
 
     /**
@@ -145,6 +146,13 @@ class RouteServiceProvider extends ServiceProvider
                 return Redirect::intended($default->value, $status, $headers, $secure);
             }
             return Redirect::intended($default, $status, $headers, $secure);
+        });
+    }
+
+    protected function registerHome(): void
+    {
+        Redirect::macro('home', function (string|null $query_string = null) {
+            return Redirect::intended(config('auth.home').$query_string);
         });
     }
 }

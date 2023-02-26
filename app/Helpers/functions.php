@@ -7,7 +7,6 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Route;
 
 if (!function_exists('route_as')) {
-
     function route_as($route, $parameters = [], $absolute = true): string
     {
         if ($route instanceof \UnitEnum) {
@@ -19,7 +18,6 @@ if (!function_exists('route_as')) {
 }
 
 if (!function_exists('route_is')) {
-
     function route_is($route): bool
     {
         if ($route instanceof \UnitEnum) {
@@ -32,7 +30,6 @@ if (!function_exists('route_is')) {
 
 
 if (!function_exists('redirect_as')) {
-
     function redirect_as($to = null, $status = 302, $headers = [], $secure = null): Redirector|RedirectResponse|Application
     {
         if ($to instanceof \UnitEnum) {
@@ -44,7 +41,6 @@ if (!function_exists('redirect_as')) {
 }
 
 if (!function_exists('view_as')) {
-
     function view_as($view = null, $data = [], $mergeData = []): \Illuminate\Contracts\View\View|Factory|Application
     {
         if ($view instanceof \UnitEnum) {
@@ -56,7 +52,6 @@ if (!function_exists('view_as')) {
 }
 
 if (!function_exists('cached_view')) {
-
     function cached_view($view = null, $data = [], $mergeData = [], DateTimeInterface|DateInterval|int|null $ttl = null)
     {
         if (App::environment(['local', 'testing'])) {
@@ -75,7 +70,6 @@ if (!function_exists('cached_view')) {
 }
 
 if (!function_exists('route_name_is')) {
-
     function route_name_is($route): bool
     {
         if ($route instanceof \UnitEnum) {
@@ -87,7 +81,6 @@ if (!function_exists('route_name_is')) {
 }
 
 if (!function_exists('route_name_isnt')) {
-
     function route_name_isnt($route): bool
     {
         return !route_name_is($route);
@@ -95,7 +88,6 @@ if (!function_exists('route_name_isnt')) {
 }
 
 if (!function_exists('route_is')) {
-
     function route_is($route): bool
     {
         if ($route instanceof \UnitEnum) {
@@ -107,7 +99,6 @@ if (!function_exists('route_is')) {
 }
 
 if (!function_exists('route_isnt')) {
-
     function route_isnt($route): bool
     {
         return !route_is($route);

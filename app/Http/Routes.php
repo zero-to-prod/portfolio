@@ -32,5 +32,4 @@ enum Routes: string
     case passwordReset_store = 'password-reset/email';
     case register = 'register';
     case register_store = 'register/store';
-
 }

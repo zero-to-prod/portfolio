@@ -45,6 +45,7 @@ class Kernel extends HttpKernel
         ],
         'web_group' => [],
         'auth_group' => [],
+        'guest_group' => [],
     ];
 
     /**

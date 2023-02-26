@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'davidDESIGN'),
+    'name' => env('APP_NAME', 'davidSMITH'),
 
     /*
     |--------------------------------------------------------------------------

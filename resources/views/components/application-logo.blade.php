@@ -1,1 +1,1 @@
-<p class="text-3xl text-gray-500">davidDESIGN</p>
+<p class="text-3xl text-gray-500">David Smith</p>

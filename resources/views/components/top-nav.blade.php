@@ -16,7 +16,7 @@ use App\Http\Routes;
                                 'border-sky-500 text-gray-900' => route_name_is(Routes::welcome),
                                 'border-transparent hover:border-gray-300 hover:text-gray-700' => route_name_isnt(Routes::welcome),
                                 ])
-                    >david<span class="text-sky-800 font-semibold ">DESIGN</span></a>
+                    >david<span class="text-sky-800 font-semibold ">SMITH</span></a>
                     <a aria-label="CV Page" href="{{route_as(Routes::cv)}}"
                             @class([
                                 'inline-flex items-center border-b-2 text-sm font-medium px-8 text-gray-600',

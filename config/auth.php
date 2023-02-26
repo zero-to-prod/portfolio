@@ -112,4 +112,15 @@ return [
 
     'password_timeout' => 10800,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Home Route
+    |--------------------------------------------------------------------------
+    |
+    | The path to the "home" route for your application.
+    | Typically, users are redirected here after authentication.
+    |
+    */
+
+    'home' => \App\Http\Routes::dashboard->value
 ];

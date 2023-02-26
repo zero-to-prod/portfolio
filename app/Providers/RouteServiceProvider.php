@@ -13,15 +13,6 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * The path to the "home" route for your application.
-     *
-     * Typically, users are redirected here after authentication.
-     *
-     * @var string
-     */
-    public const HOME = '/dashboard';
-
-    /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
     public function boot(): void
@@ -52,6 +43,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->registerAsMethods();
         $this->registerRouteAs();
         $this->registerToAs();
+        $this->registerIntendedAs();
     }
 
     /**
@@ -134,6 +126,25 @@ class RouteServiceProvider extends ServiceProvider
     {
         Redirect::macro('toAs', function ($path, $status = 302, $headers = [], $secure = null) {
             return Redirect::to(route_as($path), $status, $headers, $secure);
+        });
+    }
+
+    /**
+     * Registers additional route method on the Route Facade.
+     *  - intendedAs(...$args)
+     *
+     * If an Enum is passed for the first argument:
+     *  - the Enum is used for the uri
+     *
+     * If no Enum is passed, behavior is not modified.
+     */
+    protected function registerIntendedAs(): void
+    {
+        Redirect::macro('intendedAs', function (mixed $default = '/', int $status = 302, array $headers = [], bool|null $secure = null) {
+            if ($default instanceof \UnitEnum) {
+                return Redirect::intended($default->value, $status, $headers, $secure);
+            }
+            return Redirect::intended($default, $status, $headers, $secure);
         });
     }
 }

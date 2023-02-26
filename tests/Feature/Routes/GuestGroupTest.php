@@ -2,7 +2,6 @@
 
 namespace Routes;
 
-use App\Http\Routes;
 use App\Models\User;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;

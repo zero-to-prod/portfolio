@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class RedirectServiceProvider extends ServiceProvider
 {
-
     public function boot(): void
     {
         $this->registerRouteAs();

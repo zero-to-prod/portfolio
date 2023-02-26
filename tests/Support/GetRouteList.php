@@ -6,7 +6,6 @@ use Route;
 
 trait GetRouteList
 {
-
     protected function getRouteList(string $middleware): array
     {
         $this->setUp();

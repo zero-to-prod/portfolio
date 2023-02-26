@@ -7,7 +7,6 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -37,7 +36,6 @@ class RouteServiceProvider extends ServiceProvider
                 Route::middleware(['web', 'guest', 'register_group'])
                     ->group(base_path('routes/register.php'));
             }
-
         });
 
         $this->registerAsMethods();
@@ -82,10 +80,10 @@ class RouteServiceProvider extends ServiceProvider
                 }
 
                 if ($cached) {
-                    return Route::$method($uri->value, fn() => cached_view($action))->name($uri->name);
+                    return Route::$method($uri->value, fn () => cached_view($action))->name($uri->name);
                 }
 
-                return Route::$method($uri->value, fn() => view_as($action))->name($uri->name);
+                return Route::$method($uri->value, fn () => view_as($action))->name($uri->name);
             });
         }
     }

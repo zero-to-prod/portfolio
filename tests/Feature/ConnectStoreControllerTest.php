@@ -30,7 +30,7 @@ class ConnectStoreControllerTest extends TestCase
             Message::body => 'body',
         ];
 
-        $this->postRoute(Routes::connect_store, $data)->assertRedirect()->assertSessionHas('email', $email);
+        $this->postAs(Routes::connect_store, $data)->assertRedirect()->assertSessionHas('email', $email);
 
         $message = Message::whereSubject($subject)->first();
         $contact = $message?->contact;
@@ -47,7 +47,7 @@ class ConnectStoreControllerTest extends TestCase
             Message::body => 'body',
         ];
 
-        $this->postRoute(Routes::connect_store, $data)->assertRedirect();
+        $this->postAs(Routes::connect_store, $data)->assertRedirect();
 
         self::assertEquals(2, $contact->messages()->count(), 'The contact does not have the correct number of messages.');
         Mail::assertQueued(ConnectRequest::class, 2);
@@ -59,6 +59,32 @@ class ConnectStoreControllerTest extends TestCase
      */
     public function fails_if_nothing_is_not_passed(): void
     {
-        $this->postRoute(Routes::connect_store)->assertFound();
+        $this->postAs(Routes::connect_store)->assertFound();
+    }
+
+    /**
+     * @test
+     * @dataProvider getRoutes
+     */
+    public function check_each_route(string $route): void
+    {
+        $this->get(route($route))->assertOk();
+    }
+
+    public function getRoutes(): array
+    {
+        $routes = [];
+
+        foreach (Route::getRoutes() as $route) {
+            $has_GET_method = in_array('GET', $route->methods(), true);
+            $has_middleware = in_array('web_group', $route->gatherMiddleware(), true);
+
+            if ($has_GET_method && $has_middleware) {
+                $name = $route->getName();
+                $routes["Route: $name"] = [$name];
+            }
+        }
+
+        return $routes;
     }
 }

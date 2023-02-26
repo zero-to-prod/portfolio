@@ -19,7 +19,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return named_view(Views::auth_login);
+        return view_as(Views::auth_login);
     }
 
     /**
@@ -45,6 +45,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return named_redirect(Routes::welcome);
+        return redirect_as(Routes::welcome);
     }
 }

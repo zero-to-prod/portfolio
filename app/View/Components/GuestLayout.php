@@ -13,6 +13,6 @@ class GuestLayout extends Component
      */
     public function render(): View
     {
-        return named_view(Views::layouts_guest);
+        return view_as(Views::layouts_guest);
     }
 }

@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return named_view(Views::auth_register);
+        return view_as(Views::auth_register);
     }
 
     /**

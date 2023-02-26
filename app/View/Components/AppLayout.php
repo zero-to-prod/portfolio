@@ -13,6 +13,6 @@ class AppLayout extends Component
      */
     public function render(): View
     {
-        return named_view(Views::layouts_app);
+        return view_as(Views::layouts_app);
     }
 }

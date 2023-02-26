@@ -18,7 +18,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return named_view(Views::profile_edit, [
+        return view_as(Views::profile_edit, [
             'user' => $request->user(),
         ]);
     }
@@ -36,7 +36,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::routeNamed(Routes::profile_edit)->with('status', 'profile-updated');
+        return Redirect::routeAs(Routes::profile_edit)->with('status', 'profile-updated');
     }
 
     /**
@@ -57,6 +57,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::toRoute(Routes::welcome);
+        return Redirect::toAs(Routes::welcome);
     }
 }

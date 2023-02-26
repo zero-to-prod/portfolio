@@ -6,9 +6,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Route;
 
-if (!function_exists('named_route')) {
+if (!function_exists('route_as')) {
 
-    function named_route($route, $parameters = [], $absolute = true): string
+    function route_as($route, $parameters = [], $absolute = true): string
     {
         if ($route instanceof \UnitEnum) {
             return route($route->name, $parameters, $absolute);
@@ -19,9 +19,9 @@ if (!function_exists('named_route')) {
 }
 
 
-if (!function_exists('named_redirect')) {
+if (!function_exists('redirect_as')) {
 
-    function named_redirect($to = null, $status = 302, $headers = [], $secure = null): Redirector|RedirectResponse|Application
+    function redirect_as($to = null, $status = 302, $headers = [], $secure = null): Redirector|RedirectResponse|Application
     {
         if ($to instanceof \UnitEnum) {
             return redirect($to->value, $status, $headers, $secure);
@@ -31,9 +31,9 @@ if (!function_exists('named_redirect')) {
     }
 }
 
-if (!function_exists('named_view')) {
+if (!function_exists('view_as')) {
 
-    function named_view($view = null, $data = [], $mergeData = []): \Illuminate\Contracts\View\View|Factory|Application
+    function view_as($view = null, $data = [], $mergeData = []): \Illuminate\Contracts\View\View|Factory|Application
     {
         if ($view instanceof \UnitEnum) {
             return view($view->value, $data, $mergeData);
@@ -48,14 +48,14 @@ if (!function_exists('cached_view')) {
     function cached_view($view = null, $data = [], $mergeData = [], DateTimeInterface|DateInterval|int|null $ttl = null)
     {
         if (App::environment(['local', 'testing'])) {
-            return named_view($view, $data, $mergeData);
+            return view_as($view, $data, $mergeData);
         }
 
         if (Cache::hasView($view)) {
             return Cache::getView($view, $data);
         }
 
-        $value = named_view($view, $data, $mergeData)->render();
+        $value = view_as($view, $data, $mergeData)->render();
         Cache::putView($view, $value, $ttl);
 
         return $value;

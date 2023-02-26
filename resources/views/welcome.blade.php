@@ -11,7 +11,7 @@ use App\Http\Routes;
             <em>Strengthen</em> your company's potential and <em>increase</em> revenue by improving your online <em>presence</em>.
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="{{named_route(Routes::connect)}}" class="btn">Let's Connect</a>
+            <a href="{{route_as(Routes::connect)}}" class="btn">Let's Connect</a>
         </div>
     </x-header-section>
 
@@ -68,7 +68,8 @@ use App\Http\Routes;
                         </p>
                         <p>
                             I am currently <em>accepting</em> new clients and job opportunities. If you are interested
-                            in connecting, please get in <a class="text-blue-700" href="{{named_route(Routes::connect)}}">touch with me.</a>
+                            in connecting, please get in <a class="text-blue-700" href="{{route_as(Routes::connect)}}">touch
+                                with me.</a>
                         </p>
                     </div>
                 </div>

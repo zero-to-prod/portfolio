@@ -13,6 +13,6 @@ class MainLayout extends Component
      */
     public function render(): View
     {
-        return named_view(Views::layouts_main);
+        return view_as(Views::layouts_main);
     }
 }

@@ -61,4 +61,30 @@ class ConnectStoreControllerTest extends TestCase
     {
         $this->postAs(Routes::connect_store)->assertFound();
     }
+
+    /**
+     * @test
+     * @dataProvider getRoutes
+     */
+    public function check_each_route(string $route): void
+    {
+        $this->get(route($route))->assertOk();
+    }
+
+    public function getRoutes(): array
+    {
+        $routes = [];
+
+        foreach (Route::getRoutes() as $route) {
+            $has_GET_method = in_array('GET', $route->methods(), true);
+            $has_middleware = in_array('web_group', $route->gatherMiddleware(), true);
+
+            if ($has_GET_method && $has_middleware) {
+                $name = $route->getName();
+                $routes["Route: $name"] = [$name];
+            }
+        }
+
+        return $routes;
+    }
 }

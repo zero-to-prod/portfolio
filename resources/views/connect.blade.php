@@ -3,7 +3,7 @@
 use App\Http\Routes;
 
 ?>
-<x-main-layout>
+<x-main-layout :title="'Connect'">
     @if(session()->has('email'))
         <x-toast>
             <p>Message sent!</p>

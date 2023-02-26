@@ -4,7 +4,7 @@ use App\Http\Routes;
 
 ?>
 
-<x-main-layout>
+<x-main-layout :title="'davidDESIGN'">
     <x-header-section>
         <h1>Give Your Business a Boost</h1>
         <p>

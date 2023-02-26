@@ -9,6 +9,7 @@ enum Views: string
     case auth_login = 'auth.login';
     case auth_register = 'auth.register';
     case auth_resetPassword = 'auth.reset-password';
+    case auth_verifyEmail = 'auth.verify-email';
     case connect = 'connect';
     case cv = 'cv';
     case dashboard = 'dashboard';

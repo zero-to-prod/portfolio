@@ -2,6 +2,7 @@
 
 namespace Routes;
 
+use App\Http\Middleware;
 use App\Http\Routes;
 use App\Models\User;
 use Tests\Support\GetRouteList;
@@ -28,7 +29,7 @@ class RegisterGroupTest extends TestCase
 
     public function getRoutes(): array
     {
-        return collect($this->getRouteList('register_group'))->filter(function ($route) {
+        return collect($this->getRouteList(Middleware::register_group))->filter(function ($route) {
             $blacklist = [Routes::passwordNew_create->name];
             return !in_array($route[0], $blacklist, true);
         })->toArray();

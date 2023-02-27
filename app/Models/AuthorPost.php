@@ -7,7 +7,7 @@ use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 /**
- * @mixin IdeHelperAuthor
+ * @mixin IdeHelperAuthorPost
  */
 class AuthorPost extends Pivot
 {

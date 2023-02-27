@@ -1,9 +1,14 @@
 <?php
+/**
+ * @noinspection StaticClosureCanBeUsedInspection
+ * @noinspection PhpUndefinedClassInspection
+ */
 
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Redirect;
+use UnitEnum;
 
 class RedirectServiceProvider extends ServiceProvider
 {
@@ -27,7 +32,7 @@ class RedirectServiceProvider extends ServiceProvider
     protected function registerRouteAs(): void
     {
         Redirect::macro('routeAs', function ($route, $parameters = [], $status = 302, $headers = []) {
-            if ($route instanceof \UnitEnum) {
+            if ($route instanceof UnitEnum) {
                 return Redirect::route($route->name, $parameters, $status, $headers);
             }
 
@@ -63,7 +68,7 @@ class RedirectServiceProvider extends ServiceProvider
     protected function registerIntendedAs(): void
     {
         Redirect::macro('intendedAs', function (mixed $default = '/', int $status = 302, array $headers = [], bool|null $secure = null) {
-            if ($default instanceof \UnitEnum) {
+            if ($default instanceof UnitEnum) {
                 return Redirect::intended($default->value, $status, $headers, $secure);
             }
             return Redirect::intended($default, $status, $headers, $secure);

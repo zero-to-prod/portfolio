@@ -196,6 +196,7 @@ return [
         App\Providers\CacheServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RedirectServiceProvider::class,
+        App\Providers\BlueprintServiceProvider::class,
 
     ],
 

@@ -27,5 +27,5 @@ class Post extends Model implements HasRules
     use PostColumns;
     use PostRules;
 
-    protected $fillable = [self::title, self::body];
+    protected $fillable = [self::title, self::subtitle, self::body];
 }

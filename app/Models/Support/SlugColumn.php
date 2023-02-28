@@ -11,13 +11,10 @@ trait SlugColumn
 
     public const slug = 'slug';
 
-    /**
-     * Get the options for generating the slug.
-     */
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom(self::name)
-            ->saveSlugsTo('slug');
+            ->saveSlugsTo(self::slug);
     }
 }

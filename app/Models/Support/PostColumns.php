@@ -8,4 +8,5 @@ trait PostColumns
     public const title = 'title';
     public const subtitle = 'subtitle';
     public const body = 'body';
+    public const reading_time = 'reading_time';
 }

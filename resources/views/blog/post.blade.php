@@ -9,7 +9,11 @@ use App\Models\Post;
     <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 p-2 lg:py-6 lg:px-0 lg:flex-row">
         <div aria-label="Content" class="lg:basis-2/3">
             <div aria-label="image">
-                <img src="{{ Vite::asset('resources/images/slug.png') }}" alt="slug">
+                <div class="relative">
+                    <img src="{{ Vite::asset('resources/images/slug.png') }}" alt="slug">
+                    <div
+                        class="absolute bottom-0 text-white right-0 bg-gray-800 px-1 m-2">{{$post->reading_time . ' min read'}}</div>
+                </div>
             </div>
             <article aria-label="Article" class="mt-2 flex flex-col gap-4">
                 <div>
@@ -29,7 +33,7 @@ use App\Models\Post;
             </article>
         </div>
         <div aria-label="Suggested Content" class="lg:basis-1/3">
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-2">
                 @for($i = 0; $i < 10; $i++)
                     <a href="" class="flex flex-row">
                         <div class="relative">
@@ -37,10 +41,12 @@ use App\Models\Post;
                                  alt=""
                                  width="168"
                             >
-                            <div class="absolute bottom-0 text-white text-xs right-0 bg-gray-800 px-1 rounded m-2">6 min</div>
+                            <div class="absolute bottom-0 text-white text-xs right-0 bg-gray-800 px-1 rounded m-2">
+                                {{$post->reading_time . ' min'}}
+                            </div>
                         </div>
                         <div class="ml-2">
-                            <h3>{{ $post->title }}</h3>
+                            <h3 class="mb-1">{{ $post->title }}</h3>
                             <p class="text-sm text-gray-600">David Smith</p>
                             <p class="text-sm text-gray-600">13k Views • 2 months ago</p>
                         </div>

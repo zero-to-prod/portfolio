@@ -11,7 +11,7 @@
 </head>
 <body>
 <x-top-nav/>
-<main aria-label="Main Content">
+<main aria-label="Main">
     {{$slot}}
 </main>
 </body>

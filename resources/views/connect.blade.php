@@ -3,7 +3,7 @@
 use App\Http\Routes;
 
 ?>
-<x-main-layout :title="'Connect'">
+<x-main :title="'Connect'">
     @if(session()->has('email'))
         <x-toast>
             <p>Message sent!</p>
@@ -46,5 +46,5 @@ use App\Http\Routes;
         </div>
     </div>
     @vite('resources/js/top_nav_scroll.js')
-</x-main-layout>
+</x-main>
 

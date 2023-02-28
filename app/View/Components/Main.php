@@ -6,7 +6,7 @@ use App\Http\Views;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-class MainLayout extends Component
+class Main extends Component
 {
     /**
      * Get the view / contents that represents the component.

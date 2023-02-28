@@ -1,0 +1,19 @@
+@layer components {
+    [data-blog="blog"] div {
+        /*@apply border border-red-100;*/
+    }
+
+    [data-blog] h1 {
+        @apply font-bold text-xl;
+    }
+
+    [data-blog] article h2 {
+        @apply text-xl py-4;
+    }
+
+    [data-blog] article h2 {
+        @apply text-lg py-2;
+    }
+}
+
+

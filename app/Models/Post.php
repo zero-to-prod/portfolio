@@ -12,6 +12,7 @@ use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * @mixin IdeHelperPost
@@ -28,4 +29,11 @@ class Post extends Model implements HasRules
     use PostRules;
 
     protected $fillable = [self::title, self::subtitle, self::body];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(self::title)
+            ->saveSlugsTo(self::slug);
+    }
 }

@@ -3,16 +3,11 @@
         /*@apply border border-red-100;*/
     }
 
-    [data-blog] h1 {
+    [data-blog="title"] {
         @apply font-bold text-xl;
     }
-
-    [data-blog] article h2 {
-        @apply text-xl py-4;
-    }
-
-    [data-blog] article h2 {
-        @apply text-lg py-2;
+    [aria-label="Body"] {
+        @apply prose max-w-none;
     }
 }
 

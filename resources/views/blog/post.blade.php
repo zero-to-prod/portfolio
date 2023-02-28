@@ -6,14 +6,14 @@ use App\Models\Post;
 ?>
 
 <x-main :title="$post->title">
-    <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 p-2 lg:p-6 lg:flex-row">
+    <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 p-2 lg:py-6 lg:px-0 lg:flex-row">
         <div aria-label="Content" class="lg:basis-2/3">
             <div aria-label="image">
                 <img src="{{ Vite::asset('resources/images/slug.png') }}" alt="slug">
             </div>
             <article aria-label="Article" class="mt-2 flex flex-col gap-4">
                 <div>
-                    <h1>{{ $post->title }}</h1>
+                    <h1 data-blog="title">{{ $post->title }}</h1>
                     <div class="flex items-center gap-x-2 mt-2">
                         <img class="h-10 w-10 rounded-full" src="{{ Vite::asset('resources/images/david.jpg') }}"
                              alt="">

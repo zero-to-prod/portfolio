@@ -9,12 +9,10 @@ use App\Models\Post;
 <x-main :title="$post->title">
     <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 p-2 lg:py-6 lg:px-0 lg:flex-row">
         <div aria-label="Content" class="lg:basis-2/3">
-            <div aria-label="image">
-                <div class="relative">
-                    <img src="{{ Vite::asset('resources/images/slug.png') }}" alt="slug">
-                    <div class="absolute bottom-0 text-white right-0 bg-gray-800 px-1 m-2">
-                        {{$post->reading_time . ' min read'}}
-                    </div>
+            <div aria-label="image" class="relative">
+                <img src="{{ Vite::asset('resources/images/slug.png') }}" alt="slug">
+                <div class="absolute bottom-0 text-white right-0 bg-gray-800 px-1 m-2">
+                    {{$post->reading_time . ' min read'}}
                 </div>
             </div>
             <article aria-label="Article" class="mt-2 flex flex-col gap-4">
@@ -30,7 +28,7 @@ use App\Models\Post;
                             </div>
                             <div class="text-sm text-gray-600 text-right">
                                 <p>{{$post->published_at?->format('F j, Y')}}</p>
-                                <p>{{$post->views()->count()}} Views </p>
+                                <p>{{$post->views()->count()}} Views</p>
                             </div>
                         </div>
                     </div>

@@ -63,6 +63,16 @@ MARKDOWN;
         $post->publish();
 
         $post->authors()->attach(Author::first());
-        $post->attachTag('tag');
+        $post->attachTags(['tag', 'tag2', 'tag3']);
+
+        $post = Post::create([
+            Post::title => 'Third',
+            Post::body => $markdown,
+        ]);
+
+        $post->publish();
+
+        $post->authors()->attach(Author::first());
+        $post->attachTags(['tag2', 'tag3'] );
     }
 }

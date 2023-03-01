@@ -7,7 +7,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Route;
 
 if (!function_exists('route_as')) {
-    function route_as($route, $parameters = [], $absolute = true): string
+    function route_as($route, mixed $parameters = [], $absolute = true): string
     {
         if ($route instanceof \UnitEnum) {
             return route($route->name, $parameters, $absolute);

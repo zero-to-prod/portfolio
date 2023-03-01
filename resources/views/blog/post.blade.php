@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Post;
-
+use App\Http\Routes;
 /* @var Post $post */
 ?>
 
@@ -27,7 +27,7 @@ use App\Models\Post;
                                 <p class="text-sm font-semibold text-gray-600">Founder</p>
                             </div>
                             <div class="text-sm text-gray-600 text-right">
-                                <p>{{$post->published_at->format('F j, Y')}}</p>
+                                <p>{{$post->published_at?->format('F j, Y')}}</p>
                                 <p>{{$post->views()->count()}} Views </p>
                             </div>
                         </div>
@@ -41,7 +41,7 @@ use App\Models\Post;
         <div aria-label="Suggested Content" class="lg:basis-1/3">
             <div class="flex flex-col gap-2">
                 @for($i = 0; $i < 10; $i++)
-                    <a href="" class="flex flex-row">
+                    <a href="{{route_as(Routes::blog_post, $post)}}" class="flex flex-row">
                         <div class="relative">
                             <img class="rounded-lg" src="{{ Vite::asset('resources/images/slug.png') }}"
                                  alt=""
@@ -56,7 +56,6 @@ use App\Models\Post;
                             <p class="text-sm text-gray-600">David Smith</p>
                             <p class="text-sm text-gray-600">{{$post->views()->count()}} Views</p>
                         </div>
-
                     </a>
                 @endfor
             </div>

@@ -54,11 +54,13 @@ class Post extends Model implements HasRules
     public function publish(): self
     {
         self::unguard();
+        $published_content = app(MarkdownRenderer::class)
+            ->highlightTheme('github-dark')
+            ->toHtml($this->body);
         $this->update([
-            self::published_content => app(MarkdownRenderer::class)
-                ->highlightTheme('github-dark')
-                ->toHtml($this->body),
+            self::published_content => $published_content,
             self::published_at => now(),
+            self::published_word_count => str_word_count(strip_tags($published_content)),
         ]);
         self::reguard();
 

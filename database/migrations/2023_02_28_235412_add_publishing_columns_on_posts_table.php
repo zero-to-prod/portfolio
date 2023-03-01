@@ -10,8 +10,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
-            $table->timestamp(Post::published_at)->after(Post::reading_time)->nullable();
-            $table->longText(Post::published_content)->after(Post::reading_time)->nullable();
+            $table->unsignedInteger(Post::published_word_count)->after(Post::body)->nullable();
+            $table->timestamp(Post::published_at)->after(Post::body)->nullable();
+            $table->longText(Post::published_content)->after(Post::body)->nullable();
         });
     }
 
@@ -20,6 +21,7 @@ return new class extends Migration
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
             $table->dropColumn(Post::published_at);
             $table->dropColumn(Post::published_content);
+            $table->dropColumn(Post::published_word_count);
         });
     }
 };

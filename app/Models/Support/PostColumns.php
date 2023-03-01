@@ -10,5 +10,6 @@ trait PostColumns
     public const body = 'body';
     public const reading_time = 'reading_time';
     public const published_content = 'published_content';
+    public const published_word_count = 'published_word_count';
     public const published_at = 'published_at';
 }

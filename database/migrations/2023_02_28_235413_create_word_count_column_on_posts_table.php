@@ -11,9 +11,9 @@ return new class extends Migration {
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
             $table->string(Post::reading_time)
                 ->nullable()
-                ->after(Post::body)
-                ->virtualAs("round(((LENGTH(body) - LENGTH(REPLACE(body, ' ', '')) + 1) * .9) / 183)")
-                ->comment("The estimated reading time in minutes. The .9 constant accounts for the added syntax that occurs in markdown. The constant 183 is the average words per minute.");
+                ->after(Post::published_word_count)
+                ->virtualAs("ceil(published_word_count / 183)")
+                ->comment("The estimated reading time in minutes. The constant 183 is the average words per minute.");
         });
     }
 

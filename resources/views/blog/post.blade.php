@@ -12,8 +12,9 @@ use App\Models\Post;
             <div aria-label="image">
                 <div class="relative">
                     <img src="{{ Vite::asset('resources/images/slug.png') }}" alt="slug">
-                    <div
-                        class="absolute bottom-0 text-white right-0 bg-gray-800 px-1 m-2">{{$post->reading_time . ' min read'}}</div>
+                    <div class="absolute bottom-0 text-white right-0 bg-gray-800 px-1 m-2">
+                        {{$post->reading_time . ' min read'}}
+                    </div>
                 </div>
             </div>
             <article aria-label="Article" class="mt-2 flex flex-col gap-4">
@@ -25,7 +26,7 @@ use App\Models\Post;
                         <div class="flex justify-between w-full">
                             <div>
                                 <a class="text-base font-semibold text-gray-900" href="#">{{$post->authorList()}}</a>
-                                <p class="text-sm font-semibold text-gray-600">Founder</p>
+                                <p class="text-sm font-semibold text-gray-600">{{$post->authors->first()->title}}</p>
                             </div>
                             <div class="text-sm text-gray-600 text-right">
                                 <p>{{$post->published_at?->format('F j, Y')}}</p>

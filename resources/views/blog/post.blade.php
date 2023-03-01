@@ -28,7 +28,7 @@ use App\Models\Post;
                             </div>
                             <div class="text-sm text-gray-600 text-right">
                                 <p>{{$post->published_at?->format('F j, Y')}}</p>
-                                <p>{{$post->views()->count()}} Views</p>
+                                <p>{{$post->views()->count()}} {{$post->views()->count() === 1 ? 'View' : 'Views'}}</p>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@ use App\Models\Post;
                         <div class="ml-2">
                             <h3 class="mb-1">{{ $post->title }}</h3>
                             <p class="text-sm text-gray-600">{{$post->authorList()}}</p>
-                            <p class="text-sm text-gray-600">{{$post->views()->count()}} Views</p>
+                            <p class="text-sm text-gray-600">{{$post->views()->count()}} {{$post->views()->count() === 1 ? 'View' : 'Views'}}</p>
                         </div>
                     </a>
                 @endforeach

@@ -9,7 +9,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
-            $table->string('reading_time')
+            $table->string(Post::reading_time)
                 ->nullable()
                 ->after(Post::body)
                 ->virtualAs("round(((LENGTH(body) - LENGTH(REPLACE(body, ' ', '')) + 1) * .9) / 183)")

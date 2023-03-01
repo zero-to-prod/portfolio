@@ -11,6 +11,7 @@ use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sluggable\SlugOptions;
@@ -31,6 +32,11 @@ class Post extends Model implements HasRules
 
     protected $fillable = [self::title, self::subtitle, self::body];
     protected $casts = [self::published_at => 'datetime'];
+
+    public function views(): HasMany
+    {
+        return $this->hasMany(View::class);
+    }
 
     public function getRouteKeyName(): string
     {

@@ -26,9 +26,9 @@ use App\Models\Post;
                                 <a class="text-base font-semibold text-gray-900" href="#">David Smith</a>
                                 <p class="text-sm font-semibold text-gray-600">Founder</p>
                             </div>
-                            <div>
-                                <p class="text-sm text-gray-600 text-right">{{$post->published_at->format('F j, Y')}}</p>
-                                <p class="text-sm text-gray-600">13k Views • {{$post->published_at->diffForHumans()}} </p>
+                            <div class="text-sm text-gray-600 text-right">
+                                <p>{{$post->published_at->format('F j, Y')}}</p>
+                                <p>{{$post->views()->count()}} Views </p>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@ use App\Models\Post;
                         <div class="ml-2">
                             <h3 class="mb-1">{{ $post->title }}</h3>
                             <p class="text-sm text-gray-600">David Smith</p>
-                            <p class="text-sm text-gray-600">13k Views • 2 months ago</p>
+                            <p class="text-sm text-gray-600">{{$post->views()->count()}} Views</p>
                         </div>
 
                     </a>

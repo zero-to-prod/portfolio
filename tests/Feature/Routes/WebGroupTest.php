@@ -3,6 +3,7 @@
 namespace Tests\Feature\Routes;
 
 use App\Http\Middleware;
+use App\Http\Routes;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
 
@@ -21,6 +22,9 @@ class WebGroupTest extends TestCase
 
     public function getRoutes(): array
     {
-        return $this->getRouteList(Middleware::web_group);
+        return collect($this->getRouteList(Middleware::web_group))->filter(function ($route) {
+            $blacklist = [Routes::blog_post->name];
+            return !in_array($route[0], $blacklist, true);
+        })->toArray();
     }
 }

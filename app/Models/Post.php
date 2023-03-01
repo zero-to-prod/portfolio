@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sluggable\SlugOptions;
+use Spatie\Tags\HasTags;
 
 /**
  * @mixin IdeHelperPost
@@ -30,6 +31,7 @@ class Post extends Model implements HasRules
     use SlugColumn;
     use PostColumns;
     use PostRules;
+    use HasTags;
 
     protected $fillable = [self::title, self::subtitle, self::body];
     protected $casts = [self::published_at => 'datetime'];

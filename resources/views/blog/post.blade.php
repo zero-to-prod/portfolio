@@ -40,7 +40,7 @@ use App\Models\Post;
         </div>
         <div aria-label="Suggested Content" class="lg:basis-1/3">
             <div class="flex flex-col gap-2">
-                @for($i = 0; $i < 10; $i++)
+                @foreach(Post::withAnyTags($post->tags)->with('authors')->withCount('views')->orderByDesc('views_count')->get() as $post)
                     <a href="{{route_as(Routes::blog_post, $post)}}" class="flex flex-row">
                         <div class="relative">
                             <img class="rounded-lg" src="{{ Vite::asset('resources/images/slug.png') }}"
@@ -57,7 +57,7 @@ use App\Models\Post;
                             <p class="text-sm text-gray-600">{{$post->views()->count()}} Views</p>
                         </div>
                     </a>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>

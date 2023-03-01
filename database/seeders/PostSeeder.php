@@ -54,5 +54,15 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTag('tag');
+
+        $post = Post::create([
+            Post::title => 'Second',
+            Post::body => $markdown,
+        ]);
+
+        $post->publish();
+
+        $post->authors()->attach(Author::first());
+        $post->attachTag('tag');
     }
 }

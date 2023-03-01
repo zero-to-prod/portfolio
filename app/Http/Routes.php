@@ -7,6 +7,8 @@ enum Routes: string
     case connect = '/connect';
     case connect_store = '/connect/store';
     case cv = '/cv';
+    case upload = '/upload';
+    case img = '/img/{img}';
     case welcome = '/';
 
     case blog_post = '/blog/{post}';

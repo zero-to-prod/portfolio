@@ -21,14 +21,20 @@ use App\Models\Post;
                     <div class="flex items-center gap-x-2 mt-2">
                         <img class="h-10 w-10 rounded-full" src="{{ Vite::asset('resources/images/david.jpg') }}"
                              alt="">
-                        <div class="flex flex-col">
-                            <a class="text-base font-semibold text-gray-900" href="#">David Smith</a>
-                            <p class="text-sm font-semibold text-gray-600">Founder</p>
+                        <div class="flex justify-between w-full">
+                            <div>
+                                <a class="text-base font-semibold text-gray-900" href="#">David Smith</a>
+                                <p class="text-sm font-semibold text-gray-600">Founder</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600 text-right">{{$post->published_at->format('F j, Y')}}</p>
+                                <p class="text-sm text-gray-600">13k Views • {{$post->published_at->diffForHumans()}} </p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div aria-label="Body">
-                    {!! $body !!}
+                    {!! $post->published_content !!}
                 </div>
             </article>
         </div>

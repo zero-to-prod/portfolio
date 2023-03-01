@@ -12,6 +12,7 @@ use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sluggable\SlugOptions;
 
 /**
@@ -29,11 +30,32 @@ class Post extends Model implements HasRules
     use PostRules;
 
     protected $fillable = [self::title, self::subtitle, self::body];
+    protected $casts = [self::published_at => 'datetime'];
+
+    public function getRouteKeyName(): string
+    {
+        return self::slug;
+    }
 
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom(self::title)
-            ->saveSlugsTo(self::slug);
+            ->saveSlugsTo(self::slug)
+            ->doNotGenerateSlugsOnUpdate();
+    }
+
+    public function publish(): self
+    {
+        self::unguard();
+        $this->update([
+            self::published_content => app(MarkdownRenderer::class)
+                ->highlightTheme('github-dark')
+                ->toHtml($this->body),
+            self::published_at => now(),
+        ]);
+        self::reguard();
+
+        return $this;
     }
 }

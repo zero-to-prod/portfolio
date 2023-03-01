@@ -15,6 +15,7 @@ trait SlugColumn
     {
         return SlugOptions::create()
             ->generateSlugsFrom(self::name)
-            ->saveSlugsTo(self::slug);
+            ->saveSlugsTo(self::slug)
+            ->doNotGenerateSlugsOnUpdate();
     }
 }

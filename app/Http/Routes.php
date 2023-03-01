@@ -9,7 +9,7 @@ enum Routes: string
     case cv = '/cv';
     case welcome = '/';
 
-    case blog_post = '/blog/{slug}';
+    case blog_post = '/blog/{post}';
 
     /* Admin */
 

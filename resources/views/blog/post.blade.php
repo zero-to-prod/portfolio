@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\Post;
 use App\Http\Routes;
+use App\Models\Post;
+
 /* @var Post $post */
 ?>
 
@@ -23,7 +24,7 @@ use App\Http\Routes;
                              alt="">
                         <div class="flex justify-between w-full">
                             <div>
-                                <a class="text-base font-semibold text-gray-900" href="#">David Smith</a>
+                                <a class="text-base font-semibold text-gray-900" href="#">{{$post->authorList()}}</a>
                                 <p class="text-sm font-semibold text-gray-600">Founder</p>
                             </div>
                             <div class="text-sm text-gray-600 text-right">
@@ -53,7 +54,7 @@ use App\Http\Routes;
                         </div>
                         <div class="ml-2">
                             <h3 class="mb-1">{{ $post->title }}</h3>
-                            <p class="text-sm text-gray-600">David Smith</p>
+                            <p class="text-sm text-gray-600">{{$post->authorList()}}</p>
                             <p class="text-sm text-gray-600">{{$post->views()->count()}} Views</p>
                         </div>
                     </a>

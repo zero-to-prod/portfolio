@@ -33,12 +33,12 @@ use App\Models\Post;
                                     class="py-3.5 px-3 text-left text-sm font-semibold text-white">Posts
                                 </th>
                                 <th scope="col"
-                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Words
+                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Views
                                 </th>
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-800">
-                            @foreach(Post::with('views')->orderBy(Post::published_at)->get() as $post)
+                            @foreach(Post::with(['views', 'authors'])->orderBy(Post::published_at)->get() as $post)
                                 <tr>
                                     <th class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
                                         <div class="flex gap-4">
@@ -52,19 +52,17 @@ use App\Models\Post;
                                             </figure>
                                             <div class="text-left">
                                                 <p class="font-bold">{{$post->title}}</p>
+                                                <p>{{$post->authors->first()->name}}</p>
                                                 <p>{{$post->subtitle}}</p>
                                                 @if($post->published_at !== null)
                                                     <p>{{$post->published_at?->format('d/m/Y')}}</p>
-                                                        <?php
-                                                        $views = $post->views()->count();
-                                                        ?>
-                                                    <p>{{$views}}{{$views === 1 ? ' View' : ' Views'}}</p>
+                                                    <p>Words: {{$post->published_word_count}}</p>
                                                 @endif
                                             </div>
                                         </div>
                                     </th>
                                     <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
-                                        {{$post->published_word_count}}
+                                        <p>{{$post->views()->count()}}</p>
                                     </td>
                                 </tr>
                             @endforeach

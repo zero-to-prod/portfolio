@@ -48,6 +48,7 @@ $feature = $post->featuredImage();
                     <a href="{{route_as(Routes::blog_post, $post)}}" class="flex flex-row">
                         <div class="relative">
                             <img class="rounded-lg"
+                                 style="max-width: unset"
                                  src="{{ route_as(Routes::file, ['file' => $feature->name, 'width' => 168])}}"
                                  alt="{{$feature->original_name}}"
                                  width="168"

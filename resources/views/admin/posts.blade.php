@@ -13,8 +13,6 @@ use App\Models\Post;
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
-
     <div class="mt-12 mx-auto max-w-7xl bg-gray-800 py-10 sm:rounded-lg">
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center flex-row-reverse">
@@ -51,7 +49,6 @@ use App\Models\Post;
                                                          src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'height' => 100])}}"
                                                          alt="{{$post->featuredImage()->original_name}}" height="50">
                                                 </a>
-
                                             </figure>
                                             <div class="text-left">
                                                 <p class="font-bold">{{$post->title}}</p>

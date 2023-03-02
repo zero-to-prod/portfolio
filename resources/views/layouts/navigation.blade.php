@@ -23,6 +23,12 @@ use App\Http\Routes;
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route_as(Routes::admin_posts)"
+                                :active="route_is(Routes::admin_posts)">
+                        {{ __('Posts') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -84,6 +90,10 @@ use App\Http\Routes;
             <x-responsive-nav-link :href="route_as(Routes::dashboard)"
                                    :active="route_is(Routes::dashboard)">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route_as(Routes::admin_posts)"
+                                   :active="route_is(Routes::admin_posts)">
+                {{ __('Posts') }}
             </x-responsive-nav-link>
         </div>
 

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::postAs(Routes::upload, FileUploadController::class);
 Route::getAs(Routes::dashboard, Views::dashboard)->middlewareAs(Middleware::verified);
+Route::getAs(Routes::admin_posts, Views::admin_posts);
 Route::getAs(Routes::profile_edit, [ProfileController::class, 'edit']);
 Route::patchAs(Routes::profile_update, [ProfileController::class, 'update']);
 Route::deleteAs(Routes::profile_destroy, [ProfileController::class, 'destroy']);

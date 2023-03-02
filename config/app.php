@@ -194,6 +194,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\CacheServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RedirectServiceProvider::class,
         App\Providers\BlueprintServiceProvider::class,
@@ -213,6 +214,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Routes' => App\Http\Routes::class,
+        'Image' => Intervention\Image\Facades\Image::class
     ])->toArray(),
 
 ];

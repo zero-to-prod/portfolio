@@ -2,15 +2,11 @@
 
 use App\Http\Routes;
 use App\Models\Post;
-use App\Models\File;
 
 /* @var Post $post */
 ?>
 
 <x-main :title="$post->title">
-
-    <img height="200px" src="{{ File::first()?->relativeUrl()}}" alt="" />
-
     <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 p-2 lg:py-6 lg:px-0 lg:flex-row">
         <div aria-label="Content" class="lg:basis-2/3">
             <div aria-label="image" class="relative">

@@ -52,6 +52,20 @@ class Post extends Model implements HasRules
         return $this->belongsToMany(Author::class);
     }
 
+    public function featuredImage(): ?File
+    {
+        return $this->files()->whereHas('tags', function ($builder) {
+            $builder->where('name->en', 'featured');
+        })->first();
+    }
+
+    public function authorAvatar(): ?File
+    {
+        return $this->authors()->first()?->files()->whereHas('tags', function ($builder) {
+            $builder->where('name->en', 'avatar');
+        })->first();
+    }
+
     public function authorList(): string
     {
         return $this->authors->map(fn(Author $author) => $author->name)->join(', ');

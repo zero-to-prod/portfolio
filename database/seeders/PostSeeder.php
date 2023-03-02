@@ -3,15 +3,16 @@
 namespace Database\Seeders;
 
 use App\Models\Author;
-use App\Models\File;
 use App\Models\Post;
+use Database\Seeders\Support\UploadsFile;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
-use Storage;
 use Str;
 
 class PostSeeder extends Seeder
 {
+    use UploadsFile;
+
     public function run(): void
     {
         $markdown = <<<'MARKDOWN'
@@ -49,15 +50,7 @@ console.log(foo(5));
 ```
 MARKDOWN;
 
-        $file = Storage::disk('local')->path('generic.png');
-        $bucket_path = config('filesystems.disks.s3.bucket_path');
-        $file = Storage::disk('s3')->putFile($bucket_path, $file);
-        $model = File::create([
-            File::path => $bucket_path,
-            File::name => explode($bucket_path . '/', $file)[1],
-            File::original_name => 'generic.png',
-            File::mime_type => 'image/png'
-        ]);
+        $featured_image = $this->uploadFile('generic.png');
 
         $post = Post::create([
             Post::title => 'First',
@@ -68,8 +61,8 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag', 'tag2', 'tag3']);
-        $model->attachTags(['featured']);
-        $post->files()->attach($model);
+        $featured_image->attachTags(['featured']);
+        $post->files()->attach($featured_image);
 
         $faker = Factory::create();
 
@@ -82,8 +75,8 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag2', 'tag3']);
-        $model->attachTags(['featured']);
-        $post->files()->attach($model);
+        $featured_image->attachTags(['featured']);
+        $post->files()->attach($featured_image);
 
         $post = Post::create([
             Post::title => Str::title($faker->bs),
@@ -93,7 +86,7 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag2', 'tag4']);
-        $model->attachTags(['featured']);
-        $post->files()->attach($model);
+        $featured_image->attachTags(['featured']);
+        $post->files()->attach($featured_image);
     }
 }

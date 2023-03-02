@@ -4,17 +4,16 @@ use App\Http\Routes;
 use App\Models\Post;
 
 /* @var Post $post */
-/* @var File $file */
-$file = $post->files()->whereHas('tags', function ($builder) {
-    $builder->where('name->en', 'featured');
-})->first();
+/* @var File $feature */
+$feature = $post->featuredImage();
 ?>
 
 <x-main :title="$post->title">
     <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 p-2 lg:py-6 lg:px-0 lg:flex-row">
         <div aria-label="Content" class="lg:basis-2/3">
             <div aria-label="image" class="relative">
-                <img src="{{ route_as(Routes::file, ['file' => $file->name, 'width' => 837])}}" alt="{{$file->original_name}}" width="837" height="537">
+                <img src="{{ route_as(Routes::file, ['file' => $feature->name, 'width' => 837])}}"
+                     alt="{{$feature->original_name}}" width="837" height="537">
                 <div class="absolute bottom-0 text-white right-0 bg-gray-800 px-1 m-2">
                     {{$post->reading_time . ' min read'}}
                 </div>
@@ -23,7 +22,8 @@ $file = $post->files()->whereHas('tags', function ($builder) {
                 <div>
                     <h1 data-blog="title">{{ $post->title }}</h1>
                     <div class="flex items-center gap-x-2 mt-2">
-                        <img class="h-10 w-10 rounded-full" src="{{ Vite::asset('resources/images/david.jpg') }}"
+                        <img class="h-10 w-10 rounded-full"
+                             src="{{ route_as(Routes::file, ['file' => $post->authorAvatar()->name, 'width' => 50])}}"
                              alt="">
                         <div class="flex justify-between w-full">
                             <div>
@@ -48,8 +48,8 @@ $file = $post->files()->whereHas('tags', function ($builder) {
                     <a href="{{route_as(Routes::blog_post, $post)}}" class="flex flex-row">
                         <div class="relative">
                             <img class="rounded-lg"
-                                 src="{{ route_as(Routes::file, ['file' => $file->name, 'width' => 168])}}"
-                                 alt="{{$file->original_name}}"
+                                 src="{{ route_as(Routes::file, ['file' => $feature->name, 'width' => 168])}}"
+                                 alt="{{$feature->original_name}}"
                                  width="168"
                                  height="112"
                             >

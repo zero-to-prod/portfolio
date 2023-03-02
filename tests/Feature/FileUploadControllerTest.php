@@ -3,12 +3,11 @@
 
 use App\Http\Routes;
 use App\Models\File;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
-use Tests\TestCase;
+use Tests\AuthTestCase;
 
-class FileUploadControllerTest extends TestCase
+class FileUploadControllerTest extends AuthTestCase
 {
     use RefreshDatabase;
 
@@ -18,7 +17,6 @@ class FileUploadControllerTest extends TestCase
      */
     public function file_upload(): void
     {
-        $this->be(User::factory()->create());
         Storage::fake('s3');
         $file = UploadedFile::fake()->create('document.pdf', 1000, 'application/pdf');
 
@@ -39,7 +37,6 @@ class FileUploadControllerTest extends TestCase
      */
     public function cache_retrieval(): void
     {
-        $this->be(User::factory()->create());
         Storage::fake('s3');
 
         $response = $this->postAs(Routes::upload);

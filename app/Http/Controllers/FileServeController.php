@@ -15,28 +15,26 @@ class FileServeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Cache::remember($request->fullUrl(), config('filesystems.cache.ttl'), static function () use ($request) {
-            $s3_bucket_path = config('filesystems.disks.s3.bucket_path') . '/';
-            $full_path = $s3_bucket_path . explode('file/', $request->path())[1];
+        return Cache::remember($request->fullUrl(), null, static function () use ($request) {
+            $s3_bucket_path = config('filesystems.disks.s3.bucket_path');
+            $path = $s3_bucket_path . explode('file', $request->path())[1];
 
-            $file = Storage::disk('s3')->get($full_path);
-            $mime_type = Storage::disk('s3')->mimeType($full_path);
+            $file = Storage::disk('s3')->get($path);
+            $mime = Storage::disk('s3')->mimeType($path);
 
-            if (Str::contains($mime_type, 'image')) {
+            if (Str::contains($mime, 'image')) {
                 $img = Image::make($file);
-
                 if ($request->hasAny(['width', 'height'])) {
                     $img->encode('webp')
-                        ->resize($request->width ?? null, $request->height ?? null, function ($constraint) {
+                        ->resize($request->width, $request->height, function ($constraint) {
                             $constraint->aspectRatio();
                         });
                 }
-                $response = $img->response();
-            } else {
-                $response = response($file, 200, ['Content-Type' => $mime_type]);
+
+                return $img->response();
             }
 
-            return $response;
+            return response($file, 200, ['Content-Type' => $mime]);
         });
     }
 }

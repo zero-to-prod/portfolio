@@ -18,11 +18,11 @@ class FileUploadController extends Controller
     {
         $file = $request->file('file');
         if ($file) {
-            $aws_file_path = $file->store(config('filesystems.disks.s3.bucket_path'), 's3');
-            $name = explode(config('filesystems.disks.s3.bucket_path') . '/', $aws_file_path)[1];
+            $bucket_path = config('filesystems.disks.s3.bucket_path');
+            $file_path = $file->store($bucket_path, 's3');
             File::create([
-                File::path => config('filesystems.disks.s3.bucket_path'),
-                File::name => $name,
+                File::path => $bucket_path,
+                File::name => explode($bucket_path . '/', $file_path)[1],
                 File::original_name => $file->getClientOriginalName(),
                 File::mime_type => $file->getMimeType(),
             ]);

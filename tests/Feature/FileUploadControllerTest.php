@@ -28,7 +28,7 @@ class FileUploadControllerTest extends AuthTestCase
             File::original_name => $file->getClientOriginalName(),
             File::mime_type => $file->getMimeType(),
         ]);
-        Storage::disk('s3')->assertExists(Config::get('filesystems.disks.s3.bucket_path') . '/' . $file->hashName());
+        Storage::disk('s3')->assertExists(Config::get('filesystems.disks.s3.bucket_path') . $file->hashName());
     }
 
     /**

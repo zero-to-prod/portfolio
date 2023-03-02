@@ -15,8 +15,8 @@ class FileServeControllerTest extends TestCase
      */
     public function file_download(): void
     {
-        $filename = 'testfile.txt';
-        $path = config('filesystems.disks.s3.bucket_path') . '/';
+        $filename = 'test.txt';
+        $path = config('filesystems.disks.s3.bucket_path');
         $fileContent = 'test file content';
         $mimeType = 'text/plain; charset=UTF-8';
 

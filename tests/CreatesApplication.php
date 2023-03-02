@@ -18,6 +18,7 @@ trait CreatesApplication
         $app->make(Kernel::class)->bootstrap();
 
         $this->registerAssertRedirectHome();
+        $this->registerAssertBadRequest();
 
         return $app;
     }
@@ -26,6 +27,14 @@ trait CreatesApplication
     {
         TestResponse::macro('assertRedirectHome', function (string|null $query_string = null) {
             $this->assertRedirect(config('auth.home') . $query_string);
+            return $this;
+        });
+    }
+
+    protected function registerAssertBadRequest(): void
+    {
+        TestResponse::macro('assertBadRequest', function (string|null $query_string = null) {
+            $this->assertStatus(400);
             return $this;
         });
     }

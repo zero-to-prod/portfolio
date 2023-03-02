@@ -27,6 +27,6 @@ class File extends Model
 
     public function relativeUrl(): string
     {
-        return str_replace('{img}',  $this->name, Routes::img->value);
+        return preg_replace('/\{(.+?)\}/', $this->name, Routes::file->value);
     }
 }

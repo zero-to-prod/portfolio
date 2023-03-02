@@ -11,6 +11,13 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
                 </div>
+                <div class="max-w-sm mx-auto py-8">
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="file" id="file">
+                        <button type="submit">Upload</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

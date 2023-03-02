@@ -23,7 +23,11 @@ class WebGroupTest extends TestCase
     public function getRoutes(): array
     {
         return collect($this->getRouteList(Middleware::web_group))->filter(function ($route) {
-            $blacklist = [Routes::blog_post->name];
+            $blacklist = [
+                Routes::blog_post->name,
+                Routes::file->name,
+            ];
+
             return !in_array($route[0], $blacklist, true);
         })->toArray();
     }

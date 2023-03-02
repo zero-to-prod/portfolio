@@ -9,14 +9,6 @@ use App\Models\File;
 
 <x-main :title="$post->title">
 
-    <div class="max-w-sm mx-auto py-8">
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            @csrf
-            <input type="file" name="file" id="file">
-            <button type="submit">Upload</button>
-        </form>
-    </div>
-
     <img height="200px" src="{{ File::first()?->relativeUrl()}}" alt="" />
 
     <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 p-2 lg:py-6 lg:px-0 lg:flex-row">

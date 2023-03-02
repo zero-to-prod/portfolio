@@ -44,7 +44,7 @@ $feature = $post->featuredImage();
         </div>
         <div aria-label="Suggested Content" class="lg:basis-1/3">
             <div class="flex flex-col gap-2">
-                @foreach(Post::withAnyTags($post->tags)->with('authors')->withCount('views')->orderByDesc('views_count')->get() as $post)
+                @foreach(Post::recommended($post->tags) as $post)
                     <a href="{{route_as(Routes::blog_post, $post)}}" class="flex flex-row">
                         <div class="relative">
                             <img class="rounded-lg"

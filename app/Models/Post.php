@@ -9,6 +9,8 @@ use App\Models\Support\PostRules;
 use App\Models\Support\SlugColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
+use ArrayAccess;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -50,6 +52,11 @@ class Post extends Model implements HasRules
     public function authors(): BelongsToMany
     {
         return $this->belongsToMany(Author::class);
+    }
+
+    public static function recommended(ArrayAccess|\Spatie\Tags\Tag|array|string $tags): array|Collection|\Illuminate\Support\Collection
+    {
+        return self::withAnyTags($tags)->with('authors')->withCount('views')->orderByDesc('views_count')->get();
     }
 
     public function featuredImage(): ?File

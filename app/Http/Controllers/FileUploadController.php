@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\File;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Upload;
 
 class FileUploadController extends Controller
 {
@@ -18,14 +18,7 @@ class FileUploadController extends Controller
     {
         $file = $request->file('file');
         if ($file) {
-            $bucket_path = config('filesystems.file_disk_path');
-            $file_path = $file->store($bucket_path, config('filesystems.file_disk'));
-            File::create([
-                File::path => $bucket_path,
-                File::name => explode($bucket_path . '/', $file_path)[1],
-                File::original_name => $file->getClientOriginalName(),
-                File::mime_type => $file->getMimeType(),
-            ]);
+            Upload::file($file);
 
             return redirect()->back();
         }

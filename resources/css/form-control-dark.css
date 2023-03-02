@@ -1,0 +1,11 @@
+@layer components {
+    [data-form-control-dark="control"] input, textarea, select {
+        @apply input mt-2.5 bg-gray-900 ring-gray-700 text-white;
+    }
+    [data-form-control-dark="control"] label {
+        @apply label text-white;
+    }
+    [data-form-control-dark="control"] p {
+        @apply error mt-2 text-sm text-red-600;
+    }
+}

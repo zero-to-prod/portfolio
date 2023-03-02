@@ -17,10 +17,9 @@ use App\Models\Post;
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center flex-row-reverse">
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <button type="button"
-                            class="block rounded-md bg-sky-500 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500">
+                    <a href="{{route_as(Routes::admin_posts_create)}}" class="btn">
                         Add Post
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class="mt-8 flow-root">

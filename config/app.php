@@ -214,7 +214,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Routes' => App\Http\Routes::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Upload' => App\Helpers\Upload::class,
     ])->toArray(),
 
 ];

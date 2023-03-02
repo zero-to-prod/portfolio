@@ -5,6 +5,12 @@ use App\Models\Author;
 use App\Models\Post;
 
 /* @var Post $post */
+$post = null;
+$author = null;
+if (request()->post !== null) {
+    $post = Post::where(Post::slug, request()->post)->first();
+    $author = $post->authors->first();
+}
 
 ?>
 
@@ -21,9 +27,12 @@ use App\Models\Post;
                       class="mx-auto my-8 space-y-8 max-w-xl">
                     @csrf
                     <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
+                        <label>
+                            <input hidden name="id" value="{{$post?->id}}"/>
+                        </label>
                         <x-form-control-dark>
                             <label for="{{Post::title}}">Title*</label>
-                            <input value="{{old(Post::title)}}" type="text" name="{{Post::title}}" id="{{Post::title}}"
+                            <input value="{{$post?->title}}" type="text" name="{{Post::title}}" id="{{Post::title}}"
                                    autocomplete="organization">
                             @if($errors->has(Post::title))
                                 <p>{{ $errors->first(Post::title) }}</p>
@@ -33,8 +42,8 @@ use App\Models\Post;
                             <label for="{{Author::name}}">Author</label>
                             <select type="text" name="{{Author::name}}" id="{{Author::name}}"
                                     autocomplete="organization" class="bg-gray-900 rounded-md ring-gray-700">
-                                @foreach(Author::all() as $author)
-                                    <option {{old(Author::name) === $author->id ? 'selected' :null}} value="{{$author->id}}">{{$author->name}}</option>
+                                @foreach(Author::all() as $a)
+                                    <option {{$author?->id === $a->id ? 'selected' :null}} value="{{$a->id}}">{{$a->name}}</option>
                                 @endforeach
                             </select>
                             @if($errors->has(Author::name))
@@ -43,7 +52,7 @@ use App\Models\Post;
                         </x-form-control-dark>
                         <x-form-control-dark>
                             <label for="{{Post::body}}">Body</label>
-                            <textarea name="{{Post::body}}" id="{{Post::body}}" rows="4">{{old(Post::body)}}</textarea>
+                            <textarea name="{{Post::body}}" id="{{Post::body}}" rows="4">{{$post?->body}}</textarea>
                             @if($errors->has(Post::body))
                                 <p>{{ $errors->first(Post::body) }}</p>
                             @endif

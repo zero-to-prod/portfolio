@@ -18,6 +18,7 @@ Route::postAs(Routes::upload, FileUploadController::class);
 Route::getAs(Routes::dashboard, Views::dashboard)->middlewareAs(Middleware::verified);
 Route::getAs(Routes::admin_posts, Views::admin_posts);
 Route::getAs(Routes::admin_posts_create, Views::admin_posts_create);
+Route::getAs(Routes::admin_posts_edit, Views::admin_posts_create);
 Route::postAs(Routes::admin_posts_store, PostStoreController::class);
 Route::getAs(Routes::profile_edit, [ProfileController::class, 'edit']);
 Route::patchAs(Routes::profile_update, [ProfileController::class, 'update']);

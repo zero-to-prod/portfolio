@@ -50,7 +50,7 @@ use App\Models\Post;
                                                 </a>
                                             </figure>
                                             <div class="text-left">
-                                                <p class="font-bold">{{$post->title}}</p>
+                                                <a href="{{route_as(Routes::admin_posts_edit, $post)}}" class="font-bold">{{$post->title}}</a>
                                                 <p>{{$post->authors->first()->name}}</p>
                                                 <p>{{$post->subtitle}}</p>
                                                 @if($post->published_at !== null)

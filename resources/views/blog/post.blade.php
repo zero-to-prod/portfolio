@@ -60,7 +60,10 @@ $feature = $post->featuredImage();
                         <div class="ml-2">
                             <h3 class="mb-1">{{ $post->title }}</h3>
                             <p class="text-sm text-gray-600">{{$post->authorList()}}</p>
-                            <p class="text-sm text-gray-600">{{$post->views()->count()}} {{$post->views()->count() === 1 ? 'View' : 'Views'}}</p>
+                                <?php
+                                $views = $post->views()->count();
+                                ?>
+                            <p class="text-sm text-gray-600">{{$views}} {{$views === 1 ? 'View' : 'Views'}}</p>
                         </div>
                     </a>
                 @endforeach

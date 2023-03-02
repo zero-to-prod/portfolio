@@ -88,5 +88,15 @@ MARKDOWN;
         $post->attachTags(['tag2', 'tag4']);
         $featured_image->attachTags(['featured']);
         $post->files()->attach($featured_image);
+
+        $post = Post::create([
+            Post::title => Str::title($faker->bs),
+            Post::body => $faker->paragraph,
+        ]);
+
+        $post->authors()->attach(Author::first());
+        $post->attachTags(['tag2', 'tag4']);
+        $featured_image->attachTags(['featured']);
+        $post->files()->attach($featured_image);
     }
 }

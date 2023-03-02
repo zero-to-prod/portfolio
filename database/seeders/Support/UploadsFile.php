@@ -10,8 +10,8 @@ trait UploadsFile
     protected function uploadFile(string $name, string $mime_type = 'image/png'): File
     {
         $file = Storage::disk('local')->path($name);
-        $bucket_path = config('filesystems.disks.s3.bucket_path');
-        $file = Storage::disk('s3')->putFile($bucket_path, $file);
+        $bucket_path = config('filesystems.file_disk_path');
+        $file = Storage::disk(config('filesystems.file_disk'))->putFile($bucket_path, $file);
 
         return File::create([
             File::path => $bucket_path,

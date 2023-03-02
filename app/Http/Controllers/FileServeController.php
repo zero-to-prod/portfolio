@@ -16,11 +16,11 @@ class FileServeController extends Controller
     public function __invoke(Request $request)
     {
         return Cache::remember($request->fullUrl(), null, static function () use ($request) {
-            $s3_bucket_path = config('filesystems.disks.s3.bucket_path');
+            $s3_bucket_path = config('filesystems.file_disk_path');
             $path = $s3_bucket_path . explode('file', $request->path())[1];
 
-            $file = Storage::disk('s3')->get($path);
-            $mime = Storage::disk('s3')->mimeType($path);
+            $file = Storage::disk(config('filesystems.file_disk'))->get($path);
+            $mime = Storage::disk(config('filesystems.file_disk'))->mimeType($path);
 
             if (Str::contains($mime, 'image')) {
                 $img = Image::make($file);

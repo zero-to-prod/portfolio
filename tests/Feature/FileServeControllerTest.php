@@ -16,13 +16,13 @@ class FileServeControllerTest extends TestCase
     public function file_download(): void
     {
         $filename = 'test.txt';
-        $path = config('filesystems.disks.s3.bucket_path');
+        $path = config('filesystems.file_disk_path');
         $fileContent = 'test file content';
         $mimeType = 'text/plain; charset=UTF-8';
 
-        Storage::fake('s3');
-        Storage::disk('s3')->put($path . $filename, $fileContent);
-        Storage::disk('s3')->assertExists($path . $filename);
+        Storage::fake(config('filesystems.file_disk'));
+        Storage::disk(config('filesystems.file_disk'))->put($path . $filename, $fileContent);
+        Storage::disk(config('filesystems.file_disk'))->assertExists($path . $filename);
 
         $response = $this->getAs(Routes::file, [$filename]);
 
@@ -30,7 +30,7 @@ class FileServeControllerTest extends TestCase
         $response->assertHeader('Content-Type', $mimeType);
         $response->assertSee($fileContent);
 
-        Storage::disk('s3')->delete($path . $filename);
+        Storage::disk(config('filesystems.file_disk'))->delete($path . $filename);
     }
 
     /**

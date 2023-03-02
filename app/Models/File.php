@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Http\Routes;
 use App\Models\Support\FileColumns;
 use App\Models\Support\IdColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -25,8 +25,13 @@ class File extends Model
 
     protected $fillable = [self::name, self::path, self::original_name, self::mime_type];
 
-    public function relativeUrl(): string
+    public function posts(): MorphToMany
     {
-        return preg_replace('/\{(.+?)\}/', $this->name, Routes::file->value);
+        return $this->morphedByMany(Post::class, 'fileable');
+    }
+
+    public function authors(): MorphToMany
+    {
+        return $this->morphedByMany(Author::class, 'fileable');
     }
 }

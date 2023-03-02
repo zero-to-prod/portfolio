@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Author;
+use App\Models\File;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +19,9 @@ class AppServiceProvider extends ServiceProvider
 
         Relation::enforceMorphMap([
             1 => User::class,
-            2 => Post::class
+            2 => Post::class,
+            3 => File::class,
+            4 => Author::class,
         ]);
     }
 }

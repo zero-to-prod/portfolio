@@ -12,6 +12,7 @@ use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -29,6 +30,11 @@ class Author extends Model implements HasRules
     use AuthorRules;
 
     protected $fillable = [self::name];
+
+    public function files(): MorphToMany
+    {
+        return $this->morphToMany(File::class, 'fileable');
+    }
 
     public function posts(): BelongsToMany
     {

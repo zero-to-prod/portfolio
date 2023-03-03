@@ -4,15 +4,22 @@ use App\Http\Routes;
 use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Http\Controllers\PostFormController;
+use App\Http\Controllers\PostPublishController;
 
-/* @var Tag $tag */
-/* @var Post $post */
-$post = null;
-$author = null;
+/* @var Tag $author_model */
+/* @var Post $post_model */
+$post_model = null;
+$author_model = null;
+$title = PostFormController::title;
+$authors = PostFormController::authors;
+$tags = PostFormController::tags;
+$body = PostFormController::body;
+$featured_image = PostFormController::featured_image;
 
 if (request()->post !== null) {
-    $post = Post::where(Post::slug, request()->post)->first();
-    $author = $post->authors->first();
+    $post_model = Post::where(Post::slug, request()->post)->first();
+    $author_model = $post_model->authors->first();
 }
 ?>
 
@@ -27,21 +34,21 @@ if (request()->post !== null) {
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex flex-col mx-auto my-8 max-w-xl px-4">
                     <div class="flex justify-between">
-                        @isset($post)
-                            <form action="{{route_as(Routes::admin_posts_publish, $post)}}"
-                                  method="post">
+                        @isset($post_model)
+                            <form action="{{route_as(Routes::admin_posts_publish, $post_model)}}" method="post">
                                 @csrf
-                                <input type="hidden" name="id" value="{{$post->id}}">
-                                @if($post->isPublished())
-                                    <button type="submit" class="btn btn-xs bg-gray-600 hover:bg-gray-500">Re-Publish
+                                <input name="{{PostPublishController::id}}" type="hidden" value="{{$post_model->id}}">
+                                @if($post_model->isPublished())
+                                    <button class="btn btn-xs bg-gray-600 hover:bg-gray-500">
+                                        Re-Publish
                                     </button>
                                 @else
-                                    <button type="submit" class="btn btn-xs">Publish</button>
+                                    <button class="btn btn-xs"> Publish</button>
                                 @endif
                             </form>
-                            @if($post->isPublished())
+                            @if($post_model->isPublished())
                                 <a class="btn btn-xs"
-                                   href="{{route_as(Routes::blog_post, $post)}}"
+                                   href="{{route_as(Routes::blog_post, $post_model)}}"
                                    target="_blank">
                                     View
                                 </a>
@@ -49,91 +56,100 @@ if (request()->post !== null) {
                         @endisset
                     </div>
 
-                    <form action="{{route_as(Routes::admin_posts_store)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route_as(Routes::admin_posts_store)}}"
+                          method="post"
+                          enctype="multipart/form-data">
                         @csrf
                         <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
                             <label>
-                                <input hidden name="id" value="{{$post?->id}}"/>
+                                <input name="{{PostFormController::id}}"
+                                       hidden
+                                       value="{{$post_model?->id}}"/>
                             </label>
                             <x-form-control-dark>
-                                <label for="{{Post::title}}">Title</label>
-                                <input value="{{$post !== null ? $post->title : old(Post::title)}}"
-                                       required
-                                       type="text"
-                                       name="{{Post::title}}" id="{{Post::title}}"
-                                       autocomplete="organization">
-                                @if($errors->has(Post::title))
-                                    <p>{{ $errors->first(Post::title) }}</p>
+                                <label for="{{$title}}">Title</label>
+                                <input name="{{$title}}"
+                                       id="{{$title}}"
+                                       value="{{$post_model !== null ? $post_model->title : old($title)}}"
+                                       required>
+                                @if($errors->has($title))
+                                    <p>{{ $errors->first($title) }}</p>
                                 @endif
                             </x-form-control-dark>
                             <x-form-control-dark>
-                                <label for="{{Author::name}}">Author</label>
-                                <select type="text"
+                                <label for="{{$authors}}">Author</label>
+                                <select class="bg-gray-900 rounded-md ring-gray-700"
+                                        name="{{$authors}}"
+                                        id="{{$authors}}"
                                         multiple
-                                        required
-                                        name="authors[]"
-                                        id="{{Author::name}}"
-                                        autocomplete="organization"
-                                        class="bg-gray-900 rounded-md ring-gray-700">
-                                    @foreach(Author::all() as $tag)
-                                        <option {{$author?->id === $tag->id ? 'selected' :null}} value="{{$tag->id}}">{{$tag->name}}</option>
+                                        required>
+                                    @foreach(Author::all() as $author_model)
+                                        <option {{$author_model?->id === $author_model->id ? 'selected' :null}} value="{{$author_model->id}}">
+                                            {{$author_model->name}}
+                                        </option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('authors'))
-                                    <p>{{ $errors->first('authors') }}</p>
+                                @if($errors->has($authors))
+                                    <p>{{ $errors->first($authors) }}</p>
                                 @endif
                             </x-form-control-dark>
                             <div class="sm:col-span-2">
                                 <p class="text-white mb-3">Tags</p>
                                 <div class="flex gap-4 flex-wrap">
-                                    @foreach(Tag::all() as $tag)
+                                    @foreach(Tag::withType()->whereNull(Tag::type)->get() as $author_model)
                                         <div class="flex items-center text-white space-x-2">
-                                            <input id="tag-{{$tag->id}}"
-                                                   {{$post?->tags->where(Tag::slug, $tag->slug)->count() ? 'checked' : null}} type="checkbox"
-                                                   name="tags[]" value="{{$tag->id}}"
-                                                   class="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                                            <input class="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                                                   name="{{$tags}}"
+                                                   id="tag-{{$author_model->id}}"
+                                                   value="{{$author_model->id}}"
+                                                   type="checkbox"
+                                                    {{$post_model?->tags->where(Tag::slug, $author_model->slug)->count() ? 'checked' : null}}
                                             />
-                                            <label for="tag-{{$tag->id}}">{{$tag->name}}</label>
+                                            <label for="tag-{{$author_model->id}}">{{$author_model->name}}</label>
                                         </div>
                                     @endforeach
-                                    @if($errors->has('tags'))
-                                        <p class="error">{{ $errors->first('tags') }}</p>
+                                    @if($errors->has($tags))
+                                        <p class="error">{{ $errors->first($tags) }}</p>
                                     @endif
                                 </div>
                             </div>
 
                             <x-form-control-dark>
-                                <label for="{{Post::body}}">Body</label>
-                                <textarea name="{{Post::body}}"
+                                <label for="{{$body}}">Body</label>
+                                <textarea name="{{$body}}"
+                                          id="{{$body}}"
                                           required
-                                          id="{{Post::body}}"
-                                          rows="4">{{$post !== null ? $post->body : old(Post::body)}}</textarea>
-                                @if($errors->has(Post::body))
-                                    <p>{{ $errors->first(Post::body) }}</p>
+                                          rows="4">
+{{$post_model !== null ? $post_model->body : old($body)}}
+                                </textarea>
+                                @if($errors->has($body))
+                                    <p>{{ $errors->first($body) }}</p>
                                 @endif
                             </x-form-control-dark>
 
                             <div class="flex space-x-6 sm:col-span-2">
-                                @if($post?->featuredImage() !== null)
+                                @if($post_model?->featuredImage() !== null)
                                     <img class="object-cover h-[100px] rounded-lg"
-                                         src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'height' => 100])}}"
-                                         alt="{{$post->featuredImage()->original_name}}"
-                                         height="50">
+                                         src="{{ route_as(Routes::file, ['file' => $post_model->featuredImage()->name, 'height' => 100])}}"
+                                         alt="{{$post_model->featuredImage()->original_name}}"
+                                         height="100">
                                 @endif
                                 <x-form-control-dark>
-                                    <label for="file">Featured Image</label>
-                                    <input {{$post?->featuredImage() !== null ? null  : 'required=true'}} class="w-full"
+                                    <label for="{{$featured_image}}">Featured Image</label>
+                                    <input class="w-full"
+                                           name="{{$featured_image}}"
+                                           id="{{$featured_image}}"
+                                           {{$post_model?->featuredImage() !== null ? null  : 'required=true'}}
                                            type="file"
-                                           name="file" id="file">
-                                    @if($errors->has('file'))
-                                        <p>{{ $errors->first('file') }}</p>
+                                    >
+                                    @if($errors->has($featured_image))
+                                        <p>{{ $errors->first($featured_image) }}</p>
                                     @endif
                                 </x-form-control-dark>
                             </div>
-
                         </div>
                         <div class="mt-6">
-                            <button type="submit" class="btn btn-wide">Submit</button>
+                            <button class="btn btn-wide">Save</button>
                         </div>
                     </form>
                 </div>
@@ -141,3 +157,4 @@ if (request()->post !== null) {
         </div>
     </div>
 </x-app-layout>
+

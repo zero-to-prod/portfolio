@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\PostPublishController;
-use App\Http\Controllers\PostStoreController;
+use App\Http\Controllers\PostFormController;
 use App\Http\Controllers\PostUnPublishController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware;
@@ -21,7 +21,7 @@ Route::getAs(Routes::dashboard, Views::dashboard)->middlewareAs(Middleware::veri
 Route::getAs(Routes::admin_posts, Views::admin_posts);
 Route::getAs(Routes::admin_posts_create, Views::admin_posts_form);
 Route::getAs(Routes::admin_posts_edit, Views::admin_posts_form);
-Route::postAs(Routes::admin_posts_store, PostStoreController::class);
+Route::postAs(Routes::admin_posts_store, PostFormController::class);
 Route::postAs(Routes::admin_posts_publish, PostPublishController::class);
 Route::postAs(Routes::admin_posts_unPublish, PostUnPublishController::class);
 Route::getAs(Routes::profile_edit, [ProfileController::class, 'edit']);

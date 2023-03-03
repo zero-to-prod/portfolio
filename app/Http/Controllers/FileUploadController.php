@@ -11,12 +11,14 @@ use Upload;
 
 class FileUploadController extends Controller
 {
+    public const file = 'file';
+
     /**
      * @see FileUploadControllerTest
      */
     public function __invoke(Request $request): Response|RedirectResponse|Application|ResponseFactory
     {
-        $file = $request->file('file');
+        $file = $request->file(self::file);
         if ($file) {
             Upload::file($file);
 

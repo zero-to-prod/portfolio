@@ -10,17 +10,19 @@ use Throwable;
 
 class PostUnPublishController extends Controller
 {
+    public const id = 'id';
+
     /**
      * @throws Throwable
      */
     public function __invoke(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            Post::id => 'nullable|integer',
+            self::id => 'nullable|integer',
         ]);
 
         DB::transaction(static function () use ($validated) {
-            $post = Post::findOrFail($validated[Post::id]);
+            $post = Post::findOrFail($validated[self::id]);
 
             $post->unPublish();
         });

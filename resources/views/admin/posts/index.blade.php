@@ -2,9 +2,9 @@
 
 use App\Http\Routes;
 use App\Models\Post;
+use App\Http\Controllers\PostPublishController;
 
 /* @var Post $post */
-
 ?>
 
 <x-app-layout>
@@ -38,10 +38,10 @@ use App\Models\Post;
                             </thead>
                             <tbody class="divide-y divide-gray-800">
                             <?php
-                                $all_posts = Post::with(['views', 'authors'])->orderByDesc(Post::published_at)->get();
-                                $published = $all_posts->whereNotNull('published_at');
-                                $unpublished = $all_posts->whereNull('published_at');
-                                $posts = $unpublished->merge($published);
+                            $all_posts = Post::with(['views', 'authors'])->orderByDesc(Post::published_at)->get();
+                            $published = $all_posts->whereNotNull('published_at');
+                            $unpublished = $all_posts->whereNull('published_at');
+                            $posts = $unpublished->merge($published);
                             ?>
                             @foreach($posts as $post)
                                 <tr>
@@ -73,8 +73,10 @@ use App\Models\Post;
                                                     <form action="{{route_as(Routes::admin_posts_publish, $post)}}"
                                                           method="post">
                                                         @csrf
-                                                        <input type="hidden" name="id" value="{{$post->id}}">
-                                                        <button type="submit" class="btn btn-xs">Publish</button>
+                                                        <input name="{{PostPublishController::id}}"
+                                                               type="hidden"
+                                                               value="{{$post->id}}">
+                                                        <button class="btn btn-xs">Publish</button>
                                                     </form>
                                                 @endif
                                             </div>

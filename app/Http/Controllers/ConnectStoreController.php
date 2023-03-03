@@ -11,27 +11,31 @@ use Mail;
 
 class ConnectStoreController extends Controller
 {
+    public const email = 'email';
+    public const subject = 'subject';
+    public const body = 'body';
+
     /**
      * @see ConnectStoreControllerTest
      */
     public function __invoke(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            Contact::email => Contact::rules(Contact::email),
-            Message::subject => Message::rules(Message::subject),
-            Message::body => Message::rules(Message::body),
+            self::email => Contact::rules(Contact::email),
+            self::subject => Message::rules(Message::subject),
+            self::body => Message::rules(Message::body),
         ]);
 
         /** @var Message $message */
         $message = Contact::firstOrCreate([
-            Contact::email => $validated[Contact::email],
+            self::email => $validated[self::email],
         ])->messages()->create([
-            Message::subject => $validated[Message::subject],
-            Message::body => $validated[Message::body],
+            self::subject => $validated[self::subject],
+            self::body => $validated[self::body],
         ])->load('contact');
 
         Mail::queue(new ConnectRequest($message));
 
-        return back()->with('email', $validated[Contact::email]);
+        return back()->with(self::email, $validated[self::email]);
     }
 }

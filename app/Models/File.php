@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Tags;
 use App\Models\Support\FileColumns;
 use App\Models\Support\IdColumn;
 use App\Models\Support\SoftDeleteColumn;
@@ -36,4 +37,10 @@ class File extends Model
     {
         return $this->morphedByMany(Author::class, 'fileable');
     }
+
+    public function tagFeaturedImage(): File
+    {
+        return $this->attachTags([Tags::featured->value], 'system');
+    }
+
 }

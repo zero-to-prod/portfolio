@@ -62,7 +62,7 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag', 'tag2', 'tag3']);
-        $featured_image->attachTags([Tags::featured->value]);
+        $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
         $faker = Factory::create();
@@ -76,7 +76,7 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag2', 'tag3']);
-        $featured_image->attachTags([Tags::featured->value]);
+        $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
         $post = Post::create([
@@ -87,7 +87,7 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag2', 'tag4']);
-        $featured_image->attachTags([Tags::featured->value]);
+        $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
         $post = Post::create([
@@ -97,7 +97,7 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag2', 'tag4']);
-        $featured_image->attachTags([Tags::featured->value]);
+        $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
     }
 }

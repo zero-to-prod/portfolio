@@ -16,7 +16,7 @@ class AuthorSeeder extends Seeder
         $author = Author::firstOrCreate(config('author.default'));
         $avatar = $this->uploadFile('avatar.jpg', 'image/jpeg');
 
-        $avatar->attachTag(Tags::avatar->value);
+        $avatar->attachTag(Tags::avatar->value, 'system');
         $author->files()->sync([$avatar->id]);
     }
 }

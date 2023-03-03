@@ -12,6 +12,11 @@ class TagSeeder extends Seeder
     {
         Tag::create([
             Tag::name => Tags::featured->value,
+            Tag::type => 'system',
+        ]);
+        Tag::create([
+            Tag::name => Tags::avatar->value,
+            Tag::type => 'system',
         ]);
     }
 }

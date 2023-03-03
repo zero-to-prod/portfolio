@@ -6,7 +6,7 @@ use App\Models\Tag;
 
 /* @var Post $post */
 /* @var Tag $tag */
-
+$tags = Tag::mostViewed()
 ?>
 
 <x-main>
@@ -21,7 +21,7 @@ use App\Models\Tag;
         >
             <h3 class="font-bold text-gray-800">Explore</h3>
             <ul>
-                @forEach(\App\Models\Tag::all() as $tag)
+                @forEach($tags as $tag)
                     <li class="p-2 hover:bg-gray-100 rounded-lg">{{$tag->name}}</li>
                 @endforeach
             </ul>
@@ -29,11 +29,11 @@ use App\Models\Tag;
         <div class="flex mt-[56px] ml-[240px]"
              id="page-manager">
             <div class="flex flex-col">
-                @foreach(Tag::mostViewed() as $tag)
+                @foreach($tags as $tag)
                     <div>
                         <h2>{{$tag->name}}</h2>
                         <div class="flex">
-                            @foreach($tag->recommended() as $post)
+                            @foreach($tag->recommended()->take(2) as $post)
                                 <div>
                                     <h3>{{$post->title}}</h3>
                                 </div>

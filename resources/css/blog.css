@@ -1,6 +1,6 @@
 @layer components {
     div, nav {
-        @apply border border-red-200;
+        /*@apply border border-red-200;*/
     }
 
     [data-blog="title"] {

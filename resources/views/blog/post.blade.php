@@ -5,15 +5,14 @@ use App\Models\Post;
 
 /* @var Post $post */
 /* @var File $feature */
-$feature = $post->featuredImage();
 ?>
 
 <x-main :title="$post->title">
     <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 p-2 lg:py-6 lg:px-0 lg:flex-row">
         <div aria-label="Content" class="lg:basis-2/3">
             <div aria-label="image" class="relative">
-                <img src="{{ route_as(Routes::file, ['file' => $feature->name, 'width' => 837])}}"
-                     alt="{{$feature->original_name}}" width="837" height="537">
+                <img src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'width' => 837])}}"
+                     alt="{{$post->featuredImage()->original_name}}" width="837" height="537">
                 <div class="absolute bottom-0 text-white right-0 bg-gray-800 px-1 m-2">
                     {{$post->reading_time . ' min read'}}
                 </div>

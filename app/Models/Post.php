@@ -78,7 +78,7 @@ class Post extends Model implements HasRules
 
         $latest_post = $posts->sortByDesc(self::published_at)->first();
 
-        return $posts->forget($latest_post->id)->prepend($latest_post);
+        return $posts->forget($latest_post?->id)->prepend($latest_post);
     }
 
     public function featuredImage(): ?File

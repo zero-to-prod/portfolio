@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -22,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
             2 => Post::class,
             3 => File::class,
             4 => Author::class,
+            5 => Tag::class,
         ]);
     }
 }

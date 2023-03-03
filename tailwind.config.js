@@ -11,6 +11,10 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
     ],
-    theme: {},
+    theme: {
+        fontFamily: {
+            'sans':  ['Roboto', 'sans-serif'],
+        }
+    },
     plugins: [forms, aspectRatio, typography],
 };

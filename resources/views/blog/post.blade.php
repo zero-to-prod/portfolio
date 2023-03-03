@@ -23,7 +23,7 @@ $feature = $post->featuredImage();
                     <h1 data-blog="title">{{ $post->title }}</h1>
                     <div class="flex items-center gap-x-2 mt-2">
                         <img class="h-10 w-10 rounded-full"
-                             src="{{ route_as(Routes::file, ['file' => $post->authorAvatar()->name, 'width' => 50])}}"
+                             src="{{ route_as(Routes::file, ['file' => $post->authorAvatar()->name, 'width' => 80])}}"
                              alt="">
                         <div class="flex justify-between w-full">
                             <div>

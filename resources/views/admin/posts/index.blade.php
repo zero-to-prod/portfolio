@@ -37,7 +37,13 @@ use App\Models\Post;
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-800">
-                            @foreach(Post::with(['views', 'authors'])->orderBy(Post::published_at)->get() as $post)
+                            <?php
+                                $all_posts = Post::with(['views', 'authors'])->orderByDesc(Post::published_at)->get();
+                                $published = $all_posts->whereNotNull('published_at');
+                                $unpublished = $all_posts->whereNull('published_at');
+                                $posts = $unpublished->merge($published);
+                            ?>
+                            @foreach($posts as $post)
                                 <tr>
                                     <th class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
                                         <div class="flex justify-between">

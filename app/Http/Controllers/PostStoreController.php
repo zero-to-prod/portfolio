@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Tags;
 use App\Http\Routes;
-use App\Models\Author;
 use App\Models\Post;
 use DB;
 use Illuminate\Http\Request;
@@ -21,7 +20,8 @@ class PostStoreController extends Controller
         $validated = $request->validate([
             Post::id => 'nullable|integer',
             Post::title => Post::rules(Post::title),
-            Author::name => Author::rules(Author::name),
+            'authors' => 'required|array|min:1',
+            'tags' => 'required|array|min:1',
             Post::body => Post::rules(Post::body),
             'file' => 'nullable|image'
         ]);
@@ -39,7 +39,8 @@ class PostStoreController extends Controller
             $post->files()->sync([$file?->id]);
         }
 
-        $post->authors()->attach(Author::find($validated[Author::name]));
+        $post->authors()->sync($validated['authors']);
+        $post->tags()->sync($validated['tags']);
 
         if ($post->featuredImage() === null) {
             return redirect()->back()->withErrors(['file' => 'Missing Image'])->withInput();

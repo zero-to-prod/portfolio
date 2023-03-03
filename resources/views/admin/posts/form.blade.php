@@ -5,6 +5,7 @@ use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
 
+/* @var Tag $tag */
 /* @var Post $post */
 $post = null;
 $author = null;
@@ -55,7 +56,7 @@ if (request()->post !== null) {
                                 <input hidden name="id" value="{{$post?->id}}"/>
                             </label>
                             <x-form-control-dark>
-                                <label for="{{Post::title}}">Title*</label>
+                                <label for="{{Post::title}}">Title</label>
                                 <input value="{{$post !== null ? $post->title : old(Post::title)}}"
                                        required
                                        type="text"
@@ -66,36 +67,43 @@ if (request()->post !== null) {
                                 @endif
                             </x-form-control-dark>
                             <x-form-control-dark>
-                                <label for="{{Author::name}}">*Author</label>
+                                <label for="{{Author::name}}">Author</label>
                                 <select type="text"
+                                        multiple
                                         required
-                                        name="{{Author::name}}"
+                                        name="authors[]"
                                         id="{{Author::name}}"
                                         autocomplete="organization"
                                         class="bg-gray-900 rounded-md ring-gray-700">
-                                    @foreach(Author::all() as $a)
-                                        <option {{$author?->id === $a->id ? 'selected' :null}} value="{{$a->id}}">{{$a->name}}</option>
+                                    @foreach(Author::all() as $tag)
+                                        <option {{$author?->id === $tag->id ? 'selected' :null}} value="{{$tag->id}}">{{$tag->name}}</option>
                                     @endforeach
                                 </select>
-                                @if($errors->has(Author::name))
-                                    <p>{{ $errors->first(Author::name) }}</p>
+                                @if($errors->has('authors'))
+                                    <p>{{ $errors->first('authors') }}</p>
                                 @endif
                             </x-form-control-dark>
-                            <x-form-control-dark>
-                                <label for="tags">Tags*</label>
-                                <select type="text" name="tags" id="tags"
-                                        multiple
-                                        autocomplete="organization" class="bg-gray-900 rounded-md ring-gray-700">
-                                    @foreach(Tag::all() as $a)
-                                        <option value="{{$a->id}}">{{$a->name}}</option>
+                            <div class="sm:col-span-2">
+                                <p class="text-white mb-3">Tags</p>
+                                <div class="flex gap-4 flex-wrap">
+                                    @foreach(Tag::all() as $tag)
+                                        <div class="flex items-center text-white space-x-2">
+                                            <input id="tag-{{$tag->id}}"
+                                                   {{$post?->tags->where(Tag::slug, $tag->slug)->count() ? 'checked' : null}} type="checkbox"
+                                                   name="tags[]" value="{{$tag->id}}"
+                                                   class="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                                            />
+                                            <label for="tag-{{$tag->id}}">{{$tag->name}}</label>
+                                        </div>
                                     @endforeach
-                                </select>
-                                @if($errors->has(Author::name))
-                                    <p>{{ $errors->first(Author::name) }}</p>
-                                @endif
-                            </x-form-control-dark>
+                                    @if($errors->has('tags'))
+                                        <p class="error">{{ $errors->first('tags') }}</p>
+                                    @endif
+                                </div>
+                            </div>
+
                             <x-form-control-dark>
-                                <label for="{{Post::body}}">Body*</label>
+                                <label for="{{Post::body}}">Body</label>
                                 <textarea name="{{Post::body}}"
                                           required
                                           id="{{Post::body}}"
@@ -113,8 +121,9 @@ if (request()->post !== null) {
                                          height="50">
                                 @endif
                                 <x-form-control-dark>
-                                    <label for="file">Featured Image*</label>
-                                    <input {{$post?->featuredImage() !== null ? null  : 'required=true'}} class="w-full" type="file"
+                                    <label for="file">Featured Image</label>
+                                    <input {{$post?->featuredImage() !== null ? null  : 'required=true'}} class="w-full"
+                                           type="file"
                                            name="file" id="file">
                                     @if($errors->has('file'))
                                         <p>{{ $errors->first('file') }}</p>

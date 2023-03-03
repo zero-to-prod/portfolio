@@ -9,8 +9,8 @@
     @vite(['resources/css/app.css'])
     <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
 </head>
-<body>
-<x-top-nav/>
+<body class="overflow-y-scroll min-h-screen">
+{{--<x-top-nav/>--}}
 <main aria-label="Main">
     {{$slot}}
 </main>

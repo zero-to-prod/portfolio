@@ -25,7 +25,7 @@ class FileServeController extends Controller
             if (Str::contains($mime, 'image')) {
                 $img = Image::make($file);
                 if ($request->hasAny(['width', 'height'])) {
-                    $img->encode('webp')
+                    $img->encode('webp', 100)
                         ->resize($request->width, $request->height, function ($constraint) {
                             $constraint->aspectRatio();
                         });

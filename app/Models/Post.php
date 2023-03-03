@@ -65,9 +65,20 @@ class Post extends Model implements HasRules
         return !$this->isPublished();
     }
 
-    public static function recommended(ArrayAccess|\Spatie\Tags\Tag|array|string $tags): array|Collection|\Illuminate\Support\Collection
+    public static function recommended(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = []): Collection
     {
-        return self::withAnyTags($tags)->with('authors')->withCount('views')->orderByDesc('views_count')->get();
+        $posts = self::withAnyTags($tags)
+            ->with('authors')
+            ->whereNotIn(self::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
+            ->whereNotNull(self::published_at)
+            ->withCount('views')
+            ->orderByDesc('views_count')
+            ->get()
+            ->keyBy(self::id);
+
+        $latest_post = $posts->sortByDesc(self::published_at)->first();
+
+        return $posts->forget($latest_post->id)->prepend($latest_post);
     }
 
     public function featuredImage(): ?File

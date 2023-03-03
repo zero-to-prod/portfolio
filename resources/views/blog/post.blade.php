@@ -43,27 +43,29 @@ use App\Models\Post;
         </div>
         <div aria-label="Suggested Content" class="lg:basis-1/3">
             <div class="flex flex-col gap-2">
-                @foreach(Post::recommended($post->tags) as $post)
+                @foreach(Post::recommended($post->tags, $post->id) as $post)
                     <a href="{{route_as(Routes::blog_post, $post)}}" class="flex flex-row">
-                        <div class="relative">
-                            <img class="rounded-lg"
-                                 style="max-width: unset"
-                                 src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'width' => 168])}}"
+                        <div class="relative text-center  overflow-hidden rounded-lg" >
+                            <img class="h-[94px] width-[168px] object-cover"
+                                    src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'width' => 168])}}"
                                  alt="{{$post->featuredImage()->name}}"
                                  width="168"
-                                 height="112"
+                                 height="94"
                             >
                             <div class="absolute bottom-0 text-white text-xs right-0 bg-gray-800 px-1 rounded m-2">
                                 {{$post->reading_time . ' min'}}
                             </div>
                         </div>
-                        <div class="ml-2">
-                            <h3 class="mb-1">{{ $post->title }}</h3>
-                            <p class="text-sm text-gray-600">{{$post->authorList()}}</p>
-                                <?php
-                                $views = $post->views()->count();
-                                ?>
-                            <p class="text-sm text-gray-600">{{$views}} {{$views === 1 ? 'View' : 'Views'}}</p>
+                        <div class="ml-2 max-w-[200px] lg:max-w-[240px]">
+                            <h3 class="mb-1 break-word font-bold font-sm tracking-tight" title="{{ $post->title }}">{{ $post->title }}</h3>
+                            <div>
+                                <p class="text-sm text-gray-600 text-xs tracking-tight" title="{{$post->authorList()}}">{{$post->authorList()}}</p>
+                                    <?php
+                                    $views = $post->views()->count();
+                                    ?>
+                                <p class="text-sm text-gray-600 text-xs tracking-tight">{{$views}} {{$views === 1 ? 'view' : 'views'}} <span before="•" class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span></p>
+                            </div>
+
                         </div>
                     </a>
                 @endforeach

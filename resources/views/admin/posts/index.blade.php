@@ -29,6 +29,9 @@ use App\Http\Controllers\PostPublishController;
                             <thead>
                             <tr>
                                 <th scope="col"
+                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Featured Image
+                                </th>
+                                <th scope="col"
                                     class="py-3.5 px-3 text-left text-sm font-semibold text-white">Posts
                                 </th>
                                 <th scope="col"
@@ -45,7 +48,7 @@ use App\Http\Controllers\PostPublishController;
                             ?>
                             @foreach($posts as $post)
                                 <tr>
-                                    <th class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
                                         <div class="flex justify-between">
                                             <div class="flex  gap-4">
                                                 <figure>
@@ -57,6 +60,12 @@ use App\Http\Controllers\PostPublishController;
                                                              height="50">
                                                     </a>
                                                 </figure>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
+                                        <div class="flex justify-between">
+                                            <div class="flex gap-4">
                                                 <div class="text-left">
                                                     <a href="{{route_as(Routes::admin_posts_edit, $post)}}"
                                                        class="font-bold">{{$post->title}}</a>
@@ -81,7 +90,7 @@ use App\Http\Controllers\PostPublishController;
                                                 @endif
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
                                     <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
                                         <p>{{$post->views()->count()}}</p>
                                     </td>

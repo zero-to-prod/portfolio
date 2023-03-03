@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\Tags;
 use App\Models\Author;
 use Database\Seeders\Support\UploadsFile;
 use Illuminate\Database\Seeder;
@@ -15,7 +16,7 @@ class AuthorSeeder extends Seeder
         $author = Author::firstOrCreate(config('author.default'));
         $avatar = $this->uploadFile('avatar.jpg', 'image/jpeg');
 
-        $avatar->attachTag('avatar');
+        $avatar->attachTag(Tags::avatar->value);
         $author->files()->sync([$avatar->id]);
     }
 }

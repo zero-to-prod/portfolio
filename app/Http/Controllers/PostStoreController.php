@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Tags;
+use App\Http\Routes;
 use App\Models\Author;
 use App\Models\Post;
 use DB;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Throwable;
 use Upload;
@@ -16,7 +16,7 @@ class PostStoreController extends Controller
     /**
      * @throws Throwable
      */
-    public function __invoke(Request $request): RedirectResponse
+    public function __invoke(Request $request)
     {
         $validated = $request->validate([
             Post::id => 'nullable|integer',
@@ -26,23 +26,29 @@ class PostStoreController extends Controller
             'file' => 'nullable|image'
         ]);
 
-        DB::transaction(static function () use ($request, $validated) {
-            $post = Post::updateOrCreate([Post::id => $request->id], [
-                Post::title => $validated[Post::title],
-                Post::body => $validated[Post::body],
-            ]);
+        DB::beginTransaction();
 
-            if ($request->hasFile('file')) {
-                $file = Upload::file($request->file('file'));
-                $file?->attachTags([Tags::featured->value]);
-                $post->files()->sync([$file?->id]);
-            }
+        $post = Post::updateOrCreate([Post::id => $request->id], [
+            Post::title => $validated[Post::title],
+            Post::body => $validated[Post::body],
+        ]);
 
-            $post->authors()->attach(Author::find($validated[Author::name]));
+        if ($request->hasFile('file')) {
+            $file = Upload::file($request->file('file'));
+            $file?->attachTags([Tags::featured->value]);
+            $post->files()->sync([$file?->id]);
+        }
 
-            $post->save();
-        });
+        $post->authors()->attach(Author::find($validated[Author::name]));
 
-        return redirect()->back();
+        if ($post->featuredImage() === null) {
+            return redirect()->back()->withErrors(['file' => 'Missing Image'])->withInput();
+        }
+
+        $post->save();
+
+        DB::commit();
+
+        return redirect()->to(route_as(Routes::admin_posts_edit, $post));
     }
 }

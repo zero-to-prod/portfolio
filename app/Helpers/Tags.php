@@ -7,5 +7,6 @@ namespace App\Helpers;
  */
 enum Tags: string
 {
+    case avatar = 'avatar';
     case featured = 'featured';
 }

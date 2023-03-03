@@ -17,8 +17,8 @@ use App\Models\Post;
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center flex-row-reverse">
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <a href="{{route_as(Routes::admin_posts_create)}}" class="btn">
-                        Add Post
+                    <a href="{{route_as(Routes::admin_posts_create)}}" class="btn btn-xs">
+                        New Post
                     </a>
                 </div>
             </div>

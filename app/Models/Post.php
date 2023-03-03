@@ -55,6 +55,16 @@ class Post extends Model implements HasRules
         return $this->belongsToMany(Author::class);
     }
 
+    public function isPublished(): bool
+    {
+        return $this->published_at !== null;
+    }
+
+    public function isUnPublished(): bool
+    {
+        return !$this->isPublished();
+    }
+
     public static function recommended(ArrayAccess|\Spatie\Tags\Tag|array|string $tags): array|Collection|\Illuminate\Support\Collection
     {
         return self::withAnyTags($tags)->with('authors')->withCount('views')->orderByDesc('views_count')->get();
@@ -70,7 +80,7 @@ class Post extends Model implements HasRules
     public function authorAvatar(): ?File
     {
         return $this->authors()->first()?->files()->whereHas('tags', function ($builder) {
-            $builder->where('name->en', 'avatar');
+            $builder->where('name->en', Tags::avatar->value);
         })->first();
     }
 

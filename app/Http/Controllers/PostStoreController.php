@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Tags;
 use App\Models\Author;
 use App\Models\Post;
 use DB;
@@ -33,7 +34,7 @@ class PostStoreController extends Controller
 
             if ($request->hasFile('file')) {
                 $file = Upload::file($request->file('file'));
-                $file?->attachTags(['featured']);
+                $file?->attachTags([Tags::featured->value]);
                 $post->files()->sync([$file?->id]);
             }
 

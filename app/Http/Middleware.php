@@ -2,7 +2,10 @@
 
 namespace App\Http;
 
-enum Middleware : string
+/**
+ * @property $value
+ */
+enum Middleware: string
 {
     case web = 'web';
     case api = 'api';

@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+/**
+ * @property $value
+ */
 enum Routes: string
 {
     case connect = '/connect';

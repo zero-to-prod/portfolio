@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Tags;
 use App\Models\Support\HasRules;
 use App\Models\Support\IdColumn;
 use App\Models\Support\PostColumns;
@@ -62,7 +63,7 @@ class Post extends Model implements HasRules
     public function featuredImage(): ?File
     {
         return $this->files()->whereHas('tags', function ($builder) {
-            $builder->where('name->en', 'featured');
+            $builder->where('name->en', Tags::featured->value);
         })->first();
     }
 

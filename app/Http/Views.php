@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+/**
+ * @property $value
+ */
 enum Views: string
 {
     case auth_confirmPassword = 'auth.confirm-password';
@@ -15,7 +18,7 @@ enum Views: string
     case cv = 'cv';
     case dashboard = 'dashboard';
     case admin_posts = 'admin.posts.index';
-    case admin_posts_create = 'admin.posts.create';
+    case admin_posts_create = 'admin.posts.form';
     case layouts_app = 'layouts.app';
     case layouts_guest = 'layouts.guest';
     case layouts_main = 'layouts.main';

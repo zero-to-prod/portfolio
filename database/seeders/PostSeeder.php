@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\Tags;
 use App\Models\Author;
 use App\Models\Post;
 use Database\Seeders\Support\UploadsFile;
@@ -61,7 +62,7 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag', 'tag2', 'tag3']);
-        $featured_image->attachTags(['featured']);
+        $featured_image->attachTags([Tags::featured->value]);
         $post->files()->attach($featured_image);
 
         $faker = Factory::create();
@@ -75,7 +76,7 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag2', 'tag3']);
-        $featured_image->attachTags(['featured']);
+        $featured_image->attachTags([Tags::featured->value]);
         $post->files()->attach($featured_image);
 
         $post = Post::create([
@@ -86,7 +87,7 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag2', 'tag4']);
-        $featured_image->attachTags(['featured']);
+        $featured_image->attachTags([Tags::featured->value]);
         $post->files()->attach($featured_image);
 
         $post = Post::create([
@@ -96,7 +97,7 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags(['tag2', 'tag4']);
-        $featured_image->attachTags(['featured']);
+        $featured_image->attachTags([Tags::featured->value]);
         $post->files()->attach($featured_image);
     }
 }

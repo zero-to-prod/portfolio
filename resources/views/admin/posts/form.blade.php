@@ -3,6 +3,7 @@
 use App\Http\Routes;
 use App\Models\Author;
 use App\Models\Post;
+use App\Models\Tag;
 
 /* @var Post $post */
 $post = null;
@@ -65,6 +66,19 @@ if (request()->post !== null) {
                                         autocomplete="organization" class="bg-gray-900 rounded-md ring-gray-700">
                                     @foreach(Author::all() as $a)
                                         <option {{$author?->id === $a->id ? 'selected' :null}} value="{{$a->id}}">{{$a->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has(Author::name))
+                                    <p>{{ $errors->first(Author::name) }}</p>
+                                @endif
+                            </x-form-control-dark>
+                            <x-form-control-dark>
+                                <label for="tags">Author</label>
+                                <select type="text" name="tags" id="tags"
+                                        multiple
+                                        autocomplete="organization" class="bg-gray-900 rounded-md ring-gray-700">
+                                    @foreach(Tag::all() as $a)
+                                        <option value="{{$a->id}}">{{$a->name}}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has(Author::name))

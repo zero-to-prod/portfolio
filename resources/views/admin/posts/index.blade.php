@@ -52,7 +52,7 @@ use App\Http\Controllers\PostPublishController;
                                         <div class="flex justify-between">
                                             <div class="flex  gap-4">
                                                 <figure>
-                                                    <a class="underline" href="{{route_as(Routes::blog_post, $post)}}"
+                                                    <a class="underline" href="{{route_as(Routes::read, $post)}}"
                                                        target="_blank">
                                                         <img class="object-cover h-[100px] rounded-lg"
                                                              src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'height' => 100])}}"

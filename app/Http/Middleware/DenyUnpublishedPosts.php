@@ -12,7 +12,7 @@ class DenyUnpublishedPosts
 
     public function handle(Request $request, Closure $next): Response
     {
-        if (route_is(Routes::blog_post) && $request->route('post')?->published_at === null) {
+        if (route_is(Routes::read) && $request->route('post')?->published_at === null) {
             abort(404);
         }
         return $next($request);

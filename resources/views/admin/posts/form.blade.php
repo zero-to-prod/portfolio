@@ -48,7 +48,7 @@ if (request()->post !== null) {
                             </form>
                             @if($post_model->isPublished())
                                 <a class="btn btn-xs"
-                                   href="{{route_as(Routes::blog_post, $post_model)}}"
+                                   href="{{route_as(Routes::read, $post_model)}}"
                                    target="_blank">
                                     View
                                 </a>

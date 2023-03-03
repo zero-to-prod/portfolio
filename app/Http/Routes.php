@@ -14,7 +14,7 @@ enum Routes: string
     case file = '/file/{file}';
     case welcome = '/';
 
-    case blog_post = '/blog/{post}';
+    case read = '/read/{post}';
 
     /* Admin */
 

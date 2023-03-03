@@ -13,7 +13,7 @@ class PostViewCounter
 
     public function handle(Request $request, Closure $next): Response
     {
-        if (route_is(Routes::blog_post)) {
+        if (route_is(Routes::read)) {
             View::create([
                 View::post_id => $request->route('post')->id,
                 View::ip => $request->ip(),

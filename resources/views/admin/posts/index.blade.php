@@ -40,22 +40,36 @@ use App\Models\Post;
                             @foreach(Post::with(['views', 'authors'])->orderBy(Post::published_at)->get() as $post)
                                 <tr>
                                     <th class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
-                                        <div class="flex gap-4">
-                                            <figure>
-                                                <a class="underline" href="{{route_as(Routes::blog_post, $post)}}"
-                                                   target="_blank">
-                                                    <img class="object-cover h-[100px] rounded-lg"
-                                                         src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'height' => 100])}}"
-                                                         alt="{{$post->featuredImage()->original_name}}" height="50">
-                                                </a>
-                                            </figure>
-                                            <div class="text-left">
-                                                <a href="{{route_as(Routes::admin_posts_edit, $post)}}" class="font-bold">{{$post->title}}</a>
-                                                <p>{{$post->authors->first()->name}}</p>
-                                                <p>{{$post->subtitle}}</p>
-                                                @if($post->published_at !== null)
-                                                    <p>{{$post->published_at?->format('d/m/Y')}}</p>
-                                                    <p>Words: {{$post->published_word_count}}</p>
+                                        <div class="flex justify-between">
+                                            <div class="flex  gap-4">
+                                                <figure>
+                                                    <a class="underline" href="{{route_as(Routes::blog_post, $post)}}"
+                                                       target="_blank">
+                                                        <img class="object-cover h-[100px] rounded-lg"
+                                                             src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'height' => 100])}}"
+                                                             alt="{{$post->featuredImage()->original_name}}"
+                                                             height="50">
+                                                    </a>
+                                                </figure>
+                                                <div class="text-left">
+                                                    <a href="{{route_as(Routes::admin_posts_edit, $post)}}"
+                                                       class="font-bold">{{$post->title}}</a>
+                                                    <p>{{$post->authors->first()->name}}</p>
+                                                    <p>{{$post->subtitle}}</p>
+                                                    @if($post->published_at !== null)
+                                                        <p>{{$post->published_at?->format('d/m/Y')}}</p>
+                                                        <p>Words: {{$post->published_word_count}}</p>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="my-auto">
+                                                @if($post->published_at === null)
+                                                    <form action="{{route_as(Routes::admin_posts_publish, $post)}}"
+                                                          method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{$post->id}}">
+                                                        <button type="submit" class="btn btn-xs">Publish</button>
+                                                    </form>
                                                 @endif
                                             </div>
                                         </div>

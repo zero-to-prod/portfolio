@@ -28,6 +28,13 @@ if (!function_exists('route_is')) {
     }
 }
 
+if (!function_exists('route_contains')) {
+    function route_contains(string $route): bool
+    {
+        return Str::contains(request()?->url(), $route, true);
+    }
+}
+
 
 if (!function_exists('redirect_as')) {
     function redirect_as($to = null, $status = 302, $headers = [], $secure = null): Redirector|RedirectResponse|Application

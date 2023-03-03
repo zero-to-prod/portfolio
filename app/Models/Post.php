@@ -107,4 +107,17 @@ class Post extends Model implements HasRules
 
         return $this;
     }
+
+    public function unPublish(): self
+    {
+        self::unguard();
+
+        $this->update([
+            self::published_at => null,
+        ]);
+
+        self::reguard();
+
+        return $this;
+    }
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Routes;
-use App\Http\Views;
 use App\Models\Author;
 use App\Models\Post;
 use DB;
@@ -16,7 +14,6 @@ class PostStoreController extends Controller
 {
     /**
      * @throws Throwable
-     * @see ConnectStoreControllerTest
      */
     public function __invoke(Request $request): RedirectResponse
     {
@@ -45,6 +42,6 @@ class PostStoreController extends Controller
             $post->save();
         });
 
-        return redirect_as(Routes::admin_posts);
+        return redirect()->back();
     }
 }

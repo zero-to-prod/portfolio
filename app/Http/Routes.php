@@ -19,6 +19,8 @@ enum Routes: string
     case admin_posts_create = '/admin/posts/create';
     case admin_posts_store = '/admin/posts/store';
     case admin_posts_edit = '/admin/posts/{post}/edit';
+    case admin_posts_publish = '/admin/posts/{post}/publish';
+    case admin_posts_unPublish = '/admin/posts/{post}/un-publish';
     case dashboard = '/dashboard';
     case email_verificationNotice = 'email/verification-notice';
     case email_verificationNotification = 'email/verification-notification';

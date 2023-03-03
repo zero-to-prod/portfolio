@@ -49,8 +49,8 @@ $feature = $post->featuredImage();
                         <div class="relative">
                             <img class="rounded-lg"
                                  style="max-width: unset"
-                                 src="{{ route_as(Routes::file, ['file' => $feature->name, 'width' => 168])}}"
-                                 alt="{{$feature->original_name}}"
+                                 src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'width' => 168])}}"
+                                 alt="{{$post->featuredImage()->name}}"
                                  width="168"
                                  height="112"
                             >

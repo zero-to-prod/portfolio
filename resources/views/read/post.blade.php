@@ -67,7 +67,7 @@ use App\Models\Post;
                                     ?>
                                 <p class="text-sm text-gray-600 text-xs tracking-tight">{{$views}} {{$views === 1 ? 'view' : 'views'}}
                                     <span before="•"
-                                          class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
+                                          class="before:content-[attr(before)]">{{$post->published_at->diffForHumans()}}</span>
                                 </p>
                             </div>
 

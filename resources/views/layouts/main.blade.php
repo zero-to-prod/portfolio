@@ -9,7 +9,7 @@ use App\Http\Routes;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="davidDESIGN david design">
+    <meta name="description" content="devREAD dev read">
     <title>{{ $title ?? config('app.name', 'Home') }}</title>
     @vite(['resources/css/app.css'])
     <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
@@ -17,24 +17,24 @@ use App\Http\Routes;
 <body class="min-h-screen overflow-y-scroll">
 <main aria-label="Main">
     <div id="content">
-        <header class="fixed top-0 z-50 w-full bg-white shadow-lg h-[56px] 2col:overflow-y-visible 2col:shadow min-[780px]:shadow-none">
+        <header class="fixed top-0 z-50 w-full 2col:overflow-y-visible bg-white 2col:shadow shadow-lg h-[56px] min-[780px]:shadow-none">
             <div class="mx-auto pr-4">
-                <div class="relative gap-4 flex justify-between">
-                    <a class="text-normal flex font-light 2col:text-lg pl-4" href="{{route_as(Routes::welcome)}}">
-                        <div class="my-auto">devREAD</div>
+                <div class="relative flex justify-between gap-2">
+                    <a class="flex pl-4 text-lg" href="{{route_as(Routes::welcome)}}">
+                        <div class="my-auto"><span class="font-semibold text-sky-600">dev</span>READ</div>
                     </a>
-                    <div class="min-w-0 flex-1 col-span-6 min-[1312px]:ml-[140px] ">
-                        <div class="flex items-center py-2 max-w-md">
+                    <div class="col-span-6 min-w-0 flex-1 min-[1312px]:ml-[150px]">
+                        <div class="flex max-w-md items-center py-2">
                             <div class="w-full">
                                 <label for="search" class="block text-sm font-medium leading-6 text-gray-900"></label>
                                 <div class="flex rounded-md shadow-sm">
                                     <div class="relative flex flex-grow items-stretch focus-within:z-10">
                                         <input name="search" id="search"
-                                               class="block w-full rounded-none rounded-l-md border-0 pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px] py-1.5 focus:ring-1 focus:ring-inset focus:ring-sky-600 2col:text-sm 2col:leading-6"
+                                               class="block w-full rounded-none rounded-l-md border-0 pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px] focus:ring-1 focus:ring-inset focus:ring-sky-600"
                                                placeholder="Search">
                                     </div>
                                     <button type="button"
-                                            class="relative -ml-px inline-flex items-center rounded-r-md bg-gray-100 p-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 gap-x-1.5 hover:bg-gray-200">
+                                            class="relative -ml-px inline-flex items-center rounded-r-md bg-gray-100 p-2 2col:px-4 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 gap-x-1.5 hover:bg-gray-200">
                                         <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
                                              aria-hidden="true">
                                             <path fill-rule="evenodd"
@@ -46,7 +46,7 @@ use App\Http\Routes;
                             </div>
                         </div>
                     </div>
-                    <div class="flex items-center 2col:hidden">
+                    <div class="flex 2col:hidden items-center">
                         <!-- Mobile menu button -->
                         <button type="button"
                                 class="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"

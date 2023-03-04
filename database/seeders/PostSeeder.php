@@ -98,5 +98,16 @@ MARKDOWN;
         $post->attachTags(['Laravel', 'Deep Dive']);
         $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
+
+        $post = Post::create([
+            Post::title => Str::title($faker->bs),
+            Post::body => $faker->paragraph,
+        ]);
+        $post->publish();
+
+        $post->authors()->attach(Author::first());
+        $post->attachTags(['Clean Code', 'Automation', 'PHP']);
+        $featured_image->tagFeaturedImage();
+        $post->files()->attach($featured_image);
     }
 }

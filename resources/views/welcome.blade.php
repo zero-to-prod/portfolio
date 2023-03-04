@@ -10,20 +10,20 @@ $tags = Tag::mostViewed()
 ?>
 
 <x-main>
-{{--    <nav class="fixed top-0 bottom-0 left-0 hidden pl-4 mt-[56px] min-[780px]:w-[64px] min-[1312px]:w-[240px] min-[780px]:block"--}}
-{{--         id="drawer"--}}
-{{--    >--}}
-{{--        <h3 class="font-bold text-gray-800">Explore</h3>--}}
-{{--        <ul>--}}
-{{--            @forEach($tags as $tag)--}}
-{{--                <li class="rounded-lg p-2 hover:bg-gray-100">{{$tag->name}}</li>--}}
-{{--            @endforeach--}}
-{{--        </ul>--}}
-{{--    </nav>--}}
-    <nav class="fixed top-0 left-0 hidden min-[490px]:block mt-[56px] bg-white z-50 py-4 w-full shadow-lg min-[490px]:shadow min-[780px]:shadow-none"
+    <nav class="fixed top-0 bottom-0 left-0 hidden pl-4 mt-[56px] min-[780px]:w-[64px] min-[1312px]:w-[240px] min-[780px]:block"
          id="drawer"
     >
-        <ul class="ml-0 flex bg-white space-x-4 min-[780px]:ml-[64px] min-[1312px]:ml-[240px] min-[490px]:px-4">
+        <h3 class="font-bold text-gray-800">Explore</h3>
+        <ul>
+            @forEach($tags as $tag)
+                <li class="rounded-lg p-2 hover:bg-gray-100">{{$tag->name}}</li>
+            @endforeach
+        </ul>
+    </nav>
+    <nav class="fixed top-0 left-0 hidden min-[490px]:block mt-[56px] bg-white z-50  w-full shadow-lg min-[490px]:shadow min-[780px]:shadow-none"
+         id="drawer"
+    >
+        <ul class="ml-0 grid grid-flow-col auto-cols-max overflow-y-auto py-4 bg-white space-x-4 min-[780px]:ml-[64px] min-[1312px]:ml-[240px] min-[490px]:px-4">
             @forEach($tags as $tag)
                 <li class="rounded-lg bg-gray-100 p-2 hover:bg-gray-200">{{$tag->name}}</li>
             @endforeach

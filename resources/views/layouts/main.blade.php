@@ -15,21 +15,20 @@ use App\Http\Routes;
     <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
 </head>
 <body class="min-h-screen overflow-y-scroll">
-{{--<x-top-nav/>--}}
 <main aria-label="Main">
     <div id="content">
         <header class="fixed top-0 z-50 w-full bg-white shadow-lg h-[56px] lg:overflow-y-visible min-[490px]:shadow min-[780px]:shadow-none">
-            <div class="mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
-                    <div class="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
-                        <div class="flex flex-shrink-0 items-center">
-                            <a href="{{route_as(Routes::welcome)}}">
-                                davidDESIGN
+            <div class="mx-auto px-4">
+                <div class="relative gap-4 flex justify-between xl:grid xl:grid-cols-12">
+                    <div class="flex md:inset-y-0 md:left-0 lg:static xl:col-span-2">
+                        <div class="mt-2 flex flex-shrink-0 items-center">
+                            <a class="text-normal font-light min-[490px]:text-lg" href="{{route_as(Routes::welcome)}}">
+                                devREAD
                             </a>
                         </div>
                     </div>
-                    <div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
-                        <div class="flex items-center px-6 pt-2 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
+                    <div class="min-w-0 flex-1 xl:col-span-6">
+                        <div class="flex items-center py-2 max-w-md">
                             <div class="w-full">
                                 <label for="search" class="block text-sm font-medium leading-6 text-gray-900"></label>
                                 <div class="flex rounded-md shadow-sm">
@@ -39,7 +38,7 @@ use App\Http\Routes;
                                                placeholder="Search">
                                     </div>
                                     <button type="button"
-                                            class="relative -ml-px inline-flex items-center rounded-r-md bg-gray-100 px-6 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 gap-x-1.5 hover:bg-gray-200">
+                                            class="relative -ml-px inline-flex items-center rounded-r-md bg-gray-100 p-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 gap-x-1.5 hover:bg-gray-200">
                                         <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
                                              aria-hidden="true">
                                             <path fill-rule="evenodd"

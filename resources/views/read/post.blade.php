@@ -52,7 +52,7 @@ use App\Models\Post;
                                  width="168"
                                  height="94"
                             >
-                            <div class="absolute bottom-0 text-white text-xs right-0 bg-gray-800 px-1 rounded m-2">
+                            <div class="absolute bottom-0 text-white shadow text-xs right-0 bg-gray-900 px-1 rounded m-2">
                                 {{$post->reading_time . ' min'}}
                             </div>
                         </div>

@@ -12,4 +12,5 @@ trait PostColumns
     public const published_content = 'published_content';
     public const published_word_count = 'published_word_count';
     public const published_at = 'published_at';
+    public const originally_published_at = 'originally_published_at';
 }

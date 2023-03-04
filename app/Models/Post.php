@@ -38,7 +38,7 @@ class Post extends Model implements HasRules
     use HasTags;
 
     protected $fillable = [self::title, self::subtitle, self::body];
-    protected $casts = [self::published_at => 'datetime'];
+    protected $casts = [self::published_at => 'datetime', self::originally_published_at => 'datetime'];
 
     public function files(): MorphToMany
     {
@@ -121,6 +121,7 @@ class Post extends Model implements HasRules
 
         $this->update([
             self::published_content => $published_content,
+            self::originally_published_at => $this->originally_published_at === null ? now() : $this->originally_published_at,
             self::published_at => now(),
             self::published_word_count => str_word_count(strip_tags($published_content)),
         ]);

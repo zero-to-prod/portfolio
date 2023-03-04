@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Helpers\Tags;
 use App\Models\Author;
 use App\Models\Post;
 use Database\Seeders\Support\UploadsFile;
@@ -61,7 +60,7 @@ MARKDOWN;
         $post->publish();
 
         $post->authors()->attach(Author::first());
-        $post->attachTags(['tag', 'tag2', 'tag3']);
+        $post->attachTags(['Laravel', 'Refactoring', 'PHP']);
         $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
@@ -75,7 +74,7 @@ MARKDOWN;
         $post->publish();
 
         $post->authors()->attach(Author::first());
-        $post->attachTags(['tag2', 'tag3']);
+        $post->attachTags(['Refactoring', 'PHP']);
         $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
@@ -86,7 +85,7 @@ MARKDOWN;
         $post->publish();
 
         $post->authors()->attach(Author::first());
-        $post->attachTags(['tag2', 'tag4']);
+        $post->attachTags(['Refactoring', 'Deep Dive']);
         $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
@@ -96,7 +95,7 @@ MARKDOWN;
         ]);
 
         $post->authors()->attach(Author::first());
-        $post->attachTags(['tag2', 'tag4']);
+        $post->attachTags(['Laravel', 'Deep Dive']);
         $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
     }

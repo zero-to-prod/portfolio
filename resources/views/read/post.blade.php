@@ -48,7 +48,7 @@ use App\Models\Post;
                         <div class="relative text-center  overflow-hidden rounded-lg">
                             <img class="h-[94px] width-[168px] object-cover"
                                  src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'width' => 168])}}"
-                                 alt="{{$post->featuredImage()->name}}"
+                                 alt="{{$post->featuredImage()->original_name}}"
                                  width="168"
                                  height="94"
                             >

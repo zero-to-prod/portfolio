@@ -15,6 +15,8 @@ enum Routes: string
     case welcome = '/';
 
     case read = '/read/{post}';
+    case search = '/search';
+    case results = '/results';
 
     /* Admin */
 

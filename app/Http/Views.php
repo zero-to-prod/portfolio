@@ -15,6 +15,7 @@ enum Views: string
     case auth_verifyEmail = 'auth.verify-email';
     case read_post = 'read.post';
     case connect = 'connect';
+    case results = 'results';
     case cv = 'cv';
     case dashboard = 'dashboard';
     case admin_posts = 'admin.posts.index';

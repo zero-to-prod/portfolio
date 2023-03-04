@@ -31,7 +31,7 @@ use App\Models\Post;
                             </div>
                             <div class="text-sm text-gray-600 text-right">
                                 <p>{{$post->published_at?->format('F j, Y')}}</p>
-                                <p>{{$post->views()->count()}} {{$post->views()->count() === 1 ? 'View' : 'Views'}}</p>
+                                <p>{{$post->views_count}} {{$post->views_count === 1 ? 'View' : 'Views'}}</p>
                             </div>
                         </div>
                     </div>

@@ -29,8 +29,7 @@ $tags = Tag::mostViewed()
             @endforeach
         </ul>
     </nav>
-    <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[240px]"
-         id="page-manager">
+    <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[240px]">
         <div class="flex w-full flex-col max-w-[2535px] min-[2535px]:mx-auto 2col:mt-6 2col:gap-6">
             @foreach($tags as $tag)
                 <section class="overflow-hidden 2col:px-4">
@@ -57,15 +56,12 @@ $tags = Tag::mostViewed()
                                     @endif
                                 </div>
                                 <div class="bg-white p-3 2col:px-0">
-                                    <h3 class="font-light tracking-tight font-sm break-word 2col:font-normal 2col:font-bold"
+                                    <h3 class="font-bold tracking-tight font-sm break-word"
                                         title="{{ $post->title }}">{{ $post->title }}</h3>
                                     <div>
-                                        <p class="text-xs text-sm tracking-tight text-gray-600"
+                                        <p class="text-sm tracking-tight text-gray-600"
                                            title="{{$post->authorList()}}">{{$post->authorList()}}</p>
-                                            <?php
-                                            $views = $post->views()->count();
-                                            ?>
-                                        <p class="text-xs text-sm tracking-tight text-gray-600">{{$views}} {{$views === 1 ? 'view' : 'views'}}
+                                        <p class="text-xs text-sm tracking-tight text-gray-600">{{$post->views_count}} {{$post->views_count === 1 ? 'view' : 'views'}}
                                             <span before="•"
                                                   class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
                                         </p>

@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ResultsController;
 use App\Http\Routes;
+use App\Http\Controllers\SearchController;
 
+$search = SearchController::search;
 ?>
 @props(['title'])
         <!doctype html>
@@ -23,29 +26,31 @@ use App\Http\Routes;
                     <a class="flex pl-4 text-lg" href="{{route_as(Routes::welcome)}}">
                         <div class="my-auto"><span class="font-semibold text-sky-600">dev</span>READ</div>
                     </a>
-                    <div class="col-span-6 min-w-0 flex-1 min-[1312px]:ml-[150px]">
-                        <div class="flex max-w-md items-center py-2">
-                            <div class="w-full">
-                                <label for="search" class="block text-sm font-medium leading-6 text-gray-900"></label>
-                                <div class="flex rounded-md shadow-sm">
-                                    <div class="relative flex flex-grow items-stretch focus-within:z-10">
-                                        <input name="search" id="search"
-                                               class="block w-full rounded-none rounded-l-md border-0 pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px] focus:ring-1 focus:ring-inset focus:ring-sky-600"
-                                               placeholder="Search">
-                                    </div>
-                                    <button type="button"
-                                            class="relative -ml-px inline-flex items-center rounded-r-md bg-gray-100 p-2 2col:px-4 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 gap-x-1.5 hover:bg-gray-200">
-                                        <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                             aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                  d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                                                  clip-rule="evenodd"/>
-                                        </svg>
-                                    </button>
+                    <div class="w-full py-2">
+                        <form class="max-w-2xl mx-auto" action="{{route_as(Routes::search)}}" method="post">
+                            @csrf
+                            <label for="{{$search}}"
+                                   class="block text-sm font-medium leading-6 text-gray-900"></label>
+                            <div class="flex rounded-md shadow-sm">
+                                <div class="relative flex flex-grow items-stretch focus-within:z-10">
+                                    <input class="block w-full rounded-none rounded-l-md border-0 pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px] focus:ring-1 focus:ring-inset focus:ring-sky-600"
+                                           name="{{$search}}"
+                                           id="{{$search}}"
+                                           value="{{request()->query(ResultsController::query)}}"
+                                           placeholder="Search">
                                 </div>
+                                <button class="relative -ml-px inline-flex items-center rounded-r-md bg-gray-100 p-2 2col:px-4 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 gap-x-1.5 hover:bg-gray-200">
+                                    <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
+                                         aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                                              clip-rule="evenodd"/>
+                                    </svg>
+                                </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
+                    <div class="my-auto">About</div>
                     <div class="flex 2col:hidden items-center">
                         <!-- Mobile menu button -->
                         <button type="button"

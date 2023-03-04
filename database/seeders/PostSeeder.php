@@ -51,10 +51,11 @@ console.log(foo(5));
 MARKDOWN;
 
         $featured_image = $this->uploadFile('generic.png');
-
+        $faker = Factory::create();
         $post = Post::create([
             Post::title => 'First',
             Post::body => $markdown,
+            Post::subtitle => $faker->paragraph,
         ]);
 
         $post->publish();
@@ -64,11 +65,12 @@ MARKDOWN;
         $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
-        $faker = Factory::create();
+
 
         $post = Post::create([
             Post::title => Str::title($faker->bs),
             Post::body => $faker->paragraph,
+            Post::subtitle => $faker->paragraph,
         ]);
 
         $post->publish();
@@ -81,6 +83,7 @@ MARKDOWN;
         $post = Post::create([
             Post::title => Str::title($faker->bs),
             Post::body => $faker->paragraph,
+            Post::subtitle => $faker->paragraph,
         ]);
         $post->publish();
 
@@ -92,6 +95,7 @@ MARKDOWN;
         $post = Post::create([
             Post::title => Str::title($faker->bs),
             Post::body => $faker->paragraph,
+            Post::subtitle => $faker->paragraph,
         ]);
 
         $post->authors()->attach(Author::first());
@@ -102,6 +106,7 @@ MARKDOWN;
         $post = Post::create([
             Post::title => Str::title($faker->bs),
             Post::body => $faker->paragraph,
+            Post::subtitle => $faker->paragraph,
         ]);
         $post->publish();
 

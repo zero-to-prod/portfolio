@@ -18,7 +18,7 @@ $body = PostFormController::body;
 $featured_image = PostFormController::featured_image;
 
 if (request()->post !== null) {
-    $post_model = Post::where(Post::slug, request()->post)->first();
+    $post_model = Post::withoutGlobalScopes()->where(Post::slug, request()->post)->first();
     $author_model = $post_model->authors->first();
 }
 ?>

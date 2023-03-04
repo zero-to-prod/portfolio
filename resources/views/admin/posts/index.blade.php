@@ -35,13 +35,19 @@ use App\Http\Controllers\PostPublishController;
                                     class="py-3.5 px-3 text-left text-sm font-semibold text-white">Posts
                                 </th>
                                 <th scope="col"
+                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Tags
+                                </th>
+                                <th scope="col"
+                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Action
+                                </th>
+                                <th scope="col"
                                     class="py-3.5 px-3 text-left text-sm font-semibold text-white">Views
                                 </th>
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-800">
                             <?php
-                            $all_posts = Post::with(['views', 'authors'])->orderByDesc(Post::published_at)->get();
+                            $all_posts = Post::withoutGlobalScopes()->with(['views', 'authors', 'tags'])->orderByDesc(Post::published_at)->get();
                             $published = $all_posts->whereNotNull('published_at');
                             $unpublished = $all_posts->whereNull('published_at');
                             $posts = $unpublished->merge($published);
@@ -63,32 +69,39 @@ use App\Http\Controllers\PostPublishController;
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
-                                        <div class="flex justify-between">
-                                            <div class="flex gap-4">
-                                                <div class="text-left">
+                                    <td class="py-4 px-3 text-sm text-gray-300">
+                                        <div>
+                                            <div>
+                                                <div>
                                                     <a href="{{route_as(Routes::admin_posts_edit, $post)}}"
                                                        class="font-bold">{{$post->title}}</a>
                                                     <p>{{$post->authors->first()->name}}</p>
-                                                    <p>{{$post->subtitle}}</p>
+                                                    <p title="{{$post->subtitle}}">{{$post->subtitle}}</p>
                                                     @if($post->published_at !== null)
                                                         <p>{{$post->published_at?->format('d/m/Y')}}</p>
                                                         <p>Words: {{$post->published_word_count}}</p>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="my-auto">
-                                                @if($post->published_at === null)
-                                                    <form action="{{route_as(Routes::admin_posts_publish, $post)}}"
-                                                          method="post">
-                                                        @csrf
-                                                        <input name="{{PostPublishController::id}}"
-                                                               type="hidden"
-                                                               value="{{$post->id}}">
-                                                        <button class="btn btn-xs">Publish</button>
-                                                    </form>
-                                                @endif
-                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
+                                        <p>
+                                            {{$post->tags->implode('name', ', ')}}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <div class="my-auto">
+                                            @if($post->published_at === null)
+                                                <form action="{{route_as(Routes::admin_posts_publish, $post)}}"
+                                                      method="post">
+                                                    @csrf
+                                                    <input name="{{PostPublishController::id}}"
+                                                           type="hidden"
+                                                           value="{{$post->id}}">
+                                                    <button class="btn btn-xs">Publish</button>
+                                                </form>
+                                            @endif
                                         </div>
                                     </td>
                                     <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">

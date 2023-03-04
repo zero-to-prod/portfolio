@@ -46,7 +46,6 @@ class Tag extends \Spatie\Tags\Tag
         $posts = $this->posts()
             ->with('authors:id,name')
             ->whereNotIn(Post::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
-            ->whereNotNull(Post::published_at)
             ->withCount('views')
             ->orderByDesc('views_count')
             ->get()

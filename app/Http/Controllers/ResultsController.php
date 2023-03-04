@@ -21,7 +21,6 @@ class ResultsController extends Controller
             $query->where('title', 'LIKE', "%{$search}%")
                 ->orWhere('body', 'LIKE', "%{$search}%");
         })
-            ->whereNotNull('published_at')
             ->with(['tags', 'authors'])
             ->withCount('views')
             ->orderByDesc('views_count')

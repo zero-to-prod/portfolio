@@ -15,6 +15,7 @@ class DenyUnpublishedPosts
         if (route_is(Routes::read) && $request->route('post')?->published_at === null) {
             abort(404);
         }
+
         return $next($request);
     }
 }

@@ -35,7 +35,7 @@ class PostFormController extends Controller
 
         DB::beginTransaction();
 
-        $post = Post::updateOrCreate([Post::id => $request->id], [
+        $post = Post::withoutGlobalScopes()->updateOrCreate([Post::id => $request->id], [
             Post::title => $validated[Post::title],
             Post::body => $validated[Post::body],
         ]);

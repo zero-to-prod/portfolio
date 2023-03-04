@@ -22,7 +22,7 @@ class PostUnPublishController extends Controller
         ]);
 
         DB::transaction(static function () use ($validated) {
-            $post = Post::findOrFail($validated[self::id]);
+            $post = Post::withoutGlobalScopes()->findOrFail($validated[self::id]);
 
             $post->unPublish();
         });

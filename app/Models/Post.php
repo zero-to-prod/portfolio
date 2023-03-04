@@ -11,6 +11,7 @@ use App\Models\Support\SlugColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
 use ArrayAccess;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -39,6 +40,13 @@ class Post extends Model implements HasRules
 
     protected $fillable = [self::title, self::subtitle, self::body];
     protected $casts = [self::published_at => 'datetime', self::originally_published_at => 'datetime'];
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope('published', function (Builder $builder) {
+            $builder->whereNotNull(self::published_at);
+        });
+    }
 
     public function files(): MorphToMany
     {
@@ -70,7 +78,6 @@ class Post extends Model implements HasRules
         $posts = self::withAnyTags($tags)
             ->with('authors')
             ->whereNotIn(self::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
-            ->whereNotNull(self::published_at)
             ->withCount('views')
             ->orderByDesc('views_count')
             ->get()

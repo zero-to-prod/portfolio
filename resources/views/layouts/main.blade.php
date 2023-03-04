@@ -14,11 +14,11 @@ use App\Http\Routes;
     @vite(['resources/css/app.css'])
     <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
 </head>
-<body class="overflow-y-scroll min-h-screen">
+<body class="min-h-screen overflow-y-scroll">
 {{--<x-top-nav/>--}}
 <main aria-label="Main">
     <div id="content">
-        <header class="fixed top-0 z-50 w-full bg-white h-[56px] bg-white lg:overflow-y-visible">
+        <header class="fixed top-0 z-50 w-full bg-white shadow-lg h-[56px] lg:overflow-y-visible min-[490px]:shadow min-[780px]:shadow-none">
             <div class="mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
                     <div class="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
@@ -29,17 +29,17 @@ use App\Http\Routes;
                         </div>
                     </div>
                     <div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
-                        <div class="flex items-center px-6 py-2 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
+                        <div class="flex items-center px-6 pt-2 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
                             <div class="w-full">
                                 <label for="search" class="block text-sm font-medium leading-6 text-gray-900"></label>
                                 <div class="flex rounded-md shadow-sm">
                                     <div class="relative flex flex-grow items-stretch focus-within:z-10">
                                         <input name="search" id="search"
-                                               class="block h-[40px] w-full rounded-none rounded-l-md border-0 py-1.5 pl-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                                               class="block w-full rounded-none rounded-l-md border-0 pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px] py-1.5 focus:ring-1 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                                                placeholder="Search">
                                     </div>
                                     <button type="button"
-                                            class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-6 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 bg-gray-100 hover:bg-gray-200">
+                                            class="relative -ml-px inline-flex items-center rounded-r-md bg-gray-100 px-6 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 gap-x-1.5 hover:bg-gray-200">
                                         <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
                                              aria-hidden="true">
                                             <path fill-rule="evenodd"
@@ -81,7 +81,7 @@ use App\Http\Routes;
                 </div>
             </div>
         </header>
-        <div class="mt-[56px]">
+        <div class="mt-[64px] min-[490px]:mt-[124px]">
             {{$slot}}
         </div>
     </div>

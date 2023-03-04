@@ -28,7 +28,7 @@ class Tag extends \Spatie\Tags\Tag
     /**
      * @return Collection<Tag>
      */
-    public static function mostViewed(): Collection
+    public static function mostViewed(int|null $limit = null): Collection
     {
         return Tag::join('taggables', 'tags.id', '=', 'taggables.tag_id')
             ->join('posts', 'taggables.taggable_id', '=', 'posts.id')
@@ -36,6 +36,7 @@ class Tag extends \Spatie\Tags\Tag
             ->where('taggables.taggable_type', 2)
             ->select('tags.id', 'tags.name', 'tags.slug', DB::raw('COALESCE(SUM(post_views.views), 0) as total_views'))
             ->groupBy('tags.id', 'tags.name')
+            ->limit($limit)
             ->orderByDesc('total_views')
             ->get();
     }

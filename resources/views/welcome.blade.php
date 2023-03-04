@@ -10,29 +10,36 @@ $tags = Tag::mostViewed()
 ?>
 
 <x-main>
-
-    <nav class="fixed top-0 bottom-0 left-0 hidden pl-4 mt-[56px] min-[780px]:block min-[780px]:w-[64px] min-[1312px]:w-[240px]"
+{{--    <nav class="fixed top-0 bottom-0 left-0 hidden pl-4 mt-[56px] min-[780px]:w-[64px] min-[1312px]:w-[240px] min-[780px]:block"--}}
+{{--         id="drawer"--}}
+{{--    >--}}
+{{--        <h3 class="font-bold text-gray-800">Explore</h3>--}}
+{{--        <ul>--}}
+{{--            @forEach($tags as $tag)--}}
+{{--                <li class="rounded-lg p-2 hover:bg-gray-100">{{$tag->name}}</li>--}}
+{{--            @endforeach--}}
+{{--        </ul>--}}
+{{--    </nav>--}}
+    <nav class="fixed top-0 left-0 hidden min-[490px]:block mt-[56px] bg-white z-50 py-4 w-full shadow-lg min-[490px]:shadow min-[780px]:shadow-none"
          id="drawer"
     >
-        <h3 class="font-bold text-gray-800">Explore</h3>
-        <ul>
+        <ul class="ml-0 flex bg-white space-x-4 min-[780px]:ml-[64px] min-[1312px]:ml-[240px] min-[490px]:px-4">
             @forEach($tags as $tag)
-                <li class="rounded-lg p-2 hover:bg-gray-100">{{$tag->name}}</li>
+                <li class="rounded-lg bg-gray-100 p-2 hover:bg-gray-200">{{$tag->name}}</li>
             @endforeach
         </ul>
     </nav>
-
-    <div class="ml-0 flex min-[780px]:ml-[64px] min-[1312px]:ml-[240px] bg-white"
+    <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[240px]"
          id="page-manager">
-        <div class="flex w-full flex-col min-[490px]:gap-8 max-w-[2535px] min-[2535px]:mx-auto">
+        <div class="flex w-full flex-col max-w-[2535px] min-[2535px]:mx-auto min-[490px]:mt-6 min-[490px]:gap-6">
             @foreach($tags as $tag)
-                <section class="overflow-hidden min-[490px]:px-4 lg:px-8">
-                    <h2 class="mb-4 text-lg font-bold hidden min-[490px]:block">{{$tag->name}}</h2>
-                    <div class="grid grid-flow-row grid-cols-1 min-[490px]:gap-4 min-[490px]:grid-cols-2 min-[870px]:grid-cols-3 min-[1142px]:grid-cols-4 min-[1978px]:grid-cols-5 min-[2302px]:grid-cols-6">
+                <section class="overflow-hidden min-[490px]:px-4">
+                    <h2 class="mb-4 hidden text-lg font-bold min-[490px]:block">{{$tag->name}}</h2>
+                    <div class="grid grid-flow-row grid-cols-1 min-[490px]:grid-cols-2 min-[870px]:grid-cols-3 min-[1142px]:grid-cols-4 min-[1978px]:grid-cols-5 min-[2302px]:grid-cols-6 min-[490px]:gap-4">
                         @foreach($tag->recommended()->take(4) as $post)
                             <a href="{{route_as(Routes::read, $post)}}" class="flex flex-col">
                                 <div class="relative">
-                                    <div class="overflow-hidden min-[490px]:rounded-lg bg-gray-200 aspect-w-3 aspect-h-2 group-hover:opacity-75">
+                                    <div class="overflow-hidden bg-gray-200 aspect-w-3 aspect-h-2 group-hover:opacity-75 min-[490px]:rounded-lg">
                                         <img class="h-full w-full object-cover object-center"
                                              src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'width' => 300])}}"
                                              alt="{{$post->featuredImage()->original_name}}"
@@ -40,17 +47,17 @@ $tags = Tag::mostViewed()
                                              height="200"
                                         >
                                     </div>
-                                    <div class="absolute shadow right-0 bottom-0 m-2 rounded bg-gray-900 px-1 text-xs text-white">
+                                    <div class="absolute right-0 bottom-0 m-2 rounded bg-gray-900 px-1 text-xs text-white shadow">
                                         {{$post->reading_time . ' min'}}
                                     </div>
                                     @if($post->originally_published_at->between(now(), now()->subDays(1)))
-                                        <div class="absolute shadow right-left bottom-0 m-2 rounded bg-sky-600 px-1 text-xs text-white">
+                                        <div class="absolute bottom-0 m-2 rounded bg-sky-600 px-1 text-xs text-white shadow right-left">
                                             new
                                         </div>
                                     @endif
                                 </div>
-                                <div class="bg-white p-4 min-[490px]:px-0">
-                                    <h3 class="font-bold tracking-tight break-word font-sm"
+                                <div class="bg-white p-3 min-[490px]:px-0">
+                                    <h3 class="font-light tracking-tight font-sm break-word min-[490px]:font-normal min-[490px]:font-bold"
                                         title="{{ $post->title }}">{{ $post->title }}</h3>
                                     <div>
                                         <p class="text-xs text-sm tracking-tight text-gray-600"
@@ -71,5 +78,4 @@ $tags = Tag::mostViewed()
             @endforeach
         </div>
     </div>
-
 </x-main>

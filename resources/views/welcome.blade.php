@@ -10,7 +10,7 @@ $tags = Tag::mostViewed()
 ?>
 
 <x-main>
-    <nav class="fixed top-0 bottom-0 left-0 hidden pl-4 mt-[56px] min-[780px]:w-[64px] min-[1312px]:w-[240px] min-[780px]:block"
+    <nav class="fixed top-0 bottom-0 left-0 hidden pl-4 mt-[64px] min-[780px]:w-[64px] min-[1312px]:w-[240px] min-[780px]:block"
          id="drawer"
     >
         <h3 class="font-bold text-gray-800">Explore</h3>
@@ -20,17 +20,8 @@ $tags = Tag::mostViewed()
             @endforeach
         </ul>
     </nav>
-    <nav class="fixed top-0 left-0 hidden 2col:block mt-[56px] bg-white z-50 w-full shadow-lg 2col:shadow min-[780px]:shadow-none"
-         id="drawer"
-    >
-        <ul class="ml-0 grid grid-flow-col auto-cols-max overflow-y-auto py-4 bg-white space-x-4 min-[780px]:ml-[64px] min-[1312px]:ml-[240px] 2col:px-4">
-            @forEach($tags as $tag)
-                <li class="rounded-lg bg-gray-100 p-2 hover:bg-gray-200">{{$tag->name}}</li>
-            @endforeach
-        </ul>
-    </nav>
-    <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[240px]">
-        <div class="flex w-full flex-col max-w-[2535px] min-[2535px]:mx-auto 2col:mt-6 2col:gap-6">
+    <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[238px]">
+        <div class="flex w-full flex-col max-w-[2535px] min-[2535px]:mx-auto 2col:pt-6 2col:gap-6">
             @foreach($tags as $tag)
                 <section class="overflow-hidden 2col:px-4">
                     <h2 class="mb-4 hidden text-lg font-bold 2col:block">{{$tag->name}}</h2>

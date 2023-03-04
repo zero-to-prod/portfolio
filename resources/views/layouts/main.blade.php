@@ -50,7 +50,7 @@ $search = SearchController::search;
                             </div>
                         </form>
                     </div>
-                    <div class="my-auto">About</div>
+                    <div class="hidden 2col:block my-auto">About</div>
                     <div class="flex 2col:hidden items-center">
                         <!-- Mobile menu button -->
                         <button type="button"
@@ -81,7 +81,7 @@ $search = SearchController::search;
                 </div>
             </div>
         </header>
-        <div class="mt-[64px] 2col:mt-[124px]">
+        <div class="mt-[64px]">
             {{$slot}}
         </div>
     </div>

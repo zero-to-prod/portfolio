@@ -17,24 +17,20 @@ use App\Http\Routes;
 <body class="min-h-screen overflow-y-scroll">
 <main aria-label="Main">
     <div id="content">
-        <header class="fixed top-0 z-50 w-full bg-white shadow-lg h-[56px] lg:overflow-y-visible min-[490px]:shadow min-[780px]:shadow-none">
-            <div class="mx-auto px-4">
-                <div class="relative gap-4 flex justify-between xl:grid xl:grid-cols-12">
-                    <div class="flex md:inset-y-0 md:left-0 lg:static xl:col-span-2">
-                        <div class="mt-2 flex flex-shrink-0 items-center">
-                            <a class="text-normal font-light min-[490px]:text-lg" href="{{route_as(Routes::welcome)}}">
-                                devREAD
-                            </a>
-                        </div>
-                    </div>
-                    <div class="min-w-0 flex-1 xl:col-span-6">
+        <header class="fixed top-0 z-50 w-full bg-white shadow-lg h-[56px] 2col:overflow-y-visible 2col:shadow min-[780px]:shadow-none">
+            <div class="mx-auto pr-4">
+                <div class="relative gap-4 flex justify-between">
+                    <a class="text-normal flex font-light 2col:text-lg pl-4" href="{{route_as(Routes::welcome)}}">
+                        <div class="my-auto">devREAD</div>
+                    </a>
+                    <div class="min-w-0 flex-1 col-span-6 min-[1312px]:ml-[140px] ">
                         <div class="flex items-center py-2 max-w-md">
                             <div class="w-full">
                                 <label for="search" class="block text-sm font-medium leading-6 text-gray-900"></label>
                                 <div class="flex rounded-md shadow-sm">
                                     <div class="relative flex flex-grow items-stretch focus-within:z-10">
                                         <input name="search" id="search"
-                                               class="block w-full rounded-none rounded-l-md border-0 pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px] py-1.5 focus:ring-1 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                                               class="block w-full rounded-none rounded-l-md border-0 pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px] py-1.5 focus:ring-1 focus:ring-inset focus:ring-sky-600 2col:text-sm 2col:leading-6"
                                                placeholder="Search">
                                     </div>
                                     <button type="button"
@@ -50,7 +46,7 @@ use App\Http\Routes;
                             </div>
                         </div>
                     </div>
-                    <div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
+                    <div class="flex items-center 2col:hidden">
                         <!-- Mobile menu button -->
                         <button type="button"
                                 class="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
@@ -80,7 +76,7 @@ use App\Http\Routes;
                 </div>
             </div>
         </header>
-        <div class="mt-[64px] min-[490px]:mt-[124px]">
+        <div class="mt-[64px] 2col:mt-[124px]">
             {{$slot}}
         </div>
     </div>

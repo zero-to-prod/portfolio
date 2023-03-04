@@ -6,9 +6,8 @@ use App\Models\Support\IdColumn;
 use App\Models\Support\TagColumns;
 use App\Models\Support\TimeStampColumns;
 use DB;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Collection;
 
 /**
  * @mixin IdeHelperTag
@@ -29,7 +28,7 @@ class Tag extends \Spatie\Tags\Tag
     /**
      * @return \Illuminate\Support\Collection<Tag>
      */
-    public static function mostViewed(): \Illuminate\Support\Collection
+    public static function mostViewed(): Collection
     {
         return Tag::join('taggables', 'tags.id', '=', 'taggables.tag_id')
             ->join('posts', 'taggables.taggable_id', '=', 'posts.id')

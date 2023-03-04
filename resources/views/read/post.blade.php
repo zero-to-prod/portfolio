@@ -17,21 +17,24 @@ use App\Models\Post;
                     {{$post->reading_time . ' min read'}}
                 </div>
             </div>
-            <article aria-label="Article" class="mt-2 flex flex-col gap-4">
+            <article aria-label="Article" class="flex flex-col gap-4">
                 <div>
                     <h1 data-blog="title">{{ $post->title }}</h1>
-                    <div class="flex items-center gap-x-2 mt-2">
+                    <div class="flex items-center gap-x-2">
                         <img class="h-10 w-10 rounded-full"
                              src="{{ route_as(Routes::file, ['file' => $post->authorAvatar()->name, 'width' => 80])}}"
                              alt="">
                         <div class="flex justify-between w-full">
-                            <div>
+                            <div class="flex flex-col justify-between">
                                 <a class="text-base font-semibold text-gray-900" href="#">{{$post->authorList()}}</a>
                                 <p class="text-sm font-semibold text-gray-600">{{$post->authors->first()->title}}</p>
                             </div>
-                            <div class="text-sm text-gray-600 text-right">
+                            <div class="flex flex-col justify-between text-sm text-gray-600 text-right">
                                 <p>{{$post->published_at?->format('F j, Y')}}</p>
-                                <p>{{$post->views_count}} {{$post->views_count === 1 ? 'View' : 'Views'}}</p>
+                                <?php
+                                $views = $post->views()->count();
+                                ?>
+                                <p>{{$views}} {{$views === 1 ? 'View' : 'Views'}}</p>
                             </div>
                         </div>
                     </div>
@@ -56,17 +59,15 @@ use App\Models\Post;
                                 {{$post->reading_time . ' min'}}
                             </div>
                         </div>
-                        <div class="ml-2 max-w-[200px] lg:max-w-[240px]">
+                        <div class="w-full ml-2 max-w-[200px] lg:max-w-[240px]">
                             <h3 class="mb-1 break-word font-bold font-sm tracking-tight"
                                 title="{{ $post->title }}">{{ $post->title }}</h3>
                             <div>
                                 <p class="text-sm text-gray-600 text-xs tracking-tight"
                                    title="{{$post->authorList()}}">{{$post->authorList()}}</p>
-                                    <?php
-                                    $views = $post->views()->count();
-                                    ?>
-                                <p class="text-sm text-gray-600 text-xs tracking-tight">{{$views}} {{$views === 1 ? 'view' : 'views'}}
-                                    <span before="•"
+
+                                <p class="text-sm text-gray-600 text-xs tracking-tight">{{$post->views_count}} {{$post->views_count === 1 ? 'View' : 'Views'}}
+                                    <span before=" • "
                                           class="before:content-[attr(before)]">{{$post->published_at->diffForHumans()}}</span>
                                 </p>
                             </div>

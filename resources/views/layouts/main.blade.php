@@ -20,8 +20,8 @@ $search = SearchController::search;
 <body class="min-h-screen overflow-y-scroll">
 <main aria-label="Main">
     <div id="content">
-        <header class="fixed top-0 z-50 w-full 2col:overflow-y-visible bg-white 2col:shadow shadow-lg h-[56px] min-[780px]:shadow-none">
-            <div class="mx-auto pr-4">
+        <header class="fixed top-0 z-50 w-full 2col:overflow-y-visible 2col:shadow shadow-lg h-[56px] min-[780px]:shadow-none">
+            <div class="mx-auto pr-4 bg-white">
                 <div class="relative flex justify-between gap-2">
                     <a class="flex pl-4 text-lg" href="{{route_as(Routes::welcome)}}">
                         <div class="my-auto"><span class="font-semibold text-sky-600">dev</span>READ</div>

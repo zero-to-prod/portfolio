@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostFormController;
 use App\Http\Controllers\AdminPostIndexController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -20,8 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::postAs(Routes::upload, FileUploadController::class);
 Route::getAs(Routes::dashboard, Views::dashboard)->middlewareAs(Middleware::verified);
 Route::getAs(Routes::admin_posts, AdminPostIndexController::class);
-Route::getAs(Routes::admin_posts_create, Views::admin_posts_form);
-Route::getAs(Routes::admin_posts_edit, Views::admin_posts_form);
+Route::getAs(Routes::admin_posts_create, AdminPostFormController::class);
+Route::getAs(Routes::admin_posts_edit, AdminPostFormController::class);
 Route::postAs(Routes::admin_posts_store, PostFormController::class);
 Route::postAs(Routes::admin_posts_publish, PostPublishController::class);
 Route::postAs(Routes::admin_posts_unPublish, PostUnPublishController::class);

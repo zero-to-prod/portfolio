@@ -10,18 +10,13 @@ use App\Http\Controllers\PostPublishController;
 
 /* @var Tag $author_model */
 /* @var Post $post_model */
-$post_model = null;
-$author_model = null;
+
 $title = PostFormController::title;
 $authors = PostFormController::authors;
 $tags = PostFormController::tags;
 $body = PostFormController::body;
 $featured_image = PostFormController::featured_image;
 
-if (request()->post !== null) {
-    $post_model = Post::withoutGlobalScopes()->where(Post::slug, request()->post)->first();
-    $author_model = $post_model->authors->first();
-}
 ?>
 
 <x-app-layout>

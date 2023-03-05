@@ -3,13 +3,12 @@
 namespace App\Models;
 
 use App\Helpers\Tags;
-use App\Models\Support\FileColumns;
+use App\Models\Support\File\FileColumns;
 use App\Models\Support\IdColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
 
@@ -27,16 +26,6 @@ class File extends Model
     use HasTags;
 
     protected $fillable = [self::name, self::path, self::original_name, self::mime_type];
-
-    public function posts(): MorphToMany
-    {
-        return $this->morphedByMany(Post::class, 'fileable');
-    }
-
-    public function authors(): MorphToMany
-    {
-        return $this->morphedByMany(Author::class, 'fileable');
-    }
 
     public function tagFeaturedImage(): File
     {

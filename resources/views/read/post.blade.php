@@ -12,8 +12,7 @@ use App\Models\Post;
     <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 p-2 lg:py-6 lg:px-0 lg:flex-row">
         <div aria-label="Content" class="lg:basis-2/3">
             <div aria-label="image" class="relative">
-                <img src="{{ route_as(Routes::file, [FileServeController::file => $post->featuredImage()->name, FileServeController::width => 837])}}"
-                     alt="{{$post->featuredImage()->original_name}}" width="837" height="537">
+                <x-img :file="$post->featuredImage()" :width="837" :title="''"/>
                 <x-reading-time-chip class="font-normal" :post="$post" :text="$post->reading_time . ' min read'"/>
                 <x-new-chip :post="$post"/>
             </div>
@@ -21,9 +20,7 @@ use App\Models\Post;
                 <div>
                     <h1 data-blog="title">{{ $post->title }}</h1>
                     <div class="flex items-center gap-x-2">
-                        <img class="h-10 w-10 rounded-full"
-                             src="{{ route_as(Routes::file, [FileServeController::file => $post->authorAvatar()->name, FileServeController::width => 80])}}"
-                             alt="">
+                        <x-img class="h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80" />
                         <div class="flex justify-between w-full">
                             <div class="flex flex-col justify-between">
                                 <a class="text-base font-semibold text-gray-900" href="#">{{$post->authorList()}}</a>
@@ -46,12 +43,10 @@ use App\Models\Post;
                 @foreach(Post::related($post->tags, $post->id) as $post)
                     <a href="{{route_as(Routes::read, $post)}}" class="flex flex-row">
                         <div class="relative text-center  overflow-hidden rounded-lg">
-                            <img class="h-[94px] width-[168px] object-cover"
-                                 src="{{ route_as(Routes::file, [FileServeController::file => $post->featuredImage()->name, FileServeController::width => 168])}}"
-                                 alt="{{$post->featuredImage()->original_name}}"
-                                 width="168"
-                                 height="94"
-                            >
+                            <x-img class="h-[94px] width-[168px] object-cover"
+                                   :file="$post->featuredImage()"
+                                   :width="168"
+                                   :title="''"/>
                             <x-reading-time-chip :post="$post"/>
                         </div>
                         <div class="w-full ml-2 max-w-[200px] lg:max-w-[240px]">

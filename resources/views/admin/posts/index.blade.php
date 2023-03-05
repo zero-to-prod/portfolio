@@ -56,10 +56,10 @@ use App\Http\Controllers\PostPublishController;
                                                 <figure>
                                                     <a class="underline" href="{{route_as(Routes::read, $post)}}"
                                                        target="_blank">
-                                                        <img class="object-cover h-[100px] rounded-lg"
-                                                             src="{{ route_as(Routes::file, [FileServeController::file => $post->featuredImage()->name, FileServeController::height => 100])}}"
-                                                             alt="{{$post->featuredImage()->original_name}}"
-                                                             height="50">
+                                                        <x-img class="object-cover h-[100px] rounded-lg"
+                                                               :file="$post->featuredImage()"
+                                                               :height="100"
+                                                               :title="''"/>
                                                     </a>
                                                 </figure>
                                             </div>

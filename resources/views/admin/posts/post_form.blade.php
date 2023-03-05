@@ -138,10 +138,10 @@ $featured_image = PostFormController::featured_image;
 
                             <div class="flex space-x-6 sm:col-span-2">
                                 @if($post_model?->featuredImage() !== null)
-                                    <img class="object-cover h-[100px] rounded-lg"
-                                         src="{{ route_as(Routes::file, [FileServeController::file => $post_model->featuredImage()->name, FileServeController::height => 100])}}"
-                                         alt="{{$post_model->featuredImage()->original_name}}"
-                                         height="100">
+                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                           :file="$post_model->featuredImage()"
+                                           :height="100"
+                                    />
                                 @endif
                                 <x-form-control-dark>
                                     <label for="{{$featured_image}}">Featured Image</label>

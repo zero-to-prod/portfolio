@@ -19,12 +19,10 @@ $tags = Tag::mostViewed()
                 <a class="flex" href="{{route_as(Routes::read, $post)}}">
                     <div class="relative">
                         <div class="overflow-hidden bg-gray-200 2col:rounded-lg">
-                            <img class="h-full w-full object-cover object-center"
-                                 src="{{ route_as(Routes::file, [FileServeController::file => $post->featuredImage()->name, FileServeController::width => 300])}}"
-                                 alt="{{$post->featuredImage()->original_name}}"
-                                 width="300"
-                                 height="200"
-                            >
+                            <x-img class="h-full w-full object-cover object-center"
+                                   :file="$post->featuredImage()"
+                                   :width="300"
+                                   :title="''"/>
                         </div>
                         <x-reading-time-chip :post="$post"/>
                         <x-new-chip :post="$post"/>

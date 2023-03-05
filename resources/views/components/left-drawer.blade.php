@@ -64,16 +64,10 @@ use Illuminate\Support\Collection;
                         ?>
                         <div class="flex gap-6">
                             @if($logo !== null)
-                                <img class="h-6 w-6 rounded"
-                                     src="{{ route_as(Routes::file, [FileServeController::file => $tag->logo()->name, FileServeController::width => 60])}}"
-                                     title="{{$logo->original_name}}"
-                                     alt="{{$logo->original_name}}"
-                                >
+                                <x-img class="h-6 w-6 rounded" :file="$tag->logo()" :width="60"/>
                             @endif
-                                <span>{{$tag->name}}</span>
-
+                            <span>{{$tag->name}}</span>
                         </div>
-
                     </a>
                 @endforeach
             </div>

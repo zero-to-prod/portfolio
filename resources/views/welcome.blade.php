@@ -18,7 +18,7 @@ $tags = Tag::mostViewed()
                 <section class="mt-2">
                     <h2 class="mb-4 2col:block hidden text-lg font-bold">{{$tag->name}}</h2>
                     <div class="grid grid-flow-row 2col:grid-cols-2 3col:grid-cols-3 4col:grid-cols-4 5col:grid-cols-5 6col:grid-cols-6 2col:gap-4">
-                        @foreach($tag->recommended()->take(4) as $post)
+                        @foreach($tag->relatedPosts()->take(4) as $post)
                             <a href="{{route_as(Routes::read, $post)}}">
                                 <div class="relative">
                                     <div class="overflow-hidden 2col:rounded-lg aspect-w-3 aspect-h-2">

@@ -34,12 +34,13 @@ class Tag extends \Spatie\Tags\Tag
             ->get();
     }
 
-    public function recommended(array|int|string|null $exclude_ids = []): Collection
+    public function relatedPosts(array|int|string|null $exclude_ids = [], int|null $limit = null): Collection
     {
         $posts = $this->posts()
             ->with(Post::authors . ':' . Author::id . ',' . Author::name)
             ->whereNotIn(Post::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
             ->orderByDesc(Post::views)
+            ->limit($limit)
             ->get()
             ->keyBy(Post::id);
 

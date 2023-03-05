@@ -65,12 +65,13 @@ class Post extends Model implements HasRules
         return !$this->isPublished();
     }
 
-    public static function recommended(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = []): Collection
+    public static function related(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = [], int|null $limit = null): Collection
     {
         $posts = self::withAnyTags($tags)
             ->with(self::authors)
             ->whereNotIn(self::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
             ->orderByDesc(self::views)
+            ->limit($limit)
             ->get()
             ->keyBy(self::id);
 

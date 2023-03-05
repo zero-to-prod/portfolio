@@ -44,7 +44,7 @@ use App\Models\Post;
         </div>
         <div aria-label="Suggested Content" class="lg:basis-1/3">
             <div class="flex flex-col gap-2">
-                @foreach(Post::recommended($post->tags, $post->id) as $post)
+                @foreach(Post::related($post->tags, $post->id) as $post)
                     <a href="{{route_as(Routes::read, $post)}}" class="flex flex-row">
                         <div class="relative text-center  overflow-hidden rounded-lg">
                             <img class="h-[94px] width-[168px] object-cover"

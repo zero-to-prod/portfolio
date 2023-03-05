@@ -5,6 +5,7 @@
 use App\Models\Tag;
 use Illuminate\Support\Collection;
 use App\Http\Routes;
+use App\Http\Controllers\ResultsController;
 
 /* @var Collection $tags */
 /* @var Tag $tag */
@@ -54,7 +55,9 @@ use App\Http\Routes;
             </a>
             <div class="flex flex-col">
                 @forEach($tags as $tag)
-                    <a class="rounded-lg pl-6 p-2 hover:bg-gray-100">{{$tag->name}}</a>
+                    <a class="rounded-lg pl-6 p-2 hover:bg-gray-100"
+                    href="{{route_as(Routes::results, [ResultsController::tag => $tag->slug])}}"
+                    >{{$tag->name}}</a>
                 @endforeach
             </div>
         </div>

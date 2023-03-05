@@ -12,6 +12,7 @@ use App\Http\Controllers\PostPublishController;
 /* @var Post $post_model */
 
 $title = PostFormController::title;
+$subtitle = PostFormController::subtitle;
 $authors = PostFormController::authors;
 $tags = PostFormController::tags;
 $body = PostFormController::body;
@@ -70,6 +71,18 @@ $featured_image = PostFormController::featured_image;
                                        required>
                                 @if($errors->has($title))
                                     <p>{{ $errors->first($title) }}</p>
+                                @endif
+                            </x-form-control-dark>
+                            <x-form-control-dark>
+                                <label for="{{$subtitle}}">Subtitle</label>
+                                <textarea name="{{$subtitle}}"
+                                          id="{{$subtitle}}"
+                                          required
+                                          rows="2">
+{{$post_model !== null ? $post_model->subtitle : old($subtitle)}}
+                                </textarea>
+                                @if($errors->has($subtitle))
+                                    <p>{{ $errors->first($subtitle) }}</p>
                                 @endif
                             </x-form-control-dark>
                             <x-form-control-dark>

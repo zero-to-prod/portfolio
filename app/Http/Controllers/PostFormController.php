@@ -14,6 +14,7 @@ class PostFormController extends Controller
 {
     public const id = 'id';
     public const title = 'title';
+    public const subtitle = 'subtitle';
     public const authors = 'authors[]';
     public const tags = 'tags[]';
     public const body = 'body';
@@ -27,6 +28,7 @@ class PostFormController extends Controller
         $validated = $request->validate([
             self::id => 'nullable|integer',
             self::title => Post::rules(Post::title),
+            self::subtitle => Post::rules(Post::subtitle),
             'authors' => 'required|array|min:1',
             'tags' => 'required|array|min:1',
             self::body => Post::rules(Post::body),
@@ -35,8 +37,9 @@ class PostFormController extends Controller
 
         DB::beginTransaction();
 
-        $post = Post::withoutGlobalScopes()->updateOrCreate([Post::id => $request->id], [
+        $post = Post::withoutGlobalScopes()->updateOrCreate([Post::id => $request->{self::id}], [
             Post::title => $validated[Post::title],
+            Post::subtitle => $validated[Post::subtitle],
             Post::body => $validated[Post::body],
         ]);
 

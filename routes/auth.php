@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostIndexController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -7,8 +8,8 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\FileUploadController;
-use App\Http\Controllers\PostPublishController;
 use App\Http\Controllers\PostFormController;
+use App\Http\Controllers\PostPublishController;
 use App\Http\Controllers\PostUnPublishController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware;
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::postAs(Routes::upload, FileUploadController::class);
 Route::getAs(Routes::dashboard, Views::dashboard)->middlewareAs(Middleware::verified);
-Route::getAs(Routes::admin_posts, Views::admin_posts);
+Route::getAs(Routes::admin_posts, AdminPostIndexController::class);
 Route::getAs(Routes::admin_posts_create, Views::admin_posts_form);
 Route::getAs(Routes::admin_posts_edit, Views::admin_posts_form);
 Route::postAs(Routes::admin_posts_store, PostFormController::class);

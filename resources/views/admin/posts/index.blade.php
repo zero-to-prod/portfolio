@@ -48,12 +48,6 @@ use App\Http\Controllers\PostPublishController;
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-800">
-                            <?php
-                            $all_posts = Post::withoutGlobalScopes()->with([Post::views, Post::authors, Post::tags])->orderByDesc(Post::published_at)->get();
-                            $published = $all_posts->whereNotNull(Post::published_at);
-                            $unpublished = $all_posts->whereNull(Post::published_at);
-                            $posts = $unpublished->merge($published);
-                            ?>
                             @foreach($posts as $post)
                                 <tr>
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
@@ -118,5 +112,4 @@ use App\Http\Controllers\PostPublishController;
             </div>
         </div>
     </div>
-
 </x-app-layout>

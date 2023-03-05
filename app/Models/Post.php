@@ -5,9 +5,10 @@ namespace App\Models;
 use App\Helpers\Tags;
 use App\Models\Support\HasRules;
 use App\Models\Support\IdColumn;
-use App\Models\Support\PostColumns;
-use App\Models\Support\PostRelationships;
-use App\Models\Support\PostRules;
+use App\Models\Support\Polymorphic\HasFiles;
+use App\Models\Support\Post\PostColumns;
+use App\Models\Support\Post\PostRelationships;
+use App\Models\Support\Post\PostRules;
 use App\Models\Support\SlugColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
@@ -36,6 +37,7 @@ class Post extends Model implements HasRules
     use PostRelationships;
     use PostRules;
     use HasTags;
+    use HasFiles;
 
     protected $fillable = [self::title, self::subtitle, self::body];
     protected $casts = [

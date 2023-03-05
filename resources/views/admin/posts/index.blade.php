@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileServeController;
 use App\Http\Routes;
 use App\Models\Post;
 use App\Http\Controllers\PostPublishController;
@@ -47,9 +48,9 @@ use App\Http\Controllers\PostPublishController;
                             </thead>
                             <tbody class="divide-y divide-gray-800">
                             <?php
-                            $all_posts = Post::withoutGlobalScopes()->with(['views', 'authors', 'tags'])->orderByDesc(Post::published_at)->get();
-                            $published = $all_posts->whereNotNull('published_at');
-                            $unpublished = $all_posts->whereNull('published_at');
+                            $all_posts = Post::withoutGlobalScopes()->with([Post::views, Post::authors, Post::tags])->orderByDesc(Post::published_at)->get();
+                            $published = $all_posts->whereNotNull(Post::published_at);
+                            $unpublished = $all_posts->whereNull(Post::published_at);
                             $posts = $unpublished->merge($published);
                             ?>
                             @foreach($posts as $post)
@@ -61,7 +62,7 @@ use App\Http\Controllers\PostPublishController;
                                                     <a class="underline" href="{{route_as(Routes::read, $post)}}"
                                                        target="_blank">
                                                         <img class="object-cover h-[100px] rounded-lg"
-                                                             src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'height' => 100])}}"
+                                                             src="{{ route_as(Routes::file, [FileServeController::file => $post->featuredImage()->name, FileServeController::height => 100])}}"
                                                              alt="{{$post->featuredImage()->original_name}}"
                                                              height="50">
                                                     </a>
@@ -105,7 +106,7 @@ use App\Http\Controllers\PostPublishController;
                                         </div>
                                     </td>
                                     <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
-                                        <p>{{$post->views()->count()}}</p>
+                                        <p>{{$post->views}}</p>
                                     </td>
                                 </tr>
                             @endforeach

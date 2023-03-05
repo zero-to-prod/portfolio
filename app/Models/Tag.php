@@ -25,16 +25,12 @@ class Tag extends \Spatie\Tags\Tag
         return $this->morphedByMany(Post::class, 'taggable');
     }
 
-    /**
-     * @return Collection<Tag>
-     */
     public static function mostViewed(int|null $limit = null): Collection
     {
         return Tag::join('taggables', 'tags.id', '=', 'taggables.tag_id')
             ->join('posts', 'taggables.taggable_id', '=', 'posts.id')
-            ->leftJoin(DB::raw('(SELECT post_id, COUNT(*) as views FROM views GROUP BY post_id) as post_views'), 'posts.id', '=', 'post_views.post_id')
             ->where('taggables.taggable_type', 2)
-            ->select('tags.id', 'tags.name', 'tags.slug', DB::raw('COALESCE(SUM(post_views.views), 0) as total_views'))
+            ->select('tags.id', 'tags.name', 'tags.slug', DB::raw('COALESCE(SUM(posts.views), 0) as total_views'))
             ->groupBy('tags.id', 'tags.name')
             ->limit($limit)
             ->orderByDesc('total_views')
@@ -44,10 +40,9 @@ class Tag extends \Spatie\Tags\Tag
     public function recommended(array|int|string|null $exclude_ids = []): Collection
     {
         $posts = $this->posts()
-            ->with('authors:id,name')
+            ->with(Post::authors . ':' . Author::id . ',' . Author::name)
             ->whereNotIn(Post::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
-            ->withCount('views')
-            ->orderByDesc('views_count')
+            ->orderByDesc(Post::views)
             ->get()
             ->keyBy(Post::id);
 

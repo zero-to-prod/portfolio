@@ -6,6 +6,7 @@ use App\Helpers\Tags;
 use App\Models\Support\HasRules;
 use App\Models\Support\IdColumn;
 use App\Models\Support\PostColumns;
+use App\Models\Support\PostRelationships;
 use App\Models\Support\PostRules;
 use App\Models\Support\SlugColumn;
 use App\Models\Support\SoftDeleteColumn;
@@ -15,9 +16,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sluggable\SlugOptions;
@@ -35,32 +33,24 @@ class Post extends Model implements HasRules
     use SoftDeleteColumn;
     use SlugColumn;
     use PostColumns;
+    use PostRelationships;
     use PostRules;
     use HasTags;
 
     protected $fillable = [self::title, self::subtitle, self::body];
-    protected $casts = [self::published_at => 'datetime', self::originally_published_at => 'datetime'];
+    protected $casts = [
+        self::published_at => 'datetime',
+        self::original_publish_date => 'datetime',
+        self::views => 'integer',
+        self::published_word_count => 'integer',
+        self::reading_time => 'integer',
+    ];
 
     protected static function booted(): void
     {
-        static::addGlobalScope('published', function (Builder $builder) {
+        static::addGlobalScope('published', static function (Builder $builder) {
             $builder->whereNotNull(self::published_at);
         });
-    }
-
-    public function files(): MorphToMany
-    {
-        return $this->morphToMany(File::class, 'fileable');
-    }
-
-    public function views(): HasMany
-    {
-        return $this->hasMany(View::class);
-    }
-
-    public function authors(): BelongsToMany
-    {
-        return $this->belongsToMany(Author::class);
     }
 
     public function isPublished(): bool
@@ -76,10 +66,9 @@ class Post extends Model implements HasRules
     public static function recommended(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = []): Collection
     {
         $posts = self::withAnyTags($tags)
-            ->with('authors')
+            ->with(self::authors)
             ->whereNotIn(self::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
-            ->withCount('views')
-            ->orderByDesc('views_count')
+            ->orderByDesc(self::views)
             ->get()
             ->keyBy(self::id);
 
@@ -91,14 +80,14 @@ class Post extends Model implements HasRules
 
     public function featuredImage(): ?File
     {
-        return $this->files()->whereHas('tags', function ($builder) {
+        return $this->files()->whereHas(self::tags, function ($builder) {
             $builder->where('name->en', Tags::featured->value);
         })->first();
     }
 
     public function authorAvatar(): ?File
     {
-        return $this->authors()->first()?->files()->whereHas('tags', function ($builder) {
+        return $this->authors()->first()?->files()->whereHas(self::tags, function ($builder) {
             $builder->where('name->en', Tags::avatar->value);
         })->first();
     }
@@ -129,7 +118,7 @@ class Post extends Model implements HasRules
 
         $this->update([
             self::published_content => $published_content,
-            self::originally_published_at => $this->originally_published_at === null ? now() : $this->originally_published_at,
+            self::original_publish_date => $this->original_publish_date ?? now(),
             self::published_at => now(),
             self::published_word_count => str_word_count(strip_tags($published_content)),
         ]);

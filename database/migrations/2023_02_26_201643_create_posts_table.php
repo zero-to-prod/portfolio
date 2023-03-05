@@ -12,15 +12,16 @@ return new class extends Migration {
             $table->id();
             $table->slug();
             $table->char(Post::title);
-            $table->char(Post::subtitle)->nullable();
+            $table->text(Post::subtitle)->nullable();
             $table->longText(Post::body);
+            $table->unsignedBigInteger(Post::views)->default(0);
             $table->longText(Post::published_content)->nullable();
             $table->unsignedInteger(Post::published_word_count)->nullable();
+            $table->timestamp(Post::original_publish_date)->nullable();
+            $table->timestamp(Post::published_at)->nullable();
             $table->string(Post::reading_time)->nullable()
                 ->virtualAs("ceil(published_word_count / 183)")
                 ->comment("The estimated reading time in minutes. The constant 183 is the average words per minute.");
-            $table->timestamp(Post::originally_published_at)->nullable();
-            $table->timestamp(Post::published_at)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

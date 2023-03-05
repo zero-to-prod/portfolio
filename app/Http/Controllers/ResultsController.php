@@ -12,22 +12,22 @@ use Illuminate\Http\Request;
 class ResultsController extends Controller
 {
     public const query = 'query';
+    public const posts = 'posts';
 
     public function __invoke(Request $request): View|Factory|Application
     {
         $search = $request->query(self::query);
 
-        $posts = Post::where(function ($query) use ($search) {
-            $query->where('title', 'LIKE', "%{$search}%")
-                ->orWhere('body', 'LIKE', "%{$search}%");
+        $posts = Post::where(static function ($query) use ($search) {
+            $query->where(Post::title, 'LIKE', "%{$search}%")
+                ->orWhere(Post::body, 'LIKE', "%{$search}%");
         })
-            ->with(['tags', 'authors'])
-            ->withCount('views')
-            ->orderByDesc('views_count')
+            ->with([Post::tags, Post::authors])
+            ->orderByDesc(Post::views)
             ->get();
 
-        $recommended = Post::recommended($posts->pluck('tags')->flatten(), $posts->pluck('id')->toArray());
+        $recommended = Post::recommended($posts->pluck(Post::tags)->flatten(), $posts->pluck(Post::id)->toArray());
 
-        return view_as(Views::results, ['posts' => $posts->merge($recommended)]);
+        return view_as(Views::results, [self::posts => $posts->merge($recommended)]);
     }
 }

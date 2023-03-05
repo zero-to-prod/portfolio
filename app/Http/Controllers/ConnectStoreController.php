@@ -32,7 +32,7 @@ class ConnectStoreController extends Controller
         ])->messages()->create([
             self::subject => $validated[self::subject],
             self::body => $validated[self::body],
-        ])->load('contact');
+        ])->load(Message::contact);
 
         Mail::queue(new ConnectRequest($message));
 

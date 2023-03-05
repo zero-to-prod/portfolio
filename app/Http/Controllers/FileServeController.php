@@ -10,6 +10,9 @@ use Str;
 
 class FileServeController extends Controller
 {
+    public const file = 'file';
+    public const width = 'width';
+    public const height = 'height';
     /**
      * @see FileServeControllerTest
      */
@@ -17,16 +20,16 @@ class FileServeController extends Controller
     {
         return Cache::remember($request->fullUrl(), null, static function () use ($request) {
             $s3_bucket_path = config('filesystems.file_disk_path');
-            $path = $s3_bucket_path . explode('file', $request->path())[1];
+            $path = $s3_bucket_path . explode(self::file, $request->path())[1];
 
             $file = Storage::disk(config('filesystems.file_disk'))->get($path);
             $mime = Storage::disk(config('filesystems.file_disk'))->mimeType($path);
 
             if (Str::contains($mime, 'image')) {
                 $img = Image::make($file);
-                if ($request->hasAny(['width', 'height'])) {
+                if ($request->hasAny([self::width, self::height])) {
                     $img->encode('webp', 100)
-                        ->resize($request->width, $request->height, function ($constraint) {
+                        ->resize($request->{self::width}, $request->{self::height}, function ($constraint) {
                             $constraint->aspectRatio();
                         });
                 }

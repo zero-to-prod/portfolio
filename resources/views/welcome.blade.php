@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileServeController;
 use App\Http\Routes;
 use App\Models\Post;
 use App\Models\Tag;
@@ -29,7 +30,7 @@ $tags = Tag::mostViewed()
                                 <div class="relative">
                                     <div class="overflow-hidden 2col:rounded-lg aspect-w-3 aspect-h-2">
                                         <img class="h-full w-full object-cover object-center"
-                                             src="{{ route_as(Routes::file, ['file' => $post->featuredImage()->name, 'width' => 300])}}"
+                                             src="{{ route_as(Routes::file, [FileServeController::file => $post->featuredImage()->name, FileServeController::width => 300])}}"
                                              alt="{{$post->featuredImage()->original_name}}"
                                              width="300"
                                              height="200"
@@ -38,7 +39,7 @@ $tags = Tag::mostViewed()
                                     <div class="absolute right-0 bottom-0 m-2 rounded bg-gray-900 px-1 text-xs text-white shadow">
                                         {{$post->reading_time . ' min'}}
                                     </div>
-                                    @if($post->originally_published_at->between(now(), now()->subDays(1)))
+                                    @if($post->original_publish_date->between(now(), now()->subDays(1)))
                                         <div class="absolute bottom-0 m-2 rounded bg-sky-600 px-1 text-xs text-white shadow">
                                             new
                                         </div>
@@ -50,7 +51,7 @@ $tags = Tag::mostViewed()
                                     <div>
                                         <p class="text-sm text-gray-600"
                                            title="{{$post->authorList()}}">{{$post->authorList()}}</p>
-                                        <p class="text-xs text-sm text-gray-600">{{$post->views_count}} {{$post->views_count === 1 ? 'view' : 'views'}}
+                                        <p class="text-xs text-sm text-gray-600">{{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
                                             <span before="•"
                                                   class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
                                         </p>

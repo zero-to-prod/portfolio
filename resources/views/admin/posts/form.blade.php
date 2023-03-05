@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileServeController;
 use App\Http\Routes;
 use App\Models\Author;
 use App\Models\Post;
@@ -130,7 +131,7 @@ if (request()->post !== null) {
                             <div class="flex space-x-6 sm:col-span-2">
                                 @if($post_model?->featuredImage() !== null)
                                     <img class="object-cover h-[100px] rounded-lg"
-                                         src="{{ route_as(Routes::file, ['file' => $post_model->featuredImage()->name, 'height' => 100])}}"
+                                         src="{{ route_as(Routes::file, [FileServeController::file => $post_model->featuredImage()->name, FileServeController::height => 100])}}"
                                          alt="{{$post_model->featuredImage()->original_name}}"
                                          height="100">
                                 @endif

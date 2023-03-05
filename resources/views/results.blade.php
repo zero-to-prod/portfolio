@@ -27,11 +27,7 @@ $tags = Tag::mostViewed()
                             >
                         </div>
                         <x-reading-time-chip :post="$post"/>
-                        @if($post->original_publish_date->between(now(), now()->subDays(1)))
-                            <div class="absolute bottom-0 m-2 rounded bg-sky-600 px-1 text-xs text-white shadow right-left">
-                                new
-                            </div>
-                        @endif
+                        <x-new-chip :post="$post"/>
                     </div>
                     <div class="bg-white px-3 flex-1">
                         <h3 class="font-bold tracking-tight font-sm break-word"

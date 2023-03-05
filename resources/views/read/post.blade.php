@@ -15,6 +15,7 @@ use App\Models\Post;
                 <img src="{{ route_as(Routes::file, [FileServeController::file => $post->featuredImage()->name, FileServeController::width => 837])}}"
                      alt="{{$post->featuredImage()->original_name}}" width="837" height="537">
                 <x-reading-time-chip class="font-normal" :post="$post" :text="$post->reading_time . ' min read'"/>
+                <x-new-chip :post="$post"/>
             </div>
             <article aria-label="Article" class="flex flex-col gap-4">
                 <div>

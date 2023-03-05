@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Helpers\RelationMap;
+use App\Helpers\Tags;
 use App\Models\Support\IdColumn;
+use App\Models\Support\Polymorphic\HasFiles;
 use App\Models\Support\Tag\TagColumns;
 use App\Models\Support\Tag\TagRelationships;
 use App\Models\Support\TimeStampColumns;
@@ -19,6 +21,7 @@ class Tag extends \Spatie\Tags\Tag
     use TimeStampColumns;
     use TagColumns;
     use TagRelationships;
+    use HasFiles;
 
     protected $fillable = [self::name, self::slug, self::type, self::order_column];
 
@@ -32,6 +35,13 @@ class Tag extends \Spatie\Tags\Tag
             ->orderByDesc('total_views')
             ->limit($limit)
             ->get();
+    }
+
+    public function logo(): ?File
+    {
+        return $this->files()->whereHas('tags', function ($builder) {
+            $builder->where(Tag::name.'->en', Tags::logo->value);
+        })->first();
     }
 
     public function relatedPosts(array|int|string|null $exclude_ids = [], int|null $limit = null): Collection

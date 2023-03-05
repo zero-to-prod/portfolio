@@ -9,4 +9,5 @@ enum Tags: string
 {
     case avatar = 'avatar';
     case featured = 'featured';
+    case logo = 'logo';
 }

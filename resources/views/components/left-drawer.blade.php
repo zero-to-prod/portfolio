@@ -2,10 +2,11 @@
 
 <?php
 
+use App\Http\Controllers\FileServeController;
+use App\Http\Controllers\ResultsController;
+use App\Http\Routes;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
-use App\Http\Routes;
-use App\Http\Controllers\ResultsController;
 
 /* @var Collection $tags */
 /* @var Tag $tag */
@@ -56,8 +57,24 @@ use App\Http\Controllers\ResultsController;
             <div class="flex flex-col">
                 @forEach($tags as $tag)
                     <a class="rounded-lg pl-6 p-2 hover:bg-gray-100"
-                    href="{{route_as(Routes::results, [ResultsController::tag => $tag->slug])}}"
-                    >{{$tag->name}}</a>
+                       href="{{route_as(Routes::results, [ResultsController::tag => $tag->slug])}}"
+                    >
+                        <?php
+                        $logo = $tag->logo()
+                        ?>
+                        <div class="flex gap-6">
+                            @if($logo !== null)
+                                <img class="h-6 w-6 rounded"
+                                     src="{{ route_as(Routes::file, [FileServeController::file => $tag->logo()->name, FileServeController::width => 60])}}"
+                                     title="{{$logo->original_name}}"
+                                     alt="{{$logo->original_name}}"
+                                >
+                            @endif
+                                <span>{{$tag->name}}</span>
+
+                        </div>
+
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -74,7 +91,8 @@ use App\Http\Controllers\ResultsController;
             </svg>
             <span class="text-xs mx-auto">Home</span>
         </a>
-        <a class="w-[64px] flex flex-col hover:bg-gray-100 py-4" href="{{route_as(Routes::results, [ResultsController::popular => true])}}">
+        <a class="w-[64px] flex flex-col hover:bg-gray-100 py-4"
+           href="{{route_as(Routes::results, [ResultsController::popular => true])}}">
             <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <g>
                     <path fill="none" d="M0 0H24V24H0z"></path>

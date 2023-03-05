@@ -4,6 +4,7 @@ use App\Http\Controllers\FileServeController;
 use App\Http\Routes;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Http\Controllers\ResultsController;
 
 /* @var Post $post */
 /* @var Tag $tag */
@@ -16,7 +17,23 @@ $tags = Tag::mostViewed()
         <div class="flex w-full flex-col max-w-[2535px] min-[2535px]:mx-auto">
             @foreach($tags as $tag)
                 <section class="mt-2">
-                    <h2 class="mb-4 2col:block hidden text-lg font-bold">{{$tag->name}}</h2>
+                        <a class="mb-2 2col:block hidden " href="{{route_as(Routes::results, [ResultsController::tag => $tag->slug])}}">
+                            <?php
+                            $logo = $tag->logo()
+                            ?>
+                            <div class="flex gap-x-2">
+                                @if($logo !== null)
+                                    <img class="h-10 w-10 rounded"
+                                         src="{{ route_as(Routes::file, [FileServeController::file => $tag->logo()->name, FileServeController::width => 80])}}"
+                                         title="{{$logo->original_name}}"
+                                         alt="{{$logo->original_name}}"
+                                    >
+                                @endif
+                                <h2 class="my-auto text-lg font-semibold text-gray-900 text-base">
+                                    {{$tag->name}}
+                                </h2>
+                            </div>
+                        </a>
                     <div class="grid grid-flow-row 2col:grid-cols-2 3col:grid-cols-3 4col:grid-cols-4 5col:grid-cols-5 6col:grid-cols-6 2col:gap-4">
                         @foreach($tag->relatedPosts()->take(4) as $post)
                             <a href="{{route_as(Routes::read, $post)}}">

@@ -14,9 +14,7 @@ use App\Models\Post;
             <div aria-label="image" class="relative">
                 <img src="{{ route_as(Routes::file, [FileServeController::file => $post->featuredImage()->name, FileServeController::width => 837])}}"
                      alt="{{$post->featuredImage()->original_name}}" width="837" height="537">
-                <div class="absolute bottom-0 text-white right-0 bg-gray-800 px-1 m-2">
-                    {{$post->reading_time . ' min read'}}
-                </div>
+                <x-reading-time-chip class="font-normal" :post="$post" :text="$post->reading_time . ' min read'"/>
             </div>
             <article aria-label="Article" class="flex flex-col gap-4">
                 <div>
@@ -53,9 +51,7 @@ use App\Models\Post;
                                  width="168"
                                  height="94"
                             >
-                            <div class="absolute bottom-0 text-white shadow text-xs right-0 bg-gray-900 px-1 rounded m-2">
-                                {{$post->reading_time . ' min'}}
-                            </div>
+                            <x-reading-time-chip :post="$post"/>
                         </div>
                         <div class="w-full ml-2 max-w-[200px] lg:max-w-[240px]">
                             <h3 class="mb-1 break-word font-bold font-sm tracking-tight"

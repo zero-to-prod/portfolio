@@ -26,9 +26,7 @@ $tags = Tag::mostViewed()
                                  height="200"
                             >
                         </div>
-                        <div class="absolute right-0 bottom-0 m-2 rounded bg-gray-900 px-1 text-xs text-white shadow">
-                            {{$post->reading_time . ' min'}}
-                        </div>
+                        <x-reading-time-chip :post="$post"/>
                         @if($post->original_publish_date->between(now(), now()->subDays(1)))
                             <div class="absolute bottom-0 m-2 rounded bg-sky-600 px-1 text-xs text-white shadow right-left">
                                 new
@@ -50,7 +48,7 @@ $tags = Tag::mostViewed()
                                 <p class="text-xs tracking-tight text-gray-600"
                                    title="{{$post->authorList()}}">{{$post->authorList()}}</p>
                             </div>
-                            <p class="text-sm tracking-tight text-gray-600">
+                            <p title="{{$post->subtitle}}" class="text-sm tracking-tight text-gray-600">
                                 {{$post->subtitle}}
                             </p>
                         </div>

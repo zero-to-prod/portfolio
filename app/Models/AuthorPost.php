@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Support\Author\AuthorColumns;
+use App\Models\Support\AuthorPost\AuthorPostColumns;
 use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
@@ -11,6 +11,6 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  */
 class AuthorPost extends Pivot
 {
-    use AuthorColumns;
+    use AuthorPostColumns;
     use TimeStampColumns;
 }

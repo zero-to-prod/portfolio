@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Support\Tag;
+namespace App\Helpers;
 
 /**
  * @property $value

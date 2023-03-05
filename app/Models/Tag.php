@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\RelationMap;
 use App\Models\Support\IdColumn;
 use App\Models\Support\Tag\TagColumns;
 use App\Models\Support\Tag\TagRelationships;
@@ -25,11 +26,11 @@ class Tag extends \Spatie\Tags\Tag
     {
         return Tag::join('taggables', 'tags.id', '=', 'taggables.tag_id')
             ->join('posts', 'taggables.taggable_id', '=', 'posts.id')
-            ->where('taggables.taggable_type', 2)
-            ->select('tags.id', 'tags.name', 'tags.slug', DB::raw('COALESCE(SUM(posts.views), 0) as total_views'))
-            ->groupBy('tags.id', 'tags.name')
-            ->limit($limit)
+            ->where('taggables.taggable_type', RelationMap::post->value)
+            ->select('tags.id', 'tags.name', 'tags.slug', DB::raw('SUM(posts.views) AS total_views'))
+            ->groupBy('tags.id', 'tags.name', 'tags.slug')
             ->orderByDesc('total_views')
+            ->limit($limit)
             ->get();
     }
 

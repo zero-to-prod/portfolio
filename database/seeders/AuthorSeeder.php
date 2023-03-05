@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Helpers\Tags;
+use App\Helpers\TagTypes;
 use App\Models\Author;
-use App\Models\Support\Tag\TagTypes;
 use Database\Seeders\Support\UploadsFile;
 use Illuminate\Database\Seeder;
 

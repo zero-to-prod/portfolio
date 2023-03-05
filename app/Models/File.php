@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use App\Helpers\Tags;
+use App\Helpers\TagTypes;
 use App\Models\Support\File\FileColumns;
 use App\Models\Support\File\FileRelationships;
 use App\Models\Support\IdColumn;
 use App\Models\Support\SoftDeleteColumn;
-use App\Models\Support\Tag\TagTypes;
 use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

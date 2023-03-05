@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Helpers\Tags;
-use App\Models\Support\Tag\TagTypes;
+use App\Helpers\TagTypes;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
 

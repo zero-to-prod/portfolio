@@ -83,14 +83,14 @@ class Post extends Model implements HasRules
     public function featuredImage(): ?File
     {
         return $this->files()->whereHas(self::tags, function ($builder) {
-            $builder->where('name->en', Tags::featured->value);
+            $builder->where(Tag::name.'->en', Tags::featured->value);
         })->first();
     }
 
     public function authorAvatar(): ?File
     {
         return $this->authors()->first()?->files()->whereHas(self::tags, function ($builder) {
-            $builder->where('name->en', Tags::avatar->value);
+            $builder->where(Tag::name.'->en', Tags::avatar->value);
         })->first();
     }
 

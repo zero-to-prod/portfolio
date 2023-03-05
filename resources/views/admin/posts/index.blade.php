@@ -3,6 +3,7 @@
 use App\Http\Controllers\FileServeController;
 use App\Http\Routes;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Http\Controllers\PostPublishController;
 
 /* @var Post $post */

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Support\IdColumn;
-use App\Models\Support\ViewColumns;
+use App\Models\Support\View\ViewColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

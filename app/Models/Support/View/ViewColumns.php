@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Support;
+namespace App\Models\Support\View;
 
 trait ViewColumns
 {

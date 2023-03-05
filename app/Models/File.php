@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Helpers\Tags;
 use App\Models\Support\File\FileColumns;
+use App\Models\Support\File\FileRelationships;
 use App\Models\Support\IdColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
@@ -23,6 +24,7 @@ class File extends Model
     use SoftDeletes;
     use SoftDeleteColumn;
     use FileColumns;
+    use FileRelationships;
     use HasTags;
 
     protected $fillable = [self::name, self::path, self::original_name, self::mime_type];

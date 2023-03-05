@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait FileRelationships
 {
+
+    public const posts = 'posts';
+    public const authors = 'authors';
+
     public function posts(): MorphToMany
     {
         return $this->morphedByMany(Post::class, 'fileable');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Support;
+namespace App\Models\Support\Contact;
 
 use App\Models\Message;
 use Illuminate\Database\Eloquent\Relations\HasMany;

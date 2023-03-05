@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Support\ContactColumns;
-use App\Models\Support\ContactRelationships;
-use App\Models\Support\ContactRules;
+use App\Models\Support\Contact\ContactColumns;
+use App\Models\Support\Contact\ContactRelationships;
+use App\Models\Support\Contact\ContactRules;
 use App\Models\Support\HasRules;
 use App\Models\Support\IdColumn;
 use App\Models\Support\SoftDeleteColumn;
@@ -28,6 +28,5 @@ class Contact extends Model implements HasRules
     use ContactRules;
 
     protected $fillable = [self::email];
-
 
 }

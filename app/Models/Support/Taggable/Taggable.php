@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Support\Taggable;
 
+use App\Models\IdeHelperTaggable;
 use App\Models\Support\TaggableColumns;
 use Illuminate\Database\Eloquent\Model;
 

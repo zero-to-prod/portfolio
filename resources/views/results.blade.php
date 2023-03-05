@@ -14,7 +14,7 @@ $tags = Tag::mostViewed()
 <x-main :title="request()->query(ResultsController::query)">
     <x-left-drawer :tags="$tags"/>
     @if($posts !== null && count($posts) )
-        <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[258px] flex flex-col max-w-3xl gap-6">
+        <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[258px] flex flex-col max-w-3xl gap-6 px-4">
             @foreach($posts as $post)
                 <a class="flex" href="{{route_as(Routes::read, $post)}}">
                     <div class="relative">

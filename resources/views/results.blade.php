@@ -13,7 +13,7 @@ $tags = Tag::mostViewed()
 ?>
 <x-main :title="request()->query(ResultsController::query)">
     <x-left-drawer :tags="$tags"/>
-    @if(count($posts) )
+    @if($posts !== null && count($posts) )
         <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[258px] flex flex-col max-w-3xl gap-6">
             @foreach($posts as $post)
                 <a class="flex" href="{{route_as(Routes::read, $post)}}">
@@ -60,8 +60,13 @@ $tags = Tag::mostViewed()
         </div>
     @else
         <div class="flex flex-col items-center justify-center h-full">
-            <h1 class="text-2xl font-bold">No results found</h1>
-            <p class="text-gray-600">Try searching for something else</p>
+            <div class="flex flex-col">
+                @forEach($tags as $tag)
+                    <a class="rounded-lg pl-6 p-2 hover:bg-gray-100"
+                       href="{{route_as(Routes::results, [ResultsController::tag => $tag->slug])}}"
+                    >{{$tag->name}}</a>
+                @endforeach
+            </div>
         </div>
     @endif
 </x-main>

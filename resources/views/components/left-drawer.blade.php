@@ -24,7 +24,7 @@ use App\Http\Controllers\ResultsController;
                 <span>Home</span>
             </a>
             <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-100"
-               href="{{route_as(Routes::welcome)}}">
+               href="{{route_as(Routes::results, [ResultsController::popular => true])}}">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <g>
                         <path fill="none" d="M0 0H24V24H0z"></path>
@@ -41,7 +41,7 @@ use App\Http\Controllers\ResultsController;
         </div>
         <div class="flex flex-col">
             <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-100"
-               href="{{route_as(Routes::welcome)}}">
+               href="{{route_as(Routes::results)}}">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
                      fill="currentColor">
                     <defs></defs>
@@ -61,7 +61,6 @@ use App\Http\Controllers\ResultsController;
                 @endforeach
             </div>
         </div>
-
     </div>
 </nav>
 <nav class="fixed top-0 bottom-0 left-0 hidden mt-[64px] min-[780px]:block min-[1312px]:hidden">
@@ -75,7 +74,7 @@ use App\Http\Controllers\ResultsController;
             </svg>
             <span class="text-xs mx-auto">Home</span>
         </a>
-        <a class="w-[64px] flex flex-col hover:bg-gray-100 py-4" href="{{route_as(Routes::welcome)}}">
+        <a class="w-[64px] flex flex-col hover:bg-gray-100 py-4" href="{{route_as(Routes::results, [ResultsController::popular => true])}}">
             <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <g>
                     <path fill="none" d="M0 0H24V24H0z"></path>
@@ -84,7 +83,7 @@ use App\Http\Controllers\ResultsController;
             </svg>
             <span class="text-xs mx-auto">Popular</span>
         </a>
-        <a class="w-[64px] flex flex-col hover:bg-gray-100 py-4" href="{{route_as(Routes::welcome)}}">
+        <a class="w-[64px] flex flex-col hover:bg-gray-100 py-4" href="{{route_as(Routes::results)}}">
             <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
                 <defs></defs>
                 <path d="M22.707,9.2931a.9992.9992,0,0,0-1.0234-.2417l-9,3a1.001,1.001,0,0,0-.6323.6323l-3,9a1,1,0,0,0,1.2651,1.2651l9-3a1.0013,1.0013,0,0,0,.6323-.6324l3-9A1,1,0,0,0,22.707,9.2931ZM11.5811,20.419l2.2094-6.6284L18.21,18.21Z"></path>

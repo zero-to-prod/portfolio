@@ -7,7 +7,7 @@ use App\Models\Post;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ResultsController extends Controller
@@ -15,13 +15,16 @@ class ResultsController extends Controller
     public const query = 'query';
     public const tag = 'tag';
     public const topics = 'topics';
+    public const popular = 'popular';
     public const posts = 'posts';
+    public const limit = 20;
 
     public function __invoke(Request $request): View|Factory|Application
     {
         $posts = null;
         $search = $request->query(self::query);
         $tag = $request->query(self::tag);
+        $popular = $request->query(self::popular);
 
         if ($search !== null) {
             $posts = Post::where(static function (Builder $query) use ($search) {
@@ -37,7 +40,14 @@ class ResultsController extends Controller
         }
 
         if ($tag !== null) {
-            $posts = Post::related($tag, limit: 20);
+            $posts = Post::related($tag, limit: self::limit);
+        }
+
+        if ($popular !== null) {
+            $posts = Post::with([Post::tags, Post::authors])
+                ->orderByDesc(Post::views)
+                ->limit(self::limit)
+                ->get();
         }
 
         return view_as(Views::results, [self::posts => $posts]);

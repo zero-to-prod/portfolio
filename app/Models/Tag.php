@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Models\Support\IdColumn;
-use App\Models\Support\TagColumns;
+use App\Models\Support\Tag\TagColumns;
+use App\Models\Support\Tag\TagRelationships;
 use App\Models\Support\TimeStampColumns;
 use DB;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
 
 /**
@@ -17,13 +17,9 @@ class Tag extends \Spatie\Tags\Tag
     use IdColumn;
     use TimeStampColumns;
     use TagColumns;
+    use TagRelationships;
 
     protected $fillable = [self::name, self::slug, self::type, self::order_column];
-
-    public function posts(): MorphToMany
-    {
-        return $this->morphedByMany(Post::class, 'taggable');
-    }
 
     public static function mostViewed(int|null $limit = null): Collection
     {

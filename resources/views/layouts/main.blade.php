@@ -21,22 +21,31 @@ $search = SearchController::search;
 <main aria-label="Main">
     <header class="fixed top-0 z-50 mx-auto w-full bg-white">
         <div class="flex justify-between">
-            <a class="flex p-4 text-lg" href="{{route_as(Routes::welcome)}}">
-                <span class="font-semibold text-sky-600">dev</span>READ
-            </a>
+            <div class="flex">
+                <button type="button" class="hover:bg-gray-200">
+                    <svg class="block h-6 w-[64px] m-auto " fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                    </svg>
+                </button>
+                <a class="flex p-4 text-lg" href="{{route_as(Routes::welcome)}}">
+                    <span class="font-semibold text-sky-600">dev</span>READ
+                </a>
+            </div>
             <div class="mx-auto w-full max-w-2xl py-2">
                 <form action="{{route_as(Routes::search)}}" method="post">
                     @csrf
                     <label for="{{$search}}"></label>
                     <div class="flex rounded-md">
                         <div class="relative flex flex-grow focus-within:z-10">
-                            <input class="w-full rounded-l-md pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-400 h-[40px]"
+                            <input class="w-full rounded-l-md pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px]"
                                    name="{{$search}}"
                                    id="{{$search}}"
                                    value="{{request()->query(ResultsController::query)}}"
                                    placeholder="Search">
                         </div>
-                        <button class="-ml-px rounded-r-md bg-gray-100 p-2 2col:px-4 ring-1 ring-inset ring-gray-400 hover:bg-gray-200">
+                        <button class="-ml-px rounded-r-md bg-gray-100 p-2 2col:px-4 ring-1 ring-inset ring-gray-300 hover:bg-gray-200">
                             <svg class="h-5 w-5 text-gray-600" viewBox="0 0 20 20" fill="currentColor"
                                  aria-hidden="true">
                                 <path fill-rule="evenodd"

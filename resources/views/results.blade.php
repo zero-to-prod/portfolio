@@ -2,13 +2,17 @@
 
 use App\Http\Controllers\FileServeController;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Http\Routes;
 use Illuminate\Database\Eloquent\Collection;
+use App\Http\Controllers\ResultsController;
 
 /* @var Collection $posts */
 /* @var Post $post */
+$tags = Tag::mostViewed()
 ?>
-<x-main :title="'results'">
+<x-main :title="request()->query(ResultsController::query)">
+    <x-left-drawer :tags="$tags"/>
     @if(count($posts) )
         <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[258px] flex flex-col max-w-3xl gap-6">
             @foreach($posts as $post)

@@ -11,18 +11,11 @@ $tags = Tag::mostViewed()
 ?>
 
 <x-main>
-    <nav class="fixed top-0 bottom-0 left-0 hidden pl-4 mt-[64px] min-[780px]:w-[64px] min-[1312px]:w-[240px] min-[780px]:block">
-        <h3 class="font-bold text-gray-800">Explore</h3>
-        <ul>
-            @forEach($tags as $tag)
-                <li class="rounded-lg p-2 hover:bg-gray-100">{{$tag->name}}</li>
-            @endforeach
-        </ul>
-    </nav>
+    <x-left-drawer :tags="$tags"/>
     <div class="ml-0 2col:px-4 min-[780px]:ml-[64px] min-[1312px]:ml-[238px]">
         <div class="flex w-full flex-col max-w-[2535px] min-[2535px]:mx-auto">
             @foreach($tags as $tag)
-                <section>
+                <section class="mt-2">
                     <h2 class="mb-4 2col:block hidden text-lg font-bold">{{$tag->name}}</h2>
                     <div class="grid grid-flow-row 2col:grid-cols-2 3col:grid-cols-3 4col:grid-cols-4 5col:grid-cols-5 6col:grid-cols-6 2col:gap-4">
                         @foreach($tag->recommended()->take(4) as $post)

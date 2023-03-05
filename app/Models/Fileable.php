@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Support\FileableColumns;
+use App\Models\Support\Fileable\FileableColumns;
 use Illuminate\Database\Eloquent\Model;
 
 /**

@@ -11,8 +11,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class PostFactory extends Factory
 {
     /**
-     * Define the model's default state.
-     *
      * @return array<string, mixed>
      */
     public function definition(): array
@@ -21,5 +19,12 @@ class PostFactory extends Factory
             Post::title => $this->faker->sentence,
             Post::body => $this->faker->paragraph,
         ];
+    }
+
+    public function published(): self
+    {
+        return $this->state(fn() => [
+            Post::published_at => now(),
+        ]);
     }
 }

@@ -13,6 +13,7 @@ use App\Models\Support\Post\PostScopes;
 use App\Models\Support\SlugColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
+use App\Rules\PostIsPublished;
 use ArrayAccess;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -57,12 +58,12 @@ class Post extends Model implements HasRules
 
     public function isPublished(): bool
     {
-        return $this->published_at !== null;
+        return PostIsPublished::evaluate($this);
     }
 
     public function isNotPublished(): bool
     {
-        return $this->published_at === null;
+        return !PostIsPublished::evaluate($this);
     }
 
     public static function related(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = [], int|null $limit = null): Collection

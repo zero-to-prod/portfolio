@@ -9,7 +9,7 @@ use App\Models\Tag;
 ?>
 
 <x-main>
-    <div class="flex w-full flex-col max-w-[2535px] min-[2535px]:mx-auto">
+    <div class="flex w-full flex-col 4col:mx-auto 4col:max-w-7xl">
         @foreach($tags as $tag)
             <section class="mt-2">
                 <a class=" block ml-2 2col:ml-0" href="{{R::results($tag)}}">
@@ -25,7 +25,7 @@ use App\Models\Tag;
                 <div class="pb-4 pt-2">
                     <x-divider/>
                 </div>
-                <div class="grid mb-4 grid-flow-row gap-4 2col:grid-cols-2 4col:grid-cols-4 5col:grid-cols-5 6col:grid-cols-6 2col:gap-2">
+                <div class="grid mb-4 grid-flow-row gap-4 2col:grid-cols-2 4col:grid-cols-4 2col:gap-2">
                     @foreach($tag->relatedPosts(limit: 4) as $post)
                         <a href="{{R::read($post)}}">
                             <div class="relative">

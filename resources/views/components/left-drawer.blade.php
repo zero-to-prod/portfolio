@@ -47,13 +47,6 @@ use Illuminate\Support\Collection;
                 </svg>
                 <span>Topics</span>
             </a>
-        </div>
-        <div class="relative">
-            <div class="absolute -ml-4 inset-0 flex items-center" aria-hidden="true">
-                <div class="w-full border-t border-gray-300"></div>
-            </div>
-        </div>
-        <div class="flex flex-col">
             <div class="flex flex-col">
                 @forEach($tags as $tag)
                     <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-300 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-gray-200' : '' }}"

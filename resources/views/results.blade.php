@@ -23,7 +23,9 @@ use Illuminate\Database\Eloquent\Collection;
                         {{$tag->name}}
                     </h2>
                 </a>
-                <x-divider/>
+                <div class="hidden 2col:block">
+                    <x-divider/>
+                </div>
             @endif
             @if(request()->query(ResultsView::popular) !== null)
                 <div class="mb-2 flex gap-x-2 pt-2" title="Popular">
@@ -37,7 +39,9 @@ use Illuminate\Database\Eloquent\Collection;
                         Popular
                     </h2>
                 </div>
-                <x-divider/>
+                <div class="hidden 2col:block">
+                    <x-divider/>
+                </div>
             @endif
         </div>
         @if($posts !== null && count($posts) )
@@ -86,7 +90,7 @@ use Illuminate\Database\Eloquent\Collection;
             @endforeach
     </div>
     @else
-        <div class="2col:absolute 2col:ml-12 flex mx-auto gap-4 flex-wrap">
+        <div class="2col:absolute 2col:ml-12 flex mx-auto gap-4 flex-wrap justify-center">
             @forEach($tags as $tag)
                 <a class="rounded-lg p-2 hover:bg-gray-100 flex" href="{{R::results($tag)}}">
                     @if($tag->hasLogo())

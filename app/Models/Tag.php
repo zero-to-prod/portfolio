@@ -81,12 +81,11 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
             ->with(Post::authors . ':' . Author::id . ',' . Author::name)
             ->whereNotIn(Post::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
             ->orderByDesc(Post::views)
-            ->limit($limit)
             ->get()
             ->keyBy(Post::id);
 
         $latest_post = $posts->sortByDesc(Post::published_at)->first();
 
-        return $posts->forget($latest_post?->id)->prepend($latest_post);
+        return $posts->forget($latest_post?->id)->prepend($latest_post)->take($limit);
     }
 }

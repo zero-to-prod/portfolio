@@ -23,22 +23,22 @@ $search = SearchRedirect::search;
     <header class="fixed top-0 z-50 mx-auto w-full bg-white">
         <div class="flex justify-between">
             <div class="flex">
-                <button class="hover:bg-gray-200" id="toggle-navbar-btn" type="button">
+                <button class="hidden min-[1312px]:block hover:bg-gray-200" id="toggle-navbar-btn" type="button">
                     <svg class="block h-6 w-[64px] m-auto " fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round"
                               d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                     </svg>
                 </button>
-                <a class="flex p-4 text-lg" href="{{route_as(Routes::welcome)}}">
+                <a class="flex p-4 px-2 2col:pl-4 text-lg" href="{{route_as(Routes::welcome)}}">
                     <span class="font-semibold text-sky-600">dev</span>READ
                 </a>
             </div>
-            <div class="mx-auto w-full max-w-2xl py-2">
+            <div class="mx-auto max-w-2xl py-2 w-full pr-2 2col:pr-0">
                 <form action="{{route_as(Routes::search)}}" method="post">
                     @csrf
                     <label for="{{$search}}"></label>
-                    <div class="flex rounded-md">
+                    <div class="flex rounded-md ">
                         <div class="relative flex flex-grow focus-within:z-10">
                             <input class="w-full rounded-l-md pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px]"
                                    name="{{$search}}"
@@ -58,18 +58,6 @@ $search = SearchRedirect::search;
                 </form>
             </div>
             <div class="2col:block hidden p-4">About</div>
-            <div class="flex 2col:hidden items-center px-4">
-                <button type="button"
-                        class="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-500 hover:bg-gray-200 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
-                        aria-expanded="false">
-                    <span class="sr-only">Open menu</span>
-                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-                    </svg>
-                </button>
-            </div>
         </div>
     </header>
     <div class="mt-[64px]">
@@ -78,6 +66,41 @@ $search = SearchRedirect::search;
             {{$slot}}
         </div>
     </div>
+    <nav class="fixed 2col:hidden w-full bg-white bottom-0 bottom-0 left-0" id="left-nav-narrow">
+        <div class="grid grid-cols-3">
+            <a class="flex flex-col py-1 hover:bg-gray-300 {{ route_is(Routes::welcome) ? 'bg-gray-200' : '' }}"
+               href="{{R::welcome()}}">
+                <svg class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" aria-hidden="true">
+                    <g>
+                        <path d="M4,10V21h6V15h4v6h6V10L12,3Z"></path>
+                    </g>
+                </svg>
+                <span class="text-xs mx-auto">Home</span>
+            </a>
+            <a class="flex flex-col py-1 hover:bg-gray-300 {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
+               href="{{R::results_popular()}}">
+                <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <g>
+                        <path fill="none" d="M0 0H24V24H0z"></path>
+                        <path d="M5 3v16h16v2H3V3h2zm14.94 2.94l2.12 2.12L16 14.122l-3-3-3.94 3.94-2.12-2.122L13 6.88l3 3 3.94-3.94z"></path>
+                    </g>
+                </svg>
+                <span class="text-xs mx-auto">Popular</span>
+            </a>
+            <a class="flex flex-col py-1 hover:bg-gray-300 {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
+               href="{{R::results_topics()}}">
+                <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+                    <defs></defs>
+                    <path d="M22.707,9.2931a.9992.9992,0,0,0-1.0234-.2417l-9,3a1.001,1.001,0,0,0-.6323.6323l-3,9a1,1,0,0,0,1.2651,1.2651l9-3a1.0013,1.0013,0,0,0,.6323-.6324l3-9A1,1,0,0,0,22.707,9.2931ZM11.5811,20.419l2.2094-6.6284L18.21,18.21Z"></path>
+                    <path d="M16,30A14,14,0,1,1,30,16,14.0158,14.0158,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12.0137,12.0137,0,0,0,16,4Z"></path>
+                    <rect id="_Transparent_Rectangle_" data-name="<Transparent Rectangle>" class="cls-1" width="32"
+                          height="32" style="fill: none"></rect>
+                </svg>
+                <span class="text-xs mx-auto">Topics</span>
+            </a>
+        </div>
+    </nav>
 </main>
 <script>
     const toggleNavbarBtn = document.getElementById('toggle-navbar-btn');

@@ -8,14 +8,14 @@ use App\Models\Post;
 ?>
 
 <x-main :title="$post->title">
-    <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 p-2 lg:py-6 lg:px-0 lg:flex-row">
+    <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 lg:px-0 lg:flex-row">
         <div aria-label="Content" class="lg:basis-2/3">
             <div aria-label="image" class="relative">
                 <x-img :file="$post->featuredImage()" :width="837" :title="''"/>
                 <x-reading-time-chip class="font-normal" :post="$post" :text="$post->reading_time . ' min read'"/>
                 <x-new-chip :post="$post"/>
             </div>
-            <article aria-label="Article" class="flex flex-col gap-4">
+            <article aria-label="Article" class="flex flex-col gap-4 px-2">
                 <div>
                     <div class="flex flex-col 2col:flex-row justify-between pt-2">
                         <h1 class="font-bold text-xl 2col:py-2">{{ $post->title }}</h1>
@@ -50,7 +50,7 @@ use App\Models\Post;
                 </div>
             </article>
         </div>
-        <div aria-label="Suggested Content" class="lg:basis-1/3">
+        <div aria-label="Suggested Content" class="lg:basis-1/3 px-2">
             <div class="flex flex-col gap-2">
                 @foreach(Post::related($post->tags, $post->id) as $post)
                     <a href="{{R::read($post)}}" class="flex flex-row">

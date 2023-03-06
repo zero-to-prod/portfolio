@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\R;
 use App\Http\Controllers\ResultsView;
 use App\Models\Post;
 use App\Models\Tag;
@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Collection;
             @endif
             @foreach($posts as $post)
                 <div class="flex">
-                    <a class="relative" href="{{route_as(Routes::read, $post)}}">
+                    <a class="relative" href="{{R::read($post)}}">
                         <div class="overflow-hidden bg-gray-200 2col:rounded-lg">
                             <x-img class="h-full w-full object-cover object-center"
                                    :file="$post->featuredImage()"
@@ -38,7 +38,7 @@ use Illuminate\Database\Eloquent\Collection;
                         <x-new-chip :post="$post"/>
                     </a>
                     <div class="bg-white px-3 flex-1">
-                        <a href="{{route_as(Routes::read, $post)}}">
+                        <a href="{{R::read($post)}}">
                             <h3 class="font-bold tracking-tight font-sm break-word"
                                 title="{{ $post->title }}">{{ $post->title }}</h3>
                             <p class="text-sm text-gray-600 text-xs tracking-tight"
@@ -46,15 +46,16 @@ use Illuminate\Database\Eloquent\Collection;
                         </a>
                         <div class="flex flex-col gap-4">
                             <a class="text-xs text-sm tracking-tight text-gray-600"
-                               href="{{route_as(Routes::read, $post)}}">
+                               href="{{R::read($post)}}">
                                 {{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
                                 <span before="•"
                                       class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
                             </a>
-                            <div class="flex items-center gap-x-2">
+                            <div class="flex items-center">
                                 @foreach($post->tags()->get() as $tag)
                                     @if($tag->hasLogo())
-                                        <a href="{{route_as(Routes::results, [ResultsView::tag => $tag->slug])}}">
+                                        <a class="p-2 hover:ring-1 ring-inset ring-gray-100  hover:shadow"
+                                           href="{{R::results($tag)}}">
                                             <x-img class="h-6 w-6 rounded" :file="$tag->logo()" :width="60"
                                                    :title="$tag->name"/>
                                         </a>
@@ -62,7 +63,7 @@ use Illuminate\Database\Eloquent\Collection;
                                 @endforeach
                             </div>
                             <a class="text-sm tracking-tight text-gray-600"
-                               href="{{route_as(Routes::read, $post)}}"
+                               href="{{R::read($post)}}"
                                title="{{$post->subtitle}}">
                                 {{$post->subtitle}}
                             </a>
@@ -75,9 +76,9 @@ use Illuminate\Database\Eloquent\Collection;
         <div class="flex flex-col items-center justify-center h-full">
             <div class="flex flex-col">
                 @forEach($tags as $tag)
-                    <a class="rounded-lg pl-6 p-2 hover:bg-gray-100"
-                       href="{{route_as(Routes::results, [ResultsView::tag => $tag->slug])}}"
-                    >{{$tag->name}}</a>
+                    <a class="rounded-lg pl-6 p-2 hover:bg-gray-100" href="{{R::results($tag)}}">
+                        {{$tag->name}}
+                    </a>
                 @endforeach
             </div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\R;
 use App\Models\Post;
 
 /* @var Post $post */
@@ -40,7 +40,7 @@ use App\Models\Post;
         <div aria-label="Suggested Content" class="lg:basis-1/3">
             <div class="flex flex-col gap-2">
                 @foreach(Post::related($post->tags, $post->id) as $post)
-                    <a href="{{route_as(Routes::read, $post)}}" class="flex flex-row">
+                    <a href="{{R::read($post)}}" class="flex flex-row">
                         <div class="relative text-center  overflow-hidden rounded-lg">
                             <x-img class="h-[94px] width-[168px] object-cover"
                                    :file="$post->featuredImage()"

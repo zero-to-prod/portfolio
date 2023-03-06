@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Tag;
 
-use App\Helpers\Routes;
+use App\Helpers\R;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use DB;
@@ -48,6 +48,6 @@ class TagFormRedirect extends Controller
 
         DB::commit();
 
-        return redirect()->to(route_as(Routes::admin_tag_edit, $tag));
+        return redirect()->to(R::admin_tag_edit($tag));
     }
 }

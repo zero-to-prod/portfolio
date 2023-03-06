@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\R;
 use App\Http\Controllers\Admin\Tag\TagFormRedirect;
 use App\Models\Tag;
 
@@ -21,7 +21,7 @@ $logo = TagFormRedirect::logo;
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex flex-col mx-auto my-8 max-w-xl px-4">
-                    <form action="{{route_as(Routes::admin_tag_store)}}"
+                    <form action="{{R::admin_tag_store()}}"
                           method="post"
                           enctype="multipart/form-data">
                         @csrf

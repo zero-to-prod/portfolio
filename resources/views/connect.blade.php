@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\R;
 use App\Http\Controllers\ConnectStoreRedirect;
 
 $email = ConnectStoreRedirect::email;
@@ -20,7 +20,7 @@ $body = ConnectStoreRedirect::body;
             <div class="mx-auto max-w-2xl text-center">
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Let's Connect</h1>
             </div>
-            <form class="mx-auto mt-8 space-y-8" action="{{route_as(Routes::connect_store)}}" method="post">
+            <form class="mx-auto mt-8 space-y-8" action="{{R::connect_store()}}" method="post">
                 @csrf
                 <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
                     <x-form-control>

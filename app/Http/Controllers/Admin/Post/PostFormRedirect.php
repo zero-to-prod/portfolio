@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
-use App\Helpers\Routes;
+use App\Helpers\R;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use DB;
@@ -61,6 +61,6 @@ class PostFormRedirect extends Controller
 
         DB::commit();
 
-        return redirect()->to(route_as(Routes::admin_post_edit, $post));
+        return redirect()->to(R::admin_post_edit($post));
     }
 }

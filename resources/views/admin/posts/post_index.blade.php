@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\R;
 use App\Http\Controllers\Admin\Post\PostPublishRedirect;
 use App\Models\Post;
 use App\Models\Tag;
@@ -18,7 +18,7 @@ use App\Models\Tag;
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center flex-row-reverse">
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <a href="{{route_as(Routes::admin_post_create)}}" class="btn btn-xs">
+                    <a href="{{R::admin_post_create()}}" class="btn btn-xs">
                         New Post
                     </a>
                 </div>
@@ -53,7 +53,7 @@ use App\Models\Tag;
                                         <div class="flex justify-between">
                                             <div class="flex  gap-4">
                                                 <figure>
-                                                    <a class="underline" href="{{route_as(Routes::read, $post)}}"
+                                                    <a class="underline" href="{{R::read($post)}}"
                                                        target="_blank">
                                                         <x-img class="object-cover h-[100px] rounded-lg"
                                                                :file="$post->featuredImage()"
@@ -68,7 +68,7 @@ use App\Models\Tag;
                                         <div>
                                             <div>
                                                 <div>
-                                                    <a href="{{route_as(Routes::admin_post_edit, $post)}}"
+                                                    <a href="{{R::admin_post_edit($post)}}"
                                                        class="font-bold">{{$post->title}}</a>
                                                     <p>{{$post->authors->first()->name}}</p>
                                                     <p title="{{$post->subtitle}}">{{$post->subtitle}}</p>
@@ -88,7 +88,7 @@ use App\Models\Tag;
                                     <td>
                                         <div class="my-auto">
                                             @if($post->isNotPublished())
-                                                <form action="{{route_as(Routes::admin_post_publish, $post)}}"
+                                                <form action="{{R::admin_post_publish($post)}}"
                                                       method="post">
                                                     @csrf
                                                     <input name="{{PostPublishRedirect::id}}"

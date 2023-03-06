@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\R;
 use App\Http\Controllers\Admin\Post\PostFormRedirect;
 use App\Http\Controllers\Admin\Post\PostPublishRedirect;
 use App\Models\Author;
@@ -31,7 +31,7 @@ $featured_image = PostFormRedirect::featured_image;
                 <div class="flex flex-col mx-auto my-8 max-w-xl px-4">
                     <div class="flex justify-between">
                         @isset($post_model)
-                            <form action="{{route_as(Routes::admin_post_publish, $post_model)}}" method="post">
+                            <form action="{{R::admin_post_publish($post_model)}}" method="post">
                                 @csrf
                                 <input name="{{PostPublishRedirect::id}}" type="hidden" value="{{$post_model->id}}">
                                 @if($post_model->isPublished())
@@ -44,7 +44,7 @@ $featured_image = PostFormRedirect::featured_image;
                             </form>
                             @if($post_model->isPublished())
                                 <a class="btn btn-xs"
-                                   href="{{route_as(Routes::read, $post_model)}}"
+                                   href="{{R::read($post_model)}}"
                                    target="_blank">
                                     View
                                 </a>
@@ -52,7 +52,7 @@ $featured_image = PostFormRedirect::featured_image;
                         @endisset
                     </div>
 
-                    <form action="{{route_as(Routes::admin_post_store)}}"
+                    <form action="{{R::admin_post_store()}}"
                           method="post"
                           enctype="multipart/form-data">
                         @csrf

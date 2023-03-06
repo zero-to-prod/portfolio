@@ -1,6 +1,7 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\R;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 ?>
 
@@ -15,11 +16,11 @@ use App\Helpers\Routes;
         </p>
     </header>
 
-    <form id="send-verification" method="post" action="{{ route_as(Routes::email_verificationNotification) }}">
+    <form id="send-verification" method="post" action="{{ R::email_verificationNotification() }}">
         @csrf
     </form>
 
-    <form method="post" action="{{ route_as(Routes::profile_update) }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ R::profile_update() }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
@@ -36,7 +37,7 @@ use App\Helpers\Routes;
                           :value="old('email', $user->email)" required autocomplete="username"/>
             <x-input-error class="mt-2" :messages="$errors->get('email')"/>
 
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+            @if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
                         {{ __('Your email address is unverified.') }}

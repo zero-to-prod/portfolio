@@ -1,7 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
-use App\Http\Controllers\ResultsView;
+use App\Helpers\R;
 use App\Models\Post;
 use App\Models\Tag;
 
@@ -16,8 +15,7 @@ $tags = Tag::mostViewed()
         <div class="flex w-full flex-col max-w-[2535px] min-[2535px]:mx-auto">
             @foreach($tags as $tag)
                 <section class="mt-2">
-                    <a class="mb-2 2col:block hidden "
-                       href="{{route_as(Routes::results, [ResultsView::tag => $tag->slug])}}">
+                    <a class="mb-2 2col:block hidden" href="{{R::results($tag)}}">
                         <div class="flex gap-x-2">
                             @if($tag->hasLogo())
                                 <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
@@ -29,7 +27,7 @@ $tags = Tag::mostViewed()
                     </a>
                     <div class="grid grid-flow-row 2col:grid-cols-2 3col:grid-cols-3 4col:grid-cols-4 5col:grid-cols-5 6col:grid-cols-6 2col:gap-4">
                         @foreach($tag->relatedPosts()->take(4) as $post)
-                            <a href="{{route_as(Routes::read, $post)}}">
+                            <a href="{{R::read($post)}}">
                                 <div class="relative">
                                     <div class="overflow-hidden 2col:rounded-lg aspect-w-3 aspect-h-2">
                                         <x-img class="h-full w-full object-cover object-center"

@@ -1,7 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
-use App\Helpers\Views;
+use App\Helpers\R;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
 
@@ -19,7 +18,7 @@ use Illuminate\Support\Collection;
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center flex-row-reverse">
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <a href="{{route_as(Routes::admin_tag_create)}}" class="btn btn-xs">
+                    <a href="{{R::admin_tag_create()}}" class="btn btn-xs">
                         New Tag
                     </a>
                 </div>
@@ -45,7 +44,8 @@ use Illuminate\Support\Collection;
                             @foreach($tags as $tag)
                                 <tr>
                                     <td class="p-3.5">
-                                        <a class="flex justify-between" href="{{route_as(Routes::admin_tag_edit, [$tag])}}">
+                                        <a class="flex justify-between"
+                                           href="{{R::admin_tag_edit($tag)}}">
                                             <div class="flex gap-4 h-[100px] w-[100px]">
                                                 @if($tag->logo())
                                                     <x-img class="object-cover h-[100px] rounded-lg"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Tag;
 
 use App\Helpers\R;
 use App\Http\Controllers\Controller;
+use App\Models\File;
 use App\Models\Tag;
 use DB;
 use Illuminate\Http\RedirectResponse;
@@ -35,7 +36,7 @@ class TagFormRedirect extends Controller
         ]);
 
         if ($request->hasFile(self::logo)) {
-            $logo = Upload::file($request->file(self::logo));
+            $logo = File::upload($request->file(self::logo));
             $logo?->tagLogo();
             $tag->files()->sync([$logo?->id]);
         }

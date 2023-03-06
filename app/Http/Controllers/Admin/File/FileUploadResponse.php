@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\File;
 
 use App\Http\Controllers\Controller;
+use App\Models\File;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\RedirectResponse;
@@ -21,7 +22,7 @@ class FileUploadResponse extends Controller
     {
         $file = $request->file(self::file);
         if ($file) {
-            Upload::file($file);
+            File::upload($file);
 
             return redirect()->back();
         }

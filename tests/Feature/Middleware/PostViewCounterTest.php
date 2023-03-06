@@ -48,6 +48,7 @@ class PostViewCounterTest extends TestCase
         self::assertEquals(2, $post->views);
         self::assertEquals(2, $post->views()->count());
     }
+
     /**
      * @test
      * @see PostViewCounter

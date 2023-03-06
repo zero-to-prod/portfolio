@@ -17,7 +17,6 @@ class PostViewCounter
 
     /**
      * @throws Throwable
-     * @see PostViewCounterTest
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -39,7 +38,7 @@ class PostViewCounter
         return $next($request);
     }
 
-    protected function shouldIncrementView(Request $request, ?Post $post): bool
+    protected function shouldIncrementView(Request $request, Post|string|null $post): bool
     {
         return $post instanceof Post && route_is(Routes::read);
     }

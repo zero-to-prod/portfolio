@@ -16,7 +16,7 @@ class PostIndexView extends Controller
 
     public function __invoke(Request $request): View|Factory|Application
     {
-        $all_posts = Post::withoutGlobalScopes()
+        $all_posts = Post::withoutGlobalScopes([Post::published])
             ->with([Post::views, Post::authors, Post::tags])
             ->orderByDesc(Post::published_at)
             ->get();

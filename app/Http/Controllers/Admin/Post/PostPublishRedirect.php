@@ -22,7 +22,7 @@ class PostPublishRedirect extends Controller
         ]);
 
         DB::transaction(static function () use ($validated) {
-            $post = Post::withoutGlobalScopes()->findOrFail($validated[self::id]);
+            $post = Post::withoutGlobalScopes([Post::published])->findOrFail($validated[self::id]);
 
             $post->publish();
         });

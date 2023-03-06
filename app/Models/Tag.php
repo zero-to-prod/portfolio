@@ -65,6 +65,16 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
         })->first();
     }
 
+    public function hasLogo(): bool
+    {
+        return $this->logo() !== null;
+    }
+
+    public function isMissingLogo(): bool
+    {
+        return $this->logo() === null;
+    }
+
     public function relatedPosts(array|int|string|null $exclude_ids = [], int|null $limit = null): Collection
     {
         $posts = $this->posts()

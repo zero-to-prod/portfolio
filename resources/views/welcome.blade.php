@@ -18,12 +18,9 @@ $tags = Tag::mostViewed()
                 <section class="mt-2">
                     <a class="mb-2 2col:block hidden "
                        href="{{route_as(Routes::results, [ResultsView::tag => $tag->slug])}}">
-                            <?php
-                            $logo = $tag->logo()
-                            ?>
                         <div class="flex gap-x-2">
-                            @if($logo !== null)
-                                <x-img class="h-10 w-10 rounded" :file="$logo" :width="80"/>
+                            @if($tag->hasLogo())
+                                <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
                             @endif
                             <h2 class="my-auto text-lg font-semibold text-gray-900 text-base">
                                 {{$tag->name}}

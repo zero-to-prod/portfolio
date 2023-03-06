@@ -134,7 +134,7 @@ $featured_image = PostFormRedirect::featured_image;
                                 @endif
                             </x-form-control-dark>
                             <div class="flex space-x-6 sm:col-span-2">
-                                @if($post_model?->featuredImage() !== null)
+                                @if($post_model?->hasFeaturedImage())
                                     <x-img class="object-cover h-[100px] rounded-lg"
                                            :file="$post_model->featuredImage()"
                                            :height="100"
@@ -145,7 +145,7 @@ $featured_image = PostFormRedirect::featured_image;
                                     <input class="w-full"
                                            name="{{$featured_image}}"
                                            id="{{$featured_image}}"
-                                           {{$post_model?->featuredImage() !== null ? null  : 'required=true'}}
+                                           {{$post_model?->hasFeaturedImage() ? null  : 'required=true'}}
                                            type="file"
                                     >
                                     @if($errors->has($featured_image))

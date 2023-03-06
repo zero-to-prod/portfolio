@@ -9,11 +9,11 @@ use App\Models\Support\Polymorphic\HasFiles;
 use App\Models\Support\Post\PostColumns;
 use App\Models\Support\Post\PostRelationships;
 use App\Models\Support\Post\PostRules;
+use App\Models\Support\Post\PostScopes;
 use App\Models\Support\SlugColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
 use ArrayAccess;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -37,7 +37,9 @@ class Post extends Model implements HasRules
     use PostRules;
     use HasTags;
     use PostRelationships;
+    use PostScopes;
     use HasFiles;
+    use PostScopes;
 
     protected $fillable = [self::title, self::subtitle, self::body];
     protected $casts = [
@@ -50,9 +52,7 @@ class Post extends Model implements HasRules
 
     protected static function booted(): void
     {
-        static::addGlobalScope('published', static function (Builder $builder) {
-            $builder->whereNotNull(self::published_at);
-        });
+        static::addGlobalScope(self::published, self::publishedScope());
     }
 
     public function isPublished(): bool
@@ -60,9 +60,9 @@ class Post extends Model implements HasRules
         return $this->published_at !== null;
     }
 
-    public function isUnPublished(): bool
+    public function isNotPublished(): bool
     {
-        return !$this->isPublished();
+        return $this->published_at === null;
     }
 
     public static function related(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = [], int|null $limit = null): Collection
@@ -86,6 +86,16 @@ class Post extends Model implements HasRules
         return $this->files()->whereHas(self::tags, function ($builder) {
             $builder->where(Tag::name . '->en', Tags::featured->value);
         })->first();
+    }
+
+    public function hasFeaturedImage(): bool
+    {
+        return $this->featuredImage() !== null;
+    }
+
+    public function isMissingFeaturedImage(): bool
+    {
+        return $this->featuredImage() === null;
     }
 
     public function authorAvatar(): ?File

@@ -72,7 +72,7 @@ use App\Models\Tag;
                                                        class="font-bold">{{$post->title}}</a>
                                                     <p>{{$post->authors->first()->name}}</p>
                                                     <p title="{{$post->subtitle}}">{{$post->subtitle}}</p>
-                                                    @if($post->published_at !== null)
+                                                    @if($post->isPublished())
                                                         <p>{{$post->published_at?->format('d/m/Y')}}</p>
                                                         <p>Words: {{$post->published_word_count}}</p>
                                                     @endif
@@ -87,7 +87,7 @@ use App\Models\Tag;
                                     </td>
                                     <td>
                                         <div class="my-auto">
-                                            @if($post->published_at === null)
+                                            @if($post->isNotPublished())
                                                 <form action="{{route_as(Routes::admin_post_publish, $post)}}"
                                                       method="post">
                                                     @csrf

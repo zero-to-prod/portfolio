@@ -22,7 +22,7 @@ class PostFormView extends Controller
         $post_model = null;
         $author_model = null;
         if ($post !== null) {
-            $post_model = Post::withoutGlobalScopes()->where(Post::slug, $post)->first();
+            $post_model = Post::withoutGlobalScopes([Post::published])->where(Post::slug, $post)->first();
             $author_model = $post_model?->authors->first();
         }
 

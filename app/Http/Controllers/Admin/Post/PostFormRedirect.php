@@ -38,7 +38,7 @@ class PostFormRedirect extends Controller
 
         DB::beginTransaction();
 
-        $post = Post::withoutGlobalScopes()->updateOrCreate([Post::id => $request->{self::id}], [
+        $post = Post::withoutGlobalScopes([Post::published])->updateOrCreate([Post::id => $request->{self::id}], [
             Post::title => $validated[self::title],
             Post::subtitle => $validated[self::subtitle],
             Post::body => $validated[self::body],
@@ -53,7 +53,7 @@ class PostFormRedirect extends Controller
         $post->authors()->sync($validated['authors']);
         $post->tags()->sync($validated['tags']);
 
-        if ($post->featuredImage() === null) {
+        if ($post->isMissingFeaturedImage()) {
             return redirect()->back()->withErrors([self::featured_image => 'Missing Image'])->withInput();
         }
 

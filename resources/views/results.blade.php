@@ -12,18 +12,18 @@ use Illuminate\Database\Eloquent\Collection;
 
 ?>
 <x-main :title="request()->query(ResultsView::query)">
-    <x-left-drawer :tags="$tags"/>
-    @if($posts !== null && count($posts) )
-        <div class="max-w-5xl min-[780px]:ml-[64px] min-[1312px]:ml-[258px]">
+    <div class="flex flex-col gap-4 max-w-4xl mx-auto">
+        <div>
             @if($tag !== null)
-                <a class="mb-2 flex gap-x-2 pt-2" title="{{$tag->name}}" href="{{R::results_tag($tag)}}">
+                <a class="flex gap-x-2 my-2 ml-2 2col:ml-0" title="{{$tag->name}}" href="{{R::results_tag($tag)}}">
                     @if($tag->hasLogo())
                         <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
                     @endif
-                    <h2 class="-mx-1 my-auto text-lg font-semibold text-gray-900">
+                    <h2 class="my-auto text-lg font-semibold text-gray-900">
                         {{$tag->name}}
                     </h2>
                 </a>
+                <x-divider/>
             @endif
             @if(request()->query(ResultsView::popular) !== null)
                 <div class="mb-2 flex gap-x-2 pt-2" title="Popular">
@@ -37,62 +37,64 @@ use Illuminate\Database\Eloquent\Collection;
                         Popular
                     </h2>
                 </div>
+                <x-divider/>
             @endif
-            <div class="flex flex-col gap-3">
-                @foreach($posts as $post)
-                    <div class="flex gap-3">
-                        <a class="relative" href="{{R::read($post)}}">
-                            <div class="overflow-hidden 2col:rounded-lg bg-gray-200">
-                                <x-img class="h-full w-full object-cover object-center"
-                                       :file="$post->featuredImage()"
-                                       :width="300"
-                                       :title="''"/>
-                            </div>
-                            <x-reading-time-chip :post="$post"/>
-                            <x-new-chip :post="$post"/>
-                        </a>
-                        <div class="flex flex-1 flex-col">
-                            <a class="pb-4" href="{{R::read($post)}}">
-                                <h3 class="font-bold break-word"
-                                    title="{{ $post->title }}">{{ $post->title }}</h3>
-                                <p class="text-sm text-gray-600"
-                                   title="{{$post->authorList()}}">{{$post->authorList()}}</p>
-                                <p class="text-sm text-gray-600">
-                                    {{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
-                                    <span before="•"
-                                          class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
-                                </p>
-                            </a>
-                            <div class="flex">
-                                @foreach($post->tags()->get() as $tag)
-                                    @if($tag->hasLogo())
-                                        <a class="p-2 ring-inset ring-gray-100 hover:shadow hover:ring-1"
-                                           href="{{R::results($tag)}}">
-                                            <x-img class="h-6 w-6" :file="$tag->logo()" :width="60"
-                                                   :title="$tag->name"/>
-                                        </a>
-                                    @endif
-                                @endforeach
-                            </div>
-                            <a class="pt-4 text-sm text-gray-600"
-                               href="{{R::read($post)}}"
-                               title="{{$post->subtitle}}">
-                                {{$post->subtitle}}
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
         </div>
-    @else
-        <div class="flex h-full flex-col items-center justify-center">
-            <div class="flex flex-col">
-                @forEach($tags as $tag)
-                    <a class="rounded-lg p-2 pl-6 hover:bg-gray-100" href="{{R::results($tag)}}">
-                        {{$tag->name}}
+        @if($posts !== null && count($posts) )
+            @foreach($posts as $post)
+                <div class="flex flex-col 3col:flex-row gap-2">
+                    <a class="relative" href="{{R::read($post)}}">
+                        <div class="overflow-hidden 2col:rounded-lg bg-gray-200">
+                            <x-img class="h-full w-full object-cover object-center"
+                                   :file="$post->featuredImage()"
+                                   :width="300"
+                                   :title="''"/>
+                        </div>
+                        <x-reading-time-chip :post="$post"/>
+                        <x-new-chip :post="$post"/>
                     </a>
-                @endforeach
-            </div>
+                    <div class="flex flex-1 flex-col px-2 3col:my-0">
+                        <a class="pb-4" href="{{R::read($post)}}">
+                            <h3 class="font-bold break-word"
+                                title="{{ $post->title }}">{{ $post->title }}</h3>
+                            <p class="text-sm text-gray-600"
+                               title="{{$post->authorList()}}">{{$post->authorList()}}</p>
+                            <p class="text-sm text-gray-600">
+                                {{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
+                                <span before="•"
+                                      class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
+                            </p>
+                        </a>
+                        <div class="flex">
+                            @foreach($post->tags()->get() as $tag)
+                                @if($tag->hasLogo())
+                                    <a class="p-2 ring-inset ring-gray-100 hover:shadow hover:ring-1"
+                                       href="{{R::results($tag)}}">
+                                        <x-img class="h-6 w-6" :file="$tag->logo()" :width="60"
+                                               :title="$tag->name"/>
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                        <a class="pt-4 text-sm text-gray-600"
+                           href="{{R::read($post)}}"
+                           title="{{$post->subtitle}}">
+                            {{$post->subtitle}}
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+    </div>
+    @else
+        <div class="2col:absolute 2col:ml-12 flex mx-auto gap-4 flex-wrap">
+            @forEach($tags as $tag)
+                <a class="rounded-lg p-2 hover:bg-gray-100 flex" href="{{R::results($tag)}}">
+                    @if($tag->hasLogo())
+                        <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
+                    @endif
+                    <span class="ml-2 my-auto">{{$tag->name}}</span>
+                </a>
+            @endforeach
         </div>
     @endif
 </x-main>

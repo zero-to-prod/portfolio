@@ -3,6 +3,7 @@
 use App\Helpers\Routes;
 use App\Http\Controllers\ResultsView;
 use App\Http\Controllers\SearchRedirect;
+use App\Models\Tag;
 
 $search = SearchRedirect::search;
 ?>
@@ -22,7 +23,7 @@ $search = SearchRedirect::search;
     <header class="fixed top-0 z-50 mx-auto w-full bg-white">
         <div class="flex justify-between">
             <div class="flex">
-                <button type="button" class="hover:bg-gray-200">
+                <button class="hover:bg-gray-200" id="toggle-navbar-btn" type="button">
                     <svg class="block h-6 w-[64px] m-auto " fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -72,8 +73,46 @@ $search = SearchRedirect::search;
         </div>
     </header>
     <div class="mt-[64px]">
-        {{$slot}}
+        <x-left-drawer :tags="Tag::mostViewed()"/>
+        <div id="content" class="ml-0 2col:px-4 min-[780px]:ml-[64px] min-[1312px]:ml-[238px]">
+            {{$slot}}
+        </div>
     </div>
 </main>
+<script>
+    const toggleNavbarBtn = document.getElementById('toggle-navbar-btn');
+    const navbarWide = document.getElementById('left-nav-wide');
+    const navbarNarrow = document.getElementById('left-nav-narrow');
+    const content = document.getElementById('content');
+
+    // Retrieve the stored toggle state from local storage
+    const isNavbarWideOpen = JSON.parse(localStorage.getItem('isNavbarWideOpen'));
+
+    // Set the initial toggle state based on the stored value
+    const block = 'min-[1312px]:block';
+    const hidden = 'min-[1312px]:hidden';
+    const ml = 'min-[1312px]:ml-[238px]';
+    if (isNavbarWideOpen) {
+        navbarWide.classList.add(block);
+        navbarNarrow.classList.add(hidden);
+        content.classList.add(ml);
+    } else {
+        navbarWide.classList.remove(block);
+        navbarNarrow.classList.remove(hidden);
+        content.classList.remove(ml);
+    }
+
+    toggleNavbarBtn.addEventListener('click', () => {
+        // Toggle the classes as before
+        navbarWide.classList.toggle(block);
+        navbarNarrow.classList.toggle(hidden);
+        content.classList.toggle(ml);
+
+        // Store the toggle state in local storage
+        const isNavbarWideOpen = navbarWide.classList.contains(block);
+        localStorage.setItem('isNavbarWideOpen', JSON.stringify(isNavbarWideOpen));
+    });
+</script>
 </body>
 </html>
+

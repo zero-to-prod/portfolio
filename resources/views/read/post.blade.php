@@ -17,7 +17,20 @@ use App\Models\Post;
             </div>
             <article aria-label="Article" class="flex flex-col gap-4">
                 <div>
-                    <h1 data-blog="title">{{ $post->title }}</h1>
+                    <div class="flex flex-col 2col:flex-row justify-between pt-2">
+                        <h1 class="font-bold text-xl 2col:py-2">{{ $post->title }}</h1>
+                        <div class="flex mb-2">
+                            @foreach($post->tags()->get() as $tag)
+                                @if($tag->hasLogo())
+                                    <a class="p-2 ring-inset ring-gray-100 hover:shadow hover:ring-1"
+                                       href="{{R::results($tag)}}">
+                                        <x-img class="h-6 w-6" :file="$tag->logo()" :width="60"
+                                               :title="$tag->name"/>
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="flex items-center gap-x-2">
                         <x-img class="h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80"/>
                         <div class="flex justify-between w-full">

@@ -3,9 +3,6 @@
         /*@apply border border-red-200;*/
     }
 
-    [data-blog="title"] {
-        @apply font-bold text-xl py-2;
-    }
     [aria-label="Body"] {
         @apply prose max-w-none;
     }

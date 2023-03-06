@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 /* @var Collection $tags */
 /* @var Tag $tag */
 ?>
-<nav class="fixed top-0 bottom-0 left-0 hidden w-[238px] mt-[64px] min-[1312px]:block">
+<nav class="fixed top-0 bottom-0 left-0 hidden w-[238px] mt-[64px] min-[1312px]:block hidden" id="left-nav-wide">
     <div class="flex flex-col gap-6">
         <div class="flex flex-col">
             <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-300 {{ route_is(Routes::welcome) ? 'bg-gray-200' : '' }}"
@@ -71,7 +71,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 </nav>
-<nav class="fixed top-0 bottom-0 left-0 hidden mt-[64px] min-[780px]:block min-[1312px]:hidden">
+<nav class="fixed top-0 bottom-0 left-0 hidden mt-[64px] min-[780px]:block min-[1312px]:hidden" id="left-nav-narrow">
     <div class="flex flex-col">
         <a class="w-[64px] flex flex-col py-4 hover:bg-gray-300 {{ route_is(Routes::welcome) ? 'bg-gray-200' : '' }}"
            href="{{R::welcome()}}">

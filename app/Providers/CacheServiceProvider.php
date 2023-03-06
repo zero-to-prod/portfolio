@@ -9,6 +9,7 @@ use Cache;
 
 class CacheServiceProvider extends ServiceProvider
 {
+    protected bool $defer = true;
     public function boot(): void
     {
         $this->registerHasView();

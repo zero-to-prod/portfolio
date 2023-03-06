@@ -12,6 +12,7 @@ use UnitEnum;
 
 class RedirectServiceProvider extends ServiceProvider
 {
+    protected bool $defer = true;
     public function boot(): void
     {
         $this->registerRouteAs();

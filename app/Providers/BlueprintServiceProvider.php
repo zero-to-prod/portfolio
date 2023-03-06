@@ -11,6 +11,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 
 class BlueprintServiceProvider extends ServiceProvider
 {
+    protected bool $defer = true;
     public function boot(): void
     {
         $this->registerSlug();

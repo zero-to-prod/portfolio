@@ -18,6 +18,8 @@ use UnitEnum;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    protected bool $defer = true;
+
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
@@ -78,7 +80,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function registerAsMethods(): void
     {
         foreach (['get', 'post', 'put', 'patch', 'delete', 'options', 'any'] as $method) {
-            Route::macro($method . 'As', function ($uri, array|string|callable|null|UnitEnum $action = null, $data = [], $mergeData = [],$cached = false) use ($method) {
+            Route::macro($method . 'As', function ($uri, array|string|callable|null|UnitEnum $action = null, $data = [], $mergeData = [], $cached = false) use ($method) {
                 if (!$uri instanceof UnitEnum) {
                     Route::$method($uri, $action);
 

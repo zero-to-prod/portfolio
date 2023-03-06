@@ -24,7 +24,7 @@ use App\Models\Tag;
                             </h2>
                         </div>
                     </a>
-                    <div class="grid grid-flow-row 2col:grid-cols-2 3col:grid-cols-3 4col:grid-cols-4 5col:grid-cols-5 6col:grid-cols-6 2col:gap-4">
+                    <div class="grid grid-flow-row 2col:grid-cols-2 3col:grid-cols-3 4col:grid-cols-4 5col:grid-cols-5 6col:grid-cols-6 2col:gap-2">
                         @foreach($tag->relatedPosts()->take(4) as $post)
                             <a href="{{R::read($post)}}">
                                 <div class="relative">

@@ -17,14 +17,14 @@ class PostViewCounter
 
     /**
      * @throws Throwable
+     * @see PostViewCounterTest
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (route_is(Routes::read)) {
-            DB::transaction(static function () use ($request) {
-                /** @var Post $post */
-                $post = $request->route(ReadView::post);
+        $post = $request->route(ReadView::post);
 
+        if ($this->shouldIncrementView($request, $post)) {
+            DB::transaction(static function () use ($request, $post) {
                 $post->increment(Post::views);
 
                 View::create([
@@ -37,5 +37,10 @@ class PostViewCounter
         }
 
         return $next($request);
+    }
+
+    protected function shouldIncrementView(Request $request, ?Post $post): bool
+    {
+        return $post instanceof Post && route_is(Routes::read);
     }
 }

@@ -19,7 +19,7 @@ class FileServeResponse extends Controller
     public const height = 'height';
 
     /**
-     * @see FileServeControllerTest
+     * @see FileServeResponseTest
      */
     public function __invoke(Request $request):  Application|ResponseFactory|Response
     {

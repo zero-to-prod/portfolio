@@ -9,14 +9,13 @@ use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Upload;
 
 class FileUploadResponse extends Controller
 {
     public const file = 'file';
 
     /**
-     * @see FileUploadControllerTest
+     * @see FileUploadResponseTest
      */
     public function __invoke(Request $request): Response|RedirectResponse|Application|ResponseFactory
     {

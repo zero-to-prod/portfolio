@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\File\FileServeResponse;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class FileServeControllerTest extends TestCase
+class FileServeResponseTest extends TestCase
 {
     use RefreshDatabase;
 

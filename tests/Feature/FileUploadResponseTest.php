@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Tests\AuthTestCase;
 
-class FileUploadControllerTest extends AuthTestCase
+class FileUploadResponseTest extends AuthTestCase
 {
     use RefreshDatabase;
 

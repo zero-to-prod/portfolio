@@ -11,9 +11,9 @@ use App\Models\Tag;
 class R
 {
 
-    public static function abc(): string
+    public static function upload(): string
     {
-        return route_as(Routes::login);
+        return route_as(Routes::upload);
     }
     public static function file(File $file, ?int $width = null, ?int $height = null): string
     {

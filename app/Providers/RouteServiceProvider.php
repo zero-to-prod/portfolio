@@ -38,7 +38,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::middlewareAs([Middleware::web, Middleware::guest_group])
                 ->group(base_path('routes/guest.php'));
 
-            if (App::environment('testing')) {
+            if (App::environment(Environments::tesing->value)) {
                 Route::middlewareAs([Middleware::web, Middleware::guest, Middleware::register_group])
                     ->group(base_path('routes/register.php'));
             }

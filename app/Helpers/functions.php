@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\Environments;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -61,7 +62,7 @@ if (!function_exists('view_as')) {
 if (!function_exists('cached_view')) {
     function cached_view($view = null, $data = [], $mergeData = [], DateTimeInterface|DateInterval|int|null $ttl = null)
     {
-        if (App::environment(['local', 'testing'])) {
+        if (App::environment([Environments::local->value, Environments::testing->value])) {
             return view_as($view, $data, $mergeData);
         }
 

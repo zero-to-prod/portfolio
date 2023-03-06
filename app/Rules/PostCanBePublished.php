@@ -9,7 +9,7 @@ use App\Rules\Support\EvaluatesBusinessRule;
 /**
  * @method static evaluate(Post $post)
  */
-class PostIsPublished implements BusinessRule
+class PostCanBePublished implements BusinessRule
 {
     use EvaluatesBusinessRule;
 
@@ -18,10 +18,13 @@ class PostIsPublished implements BusinessRule
     }
 
     /**
-     * @see PostIsPublishedTest
+     * @see PostCanBePublishedTest
      */
     public function handle(): bool
     {
-        return $this->post->published_at !== null;
+        return $this->post->title !== null
+            && $this->post->slug !== null
+            && $this->post->body !== null
+            && !$this->post->isMissingFeaturedImage();
     }
 }

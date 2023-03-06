@@ -17,9 +17,9 @@ trait CreatesApplication
 
         $app->make(Kernel::class)->bootstrap();
 
+        $this->registerAssertRedirectAs();
         $this->registerAssertRedirectHome();
         $this->registerAssertBadRequest();
-        $this->registerAssertRedirectAs();
 
         return $app;
     }

@@ -7,11 +7,15 @@ use App\Http\Controllers\ReadView;
 use App\Models\Post;
 use Closure;
 use Illuminate\Http\Request;
+use Middleware\DenyUnpublishedPostsTest;
 use Symfony\Component\HttpFoundation\Response;
 
 class DenyUnpublishedPosts
 {
 
+    /**
+     * @see DenyUnpublishedPostsTest
+     */
     public function handle(Request $request, Closure $next): Response
     {
         /** @var Post $post */

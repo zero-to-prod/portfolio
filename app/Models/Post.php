@@ -13,12 +13,15 @@ use App\Models\Support\Post\PostScopes;
 use App\Models\Support\SlugColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
+use App\Rules\PostCanBePublished;
 use App\Rules\PostIsPublished;
 use ArrayAccess;
+use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use RuntimeException;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Tags\HasTags;
@@ -54,6 +57,30 @@ class Post extends Model implements HasRules
     protected static function booted(): void
     {
         static::addGlobalScope(self::published, self::publishedScope());
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function publish(): self
+    {
+        if(!PostCanBePublished::evaluate($this)) {
+            throw new RuntimeException('Cannot publish post');
+        }
+        self::unguard();
+
+        $published_content = app(MarkdownRenderer::class)->toHtml($this->body);
+
+        $this->update([
+            self::published_content => $published_content,
+            self::original_publish_date => $this->original_publish_date ?? now(),
+            self::published_at => now(),
+            self::published_word_count => str_word_count(strip_tags($published_content)),
+        ]);
+
+        self::reguard();
+
+        return $this;
     }
 
     public function isPublished(): bool
@@ -124,23 +151,7 @@ class Post extends Model implements HasRules
             ->doNotGenerateSlugsOnUpdate();
     }
 
-    public function publish(): self
-    {
-        self::unguard();
 
-        $published_content = app(MarkdownRenderer::class)->toHtml($this->body);
-
-        $this->update([
-            self::published_content => $published_content,
-            self::original_publish_date => $this->original_publish_date ?? now(),
-            self::published_at => now(),
-            self::published_word_count => str_word_count(strip_tags($published_content)),
-        ]);
-
-        self::reguard();
-
-        return $this;
-    }
 
     public function unPublish(): self
     {

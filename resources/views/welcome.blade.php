@@ -20,7 +20,7 @@ $tags = Tag::mostViewed()
                             @if($tag->hasLogo())
                                 <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
                             @endif
-                            <h2 class="my-auto text-lg font-semibold text-gray-900 text-base">
+                            <h2 class="my-auto text-lg font-semibold text-gray-900">
                                 {{$tag->name}}
                             </h2>
                         </div>
@@ -45,7 +45,7 @@ $tags = Tag::mostViewed()
                                     <div>
                                         <p class="text-sm text-gray-600"
                                            title="{{$post->authorList()}}">{{$post->authorList()}}</p>
-                                        <p class="text-xs text-sm text-gray-600">{{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
+                                        <p class="text-sm text-gray-600">{{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
                                             <span before="•"
                                                   class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
                                         </p>

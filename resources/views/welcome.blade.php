@@ -6,7 +6,6 @@ use App\Models\Tag;
 
 /* @var Post $post */
 /* @var Tag $tag */
-$tags = Tag::mostViewed()
 ?>
 
 <x-main>
@@ -39,7 +38,7 @@ $tags = Tag::mostViewed()
                                     <x-reading-time-chip :post="$post"/>
                                     <x-new-chip :post="$post"/>
                                 </div>
-                                <div class="p-3 2col:px-0">
+                                <div class="p-1 2col:px-0">
                                     <h3 class="font-bold font-sm break-word"
                                         title="{{ $post->title }}">{{ $post->title }}</h3>
                                     <div>

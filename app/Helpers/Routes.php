@@ -20,10 +20,10 @@ enum Routes: string
 
     /* Admin */
 
-    case admin_posts = '/admin/posts';
-    case admin_posts_create = '/admin/posts/create';
+    case admin_post_index = '/admin/posts';
+    case admin_post_create = '/admin/posts/create';
     case admin_posts_store = '/admin/posts/store';
-    case admin_posts_edit = '/admin/posts/{post}/edit';
+    case admin_post_edit = '/admin/posts/{post}/edit';
     case admin_posts_publish = '/admin/posts/{post}/publish';
     case admin_posts_unPublish = '/admin/posts/{post}/un-publish';
     case dashboard = '/dashboard';

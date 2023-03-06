@@ -25,7 +25,7 @@ class AdminPostFormController extends Controller
             $author_model = $post_model?->authors->first();
         }
 
-        return view_as(Views::admin_posts_form, [
+        return view_as(Views::admin_post_form, [
             self::post_model => $post_model,
             self::author_model => $author_model
         ]);

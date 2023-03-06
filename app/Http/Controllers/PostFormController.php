@@ -60,6 +60,6 @@ class PostFormController extends Controller
 
         DB::commit();
 
-        return redirect()->to(route_as(Routes::admin_posts_edit, $post));
+        return redirect()->to(route_as(Routes::admin_post_edit, $post));
     }
 }

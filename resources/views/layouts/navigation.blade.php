@@ -23,7 +23,7 @@ use App\Helpers\Routes;
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route_as(Routes::admin_posts)"
+                    <x-nav-link :href="route_as(Routes::admin_post_index)"
                                 :active="route_contains('post')">
                         {{ __('Posts') }}
                     </x-nav-link>
@@ -88,7 +88,7 @@ use App\Helpers\Routes;
                                    :active="route_is(Routes::dashboard)">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route_as(Routes::admin_posts)"
+            <x-responsive-nav-link :href="route_as(Routes::admin_post_index)"
                                    :active="route_contains('post')">
                 {{ __('Posts') }}
             </x-responsive-nav-link>

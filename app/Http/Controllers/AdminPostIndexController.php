@@ -22,6 +22,6 @@ class AdminPostIndexController extends Controller
         $published = $all_posts->whereNotNull(Post::published_at);
         $unpublished = $all_posts->whereNull(Post::published_at);
 
-        return view_as(Views::admin_posts, [self::posts => $unpublished->merge($published)]);
+        return view_as(Views::admin_post_index, [self::posts => $unpublished->merge($published)]);
     }
 }

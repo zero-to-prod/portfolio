@@ -31,7 +31,7 @@ $featured_image = PostFormController::featured_image;
                 <div class="flex flex-col mx-auto my-8 max-w-xl px-4">
                     <div class="flex justify-between">
                         @isset($post_model)
-                            <form action="{{route_as(Routes::admin_posts_publish, $post_model)}}" method="post">
+                            <form action="{{route_as(Routes::admin_post_publish, $post_model)}}" method="post">
                                 @csrf
                                 <input name="{{PostPublishController::id}}" type="hidden" value="{{$post_model->id}}">
                                 @if($post_model->isPublished())
@@ -52,7 +52,7 @@ $featured_image = PostFormController::featured_image;
                         @endisset
                     </div>
 
-                    <form action="{{route_as(Routes::admin_posts_store)}}"
+                    <form action="{{route_as(Routes::admin_post_store)}}"
                           method="post"
                           enctype="multipart/form-data">
                         @csrf

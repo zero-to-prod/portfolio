@@ -30,7 +30,7 @@ use App\Models\Tag;
                             <thead>
                             <tr>
                                 <th scope="col"
-                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Featured Image
+                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Image
                                 </th>
                                 <th scope="col"
                                     class="py-3.5 px-3 text-left text-sm font-semibold text-white">Posts
@@ -88,7 +88,7 @@ use App\Models\Tag;
                                     <td>
                                         <div class="my-auto">
                                             @if($post->published_at === null)
-                                                <form action="{{route_as(Routes::admin_posts_publish, $post)}}"
+                                                <form action="{{route_as(Routes::admin_post_publish, $post)}}"
                                                       method="post">
                                                     @csrf
                                                     <input name="{{PostPublishController::id}}"

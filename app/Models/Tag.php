@@ -4,10 +4,12 @@ namespace App\Models;
 
 use App\Helpers\Relations;
 use App\Helpers\Tags;
+use App\Models\Support\HasRules;
 use App\Models\Support\IdColumn;
 use App\Models\Support\Polymorphic\HasFiles;
 use App\Models\Support\Tag\TagColumns;
 use App\Models\Support\Tag\TagRelationships;
+use App\Models\Support\Tag\TagRules;
 use App\Models\Support\TimeStampColumns;
 use DB;
 use Illuminate\Support\Collection;
@@ -15,11 +17,12 @@ use Illuminate\Support\Collection;
 /**
  * @mixin IdeHelperTag
  */
-class Tag extends \Spatie\Tags\Tag
+class Tag extends \Spatie\Tags\Tag implements HasRules
 {
     use IdColumn;
     use TimeStampColumns;
     use TagColumns;
+    use TagRules;
     use TagRelationships;
     use HasFiles;
 
@@ -40,7 +43,7 @@ class Tag extends \Spatie\Tags\Tag
     public function logo(): ?File
     {
         return $this->files()->whereHas('tags', function ($builder) {
-            $builder->where(Tag::name.'->en', Tags::logo->value);
+            $builder->where(Tag::name . '->en', Tags::logo->value);
         })->first();
     }
 

@@ -38,9 +38,9 @@ class PostFormController extends Controller
         DB::beginTransaction();
 
         $post = Post::withoutGlobalScopes()->updateOrCreate([Post::id => $request->{self::id}], [
-            Post::title => $validated[Post::title],
-            Post::subtitle => $validated[Post::subtitle],
-            Post::body => $validated[Post::body],
+            Post::title => $validated[self::title],
+            Post::subtitle => $validated[self::subtitle],
+            Post::body => $validated[self::body],
         ]);
 
         if ($request->hasFile(self::featured_image)) {

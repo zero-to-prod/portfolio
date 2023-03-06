@@ -2,6 +2,10 @@
 
 namespace App\Helpers;
 
+use App\Http\Controllers\AdminPostFormController;
+use App\Http\Controllers\AdminTagFormController;
+use App\Http\Controllers\PostPublishController;
+
 /**
  * @property $value
  */
@@ -18,14 +22,27 @@ enum Routes: string
     case search = '/search';
     case results = '/results';
 
-    /* Admin */
+    /**
+     * Admin
+     */
 
+    /* Posts */
     case admin_post_index = '/admin/posts';
     case admin_post_create = '/admin/posts/create';
-    case admin_posts_store = '/admin/posts/store';
-    case admin_post_edit = '/admin/posts/{post}/edit';
-    case admin_posts_publish = '/admin/posts/{post}/publish';
-    case admin_posts_unPublish = '/admin/posts/{post}/un-publish';
+    case admin_post_store = '/admin/posts/store';
+    case admin_post_edit = '/admin/posts/{'.AdminPostFormController::post.'}/edit';
+    case admin_post_publish = '/admin/posts/{'.PostPublishController::id.'}/publish';
+    case admin_post_unPublish = '/admin/posts/{'.AdminPostFormController::post.'}/un-publish';
+
+    /* Tags */
+    case admin_tag_index = '/admin/tags';
+    case admin_tag_create = '/admin/tags/create';
+    case admin_tag_edit = '/admin/tags/{'.AdminTagFormController::tag.'}/edit';
+    case admin_tag_store = '/admin/tags/store';
+
+
+
+
     case dashboard = '/dashboard';
     case email_verificationNotice = 'email/verification-notice';
     case email_verificationNotification = 'email/verification-notification';

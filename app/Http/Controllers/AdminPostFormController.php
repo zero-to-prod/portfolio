@@ -17,7 +17,7 @@ class AdminPostFormController extends Controller
 
     public function __invoke(Request $request): View|Factory|Application
     {
-        $post = request()->{self::post};
+        $post = $request->{self::post};
         $post_model = null;
         $author_model = null;
         if ($post !== null) {

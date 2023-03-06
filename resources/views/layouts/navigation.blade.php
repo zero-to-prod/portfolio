@@ -28,6 +28,12 @@ use App\Helpers\Routes;
                         {{ __('Posts') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route_as(Routes::admin_tag_index)"
+                                :active="route_contains('tag')">
+                        {{ __('Tags') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -91,6 +97,10 @@ use App\Helpers\Routes;
             <x-responsive-nav-link :href="route_as(Routes::admin_post_index)"
                                    :active="route_contains('post')">
                 {{ __('Posts') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route_as(Routes::admin_tag_index)"
+                                   :active="route_contains('tag')">
+                {{ __('Tags') }}
             </x-responsive-nav-link>
         </div>
 

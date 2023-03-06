@@ -18,8 +18,13 @@ enum Views: string
     case results = 'results';
     case cv = 'cv';
     case dashboard = 'dashboard';
+    /* Posts */
     case admin_post_index = 'admin.posts.post_index';
     case admin_post_form = 'admin.posts.post_form';
+
+    /* Tags */
+    case admin_tag_index = 'admin.tags.tag_index';
+    case admin_tag_form = 'admin.tags.tag_form';
     case layouts_app = 'layouts.app';
     case layouts_guest = 'layouts.guest';
     case layouts_main = 'layouts.main';

@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Post;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Throwable;
 
-class PostPublishController extends Controller
+class PostPublishRedirect extends Controller
 {
     public const id = 'id';
     /**

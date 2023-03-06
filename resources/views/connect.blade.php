@@ -1,11 +1,11 @@
 <?php
 
 use App\Helpers\Routes;
-use App\Http\Controllers\ConnectStoreController;
+use App\Http\Controllers\ConnectStoreRedirect;
 
-$email = ConnectStoreController::email;
-$subject = ConnectStoreController::subject;
-$body = ConnectStoreController::body;
+$email = ConnectStoreRedirect::email;
+$subject = ConnectStoreRedirect::subject;
+$body = ConnectStoreRedirect::body;
 
 ?>
 <x-main :title="'Connect'">

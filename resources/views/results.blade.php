@@ -1,7 +1,7 @@
 <?php
 
 use App\Helpers\Routes;
-use App\Http\Controllers\ResultsController;
+use App\Http\Controllers\ResultsView;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Collection;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 /* @var Tag $tag */
 
 ?>
-<x-main :title="request()->query(ResultsController::query)">
+<x-main :title="request()->query(ResultsView::query)">
     <x-left-drawer :tags="$tags"/>
     @if($posts !== null && count($posts) )
         <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[258px] flex flex-col max-w-3xl gap-6 px-4">
@@ -54,7 +54,7 @@ use Illuminate\Database\Eloquent\Collection;
                             <div class="flex items-center gap-x-2">
                                 @foreach($post->tags()->get() as $tag)
                                     @if($tag->logo() !== null)
-                                        <a href="{{route_as(Routes::results, [ResultsController::tag => $tag->slug])}}">
+                                        <a href="{{route_as(Routes::results, [ResultsView::tag => $tag->slug])}}">
                                             <x-img class="h-6 w-6 rounded" :file="$tag->logo()" :width="60"
                                                    :title="$tag->name"/>
                                         </a>
@@ -76,7 +76,7 @@ use Illuminate\Database\Eloquent\Collection;
             <div class="flex flex-col">
                 @forEach($tags as $tag)
                     <a class="rounded-lg pl-6 p-2 hover:bg-gray-100"
-                       href="{{route_as(Routes::results, [ResultsController::tag => $tag->slug])}}"
+                       href="{{route_as(Routes::results, [ResultsView::tag => $tag->slug])}}"
                     >{{$tag->name}}</a>
                 @endforeach
             </div>

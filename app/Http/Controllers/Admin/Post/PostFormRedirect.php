@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Post;
 
 use App\Helpers\Routes;
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use DB;
 use Illuminate\Http\RedirectResponse;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 use Throwable;
 use Upload;
 
-class PostFormController extends Controller
+class PostFormRedirect extends Controller
 {
     public const id = 'id';
     public const title = 'title';

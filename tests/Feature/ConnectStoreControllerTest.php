@@ -16,7 +16,7 @@ class ConnectStoreControllerTest extends TestCase
 
     /**
      * @test
-     * @see ConnectStoreController::__invoke
+     * @see ConnectStoreRedirect::__invoke
      */
     public function stores_a_message_and_creates_a_related_contact(): void
     {
@@ -55,7 +55,7 @@ class ConnectStoreControllerTest extends TestCase
 
     /**
      * @test
-     * @see ConnectStoreController::__invoke
+     * @see ConnectStoreRedirect::__invoke
      */
     public function fails_if_nothing_is_not_passed(): void
     {

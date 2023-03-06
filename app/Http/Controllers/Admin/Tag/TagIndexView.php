@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Tag;
 
 use App\Helpers\Views;
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
@@ -10,7 +11,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class AdminTagIndexController extends Controller
+class TagIndexView extends Controller
 {
     public const tags = 'tags';
     public const views = 'views';

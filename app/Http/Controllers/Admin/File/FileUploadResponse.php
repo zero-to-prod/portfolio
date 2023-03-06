@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\File;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\RedirectResponse;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Upload;
 
-class FileUploadController extends Controller
+class FileUploadResponse extends Controller
 {
     public const file = 'file';
 

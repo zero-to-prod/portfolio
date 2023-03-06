@@ -1,7 +1,7 @@
 <?php
 
 use App\Helpers\Routes;
-use App\Http\Controllers\PostPublishController;
+use App\Http\Controllers\Admin\Post\PostPublishRedirect;
 use App\Models\Post;
 use App\Models\Tag;
 
@@ -91,7 +91,7 @@ use App\Models\Tag;
                                                 <form action="{{route_as(Routes::admin_post_publish, $post)}}"
                                                       method="post">
                                                     @csrf
-                                                    <input name="{{PostPublishController::id}}"
+                                                    <input name="{{PostPublishRedirect::id}}"
                                                            type="hidden"
                                                            value="{{$post->id}}">
                                                     <button class="btn btn-xs">Publish</button>

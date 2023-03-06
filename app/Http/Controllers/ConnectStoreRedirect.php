@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Mail;
 
-class ConnectStoreController extends Controller
+class ConnectStoreRedirect extends Controller
 {
     public const email = 'email';
     public const subject = 'subject';

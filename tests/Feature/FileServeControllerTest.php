@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\Routes;
+use App\Http\Controllers\Admin\File\FileServeResponse;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -10,7 +11,7 @@ class FileServeControllerTest extends TestCase
 
     /**
      * @test
-     * @see FileServeController
+     * @see FileServeResponse
      */
     public function file_download(): void
     {
@@ -34,7 +35,7 @@ class FileServeControllerTest extends TestCase
 
     /**
      * @test
-     * @see FileServeController
+     * @see FileServeResponse
      */
     public function returns_cached_response_when_available(): void
     {

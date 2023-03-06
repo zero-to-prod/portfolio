@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 /**
  * @property $value
+ * @property $name
  */
 enum Tags: string
 {

@@ -1,10 +1,10 @@
 <?php
 
 use App\Helpers\Routes;
-use App\Http\Controllers\ResultsController;
-use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ResultsView;
+use App\Http\Controllers\SearchRedirect;
 
-$search = SearchController::search;
+$search = SearchRedirect::search;
 ?>
 @props(['title'])
         <!doctype html>
@@ -42,7 +42,7 @@ $search = SearchController::search;
                             <input class="w-full rounded-l-md pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px]"
                                    name="{{$search}}"
                                    id="{{$search}}"
-                                   value="{{request()->query(ResultsController::query)}}"
+                                   value="{{request()->query(ResultsView::query)}}"
                                    placeholder="Search">
                         </div>
                         <button class="-ml-px rounded-r-md bg-gray-100 p-2 2col:px-4 ring-1 ring-inset ring-gray-300 hover:bg-gray-200">

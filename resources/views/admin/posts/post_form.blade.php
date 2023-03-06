@@ -1,8 +1,8 @@
 <?php
 
 use App\Helpers\Routes;
-use App\Http\Controllers\PostFormController;
-use App\Http\Controllers\PostPublishController;
+use App\Http\Controllers\Admin\Post\PostFormRedirect;
+use App\Http\Controllers\Admin\Post\PostPublishRedirect;
 use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
@@ -10,12 +10,12 @@ use App\Models\Tag;
 /* @var Tag $author_model */
 /* @var Post $post_model */
 
-$title = PostFormController::title;
-$subtitle = PostFormController::subtitle;
-$authors = PostFormController::authors;
-$tags = PostFormController::tags;
-$body = PostFormController::body;
-$featured_image = PostFormController::featured_image;
+$title = PostFormRedirect::title;
+$subtitle = PostFormRedirect::subtitle;
+$authors = PostFormRedirect::authors;
+$tags = PostFormRedirect::tags;
+$body = PostFormRedirect::body;
+$featured_image = PostFormRedirect::featured_image;
 
 ?>
 
@@ -33,7 +33,7 @@ $featured_image = PostFormController::featured_image;
                         @isset($post_model)
                             <form action="{{route_as(Routes::admin_post_publish, $post_model)}}" method="post">
                                 @csrf
-                                <input name="{{PostPublishController::id}}" type="hidden" value="{{$post_model->id}}">
+                                <input name="{{PostPublishRedirect::id}}" type="hidden" value="{{$post_model->id}}">
                                 @if($post_model->isPublished())
                                     <button class="btn btn-xs bg-gray-600 hover:bg-gray-500">
                                         Re-Publish
@@ -58,7 +58,7 @@ $featured_image = PostFormController::featured_image;
                         @csrf
                         <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
                             <label>
-                                <input name="{{PostFormController::id}}"
+                                <input name="{{PostFormRedirect::id}}"
                                        hidden
                                        value="{{$post_model?->id}}"/>
                             </label>

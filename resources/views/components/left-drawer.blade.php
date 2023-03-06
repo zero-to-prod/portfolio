@@ -3,7 +3,7 @@
 <?php
 
 use App\Helpers\Routes;
-use App\Http\Controllers\ResultsController;
+use App\Http\Controllers\ResultsView;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
 
@@ -23,8 +23,8 @@ use Illuminate\Support\Collection;
                 </svg>
                 <span>Home</span>
             </a>
-            <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-300 {{ request()->query(ResultsController::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
-               href="{{route_as(Routes::results, [ResultsController::popular => true])}}">
+            <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-300 {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
+               href="{{route_as(Routes::results, [ResultsView::popular => true])}}">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <g>
                         <path fill="none" d="M0 0H24V24H0z"></path>
@@ -33,8 +33,8 @@ use Illuminate\Support\Collection;
                 </svg>
                 <span>Popular</span>
             </a>
-            <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-300 {{ request()->query(ResultsController::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
-               href="{{route_as(Routes::results, [ResultsController::topics => true])}}">
+            <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-300 {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
+               href="{{route_as(Routes::results, [ResultsView::topics => true])}}">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
                      fill="currentColor">
                     <defs></defs>
@@ -55,8 +55,8 @@ use Illuminate\Support\Collection;
         <div class="flex flex-col">
             <div class="flex flex-col">
                 @forEach($tags as $tag)
-                    <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-300 {{ request()->query(ResultsController::tag) === $tag->slug ? 'bg-gray-200' : '' }}"
-                       href="{{route_as(Routes::results, [ResultsController::tag => $tag->slug])}}"
+                    <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-300 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-gray-200' : '' }}"
+                       href="{{route_as(Routes::results, [ResultsView::tag => $tag->slug])}}"
                     >
                         <?php
                         $logo = $tag->logo()
@@ -85,8 +85,8 @@ use Illuminate\Support\Collection;
             </svg>
             <span class="text-xs mx-auto">Home</span>
         </a>
-        <a class="w-[64px] flex flex-col py-4 hover:bg-gray-300 {{ request()->query(ResultsController::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
-           href="{{route_as(Routes::results, [ResultsController::popular => true])}}">
+        <a class="w-[64px] flex flex-col py-4 hover:bg-gray-300 {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
+           href="{{route_as(Routes::results, [ResultsView::popular => true])}}">
             <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <g>
                     <path fill="none" d="M0 0H24V24H0z"></path>
@@ -95,8 +95,8 @@ use Illuminate\Support\Collection;
             </svg>
             <span class="text-xs mx-auto">Popular</span>
         </a>
-        <a class="w-[64px] flex flex-col py-4 hover:bg-gray-300 {{ request()->query(ResultsController::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
-           href="{{route_as(Routes::results, [ResultsController::topics => true])}}">
+        <a class="w-[64px] flex flex-col py-4 hover:bg-gray-300 {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
+           href="{{route_as(Routes::results, [ResultsView::topics => true])}}">
             <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
                 <defs></defs>
                 <path d="M22.707,9.2931a.9992.9992,0,0,0-1.0234-.2417l-9,3a1.001,1.001,0,0,0-.6323.6323l-3,9a1,1,0,0,0,1.2651,1.2651l9-3a1.0013,1.0013,0,0,0,.6323-.6324l3-9A1,1,0,0,0,22.707,9.2931ZM11.5811,20.419l2.2094-6.6284L18.21,18.21Z"></path>

@@ -11,7 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class ResultsController extends Controller
+class ResultsView extends Controller
 {
     public const query = 'query';
     public const tag = 'tag';

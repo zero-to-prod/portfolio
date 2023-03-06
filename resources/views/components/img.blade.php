@@ -3,7 +3,7 @@
 <?php
 
 use App\Helpers\Routes;
-use App\Http\Controllers\FileServeController;
+use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Models\File;
 
 /* @var File $file */
@@ -16,9 +16,9 @@ use App\Models\File;
 
 <img {{ $attributes->merge(['class' => '']) }}
      src="{{ route_as(Routes::file, [
-    FileServeController::file => $file->name,
-    FileServeController::width => $width,
-    FileServeController::height => $height,
+    FileServeResponse::file => $file->name,
+    FileServeResponse::width => $width,
+    FileServeResponse::height => $height,
     ])}}"
      title="{{$title ?? $file->original_name}}"
      alt="{{$alt ?? $file->original_name}}"

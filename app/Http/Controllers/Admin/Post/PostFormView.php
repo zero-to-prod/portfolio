@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Post;
 
 use App\Helpers\Views;
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class AdminPostFormController extends Controller
+class PostFormView extends Controller
 {
     public const post_model = 'post_model';
     public const post = 'post';

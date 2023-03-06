@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Tag;
 
 use App\Helpers\Views;
+use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class AdminTagFormController extends Controller
+class TagFormView extends Controller
 {
     public const tag = 'tag';
 

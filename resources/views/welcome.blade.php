@@ -1,7 +1,7 @@
 <?php
 
 use App\Helpers\Routes;
-use App\Http\Controllers\ResultsController;
+use App\Http\Controllers\ResultsView;
 use App\Models\Post;
 use App\Models\Tag;
 
@@ -17,7 +17,7 @@ $tags = Tag::mostViewed()
             @foreach($tags as $tag)
                 <section class="mt-2">
                     <a class="mb-2 2col:block hidden "
-                       href="{{route_as(Routes::results, [ResultsController::tag => $tag->slug])}}">
+                       href="{{route_as(Routes::results, [ResultsView::tag => $tag->slug])}}">
                             <?php
                             $logo = $tag->logo()
                             ?>

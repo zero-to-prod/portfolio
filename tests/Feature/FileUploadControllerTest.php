@@ -1,6 +1,8 @@
 <?php
 
 use App\Helpers\Routes;
+use App\Http\Controllers\Admin\File\FileServeResponse;
+use App\Http\Controllers\Admin\File\FileUploadResponse;
 use App\Models\File;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -12,7 +14,7 @@ class FileUploadControllerTest extends AuthTestCase
 
     /**
      * @test
-     * @see FileUploadController
+     * @see FileUploadResponse
      */
     public function file_upload(): void
     {
@@ -32,7 +34,7 @@ class FileUploadControllerTest extends AuthTestCase
 
     /**
      * @test
-     * @see FileServeController
+     * @see FileServeResponse
      */
     public function cache_retrieval(): void
     {

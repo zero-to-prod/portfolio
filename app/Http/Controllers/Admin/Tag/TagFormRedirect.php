@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Tag;
 
 use App\Helpers\Routes;
+use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use DB;
 use Illuminate\Http\RedirectResponse;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 use Throwable;
 use Upload;
 
-class TagFormController extends Controller
+class TagFormRedirect extends Controller
 {
     public const id = 'id';
     public const name = 'name';

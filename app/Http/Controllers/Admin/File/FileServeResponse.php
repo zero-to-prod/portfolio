@@ -1,22 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\File;
 
+use App\Http\Controllers\Controller;
 use Cache;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Image;
 use Storage;
 use Str;
 
-class FileServeController extends Controller
+class FileServeResponse extends Controller
 {
     public const file = 'file';
     public const width = 'width';
     public const height = 'height';
+
     /**
      * @see FileServeControllerTest
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request):  Application|ResponseFactory|Response
     {
         return Cache::remember($request->fullUrl(), null, static function () use ($request) {
             $s3_bucket_path = config('filesystems.file_disk_path');

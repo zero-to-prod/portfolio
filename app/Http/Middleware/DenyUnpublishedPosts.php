@@ -18,9 +18,9 @@ class DenyUnpublishedPosts
      */
     public function handle(Request $request, Closure $next): Response
     {
-        /** @var Post $post */
         $post = $request->route(ReadView::post);
-        if (is_a($post, Post::class) && $post->isNotPublished() && route_is(Routes::read)) {
+
+        if ($post instanceof Post && $post->isNotPublished() && route_is(Routes::read)) {
             abort(404);
         }
 

@@ -122,7 +122,6 @@ $featured_image = PostFormController::featured_image;
                                     @endif
                                 </div>
                             </div>
-
                             <x-form-control-dark>
                                 <label for="{{$body}}">Body</label>
                                 <textarea name="{{$body}}"
@@ -135,7 +134,6 @@ $featured_image = PostFormController::featured_image;
                                     <p>{{ $errors->first($body) }}</p>
                                 @endif
                             </x-form-control-dark>
-
                             <div class="flex space-x-6 sm:col-span-2">
                                 @if($post_model?->featuredImage() !== null)
                                     <x-img class="object-cover h-[100px] rounded-lg"

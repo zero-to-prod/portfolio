@@ -33,7 +33,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             Route::middlewareAs([Middleware::web, Middleware::auth, Middleware::auth_group])
-                ->group(base_path('routes/auth.php'));
+                ->group(base_path('routes/admin.php'));
 
             Route::middlewareAs([Middleware::web, Middleware::guest_group])
                 ->group(base_path('routes/guest.php'));

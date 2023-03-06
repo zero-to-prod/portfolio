@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Helpers\Relations;
 use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
@@ -19,11 +20,11 @@ class AppServiceProvider extends ServiceProvider
         Model::preventLazyLoading(!$this->app->isProduction());
 
         Relation::enforceMorphMap([
-            1 => User::class,
-            2 => Post::class,
-            3 => File::class,
-            4 => Author::class,
-            5 => Tag::class,
+            Relations::user->value => User::class,
+            Relations::post->value => Post::class,
+            Relations::file->value => File::class,
+            Relations::author->value => Author::class,
+            Relations::tag->value => Tag::class,
         ]);
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use App\Helpers\Routes;
+use App\Http\Controllers\ReadView;
+use App\Models\Post;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +14,9 @@ class DenyUnpublishedPosts
 
     public function handle(Request $request, Closure $next): Response
     {
-        if (route_is(Routes::read) && $request->route('post')?->published_at === null) {
+        /** @var Post $post */
+        $post = $request->route(ReadView::post);
+        if (is_a($post, Post::class) && $post?->published_at === null && route_is(Routes::read)) {
             abort(404);
         }
 

@@ -78,7 +78,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function registerAsMethods(): void
     {
         foreach (['get', 'post', 'put', 'patch', 'delete', 'options', 'any'] as $method) {
-            Route::macro($method . 'As', function ($uri, array|string|callable|null|UnitEnum $action = null, $cached = false) use ($method) {
+            Route::macro($method . 'As', function ($uri, array|string|callable|null|UnitEnum $action = null, $data = [], $mergeData = [],$cached = false) use ($method) {
                 if (!$uri instanceof UnitEnum) {
                     Route::$method($uri, $action);
 
@@ -92,12 +92,12 @@ class RouteServiceProvider extends ServiceProvider
                 }
 
                 if ($cached) {
-                    Route::$method($uri->value, fn() => cached_view($action))->name($uri->name);
+                    Route::$method($uri->value, fn() => cached_view($action, $data, $mergeData))->name($uri->name);
 
                     return $this;
                 }
 
-                Route::$method($uri->value, fn() => view_as($action))->name($uri->name);
+                Route::$method($uri->value, fn() => view_as($action, $data, $mergeData))->name($uri->name);
 
                 return $this;
             });

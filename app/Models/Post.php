@@ -48,11 +48,6 @@ class Post extends Model implements HasRules
         self::reading_time => 'integer',
     ];
 
-    public static function getTagClassName(): string
-    {
-        return Tag::class;
-    }
-
     protected static function booted(): void
     {
         static::addGlobalScope('published', static function (Builder $builder) {

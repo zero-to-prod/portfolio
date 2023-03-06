@@ -28,6 +28,24 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
 
     protected $fillable = [self::name, self::slug, self::type, self::order_column];
 
+    public static function bootHasSlug(): void
+    {
+        static::saving(static function (Tag $model) {
+            collect($model->getTranslatedLocales(self::name))
+                ->each(function (string $locale) use ($model) {
+                    if ($model->slug === null) {
+                        return $model->setTranslation(
+                            'slug',
+                            $locale,
+                            $model->generateSlug($locale)
+                        );
+                    }
+
+                    return $model;
+                });
+        });
+    }
+
     public static function mostViewed(int|null $limit = null): Collection
     {
         return self::with('files')->join('taggables', 'tags.id', '=', 'taggables.tag_id')

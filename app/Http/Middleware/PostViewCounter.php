@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Helpers\Routes;
+use App\Http\Controllers\ReadView;
 use App\Models\Post;
 use App\Models\View;
 use Closure;
@@ -22,7 +23,7 @@ class PostViewCounter
         if (route_is(Routes::read)) {
             DB::transaction(static function () use ($request) {
                 /** @var Post $post */
-                $post = $request->route('post');
+                $post = $request->route(ReadView::post);
 
                 $post->increment(Post::views);
 

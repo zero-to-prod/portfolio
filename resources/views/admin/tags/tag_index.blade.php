@@ -45,7 +45,7 @@ use Illuminate\Support\Collection;
                             @foreach($tags as $tag)
                                 <tr>
                                     <td class="p-3.5">
-                                        <div class="flex justify-between">
+                                        <a class="flex justify-between" href="{{route_as(Routes::admin_tag_edit, [$tag])}}">
                                             <div class="flex gap-4 h-[100px] w-[100px]">
                                                 @if($tag->logo())
                                                     <x-img class="object-cover h-[100px] rounded-lg"
@@ -55,16 +55,14 @@ use Illuminate\Support\Collection;
                                                 @endif
                                                 <div>
                                                     <p class="font-bold">
-                                                        <a href="{{route_as(Routes::admin_tag_edit, [$tag])}}">
-                                                            {{$tag->name}}
-                                                        </a>
+                                                        {{$tag->name}}
                                                     </p>
                                                     <p>
                                                         {{$tag->slug}}
                                                     </p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </td>
                                     <td class="p-3.5">
                                         {{$tag->views}}

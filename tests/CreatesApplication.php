@@ -19,14 +19,29 @@ trait CreatesApplication
 
         $this->registerAssertRedirectHome();
         $this->registerAssertBadRequest();
+        $this->registerAssertRedirectAs();
 
         return $app;
+    }
+
+    protected function registerAssertRedirectAs(): void
+    {
+        TestResponse::macro('assertRedirectAs', function ($uri) {
+            if ($uri instanceof \UnitEnum) {
+                $this->assertRedirect(route_as($uri));
+            } else {
+                $this->assertRedirect($uri);
+            }
+
+            return $this;
+        });
     }
 
     protected function registerAssertRedirectHome(): void
     {
         TestResponse::macro('assertRedirectHome', function (string|null $query_string = null) {
             $this->assertRedirect(config('auth.home') . $query_string);
+
             return $this;
         });
     }
@@ -35,6 +50,7 @@ trait CreatesApplication
     {
         TestResponse::macro('assertBadRequest', function (string|null $query_string = null) {
             $this->assertStatus(400);
+
             return $this;
         });
     }

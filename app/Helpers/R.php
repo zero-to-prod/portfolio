@@ -11,6 +11,10 @@ use App\Models\Tag;
 class R
 {
 
+    public static function abc(): string
+    {
+        return route_as(Routes::login);
+    }
     public static function file(File $file, ?int $width = null, ?int $height = null): string
     {
         return route_as(Routes::file, [

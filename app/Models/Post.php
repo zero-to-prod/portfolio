@@ -34,9 +34,9 @@ class Post extends Model implements HasRules
     use SoftDeleteColumn;
     use SlugColumn;
     use PostColumns;
-    use PostRelationships;
     use PostRules;
     use HasTags;
+    use PostRelationships;
     use HasFiles;
 
     protected $fillable = [self::title, self::subtitle, self::body];
@@ -47,6 +47,11 @@ class Post extends Model implements HasRules
         self::published_word_count => 'integer',
         self::reading_time => 'integer',
     ];
+
+    public static function getTagClassName(): string
+    {
+        return Tag::class;
+    }
 
     protected static function booted(): void
     {
@@ -84,14 +89,14 @@ class Post extends Model implements HasRules
     public function featuredImage(): ?File
     {
         return $this->files()->whereHas(self::tags, function ($builder) {
-            $builder->where(Tag::name.'->en', Tags::featured->value);
+            $builder->where(Tag::name . '->en', Tags::featured->value);
         })->first();
     }
 
     public function authorAvatar(): ?File
     {
         return $this->authors()->first()?->files()->whereHas(self::tags, function ($builder) {
-            $builder->where(Tag::name.'->en', Tags::avatar->value);
+            $builder->where(Tag::name . '->en', Tags::avatar->value);
         })->first();
     }
 

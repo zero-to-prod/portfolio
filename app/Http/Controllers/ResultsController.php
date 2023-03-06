@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Views;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -14,6 +15,7 @@ class ResultsController extends Controller
 {
     public const query = 'query';
     public const tag = 'tag';
+    public const tags = 'tags';
     public const topics = 'topics';
     public const popular = 'popular';
     public const posts = 'posts';
@@ -22,8 +24,9 @@ class ResultsController extends Controller
     public function __invoke(Request $request): View|Factory|Application
     {
         $posts = null;
+        $tag = null;
         $search = $request->query(self::query);
-        $tag = $request->query(self::tag);
+        $tag_slug = $request->query(self::tag);
         $popular = $request->query(self::popular);
 
         if ($search !== null) {
@@ -39,8 +42,9 @@ class ResultsController extends Controller
             $posts = $posts->merge($related);
         }
 
-        if ($tag !== null) {
-            $posts = Post::related($tag, limit: self::limit);
+        if ($tag_slug !== null) {
+            $posts = Post::related($tag_slug, limit: self::limit);
+            $tag = Tag::where(Tag::slug . '->en', $tag_slug)->first();
         }
 
         if ($popular !== null) {
@@ -50,6 +54,10 @@ class ResultsController extends Controller
                 ->get();
         }
 
-        return view_as(Views::results, [self::posts => $posts]);
+        return view_as(Views::results, [
+            self::posts => $posts,
+            self::tag => $tag,
+            self::tags => Tag::mostViewed(),
+        ]);
     }
 }

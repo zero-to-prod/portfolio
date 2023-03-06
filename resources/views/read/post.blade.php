@@ -60,7 +60,6 @@ use App\Models\Post;
                                           class="before:content-[attr(before)]">{{$post->published_at->diffForHumans()}}</span>
                                 </p>
                             </div>
-
                         </div>
                     </a>
                 @endforeach

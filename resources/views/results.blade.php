@@ -1,7 +1,6 @@
 <?php
 
 use App\Helpers\Routes;
-use App\Http\Controllers\FileServeController;
 use App\Http\Controllers\ResultsController;
 use App\Models\Post;
 use App\Models\Tag;
@@ -9,15 +8,26 @@ use Illuminate\Database\Eloquent\Collection;
 
 /* @var Collection $posts */
 /* @var Post $post */
-$tags = Tag::mostViewed()
+/* @var Tag $tag */
+
 ?>
 <x-main :title="request()->query(ResultsController::query)">
     <x-left-drawer :tags="$tags"/>
     @if($posts !== null && count($posts) )
         <div class="ml-0 flex bg-white min-[780px]:ml-[64px] min-[1312px]:ml-[258px] flex flex-col max-w-3xl gap-6 px-4">
+            @if($tag !== null)
+                <div class="flex gap-x-2">
+                    @if($tag->logo() !== null)
+                        <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
+                    @endif
+                    <h2 class="my-auto text-lg font-semibold text-gray-900 text-base">
+                        {{$tag->name}}
+                    </h2>
+                </div>
+            @endif
             @foreach($posts as $post)
-                <a class="flex" href="{{route_as(Routes::read, $post)}}">
-                    <div class="relative">
+                <div class="flex">
+                    <a class="relative" href="{{route_as(Routes::read, $post)}}">
                         <div class="overflow-hidden bg-gray-200 2col:rounded-lg">
                             <x-img class="h-full w-full object-cover object-center"
                                    :file="$post->featuredImage()"
@@ -26,28 +36,39 @@ $tags = Tag::mostViewed()
                         </div>
                         <x-reading-time-chip :post="$post"/>
                         <x-new-chip :post="$post"/>
-                    </div>
+                    </a>
                     <div class="bg-white px-3 flex-1">
-                        <h3 class="font-bold tracking-tight font-sm break-word"
-                            title="{{ $post->title }}">{{ $post->title }}</h3>
-                        <div class="flex flex-col gap-6">
-                            <p class="text-xs text-sm tracking-tight text-gray-600">{{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
+                        <a href="{{route_as(Routes::read, $post)}}">
+                            <h3 class="font-bold tracking-tight font-sm break-word"
+                                title="{{ $post->title }}">{{ $post->title }}</h3>
+                            <p class="text-sm text-gray-600 text-xs tracking-tight"
+                               title="{{$post->authorList()}}">{{$post->authorList()}}</p>
+                        </a>
+                        <div class="flex flex-col gap-4">
+                            <a class="text-xs text-sm tracking-tight text-gray-600"
+                               href="{{route_as(Routes::read, $post)}}">
+                                {{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
                                 <span before="•"
                                       class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
-                            </p>
+                            </a>
                             <div class="flex items-center gap-x-2">
-                                <img class="h-10 w-10 rounded-full"
-                                     src="{{ route_as(Routes::file, [FileServeController::file => $post->authorAvatar()->name, FileServeController::width => 80])}}"
-                                     alt="">
-                                <p class="text-xs tracking-tight text-gray-600"
-                                   title="{{$post->authorList()}}">{{$post->authorList()}}</p>
+                                @foreach($post->tags()->get() as $tag)
+                                    @if($tag->logo() !== null)
+                                        <a href="{{route_as(Routes::results, [ResultsController::tag => $tag->slug])}}">
+                                            <x-img class="h-6 w-6 rounded" :file="$tag->logo()" :width="60"
+                                                   :title="$tag->name"/>
+                                        </a>
+                                    @endif
+                                @endforeach
                             </div>
-                            <p title="{{$post->subtitle}}" class="text-sm tracking-tight text-gray-600">
+                            <a class="text-sm tracking-tight text-gray-600"
+                               href="{{route_as(Routes::read, $post)}}"
+                               title="{{$post->subtitle}}">
                                 {{$post->subtitle}}
-                            </p>
+                            </a>
                         </div>
                     </div>
-                </a>
+                </div>
             @endforeach
         </div>
     @else

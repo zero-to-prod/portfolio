@@ -2,8 +2,8 @@
 
 <?php
 
+use App\Helpers\Routes;
 use App\Http\Controllers\FileServeController;
-use App\Http\Routes;
 use App\Models\File;
 
 /* @var File $file */

@@ -122,5 +122,5 @@ return [
     |
     */
 
-    'home' => \App\Http\Routes::dashboard->value
+    'home' => \App\Helpers\Routes::dashboard->value
 ];

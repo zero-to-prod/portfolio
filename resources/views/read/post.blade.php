@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\FileServeController;
-use App\Http\Routes;
+use App\Helpers\Routes;
 use App\Models\Post;
 
 /* @var Post $post */
@@ -20,7 +19,7 @@ use App\Models\Post;
                 <div>
                     <h1 data-blog="title">{{ $post->title }}</h1>
                     <div class="flex items-center gap-x-2">
-                        <x-img class="h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80" />
+                        <x-img class="h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80"/>
                         <div class="flex justify-between w-full">
                             <div class="flex flex-col justify-between">
                                 <a class="text-base font-semibold text-gray-900" href="#">{{$post->authorList()}}</a>

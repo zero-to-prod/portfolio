@@ -7,7 +7,8 @@
 namespace App\Providers;
 
 use App;
-use App\Http\Middleware;
+use App\Helpers\Environments;
+use App\Helpers\Middlewares;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -25,21 +26,21 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::middlewareAs(Middleware::api)
+            Route::middlewareAs(Middlewares::api)
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middlewareAs([Middleware::web, Middleware::web_group])
+            Route::middlewareAs([Middlewares::web, Middlewares::web_group])
                 ->group(base_path('routes/web.php'));
 
-            Route::middlewareAs([Middleware::web, Middleware::auth, Middleware::auth_group])
+            Route::middlewareAs([Middlewares::web, Middlewares::auth, Middlewares::auth_group])
                 ->group(base_path('routes/admin.php'));
 
-            Route::middlewareAs([Middleware::web, Middleware::guest_group])
+            Route::middlewareAs([Middlewares::web, Middlewares::guest_group])
                 ->group(base_path('routes/guest.php'));
 
-            if (App::environment(Environments::tesing->value)) {
-                Route::middlewareAs([Middleware::web, Middleware::guest, Middleware::register_group])
+            if (App::environment(Environments::testing->value)) {
+                Route::middlewareAs([Middlewares::web, Middlewares::guest, Middlewares::register_group])
                     ->group(base_path('routes/register.php'));
             }
         });

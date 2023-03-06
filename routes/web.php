@@ -1,11 +1,11 @@
 <?php
 
+use App\Helpers\Routes;
+use App\Helpers\Views;
 use App\Http\Controllers\ConnectStoreController;
 use App\Http\Controllers\FileServeController;
 use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\SearchController;
-use App\Http\Routes;
-use App\Http\Views;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 

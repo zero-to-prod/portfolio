@@ -2,7 +2,7 @@
 
 namespace App\View\Components;
 
-use App\Http\Views;
+use App\Helpers\Views;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 

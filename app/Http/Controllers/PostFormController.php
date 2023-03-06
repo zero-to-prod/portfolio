@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Routes;
+use App\Helpers\Routes;
 use App\Models\Post;
 use DB;
 use Illuminate\Http\RedirectResponse;

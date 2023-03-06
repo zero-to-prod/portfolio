@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Helpers\RelationMap;
+use App\Helpers\Relations;
 use App\Helpers\Tags;
 use App\Models\Support\IdColumn;
 use App\Models\Support\Polymorphic\HasFiles;
@@ -29,7 +29,7 @@ class Tag extends \Spatie\Tags\Tag
     {
         return self::join('taggables', 'tags.id', '=', 'taggables.tag_id')
             ->join('posts', 'taggables.taggable_id', '=', 'posts.id')
-            ->where('taggables.taggable_type', RelationMap::post->value)
+            ->where('taggables.taggable_type', Relations::post->value)
             ->select('tags.id', 'tags.name', 'tags.slug', DB::raw('SUM(posts.views) AS total_views'))
             ->groupBy('tags.id', 'tags.name', 'tags.slug')
             ->orderByDesc('total_views')

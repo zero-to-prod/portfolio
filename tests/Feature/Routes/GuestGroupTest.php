@@ -2,7 +2,7 @@
 
 namespace Routes;
 
-use App\Http\Middleware;
+use App\Helpers\Middlewares;
 use App\Models\User;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
@@ -28,7 +28,7 @@ class GuestGroupTest extends TestCase
 
     public function getRoutes(): array
     {
-        return collect($this->getRouteList(Middleware::guest_group))->filter(function ($route) {
+        return collect($this->getRouteList(Middlewares::guest_group))->filter(function ($route) {
             $blacklist = [];
             return !in_array($route[0], $blacklist, true);
         })->toArray();

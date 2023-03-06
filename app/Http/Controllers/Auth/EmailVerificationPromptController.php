@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\Views;
 use App\Http\Controllers\Controller;
-use App\Http\Views;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;

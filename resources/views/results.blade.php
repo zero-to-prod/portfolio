@@ -1,11 +1,11 @@
 <?php
 
+use App\Helpers\Routes;
 use App\Http\Controllers\FileServeController;
+use App\Http\Controllers\ResultsController;
 use App\Models\Post;
 use App\Models\Tag;
-use App\Http\Routes;
 use Illuminate\Database\Eloquent\Collection;
-use App\Http\Controllers\ResultsController;
 
 /* @var Collection $posts */
 /* @var Post $post */

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http;
+namespace App\Helpers;
 
 /**
  * @property $value
  */
-enum Middleware: string
+enum Middlewares: string
 {
     case web = 'web';
     case api = 'api';

@@ -1,7 +1,7 @@
 <?php
 
+use App\Helpers\Routes;
 use App\Http\Controllers\ResultsController;
-use App\Http\Routes;
 use App\Http\Controllers\SearchController;
 
 $search = SearchController::search;

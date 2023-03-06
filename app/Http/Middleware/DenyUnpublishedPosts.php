@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Routes;
+use App\Helpers\Routes;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;

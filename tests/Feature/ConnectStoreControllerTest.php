@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Http\Routes;
+use App\Helpers\Routes;
 use App\Mail\ConnectRequest;
 use App\Models\Contact;
 use App\Models\Message;

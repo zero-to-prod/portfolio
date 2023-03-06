@@ -2,8 +2,8 @@
 
 <?php
 
+use App\Helpers\Routes;
 use App\Http\Controllers\ResultsController;
-use App\Http\Routes;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
 

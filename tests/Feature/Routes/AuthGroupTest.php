@@ -2,8 +2,8 @@
 
 namespace Routes;
 
-use App\Http\Middleware;
-use App\Http\Routes;
+use App\Helpers\Middlewares;
+use App\Helpers\Routes;
 use App\Models\User;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
@@ -29,7 +29,7 @@ class AuthGroupTest extends TestCase
 
     public function getRoutes(): array
     {
-        return collect($this->getRouteList(Middleware::auth_group))->filter(function ($route) {
+        return collect($this->getRouteList(Middlewares::auth_group))->filter(function ($route) {
             $blacklist = [
                 Routes::email_verificationNotice->name,
                 Routes::email_verify->name,

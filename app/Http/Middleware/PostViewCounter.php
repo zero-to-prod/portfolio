@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Routes;
+use App\Helpers\Routes;
 use App\Models\Post;
 use App\Models\View;
 use Closure;

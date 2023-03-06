@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Routes
+use App\Helpers\Routes;
+
 ?>
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">

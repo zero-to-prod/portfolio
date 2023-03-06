@@ -5,7 +5,7 @@ namespace App\Helpers;
 /**
  * @property $value
  */
-enum RelationMap: int
+enum Relations: int
 {
     case user = 1;
     case post = 2;

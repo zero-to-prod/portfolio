@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\FileServeController;
-use App\Http\Routes;
+use App\Helpers\Routes;
+use App\Http\Controllers\ResultsController;
 use App\Models\Post;
 use App\Models\Tag;
-use App\Http\Controllers\ResultsController;
 
 /* @var Post $post */
 /* @var Tag $tag */

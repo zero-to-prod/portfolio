@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Routes;
+use App\Helpers\Routes;
 use App\Http\Controllers\ConnectStoreController;
 
 $email = ConnectStoreController::email;

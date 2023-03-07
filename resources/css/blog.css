@@ -6,6 +6,10 @@
     [aria-label="Body"] {
         @apply prose max-w-none;
     }
+
+    [aria-label="Body"] pre {
+        background-color: #f6f6f6 !important;
+    }
 }
 
 

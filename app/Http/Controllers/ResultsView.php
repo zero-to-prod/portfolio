@@ -14,8 +14,7 @@ use Illuminate\Http\Request;
 class ResultsView extends Controller
 {
     public const query = 'query';
-    public const tag = 'tag';
-    public const tags = 'tags';
+    public const tag = 'topic';
     public const topics = 'topics';
     public const popular = 'popular';
     public const posts = 'posts';
@@ -26,7 +25,7 @@ class ResultsView extends Controller
         $posts = null;
         $tag = null;
         $search = $request->query(self::query);
-        $tag_slug = $request->query(self::tag);
+        $tag_name = $request->query(self::tag);
         $popular = $request->query(self::popular);
 
         if ($search !== null) {
@@ -43,9 +42,9 @@ class ResultsView extends Controller
             $posts = $posts->merge($related);
         }
 
-        if ($tag_slug !== null) {
-            $posts = Post::related($tag_slug, limit: self::limit);
-            $tag = Tag::where(Tag::slug . '->en', $tag_slug)->first();
+        if ($tag_name !== null) {
+            $posts = Post::related($tag_name, limit: self::limit);
+            $tag = Tag::where(Tag::slug . '->en', $tag_name)->first();
         }
 
         if ($popular !== null) {
@@ -57,7 +56,7 @@ class ResultsView extends Controller
 
         return view_as(Views::results, [
             self::posts => $posts,
-            self::tag => $tag,
+            'tag' => $tag,
         ]);
     }
 }

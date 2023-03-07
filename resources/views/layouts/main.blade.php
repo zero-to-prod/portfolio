@@ -57,7 +57,7 @@ $search = SearchRedirect::search;
                     </div>
                 </form>
             </div>
-            <div class="2col:block hidden p-4">About</div>
+            <a href="{{route_as(Routes::connect)}}" class="2col:block hidden p-4 text-gray-700">Contact</a>
         </div>
     </header>
     <div class="mt-[60px]">

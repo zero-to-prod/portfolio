@@ -21,8 +21,8 @@ class BlueprintServiceProvider extends ServiceProvider
 
     protected function registerSlug(): void
     {
-        Blueprint::macro('slug', function (string $column = 'slug', int|null $length = null): ColumnDefinition {
-            return $this->char($column, $length)->index();
+        Blueprint::macro('slug', function (string $column = 'slug', ?int $length = null): ColumnDefinition {
+            return $this->char($column, $length)->unique()->index();
         });
     }
 

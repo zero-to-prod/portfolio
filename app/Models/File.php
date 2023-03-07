@@ -50,7 +50,7 @@ class File extends Model
 
     public function tagFeaturedImage(): File
     {
-        return $this->attachTags([Tags::featured->value], TagTypes::system->value);
+        return $this->attachTag(Tags::featured->value, TagTypes::system->value);
     }
 
     public function tagLogo(): File

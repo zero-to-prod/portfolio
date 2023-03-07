@@ -41,9 +41,9 @@ use Illuminate\Support\Collection;
                                     <td class="p-3.5">
                                         <a class="flex justify-between"
                                            href="{{R::admin_tag_edit($tag)}}">
-                                            <div class="flex gap-4 h-[100px] w-[100px]">
+                                            <div class="flex gap-4">
                                                 @if($tag->logo())
-                                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                                    <x-img class="object-cover w-[100px] rounded-lg"
                                                            :file="$tag->logo()"
                                                            :height="100"
                                                            :title="''"/>

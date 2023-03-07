@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Http\Controllers\ResultsView;
+use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
 use App\Models\Tag;
@@ -22,6 +23,23 @@ class R
             FileServeResponse::width => $width,
             FileServeResponse::height => $height,
         ]);
+    }
+    public static function admin_author_index(): string
+    {
+        return route_as(Routes::admin_author_index);
+    }
+    public static function admin_author_create(): string
+    {
+        return route_as(Routes::admin_author_create);
+    }
+    public static function admin_author_store(): string
+    {
+        return route_as(Routes::admin_author_store);
+    }
+
+    public static function admin_author_edit(Author $author): string
+    {
+        return route_as(Routes::admin_author_edit, $author);
     }
     public static function admin_tag_create(): string
     {
@@ -100,5 +118,10 @@ class R
     public static function connect_store(): string
     {
         return route_as(Routes::connect_store);
+    }
+
+    public static function dashboard(): string
+    {
+        return route_as(Routes::dashboard);
     }
 }

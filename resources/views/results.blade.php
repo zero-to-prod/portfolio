@@ -27,8 +27,24 @@ use Illuminate\Database\Eloquent\Collection;
                     <x-divider/>
                 </div>
             @endif
+            @if(request()->query(ResultsView::query) !== null)
+                <div class="flex gap-x-2 my-2 ml-2 2col:ml-0">
+                    <svg class="h-10 w-10 text-gray-600" viewBox="0 0 20 20" fill="currentColor"
+                         aria-hidden="true">
+                        <path fill-rule="evenodd"
+                              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                    <h2 class="my-auto text-lg font-semibold text-gray-900">
+                        Search Results
+                    </h2>
+                </div>
+                <div class="hidden 2col:block">
+                    <x-divider/>
+                </div>
+            @endif
             @if(request()->query(ResultsView::popular) !== null)
-                <div class="mb-2 flex gap-x-2 pt-2" title="Popular">
+                <div class="mb-2 flex gap-x-2 pt-2 ml-2 2col:ml-0" title="Popular">
                     <svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <g>
                             <path fill="none" d="M0 0H24V24H0z"></path>
@@ -44,7 +60,7 @@ use Illuminate\Database\Eloquent\Collection;
                 </div>
             @endif
         </div>
-        @if($posts !== null && count($posts) )
+        @if($posts !== null && count($posts))
             @foreach($posts as $post)
                 <div class="flex flex-col 3col:flex-row gap-2">
                     <a class="relative" href="{{R::read($post)}}">

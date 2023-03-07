@@ -26,6 +26,11 @@ enum Views: string
     /* Tags */
     case admin_tag_index = 'admin.tags.tag_index';
     case admin_tag_form = 'admin.tags.tag_form';
+
+    /* Authors */
+    case admin_author_index = 'admin.authors.author_index';
+    case admin_author_form = 'admin.authors.author_form';
+
     case layouts_app = 'layouts.app';
     case layouts_guest = 'layouts.guest';
     case layouts_main = 'layouts.main';

@@ -11,13 +11,22 @@ class TagSeeder extends Seeder
 {
     public function run(): void
     {
-        Tag::create([
-            Tag::name => Tags::featured->value,
-            Tag::type => TagTypes::system->value,
+        $tags = collect([
+            [
+                Tag::name => Tags::featured->value,
+                Tag::type => TagTypes::system->value,
+            ],
+            [
+                Tag::name => Tags::avatar->value,
+                Tag::type => TagTypes::system->value,
+            ],
+            [
+                Tag::name => Tags::logo->value,
+                Tag::type => TagTypes::system->value,
+            ],
         ]);
-        Tag::create([
-            Tag::name => Tags::avatar->value,
-            Tag::type => TagTypes::system->value,
-        ]);
+        $tags->each(function ($tag) {
+            Tag::create($tag);
+        });
     }
 }

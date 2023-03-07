@@ -9,11 +9,6 @@ use App\Models\Tag;
 ?>
 
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
     <div class="mt-12 mx-auto max-w-7xl bg-gray-800 py-10 sm:rounded-lg">
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center flex-row-reverse">

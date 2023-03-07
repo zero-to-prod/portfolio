@@ -35,6 +35,7 @@ class AuthGroupTest extends TestCase
                 Routes::email_verify->name,
                 Routes::admin_post_edit->name,
                 Routes::admin_tag_edit->name,
+                Routes::admin_author_edit->name,
                 Routes::admin_post_index->name,
             ];
             return !in_array($route[0], $blacklist, true);

@@ -128,9 +128,7 @@ class Post extends Model implements HasRules
 
     public function authorAvatar(): ?File
     {
-        return $this->authors()->first()?->files()->whereHas(self::tags, function ($builder) {
-            $builder->where(Tag::name . '->en', Tags::avatar->value);
-        })->first();
+        return $this->authors()->first()?->avatar();
     }
 
     public function authorList(): string

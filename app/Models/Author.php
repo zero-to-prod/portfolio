@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Tags;
 use App\Models\Support\Author\AuthorColumns;
 use App\Models\Support\Author\AuthorRelationships;
 use App\Models\Support\Author\AuthorRules;
@@ -32,5 +33,22 @@ class Author extends Model implements HasRules
     use AuthorRelationships;
 
     protected $fillable = [self::name];
+
+    public function avatar(): ?File
+    {
+        return $this->files()->whereHas('tags', function ($builder) {
+            $builder->where(Tag::name . '->en', Tags::avatar->value);
+        })->first();
+    }
+
+    public function hasAvatar(): bool
+    {
+        return $this->avatar() !== null;
+    }
+
+    public function isMissingAvatar(): bool
+    {
+        return $this->avatar() === null;
+    }
 
 }

@@ -60,7 +60,7 @@ $search = SearchRedirect::search;
             <div class="2col:block hidden p-4">About</div>
         </div>
     </header>
-    <div class="mt-[64px]">
+    <div class="mt-[60px]">
         <x-left-drawer :tags="Tag::mostViewed()"/>
         <div id="content" class="ml-0 2col:px-4 min-[780px]:ml-[64px] min-[1312px]:ml-[238px]">
             {{$slot}}

@@ -1,11 +1,11 @@
 <?php
 
 use App\Helpers\R;
-use App\Models\Tag;
+use App\Models\Author;
 use Illuminate\Support\Collection;
 
-/* @var Tag $tag */
-/* @var Collection<Tag> $tags */
+/* @var Author $author */
+/* @var Collection<Author> $authors */
 ?>
 
 <x-app-layout>
@@ -13,8 +13,8 @@ use Illuminate\Support\Collection;
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center flex-row-reverse">
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <a href="{{R::admin_tag_create()}}" class="btn btn-xs">
-                        New Tag
+                    <a href="{{R::admin_author_create()}}" class="btn btn-xs">
+                        New Author
                     </a>
                 </div>
             </div>
@@ -28,42 +28,36 @@ use Illuminate\Support\Collection;
                                     class="py-3.5 px-3 text-left text-sm font-semibold">Tag
                                 </th>
                                 <th scope="col"
-                                    class="py-3.5 px-3 text-left text-sm font-semibold">Views
-                                </th>
-                                <th scope="col"
                                     class="py-3.5 px-3 text-left text-sm font-semibold">Post Count
                                 </th>
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-800">
-                            @foreach($tags as $tag)
+                            @foreach($authors as $author)
                                 <tr>
                                     <td class="p-3.5">
                                         <a class="flex justify-between"
-                                           href="{{R::admin_tag_edit($tag)}}">
+                                           href="{{R::admin_author_edit($author)}}">
                                             <div class="flex gap-4 h-[100px] w-[100px]">
-                                                @if($tag->logo())
+                                                @if($author->avatar())
                                                     <x-img class="object-cover h-[100px] rounded-lg"
-                                                           :file="$tag->logo()"
+                                                           :file="$author->avatar()"
                                                            :height="100"
                                                            :title="''"/>
                                                 @endif
                                                 <div>
                                                     <p class="font-bold">
-                                                        {{$tag->name}}
+                                                        {{$author->name}}
                                                     </p>
                                                     <p>
-                                                        {{$tag->slug}}
+                                                        {{$author->slug}}
                                                     </p>
                                                 </div>
                                             </div>
                                         </a>
                                     </td>
                                     <td class="p-3.5">
-                                        {{$tag->views}}
-                                    </td>
-                                    <td class="p-3.5">
-                                        {{$tag->posts_count}}
+                                        {{$author->posts()->count()}}
                                     </td>
                                 </tr>
                             @endforeach

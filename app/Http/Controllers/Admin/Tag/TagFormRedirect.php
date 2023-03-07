@@ -10,7 +10,6 @@ use DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Throwable;
-use Upload;
 
 class TagFormRedirect extends Controller
 {

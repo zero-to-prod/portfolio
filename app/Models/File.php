@@ -55,7 +55,7 @@ class File extends Model
 
     public function tagLogo(): File
     {
-        return $this->attachTags([Tags::logo->value]);
+        return $this->attachTag(Tags::logo->value, TagTypes::system->value);
     }
 
     public function tagAvatar(): File

@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Http\Controllers\Admin\Author\AuthorFormView;
 use App\Http\Controllers\Admin\Post\PostFormView;
 use App\Http\Controllers\Admin\Post\PostPublishRedirect;
 use App\Http\Controllers\Admin\Tag\TagFormView;
@@ -31,18 +32,21 @@ enum Routes: string
     case admin_post_index = '/admin/posts';
     case admin_post_create = '/admin/posts/create';
     case admin_post_store = '/admin/posts/store';
-    case admin_post_edit = '/admin/posts/{'.PostFormView::post.'}/edit';
-    case admin_post_publish = '/admin/posts/{'.PostPublishRedirect::id.'}/publish';
-    case admin_post_unPublish = '/admin/posts/{'.PostFormView::post.'}/un-publish';
+    case admin_post_edit = '/admin/posts/{' . PostFormView::post . '}/edit';
+    case admin_post_publish = '/admin/posts/{' . PostPublishRedirect::id . '}/publish';
+    case admin_post_unPublish = '/admin/posts/{' . PostFormView::post . '}/un-publish';
 
     /* Tags */
     case admin_tag_index = '/admin/tags';
     case admin_tag_create = '/admin/tags/create';
-    case admin_tag_edit = '/admin/tags/{'.TagFormView::tag.'}/edit';
+    case admin_tag_edit = '/admin/tags/{' . TagFormView::tag . '}/edit';
     case admin_tag_store = '/admin/tags/store';
 
-
-
+    /* Authors */
+    case admin_author_index = '/admin/authors';
+    case admin_author_create = '/admin/authors/create';
+    case admin_author_edit = '/admin/authors/{' . AuthorFormView::author . '}/edit';
+    case admin_author_store = '/admin/authors/store';
 
     case dashboard = '/dashboard';
     case email_verificationNotice = 'email/verification-notice';

@@ -3,6 +3,9 @@
 use App\Helpers\Middlewares;
 use App\Helpers\Routes;
 use App\Helpers\Views;
+use App\Http\Controllers\Admin\Author\AuthorFormRedirect;
+use App\Http\Controllers\Admin\Author\AuthorFormView;
+use App\Http\Controllers\Admin\Author\AuthorIndexView;
 use App\Http\Controllers\Admin\File\FileUploadResponse;
 use App\Http\Controllers\Admin\Post\PostFormRedirect;
 use App\Http\Controllers\Admin\Post\PostFormView;
@@ -40,6 +43,12 @@ Route::getAs(Routes::admin_tag_index, TagIndexView::class);
 Route::getAs(Routes::admin_tag_create, TagFormView::class);
 Route::getAs(Routes::admin_tag_edit, TagFormView::class);
 Route::postAs(Routes::admin_tag_store, TagFormRedirect::class);
+
+/* Authors */
+Route::getAs(Routes::admin_author_index, AuthorIndexView::class);
+Route::getAs(Routes::admin_author_create, AuthorFormView::class);
+Route::getAs(Routes::admin_author_edit, AuthorFormView::class);
+Route::postAs(Routes::admin_author_store, AuthorFormRedirect::class);
 
 /* Profile */
 Route::getAs(Routes::profile_edit, [ProfileController::class, 'edit']);

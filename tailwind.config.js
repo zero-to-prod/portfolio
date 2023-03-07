@@ -22,6 +22,7 @@ module.exports = {
             '4col': '1142px',
             '5col': '1978px',
             '6col': '2302px',
+            'post2col': '1000px',
             ...defaultTheme.screens,
         }
     },

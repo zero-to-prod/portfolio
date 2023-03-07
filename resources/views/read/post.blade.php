@@ -8,10 +8,10 @@ use App\Models\Post;
 ?>
 
 <x-main :title="$post->title">
-    <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 lg:px-0 lg:flex-row mb-16">
-        <div aria-label="Content" class="lg:basis-2/3">
+    <div data-blog="blog" class="mx-auto flex max-w-2xl post2col:max-w-7xl flex-col gap-2 post2col:px-0 post2col:flex-row mb-16">
+        <div aria-label="Content" class="post2col:basis-2/3">
             <div aria-label="image" class="relative">
-                <x-img :file="$post->featuredImage()" :width="837" :title="''"/>
+                <x-img class="w-full" :file="$post->featuredImage()" :width="837" :title="''"/>
                 <x-reading-time-chip class="font-normal" :post="$post" :text="$post->reading_time . ' min read'"/>
                 <x-new-chip :post="$post"/>
             </div>
@@ -45,23 +45,23 @@ use App\Models\Post;
                         </div>
                     </div>
                 </div>
-                <div aria-label="Body">
+                <div class="prose max-w-[800px]" aria-label="Body" >
                     {!! $post->published_content !!}
                 </div>
             </article>
         </div>
-        <div aria-label="Suggested Content" class="lg:basis-1/3 px-2">
+        <div aria-label="Suggested Content" class="post2col:basis-1/3 px-2">
             <div class="flex flex-col gap-2">
                 @foreach(Post::related($post->tags, $post->id ) as $post)
                     <a href="{{R::read($post)}}" class="flex flex-row">
-                        <div class="relative text-center  overflow-hidden rounded-lg">
-                            <x-img class="h-[94px] width-[168px] object-cover"
+                        <div class="h-full relative text-center  overflow-hidden rounded-lg">
+                            <x-img class="max-h-[94px] width-[168px] object-cover"
                                    :file="$post->featuredImage()"
                                    :width="168"
                                    :title="''"/>
                             <x-reading-time-chip :post="$post"/>
                         </div>
-                        <div class="w-full ml-2 max-w-[200px] lg:max-w-[240px]">
+                        <div class="w-full ml-2 max-w-[200px] post2col:max-w-[240px]">
                             <h3 class="mb-1 break-word font-bold font-sm tracking-tight"
                                 title="{{ $post->title }}">{{ $post->title }}</h3>
                             <div>

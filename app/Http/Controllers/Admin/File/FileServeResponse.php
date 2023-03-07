@@ -18,6 +18,11 @@ class FileServeResponse extends Controller
     public const width = 'width';
     public const height = 'height';
 
+    public function __construct()
+    {
+        $this->middleware('cache.headers:public;max_age=3600;etag');
+    }
+
     /**
      * @see FileServeResponseTest
      */

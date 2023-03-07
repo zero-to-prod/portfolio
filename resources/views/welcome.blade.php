@@ -1,81 +1,59 @@
 <?php
 
-use App\Http\Routes;
+use App\Helpers\R;
+use App\Models\Post;
+use App\Models\Tag;
 
+/* @var Post $post */
+/* @var Tag $tag */
 ?>
 
-<x-main-layout :title="'davidDESIGN'">
-    <x-header-section>
-        <h1>Give Your Business a Boost</h1>
-        <p>
-            <em>Strengthen</em> your company's potential and <em>increase</em> revenue by improving your online <em>presence</em>.
-        </p>
-        <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="{{route_as(Routes::connect)}}" class="btn">Let's Connect</a>
-        </div>
-    </x-header-section>
-
-    <div id="about-me" class="overflow-hidden bg-white">
-        <div class="relative mx-auto max-w-7xl py-16 px-4">
-            <div class="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
-                <div>
-                    <h2 class="mt-2 text-3xl font-semibold leading-8 tracking-tight text-gray-900 sm:text-4xl">About
-                        Me</h2>
+<x-main>
+    <div class="flex w-full flex-col 4col:mx-auto 4col:max-w-7xl">
+        @foreach($tags as $tag)
+            <section class="mt-2">
+                <a class="mb-4 2col:mb-0 block ml-2 2col:ml-0" href="{{R::results($tag)}}">
+                    <div class="flex gap-x-2">
+                        @if($tag->hasLogo())
+                            <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
+                        @endif
+                        <h2 class="my-auto text-lg font-semibold text-gray-900">
+                            {{$tag->name}}
+                        </h2>
+                    </div>
+                </a>
+                <div class="pb-4 pt-2 hidden 2col:block">
+                    <x-divider/>
                 </div>
-            </div>
-            <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
-                <div class="relative lg:col-start-2 lg:row-start-1">
-                    <div class="relative mx-auto max-w-prose text-base lg:max-w-none">
-                        <figure>
-                            <div class="aspect-w-1 aspect-h-1">
-                                <img class="rounded-lg object-cover object-top shadow-lg"
-                                     src="{{ Vite::asset('resources/images/portrait.jpg') }}"
-                                     alt="Portrait" width="1184"
-                                     height="1376">
+                <div class="grid mb-4 grid-flow-row gap-4 2col:grid-cols-2 4col:grid-cols-4 2col:gap-2">
+                    @foreach($tag->relatedPosts(limit: 4) as $post)
+                        <a href="{{R::read($post)}}">
+                            <div class="relative">
+                                <div class="overflow-hidden 2col:rounded-lg aspect-w-3 aspect-h-2">
+                                    <x-img class="h-full w-full object-cover object-center"
+                                           :file="$post->featuredImage()"
+                                           :width="300"
+                                           :title="''"
+                                    />
+                                </div>
+                                <x-reading-time-chip :post="$post"/>
+                                <x-new-chip :post="$post"/>
                             </div>
-                        </figure>
-                    </div>
+                            <div class="p-1 2col:px-0">
+                                <h3 class="font-bold font-sm break-word"
+                                    title="{{ $post->title }}">{{ $post->title }}</h3>
+                                <div>
+                                    <p class="text-sm text-gray-600"
+                                       title="{{$post->authorList()}}">{{$post->authorList()}}</p>
+                                    <p class="text-sm text-gray-600">{{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
+                                        <span before="•"
+                                              class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
-                <div class="mt-8 lg:mt-0">
-                    <div class="mx-auto max-w-prose text-base lg:max-w-none">
-                        <p class="text-lg text-gray-500">I'm David Smith, a <em>Full Stack Web Developer</em>
-                            based in Granger, Indiana.</p>
-                    </div>
-                    <div
-                        class="prose prose-sky mx-auto mt-5 text-gray-500 lg:col-start-1 lg:row-start-1 lg:max-w-none">
-                        <p>
-                            I help <em>small businesses</em> with their <em>web and technology</em> needs.
-                        </p>
-                        <p>
-                            I love tackling <em>tough challenges</em> and finding <em>budget-friendly</em> fixes with my
-                            clients.
-                        </p>
-                        <p>
-                            I mainly work with <em>web technologies</em>, but I also handle
-                            <em>IT and hardware support</em>.
-                        </p>
-                        <p>Here are some things I can do for you:</p>
-                        <ul role="list">
-                            <li>Spin up a <em>fresh</em> new website</li>
-                            <li>Give your old site a <em>makeover</em></li>
-                            <li>Make sure your business is <em>found on Google</em> and other search engines</li>
-                            <li>Hook up <em>payments</em> and other services to your website</li>
-                            <li>Get your <em>email list</em> up and running and <em>make money</em> with it</li>
-                        </ul>
-                        <p>
-                            Here is a recent example of my work:
-                            <a class="text-blue-700" href="https://interior-gardens.com/">Interior Gardens</a>.
-                        </p>
-                        <p>
-                            I am currently <em>accepting</em> new clients and job opportunities. If you are interested
-                            in connecting, please get in <a class="text-blue-700" href="{{route_as(Routes::connect)}}">touch
-                                with me.</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @vite('resources/js/top_nav_scroll.js')
-</x-main-layout>
+            </section>
+    @endforeach
+</x-main>

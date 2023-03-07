@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Routes;
+use App\Helpers\R;
+use App\Helpers\Routes;
 
 ?>
 
@@ -11,16 +12,33 @@ use App\Http\Routes;
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route_as(Routes::dashboard) }}">
+                    <a href="{{R::dashboard() }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200"/>
                     </a>
                 </div>
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route_as(Routes::dashboard)"
+                    <x-nav-link :href="R::dashboard()"
                                 :active="route_is(Routes::dashboard)">
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route_as(Routes::admin_post_index)"
+                                :active="route_contains('post')">
+                        {{ __('Posts') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route_as(Routes::admin_tag_index)"
+                                :active="route_contains('tag')">
+                        {{ __('Tags') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="R::admin_author_index()"
+                                :active="route_contains('author')">
+                        {{ __('Authors') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -31,7 +49,6 @@ use App\Http\Routes;
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
-
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                      viewBox="0 0 20 20">
@@ -51,7 +68,6 @@ use App\Http\Routes;
                         <!-- Authentication -->
                         <form method="POST" action="{{ route_as(Routes::logout) }}">
                             @csrf
-
                             <x-dropdown-link :href="route_as(Routes::logout)"
                                              onclick="event.preventDefault();
                                                 this.closest('form').submit();">
@@ -81,9 +97,21 @@ use App\Http\Routes;
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route_as(Routes::dashboard)"
+            <x-responsive-nav-link :href="R::dashboard()"
                                    :active="route_is(Routes::dashboard)">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route_as(Routes::admin_post_index)"
+                                   :active="route_contains('post')">
+                {{ __('Posts') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route_as(Routes::admin_tag_index)"
+                                   :active="route_contains('tag')">
+                {{ __('Tags') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route_as(Routes::admin_author_index)"
+                                   :active="route_contains('author')">
+                {{ __('Authors') }}
             </x-responsive-nav-link>
         </div>
 
@@ -102,7 +130,6 @@ use App\Http\Routes;
                 <!-- Authentication -->
                 <form method="POST" action="{{ route_as(Routes::logout) }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route_as(Routes::logout)"
                                            onclick="event.preventDefault();
                                         this.closest('form').submit();">

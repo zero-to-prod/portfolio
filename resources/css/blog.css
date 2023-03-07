@@ -1,0 +1,15 @@
+@layer components {
+    div, nav, a, p, ul, li {
+        /*@apply border border-red-200;*/
+    }
+
+    [aria-label="Body"] {
+        @apply prose max-w-none;
+    }
+
+    [aria-label="Body"] pre {
+        background-color: #f6f6f6 !important;
+    }
+}
+
+

@@ -15,10 +15,10 @@ trait RouteMethods
         return $this->post($route, $data, $headers);
     }
 
-    protected function getAs($uri, array $headers = []): TestResponse
+    protected function getAs($uri, $parameters = [], array $headers = []): TestResponse
     {
         if ($uri instanceof \UnitEnum) {
-            return $this->get(route_as($uri, $headers));
+            return $this->get(route_as($uri, $parameters, $headers));
         }
 
         return $this->get($uri, $headers);

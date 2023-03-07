@@ -12,6 +12,8 @@ return new class extends Migration {
             $table->id();
             $table->slug();
             $table->name();
+            $table->text(Author::bio)->nullable();
+            $table->char(Author::title)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

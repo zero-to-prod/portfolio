@@ -7,7 +7,8 @@
 namespace App\Providers;
 
 use App;
-use App\Http\Middleware;
+use App\Helpers\Environments;
+use App\Helpers\Middlewares;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -17,6 +18,8 @@ use UnitEnum;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    protected bool $defer = true;
+
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
@@ -25,21 +28,21 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::middlewareAs(Middleware::api)
+            Route::middlewareAs(Middlewares::api)
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middlewareAs([Middleware::web, Middleware::web_group])
+            Route::middlewareAs([Middlewares::web, Middlewares::web_group])
                 ->group(base_path('routes/web.php'));
 
-            Route::middlewareAs([Middleware::web, Middleware::auth, Middleware::auth_group])
-                ->group(base_path('routes/auth.php'));
+            Route::middlewareAs([Middlewares::web, Middlewares::auth, Middlewares::auth_group])
+                ->group(base_path('routes/admin.php'));
 
-            Route::middlewareAs([Middleware::web, Middleware::guest_group])
+            Route::middlewareAs([Middlewares::web, Middlewares::guest_group])
                 ->group(base_path('routes/guest.php'));
 
-            if (App::environment('testing')) {
-                Route::middlewareAs([Middleware::web, Middleware::guest, Middleware::register_group])
+            if (App::environment(Environments::testing->value)) {
+                Route::middlewareAs([Middlewares::web, Middlewares::guest, Middlewares::register_group])
                     ->group(base_path('routes/register.php'));
             }
         });
@@ -53,7 +56,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function configureRateLimiting(): void
     {
-        RateLimiter::for('api', function (Request $request) {
+        RateLimiter::for(Middlewares::api->value, function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }
@@ -77,7 +80,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function registerAsMethods(): void
     {
         foreach (['get', 'post', 'put', 'patch', 'delete', 'options', 'any'] as $method) {
-            Route::macro($method . 'As', function ($uri, array|string|callable|null|UnitEnum $action = null, $cached = false) use ($method) {
+            Route::macro($method . 'As', function ($uri, array|string|callable|null|UnitEnum $action = null, $data = [], $mergeData = [], $cached = false) use ($method) {
                 if (!$uri instanceof UnitEnum) {
                     Route::$method($uri, $action);
 
@@ -91,12 +94,12 @@ class RouteServiceProvider extends ServiceProvider
                 }
 
                 if ($cached) {
-                    Route::$method($uri->value, fn() => cached_view($action))->name($uri->name);
+                    Route::$method($uri->value, fn() => cached_view($action, $data, $mergeData))->name($uri->name);
 
                     return $this;
                 }
 
-                Route::$method($uri->value, fn() => view_as($action))->name($uri->name);
+                Route::$method($uri->value, fn() => view_as($action, $data, $mergeData))->name($uri->name);
 
                 return $this;
             });

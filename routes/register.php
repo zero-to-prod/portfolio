@@ -1,10 +1,10 @@
 <?php
 
+use App\Helpers\Routes;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Routes;
 
 Route::getAs(Routes::register, [RegisteredUserController::class, 'create']);
 Route::postAs(Routes::register_store, [RegisteredUserController::class, 'store']);

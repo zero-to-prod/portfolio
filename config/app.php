@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'davidDESIGN'),
+    'name' => env('APP_NAME', 'devREAD'),
 
     /*
     |--------------------------------------------------------------------------
@@ -194,6 +194,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\CacheServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RedirectServiceProvider::class,
         App\Providers\BlueprintServiceProvider::class,
@@ -212,7 +213,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Routes' => App\Http\Routes::class,
+        'Routes' => \App\Helpers\Routes::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'R' => App\Helpers\R::class,
     ])->toArray(),
 
 ];

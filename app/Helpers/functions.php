@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\Environments;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -7,7 +8,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Route;
 
 if (!function_exists('route_as')) {
-    function route_as($route, $parameters = [], $absolute = true): string
+    function route_as($route, mixed $parameters = [], $absolute = true): string
     {
         if ($route instanceof \UnitEnum) {
             return route($route->name, $parameters, $absolute);
@@ -25,6 +26,13 @@ if (!function_exists('route_is')) {
         }
 
         return route(...$route);
+    }
+}
+
+if (!function_exists('route_contains')) {
+    function route_contains(string $route): bool
+    {
+        return Str::contains(request()?->url(), $route, true);
     }
 }
 
@@ -54,7 +62,7 @@ if (!function_exists('view_as')) {
 if (!function_exists('cached_view')) {
     function cached_view($view = null, $data = [], $mergeData = [], DateTimeInterface|DateInterval|int|null $ttl = null)
     {
-        if (App::environment(['local', 'testing'])) {
+        if (App::environment([Environments::local->value, Environments::testing->value])) {
             return view_as($view, $data, $mergeData);
         }
 

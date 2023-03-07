@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Routes;
+use App\Helpers\Views;
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Http\Routes;
-use App\Http\Views;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

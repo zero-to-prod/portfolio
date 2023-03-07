@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\Support\IdColumn;
 use App\Models\Support\TimeStampColumns;
-use App\Models\Support\UserColumns;
+use App\Models\Support\User\UserColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

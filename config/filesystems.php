@@ -15,6 +15,9 @@ return [
 
     'default' => env('FILESYSTEM_DISK', 'local'),
 
+    'file_disk' => env('FILE_DISK', 'local'),
+    'file_disk_path' => env('FILE_DISK_PATH', 'local') . '/',
+
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -46,9 +49,9 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
+            'key' => env('AWS_BUCKET_ACCESS_KEY_ID'),
+            'secret' => env('AWS_BUCKET_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_BUCKET_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
@@ -71,6 +74,10 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+    ],
+
+    'cache' => [
+        'ttl' => 60 * 60 * 24, // 1 day
     ],
 
 ];

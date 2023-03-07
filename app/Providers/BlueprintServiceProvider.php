@@ -11,6 +11,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 
 class BlueprintServiceProvider extends ServiceProvider
 {
+    protected bool $defer = true;
     public function boot(): void
     {
         $this->registerSlug();
@@ -21,7 +22,7 @@ class BlueprintServiceProvider extends ServiceProvider
     protected function registerSlug(): void
     {
         Blueprint::macro('slug', function (string $column = 'slug', int|null $length = null): ColumnDefinition {
-            return $this->char($column, $length);
+            return $this->char($column, $length)->index();
         });
     }
 

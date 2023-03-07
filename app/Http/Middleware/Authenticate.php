@@ -2,16 +2,18 @@
 
 namespace App\Http\Middleware;
 
+use App\Helpers\Routes;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
+use Tests\Feature\Middleware\AuthenticateTest;
 
 class Authenticate extends Middleware
 {
     /**
-     * Get the path the user should be redirected to when they are not authenticated.
+     * @see AuthenticateTest
      */
     protected function redirectTo(Request $request): ?string
     {
-        return $request->expectsJson() ? null : route('login');
+        return $request->expectsJson() ? null : route_as(Routes::login);
     }
 }

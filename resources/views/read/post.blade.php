@@ -8,30 +8,38 @@ use App\Models\Post;
 ?>
 
 <x-main :title="$post->title">
-    <div data-blog="blog" class="mx-auto flex max-w-2xl post2col:max-w-7xl flex-col gap-2 post2col:px-0 post2col:flex-row mb-16">
-        <div aria-label="Content" class="post2col:basis-2/3">
-            <div aria-label="image" class="relative">
-                <x-img class="w-full" :file="$post->featuredImage()" :width="837" :title="''"/>
-                <x-reading-time-chip class="font-normal" :post="$post" :text="$post->reading_time . ' min read'"/>
-                <x-new-chip :post="$post"/>
+    <div class="block 3col:flex 3col:flex-row gap-2 max-w-7xl mx-auto mb-24">
+        <div class="max-w-[837px] shrink mx-auto">
+            <div class="relative">
+                <div class="overflow-hidden 2col:rounded-lg">
+                    <x-img class="h-full w-full object-cover object-center"
+                           :file="$post->featuredImage()"
+                           :width="837"
+                           :title="''"
+                    />
+                </div>
+                <x-reading-time-chip :post="$post"/>
             </div>
-            <article aria-label="Article" class="flex flex-col gap-4 px-2 2col:px-0">
+            <article class="flex flex-col gap-6 px-2 2col:px-0" aria-label="Body">
                 <div>
                     <div class="flex flex-col 2col:flex-row justify-between pt-2">
-                        <h1 class="font-bold text-xl 2col:py-2">{{ $post->title }}</h1>
+                        <div>
+                            <h1 class="font-bold text-2xl">{{ $post->title }}</h1>
+                            <p class="text-sm text-gray-500">{{$post->subtitle}}</p>
+                        </div>
                         <div class="flex mb-2">
                             @foreach($post->tags()->get() as $tag)
                                 @if($tag->hasLogo())
-                                    <a class="p-2 ring-inset ring-gray-100 hover:shadow hover:ring-1"
+                                    <a class="h-10 w-10 ring-inset ring-gray-100 hover:shadow hover:ring-1"
                                        href="{{R::results($tag)}}">
-                                        <x-img class="h-6 w-6" :file="$tag->logo()" :width="60"
+                                        <x-img class="p-2" :file="$tag->logo()" :width="60"
                                                :title="$tag->name"/>
                                     </a>
                                 @endif
                             @endforeach
                         </div>
                     </div>
-                    <div class="flex items-center gap-x-2">
+                    <div class="flex items-center gap-x-2 mt-2">
                         <x-img class="h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80"/>
                         <div class="flex justify-between w-full">
                             <div class="flex flex-col justify-between">
@@ -45,38 +53,41 @@ use App\Models\Post;
                         </div>
                     </div>
                 </div>
-                <div class="prose max-w-[800px]" aria-label="Body" >
-                    {!! $post->published_content !!}
-                </div>
+                <div class="prose max-w-none">{!! $post->published_content !!}</div>
             </article>
         </div>
-        <div aria-label="Suggested Content" class="post2col:basis-1/3 px-2">
-            <div class="flex flex-col gap-2">
-                @foreach(Post::related($post->tags, $post->id ) as $post)
-                    <a href="{{R::read($post)}}" class="flex flex-row">
-                        <div class="h-full relative text-center  overflow-hidden rounded-lg">
-                            <x-img class="max-h-[94px] width-[168px] object-cover"
+        <?php
+            $posts = Post::related($post->tags, $post->id );
+        ?>
+        <div class="hidden 3col:flex w-[400px] shrink-0 flex-col gap-2">
+            @foreach($posts as $post)
+                <a href="{{R::read($post)}}" class="flex flex-row gap-2">
+                    <div class="relative shrink-0">
+                        <div class="overflow-hidden 2col:rounded-lg ">
+                            <x-img class="h-[94px] w-[168px] object-cover object-center"
                                    :file="$post->featuredImage()"
-                                   :width="168"
-                                   :title="''"/>
-                            <x-reading-time-chip :post="$post"/>
+                                   :width="250"
+                                   :title="''"
+                            />
                         </div>
-                        <div class="w-full ml-2 max-w-[200px] post2col:max-w-[240px]">
-                            <h3 class="mb-1 break-word font-bold font-sm tracking-tight"
-                                title="{{ $post->title }}">{{ $post->title }}</h3>
-                            <div>
-                                <p class="text-sm text-gray-600 text-xs tracking-tight"
-                                   title="{{$post->authorList()}}">{{$post->authorList()}}</p>
+                        <x-reading-time-chip :post="$post"/>
+                    </div>
+                    <div>
+                        <h3 class="mb-1 break-word font-bold font-xs tracking-tight leading-5"
+                            title="{{ $post->title }}">{{ $post->title }}</h3>
+                        <div>
+                            <p class="text-sm text-gray-600 text-xs tracking-tight"
+                               title="{{$post->authorList()}}">{{$post->authorList()}}</p>
 
-                                <p class="text-sm text-gray-600 text-xs tracking-tight">{{$post->views}} {{$post->views === 1 ? 'View' : 'Views'}}
-                                    <span before=" • "
-                                          class="before:content-[attr(before)]">{{$post->published_at->diffForHumans()}}</span>
-                                </p>
-                            </div>
+                            <p class="text-sm text-gray-600 text-xs tracking-tight">{{$post->views}} {{$post->views === 1 ? 'View' : 'Views'}}
+                                <span before=" • "
+                                      class="before:content-[attr(before)]">{{$post->published_at->diffForHumans()}}</span>
+                            </p>
                         </div>
-                    </a>
-                @endforeach
-            </div>
+                    </div>
+                </a>
+            @endforeach
         </div>
+        <x-post-responsive class="block 3col:hidden" :posts="$posts"/>
     </div>
 </x-main>

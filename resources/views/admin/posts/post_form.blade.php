@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\R;
+use App\Helpers\Tags;
 use App\Http\Controllers\Admin\Post\PostFormRedirect;
 use App\Http\Controllers\Admin\Post\PostPublishRedirect;
 use App\Models\Author;
@@ -99,7 +100,7 @@ $featured_image = PostFormRedirect::featured_image;
                             <div class="sm:col-span-2">
                                 <p class="text-white mb-3">Tags</p>
                                 <div class="flex gap-4 flex-wrap">
-                                    @foreach(Tag::withType()->whereNull(Tag::type)->get() as $author_model)
+                                    @foreach(Tag::withType(Tags::post->value)->get() as $author_model)
                                         <div class="flex items-center text-white space-x-2">
                                             <input class="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
                                                    name="{{$tags}}"

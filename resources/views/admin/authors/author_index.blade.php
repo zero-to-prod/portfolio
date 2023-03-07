@@ -38,9 +38,9 @@ use Illuminate\Support\Collection;
                                     <td class="p-3.5">
                                         <a class="flex justify-between"
                                            href="{{R::admin_author_edit($author)}}">
-                                            <div class="flex gap-4 h-[100px] w-[100px]">
+                                            <div class="flex gap-4 h-[100px]">
                                                 @if($author->avatar())
-                                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                                    <x-img class="object-cover rounded-lg"
                                                            :file="$author->avatar()"
                                                            :height="100"
                                                            :title="''"/>

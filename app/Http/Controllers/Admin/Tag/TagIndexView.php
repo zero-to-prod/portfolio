@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Tag;
 
+use App\Helpers\Tags;
 use App\Helpers\Views;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
@@ -19,7 +20,8 @@ class TagIndexView extends Controller
     public function __invoke(Request $request): View|Factory|Application
     {
         return view_as(Views::admin_tag_index, [
-            self::tags => Tag::withCount(Tag::posts)
+            self::tags => Tag::withType(Tags::post->value)
+                ->withCount(Tag::posts)
                 ->withSum(Tag::posts . ' as ' . self::views, Post::views)
                 ->orderByDesc(self::views)
                 ->get()

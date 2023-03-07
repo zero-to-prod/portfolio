@@ -61,49 +61,7 @@ use Illuminate\Database\Eloquent\Collection;
             @endif
         </div>
         @if($posts !== null && count($posts))
-            @foreach($posts as $post)
-                <div class="flex flex-col 3col:flex-row gap-2">
-                    <a class="relative" href="{{R::read($post)}}">
-                        <div class="overflow-hidden 2col:rounded-lg bg-gray-200">
-                            <x-img class="h-full w-full object-cover object-center"
-                                   :file="$post->featuredImage()"
-                                   :width="300"
-                                   :title="''"/>
-                        </div>
-                        <x-reading-time-chip :post="$post"/>
-                        <x-new-chip :post="$post"/>
-                    </a>
-                    <div class="flex flex-1 flex-col px-2 3col:my-0">
-                        <a class="2col:pb-4" href="{{R::read($post)}}">
-                            <h3 class="font-bold break-word"
-                                title="{{ $post->title }}">{{ $post->title }}</h3>
-                            <p class="text-sm text-gray-600"
-                               title="{{$post->authorList()}}">{{$post->authorList()}}</p>
-                            <p class="text-sm text-gray-600">
-                                {{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
-                                <span before="•"
-                                      class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
-                            </p>
-                        </a>
-                        <div class="flex">
-                            @foreach($post->tags()->get() as $tag)
-                                @if($tag->hasLogo())
-                                    <a class="p-2 ring-inset ring-gray-100 hover:shadow hover:ring-1"
-                                       href="{{R::results($tag)}}">
-                                        <x-img class="h-6 w-6" :file="$tag->logo()" :width="60"
-                                               :title="$tag->name"/>
-                                    </a>
-                                @endif
-                            @endforeach
-                        </div>
-                        <a class="2col:pt-4 text-sm text-gray-600"
-                           href="{{R::read($post)}}"
-                           title="{{$post->subtitle}}">
-                            {{$post->subtitle}}
-                        </a>
-                    </div>
-                </div>
-            @endforeach
+            <x-post-responsive :posts="$posts"/>
     </div>
     @else
         @if($posts !== null && count($posts) === 0)

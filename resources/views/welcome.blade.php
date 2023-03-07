@@ -40,7 +40,7 @@ use App\Models\Tag;
                                 <x-new-chip :post="$post"/>
                             </div>
                             <div class="p-1 2col:px-0">
-                                <h3 class="font-bold font-sm break-word"
+                                <h3 class="font-bold font-sm break-word tracking-tight leading-5"
                                     title="{{ $post->title }}">{{ $post->title }}</h3>
                                 <div>
                                     <p class="text-sm text-gray-600"

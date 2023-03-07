@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Tag;
 
 use App\Helpers\R;
+use App\Helpers\Tags;
 use App\Http\Controllers\Controller;
 use App\Models\File;
 use App\Models\Tag;
@@ -32,6 +33,7 @@ class TagFormRedirect extends Controller
 
         $tag = Tag::updateOrCreate([Tag::id => $request->{self::id}], [
             Tag::name => $validated[self::name],
+            Tag::type => Tags::post->value
         ]);
 
         if ($request->hasFile(self::logo)) {

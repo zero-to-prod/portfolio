@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Tags;
 use App\Helpers\Views;
 use App\Models\Post;
 use App\Models\Tag;
@@ -44,7 +45,7 @@ class ResultsView extends Controller
 
         if ($tag_name !== null) {
             $posts = Post::related($tag_name, limit: self::limit);
-            $tag = Tag::where(Tag::slug . '->en', $tag_name)->first();
+            $tag = Tag::withType(Tags::post->value)->where(Tag::slug . '->en', $tag_name)->first();
         }
 
         if ($popular !== null) {

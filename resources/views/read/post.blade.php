@@ -8,7 +8,7 @@ use App\Models\Post;
 ?>
 
 <x-main :title="$post->title">
-    <div class="block 3col:flex 3col:flex-row gap-2 max-w-7xl mx-auto">
+    <div class="block 3col:flex 3col:flex-row gap-2 max-w-7xl mx-auto mb-24">
         <div class="max-w-[837px] shrink mx-auto">
             <div class="relative">
                 <div class="overflow-hidden 2col:rounded-lg">
@@ -56,8 +56,11 @@ use App\Models\Post;
                 <div class="prose max-w-none">{!! $post->published_content !!}</div>
             </article>
         </div>
+        <?php
+            $posts = Post::related($post->tags, $post->id );
+        ?>
         <div class="hidden 3col:flex w-[400px] shrink-0 flex-col gap-2">
-            @foreach(Post::related($post->tags, $post->id ) as $post)
+            @foreach($posts as $post)
                 <a href="{{R::read($post)}}" class="flex flex-row gap-2">
                     <div class="relative shrink-0">
                         <div class="overflow-hidden 2col:rounded-lg ">
@@ -85,6 +88,6 @@ use App\Models\Post;
                 </a>
             @endforeach
         </div>
+        <x-post-responsive class="block 3col:hidden" :posts="$posts"/>
     </div>
-
 </x-main>

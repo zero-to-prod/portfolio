@@ -95,7 +95,7 @@ class Post extends Model implements HasRules
 
     public static function related(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = [], int|null $limit = 20): Collection
     {
-        $posts = self::withAnyTags($tags)
+        $posts = self::withAnyTags($tags, Tags::post->value)
             ->with(self::authors)
             ->whereNotIn(self::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
             ->orderByDesc(self::views)

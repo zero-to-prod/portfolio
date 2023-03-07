@@ -42,7 +42,7 @@ $logo = TagFormRedirect::logo;
                                 @endif
                             </x-form-control-dark>
                             <div class="flex space-x-6 sm:col-span-2">
-                                @if($tag?->isMissingLogo())
+                                @if($tag?->hasLogo())
                                     <x-img class="object-cover h-[100px] rounded-lg"
                                            :file="$tag->logo()"
                                            :height="100"

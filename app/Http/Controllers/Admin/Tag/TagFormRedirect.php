@@ -41,7 +41,7 @@ class TagFormRedirect extends Controller
             $tag->files()->sync([$logo?->id]);
         }
 
-        if ($tag->hasLogo()) {
+        if ($tag->isMissingLogo()) {
             return redirect()->back()->withErrors([self::logo => 'Missing Image'])->withInput();
         }
 

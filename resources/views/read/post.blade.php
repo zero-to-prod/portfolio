@@ -45,7 +45,7 @@ use App\Models\Post;
                         </div>
                     </div>
                 </div>
-                <div class="prose max-w-[800px]" aria-label="Body" >
+                <div class="prose max-w-[837px]" aria-label="Body" >
                     {!! $post->published_content !!}
                 </div>
             </article>

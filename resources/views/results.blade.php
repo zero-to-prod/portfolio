@@ -106,7 +106,12 @@ use Illuminate\Database\Eloquent\Collection;
             @endforeach
     </div>
     @else
-        <div class="2col:absolute 2col:ml-12 flex mx-auto gap-4 flex-wrap justify-center">
+        @if($posts !== null && count($posts) === 0)
+            <div class="2col:ml-12 flex flex-col mx-auto gap-4 flex-wrap justify-center">
+                <h2 class="text-lg">Nothing Found</h2>
+            </div>
+        @endif
+        <div class="2col:ml-12 flex mx-auto gap-4 flex-wrap justify-center">
             @forEach(Tag::mostViewed() as $tag)
                 <a class="rounded-lg p-2 hover:bg-gray-100 flex" href="{{R::results($tag)}}">
                     @if($tag->hasLogo())

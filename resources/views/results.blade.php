@@ -58,7 +58,7 @@ use Illuminate\Database\Eloquent\Collection;
                         <x-new-chip :post="$post"/>
                     </a>
                     <div class="flex flex-1 flex-col px-2 3col:my-0">
-                        <a class="pb-4" href="{{R::read($post)}}">
+                        <a class="2col:pb-4" href="{{R::read($post)}}">
                             <h3 class="font-bold break-word"
                                 title="{{ $post->title }}">{{ $post->title }}</h3>
                             <p class="text-sm text-gray-600"
@@ -80,7 +80,7 @@ use Illuminate\Database\Eloquent\Collection;
                                 @endif
                             @endforeach
                         </div>
-                        <a class="pt-4 text-sm text-gray-600"
+                        <a class="2col:pt-4 text-sm text-gray-600"
                            href="{{R::read($post)}}"
                            title="{{$post->subtitle}}">
                             {{$post->subtitle}}

@@ -8,7 +8,7 @@ use App\Models\Post;
 ?>
 
 <x-main :title="$post->title">
-    <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 lg:px-0 lg:flex-row">
+    <div data-blog="blog" class="mx-auto flex max-w-7xl flex-col gap-6 lg:px-0 lg:flex-row mb-16">
         <div aria-label="Content" class="lg:basis-2/3">
             <div aria-label="image" class="relative">
                 <x-img :file="$post->featuredImage()" :width="837" :title="''"/>

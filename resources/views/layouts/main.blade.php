@@ -68,7 +68,7 @@ $search = SearchRedirect::search;
     </div>
     <nav class="fixed 2col:hidden w-full bg-white bottom-0 bottom-0 left-0" id="left-nav-narrow">
         <div class="grid grid-cols-3">
-            <a class="flex flex-col py-1 hover:bg-gray-300 {{ route_is(Routes::welcome) ? 'bg-gray-200' : '' }}"
+            <a class="flex flex-col py-2 hover:bg-gray-300 {{ route_is(Routes::welcome) ? 'bg-gray-200' : '' }}"
                href="{{R::welcome()}}">
                 <svg class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" aria-hidden="true">
@@ -78,7 +78,7 @@ $search = SearchRedirect::search;
                 </svg>
                 <span class="text-xs mx-auto">Home</span>
             </a>
-            <a class="flex flex-col py-1 hover:bg-gray-300 {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
+            <a class="flex flex-col py-2 hover:bg-gray-300 {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
                href="{{R::results_popular()}}">
                 <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <g>
@@ -88,7 +88,7 @@ $search = SearchRedirect::search;
                 </svg>
                 <span class="text-xs mx-auto">Popular</span>
             </a>
-            <a class="flex flex-col py-1 hover:bg-gray-300 {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
+            <a class="flex flex-col py-2 hover:bg-gray-300 {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
                href="{{R::results_topics()}}">
                 <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
                     <defs></defs>

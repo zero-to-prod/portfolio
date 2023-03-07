@@ -93,7 +93,7 @@ class Post extends Model implements HasRules
         return !PostIsPublished::evaluate($this);
     }
 
-    public static function related(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = [], int|null $limit = null): Collection
+    public static function related(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = [], int|null $limit = 20): Collection
     {
         $posts = self::withAnyTags($tags)
             ->with(self::authors)

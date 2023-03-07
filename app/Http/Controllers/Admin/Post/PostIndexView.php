@@ -16,12 +16,17 @@ class PostIndexView extends Controller
 
     public function __invoke(Request $request): View|Factory|Application
     {
-        $all_posts = Post::withoutGlobalScopes([Post::published])
+        $published = Post::withoutGlobalScopes([Post::published])
             ->with([Post::views, Post::authors, Post::tags])
+            ->whereNotNull(Post::published_at)
             ->orderByDesc(Post::published_at)
+            ->limit(20)
             ->get();
-        $published = $all_posts->whereNotNull(Post::published_at);
-        $unpublished = $all_posts->whereNull(Post::published_at);
+        $unpublished = Post::withoutGlobalScopes([Post::published])
+            ->with([Post::views, Post::authors, Post::tags])
+            ->whereNull(Post::published_at)
+            ->limit(20)
+            ->get();
 
         return view_as(Views::admin_post_index, [self::posts => $unpublished->merge($published)]);
     }

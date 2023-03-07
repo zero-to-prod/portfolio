@@ -31,14 +31,15 @@ class ResultsView extends Controller
 
         if ($search !== null) {
             $posts = Post::where(static function (Builder $query) use ($search) {
-                $query->where(Post::title, 'LIKE', "%{$search}%")
-                    ->orWhere(Post::body, 'LIKE', "%{$search}%");
+                $query->whereFullText(Post::title, $search)
+                ->orWhereFullText(Post::body, $search);
             })
                 ->with([Post::tags, Post::authors])
                 ->orderByDesc(Post::views)
+                ->limit(self::limit)
                 ->get();
 
-            $related = Post::related($posts->pluck(Post::tags)->flatten(), $posts->pluck(Post::id)->toArray());
+            $related = Post::related($posts->pluck(Post::tags)->flatten(), $posts->pluck(Post::id)->toArray(), limit: self::limit);
             $posts = $posts->merge($related);
         }
 
@@ -57,7 +58,6 @@ class ResultsView extends Controller
         return view_as(Views::results, [
             self::posts => $posts,
             self::tag => $tag,
-            self::tags => Tag::mostViewed(),
         ]);
     }
 }

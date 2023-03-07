@@ -12,8 +12,8 @@ return new class extends Migration {
             $table->id();
             $table->slug();
             $table->char(Post::title);
-            $table->text(Post::subtitle)->nullable();
-            $table->longText(Post::body);
+            $table->char(Post::subtitle)->nullable();
+            $table->text(Post::body);
             $table->unsignedBigInteger(Post::views)->default(0);
             $table->longText(Post::published_content)->nullable();
             $table->unsignedInteger(Post::published_word_count)->nullable();
@@ -24,7 +24,13 @@ return new class extends Migration {
                 ->comment("The estimated reading time in minutes. The constant 183 is the average words per minute.");
             $table->timestamps();
             $table->softDeletes();
+
+            $table->fullText(Post::title)->language('english');
+            $table->fullText(Post::body)->language('english');
+            $table->index(Post::views);
+            $table->index(Post::published_at);
         });
+
     }
 
     public function down(): void

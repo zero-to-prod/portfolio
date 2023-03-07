@@ -85,7 +85,7 @@ MARKDOWN;
         $post = Post::create([
             Post::title => 'First',
             Post::body => $markdown,
-            Post::subtitle => $faker->paragraph,
+            Post::subtitle => $faker->sentence,
         ]);
 
         $post->authors()->attach(Author::first());
@@ -95,11 +95,11 @@ MARKDOWN;
 
         $post->publish();
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 4; $i++) {
             $post = Post::create([
                 Post::title => Str::title($faker->bs),
+                Post::subtitle => $faker->sentence,
                 Post::body => $faker->paragraph,
-                Post::subtitle => $faker->paragraph,
             ]);
 
             $post->authors()->attach(Author::first());
@@ -113,7 +113,7 @@ MARKDOWN;
         $post = Post::create([
             Post::title => Str::title($faker->bs),
             Post::body => $faker->paragraph,
-            Post::subtitle => $faker->paragraph,
+            Post::subtitle => $faker->sentence,
         ]);
 
         $post->authors()->attach(Author::first());
@@ -125,7 +125,7 @@ MARKDOWN;
         $post = Post::create([
             Post::title => Str::title($faker->bs),
             Post::body => $faker->paragraph,
-            Post::subtitle => $faker->paragraph,
+            Post::subtitle => $faker->sentence,
         ]);
 
         $post->authors()->attach(Author::first());
@@ -136,7 +136,7 @@ MARKDOWN;
         $post = Post::create([
             Post::title => Str::title($faker->bs),
             Post::body => $faker->paragraph,
-            Post::subtitle => $faker->paragraph,
+            Post::subtitle => $faker->sentence,
         ]);
 
         $post->authors()->attach(Author::first());

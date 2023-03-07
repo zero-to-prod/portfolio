@@ -91,7 +91,7 @@ use Illuminate\Database\Eloquent\Collection;
     </div>
     @else
         <div class="2col:absolute 2col:ml-12 flex mx-auto gap-4 flex-wrap justify-center">
-            @forEach($tags as $tag)
+            @forEach(Tag::mostViewed() as $tag)
                 <a class="rounded-lg p-2 hover:bg-gray-100 flex" href="{{R::results($tag)}}">
                     @if($tag->hasLogo())
                         <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>

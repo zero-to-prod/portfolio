@@ -46,7 +46,7 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
         });
     }
 
-    public static function mostViewed(int|null $limit = null): Collection
+    public static function mostViewed(int|null $limit = 20): Collection
     {
         return self::with('files')->join('taggables', 'tags.id', '=', 'taggables.tag_id')
             ->join('posts', 'taggables.taggable_id', '=', 'posts.id')

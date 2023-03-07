@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\Tags;
 use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
@@ -56,29 +57,29 @@ console.log(foo(5));
 MARKDOWN;
 
         $image = $this->uploadFile('php.png');
-        $tag = Tag::create([Tag::name => 'PHP']);
+        $php = Tag::create([Tag::name => 'PHP', Tag::type => Tags::post->value]);
         $image->tagLogo();
-        $tag->files()->attach($image);
+        $php->files()->attach($image);
 
         $image = $this->uploadFile('laravel.png');
-        $tag = Tag::create([Tag::name => 'Laravel']);
+        $laravel = Tag::create([Tag::name => 'Laravel', Tag::type => Tags::post->value]);
         $image->tagLogo();
-        $tag->files()->attach($image);
+        $laravel->files()->attach($image);
 
         $image = $this->uploadFile('docker.png');
-        $tag = Tag::create([Tag::name => 'Docker']);
+        $docker = Tag::create([Tag::name => 'Docker', Tag::type => Tags::post->value]);
         $image->tagLogo();
-        $tag->files()->attach($image);
+        $docker->files()->attach($image);
 
         $image = $this->uploadFile('react.png');
-        $tag = Tag::create([Tag::name => 'React']);
+        $react = Tag::create([Tag::name => 'React', Tag::type => Tags::post->value]);
         $image->tagLogo();
-        $tag->files()->attach($image);
+        $react->files()->attach($image);
 
         $image = $this->uploadFile('ts.png');
-        $tag = Tag::create([Tag::name => 'TypeScript']);
+        $ts = Tag::create([Tag::name => 'TypeScript', Tag::type => Tags::post->value]);
         $image->tagLogo();
-        $tag->files()->attach($image);
+        $ts->files()->attach($image);
 
         $featured_image = $this->uploadFile('generic.png');
         $faker = Factory::create();
@@ -89,7 +90,7 @@ MARKDOWN;
         ]);
 
         $post->authors()->attach(Author::first());
-        $post->attachTags(['Laravel', 'Docker', 'PHP']);
+        $post->attachTags([$laravel, $docker, $php]);
         $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
@@ -103,7 +104,7 @@ MARKDOWN;
             ]);
 
             $post->authors()->attach(Author::first());
-            $post->attachTags(['Laravel', 'Docker', 'PHP', 'TypeScript', 'React',]);
+            $post->attachTags([$laravel, $docker, $php, $react, $ts]);
             $featured_image->tagFeaturedImage();
             $post->files()->attach($featured_image);
             $post->publish();
@@ -117,7 +118,7 @@ MARKDOWN;
         ]);
 
         $post->authors()->attach(Author::first());
-        $post->attachTags(['Docker', 'React']);
+        $post->attachTags([$php, $react]);
         $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
         $post->publish();
@@ -129,7 +130,7 @@ MARKDOWN;
         ]);
 
         $post->authors()->attach(Author::first());
-        $post->attachTags(['Laravel', 'React']);
+        $post->attachTags([$laravel, $react]);
         $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
@@ -140,7 +141,7 @@ MARKDOWN;
         ]);
 
         $post->authors()->attach(Author::first());
-        $post->attachTags(['TypeScript', 'React', 'PHP']);
+        $post->attachTags([$php, $react, $ts]);
         $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 

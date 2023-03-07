@@ -5,6 +5,7 @@
 
     [aria-label="Body"] pre {
         background-color: #f6f6f6 !important;
+        white-space: pre-wrap;
     }
 }
 

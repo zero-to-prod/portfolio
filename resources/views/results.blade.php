@@ -23,9 +23,7 @@ use Illuminate\Database\Eloquent\Collection;
                         {{$tag->name}}
                     </h2>
                 </a>
-                <div class="hidden 2col:block">
-                    <x-divider/>
-                </div>
+                <x-divider/>
             @endif
             @if(request()->query(ResultsView::query) !== null)
                 <div class="flex gap-x-2 my-2 ml-2 2col:ml-0">
@@ -39,9 +37,7 @@ use Illuminate\Database\Eloquent\Collection;
                         Search Results
                     </h2>
                 </div>
-                <div class="hidden 2col:block">
-                    <x-divider/>
-                </div>
+                <x-divider/>
             @endif
             @if(request()->query(ResultsView::popular) !== null)
                 <div class="mb-2 flex gap-x-2 pt-2 ml-2 2col:ml-0" title="Popular">
@@ -55,9 +51,7 @@ use Illuminate\Database\Eloquent\Collection;
                         Popular
                     </h2>
                 </div>
-                <div class="hidden 2col:block">
-                    <x-divider/>
-                </div>
+                <x-divider/>
             @endif
         </div>
         @if($posts !== null && count($posts))

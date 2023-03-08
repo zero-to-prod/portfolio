@@ -86,9 +86,7 @@ use App\Models\Post;
             <h3 class="my-auto text-lg font-semibold text-gray-900">
                 Related
             </h3>
-            <div class="pb-4 pt-2 hidden 2col:block">
-                <x-divider/>
-            </div>
+            <x-divider class="pb-4 pt-2"/>
             <x-post-responsive :posts="$posts"/>
         </div>
     </div>

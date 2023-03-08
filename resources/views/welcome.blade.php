@@ -12,19 +12,15 @@ use App\Models\Tag;
     <div class="flex w-full flex-col 4col:mx-auto 4col:max-w-7xl">
         @foreach($tags as $tag)
             <section>
-                <a class="p-2 2col:mb-0 block ml-2 2col:ml-0 hover:bg-gray-200" href="{{R::results($tag)}}">
-                    <div class="flex gap-x-2">
-                        @if($tag->hasLogo())
-                            <x-img class="h-[40px] w-[40px] rounded" :file="$tag->logo()" :width="60"/>
-                        @endif
-                        <h2 class="my-auto text-lg font-semibold text-gray-900">
-                            {{$tag->name}}
-                        </h2>
-                    </div>
+                <a class="p-2 2col:mb-0 flex gap-x-2 ml-2 2col:ml-0 hover:bg-gray-200" href="{{R::results($tag)}}">
+                    @if($tag->hasLogo())
+                        <x-img class="h-10 w-10 my-auto rounded" :file="$tag->logo()" :width="60"/>
+                    @endif
+                    <h2 class="my-auto text-lg font-semibold text-gray-900">
+                        {{$tag->name}}
+                    </h2>
                 </a>
-                <div class="pb-2 mt-2 hidden 2col:block">
-                    <x-divider/>
-                </div>
+                <x-divider class="mb-4 mt-2"/>
                 <div class="grid mb-4 grid-flow-row gap-4 2col:grid-cols-2 4col:grid-cols-4 2col:gap-2">
                     @foreach($tag->relatedPosts(limit: 4) as $post)
                         <a href="{{R::read($post)}}">

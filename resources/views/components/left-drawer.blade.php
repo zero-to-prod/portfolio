@@ -99,11 +99,9 @@ use Illuminate\Support\Collection;
             <a class="w-[64px] flex flex-col py-4 hover:bg-gray-300 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-gray-200' : '' }}"
                href="{{R::results_tag($tag)}}"
             >
-
                 @if($tag->hasLogo())
                     <x-img class="h-6 w-6 mx-auto" :file="$tag->logo()" :width="60"/>
                 @endif
-
             </a>
         @endforeach
     </div>

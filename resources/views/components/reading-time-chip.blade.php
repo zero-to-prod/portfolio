@@ -14,7 +14,6 @@ use App\Models\Post;
     @if($text === null)
         {{$post->reading_time . ' min'}}
     @else
-        {{$text}}
+        {{$post->reading_time . ' ' .$text}}
     @endif
-
 </div>

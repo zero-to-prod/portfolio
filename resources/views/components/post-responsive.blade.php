@@ -28,17 +28,7 @@
                        title="{{$post->authorList()}}">{{$post->authorList()}}</p>
                     <x-views-date-line :post="$post"/>
                 </a>
-                <div class="flex">
-                    @foreach($post->tags()->get() as $tag)
-                        @if($tag->hasLogo())
-                            <a class="p-2 ring-inset ring-gray-100 hover:shadow hover:ring-1"
-                               href="{{R::results($tag)}}">
-                                <x-img class="w-6" :file="$tag->logo()" :width="80"
-                                       :title="$tag->name"/>
-                            </a>
-                        @endif
-                    @endforeach
-                </div>
+                <x-logos :post="$post"/>
                 <a class="2col:pt-4 text-sm text-gray-600"
                    href="{{R::read($post)}}"
                    title="{{$post->subtitle}}">

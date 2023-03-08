@@ -20,7 +20,8 @@ class FileServeResponse extends Controller
 
     public function __construct()
     {
-        $this->middleware('cache.headers:public;max_age=3600;etag');
+        /* 2592000 = 30 days */
+        $this->middleware('cache.headers:public;max_age=2592000;etag');
     }
 
     /**

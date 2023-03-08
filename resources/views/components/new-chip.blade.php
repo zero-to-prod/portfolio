@@ -8,7 +8,7 @@ use App\Models\Post;
 /* @var string $text */
 ?>
 
-@if($post->original_publish_date->startOfDay()->between(now(), now()->subDay()))
+@if($post->original_publish_date->isToday())
     <div class="absolute bottom-0 m-2 rounded bg-sky-600 px-1 text-xs text-white shadow"
     title="{{$post->published_at->diffForHumans()}}"
     >

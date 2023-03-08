@@ -5,7 +5,23 @@
 
     [aria-label="Body"] pre {
         background-color: #f6f6f6 !important;
-        white-space: pre-wrap;
+        overflow-wrap: normal;
+        overflow: auto;
+    }
+
+    .prose :where(code):not(:where([class~="not-prose"] *))::before {
+        content: "";
+    }
+
+    .prose :where(code):not(:where([class~="not-prose"] *))::after {
+        content: "";
+    }
+
+    .prose p :where(code):not(:where([class~="not-prose"] *)) {
+        background-color: #e3e6e8 !important;
+        padding: 2px 4px;
+        border-radius: 3px;
+        color: #232629;
     }
 }
 

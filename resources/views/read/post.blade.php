@@ -8,7 +8,7 @@ use App\Models\Post;
 ?>
 
 <x-main :title="$post->title">
-    <div class="block 3col:flex 3col:flex-row gap-2 max-w-7xl mx-auto mb-24">
+    <div class="block 3col:flex 3col:flex-row gap-2 max-w-7xl mx-auto">
         <div class="max-w-[837px] shrink mx-auto">
             <div class="relative">
                 <div class="overflow-hidden 2col:rounded-lg">

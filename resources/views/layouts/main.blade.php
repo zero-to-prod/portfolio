@@ -50,7 +50,7 @@ $search = SearchRedirect::search;
                                    placeholder="Search">
                         </div>
                         <div class="absolute hidden 2col:flex inset-y-0 right-14 flex py-1.5 pr-1.5">
-                            <kbd class="inline-flex items-center rounded border border-gray-200 px-1 font-sans text-xs text-gray-400">Press ( / )</kbd>
+                            <kbd class="inline-flex items-center rounded border border-gray-200 px-1 font-sans text-xs text-gray-500">Press ( / )</kbd>
                         </div>
                         <button class="relative 2col:px-4 -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-200"
                                 aria-label="Search">

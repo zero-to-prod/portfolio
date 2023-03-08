@@ -15,7 +15,7 @@ use App\Models\Tag;
                 <a class="p-2 2col:mb-0 block ml-2 2col:ml-0 hover:bg-gray-200" href="{{R::results($tag)}}">
                     <div class="flex gap-x-2">
                         @if($tag->hasLogo())
-                            <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
+                            <x-img class="h-[40px] w-[40px] rounded" :file="$tag->logo()" :width="60"/>
                         @endif
                         <h2 class="my-auto text-lg font-semibold text-gray-900">
                             {{$tag->name}}

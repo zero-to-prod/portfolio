@@ -68,7 +68,7 @@ use App\Models\Tag;
                                                     <p>{{$post->authors->first()->name}}</p>
                                                     <p title="{{$post->subtitle}}">{{$post->subtitle}}</p>
                                                     @if($post->isPublished())
-                                                        <p>{{$post->published_at?->format('d/m/Y')}}</p>
+                                                        <p>{{$post->original_publish_date?->format('m/d/Y')}}</p>
                                                         <p>Words: {{$post->published_word_count}}</p>
                                                     @endif
                                                 </div>

@@ -47,24 +47,24 @@ use App\Models\Post;
                                 <p class="text-sm font-semibold text-gray-600">{{$post->authors->first()->title}}</p>
                             </div>
                             <div class="flex flex-col justify-between text-sm text-gray-600 text-right">
-                                <p>{{$post->published_at?->format('F j, Y')}}</p>
-                                <p>{{$post->views}} {{$post->views === 1 ? 'View' : 'Views'}}</p>
+                                <x-published-date :post="$post"/>
+                                <x-views :post="$post"/>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="prose max-w-none">{!! $post->published_content !!}</div>
+                <div class="prose grid max-w-none">{!! $post->published_content !!}</div>
             </article>
         </div>
         <?php
-            $posts = Post::related($post->tags, $post->id );
+        $posts = Post::related($post->tags, $post->id);
         ?>
         <div class="hidden 3col:flex w-[400px] shrink-0 flex-col gap-2">
             @foreach($posts as $post)
                 <a href="{{R::read($post)}}" class="flex flex-row gap-2">
                     <div class="relative shrink-0">
                         <div class="overflow-hidden 2col:rounded-lg ">
-                            <x-img class="h-[94px] w-[168px] object-cover object-center"
+                            <x-img class="h-[112px] w-[168px] object-cover object-center"
                                    :file="$post->featuredImage()"
                                    :width="250"
                                    :title="''"
@@ -78,16 +78,20 @@ use App\Models\Post;
                         <div>
                             <p class="text-sm text-gray-600 text-xs tracking-tight"
                                title="{{$post->authorList()}}">{{$post->authorList()}}</p>
-
-                            <p class="text-sm text-gray-600 text-xs tracking-tight">{{$post->views}} {{$post->views === 1 ? 'View' : 'Views'}}
-                                <span before=" • "
-                                      class="before:content-[attr(before)]">{{$post->published_at->diffForHumans()}}</span>
-                            </p>
+                            <x-views-date-line :post="$post"/>
                         </div>
                     </div>
                 </a>
             @endforeach
         </div>
-        <x-post-responsive class="block 3col:hidden" :posts="$posts"/>
+        <div class="flex flex-col gap-2 3col:hidden mt-6">
+            <h3 class="my-auto text-lg font-semibold text-gray-900">
+                Related
+            </h3>
+            <div class="pb-4 pt-2 hidden 2col:block">
+                <x-divider/>
+            </div>
+            <x-post-responsive :posts="$posts"/>
+        </div>
     </div>
 </x-main>

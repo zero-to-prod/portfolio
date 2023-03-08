@@ -44,11 +44,10 @@ use App\Models\Tag;
                                     title="{{ $post->title }}">{{ $post->title }}</h3>
                                 <div>
                                     <p class="text-sm text-gray-600"
-                                       title="{{$post->authorList()}}">{{$post->authorList()}}</p>
-                                    <p class="text-sm text-gray-600">{{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
-                                        <span before="•"
-                                              class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
+                                       title="{{$post->authorList()}}">
+                                        {{$post->authorList()}}
                                     </p>
+                                    <x-views-date-line :post="$post"/>
                                 </div>
                             </div>
                         </a>

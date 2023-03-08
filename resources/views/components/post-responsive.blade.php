@@ -26,11 +26,7 @@
                         title="{{ $post->title }}">{{ $post->title }}</h3>
                     <p class="text-sm text-gray-600"
                        title="{{$post->authorList()}}">{{$post->authorList()}}</p>
-                    <p class="text-sm text-gray-600">
-                        {{$post->views}} {{$post->views === 1 ? 'view' : 'views'}}
-                        <span before="•"
-                              class="before:content-[attr(before)]"> {{$post->published_at->diffForHumans()}}</span>
-                    </p>
+                    <x-views-date-line :post="$post"/>
                 </a>
                 <div class="flex">
                     @foreach($post->tags()->get() as $tag)

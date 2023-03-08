@@ -11,8 +11,8 @@ use App\Models\Tag;
 <x-main>
     <div class="flex w-full flex-col 4col:mx-auto 4col:max-w-7xl">
         @foreach($tags as $tag)
-            <section class="mt-2">
-                <a class="mb-4 2col:mb-0 block ml-2 2col:ml-0" href="{{R::results($tag)}}">
+            <section>
+                <a class="p-2 2col:mb-0 block ml-2 2col:ml-0 hover:bg-gray-200" href="{{R::results($tag)}}">
                     <div class="flex gap-x-2">
                         @if($tag->hasLogo())
                             <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
@@ -22,7 +22,7 @@ use App\Models\Tag;
                         </h2>
                     </div>
                 </a>
-                <div class="pb-4 pt-2 hidden 2col:block">
+                <div class="pb-2 mt-2 hidden 2col:block">
                     <x-divider/>
                 </div>
                 <div class="grid mb-4 grid-flow-row gap-4 2col:grid-cols-2 4col:grid-cols-4 2col:gap-2">

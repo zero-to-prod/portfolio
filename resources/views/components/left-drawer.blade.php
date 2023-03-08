@@ -52,12 +52,10 @@ use Illuminate\Support\Collection;
                     <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-300 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-gray-200' : '' }}"
                        href="{{R::results_tag($tag)}}"
                     >
-                        <div class="flex gap-6">
-                            @if($tag->hasLogo())
-                                <x-img class="h-6 w-6 rounded" :file="$tag->logo()" :width="60"/>
-                            @endif
-                            <span>{{$tag->name}}</span>
-                        </div>
+                        @if($tag->hasLogo())
+                            <x-img class="h-6 w-6 rounded" :file="$tag->logo()" :width="60"/>
+                        @endif
+                        <span>{{$tag->name}}</span>
                     </a>
                 @endforeach
             </div>
@@ -66,7 +64,7 @@ use Illuminate\Support\Collection;
 </nav>
 <nav class="fixed top-0 bottom-0 left-0 hidden mt-[60px] min-[780px]:block min-[1312px]:hidden" id="left-nav-narrow">
     <div class="flex flex-col">
-        <a class="w-[64px] flex flex-col py-4 hover:bg-gray-300 {{ route_is(Routes::welcome) ? 'bg-gray-200' : '' }}"
+        <a class="w-[64px] flex flex-col py-2 hover:bg-gray-300 {{ route_is(Routes::welcome) ? 'bg-gray-200' : '' }}"
            href="{{R::welcome()}}">
             <svg class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" aria-hidden="true">
@@ -76,7 +74,7 @@ use Illuminate\Support\Collection;
             </svg>
             <span class="text-xs mx-auto">Home</span>
         </a>
-        <a class="w-[64px] flex flex-col py-4 hover:bg-gray-300 {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
+        <a class="w-[64px] flex flex-col py-2 hover:bg-gray-300 {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
            href="{{R::results_popular()}}">
             <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <g>
@@ -86,7 +84,7 @@ use Illuminate\Support\Collection;
             </svg>
             <span class="text-xs mx-auto">Popular</span>
         </a>
-        <a class="w-[64px] flex flex-col py-4 hover:bg-gray-300 {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
+        <a class="w-[64px] flex flex-col py-2 hover:bg-gray-300 {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
            href="{{R::results_topics()}}">
             <svg class="h-6 w-6 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
                 <defs></defs>

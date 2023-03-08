@@ -11,13 +11,11 @@ use App\Models\Post;
     <div class="block 3col:flex 3col:flex-row gap-2 max-w-7xl mx-auto">
         <div class="max-w-[837px] shrink mx-auto">
             <div class="relative">
-                <div class="overflow-hidden 2col:rounded-lg">
-                    <x-img class="h-full w-full object-cover object-center"
-                           :file="$post->featuredImage()"
-                           :width="837"
-                           :title="''"
-                    />
-                </div>
+                <x-img class="h-full w-full object-cover object-center"
+                       :file="$post->featuredImage()"
+                       :width="837"
+                       :title="''"
+                />
                 <x-reading-time-chip :post="$post"/>
             </div>
             <article class="flex flex-col gap-6 px-2 2col:px-0" aria-label="Body">

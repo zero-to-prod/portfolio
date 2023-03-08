@@ -23,14 +23,17 @@ $search = SearchRedirect::search;
     <header class="fixed top-0 z-50 mx-auto w-full bg-white">
         <div class="flex justify-between">
             <div class="flex">
-                <button class="hidden hover:bg-gray-200 min-[1312px]:block" id="toggle-navbar-btn" type="button">
+                <button aria-label="Menu"
+                        class="hidden hover:bg-gray-200 min-[1312px]:block"
+                        id="toggle-navbar-btn"
+                        type="button">
                     <svg class="m-auto block h-6 w-[64px]" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round"
                               d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                     </svg>
                 </button>
-                <a class="flex p-4 px-2 2col:pl-4 text-lg" href="{{route_as(Routes::welcome)}}">
+                <a class="flex p-4 px-2 2col:pl-4 text-lg hover:bg-gray-200" href="{{route_as(Routes::welcome)}}">
                     <span class="font-semibold text-sky-700">dev</span>READ
                 </a>
             </div>
@@ -38,17 +41,18 @@ $search = SearchRedirect::search;
                 <form action="{{route_as(Routes::search)}}" method="post">
                     @csrf
                     <label for="{{$search}}"></label>
-                    <div class="flex rounded-md">
+                    <div class="flex rounded-md relative">
                         <div class="relative flex flex-grow focus-within:z-10">
                             <input class="block w-full appearance-none rounded-none rounded-l-md border-0 pl-4 placeholder:text-gray-400 text-gray-900 ring-1 ring-inset ring-gray-300 h-[40px] py-1.5 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                                    name="{{$search}}"
                                    id="{{$search}}"
-                                   tabindex="1"
                                    value="{{request()->query(ResultsView::query)}}"
                                    placeholder="Search">
                         </div>
+                        <div class="absolute hidden 2col:flex inset-y-0 right-14 flex py-1.5 pr-1.5">
+                            <kbd class="inline-flex items-center rounded border border-gray-200 px-1 font-sans text-xs text-gray-400">Press ( / )</kbd>
+                        </div>
                         <button class="relative 2col:px-4 -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-200"
-                                tabindex="2"
                                 aria-label="Search">
                             <svg class="h-5 w-5 text-gray-600" viewBox="0 0 20 20" fill="currentColor"
                                  aria-hidden="true">
@@ -60,12 +64,12 @@ $search = SearchRedirect::search;
                     </div>
                 </form>
             </div>
-            <a href="{{route_as(Routes::connect)}}" class="2col:block hidden p-4 pr-8 text-gray-700">Contact</a>
+            <a href="{{route_as(Routes::connect)}}" class="2col:block hidden p-4 hover:bg-gray-200 text-gray-700 text-lg">Contact</a>
         </div>
     </header>
     <div class="mt-[60px]">
         <x-left-drawer :tags="Tag::mostViewed()"/>
-        <div id="content" class="mb-16 ml-0 2col:px-4 min-[780px]:ml-[64px] min-[1312px]:ml-[238px]">
+        <div id="content" class="mb-16 ml-0 2col:px-2 min-[780px]:ml-[64px] min-[1312px]:ml-[238px]">
             {{$slot}}
         </div>
     </div>
@@ -107,11 +111,14 @@ $search = SearchRedirect::search;
 </main>
 <script>
     const handleKeyDown = (event) => {
-        const isSlashKey = event.key === "/";
-        const isNotInput = !event.target.matches("input");
+        const { key, target } = event;
+        const searchInput = document.getElementById("search");
 
-        if (isSlashKey && isNotInput) {
-            document.getElementById("search").focus();
+        if (key === "/" && target.tagName !== "INPUT") {
+            searchInput.focus();
+            event.preventDefault();
+        } else if (key === "Escape" && target === searchInput) {
+            searchInput.blur();
             event.preventDefault();
         }
     };

@@ -28,9 +28,9 @@ use App\Models\Post;
                         <div class="flex mb-2">
                             @foreach($post->tags()->get() as $tag)
                                 @if($tag->hasLogo())
-                                    <a class="h-10 w-10 ring-inset ring-gray-100 hover:shadow hover:ring-1"
+                                    <a class="ring-inset ring-gray-100 hover:shadow hover:ring-1"
                                        href="{{R::results($tag)}}">
-                                        <x-img class="p-2" :file="$tag->logo()" :width="60"
+                                        <x-img class="p-2 w-10" :file="$tag->logo()" :width="80"
                                                :title="$tag->name"/>
                                     </a>
                                 @endif

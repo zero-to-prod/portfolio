@@ -53,7 +53,7 @@ use Illuminate\Support\Collection;
                        href="{{R::results_tag($tag)}}"
                     >
                         @if($tag->hasLogo())
-                            <x-img class="h-6 w-6 rounded" :file="$tag->logo()" :width="60"/>
+                            <x-img class="w-6 rounded" :file="$tag->logo()" :width="80"/>
                         @endif
                         <span>{{$tag->name}}</span>
                     </a>
@@ -100,9 +100,9 @@ use Illuminate\Support\Collection;
                href="{{R::results_tag($tag)}}"
             >
                 @if($tag->hasLogo())
-                    <x-img class="h-6 w-6 mx-auto" :file="$tag->logo()" :width="60"/>
+                    <x-img class="w-6 mx-auto" :file="$tag->logo()" :width="80"/>
                 @endif
-            </a>
-        @endforeach
+                </a>
+            @endforeach
     </div>
 </nav>

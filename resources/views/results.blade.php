@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Collection;
             @if($tag !== null)
                 <a class="flex gap-x-2 my-2 ml-2 2col:ml-0" title="{{$tag->name}}" href="{{R::results_tag($tag)}}">
                     @if($tag->hasLogo())
-                        <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
+                        <x-img class="w-10 rounded" :file="$tag->logo()" :width="80"/>
                     @endif
                     <h2 class="my-auto text-lg font-semibold text-gray-900">
                         {{$tag->name}}
@@ -67,7 +67,7 @@ use Illuminate\Database\Eloquent\Collection;
             @forEach(Tag::mostViewed() as $tag)
                 <a class="rounded-lg p-2 hover:bg-gray-100 flex" href="{{R::results($tag)}}">
                     @if($tag->hasLogo())
-                        <x-img class="h-10 w-10 rounded" :file="$tag->logo()" :width="80"/>
+                        <x-img class="w-10 rounded" :file="$tag->logo()" :width="80"/>
                     @endif
                     <span class="ml-2 my-auto">{{$tag->name}}</span>
                 </a>

@@ -33,7 +33,7 @@
                         @if($tag->hasLogo())
                             <a class="p-2 ring-inset ring-gray-100 hover:shadow hover:ring-1"
                                href="{{R::results($tag)}}">
-                                <x-img class="h-6 w-6" :file="$tag->logo()" :width="60"
+                                <x-img class="w-6" :file="$tag->logo()" :width="80"
                                        :title="$tag->name"/>
                             </a>
                         @endif

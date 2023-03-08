@@ -10,7 +10,7 @@
             <a class="relative" href="{{R::read($post)}}">
                 <div class="relative shrink-0">
                     <div class="overflow-hidden 2col:rounded-lg ">
-                        <x-img class="h-full w-full 3col:h-[200px] 3col:w-[360px] object-cover object-center"
+                        <x-img class="h-full w-full 3col:h-[200px] 3col:w-[300px] object-cover object-center"
                                :file="$post->featuredImage()"
                                :width="300"
                                :title="''"

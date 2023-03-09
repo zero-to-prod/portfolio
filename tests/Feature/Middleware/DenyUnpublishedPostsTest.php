@@ -4,6 +4,7 @@ namespace Middleware;
 
 use App\Helpers\Routes;
 use App\Http\Middleware\DenyUnpublishedPosts;
+use App\Models\User;
 use R;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
@@ -36,6 +37,7 @@ class DenyUnpublishedPostsTest extends TestCase
      */
     public function allows_published_posts(): void
     {
+        User::factory()->create();
         $post = post_f()->published()->create();
 
         $this->get(R::read($post))->assertOk();

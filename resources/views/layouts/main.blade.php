@@ -27,11 +27,7 @@ $search = SearchRedirect::search;
                         class="hidden hover:bg-gray-200 min-[1312px]:block"
                         id="toggle-navbar-btn"
                         type="button">
-                    <svg class="m-auto block h-6 w-[64px]" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-                    </svg>
+                    <x-svg :name="'hamburger'" class="m-auto block h-6 w-[64px]"/>
                 </button>
                 <a class="flex p-4 px-2 2col:pl-4 text-lg hover:bg-gray-200" href="{{route_as(Routes::welcome)}}">
                     <span class="font-semibold text-sky-700">dev</span>READ
@@ -54,12 +50,7 @@ $search = SearchRedirect::search;
                         </div>
                         <button class="relative 2col:px-4 -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-200"
                                 aria-label="Search">
-                            <svg class="h-5 w-5 text-gray-600" viewBox="0 0 20 20" fill="currentColor"
-                                 aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                      d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                                      clip-rule="evenodd"/>
-                            </svg>
+                            <x-svg :name="'search'" class="!h-5 !w-5"/>
                         </button>
                     </div>
                 </form>
@@ -77,33 +68,17 @@ $search = SearchRedirect::search;
         <div class="grid grid-cols-3">
             <a class="flex flex-col py-2 hover:bg-gray-300 {{ route_is(Routes::welcome) ? 'bg-gray-200' : '' }}"
                href="{{R::welcome()}}">
-                <svg class="mx-auto h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" aria-hidden="true">
-                    <g>
-                        <path d="M4,10V21h6V15h4v6h6V10L12,3Z"></path>
-                    </g>
-                </svg>
+                <x-svg :name="'home'" class="mx-auto"/>
                 <span class="mx-auto text-xs">Home</span>
             </a>
             <a class="flex flex-col py-2 hover:bg-gray-300 {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
                href="{{R::results_popular()}}">
-                <svg class="mx-auto h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <g>
-                        <path fill="none" d="M0 0H24V24H0z"></path>
-                        <path d="M5 3v16h16v2H3V3h2zm14.94 2.94l2.12 2.12L16 14.122l-3-3-3.94 3.94-2.12-2.122L13 6.88l3 3 3.94-3.94z"></path>
-                    </g>
-                </svg>
+                <x-svg :name="'popular'" class="mx-auto"/>
                 <span class="mx-auto text-xs">Popular</span>
             </a>
             <a class="flex flex-col py-2 hover:bg-gray-300 {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
                href="{{R::results_topics()}}">
-                <svg class="mx-auto h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-                    <defs></defs>
-                    <path d="M22.707,9.2931a.9992.9992,0,0,0-1.0234-.2417l-9,3a1.001,1.001,0,0,0-.6323.6323l-3,9a1,1,0,0,0,1.2651,1.2651l9-3a1.0013,1.0013,0,0,0,.6323-.6324l3-9A1,1,0,0,0,22.707,9.2931ZM11.5811,20.419l2.2094-6.6284L18.21,18.21Z"></path>
-                    <path d="M16,30A14,14,0,1,1,30,16,14.0158,14.0158,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12.0137,12.0137,0,0,0,16,4Z"></path>
-                    <rect id="_Transparent_Rectangle_" data-name="<Transparent Rectangle>" class="cls-1" width="32"
-                          height="32" style="fill: none"></rect>
-                </svg>
+                <x-svg :name="'topics'" class="mx-auto"/>
                 <span class="mx-auto text-xs">Topics</span>
             </a>
         </div>

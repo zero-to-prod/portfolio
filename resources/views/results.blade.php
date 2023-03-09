@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Collection;
     <div class="flex flex-col gap-4 max-w-4xl mx-auto">
         <div>
             @if($tag !== null)
-                <a class="flex gap-x-2 my-2 ml-2 2col:ml-0" title="{{$tag->name}}" href="{{R::results_tag($tag)}}">
+                <a class="flex gap-x-2 my-2 ml-2 2col:ml-0" title="{{$tag->name}}" href="{{R::results($tag)}}">
                     @if($tag->hasLogo())
                         <x-img class="w-10 rounded" :file="$tag->logo()" :width="80"/>
                     @endif
@@ -27,12 +27,7 @@ use Illuminate\Database\Eloquent\Collection;
             @endif
             @if(request()->query(ResultsView::query) !== null)
                 <div class="flex gap-x-2 my-2 ml-2 2col:ml-0">
-                    <svg class="h-10 w-10 text-gray-600" viewBox="0 0 20 20" fill="currentColor"
-                         aria-hidden="true">
-                        <path fill-rule="evenodd"
-                              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                              clip-rule="evenodd"/>
-                    </svg>
+                    <x-svg :name="'search'" class="!h-10 !w-10"/>
                     <h2 class="my-auto text-lg font-semibold text-gray-900">
                         Search Results
                     </h2>
@@ -41,12 +36,7 @@ use Illuminate\Database\Eloquent\Collection;
             @endif
             @if(request()->query(ResultsView::popular) !== null)
                 <div class="mb-2 flex gap-x-2 pt-2 ml-2 2col:ml-0" title="Popular">
-                    <svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <g>
-                            <path fill="none" d="M0 0H24V24H0z"></path>
-                            <path d="M5 3v16h16v2H3V3h2zm14.94 2.94l2.12 2.12L16 14.122l-3-3-3.94 3.94-2.12-2.122L13 6.88l3 3 3.94-3.94z"></path>
-                        </g>
-                    </svg>
+                    <x-svg :name="'popular'" class="!h-10 !w-10"/>
                     <h2 class="-mx-1 my-auto text-lg font-semibold text-gray-900">
                         Popular
                     </h2>

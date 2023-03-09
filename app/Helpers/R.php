@@ -85,11 +85,6 @@ class R
         return route_as(Routes::profile_update);
     }
 
-    public static function results_tag(Tag $tag): string
-    {
-        return route_as(Routes::results, [ResultsView::tag => $tag->slug]);
-    }
-
     public static function results_popular(): string
     {
         return route_as(Routes::results, [ResultsView::popular => true]);
@@ -110,8 +105,12 @@ class R
         return route_as(Routes::read, $post);
     }
 
-    public static function results(Tag $tag): string
+    public static function results(?Tag $tag = null): string
     {
+        if (is_null($tag)){
+            return route_as(Routes::results);
+        }
+
         return route_as(Routes::results, [ResultsView::tag => $tag->slug]);
     }
 

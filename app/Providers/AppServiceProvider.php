@@ -1,7 +1,12 @@
 <?php
+/**
+ * @noinspection PhpUndefinedClassInspection
+ * @noinspection StaticClosureCanBeUsedInspection
+ */
 
 namespace App\Providers;
 
+use App;
 use App\Helpers\Relations;
 use App\Models\Author;
 use App\Models\File;
@@ -11,6 +16,8 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
+use Tests\Feature\Macros\App\EnvironmentAsTest;
+use UnitEnum;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +33,22 @@ class AppServiceProvider extends ServiceProvider
             Relations::author->value => Author::class,
             Relations::tag->value => Tag::class,
         ]);
+
+        $this->registerEnvironmentAs();
+    }
+
+    /**
+     * @see EnvironmentAsTest
+     */
+    protected function registerEnvironmentAs(): void
+    {
+        App::macro('environmentAs', function (...$environments) {
+            $firstArg = reset($environments);
+            if ($firstArg instanceof UnitEnum && count($environments) > 0) {
+                return App::environment($firstArg->value);
+            }
+
+            return App::environment(...$environments);
+        });
     }
 }

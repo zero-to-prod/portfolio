@@ -19,20 +19,20 @@ use App\Models\User;
                 />
                 <x-reading-time-chip :post="$post" :text="' min read'"/>
             </div>
-            <article class="flex flex-col gap-6 2col:px-0 px-2" aria-label="Body">
+            <article class="space-y-6 2col:px-0 px-2" aria-label="Body">
                 <div class="2col:block hidden">
                     <div class="flex justify-between pt-2">
                         <div>
                             <h1 class="text-2xl font-bold">{{$post->title}}</h1>
-                            <p class="text-sm text-gray-500">{{$post->subtitle}}</p>
+                            <p class="text-sm text-gray-600">{{$post->subtitle}}</p>
                         </div>
-                        <div class="flex flex-col text-right text-sm text-gray-600">
+                        <div class="text-right text-sm text-gray-600">
                             <x-published-date :post="$post"/>
                             <x-views :post="$post"/>
                         </div>
                     </div>
                     <div class="flex w-full mt-2 flex-wrap justify-between">
-                        <a class="flex gap-2 text-base font-semibold mr-4" href="#">
+                        <a class="flex gap-2 font-semibold mr-4" href="#">
                             <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
                             <div class="flex flex-col">
                                 <p class="underline">{{$post->authorList()}}</p>
@@ -47,22 +47,22 @@ use App\Models\User;
                         </div>
                     </div>
                 </div>
-                <div class="flex 2col:hidden flex-col gap-4">
+                <div class="2col:hidden space-y-4">
                     <div class="flex flex-col">
                         <h1 class="text-2xl font-bold">{{$post->title}}</h1>
-                        <p class="text-sm text-gray-500">{{$post->subtitle}}</p>
+                        <p class="text-sm text-gray-600">{{$post->subtitle}}</p>
                     </div>
                     <div class="flex justify-between">
                         <a class="flex gap-2 text-base font-semibold mr-4" href="#">
                             <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
-                            <div class="flex flex-col">
+                            <div>
                                 <p class="underline">{{$post->authorList()}}</p>
                                 <p class="text-sm text-gray-600">{{$post->authors->first()->posts()->count()}}
                                     Posts
                                 </p>
                             </div>
                         </a>
-                        <div class="flex flex-col text-right text-sm text-gray-600">
+                        <div class="text-right text-sm text-gray-600">
                             <x-published-date :post="$post"/>
                             <x-views :post="$post"/>
                         </div>
@@ -98,7 +98,7 @@ use App\Models\User;
                                 <button id="submit" class="btn btn-xs text-lg">Subscribe</button>
                             </div>
                         </form>
-                        <div class="mx-1 text-xs flex flex-col gap-2 font-bold mt-2">
+                        <div class="mx-1 text-xs space-y-2 font-bold">
                             <p id="success" class="hidden">Success! You will be notified when new
                                 content becomes
                                 available.</p>
@@ -191,10 +191,10 @@ use App\Models\User;
                             submit.disabled = false;
                         }
                     });
-
                 </script>
-
-                <div class="grid max-w-none prose">{!! $post->published_content !!}</div>
+                <div class="grid max-w-none prose">
+                    {!! $post->published_content !!}
+                </div>
             </article>
         </div>
         <?php
@@ -213,19 +213,17 @@ use App\Models\User;
                         </div>
                         <x-reading-time-chip :post="$post"/>
                     </div>
-                    <div>
-                        <h3 class="mb-1 font-bold leading-5 tracking-tight break-word font-xs"
+                    <div class="text-sm">
+                        <h3 class="mb-1 font-bold leading-5 tracking-tight break-word"
                             title="{{ $post->title }}">{{ $post->title }}</h3>
-                        <div>
-                            <p class="text-xs text-sm tracking-tight text-gray-600"
-                               title="{{$post->authorList()}}">{{$post->authorList()}}</p>
-                            <x-views-date-line :post="$post"/>
-                        </div>
+                        <p class="tracking-tight text-gray-600"
+                           title="{{$post->authorList()}}">{{$post->authorList()}}</p>
+                        <x-views-date-line :post="$post"/>
                     </div>
                 </a>
             @endforeach
         </div>
-        <div class="mt-6 flex 3col:hidden flex-col gap-2">
+        <div class="mt-6 space-y-2 3col:hidden">
             <h3 class="my-auto text-lg font-semibold">
                 Related
             </h3>

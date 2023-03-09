@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
@@ -23,27 +24,29 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->post('/subscribe', function (Request $request) {
 
     try {
-        $request->validate([
-            'email' => 'required|email'
+        $validated = $request->validate([
+            'email' => 'required|email:dns'
         ]);
+
         $mailchimp = new ApiClient();
 
         $mailchimp->setConfig([
-            'apiKey' => '1e98d1729fcd993bc8e1f9f8e7c96f37-us1',
-            'server' => 'us1'
+            'apiKey' => config('mail.mailchimp.api_key'),
+            'server' => config('mail.mailchimp.server')
         ]);
 
         $subscriber = [
-            'email_address' => $request->email,
+            'email_address' => $validated['email'],
             'status' => 'subscribed',
         ];
 
-        $mailchimp->lists->addListMember('55c42ca7e7', $subscriber);
+        $mailchimp->lists->addListMember(config('mail.mailchimp.list_id'), $subscriber);
+        Contact::firstOrCreate([Contact::email => $validated['email']]);
 
         return response(['message' => 'success']);
-    } catch (ValidationException) {
+    } catch (ValidationException $e) {
         return response(['message' => 'invalid email'], 422);
-    } catch (GuzzleHttp\Exception\ClientException) {
+    } catch (GuzzleHttp\Exception\ClientException $e) {
         return response(['message' => 'subscription failed'], 422);
     }
 

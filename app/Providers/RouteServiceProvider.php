@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 use UnitEnum;
+use URL;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -26,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (App::environment('production')) {
-            URL::forceSchema('https');
+            URL::forceScheme('https');
         }
 
         $this->configureRateLimiting();

@@ -50,7 +50,7 @@ use Illuminate\Support\Collection;
             <div class="flex flex-col">
                 @forEach($tags as $tag)
                     <a class="flex gap-6 p-4 pl-[20px] hover:bg-gray-300 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-gray-200' : '' }}"
-                       href="{{R::results_tag($tag)}}"
+                       href="{{R::results($tag)}}"
                     >
                         @if($tag->hasLogo())
                             <x-img class="w-6 rounded" :file="$tag->logo()" :width="80"/>
@@ -97,7 +97,7 @@ use Illuminate\Support\Collection;
         </a>
         @forEach($tags as $tag)
             <a class="w-[64px] flex flex-col py-4 hover:bg-gray-300 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-gray-200' : '' }}"
-               href="{{R::results_tag($tag)}}"
+               href="{{R::results($tag)}}"
             >
                 @if($tag->hasLogo())
                     <x-img class="w-6 mx-auto" :file="$tag->logo()" :width="80"/>

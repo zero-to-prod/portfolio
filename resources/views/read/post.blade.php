@@ -2,6 +2,7 @@
 
 use App\Helpers\R;
 use App\Models\Post;
+use App\Models\User;
 
 /* @var Post $post */
 /* @var File $feature */
@@ -30,29 +31,18 @@ use App\Models\Post;
                             <x-views :post="$post"/>
                         </div>
                     </div>
-                    <div class="mt-2 flex items-center gap-x-2">
-                        <x-img class="h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80"/>
-                        <div class="flex w-full flex-wrap justify-between">
-                            <div class="flex flex-col justify-between">
-                                <div class="flex gap-4">
-                                    <div>
-                                        <a class="text-base font-semibold text-gray-900"
-                                           href="#">{{$post->authorList()}}</a>
-                                        <p class="text-sm text-gray-600">{{$post->authors->first()->posts()->count()}}
-                                            Posts</p>
-                                    </div>
-                                    <button type="button"
-                                            class="my-auto flex gap-2 rounded-full bg-gray-600 py-2 text-sm font-semibold text-white shadow-sm px-3.5 hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
-                                            title="Be notified as new content becomes available">
-                                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                             fill="currentColor">
-                                            <path fill="currentColor" fill-rule="evenodd"
-                                                  d="M7.172,11.334 L10.0016129,13.2687863 L12.73,11.387 L18.844647,17.4201015 C18.6835279,17.47198 18.5117028,17.5 18.3333333,17.5 L1.66666667,17.5 C1.44656147,17.5 1.23642159,17.4573334 1.04406658,17.3798199 L7.172,11.334 Z M20,6.376 L20,15.8333333 C20,16.0799316 19.9464441,16.3140212 19.8503291,16.5246054 L13.856,10.611 L20,6.376 Z M0,6.429 L6.042,10.561 L0.105700422,16.4187119 C0.0373700357,16.2365871 1.90096522e-15,16.0393243 1.77635684e-15,15.8333333 L0,6.429 Z M18.3333333,2.5 C19.2538079,2.5 20,3.24619208 20,4.16666667 L20,4.753 L9.99838709,11.6476481 L0,4.81 L1.77635684e-15,4.16666667 C1.66363121e-15,3.24619208 0.746192084,2.5 1.66666667,2.5 L18.3333333,2.5 Z"></path>
-                                        </svg>
-                                        <span class="my-auto">Join Mailing List</span>
-                                    </button>
-                                </div>
+                    <div class="flex w-full mt-2 flex-wrap justify-between">
+                        <a class="flex gap-2 text-base font-semibold text-gray-900 mr-4" href="#">
+                            <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
+                            <div class="flex flex-col">
+                                <p class="underline">{{$post->authorList()}}</p>
+                                <p class="text-sm text-gray-600">{{$post->authors->first()->posts()->count()}}
+                                    Posts
+                                </p>
                             </div>
+                        </a>
+                        <div class="flex gap-2">
+                            <a class="my-auto text-sm font-bold underline" href="{{R::results()}}">Topics</a>
                             <x-logos :post="$post"/>
                         </div>
                     </div>
@@ -63,41 +53,156 @@ use App\Models\Post;
                         <p class="text-sm text-gray-500">{{$post->subtitle}}</p>
                     </div>
                     <div class="flex justify-between">
-                        <div class="flex items-center gap-x-2">
-                            <x-img class="h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80"/>
-                            <div class="flex w-full flex-wrap justify-between">
-                                <div class="flex flex-col justify-between">
-                                    <a class="text-base font-semibold text-gray-900"
-                                       href="#">{{$post->authorList()}}</a>
-                                    <p class="text-sm text-gray-600">{{$post->authors->first()->posts()->count()}}
-                                        Posts</p>
-                                </div>
+                        <a class="flex gap-2 text-base font-semibold text-gray-900 mr-4" href="#">
+                            <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
+                            <div class="flex flex-col">
+                                <p class="underline">{{$post->authorList()}}</p>
+                                <p class="text-sm text-gray-600">{{$post->authors->first()->posts()->count()}}
+                                    Posts
+                                </p>
                             </div>
-                        </div>
+                        </a>
                         <div class="flex flex-col text-right text-sm text-gray-600">
                             <x-published-date :post="$post"/>
                             <x-views :post="$post"/>
                         </div>
                     </div>
-                    <div class="flex justify-between">
-                        <div>
-                            <button type="button"
-                                    class="my-auto flex gap-2 rounded-full bg-gray-600 py-2 text-sm font-semibold text-white shadow-sm px-3.5 hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
-                                        title="Keep up with new content">
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                     fill="currentColor">
-                                    <path fill="currentColor" fill-rule="evenodd"
-                                          d="M7.172,11.334 L10.0016129,13.2687863 L12.73,11.387 L18.844647,17.4201015 C18.6835279,17.47198 18.5117028,17.5 18.3333333,17.5 L1.66666667,17.5 C1.44656147,17.5 1.23642159,17.4573334 1.04406658,17.3798199 L7.172,11.334 Z M20,6.376 L20,15.8333333 C20,16.0799316 19.9464441,16.3140212 19.8503291,16.5246054 L13.856,10.611 L20,6.376 Z M0,6.429 L6.042,10.561 L0.105700422,16.4187119 C0.0373700357,16.2365871 1.90096522e-15,16.0393243 1.77635684e-15,15.8333333 L0,6.429 Z M18.3333333,2.5 C19.2538079,2.5 20,3.24619208 20,4.16666667 L20,4.753 L9.99838709,11.6476481 L0,4.81 L1.77635684e-15,4.16666667 C1.66363121e-15,3.24619208 0.746192084,2.5 1.66666667,2.5 L18.3333333,2.5 Z"></path>
-                                </svg>
-                                <span class="my-auto">
-                                    Mailing List
-                                        </span>
-                            </button>
-                        </div>
-                        <x-logos :post="$post"/>
+                </div>
+                <div id="cta" class="p-4 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer flex justify-between">
+
+                    <div class="flex gap-2">
+                        <svg class="h-6 w-6 text-sky-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path fill="currentColor" fill-rule="evenodd"
+                                  d="M7.172,11.334 L10.0016129,13.2687863 L12.73,11.387 L18.844647,17.4201015 C18.6835279,17.47198 18.5117028,17.5 18.3333333,17.5 L1.66666667,17.5 C1.44656147,17.5 1.23642159,17.4573334 1.04406658,17.3798199 L7.172,11.334 Z M20,6.376 L20,15.8333333 C20,16.0799316 19.9464441,16.3140212 19.8503291,16.5246054 L13.856,10.611 L20,6.376 Z M0,6.429 L6.042,10.561 L0.105700422,16.4187119 C0.0373700357,16.2365871 1.90096522e-15,16.0393243 1.77635684e-15,15.8333333 L0,6.429 Z M18.3333333,2.5 C19.2538079,2.5 20,3.24619208 20,4.16666667 L20,4.753 L9.99838709,11.6476481 L0,4.81 L1.77635684e-15,4.16666667 C1.66363121e-15,3.24619208 0.746192084,2.5 1.66666667,2.5 L18.3333333,2.5 Z"></path>
+                        </svg>
+                        <span class="text-gray-800 my-auto font-bold">Stay up to date</span>
                     </div>
+                    <p class="text-gray-800 my-auto text-sm">Show more...</p>
 
                 </div>
+                <div id="cta-expanded" class="hidden p-4 rounded-lg bg-gray-200">
+                    <div class="flex justify-between">
+                        <div class="flex gap-2">
+                            <svg class="h-6 w-6 text-sky-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                 fill="currentColor">
+                                <path fill="currentColor" fill-rule="evenodd"
+                                      d="M7.172,11.334 L10.0016129,13.2687863 L12.73,11.387 L18.844647,17.4201015 C18.6835279,17.47198 18.5117028,17.5 18.3333333,17.5 L1.66666667,17.5 C1.44656147,17.5 1.23642159,17.4573334 1.04406658,17.3798199 L7.172,11.334 Z M20,6.376 L20,15.8333333 C20,16.0799316 19.9464441,16.3140212 19.8503291,16.5246054 L13.856,10.611 L20,6.376 Z M0,6.429 L6.042,10.561 L0.105700422,16.4187119 C0.0373700357,16.2365871 1.90096522e-15,16.0393243 1.77635684e-15,15.8333333 L0,6.429 Z M18.3333333,2.5 C19.2538079,2.5 20,3.24619208 20,4.16666667 L20,4.753 L9.99838709,11.6476481 L0,4.81 L1.77635684e-15,4.16666667 C1.66363121e-15,3.24619208 0.746192084,2.5 1.66666667,2.5 L18.3333333,2.5 Z"></path>
+                            </svg>
+                            <span class="text-gray-800 my-auto font-bold">Stay up to date</span>
+                        </div>
+                        <button type="button" id="close" class="px-2 rounded hover:bg-gray-300">&#10006</button>
+                    </div>
+                    <div class="max-w-md mx-auto">
+                        <div class="mx-1">
+                            <p class="font-bold text-lg pt-4">The perfect newsletter for Web professionals</p>
+                            <p class="pt-4">Never miss out on new tips, tutorials, and more.</p>
+                            <p class="pt-4">Each week we curate the best new information and deliver it to your
+                                inbox.</p>
+                        </div>
+                        <form class="mt-4 mx-auto" id="form">
+                            <label for="email" class="sr-only">Email</label>
+                            <div class="flex gap-2">
+                                <input class="input" id="email" type="email" name="email"
+                                       placeholder="Your email address"/>
+                                <button id="submit" class="btn btn-xs">Subscribe</button>
+                            </div>
+                        </form>
+                        <div class="mx-1">
+                            <p id="success" class="text-xs mt-2 hidden font-bold">Success! You will be notified when new
+                                content becomes
+                                available.</p>
+                            <p id="error" class="text-xs mt-2 hidden text-red-600 font-bold">Something went wrong! Try
+                                another email.</p>
+                            <p class="text-xs py-2">
+                                No Spam, ever. We'll never share your email address and you can opt out at any time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                $user = User::first();
+                $token = $user->createToken('token-name')->plainTextToken;
+                ?>
+                <script>
+                    const getElement = (id) => document.querySelector(`#${id}`);
+                    const endpoint = "{{ route('subscribe') }}";
+
+                    const cta = getElement('cta');
+                    const ctaExpanded = getElement('cta-expanded');
+                    const close = getElement('close');
+                    const success = getElement('success');
+                    const error = getElement('error');
+                    const email = getElement('email');
+                    const submit = getElement('submit');
+                    const form = getElement('form');
+                    let submitted = false;
+
+                    email.addEventListener('click', () => {
+                        email.classList.remove('border', 'border-red-500');
+                        email.classList.remove('bg-green-200');
+                        if (submitted) {
+                            email.value = '';
+                            submitted = false;
+                            success.classList.add('hidden');
+                            error.classList.add('hidden');
+                        }
+                    });
+
+                    cta.addEventListener('click', () => {
+                        cta.classList.toggle('hidden');
+                        ctaExpanded.classList.toggle('hidden');
+                    });
+
+                    close.addEventListener('click', () => {
+                        cta.classList.toggle('hidden');
+                        ctaExpanded.classList.toggle('hidden');
+                        success.classList.add('hidden');
+                        error.classList.add('hidden');
+                        email.classList.remove('border', 'border-red-500');
+                        email.classList.remove('bg-green-200');
+                        email.value = '';
+                        submitted = false;
+                    });
+
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        submitted = true;
+                        submit.innerText = 'Submitting...';
+                        submit.disabled = true;
+                        success.classList.add('hidden');
+                        error.classList.add('hidden');
+                        const formData = new FormData(form);
+
+                        try {
+                            const response = await fetch(endpoint, {
+                                method: 'POST',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Authorization': 'Bearer {{ $token }}',
+                                },
+                                body: formData,
+                            });
+
+                            if (response.ok) {
+                                email.classList.add('bg-green-200');
+                                success.classList.toggle('hidden');
+                            } else {
+                                document.querySelector('#subscribe').reset();
+                                email.classList.add('border', 'border-red-500');
+                                error.classList.toggle('hidden');
+                            }
+                        } catch (e) {
+                            email.classList.add('border', 'border-red-500');
+                            error.classList.toggle('hidden');
+                        } finally {
+                            submit.innerText = 'Submit';
+                            submit.disabled = false;
+                        }
+                    });
+
+                </script>
+
                 <div class="grid max-w-none prose">{!! $post->published_content !!}</div>
             </article>
         </div>

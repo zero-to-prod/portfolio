@@ -1,5 +1,5 @@
 @layer components {
-    div, nav, a, p, ul, li {
+    div, nav, a, ul, li, p {
         /*@apply border border-red-200;*/
     }
 

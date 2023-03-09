@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Collection;
     <div class="flex flex-col gap-4 max-w-4xl mx-auto">
         <div>
             @if($tag !== null)
-                <a class="flex gap-x-2 my-2 ml-2 2col:ml-0" title="{{$tag->name}}" href="{{R::results_tag($tag)}}">
+                <a class="flex gap-x-2 my-2 ml-2 2col:ml-0" title="{{$tag->name}}" href="{{R::results($tag)}}">
                     @if($tag->hasLogo())
                         <x-img class="w-10 rounded" :file="$tag->logo()" :width="80"/>
                     @endif

@@ -70,7 +70,7 @@ use App\Models\User;
                 </div>
                 <div id="cta" class="p-4 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer flex justify-between">
                     <div class="flex gap-2">
-                        <x-svg :name="'mail'" />
+                        <x-svg :name="'mail'"/>
                         <span class="text-gray-800 my-auto font-bold">Stay up to date</span>
                     </div>
                     <p class="text-gray-800 my-auto text-sm">Show more...</p>
@@ -78,7 +78,7 @@ use App\Models\User;
                 <div id="cta-expanded" class="hidden p-4 rounded-lg bg-gray-200">
                     <div class="flex justify-between">
                         <div class="flex gap-2">
-                            <x-svg :name="'mail'" />
+                            <x-svg :name="'mail'"/>
                             <span class="text-gray-800 my-auto font-bold">Stay up to date</span>
                         </div>
                         <button type="button" id="close" class="px-2 rounded hover:bg-gray-300">&#10006</button>
@@ -111,8 +111,9 @@ use App\Models\User;
                     </div>
                 </div>
                 <?php
-                $user = User::first();
-                $token = $user->createToken('token-name')->plainTextToken;
+                $token = Cache::remember('newsletter', 60 * 60 * 24, static function () {
+                    return User::first()?->createToken('newsletter')->plainTextToken;
+                });
                 ?>
                 <script>
                     const getElement = (id) => document.querySelector(`#${id}`);

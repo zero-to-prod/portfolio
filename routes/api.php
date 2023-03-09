@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\EmailSubscription;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,11 +43,12 @@ Route::middleware('auth:sanctum')->post('/subscribe', function (Request $request
 
         $mailchimp->lists->addListMember(config('mail.mailchimp.list_id'), $subscriber);
         Contact::firstOrCreate([Contact::email => $validated['email']]);
+        Mail::queue(new EmailSubscription($validated['email']));
 
         return response(['message' => 'success']);
-    } catch (ValidationException $e) {
+    } catch (ValidationException) {
         return response(['message' => 'invalid email'], 422);
-    } catch (GuzzleHttp\Exception\ClientException $e) {
+    } catch (GuzzleHttp\Exception\ClientException) {
         return response(['message' => 'subscription failed'], 422);
     }
 

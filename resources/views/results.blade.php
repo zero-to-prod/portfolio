@@ -36,7 +36,7 @@ use Illuminate\Database\Eloquent\Collection;
             @endif
             @if(request()->query(ResultsView::popular) !== null)
                 <div class="mb-2 flex gap-x-2 pt-2 ml-2 2col:ml-0" title="Popular">
-                    <x-svg :name="'popular<x-svg :name="'search'" class="!h-10 !w-10"/>'" class="!h-10 !w-10"/>
+                    <x-svg :name="'popular'" class="!h-10 !w-10"/>
                     <h2 class="-mx-1 my-auto text-lg font-semibold text-gray-900">
                         Popular
                     </h2>

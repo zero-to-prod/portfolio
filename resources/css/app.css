@@ -9,6 +9,8 @@
 @import "input.css";
 @import "label.css";
 @import "toast.css";
+@import "left-drawer.css";
+@import "svg.css";
 
 @tailwind base;
 @tailwind components;

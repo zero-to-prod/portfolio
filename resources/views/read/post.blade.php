@@ -9,7 +9,7 @@ use App\Models\User;
 ?>
 
 <x-main :title="$post->title">
-    <div class="mx-auto block 3col:flex max-w-7xl 3col:flex-row gap-2">
+    <div class="mx-auto block 3col:flex max-w-7xl 3col:flex-row gap-2 text-gray-800">
         <div class="mx-auto shrink max-w-[837px]">
             <div class="relative">
                 <x-img class="h-full w-full object-cover object-center"
@@ -32,7 +32,7 @@ use App\Models\User;
                         </div>
                     </div>
                     <div class="flex w-full mt-2 flex-wrap justify-between">
-                        <a class="flex gap-2 text-base font-semibold text-gray-900 mr-4" href="#">
+                        <a class="flex gap-2 text-base font-semibold mr-4" href="#">
                             <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
                             <div class="flex flex-col">
                                 <p class="underline">{{$post->authorList()}}</p>
@@ -53,7 +53,7 @@ use App\Models\User;
                         <p class="text-sm text-gray-500">{{$post->subtitle}}</p>
                     </div>
                     <div class="flex justify-between">
-                        <a class="flex gap-2 text-base font-semibold text-gray-900 mr-4" href="#">
+                        <a class="flex gap-2 text-base font-semibold mr-4" href="#">
                             <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
                             <div class="flex flex-col">
                                 <p class="underline">{{$post->authorList()}}</p>
@@ -71,15 +71,15 @@ use App\Models\User;
                 <div id="cta" class="p-4 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer flex justify-between">
                     <div class="flex gap-2">
                         <x-svg :name="'mail'"/>
-                        <span class="text-gray-800 my-auto font-bold">Stay up to date</span>
+                        <span class="my-auto font-bold">Stay up to date</span>
                     </div>
-                    <p class="text-gray-800 my-auto text-sm">Show more...</p>
+                    <p class="my-auto text-sm">Show more...</p>
                 </div>
                 <div id="cta-expanded" class="hidden p-4 rounded-lg bg-gray-200">
                     <div class="flex justify-between">
                         <div class="flex gap-2">
                             <x-svg :name="'mail'"/>
-                            <span class="text-gray-800 my-auto font-bold">Stay up to date</span>
+                            <span class="my-auto font-bold">Stay up to date</span>
                         </div>
                         <button type="button" id="close" class="px-2 rounded hover:bg-gray-300">&#10006</button>
                     </div>
@@ -92,20 +92,20 @@ use App\Models\User;
                         </div>
                         <form class="mt-4 mx-auto" id="form">
                             <label for="email" class="sr-only">Email</label>
-                            <div class="flex gap-2">
-                                <input class="input" id="email" type="email" name="email"
+                            <div class="flex flex-col 2col:flex-row gap-2">
+                                <input class="input text-lg" id="email" type="email" name="email"
                                        placeholder="Your email address"/>
-                                <button id="submit" class="btn btn-xs">Subscribe</button>
+                                <button id="submit" class="btn btn-xs text-lg">Subscribe</button>
                             </div>
                         </form>
-                        <div class="mx-1">
-                            <p id="success" class="text-xs mt-2 hidden font-bold">Success! You will be notified when new
+                        <div class="mx-1 text-xs flex flex-col gap-2 font-bold mt-2">
+                            <p id="success" class="hidden">Success! You will be notified when new
                                 content becomes
                                 available.</p>
-                            <p id="error" class="text-xs mt-2 hidden text-red-600 font-bold">Something went wrong! Try
+                            <p id="error" class="hidden text-red-600">Something went wrong! Try
                                 another email.</p>
-                            <p class="text-xs py-2">
-                                No Spam, ever. We'll never share your email address and you can opt out at any time.
+                            <p class="font-normal">
+                                No Spam, ever. We'll never share your email address, and you can opt out at any time.
                             </p>
                         </div>
                     </div>
@@ -226,7 +226,7 @@ use App\Models\User;
             @endforeach
         </div>
         <div class="mt-6 flex 3col:hidden flex-col gap-2">
-            <h3 class="my-auto text-lg font-semibold text-gray-900">
+            <h3 class="my-auto text-lg font-semibold">
                 Related
             </h3>
             <x-divider class="pt-2 pb-4"/>

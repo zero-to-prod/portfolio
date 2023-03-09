@@ -21,7 +21,6 @@ class EnvironmentAsTest extends TestCase
         self::assertTrue(App::environmentAs(Environments::testing));
         self::assertFalse(App::environmentAs(Environments::production));
         self::assertTrue(App::environmentAs(Environments::testing->value, 'bogus'));
-
     }
 
     /**

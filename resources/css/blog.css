@@ -21,6 +21,59 @@
         border-radius: 3px;
         color: #232629;
         font-weight: normal;
+
+    }
+
+    #content > div > div.shrink.max-w-\[837px\] > article > div.grid.max-w-none.prose > pre {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+
+    .prose :where(p):not(:where([class~="not-prose"] *)) {
+        margin-top: 1rem;
+        margin-bottom: 0;
+    }
+
+    #content > div > div.shrink.max-w-\[837px\] > article > div.grid.max-w-none.prose > blockquote {
+        margin-top: 1rem;
+        margin-bottom: 0;
+    }
+
+    #content > div > div.shrink.max-w-\[837px\] > article > div.grid.max-w-none.prose > blockquote p {
+        margin-bottom: 1rem;
+    }
+
+    .prose :where(.prose > :last-child):not(:where([class~="not-prose"] *)) {
+        margin-top: 0.5rem !important;
+    }
+
+    .prose :where(h3):not(:where([class~="not-prose"] *)){
+        margin-bottom: 0;
+    }
+
+    .prose :where(h2):not(:where([class~="not-prose"] *)){
+        margin-bottom: 0;
+        margin-top: 1rem;
+    }
+
+    .prose :where(.prose > :last-child):not(:where([class~="not-prose"] *)) {
+        margin-top: 0;
+    }
+
+    .prose :where(ul):not(:where([class~="not-prose"] *)) {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .prose :where(li):not(:where([class~="not-prose"] *)) {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .prose :where(ol):not(:where([class~="not-prose"] *)) {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }
 

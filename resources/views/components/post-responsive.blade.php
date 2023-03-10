@@ -1,6 +1,9 @@
-@php use App\Models\Post;use Illuminate\Support\Collection; @endphp
 @props(['posts'])
 <?php
+
+use App\Models\Post;
+use Illuminate\Support\Collection;
+
 /* @var Collection<Post> $posts */
 /* @var Post $post */
 ?>

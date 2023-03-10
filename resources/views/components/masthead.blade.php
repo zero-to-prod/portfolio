@@ -11,17 +11,15 @@ $search = SearchRedirect::search;
 ?>
 <header class="fixed top-0 z-50 mx-auto w-full bg-primary-content">
     <div class="flex justify-between">
-        <div class="flex">
-            <button id="toggle-navbar-btn"
-                    class="hidden btn-ghost min-[1312px]:block"
-                    aria-label="Menu"
-                    type="button">
-                <x-svg :name="'hamburger'" class="m-auto block h-6 w-[64px]"/>
-            </button>
-            <x-a class="flex py-4 px-2 mr-2 text-lg 2col:text-xl btn-ghost" :href="R::welcome()">
-                <span class="font-semibold text-primary">dev</span>READ
-            </x-a>
-        </div>
+        <button id="toggle-navbar-btn"
+                class="hidden btn-ghost min-[1312px]:block"
+                aria-label="Menu"
+                type="button">
+            <x-svg :name="'hamburger'" class="m-auto block h-6 w-[64px]"/>
+        </button>
+        <x-a class="flex py-4 px-2 mr-2 text-lg 2col:text-xl btn-ghost" :href="R::welcome()">
+            <span class="font-semibold text-primary">dev</span>READ
+        </x-a>
         <div class="mx-auto w-full max-w-2xl 2col:pr-0 pr-2 my-auto">
             <form action="{{R::search()}}" method="post">
                 @csrf

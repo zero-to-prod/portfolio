@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 ?>
 <x-main :title="request()->query(ResultsView::query)">
-    <div class="flex flex-col gap-4 max-w-4xl mx-auto">
+    <div class="flex flex-col gap-2 max-w-4xl mx-auto">
         <div>
             @if($tag !== null)
                 <div class="flex gap-x-2 my-2 ml-2 2col:ml-0">

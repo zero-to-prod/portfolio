@@ -4,13 +4,13 @@
 /* @var Collection<Post> $posts */
 /* @var Post $post */
 ?>
-<div {{$attributes->merge(['class' => 'flex flex-col gap-2'])}}>
+<div {{$attributes->merge(['class' => '2col:space-y-2'])}}>
     @foreach($posts as $post)
-        <div class="flex flex-col 3col:flex-row gap-2">
+        <div class="2col:flex 2col:flex-row">
             <x-a class="relative" :href="R::read($post)">
                 <div class="relative shrink-0">
                     <div class="overflow-hidden 2col:rounded-lg ">
-                        <x-img class="h-full w-full 3col:h-[200px] 3col:w-[300px] object-cover object-center"
+                        <x-img class="h-full w-full 2col:h-[200px] 2col:w-[300px] object-cover object-center"
                                :file="$post->featuredImage()"
                                :width="300"
                                :title="''"
@@ -20,18 +20,23 @@
                     <x-reading-time-chip :post="$post"/>
                 </div>
             </x-a>
-            <div class="flex flex-1 flex-col px-2 3col:my-0">
+            <div class="flex flex-1 flex-col 2col:my-0 p-2 2col:py-0">
                 <x-a class="2col:pb-4" :href="R::read($post)">
-                    <h3 class="font-bold break-word tracking-tight leading-5"
-                        title="{{ $post->title }}">{{ $post->title }}</h3>
-                    <p class="2col:pt-4 text-sm"title="{{$post->subtitle}}">
+                    <h3 class="font-bold break-word tracking-tight leading-5" title="{{ $post->title }}">
+                        {{ $post->title }}
+                    </h3>
+                    <p class="text-sm" title="{{$post->subtitle}}">
                         {{$post->subtitle}}
                     </p>
-                    <p class="text-sm pt-2"
-                       title="{{$post->authorList()}}">{{$post->authorList()}}</p>
+                    <p class="text-sm pt-2" title="{{$post->authorList()}}">
+                        {{$post->authorList()}}
+                    </p>
                     <x-views-date-line :post="$post"/>
                 </x-a>
-                <x-logos class="hidden 2col:flex" :post="$post"/>
+                <div class="hidden 2col:block">
+                    <p>Topics</p>
+                    <x-logos class="flex mt-2" :post="$post"/>
+                </div>
             </div>
         </div>
     @endforeach

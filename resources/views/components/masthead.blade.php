@@ -18,11 +18,11 @@ $search = SearchRedirect::search;
                     type="button">
                 <x-svg :name="'hamburger'" class="m-auto block h-6 w-[64px]"/>
             </button>
-            <a class="flex p-4 text-lg btn-ghost" href="{{route_as(Routes::welcome)}}">
+            <a class="flex py-4 px-2 mr-2 text-lg 2col:text-xl btn-ghost" href="{{route_as(Routes::welcome)}}">
                 <span class="font-semibold text-primary">dev</span>READ
             </a>
         </div>
-        <div class="mx-auto w-full max-w-2xl py-2 2col:pr-0 pr-2">
+        <div class="mx-auto w-full max-w-2xl 2col:pr-0 pr-2 my-auto">
             <form action="{{route_as(Routes::search)}}" method="post">
                 @csrf
                 <label for="{{$search}}"></label>
@@ -46,7 +46,7 @@ $search = SearchRedirect::search;
                 </div>
             </form>
         </div>
-        <a href="{{route_as(Routes::connect)}}" class="2col:block hidden p-4 btn-ghost text-lg">Contact</a>
+        <a href="{{route_as(Routes::connect)}}" class="2col:block hidden py-4 px-2 ml-2 btn-ghost text-lg">Contact</a>
     </div>
 </header>
 @vite('resources/js/masthead.js')

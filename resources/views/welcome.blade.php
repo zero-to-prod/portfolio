@@ -12,7 +12,7 @@ use App\Models\Tag;
     <div class="flex w-full flex-col 4col:mx-auto 4col:max-w-7xl">
         @foreach($tags as $tag)
             <section>
-                <x-a class="p-2 2col:mb-0 flex gap-x-2 ml-2 2col:ml-0 btn-ghost" :href="R::results($tag)">
+                <x-a class="p-2 2col:mb-0 flex gap-x-2 2col:ml-0 btn-ghost" :href="R::results($tag)">
                     @if($tag->hasLogo())
                         <x-img class="w-10 my-auto rounded" :file="$tag->logo()" :width="80"/>
                     @endif
@@ -21,7 +21,7 @@ use App\Models\Tag;
                     </h2>
                 </x-a>
                 <x-divider class="mb-4 mt-2"/>
-                <div class="grid mb-4 grid-flow-row gap-4 2col:grid-cols-2 4col:grid-cols-4 2col:gap-2">
+                <div class="grid mb-4 grid-flow-row 2col:grid-cols-2 4col:grid-cols-4 2col:gap-2">
                     @foreach($tag->relatedPosts(limit: 4) as $post)
                         <x-a :href="R::read($post)">
                             <div class="relative">
@@ -35,16 +35,17 @@ use App\Models\Tag;
                                 <x-reading-time-chip :post="$post"/>
                                 <x-new-chip :post="$post"/>
                             </div>
-                            <div class="p-1 2col:px-0">
+                            <div class="p-2 2col:px-0 2col:pt-1">
                                 <h3 class="font-bold font-sm break-word tracking-tight leading-5"
                                     title="{{ $post->title }}">{{ $post->title }}</h3>
-                                <div>
-                                    <p class="text-sm"
-                                       title="{{$post->authorList()}}">
-                                        {{$post->authorList()}}
-                                    </p>
-                                    <x-views-date-line :post="$post"/>
-                                </div>
+                                <p class="text-sm 2col:hidden" title="{{$post->subtitle}}">
+                                    {{$post->subtitle}}
+                                </p>
+                                <p class="text-sm mt-2 2col:mt-0"
+                                   title="{{$post->authorList()}}">
+                                    {{$post->authorList()}}
+                                </p>
+                                <x-views-date-line :post="$post"/>
                             </div>
                         </x-a>
                     @endforeach

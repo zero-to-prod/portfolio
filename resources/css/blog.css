@@ -1,6 +1,6 @@
 @layer components {
     div, nav, a, ul, li, p, h3 {
-        @apply border border-red-200;
+        /*@apply border border-red-200;*/
     }
 
     [aria-label="Body"] pre {

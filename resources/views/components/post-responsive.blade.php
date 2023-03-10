@@ -34,8 +34,8 @@
                     <x-views-date-line :post="$post"/>
                 </x-a>
                 <div class="hidden 2col:block">
-                    <p>Topics</p>
-                    <x-logos class="flex mt-2" :post="$post"/>
+                    <p class="text-sm font-bold">Topics</p>
+                    <x-logos class="flex" :post="$post"/>
                 </div>
             </div>
         </div>

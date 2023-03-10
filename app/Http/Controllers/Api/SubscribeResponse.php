@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Mail\EmailSubscription;
 use App\Models\Contact;
-use App\Services\Mailchimp\Mailchimp;
-use App\Services\Mailchimp\Support\MailchimpSubscriber;
+use App\Services\Newsletter\Newsletter;
+use App\Services\Newsletter\Support\MailchimpSubscriber;
 use DB;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Foundation\Application;
@@ -34,7 +34,7 @@ class SubscribeResponse extends Controller
 
         $email = $request->validate([self::email => Contact::rules(Contact::email)])[self::email];
 
-        Mailchimp::subscribe(new MailchimpSubscriber(email_address: $email));
+        Newsletter::subscribe(new MailchimpSubscriber(email_address: $email));
         Contact::firstOrCreate([Contact::email => $email]);
         Mail::queue(new EmailSubscription($email));
 

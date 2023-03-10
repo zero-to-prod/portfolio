@@ -7,7 +7,7 @@ use App\Helpers\Routes;
 use App\Http\Controllers\Api\SubscribeResponse;
 use App\Mail\EmailSubscription;
 use App\Models\Contact;
-use App\Services\Mailchimp\Support\MailchimpSubscriber;
+use App\Services\Newsletter\Support\MailchimpSubscriber;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Mailchimp\Support;
+namespace App\Services\Newsletter\Support;
 
 use App\Helpers\ToArray;
 

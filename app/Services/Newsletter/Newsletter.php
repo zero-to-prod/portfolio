@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\Mailchimp;
+namespace App\Services\Newsletter;
 
-use App\Services\Mailchimp\Support\MailchimpSubscriber;
+use App\Services\Newsletter\Support\MailchimpSubscriber;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use MailchimpMarketing\ApiClient;
 
-class Mailchimp
+class Newsletter
 {
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Auth;
 
 use App\Helpers\Routes;
 use App\Models\User;

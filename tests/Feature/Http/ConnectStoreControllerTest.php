@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Http;
 
 use App\Helpers\Routes;
 use App\Mail\ConnectRequest;
@@ -8,6 +8,7 @@ use App\Models\Contact;
 use App\Models\Message;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Mail;
+use Tests\Feature\Route;
 use Tests\TestCase;
 
 class ConnectStoreControllerTest extends TestCase

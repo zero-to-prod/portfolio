@@ -98,7 +98,7 @@ $featured_image = PostFormRedirect::featured_image;
                                 @endif
                             </x-form-control-dark>
                             <div class="sm:col-span-2">
-                                <p class="text-white mb-3">Tags</p>
+                                <p class="text-neutral-content mb-3">Tags</p>
                                 <div class="flex gap-4 flex-wrap">
                                     @foreach(Tag::withType(Tags::post->value)->get() as $author_model)
                                         <div class="flex items-center text-white space-x-2">

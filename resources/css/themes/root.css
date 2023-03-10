@@ -1,5 +1,5 @@
 :root {
-    --primary: #197cfc;
+    --primary: #0369a1;
     --primary-focus: #1063cd;
     --primary-content: #ffffff;
     --secondary: #f000b8;
@@ -14,4 +14,6 @@
     --base-content: #1f2937;
     --border-opacity: .2;
     --border-color: 214.29 30.061% 31.961%;
+    --error: #f87272;
+    --error-content: #470000;
 }

@@ -18,7 +18,7 @@ $body = ConnectStoreRedirect::body;
     <div class="sm:py-6 sm:py-12">
         <div class="px-6 lg:px-8 max-w-xl mx-auto py-8">
             <div class="mx-auto max-w-2xl text-center">
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Let's Connect</h1>
+                <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Let's Connect</h1>
             </div>
             <form class="mx-auto mt-8 space-y-8" action="{{R::connect_store()}}" method="post">
                 @csrf

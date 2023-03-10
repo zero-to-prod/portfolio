@@ -6,6 +6,6 @@
         @apply label;
     }
     [data-form-control="control"] p {
-        @apply error mt-2 text-sm text-red-600;
+        @apply error mt-2 text-sm text-error-content;
     }
 }

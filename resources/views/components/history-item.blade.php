@@ -16,8 +16,8 @@
         </div>
         <div class="mt-3 ml-4 flex min-w-0 flex-col">
             <span aria-label="Title" class="font-medium">{{ $title }}</span>
-            <span aria-label="Company" class="text-gray-800">{{ $company }}</span>
-            <span aria-label="Dates" class="text-gray-500">{{ $dates }}</span>
+            <span aria-label="Company">{{ $company }}</span>
+            <span aria-label="Dates">{{ $dates }}</span>
             {{ $slot }}
         </div>
     </div>

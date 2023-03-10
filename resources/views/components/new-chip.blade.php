@@ -9,9 +9,7 @@ use App\Models\Post;
 ?>
 
 @if($post->original_publish_date->isToday())
-    <div class="absolute bottom-0 m-2 rounded bg-sky-600 px-1 text-xs text-white shadow"
-    title="{{$post->original_publish_date->diffForHumans()}}"
-    >
+    <div data-new-chip title="{{$post->original_publish_date->diffForHumans()}}">
         new
     </div>
 @endif

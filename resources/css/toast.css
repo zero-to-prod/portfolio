@@ -1,9 +1,9 @@
 @layer components {
     [data-toast="toast"] p {
-        @apply text-sm font-medium text-gray-900;
+        @apply text-sm font-medium;
     }
     [data-toast="toast"] p:first-of-type + p {
-        @apply mt-1 text-sm text-gray-500;
+        @apply mt-1 text-sm;
     }
 }
 

@@ -12,11 +12,11 @@ use App\Models\Tag;
     <div class="flex w-full flex-col 4col:mx-auto 4col:max-w-7xl">
         @foreach($tags as $tag)
             <section>
-                <a class="p-2 2col:mb-0 flex gap-x-2 ml-2 2col:ml-0 hover:bg-gray-200" href="{{R::results($tag)}}">
+                <a class="p-2 2col:mb-0 flex gap-x-2 ml-2 2col:ml-0 btn-ghost" href="{{R::results($tag)}}">
                     @if($tag->hasLogo())
                         <x-img class="w-10 my-auto rounded" :file="$tag->logo()" :width="80"/>
                     @endif
-                    <h2 class="my-auto text-lg font-semibold text-gray-900">
+                    <h2 class="my-auto text-lg font-semibold">
                         {{$tag->name}}
                     </h2>
                 </a>
@@ -39,7 +39,7 @@ use App\Models\Tag;
                                 <h3 class="font-bold font-sm break-word tracking-tight leading-5"
                                     title="{{ $post->title }}">{{ $post->title }}</h3>
                                 <div>
-                                    <p class="text-sm text-gray-600"
+                                    <p class="text-sm"
                                        title="{{$post->authorList()}}">
                                         {{$post->authorList()}}
                                     </p>

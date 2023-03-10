@@ -6,14 +6,16 @@
 @import "button.css";
 @import "em.css";
 @import "error.css";
-@import "form-control.css";
 @import "form-control-dark.css";
+@import "form-control.css";
 @import "header-section.css";
 @import "history-details.css";
 @import "input.css";
 @import "label.css";
-@import "toast.css";
 @import "left-drawer.css";
+@import "new-chip.css";
+@import "reading-time-chip.css";
 @import "svg.css";
+@import "toast.css";
 
 @tailwind utilities;

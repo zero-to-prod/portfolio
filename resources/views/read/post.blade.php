@@ -13,7 +13,7 @@ $email = SubscribeResponse::email;
 ?>
 
 <x-main :title="$post->title">
-    <div class="mx-auto block 3col:flex max-w-7xl 3col:flex-row gap-2 text-gray-800">
+    <div class="mx-auto block 3col:flex max-w-7xl 3col:flex-row gap-2">
         <div class="mx-auto shrink max-w-[837px]">
             <div class="relative">
                 <x-img class="h-full w-full object-cover object-center"
@@ -28,9 +28,9 @@ $email = SubscribeResponse::email;
                     <div class="flex justify-between pt-2">
                         <div>
                             <h1 class="text-2xl font-bold">{{$post->title}}</h1>
-                            <p class="text-sm text-gray-600">{{$post->subtitle}}</p>
+                            <p class="text-sm">{{$post->subtitle}}</p>
                         </div>
-                        <div class="text-right text-sm text-gray-600">
+                        <div class="text-right text-sm">
                             <x-published-date :post="$post"/>
                             <x-views :post="$post"/>
                         </div>
@@ -40,7 +40,7 @@ $email = SubscribeResponse::email;
                             <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
                             <div class="flex flex-col">
                                 <p class="underline">{{$post->authorList()}}</p>
-                                <p class="text-sm text-gray-600">{{$post->authors->first()->posts()->count()}}
+                                <p class="text-sm">{{$post->authors->first()->posts()->count()}}
                                     Posts
                                 </p>
                             </div>
@@ -54,26 +54,26 @@ $email = SubscribeResponse::email;
                 <div class="2col:hidden space-y-4">
                     <div class="flex flex-col">
                         <h1 class="text-2xl font-bold">{{$post->title}}</h1>
-                        <p class="text-sm text-gray-600">{{$post->subtitle}}</p>
+                        <p class="text-sm">{{$post->subtitle}}</p>
                     </div>
                     <div class="flex justify-between">
                         <a class="flex gap-2 text-base font-semibold mr-4" href="#">
                             <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
                             <div>
                                 <p class="underline">{{$post->authorList()}}</p>
-                                <p class="text-sm text-gray-600">{{$post->authors->first()->posts()->count()}}
+                                <p class="text-sm">{{$post->authors->first()->posts()->count()}}
                                     Posts
                                 </p>
                             </div>
                         </a>
-                        <div class="text-right text-sm text-gray-600">
+                        <div class="text-right text-sm">
                             <x-published-date :post="$post"/>
                             <x-views :post="$post"/>
                         </div>
                     </div>
                 </div>
                 <div id="cta"
-                     class="p-4 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer flex justify-between shadow-lg">
+                     class="p-4 rounded-lg bg-gray-100 btn-ghost cursor-pointer flex justify-between shadow-lg">
                     <div class="flex gap-2">
                         <x-svg :name="'mail'"/>
                         <span class="my-auto font-bold">Stay up to date</span>
@@ -111,7 +111,7 @@ $email = SubscribeResponse::email;
                             <p id="success" class="hidden mt-2">
                                 Success! Welcome to the club. Check your inbox for new content.
                             </p>
-                            <p id="error" class="hidden text-red-600">
+                            <p id="error" class="hidden text-error">
                                 Something went wrong! Try another email.
                             </p>
                             <p class="font-normal">
@@ -135,7 +135,7 @@ $email = SubscribeResponse::email;
                     let submitted = false;
 
                     email.addEventListener('click', () => {
-                        email.classList.remove('border', 'border-red-500');
+                        email.classList.remove('border', 'border-error');
                         email.classList.remove('bg-green-200');
                         if (submitted) {
                             email.value = '';
@@ -155,7 +155,7 @@ $email = SubscribeResponse::email;
                         ctaExpanded.classList.toggle('hidden');
                         success.classList.add('hidden');
                         error.classList.add('hidden');
-                        email.classList.remove('border', 'border-red-500');
+                        email.classList.remove('border', 'border-error');
                         email.classList.remove('bg-green-200');
                         email.value = '';
                         submitted = false;
@@ -185,11 +185,11 @@ $email = SubscribeResponse::email;
                                 success.classList.toggle('hidden');
                             } else {
                                 document.querySelector('#subscribe').reset();
-                                email.classList.add('border', 'border-red-500');
+                                email.classList.add('border', 'border-error');
                                 error.classList.toggle('hidden');
                             }
                         } catch (e) {
-                            email.classList.add('border', 'border-red-500');
+                            email.classList.add('border', 'border-error');
                             error.classList.toggle('hidden');
                         } finally {
                             submit.innerText = 'Subscribe';
@@ -221,7 +221,7 @@ $email = SubscribeResponse::email;
                     <div class="text-sm">
                         <h3 class="mb-1 font-bold leading-5 tracking-tight break-word"
                             title="{{ $post->title }}">{{ $post->title }}</h3>
-                        <p class="tracking-tight text-gray-600"
+                        <p class="tracking-tight"
                            title="{{$post->authorList()}}">{{$post->authorList()}}</p>
                         <x-views-date-line :post="$post"/>
                     </div>

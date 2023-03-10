@@ -1,0 +1,5 @@
+@layer components {
+    [data-reading-time-chip] {
+        @apply absolute bottom-0 text-neutral-content shadow text-xs right-0 bg-neutral px-1 rounded m-2;
+    }
+}

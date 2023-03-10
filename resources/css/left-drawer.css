@@ -4,10 +4,10 @@
     }
 
     [id="left-nav-wide"] a {
-        @apply flex gap-6 p-4 pl-[20px] hover:bg-gray-300;
+        @apply flex gap-6 p-4 pl-[20px] hover:bg-base-300;
     }
     [id="left-nav-narrow"] a {
-        @apply text-center w-[64px] flex flex-col py-2 hover:bg-gray-300;
+        @apply text-center w-[64px] flex flex-col py-2 hover:bg-base-300;
     }
 }
 

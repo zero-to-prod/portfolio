@@ -1,5 +1,5 @@
 @layer utilities {
     .error {
-        @apply text-red-600;
+        @apply text-error-content;
     }
 }

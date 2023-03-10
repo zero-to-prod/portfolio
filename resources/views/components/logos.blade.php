@@ -11,7 +11,7 @@ use App\Models\Post;
 
 <div {{ $attributes->merge(['class' => 'flex']) }}>
     @foreach($post->tags()->limit(3)->get() as $tag)
-        <a class="hover:bg-gray-200 my-auto" href="{{R::results($tag)}}">
+        <a class="btn-ghost my-auto" href="{{R::results($tag)}}">
             <x-img class="w-10 p-2" :file="$tag->logo()" :width="80" :title="$tag->name"/>
         </a>
     @endforeach

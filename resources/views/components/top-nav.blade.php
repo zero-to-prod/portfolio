@@ -13,14 +13,14 @@ use App\Helpers\Routes;
                     <a aria-label="Home Page" href="{{route_as(Routes::welcome)}}"
                             @class([
                                 'inline-flex items-center border-b-2 sm:text-lg text-gray-600',
-                                'border-sky-500 text-gray-900' => route_name_is(Routes::welcome),
+                                'border-primary' => route_name_is(Routes::welcome),
                                 'border-transparent hover:border-gray-300 hover:text-gray-700' => route_name_isnt(Routes::welcome),
                                 ])
-                    >david<span class="text-sky-800 font-semibold ">DESIGN</span></a>
+                    >david<span class="text-primary font-semibold ">DESIGN</span></a>
                     <a aria-label="CV Page" href="{{route_as(Routes::cv)}}"
                             @class([
                                 'inline-flex items-center border-b-2 text-sm font-medium px-8 text-gray-600',
-                                'border-sky-500 text-gray-900' => route_name_is(Routes::cv),
+                                'border-primary' => route_name_is(Routes::cv),
                                 'border-transparent hover:border-gray-300 hover:text-gray-700' => route_name_isnt(Routes::cv),
                                 ])
                     >CV</a>

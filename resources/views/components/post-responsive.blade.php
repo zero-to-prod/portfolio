@@ -24,12 +24,12 @@
                 <a class="2col:pb-4" href="{{R::read($post)}}">
                     <h3 class="font-bold break-word tracking-tight leading-5"
                         title="{{ $post->title }}">{{ $post->title }}</h3>
-                    <p class="text-sm text-gray-600"
+                    <p class="text-sm"
                        title="{{$post->authorList()}}">{{$post->authorList()}}</p>
                     <x-views-date-line :post="$post"/>
                 </a>
                 <x-logos :post="$post"/>
-                <a class="2col:pt-4 text-sm text-gray-600"
+                <a class="2col:pt-4 text-sm"
                    href="{{R::read($post)}}"
                    title="{{$post->subtitle}}">
                     {{$post->subtitle}}

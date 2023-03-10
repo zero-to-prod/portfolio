@@ -1,0 +1,5 @@
+@layer components {
+    [data-new-chip] {
+        @apply absolute bottom-0 m-2 rounded bg-primary px-1 text-xs text-neutral-content shadow;
+    }
+}

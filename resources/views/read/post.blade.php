@@ -13,8 +13,8 @@ $email = SubscribeResponse::email;
 ?>
 
 <x-main :title="$post->title">
-    <div class="mx-auto block 3col:flex max-w-7xl 3col:flex-row gap-2">
-        <div class="mx-auto shrink max-w-[837px]">
+    <div class="mx-auto justify-center block 3col:flex max-w-7xl 3col:flex-row gap-2">
+        <div class="shrink max-w-[837px]">
             <div class="relative">
                 <x-img class="h-full w-full object-cover object-center"
                        :file="$post->featuredImage()"

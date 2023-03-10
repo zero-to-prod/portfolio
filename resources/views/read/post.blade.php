@@ -3,10 +3,13 @@
 use App\Helpers\R;
 use App\Helpers\Routes;
 use App\Models\Post;
+use App\Http\Controllers\Api\SubscribeResponse;
 
 /* @var Post $post */
 /* @var string $token */
 /* @var File $feature */
+
+$email = SubscribeResponse::email;
 ?>
 
 <x-main :title="$post->title">
@@ -93,12 +96,12 @@ use App\Models\Post;
                                 inbox.</p>
                         </div>
                         <form class="mt-4 mx-auto" id="form">
-                            <label for="email" class="sr-only">Email</label>
+                            <label for="{{$email}}" class="sr-only">Email</label>
                             <div class="flex flex-col 2col:flex-row gap-2">
                                 <input class="input text-lg text-center 2col:text-left"
-                                       id="email"
-                                       type="email"
-                                       name="email"
+                                       id="{{$email}}"
+                                       type="{{$email}}"
+                                       name="{{$email}}"
                                        required
                                        placeholder="Your email address"/>
                                 <button id="submit" class="btn btn-xs text-lg">Subscribe</button>

@@ -1,10 +1,16 @@
 <?php
 
+/**
+ * @noinspection PhpUndefinedClassInspection
+ * @noinspection PhpUndefinedMethodInspection
+ */
+
 namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
 use Illuminate\Testing\TestResponse;
+use UnitEnum;
 
 trait CreatesApplication
 {
@@ -19,7 +25,6 @@ trait CreatesApplication
 
         $this->registerAssertRedirectAs();
         $this->registerAssertRedirectHome();
-        $this->registerAssertBadRequest();
 
         return $app;
     }
@@ -27,7 +32,7 @@ trait CreatesApplication
     protected function registerAssertRedirectAs(): void
     {
         TestResponse::macro('assertRedirectAs', function ($uri) {
-            if ($uri instanceof \UnitEnum) {
+            if ($uri instanceof UnitEnum) {
                 $this->assertRedirect(route_as($uri));
             } else {
                 $this->assertRedirect($uri);
@@ -41,15 +46,6 @@ trait CreatesApplication
     {
         TestResponse::macro('assertRedirectHome', function (string|null $query_string = null) {
             $this->assertRedirect(config('auth.home') . $query_string);
-
-            return $this;
-        });
-    }
-
-    protected function registerAssertBadRequest(): void
-    {
-        TestResponse::macro('assertBadRequest', function (string|null $query_string = null) {
-            $this->assertStatus(400);
 
             return $this;
         });

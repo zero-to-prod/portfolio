@@ -1,11 +1,10 @@
 <?php
 
-use App\Helpers\Routes;
-use App\Http\Controllers\ResultsView;
 use App\Models\Tag;
 
 ?>
 @props(['title'])
+
         <!doctype html>
 <html lang="en">
 <head>

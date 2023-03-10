@@ -17,6 +17,7 @@ enum Middlewares: string
     case auth = 'auth';
     case auth_basic = 'auth.basic';
     case auth_session = 'auth.session';
+    case auth_sanctum = 'auth:sanctum';
     case cache_headers = 'cache.headers';
     case can = 'can';
     case guest = 'guest';

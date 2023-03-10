@@ -26,5 +26,8 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="MAILCHIMP_API_KEY" value="1236734b30b3a7ae9a369267b2a97b3d-us1"/>
+        <env name="MAILCHIMP_SERVER" value="us-1"/>
+        <env name="MAILCHIMP_LIST_ID" value="6sfda5s4f6"/>
     </php>
 </phpunit>

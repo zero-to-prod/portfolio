@@ -1,11 +1,15 @@
 <?php
 
 use App\Helpers\R;
+use App\Helpers\Routes;
 use App\Models\Post;
-use App\Models\User;
+use App\Http\Controllers\Api\SubscribeResponse;
 
 /* @var Post $post */
+/* @var string $token */
 /* @var File $feature */
+
+$email = SubscribeResponse::email;
 ?>
 
 <x-main :title="$post->title">
@@ -68,14 +72,15 @@ use App\Models\User;
                         </div>
                     </div>
                 </div>
-                <div id="cta" class="p-4 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer flex justify-between">
+                <div id="cta"
+                     class="p-4 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer flex justify-between shadow-lg">
                     <div class="flex gap-2">
                         <x-svg :name="'mail'"/>
                         <span class="my-auto font-bold">Stay up to date</span>
                     </div>
                     <p class="my-auto text-sm">Show more...</p>
                 </div>
-                <div id="cta-expanded" class="hidden p-4 rounded-lg bg-gray-200">
+                <div id="cta-expanded" class="hidden p-4 rounded-lg bg-gray-200 shadow-lg">
                     <div class="flex justify-between">
                         <div class="flex gap-2">
                             <x-svg :name="'mail'"/>
@@ -85,39 +90,39 @@ use App\Models\User;
                     </div>
                     <div class="max-w-md mx-auto">
                         <div class="mx-1">
-                            <p class="font-bold text-lg pt-4">The perfect newsletter for Web professionals</p>
+                            <p class="font-bold text-lg pt-4">The Perfect Newsletter for Web Professionals</p>
                             <p class="pt-4">Never miss out on new tips, tutorials, and more.</p>
                             <p class="pt-4">Each week we curate the best new information and deliver it to your
                                 inbox.</p>
                         </div>
                         <form class="mt-4 mx-auto" id="form">
-                            <label for="email" class="sr-only">Email</label>
+                            <label for="{{$email}}" class="sr-only">Email</label>
                             <div class="flex flex-col 2col:flex-row gap-2">
-                                <input class="input text-lg" id="email" type="email" name="email"
+                                <input class="input text-lg text-center 2col:text-left"
+                                       id="{{$email}}"
+                                       type="{{$email}}"
+                                       name="{{$email}}"
+                                       required
                                        placeholder="Your email address"/>
                                 <button id="submit" class="btn btn-xs text-lg">Subscribe</button>
                             </div>
                         </form>
                         <div class="mx-1 text-xs space-y-2 font-bold">
-                            <p id="success" class="hidden">Success! You will be notified when new
-                                content becomes
-                                available.</p>
-                            <p id="error" class="hidden text-red-600">Something went wrong! Try
-                                another email.</p>
+                            <p id="success" class="hidden mt-2">
+                                Success! Welcome to the club. Check your inbox for new content.
+                            </p>
+                            <p id="error" class="hidden text-red-600">
+                                Something went wrong! Try another email.
+                            </p>
                             <p class="font-normal">
-                                No Spam, ever. We'll never share your email address, and you can opt out at any time.
+                                No spam, ever. We'll never share your email address, and you can opt out at any time.
                             </p>
                         </div>
                     </div>
                 </div>
-                <?php
-                $token = Cache::remember('newsletter', 60 * 60 * 24, static function () {
-                    return User::first()?->createToken('newsletter')->plainTextToken;
-                });
-                ?>
                 <script>
                     const getElement = (id) => document.querySelector(`#${id}`);
-                    const endpoint = "{{ route('subscribe') }}";
+                    const endpoint = "{{ route_as(Routes::api_subscribe) }}";
 
                     const cta = getElement('cta');
                     const ctaExpanded = getElement('cta-expanded');
@@ -187,7 +192,7 @@ use App\Models\User;
                             email.classList.add('border', 'border-red-500');
                             error.classList.toggle('hidden');
                         } finally {
-                            submit.innerText = 'Submit';
+                            submit.innerText = 'Subscribe';
                             submit.disabled = false;
                         }
                     });

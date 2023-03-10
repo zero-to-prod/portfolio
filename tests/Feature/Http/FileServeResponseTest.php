@@ -1,8 +1,13 @@
 <?php
 
+namespace Http;
+
 use App\Helpers\Routes;
 use App\Http\Controllers\Admin\File\FileServeResponse;
+use Cache;
+use Closure;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Storage;
 use Tests\TestCase;
 
 class FileServeResponseTest extends TestCase

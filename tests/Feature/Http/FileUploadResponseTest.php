@@ -1,11 +1,15 @@
 <?php
 
+namespace Http;
+
 use App\Helpers\Routes;
 use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Http\Controllers\Admin\File\FileUploadResponse;
 use App\Models\File;
+use Config;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Storage;
 use Tests\AuthTestCase;
 
 class FileUploadResponseTest extends AuthTestCase

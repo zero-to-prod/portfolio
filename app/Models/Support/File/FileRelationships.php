@@ -11,6 +11,7 @@ trait FileRelationships
 
     public const posts = 'posts';
     public const authors = 'authors';
+    public const tags = 'tags';
 
     public function posts(): MorphToMany
     {

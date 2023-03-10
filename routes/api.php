@@ -29,12 +29,7 @@ Route::middleware('auth:sanctum')->post('/subscribe', function (Request $request
             'email' => 'required|email:dns'
         ]);
 
-        $mailchimp = new ApiClient();
-
-        $mailchimp->setConfig([
-            'apiKey' => config('mail.mailchimp.api_key'),
-            'server' => config('mail.mailchimp.server')
-        ]);
+        $mailchimp = app()->make(ApiClient::class);
 
         $subscriber = [
             'email_address' => $validated['email'],

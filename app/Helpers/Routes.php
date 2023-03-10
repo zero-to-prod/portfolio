@@ -24,6 +24,8 @@ enum Routes: string
     case search = '/search';
     case results = '/results';
 
+    case api_subscribe = '/subscribe';
+
     /**
      * Admin
      */

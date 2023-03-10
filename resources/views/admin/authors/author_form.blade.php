@@ -7,6 +7,7 @@ use App\Models\Author;
 /* @var Author $author */
 
 $name = AuthorFormRedirect::name;
+$title = AuthorFormRedirect::title;
 $avatar = AuthorFormRedirect::avatar;
 
 ?>
@@ -34,6 +35,17 @@ $avatar = AuthorFormRedirect::avatar;
                                        required>
                                 @if($errors->has($name))
                                     <p>{{ $errors->first($name) }}</p>
+                                @endif
+                            </x-form-control-dark>
+                            <x-form-control-dark>
+                                <label for="{{$title}}">Title</label>
+                                <input name="{{$title}}"
+                                       title="{{$title}}"
+                                       id="{{$title}}"
+                                       value="{{$author !== null ? $author->title : old($title)}}"
+                                       required>
+                                @if($errors->has($title))
+                                    <p>{{ $errors->first($title) }}</p>
                                 @endif
                             </x-form-control-dark>
                             <div class="flex space-x-6 sm:col-span-2">

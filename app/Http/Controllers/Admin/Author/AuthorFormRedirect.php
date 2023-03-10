@@ -15,6 +15,7 @@ class AuthorFormRedirect extends Controller
 {
     public const id = 'id';
     public const name = 'name';
+    public const title = 'title';
     public const avatar = 'avatar';
 
     /**
@@ -25,6 +26,7 @@ class AuthorFormRedirect extends Controller
         $validated = $request->validate([
             self::id => 'nullable|integer',
             self::name => Author::rules(Author::name),
+            self::title => Author::rules(Author::title),
             self::avatar => 'nullable|image'
         ]);
 
@@ -32,6 +34,7 @@ class AuthorFormRedirect extends Controller
 
         $author = Author::updateOrCreate([Author::id => $request->{self::id}], [
             Author::name => $validated[self::name],
+            Author::title => $validated[self::title],
         ]);
 
         if ($request->hasFile(self::avatar)) {

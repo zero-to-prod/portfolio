@@ -32,11 +32,11 @@ class Author extends Model implements HasRules
     use HasFiles;
     use AuthorRelationships;
 
-    protected $fillable = [self::name];
+    protected $fillable = [self::name, self::title];
 
     public function avatar(): ?File
     {
-        return $this->files()->whereHas('tags', function ($builder) {
+        return $this->files()->whereHas(File::tags, function ($builder) {
             $builder->where(Tag::name . '->en', Tags::avatar->value);
         })->first();
     }

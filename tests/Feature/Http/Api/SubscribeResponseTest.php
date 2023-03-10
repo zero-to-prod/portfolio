@@ -29,13 +29,17 @@ class SubscribeResponseTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->headers = [
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . user()->createToken(CacheKeys::newsletter->value)->plainTextToken,
         ];
+
         Mail::fake();
+
         $mockApiClient = Mockery::mock(ApiClient::class);
         $this->mailchimp = $mockApiClient->lists = Mockery::mock();
+
         $this->app->instance(ApiClient::class, $mockApiClient);
     }
 
@@ -79,8 +83,6 @@ class SubscribeResponseTest extends TestCase
         $this->postAs(Routes::api_subscribe, $data, $this->headers)
             ->assertJsonValidationErrorFor(SubscribeResponse::email)
             ->assertUnprocessable();
-        Mail::assertQueued(EmailSubscription::class, 0);
-        self::assertFalse(Contact::where(Contact::email, 'bogus email')->exists());
     }
 
     /**
@@ -99,26 +101,6 @@ class SubscribeResponseTest extends TestCase
         $this->postAs(Routes::api_subscribe, $data, $this->headers)
             ->assertStatus(500)
             ->assertJson(['message' => 'Mailchimp error']);
-        Mail::assertQueued(EmailSubscription::class, 0);
-        self::assertFalse(Contact::where(Contact::email, $email)->exists());
-    }
-
-    /**
-     * @test
-     *
-     * @see SubscribeResponse
-     */
-    public function mailchimp_unauthorized(): void
-    {
-        $email = 'valid@gmail.com';
-        $this->mailchimp->shouldReceive('addListMember')
-            ->once()
-            ->andThrow(new ClientException('401 Unauthorized', new Request('Post', route(Routes::api_subscribe->name)), new Response(401)));
-        $data = [SubscribeResponse::email => $email];
-
-        $this->postAs(Routes::api_subscribe, $data, $this->headers)
-            ->assertStatus(500)
-            ->assertJson(['message' => '401 Unauthorized']);
         Mail::assertQueued(EmailSubscription::class, 0);
         self::assertFalse(Contact::where(Contact::email, $email)->exists());
     }

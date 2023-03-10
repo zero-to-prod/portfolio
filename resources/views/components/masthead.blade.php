@@ -9,7 +9,7 @@ use App\Http\Controllers\SearchRedirect;
 $search = SearchRedirect::search;
 
 ?>
-<header class="fixed top-0 z-50 mx-auto w-full bg-white">
+<header class="fixed top-0 z-50 mx-auto w-full bg-primary-content">
     <div class="flex justify-between">
         <div class="flex">
             <button id="toggle-navbar-btn"

@@ -5,7 +5,7 @@ use App\Http\Controllers\ResultsView;
 
 ?>
 
-<nav class="fixed bottom-0 left-0 2col:hidden w-full bg-white">
+<nav class="fixed bottom-0 left-0 2col:hidden w-full bg-primary-content">
     <div class="grid grid-cols-3">
         <a class="flex flex-col py-2 hover:bg-gray-300 {{ route_is(Routes::welcome) ? 'bg-gray-200' : '' }}"
            href="{{R::welcome()}}">

@@ -1,3 +1,7 @@
+@import "tailwindcss/base";
+@import "themes/root.css";
+@import "tailwindcss/components";
+
 @import "blog.css";
 @import "button.css";
 @import "em.css";
@@ -12,6 +16,4 @@
 @import "left-drawer.css";
 @import "svg.css";
 
-@tailwind base;
-@tailwind components;
 @tailwind utilities;

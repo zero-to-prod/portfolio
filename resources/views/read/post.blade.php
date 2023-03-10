@@ -36,7 +36,7 @@ $email = SubscribeResponse::email;
                         </div>
                     </div>
                     <div class="flex w-full mt-2 flex-wrap justify-between">
-                        <a class="flex gap-2 font-semibold mr-4" href="#">
+                        <x-a class="flex gap-2 font-semibold mr-4" :href="'#'">
                             <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
                             <div class="flex flex-col">
                                 <p class="underline">{{$post->authorList()}}</p>
@@ -44,9 +44,9 @@ $email = SubscribeResponse::email;
                                     Posts
                                 </p>
                             </div>
-                        </a>
+                        </x-a>
                         <div class="flex gap-2">
-                            <a class="my-auto text-sm font-bold underline" href="{{R::results()}}">Topics</a>
+                            <x-a class="my-auto text-sm font-bold underline" :href="R::results()">Topics</x-a>
                             <x-logos :post="$post"/>
                         </div>
                     </div>
@@ -57,7 +57,7 @@ $email = SubscribeResponse::email;
                         <p class="text-sm">{{$post->subtitle}}</p>
                     </div>
                     <div class="flex justify-between">
-                        <a class="flex gap-2 text-base font-semibold mr-4" href="#">
+                        <x-a class="flex gap-2 text-base font-semibold mr-4" :href="'#'">
                             <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
                             <div>
                                 <p class="underline">{{$post->authorList()}}</p>
@@ -65,7 +65,7 @@ $email = SubscribeResponse::email;
                                     Posts
                                 </p>
                             </div>
-                        </a>
+                        </x-a>
                         <div class="text-right text-sm">
                             <x-published-date :post="$post"/>
                             <x-views :post="$post"/>
@@ -207,7 +207,7 @@ $email = SubscribeResponse::email;
         ?>
         <div class="3col:flex hidden shrink-0 flex-col gap-2 w-[400px]">
             @foreach($posts as $post)
-                <a href="{{R::read($post)}}" class="flex flex-row gap-2">
+                <x-a :href="R::read($post)" class="flex flex-row gap-2">
                     <div class="relative shrink-0">
                         <div class="overflow-hidden 2col:rounded-lg">
                             <x-img class="object-cover object-center h-[112px] w-[168px]"
@@ -225,7 +225,7 @@ $email = SubscribeResponse::email;
                            title="{{$post->authorList()}}">{{$post->authorList()}}</p>
                         <x-views-date-line :post="$post"/>
                     </div>
-                </a>
+                </x-a>
             @endforeach
         </div>
         <div class="mt-6 space-y-2 3col:hidden">

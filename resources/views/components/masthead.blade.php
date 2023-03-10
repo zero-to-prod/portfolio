@@ -2,7 +2,7 @@
 
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\R;
 use App\Http\Controllers\ResultsView;
 use App\Http\Controllers\SearchRedirect;
 
@@ -18,12 +18,12 @@ $search = SearchRedirect::search;
                     type="button">
                 <x-svg :name="'hamburger'" class="m-auto block h-6 w-[64px]"/>
             </button>
-            <a class="flex py-4 px-2 mr-2 text-lg 2col:text-xl btn-ghost" href="{{route_as(Routes::welcome)}}">
+            <x-a class="flex py-4 px-2 mr-2 text-lg 2col:text-xl btn-ghost" :href="R::welcome()">
                 <span class="font-semibold text-primary">dev</span>READ
-            </a>
+            </x-a>
         </div>
         <div class="mx-auto w-full max-w-2xl 2col:pr-0 pr-2 my-auto">
-            <form action="{{route_as(Routes::search)}}" method="post">
+            <form action="{{R::search()}}" method="post">
                 @csrf
                 <label for="{{$search}}"></label>
                 <div class="flex rounded-md relative">
@@ -46,7 +46,7 @@ $search = SearchRedirect::search;
                 </div>
             </form>
         </div>
-        <a href="{{route_as(Routes::connect)}}" class="2col:block hidden py-4 px-2 ml-2 btn-ghost text-lg">Contact</a>
+        <x-a :href="R::connect()" class="2col:block hidden py-4 px-2 ml-2 btn-ghost text-lg">Contact</x-a>
     </div>
 </header>
 @vite('resources/js/masthead.js')

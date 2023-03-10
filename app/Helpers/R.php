@@ -119,6 +119,17 @@ class R
         return route_as(Routes::connect_store);
     }
 
+    public static function connect(): string
+    {
+        return route_as(Routes::connect);
+    }
+
+    public static function search(): string
+    {
+        return route_as(Routes::search);
+    }
+
+
     public static function dashboard(): string
     {
         return route_as(Routes::dashboard);

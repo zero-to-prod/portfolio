@@ -15,14 +15,14 @@ use Illuminate\Database\Eloquent\Collection;
     <div class="flex flex-col gap-4 max-w-4xl mx-auto">
         <div>
             @if($tag !== null)
-                <a class="flex gap-x-2 my-2 ml-2 2col:ml-0" title="{{$tag->name}}" href="{{R::results($tag)}}">
+                <div class="flex gap-x-2 my-2 ml-2 2col:ml-0">
                     @if($tag->hasLogo())
                         <x-img class="w-10 rounded" :file="$tag->logo()" :width="80"/>
                     @endif
                     <h2 class="my-auto text-lg font-semibold text-gray-900">
                         {{$tag->name}}
                     </h2>
-                </a>
+                </div>
                 <x-divider/>
             @endif
             @if(request()->query(ResultsView::query) !== null)
@@ -55,12 +55,12 @@ use Illuminate\Database\Eloquent\Collection;
         @endif
         <div class="2col:ml-12 flex mx-auto gap-4 flex-wrap justify-center">
             @forEach(Tag::mostViewed() as $tag)
-                <a class="rounded-lg p-2 hover:bg-gray-100 flex" href="{{R::results($tag)}}">
+                <x-a class="rounded-lg p-2 hover:bg-gray-100 flex" :href="R::results($tag)">
                     @if($tag->hasLogo())
                         <x-img class="w-10 rounded" :file="$tag->logo()" :width="80"/>
                     @endif
                     <span class="ml-2 my-auto">{{$tag->name}}</span>
-                </a>
+                </x-a>
             @endforeach
         </div>
     @endif

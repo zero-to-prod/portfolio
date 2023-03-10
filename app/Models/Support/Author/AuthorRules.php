@@ -8,6 +8,7 @@ trait AuthorRules
     {
         return match ($column) {
             self::name => ['required', 'max:255'],
+            self::title => ['required', 'max:255'],
             default => [],
         };
     }

@@ -17,9 +17,9 @@ $search = SearchRedirect::search;
                 type="button">
             <x-svg :name="'hamburger'" class="m-auto block h-6 w-[64px]"/>
         </button>
-        <x-a class="mr-2 flex px-2 py-4 text-lg 2col:text-xl btn-ghost" :href="R::welcome()">
-            <span class="rounded-l pr-1 pl-2 font-semibold bg-white text-sky-600 shadow">dev</span><span
-                        class="rounded-r bg-sky-600 pr-2 pl-1 font-semibold text-white shadow-md">READ</span>
+        <x-a class="mr-2 flex px-2 py-4 text-lg 2col:text-xl btn-ghost font-semibold" :href="R::welcome()">
+            <span class="rounded-l pr-1 pl-2 bg-white text-sky-600 shadow">dev</span>
+            <span class="rounded-r bg-sky-600 pr-2 pl-1 text-white shadow-md">RED</span>
         </x-a>
         <div class="mx-auto my-auto w-full max-w-2xl 2col:pr-0 pr-2">
             <form action="{{R::search()}}" method="post">

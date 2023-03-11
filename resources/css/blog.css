@@ -33,8 +33,11 @@
         padding: 2px 4px;
         border-radius: 3px;
         color: #232629;
-        font-weight: normal;
+        word-break: break-all;
+    }
 
+    .prose :where(code):not(:where([class~="not-prose"] *)) {
+        word-break: break-all;
     }
 
     .prose :where(.prose > ul > li > *:last-child):not(:where([class~="not-prose"] *)){

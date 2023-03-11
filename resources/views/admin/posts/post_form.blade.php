@@ -10,6 +10,7 @@ use App\Models\Tag;
 
 /* @var Tag $author_model */
 /* @var Post $post_model */
+/* @var File $file */
 
 $title = PostFormRedirect::title;
 $subtitle = PostFormRedirect::subtitle;
@@ -17,7 +18,7 @@ $authors = PostFormRedirect::authors;
 $tags = PostFormRedirect::tags;
 $body = PostFormRedirect::body;
 $featured_image = PostFormRedirect::featured_image;
-
+$in_body = PostFormRedirect::in_body;
 ?>
 
 <x-app-layout>
@@ -47,7 +48,6 @@ $featured_image = PostFormRedirect::featured_image;
                             @endif
                         @endisset
                     </div>
-
                     <form action="{{R::admin_post_store()}}"
                           method="post"
                           enctype="multipart/form-data">
@@ -58,6 +58,26 @@ $featured_image = PostFormRedirect::featured_image;
                                        hidden
                                        value="{{$post_model?->id}}"/>
                             </label>
+                            <div class="flex space-x-6 sm:col-span-2">
+                                @if($post_model?->hasFeaturedImage())
+                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                           :file="$post_model->featuredImage()"
+                                           :height="100"
+                                    />
+                                @endif
+                                <x-form-control-dark>
+                                    <label for="{{$featured_image}}">Featured Image</label>
+                                    <input class="w-full"
+                                           name="{{$featured_image}}"
+                                           id="{{$featured_image}}"
+                                           {{$post_model?->hasFeaturedImage() ? null  : 'required=true'}}
+                                           type="file"
+                                    >
+                                    @if($errors->has($featured_image))
+                                        <p>{{ $errors->first($featured_image) }}</p>
+                                    @endif
+                                </x-form-control-dark>
+                            </div>
                             <x-form-control-dark>
                                 <label for="{{$title}}">Title</label>
                                 <input name="{{$title}}"
@@ -129,26 +149,29 @@ $featured_image = PostFormRedirect::featured_image;
                                     <p>{{ $errors->first($body) }}</p>
                                 @endif
                             </x-form-control-dark>
-                            <div class="flex space-x-6 sm:col-span-2">
-                                @if($post_model?->hasFeaturedImage())
+                            <x-form-control-dark>
+                                <label for="{{$in_body}}">In-Body Images</label>
+                                <input class="w-full"
+                                       name="{{$in_body}}"
+                                       id="{{$in_body}}"
+                                       type="file"
+                                />
+                                @if($errors->has($in_body))
+                                    <p>{{ $errors->first($in_body) }}</p>
+                                @endif
+                            </x-form-control-dark>
+                            @foreach($post_model->inBodyFiles() as $file)
+                                <div class="flex space-x-6 sm:col-span-2">
                                     <x-img class="object-cover h-[100px] rounded-lg"
-                                           :file="$post_model->featuredImage()"
+                                           :file="$file"
                                            :height="100"
                                     />
-                                @endif
-                                <x-form-control-dark>
-                                    <label for="{{$featured_image}}">Featured Image</label>
-                                    <input class="w-full"
-                                           name="{{$featured_image}}"
-                                           id="{{$featured_image}}"
-                                           {{$post_model?->hasFeaturedImage() ? null  : 'required=true'}}
-                                           type="file"
-                                    >
-                                    @if($errors->has($featured_image))
-                                        <p>{{ $errors->first($featured_image) }}</p>
-                                    @endif
-                                </x-form-control-dark>
-                            </div>
+                                    <p class=" text-white">
+                                        ![{{$file->original_name}}](/file/{{$file->name}})
+                                    </p>
+
+                                </div>
+                            @endforeach
                         </div>
                         <div class="mt-6">
                             <button class="btn btn-wide">Save</button>

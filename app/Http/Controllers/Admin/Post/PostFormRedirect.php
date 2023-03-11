@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUndefinedClassInspection */
 
 namespace App\Http\Controllers\Admin\Post;
 
@@ -21,6 +22,7 @@ class PostFormRedirect extends Controller
     public const tags = 'tags[]';
     public const body = 'body';
     public const featured_image = 'featured_image';
+    public const in_body = 'in_body';
 
     /**
      * @throws Throwable
@@ -34,7 +36,8 @@ class PostFormRedirect extends Controller
             'authors' => 'required|array|min:1',
             'tags' => 'required|array|min:1',
             self::body => Post::rules(Post::body),
-            self::featured_image => 'nullable|image'
+            self::featured_image => 'nullable|image',
+            self::in_body => 'nullable|image',
         ]);
 
         DB::beginTransaction();
@@ -49,6 +52,12 @@ class PostFormRedirect extends Controller
             $featured_image = File::upload($request->file(self::featured_image));
             $featured_image?->tagFeaturedImage();
             $post->files()->sync([$featured_image?->id]);
+        }
+
+        if($request->hasFile(self::in_body)) {
+            $in_body = File::upload($request->file(self::in_body));
+            $in_body?->tagInBodyImage();
+            $post->files()->syncWithoutDetaching([$in_body?->id]);
         }
 
         $post->authors()->sync($validated['authors']);

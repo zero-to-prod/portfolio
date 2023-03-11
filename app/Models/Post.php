@@ -93,6 +93,13 @@ class Post extends Model implements HasRules
         return !PostIsPublished::evaluate($this);
     }
 
+    public function inBodyFiles(): Collection|File
+    {
+        return $this->files()->whereHas(File::tags, function ($builder) {
+            $builder->where(Tag::name . '->en', Tags::in_body->value);
+        })->get();
+    }
+
     public static function related(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = [], int|null $limit = 20): Collection
     {
         $posts = self::withAnyTags($tags, Tags::post->value)

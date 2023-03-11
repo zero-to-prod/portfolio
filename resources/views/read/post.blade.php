@@ -228,11 +228,11 @@ $email = SubscribeResponse::email;
                 </x-a>
             @endforeach
         </div>
-        <div class="mt-6 space-y-2 3col:hidden">
+        <div class="mt-12 space-y-2 3col:hidden">
             <h3 class="my-auto text-lg font-semibold">
                 Related
             </h3>
-            <x-divider class="pt-2 pb-4"/>
+            <x-divider class="pt-2"/>
             <x-post-responsive :posts="$posts"/>
         </div>
     </div>

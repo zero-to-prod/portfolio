@@ -74,7 +74,7 @@ use Illuminate\Support\Collection;
              title="{{$tag->name}}"
         >
             @if($tag->hasLogo())
-                <x-img class="mx-auto w-6" :file="$tag->logo()" :width="80"/>
+                <x-img class="mx-auto w-6" :file="$tag->logo()" :width="80" title="{{$tag->name}}"/>
             @endif
         </x-a>
     @endforeach

@@ -35,14 +35,15 @@ use App\Models\Tag;
                                 <x-reading-time-chip :post="$post"/>
                                 <x-new-chip :post="$post"/>
                             </div>
-                            <div class="p-2 2col:px-0 2col:pt-1">
-                                <h3 class="font-bold leading-5 tracking-tight font-sm break-word"
-                                    title="{{ $post->title }}">{{ $post->title }}</h3>
+                            <div class="p-2 2col:px-0 2col:pt-1 ">
+                                <h3 class="font-bold leading-5 tracking-tight break-word"
+                                    title="{{ $post->title }}">
+                                    {{ $post->title }}
+                                </h3>
                                 <p class="2col:hidden text-sm" title="{{$post->subtitle}}">
                                     {{$post->subtitle}}
                                 </p>
-                                <p class="2col:mt-0 mt-2 text-sm"
-                                   title="{{$post->authorList()}}">
+                                <p class="2col:mt-0 mt-2 text-sm" title="{{$post->authorList()}}">
                                     {{$post->authorList()}}
                                 </p>
                                 <x-views-date-line :post="$post"/>

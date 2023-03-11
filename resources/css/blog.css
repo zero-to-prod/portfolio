@@ -24,8 +24,16 @@
 
     }
 
+    .prose :where(.prose > ul > li > *:last-child):not(:where([class~="not-prose"] *)){
+        background-color: #e3e6e8 !important;
+        padding: 2px 4px;
+        border-radius: 3px;
+        color: #232629;
+        font-weight: normal;
+    }
+
     #content > div > div.shrink.max-w-\[837px\] > article > div.grid.max-w-none.prose > pre {
-        margin-top: 0;
+        margin-top: .5rem;
         margin-bottom: 0;
     }
 
@@ -49,6 +57,7 @@
     }
 
     .prose :where(h3):not(:where([class~="not-prose"] *)){
+        margin-top: 1rem;
         margin-bottom: 0;
     }
 

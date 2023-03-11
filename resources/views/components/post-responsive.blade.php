@@ -7,9 +7,9 @@ use Illuminate\Support\Collection;
 /* @var Collection<Post> $posts */
 /* @var Post $post */
 ?>
-<div {{$attributes->merge(['class' => '2col:space-y-2'])}}>
+<div {{$attributes->merge(['class' => '2col:space-y-2 space-y-4'])}}>
     @foreach($posts as $post)
-        <div class="2col:flex 2col:flex-row">
+        <div class="2col:flex 2col:flex-row shadow-lg 2col:shadow-none">
             <x-a class="relative" :href="R::read($post)">
                 <div class="relative shrink-0">
                     <div class="overflow-hidden 2col:rounded-lg ">

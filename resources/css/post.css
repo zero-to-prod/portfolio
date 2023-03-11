@@ -3,6 +3,11 @@
         /*@apply border border-red-200;*/
     }
 
+    #content .prose img {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
     .prose :where(.prose > ol > li > *:last-child):not(:where([class~="not-prose"] *)) {
         background-color: #e3e6e8 !important;
         padding: 2px 4px;

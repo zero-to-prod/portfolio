@@ -2,7 +2,7 @@
 @import "themes/root.css";
 @import "tailwindcss/components";
 
-@import "blog.css";
+@import "post.css";
 @import "button.css";
 @import "em.css";
 @import "error.css";

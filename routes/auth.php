@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\AdminRoutes;
 use App\Helpers\AuthRoutes;
 use App\Helpers\Middlewares;
 use App\Helpers\Views;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::postAs(AuthRoutes::upload, FileUploadResponse::class);
 
 /* Dashboard */
-Route::getAs(AuthRoutes::dashboard, Views::dashboard)->middlewareAs(Middlewares::verified);
+Route::getAs(AdminRoutes::dashboard, Views::dashboard)->middlewareAs(Middlewares::verified);
 
 /* Profile */
 Route::getAs(AuthRoutes::profile_edit, [ProfileController::class, 'edit']);

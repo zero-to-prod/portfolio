@@ -9,8 +9,6 @@ namespace App\Helpers;
 enum AuthRoutes: string
 {
     case upload = '/upload';
-
-    case dashboard = '/dashboard';
     case email_verificationNotice = 'email/verification-notice';
     case email_verificationNotification = 'email/verification-notification';
     case email_verify = 'email/verify/{id}/{hash}';

@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Tag\TagFormView;
  */
 enum AdminRoutes: string
 {
+    case dashboard = 'dashboard';
 
     /* Posts */
     case post_index = 'posts';

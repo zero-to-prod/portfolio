@@ -17,6 +17,4 @@ enum Routes: string
     case read = '/read/{post}';
     case search = '/search';
     case results = '/results';
-
-    case dashboard = '/dashboard';
 }

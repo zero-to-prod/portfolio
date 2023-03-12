@@ -16,6 +16,7 @@ class R
     {
         return route_as(AuthRoutes::upload);
     }
+
     public static function file(File $file, ?int $width = null, ?int $height = null): string
     {
         return route_as(Routes::file, [
@@ -24,14 +25,17 @@ class R
             FileServeResponse::height => $height,
         ]);
     }
+
     public static function admin_author_index(): string
     {
         return route_as(AdminRoutes::author_index);
     }
+
     public static function admin_author_create(): string
     {
         return route_as(AdminRoutes::author_create);
     }
+
     public static function admin_author_store(): string
     {
         return route_as(AdminRoutes::author_store);
@@ -41,10 +45,12 @@ class R
     {
         return route_as(AdminRoutes::author_edit, $author);
     }
+
     public static function admin_tag_create(): string
     {
         return route_as(AdminRoutes::tag_create);
     }
+
     public static function admin_tag_store(): string
     {
         return route_as(AdminRoutes::tag_store);
@@ -107,7 +113,7 @@ class R
 
     public static function results(?Tag $tag = null): string
     {
-        if (is_null($tag)){
+        if (is_null($tag)) {
             return route_as(Routes::results);
         }
 
@@ -129,9 +135,8 @@ class R
         return route_as(Routes::search);
     }
 
-
     public static function dashboard(): string
     {
-        return route_as(Routes::dashboard);
+        return route_as(AdminRoutes::dashboard);
     }
 }

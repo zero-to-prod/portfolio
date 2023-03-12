@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Middleware;
 
+use App\Helpers\AdminRoutes;
 use App\Helpers\AuthRoutes;
-use App\Helpers\Routes;
 use App\Http\Middleware\Authenticate;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
@@ -18,7 +18,7 @@ class AuthenticateTest extends TestCase
      */
     public function redirects_to_login_when_log_logged_in(): void
     {
-        $this->getAs(Routes::dashboard)->assertRedirectAs(AuthRoutes::login);
+        $this->getAs(AdminRoutes::dashboard)->assertRedirectAs(AuthRoutes::login);
     }
 
     /**
@@ -31,7 +31,7 @@ class AuthenticateTest extends TestCase
             'X-Requested-With' => 'XMLHttpRequest',
             'Accept' => 'application/json',
             'Content-Type' => 'application/json'])
-            ->getAs(Routes::dashboard)
+            ->getAs(AdminRoutes::dashboard)
             ->assertJson([]);
     }
 }

@@ -2,7 +2,6 @@
 
 <?php
 
-use App\Helpers\R;
 use App\Models\File;
 
 /* @var File $file */
@@ -14,7 +13,7 @@ use App\Models\File;
 
 
 <img {{ $attributes->merge(['class' => '']) }}
-     src="{{ R::file($file, $width, $height) }}"
+     src="{{ to()->web->file($file, $width, $height) }}"
      title="{{$title ?? $file->original_name}}"
      alt="{{$alt ?? $file->original_name}}"
      height="{{$height}}"

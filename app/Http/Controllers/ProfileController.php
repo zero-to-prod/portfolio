@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\AuthRoutes;
-use App\Helpers\Routes;
 use App\Helpers\Views;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
@@ -58,6 +57,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::toAs(Routes::welcome);
+        return Redirect::to(to()->web->welcome());
     }
 }

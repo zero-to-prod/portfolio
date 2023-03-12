@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class ApiRouteHelper
+class ApiRoutes
 {
 
     public Routes $subscribe = Routes::subscribe;

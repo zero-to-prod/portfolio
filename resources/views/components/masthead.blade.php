@@ -2,7 +2,6 @@
 
 <?php
 
-use App\Helpers\R;
 use App\Http\Controllers\ResultsView;
 use App\Http\Controllers\SearchRedirect;
 
@@ -17,12 +16,12 @@ $search = SearchRedirect::search;
                 type="button">
             <x-svg :name="'hamburger'" class="m-auto block h-6 w-[64px]"/>
         </button>
-        <x-a class="flex px-2 py-4 text-lg 2col:text-xl font-semibold btn-ghost" :href="R::welcome()">
+        <x-a class="flex px-2 py-4 text-lg 2col:text-xl font-semibold btn-ghost" :href="to()->web->welcome()">
             <span class="my-auto rounded-l bg-white pr-1 pl-2 text-primary shadow">dev</span>
             <span class="my-auto rounded-r bg-primary pr-2 pl-1 text-white shadow-md">RED</span>
         </x-a>
         <div class="mx-auto my-auto w-full max-w-2xl">
-            <form action="{{R::search()}}" method="post">
+            <form action="{{to()->web->search()}}" method="post">
                 @csrf
                 <label for="{{$search}}"></label>
                 <div class="relative flex rounded-md">
@@ -45,7 +44,7 @@ $search = SearchRedirect::search;
                 </div>
             </form>
         </div>
-        <x-a class="flex px-2 py-2 text-lg 2col:text-xl font-semibold btn-ghost" :href="R::welcome()">
+        <x-a class="flex px-2 py-2 text-lg 2col:text-xl font-semibold btn-ghost" :href="to()->web->welcome()">
             <span class="my-auto rounded bg-primary px-2 text-sm text-white shadow-md py-[0.25rem]">SUBSCRIBE</span>
         </x-a>
     </div>

@@ -3,7 +3,6 @@
 namespace Auth;
 
 use App\Helpers\AuthRoutes;
-use App\Helpers\Routes;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -75,7 +74,7 @@ class ProfileTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect(Routes::welcome->value);
+            ->assertRedirect(to()->web->welcome());
 
         $this->assertGuest();
         $this->assertNull($user->fresh());

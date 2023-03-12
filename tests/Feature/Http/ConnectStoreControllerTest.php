@@ -2,13 +2,12 @@
 
 namespace Http;
 
-use App\Helpers\Routes;
 use App\Mail\ConnectRequest;
 use App\Models\Contact;
 use App\Models\Message;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Mail;
-use Tests\Feature\Route;
+use Route;
 use Tests\TestCase;
 
 class ConnectStoreControllerTest extends TestCase
@@ -31,14 +30,13 @@ class ConnectStoreControllerTest extends TestCase
             Message::body => 'body',
         ];
 
-        $this->postAs(Routes::connect_store, $data)->assertRedirect()->assertSessionHas('email', $email);
+        $this->post(to()->web->connectStore(), $data)->assertRedirect()->assertSessionHas('email', $email);
 
         $message = Message::whereSubject($subject)->first();
         $contact = $message?->contact;
         self::assertNotNull($message, 'Message was not created.');
         self::assertEquals($email, $message->contact->email, 'The contact email does not match the email in the form.');
         self::assertEquals(1, $contact->messages()->count(), 'The contact does not have the correct number of messages.');
-
 
         /* Sets up another test verifying the same contact can have multiple messages. */
 
@@ -48,7 +46,7 @@ class ConnectStoreControllerTest extends TestCase
             Message::body => 'body',
         ];
 
-        $this->postAs(Routes::connect_store, $data)->assertRedirect();
+        $this->post(to()->web->connectStore(), $data)->assertRedirect();
 
         self::assertEquals(2, $contact->messages()->count(), 'The contact does not have the correct number of messages.');
         Mail::assertQueued(ConnectRequest::class, 2);
@@ -60,7 +58,7 @@ class ConnectStoreControllerTest extends TestCase
      */
     public function fails_if_nothing_is_not_passed(): void
     {
-        $this->postAs(Routes::connect_store)->assertFound();
+        $this->post(to()->web->connectStore())->assertFound();
     }
 
     /**

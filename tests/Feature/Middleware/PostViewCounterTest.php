@@ -4,7 +4,6 @@ namespace Middleware;
 
 use App\Http\Middleware\PostViewCounter;
 use App\Models\View;
-use R;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
 
@@ -20,7 +19,7 @@ class PostViewCounterTest extends TestCase
     {
         $post = post_f()->published()->create();
 
-        $this->get(R::read($post));
+        $this->get(to()->web->read($post));
 
         $post->refresh();
         self::assertEquals(1, $post->views);
@@ -41,8 +40,8 @@ class PostViewCounterTest extends TestCase
     {
         $post = post_f()->published()->create();
 
-        $this->get(R::read($post));
-        $this->get(R::read($post));
+        $this->get(to()->web->read($post));
+        $this->get(to()->web->read($post));
 
         $post->refresh();
         self::assertEquals(2, $post->views);

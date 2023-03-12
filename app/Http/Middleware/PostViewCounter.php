@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Helpers\Routes;
 use App\Http\Controllers\ReadView;
 use App\Models\Post;
 use App\Models\View;
@@ -40,6 +39,6 @@ class PostViewCounter
 
     protected function shouldIncrementView(Request $request, Post|string|null $post): bool
     {
-        return $post instanceof Post && route_is(Routes::read);
+        return $post instanceof Post && route_is(to()->web->read);
     }
 }

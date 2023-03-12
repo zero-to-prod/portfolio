@@ -6,9 +6,10 @@ class RoutesHelper
 {
 
     public function __construct(
-        public GuestRoutes $guest = new GuestRoutes,
         public AdminRouteHelper $admin = new AdminRouteHelper,
-        public ApiRouteHelper $api = new ApiRouteHelper,
+        public ApiRoutes        $api = new ApiRoutes,
+        public GuestRoutes      $guest = new GuestRoutes,
+        public WebRoutes        $web = new WebRoutes,
     )
     {
     }

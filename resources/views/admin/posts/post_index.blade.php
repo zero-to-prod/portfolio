@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\R;
 use App\Http\Controllers\Admin\Post\PostPublishRedirect;
 use App\Models\Post;
 use App\Models\Tag;
@@ -48,7 +47,7 @@ use App\Models\Tag;
                                         <div class="flex justify-between">
                                             <div class="flex  gap-4">
                                                 <figure>
-                                                    <a class="underline" href="{{R::read($post)}}"
+                                                    <a class="underline" href="{{to()->web->read($post)}}"
                                                        target="_blank">
                                                         <x-img class="object-cover h-[100px] rounded-lg"
                                                                :file="$post->featuredImage()"

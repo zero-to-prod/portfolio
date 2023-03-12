@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\R;
 use App\Models\Post;
 use App\Http\Controllers\Api\SubscribeResponse;
 
@@ -60,7 +59,7 @@ $email = SubscribeResponse::email;
                                         await navigator.share({
                                             title: '{{$post->title}}',
                                             text: '{{$post->subtitle}}',
-                                            url: '{{R::read($post)}}',
+                                            url: '{{to()->web->read($post)}}',
                                         });
                                     });
                                 });
@@ -105,7 +104,7 @@ $email = SubscribeResponse::email;
                                     await navigator.share({
                                         title: '{{$post->title}}',
                                         text: '{{$post->subtitle}}',
-                                        url: '{{R::read($post)}}',
+                                        url: '{{to()->web->read($post)}}',
                                     });
                                 });
                             });
@@ -242,7 +241,7 @@ $email = SubscribeResponse::email;
         ?>
         <div class="3col:flex hidden shrink-0 flex-col gap-2 w-[400px]">
             @foreach($posts as $post)
-                <x-a :href="R::read($post)" class="flex flex-row gap-2">
+                <x-a :href="to()->web->read($post)" class="flex flex-row gap-2">
                     <div class="relative shrink-0">
                         <div class="overflow-hidden 2col:rounded-lg">
                             <x-img class="object-cover object-center h-[112px] w-[168px]"

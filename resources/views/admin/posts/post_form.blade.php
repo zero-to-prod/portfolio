@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\R;
 use App\Helpers\Tags;
 use App\Http\Controllers\Admin\Post\PostFormRedirect;
 use App\Http\Controllers\Admin\Post\PostPublishRedirect;
@@ -41,7 +40,7 @@ $in_body = PostFormRedirect::in_body;
                             </form>
                             @if($post_model->isPublished())
                                 <a class="btn btn-xs"
-                                   href="{{R::read($post_model)}}"
+                                   href="{{to()->web->read($post_model)}}"
                                    target="_blank">
                                     View
                                 </a>

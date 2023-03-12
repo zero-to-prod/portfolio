@@ -13,15 +13,15 @@ use App\Http\Controllers\Admin\Tag\TagFormView;
  */
 enum Routes: string
 {
-    case connect = '/connect';
-    case connect_store = '/connect/store';
-    case cv = '/cv';
-    case file = '/file/{file}';
+    case connect = 'connect';
+    case connect_store = 'connect/store';
+    case cv = 'cv';
+    case file = 'file/{file}';
     case welcome = '/';
 
-    case read = '/read/{post}';
-    case search = '/search';
-    case results = '/results';
+    case read = 'read/{post}';
+    case search = 'search';
+    case results = 'results';
 
     /* Api */
     case subscribe = 'subscribe';

@@ -2,8 +2,6 @@
 
 <?php
 
-use App\Helpers\R;
-use App\Helpers\Routes;
 use App\Http\Controllers\ResultsView;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
@@ -12,22 +10,22 @@ use Illuminate\Support\Collection;
 /* @var Tag $tag */
 ?>
 <nav class="hidden w-[238px] mt-[60px] min-[1312px]:block" id="left-nav-wide">
-    <x-a class="{{ route_is(Routes::welcome) ? 'bg-base-200' : '' }}"
-         :href="R::welcome()"
+    <x-a class="{{ route_is(to()->web->welcome) ? 'bg-base-200' : '' }}"
+         :href="to()->web->welcome()"
          title="Home"
     >
         <x-svg :name="'home'"/>
         Home
     </x-a>
     <x-a class="{{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="R::results_popular()"
+         :href="to()->web->resultsPopular()"
          title="Popular"
     >
         <x-svg :name="'popular'"/>
         Popular
     </x-a>
     <x-a class="{{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="R::results_topics()"
+         :href="to()->web->resultsTopics()"
          title="Topics"
     >
         <x-svg :name="'topics'"/>
@@ -35,7 +33,7 @@ use Illuminate\Support\Collection;
     </x-a>
     @forEach($tags as $tag)
         <x-a class="{{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-base-200' : '' }}"
-             :href="R::results($tag)"
+             :href="to()->web->results($tag)"
              title="{{$tag->name}}"
         >
             @if($tag->hasLogo())
@@ -47,22 +45,22 @@ use Illuminate\Support\Collection;
 </nav>
 <nav class="hidden text-xs mt-[60px] min-[780px]:block min-[1312px]:hidden"
      id="left-nav-narrow">
-    <x-a class=" {{ route_is(Routes::welcome) ? 'bg-base-200' : '' }}"
-         :href="R::welcome()"
+    <x-a class=" {{ route_is(to()->web->welcome) ? 'bg-base-200' : '' }}"
+         :href="to()->web->welcome()"
          title="Home"
     >
         <x-svg :name="'home'" class="mx-auto"/>
         Home
     </x-a>
     <x-a class=" {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="R::results_popular()"
+         :href="to()->web->resultsPopular()"
          title="Popular"
     >
         <x-svg class="mx-auto" :name="'popular'"/>
         Popular
     </x-a>
     <x-a class=" {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="R::results_topics()"
+         :href="to()->web->resultsTopics()"
          title="Topics"
     >
         <x-svg class="mx-auto" :name="'topics'"/>
@@ -70,7 +68,7 @@ use Illuminate\Support\Collection;
     </x-a>
     @forEach($tags as $tag)
         <x-a class="!p-4 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-base-200' : '' }}"
-             :href="R::results($tag)"
+             :href="to()->web->results($tag)"
              title="{{$tag->name}}"
         >
             @if($tag->hasLogo())

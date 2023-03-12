@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\R;
 use App\Http\Controllers\ResultsView;
 use App\Models\Post;
 use App\Models\Tag;
@@ -55,7 +54,7 @@ use Illuminate\Database\Eloquent\Collection;
         @endif
         <div class="2col:ml-12 flex mx-auto gap-4 flex-wrap justify-center">
             @forEach(Tag::mostViewed() as $tag)
-                <x-a class="rounded-lg p-2 hover:bg-gray-100 flex" :href="R::results($tag)">
+                <x-a class="rounded-lg p-2 hover:bg-gray-100 flex" :href="to()->web->results($tag)">
                     @if($tag->hasLogo())
                         <x-img class="w-10 rounded" :file="$tag->logo()" :width="80"/>
                     @endif

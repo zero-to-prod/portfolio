@@ -2,10 +2,9 @@
 
 namespace Middleware;
 
-use App\Helpers\Routes;
 use App\Http\Middleware\DenyUnpublishedPosts;
+use App\Models\Post;
 use App\Models\User;
-use R;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
 
@@ -19,7 +18,7 @@ class DenyUnpublishedPostsTest extends TestCase
      */
     public function denies_unpublished_posts(): void
     {
-        $this->get(R::read(post()))->assertNotFound();
+        $this->get(to()->web->read(post()))->assertNotFound();
     }
 
     /**
@@ -28,7 +27,7 @@ class DenyUnpublishedPostsTest extends TestCase
      */
     public function denies_nonexistent_posts(): void
     {
-        $this->get(route_as(Routes::read, 'bogus post'))->assertNotFound();
+        $this->get(to()->web->read(post_f()->make([Post::slug => 'bogus'])))->assertNotFound();
     }
 
     /**
@@ -40,6 +39,6 @@ class DenyUnpublishedPostsTest extends TestCase
         User::factory()->create();
         $post = post_f()->published()->create();
 
-        $this->get(R::read($post))->assertOk();
+        $this->get(to()->web->read($post))->assertOk();
     }
 }

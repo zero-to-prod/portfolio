@@ -3,7 +3,6 @@
 namespace Tests\Feature\Routes;
 
 use App\Helpers\Middlewares;
-use App\Helpers\Routes;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
 
@@ -24,8 +23,8 @@ class WebGroupTest extends TestCase
     {
         return collect($this->getRouteList(Middlewares::web_group))->filter(function ($route) {
             $blacklist = [
-                Routes::read->name,
-                Routes::file->name,
+                to()->web->read->name,
+                to()->web->file->name,
             ];
 
             return !in_array($route[0], $blacklist, true);

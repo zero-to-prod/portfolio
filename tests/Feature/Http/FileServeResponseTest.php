@@ -2,8 +2,8 @@
 
 namespace Http;
 
-use App\Helpers\Routes;
 use App\Http\Controllers\Admin\File\FileServeResponse;
+use App\Models\File;
 use Cache;
 use Closure;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,7 +29,7 @@ class FileServeResponseTest extends TestCase
         Storage::disk(config('filesystems.file_disk'))->put($path . $filename, $fileContent);
         Storage::disk(config('filesystems.file_disk'))->assertExists($path . $filename);
 
-        $response = $this->getAs(Routes::file, [$filename]);
+        $response = $this->get(to()->web->file(new File([File::name => $filename])));
 
         $response->assertStatus(200);
         $response->assertHeader('Content-Type', $mimeType);
@@ -46,7 +46,7 @@ class FileServeResponseTest extends TestCase
     {
         $filename = 'testfile.txt';
         // Mock a request object
-        $this->getAs(Routes::file, [$filename]);
+        $this->get(to()->web->file(new File([File::name => $filename])));
 
         // Mock a cached response
         $cachedResponse = response('cached content', 200);
@@ -54,11 +54,11 @@ class FileServeResponseTest extends TestCase
         // Set up the cache to return the cached response
         Cache::shouldReceive('remember')
             ->once()
-            ->with(route_as(Routes::file, [$filename]), null, Closure::class)
+            ->with(to()->web->file(new File([File::name => $filename])), null, Closure::class)
             ->andReturn($cachedResponse);
 
         // Call the controller method
-        $response = $this->getAs(Routes::file, [$filename]);
+        $response = $this->get(to()->web->file(new File([File::name => $filename])));
 
         // Assert that the response is the cached response
         $response->assertStatus(200);

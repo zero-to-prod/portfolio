@@ -21,7 +21,7 @@ use App\Helpers\AuthRoutes;
     >{{ __('Delete Account') }}</x-danger-button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-        <form method="post" action="{{ route_as(AuthRoutes::profile_destroy) }}" class="p-6">
+        <form method="post" action="{{ to()->auth->profile->destroy() }}" class="p-6">
             @csrf
             @method('delete')
 

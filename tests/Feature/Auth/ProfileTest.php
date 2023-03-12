@@ -68,7 +68,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->delete(AuthRoutes::profile_destroy->value, [
+            ->delete(to()->auth->profile->destroy(), [
                 'password' => 'password',
             ]);
 
@@ -87,7 +87,7 @@ class ProfileTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->from(AuthRoutes::profile_edit->value)
-            ->delete(AuthRoutes::profile_destroy->value, [
+            ->delete(to()->auth->profile->destroy(), [
                 'password' => 'wrong-password',
             ]);
 

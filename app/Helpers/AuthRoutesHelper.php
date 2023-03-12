@@ -11,7 +11,10 @@ class AuthRoutesHelper
     public Routes $emailVerify = Routes::auth_email_verify;
     public Routes $logout = Routes::auth_logout;
 
-    public function __construct(public AuthPasswordRoutesHelper $password = new AuthPasswordRoutesHelper)
+    public function __construct(
+        public AuthPasswordRoutesHelper $password = new AuthPasswordRoutesHelper,
+        public AuthProfileRoutesHelper $profile = new AuthProfileRoutesHelper,
+    )
     {
     }
 

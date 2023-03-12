@@ -19,7 +19,7 @@ Route::postAs(Routes::auth_upload, FileUploadResponse::class);
 /* Profile */
 Route::getAs(AuthRoutes::profile_edit, [ProfileController::class, 'edit']);
 Route::patchAs(AuthRoutes::profile_update, [ProfileController::class, 'update']);
-Route::deleteAs(AuthRoutes::profile_destroy, [ProfileController::class, 'destroy']);
+Route::deleteAs(Routes::auth_profile_destroy, [ProfileController::class, 'destroy']);
 
 /* Email */
 Route::getAs(Routes::auth_email_verificationNotice, EmailVerificationPromptController::class);

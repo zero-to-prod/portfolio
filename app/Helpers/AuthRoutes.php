@@ -8,9 +8,6 @@ namespace App\Helpers;
  */
 enum AuthRoutes: string
 {
-
-    case auth_passwordNew_store = 'password-new/store';
-    case passwordReset_request = 'password-reset/request';
     case passwordReset_store = 'password-reset/email';
     case register = 'register';
     case register_store = 'register/store';

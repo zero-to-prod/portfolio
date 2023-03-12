@@ -37,6 +37,7 @@ enum Routes: string
     case auth_profile_update = 'profile/update';
     case auth_passwordNew_create = 'password-new/{token}';
     case auth_passwordNew_store = 'password-new/store';
+    case auth_passwordReset_request = 'password-reset/request';
 
     /* Api */
     case subscribe = 'subscribe';

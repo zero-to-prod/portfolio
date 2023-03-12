@@ -12,9 +12,10 @@ class AuthRoutesHelper
     public Routes $logout = Routes::auth_logout;
 
     public function __construct(
-        public AuthPasswordRoutesHelper $password = new AuthPasswordRoutesHelper,
-        public AuthPasswordNewRoutesHelper $passwordNew = new AuthPasswordNewRoutesHelper,
-        public AuthProfileRoutesHelper $profile = new AuthProfileRoutesHelper,
+        public AuthPasswordNewRoutesHelper   $passwordNew = new AuthPasswordNewRoutesHelper,
+        public AuthPasswordResetRoutesHelper $passwordReset = new AuthPasswordResetRoutesHelper,
+        public AuthPasswordRoutesHelper      $password = new AuthPasswordRoutesHelper,
+        public AuthProfileRoutesHelper       $profile = new AuthProfileRoutesHelper,
     )
     {
     }

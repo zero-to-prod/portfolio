@@ -15,7 +15,7 @@ class PasswordResetTest extends TestCase
 
     public function test_reset_password_link_screen_can_be_rendered(): void
     {
-        $this->get(AuthRoutes::passwordReset_request->value)->assertOk();
+        $this->get(to()->auth->passwordReset->request())->assertOk();
     }
 
     public function test_reset_password_link_can_be_requested(): void

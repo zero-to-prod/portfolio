@@ -1,11 +1,5 @@
-<?php
-
-use App\Helpers\AuthRoutes;
-
-?>
-
 <x-guest-layout>
-    <form method="POST" action="{{ route_as(AuthRoutes::register_store) }}">
+    <form method="POST" action="{{ to()->auth->register->store() }}">
         @csrf
 
         <!-- Name -->

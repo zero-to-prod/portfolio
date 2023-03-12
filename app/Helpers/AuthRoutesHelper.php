@@ -16,6 +16,7 @@ class AuthRoutesHelper
         public AuthPasswordResetRoutesHelper $passwordReset = new AuthPasswordResetRoutesHelper,
         public AuthPasswordRoutesHelper      $password = new AuthPasswordRoutesHelper,
         public AuthProfileRoutesHelper       $profile = new AuthProfileRoutesHelper,
+        public AuthRegisterRoutesHelper      $register = new AuthRegisterRoutesHelper,
     )
     {
     }

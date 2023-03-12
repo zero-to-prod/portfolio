@@ -39,6 +39,8 @@ enum Routes: string
     case auth_passwordNew_store = 'password-new/store';
     case auth_passwordReset_request = 'password-reset/request';
     case auth_passwordReset_store = 'password-reset/email';
+    case auth_register_index = 'register';
+    case auth_register_store = 'register/store';
 
     /* Api */
     case subscribe = 'subscribe';

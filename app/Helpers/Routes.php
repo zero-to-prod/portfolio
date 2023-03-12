@@ -29,6 +29,7 @@ enum Routes: string
     case auth_email_verificationNotification = 'email/verification-notification';
     case auth_email_verify = 'email/verify/{id}/{hash}';
     case auth_logout = 'logout';
+    case auth_password_confirm = 'password/confirm';
 
     /* Api */
     case subscribe = 'subscribe';

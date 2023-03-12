@@ -29,7 +29,7 @@ Route::postAs(Routes::auth_email_verificationNotification, [EmailVerificationNot
     ->middlewareAs(Middlewares::throttle->value . ':6,1');
 
 /* Auth */
-Route::getAs(AuthRoutes::password_confirm, [ConfirmablePasswordController::class, 'show']);
+Route::getAs(Routes::auth_password_confirm, [ConfirmablePasswordController::class, 'show']);
 Route::postAs(AuthRoutes::password_store, [ConfirmablePasswordController::class, 'store']);
 Route::postAs(Routes::auth_logout, [AuthenticatedSessionController::class, 'destroy']);
 Route::putAs(AuthRoutes::password_update, [PasswordController::class, 'update']);

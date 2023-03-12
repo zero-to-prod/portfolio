@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')"/>
 
-    <form method="POST" action="{{ r()->guest->loginStore() }}">
+    <form method="POST" action="{{ to()->guest->loginStore() }}">
         @csrf
 
         <!-- Email Address -->

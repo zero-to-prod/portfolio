@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center flex-row-reverse">
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <a href="{{R::admin_tag_create()}}" class="btn btn-xs">
+                    <a href="{{to()->admin->tag->create()}}" class="btn btn-xs">
                         New Tag
                     </a>
                 </div>
@@ -40,7 +40,7 @@ use Illuminate\Support\Collection;
                                 <tr>
                                     <td class="p-3.5">
                                         <a class="flex justify-between"
-                                           href="{{R::admin_tag_edit($tag)}}">
+                                           href="{{to()->admin->tag->edit($tag)}}">
                                             <div class="flex gap-4">
                                                 @if($tag->logo())
                                                     <x-img class="object-cover w-[100px] rounded-lg"

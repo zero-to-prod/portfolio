@@ -3,7 +3,6 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
-use App\Helpers\R;
 use App\Http\Controllers\Controller;
 use App\Models\File;
 use App\Models\Post;
@@ -71,6 +70,6 @@ class PostFormRedirect extends Controller
 
         DB::commit();
 
-        return redirect()->to(R::admin_post_edit($post));
+        return redirect()->to(to()->admin->post->edit($post));
     }
 }

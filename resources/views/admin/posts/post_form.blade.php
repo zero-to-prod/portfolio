@@ -28,7 +28,7 @@ $in_body = PostFormRedirect::in_body;
                 <div class="flex flex-col mx-auto my-8 max-w-xl px-4">
                     <div class="flex justify-between">
                         @isset($post_model)
-                            <form action="{{R::admin_post_publish($post_model)}}" method="post">
+                            <form action="{{to()->admin->post->publish($post_model)}}" method="post">
                                 @csrf
                                 <input name="{{PostPublishRedirect::id}}" type="hidden" value="{{$post_model->id}}">
                                 @if($post_model->isPublished())
@@ -48,7 +48,7 @@ $in_body = PostFormRedirect::in_body;
                             @endif
                         @endisset
                     </div>
-                    <form action="{{R::admin_post_store()}}"
+                    <form action="{{to()->admin->post->store()}}"
                           method="post"
                           enctype="multipart/form-data">
                         @csrf
@@ -160,18 +160,20 @@ $in_body = PostFormRedirect::in_body;
                                     <p>{{ $errors->first($in_body) }}</p>
                                 @endif
                             </x-form-control-dark>
-                            @foreach($post_model->inBodyFiles() as $file)
-                                <div class="flex space-x-6 sm:col-span-2">
-                                    <x-img class="object-cover h-[100px] rounded-lg"
-                                           :file="$file"
-                                           :height="100"
-                                    />
-                                    <p class=" text-white">
-                                        ![{{$file->original_name}}](/file/{{$file->name}})
-                                    </p>
+                            @if($post_model?->inBodyFiles()->count())
+                                @foreach($post_model->inBodyFiles() as $file)
+                                    <div class="flex space-x-6 sm:col-span-2">
+                                        <x-img class="object-cover h-[100px] rounded-lg"
+                                               :file="$file"
+                                               :height="100"
+                                        />
+                                        <p class=" text-white">
+                                            ![{{$file->original_name}}](/file/{{$file->name}})
+                                        </p>
 
-                                </div>
-                            @endforeach
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                         <div class="mt-6">
                             <button class="btn btn-wide">Save</button>

@@ -8,8 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Route;
 
-if (!function_exists('r')) {
-    function r(): RoutesHelper
+if (!function_exists('to')) {
+    function to(): RoutesHelper
     {
         return new RoutesHelper;
     }

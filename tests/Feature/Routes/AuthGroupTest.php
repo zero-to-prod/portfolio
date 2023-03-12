@@ -34,11 +34,11 @@ class AuthGroupTest extends TestCase
             $blacklist = [
                 AuthRoutes::email_verificationNotice->name,
                 AuthRoutes::email_verify->name,
-                AdminRoutes::post_edit->name,
-                AdminRoutes::tag_edit->name,
-                AdminRoutes::author_edit->name,
-                AdminRoutes::post_index->name,
-                AdminRoutes::post_create->name,
+                to()->admin->author->edit->name,
+                to()->admin->tag->edit->name,
+                to()->admin->post->edit->name,
+                to()->admin->post->index->name,
+                to()->admin->post->create->name,
             ];
             return !in_array($route[0], $blacklist, true);
         })->toArray();

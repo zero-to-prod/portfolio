@@ -57,7 +57,7 @@ class PostViewCounterTest extends TestCase
     {
         $post = post_f()->published()->create();
 
-        $this->get(R::admin_post_edit($post));
+        $this->get(to()->admin->post->edit($post));
 
         $post->refresh();
         self::assertEquals(0, $post->views);

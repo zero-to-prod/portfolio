@@ -17,7 +17,7 @@ class AuthenticateTest extends TestCase
      */
     public function redirects_to_login_when_log_logged_in(): void
     {
-        $this->getAs(AdminRoutes::dashboard)->assertRedirect(r()->guest->login());
+        $this->get(to()->admin->dashboard())->assertRedirect(to()->guest->login());
     }
 
     /**
@@ -30,7 +30,7 @@ class AuthenticateTest extends TestCase
             'X-Requested-With' => 'XMLHttpRequest',
             'Accept' => 'application/json',
             'Content-Type' => 'application/json'])
-            ->getAs(AdminRoutes::dashboard)
+            ->get(to()->admin->dashboard->value)
             ->assertJson([]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Author;
 
-use App\Helpers\R;
 use App\Http\Controllers\Controller;
 use App\Models\Author;
 use App\Models\File;
@@ -51,6 +50,6 @@ class AuthorFormRedirect extends Controller
 
         DB::commit();
 
-        return redirect()->to(R::admin_author_edit($author));
+        return redirect()->to(to()->admin->author->edit($author));
     }
 }

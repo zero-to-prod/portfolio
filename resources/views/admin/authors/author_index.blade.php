@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center flex-row-reverse">
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <a href="{{R::admin_author_create()}}" class="btn btn-xs">
+                    <a href="{{to()->admin->author->create()}}" class="btn btn-xs">
                         New Author
                     </a>
                 </div>
@@ -37,7 +37,7 @@ use Illuminate\Support\Collection;
                                 <tr>
                                     <td class="p-3.5">
                                         <a class="flex justify-between"
-                                           href="{{R::admin_author_edit($author)}}">
+                                           href="{{to()->admin->author->edit($author)}}">
                                             <div class="flex gap-4 h-[100px]">
                                                 @if($author->avatar())
                                                     <x-img class="object-cover rounded-lg"

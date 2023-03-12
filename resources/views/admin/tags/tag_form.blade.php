@@ -16,7 +16,7 @@ $logo = TagFormRedirect::logo;
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex flex-col mx-auto my-8 max-w-xl px-4">
-                    <form action="{{R::admin_tag_store()}}"
+                    <form action="{{to()->admin->tag->store()}}"
                           method="post"
                           enctype="multipart/form-data">
                         @csrf

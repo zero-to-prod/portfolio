@@ -13,7 +13,7 @@ use App\Models\Tag;
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center flex-row-reverse">
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <a href="{{R::admin_post_create()}}" class="btn btn-xs">
+                    <a href="{{to()->admin->post->create->value}}" class="btn btn-xs">
                         New Post
                     </a>
                 </div>
@@ -63,7 +63,7 @@ use App\Models\Tag;
                                         <div>
                                             <div>
                                                 <div>
-                                                    <a href="{{R::admin_post_edit($post)}}"
+                                                    <a href="{{to()->admin->post->edit($post)}}"
                                                        class="font-bold">{{$post->title}}</a>
                                                     <p>{{$post->authors->first()->name}}</p>
                                                     <p title="{{$post->subtitle}}">{{$post->subtitle}}</p>
@@ -83,7 +83,7 @@ use App\Models\Tag;
                                     <td>
                                         <div class="my-auto">
                                             @if($post->isNotPublished())
-                                                <form action="{{R::admin_post_publish($post)}}"
+                                                <form action="{{to()->admin->post->publish($post)}}"
                                                       method="post">
                                                     @csrf
                                                     <input name="{{PostPublishRedirect::id}}"

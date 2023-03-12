@@ -4,7 +4,6 @@ namespace App\Helpers;
 
 use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Http\Controllers\ResultsView;
-use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
 use App\Models\Tag;
@@ -24,61 +23,6 @@ class R
             FileServeResponse::width => $width,
             FileServeResponse::height => $height,
         ]);
-    }
-
-    public static function admin_author_index(): string
-    {
-        return route_as(AdminRoutes::author_index);
-    }
-
-    public static function admin_author_create(): string
-    {
-        return route_as(AdminRoutes::author_create);
-    }
-
-    public static function admin_author_store(): string
-    {
-        return route_as(AdminRoutes::author_store);
-    }
-
-    public static function admin_author_edit(Author $author): string
-    {
-        return route_as(AdminRoutes::author_edit, $author);
-    }
-
-    public static function admin_tag_create(): string
-    {
-        return route_as(AdminRoutes::tag_create);
-    }
-
-    public static function admin_tag_store(): string
-    {
-        return route_as(AdminRoutes::tag_store);
-    }
-
-    public static function admin_post_create(): string
-    {
-        return route_as(AdminRoutes::post_create);
-    }
-
-    public static function admin_post_store(): string
-    {
-        return route_as(AdminRoutes::post_store);
-    }
-
-    public static function admin_post_publish(Post $post): string
-    {
-        return route_as(AdminRoutes::post_publish, $post);
-    }
-
-    public static function admin_post_edit(Post $post): string
-    {
-        return route_as(AdminRoutes::post_edit, $post);
-    }
-
-    public static function admin_tag_edit(Tag $tag): string
-    {
-        return route_as(AdminRoutes::tag_edit, $tag);
     }
 
     public static function email_verificationNotification(): string
@@ -133,10 +77,5 @@ class R
     public static function search(): string
     {
         return route_as(Routes::search);
-    }
-
-    public static function dashboard(): string
-    {
-        return route_as(AdminRoutes::dashboard);
     }
 }

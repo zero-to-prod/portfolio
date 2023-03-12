@@ -162,7 +162,7 @@ $email = SubscribeResponse::email;
                         const getElement = (id) => document.querySelector(`#${id}`);
                         const endpoint = "{{ route_as(Routes::api_subscribe) }}";
 
-                        const cta = getElement('cta');
+                        // const cta = getElement('cta');
                         const ctaExpanded = getElement('cta-expanded');
                         const close = getElement('close');
                         const success = getElement('success');
@@ -183,14 +183,14 @@ $email = SubscribeResponse::email;
                             }
                         });
 
-                        cta.addEventListener('click', () => {
-                            cta.classList.toggle('hidden');
-                            ctaExpanded.classList.toggle('hidden');
-                        });
+                        // cta.addEventListener('click', () => {
+                        //     cta.classList.toggle('hidden');
+                        //     ctaExpanded.classList.toggle('hidden');
+                        // });
 
                         close.addEventListener('click', () => {
-                            cta.classList.toggle('hidden');
-                            ctaExpanded.classList.toggle('hidden');
+                            // cta.classList.toggle('hidden');
+                            // ctaExpanded.classList.toggle('hidden');
                             success.classList.add('hidden');
                             error.classList.add('hidden');
                             email.classList.remove('border', 'border-error');

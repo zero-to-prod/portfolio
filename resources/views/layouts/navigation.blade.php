@@ -2,6 +2,7 @@
 
 use App\Helpers\R;
 use App\Helpers\Routes;
+use App\Helpers\AdminRoutes;
 
 ?>
 
@@ -24,13 +25,13 @@ use App\Helpers\Routes;
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route_as(Routes::admin_post_index)"
+                    <x-nav-link :href="route_as(AdminRoutes::post_index)"
                                 :active="route_contains('post')">
                         {{ __('Posts') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route_as(Routes::admin_tag_index)"
+                    <x-nav-link :href="route_as(AdminRoutes::tag_index)"
                                 :active="route_contains('tag')">
                         {{ __('Tags') }}
                     </x-nav-link>
@@ -101,15 +102,15 @@ use App\Helpers\Routes;
                                    :active="route_is(Routes::dashboard)">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route_as(Routes::admin_post_index)"
+            <x-responsive-nav-link :href="route_as(AdminRoutes::post_index)"
                                    :active="route_contains('post')">
                 {{ __('Posts') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route_as(Routes::admin_tag_index)"
+            <x-responsive-nav-link :href="route_as(AdminRoutes::tag_index)"
                                    :active="route_contains('tag')">
                 {{ __('Tags') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route_as(Routes::admin_author_index)"
+            <x-responsive-nav-link :href="route_as(AdminRoutes::author_index)"
                                    :active="route_contains('author')">
                 {{ __('Authors') }}
             </x-responsive-nav-link>

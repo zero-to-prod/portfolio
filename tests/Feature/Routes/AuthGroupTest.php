@@ -2,6 +2,7 @@
 
 namespace Routes;
 
+use App\Helpers\AdminRoutes;
 use App\Helpers\Middlewares;
 use App\Helpers\Routes;
 use App\Models\User;
@@ -33,10 +34,11 @@ class AuthGroupTest extends TestCase
             $blacklist = [
                 Routes::email_verificationNotice->name,
                 Routes::email_verify->name,
-                Routes::admin_post_edit->name,
-                Routes::admin_tag_edit->name,
-                Routes::admin_author_edit->name,
-                Routes::admin_post_index->name,
+                AdminRoutes::post_edit->name,
+                AdminRoutes::tag_edit->name,
+                AdminRoutes::author_edit->name,
+                AdminRoutes::post_index->name,
+                AdminRoutes::post_create->name,
             ];
             return !in_array($route[0], $blacklist, true);
         })->toArray();

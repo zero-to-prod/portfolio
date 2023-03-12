@@ -1,8 +1,8 @@
 <?php
 /** @noinspection StaticClosureCanBeUsedInspection */
 
-use App\Helpers\Routes;
+use App\Helpers\ApiRoutes;
 use App\Http\Controllers\Api\SubscribeResponse;
 use Illuminate\Support\Facades\Route;
 
-Route::postAs(Routes::api_subscribe, SubscribeResponse::class);
+Route::postAs(ApiRoutes::subscribe, SubscribeResponse::class);

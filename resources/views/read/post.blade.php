@@ -1,7 +1,7 @@
 <?php
 
 use App\Helpers\R;
-use App\Helpers\Routes;
+use App\Helpers\ApiRoutes;
 use App\Models\Post;
 use App\Http\Controllers\Api\SubscribeResponse;
 
@@ -160,7 +160,7 @@ $email = SubscribeResponse::email;
                     </div>
                     <script>
                         const getElement = (id) => document.querySelector(`#${id}`);
-                        const endpoint = "{{ route_as(Routes::api_subscribe) }}";
+                        const endpoint = "{{ route_as(ApiRoutes::subscribe) }}";
 
                         // const cta = getElement('cta');
                         const ctaExpanded = getElement('cta-expanded');

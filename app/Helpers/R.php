@@ -26,53 +26,53 @@ class R
     }
     public static function admin_author_index(): string
     {
-        return route_as(Routes::admin_author_index);
+        return route_as(AdminRoutes::author_index);
     }
     public static function admin_author_create(): string
     {
-        return route_as(Routes::admin_author_create);
+        return route_as(AdminRoutes::author_create);
     }
     public static function admin_author_store(): string
     {
-        return route_as(Routes::admin_author_store);
+        return route_as(AdminRoutes::author_store);
     }
 
     public static function admin_author_edit(Author $author): string
     {
-        return route_as(Routes::admin_author_edit, $author);
+        return route_as(AdminRoutes::author_edit, $author);
     }
     public static function admin_tag_create(): string
     {
-        return route_as(Routes::admin_tag_create);
+        return route_as(AdminRoutes::tag_create);
     }
     public static function admin_tag_store(): string
     {
-        return route_as(Routes::admin_tag_store);
+        return route_as(AdminRoutes::tag_store);
     }
 
     public static function admin_post_create(): string
     {
-        return route_as(Routes::admin_post_create);
+        return route_as(AdminRoutes::post_create);
     }
 
     public static function admin_post_store(): string
     {
-        return route_as(Routes::admin_post_store);
+        return route_as(AdminRoutes::post_store);
     }
 
     public static function admin_post_publish(Post $post): string
     {
-        return route_as(Routes::admin_post_publish, $post);
+        return route_as(AdminRoutes::post_publish, $post);
     }
 
     public static function admin_post_edit(Post $post): string
     {
-        return route_as(Routes::admin_post_edit, $post);
+        return route_as(AdminRoutes::post_edit, $post);
     }
 
     public static function admin_tag_edit(Tag $tag): string
     {
-        return route_as(Routes::admin_tag_edit, $tag);
+        return route_as(AdminRoutes::tag_edit, $tag);
     }
 
     public static function email_verificationNotification(): string

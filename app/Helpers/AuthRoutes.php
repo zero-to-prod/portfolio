@@ -8,7 +8,6 @@ namespace App\Helpers;
  */
 enum AuthRoutes: string
 {
-    case password_store = 'password/store';
     case password_update = 'password/update';
     case profile_destroy = '/profile/destroy';
     case profile_edit = '/profile/edit';

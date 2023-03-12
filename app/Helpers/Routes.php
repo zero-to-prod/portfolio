@@ -30,6 +30,7 @@ enum Routes: string
     case auth_email_verify = 'email/verify/{id}/{hash}';
     case auth_logout = 'logout';
     case auth_password_confirm = 'password/confirm';
+    case auth_password_store = 'password/store';
 
     /* Api */
     case subscribe = 'subscribe';

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Helpers\Routing;
 
-class AuthRegisterRoutesHelper
+use App\Helpers\Routes;
+
+class RegisterRoutes
 {
 
     public Routes $index = Routes::auth_register_index;

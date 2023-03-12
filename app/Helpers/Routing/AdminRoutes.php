@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Helpers\Routing;
+
+use App\Helpers\Routes;
 
 class AdminRoutes
 {

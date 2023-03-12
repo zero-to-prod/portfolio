@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Helpers\Routing;
 
+use App\Helpers\Routes;
 use App\Models\Tag;
 
 class TagRoutes

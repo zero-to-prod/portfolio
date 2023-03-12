@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Helpers\Routing;
 
-class AuthPasswordResetRoutesHelper
+use App\Helpers\Routes;
+
+class PasswordResetRoutes
 {
 
     public Routes $request = Routes::auth_passwordReset_request;

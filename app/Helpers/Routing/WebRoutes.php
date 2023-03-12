@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Helpers\Routing;
 
+use App\Helpers\Routes;
 use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Http\Controllers\ResultsView;
 use App\Models\File;

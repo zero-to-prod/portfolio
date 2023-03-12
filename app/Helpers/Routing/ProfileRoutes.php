@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Helpers\Routing;
 
-class AuthProfileRoutesHelper
+use App\Helpers\Routes;
+
+class ProfileRoutes
 {
 
     public Routes $destroy = Routes::auth_profile_destroy;

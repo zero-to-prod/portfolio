@@ -45,6 +45,10 @@ enum Routes: string
     /* Api */
     case subscribe = 'subscribe';
 
+    /* Guest */
+    case guest_login_index = 'login';
+    case guest_login_store = 'login/store';
+
     /* Admin */
 
     case dashboard = 'dashboard';

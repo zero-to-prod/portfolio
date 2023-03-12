@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Helpers\Routing;
 
-class AuthRoutesHelper
+use App\Helpers\Routes;
+
+class AuthRoutes
 {
 
     public Routes $upload = Routes::auth_upload;
@@ -12,11 +14,11 @@ class AuthRoutesHelper
     public Routes $logout = Routes::auth_logout;
 
     public function __construct(
-        public AuthPasswordNewRoutesHelper   $passwordNew = new AuthPasswordNewRoutesHelper,
-        public AuthPasswordResetRoutesHelper $passwordReset = new AuthPasswordResetRoutesHelper,
-        public AuthPasswordRoutesHelper      $password = new AuthPasswordRoutesHelper,
-        public AuthProfileRoutesHelper       $profile = new AuthProfileRoutesHelper,
-        public AuthRegisterRoutesHelper      $register = new AuthRegisterRoutesHelper,
+        public PasswordNewRoutes   $passwordNew = new PasswordNewRoutes,
+        public PasswordResetRoutes $passwordReset = new PasswordResetRoutes,
+        public PasswordRoutes      $password = new PasswordRoutes,
+        public ProfileRoutes       $profile = new ProfileRoutes,
+        public RegisterRoutes      $register = new RegisterRoutes,
     )
     {
     }

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Helpers\Routing;
 
-class AuthPasswordNewRoutesHelper
+use App\Helpers\Routes;
+
+class PasswordNewRoutes
 {
 
     public Routes $create = Routes::auth_passwordNew_create;

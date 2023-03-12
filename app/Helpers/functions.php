@@ -1,7 +1,7 @@
 <?php
 
 use App\Helpers\Environments;
-use App\Helpers\RoutesHelper;
+use App\Helpers\Routing\To;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -9,9 +9,9 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Route;
 
 if (!function_exists('to')) {
-    function to(): RoutesHelper
+    function to(): To
     {
-        return new RoutesHelper;
+        return new To;
     }
 }
 

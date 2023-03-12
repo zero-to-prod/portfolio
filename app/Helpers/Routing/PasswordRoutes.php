@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Helpers\Routing;
 
-class AuthPasswordRoutesHelper
+use App\Helpers\Routes;
+
+class PasswordRoutes
 {
 
     public Routes $store = Routes::auth_password_store;

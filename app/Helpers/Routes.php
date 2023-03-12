@@ -31,6 +31,7 @@ enum Routes: string
     case auth_logout = 'logout';
     case auth_password_confirm = 'password/confirm';
     case auth_password_store = 'password/store';
+    case auth_password_update = 'password/update';
 
     /* Api */
     case subscribe = 'subscribe';

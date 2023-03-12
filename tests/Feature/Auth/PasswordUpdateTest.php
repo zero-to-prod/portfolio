@@ -19,7 +19,7 @@ class PasswordUpdateTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->from(AuthRoutes::profile_edit->value)
-            ->put(AuthRoutes::password_update->value, [
+            ->put(to()->auth->password->update(), [
                 'current_password' => 'password',
                 'password' => 'new-password',
                 'password_confirmation' => 'new-password',
@@ -39,7 +39,7 @@ class PasswordUpdateTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->from(AuthRoutes::profile_edit->value)
-            ->put(AuthRoutes::password_update->value, [
+            ->put(to()->auth->password->update(), [
                 'current_password' => 'wrong-password',
                 'password' => 'new-password',
                 'password_confirmation' => 'new-password',

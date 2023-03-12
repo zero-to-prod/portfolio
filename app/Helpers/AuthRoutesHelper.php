@@ -15,8 +15,6 @@ class AuthRoutesHelper
     {
     }
 
-
-
     public function logout(): string
     {
         return route_as($this->logout);

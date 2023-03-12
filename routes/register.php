@@ -12,4 +12,4 @@ Route::postAs(AuthRoutes::register_store, [RegisteredUserController::class, 'sto
 Route::get(AuthRoutes::passwordReset_request->value, [PasswordResetLinkController::class, 'create'])->name('password.request');
 Route::postAs(AuthRoutes::passwordReset_store, [PasswordResetLinkController::class, 'store']);
 Route::getAs(Routes::auth_passwordNew_create, [NewPasswordController::class, 'create']);
-Route::post(AuthRoutes::passwordNew_store->value, [NewPasswordController::class, 'store'])->name('password.store');
+Route::post(Routes::auth_passwordNew_store->value, [NewPasswordController::class, 'store'])->name('password.store');

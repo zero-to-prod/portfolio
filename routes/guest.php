@@ -1,8 +1,8 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\AuthRoutes;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
-Route::getAs(Routes::login, [AuthenticatedSessionController::class, 'create']);
-Route::postAs(Routes::login_store, [AuthenticatedSessionController::class, 'store']);
+Route::getAs(AuthRoutes::login, [AuthenticatedSessionController::class, 'create']);
+Route::postAs(AuthRoutes::login_store, [AuthenticatedSessionController::class, 'store']);

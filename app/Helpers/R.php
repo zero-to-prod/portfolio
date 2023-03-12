@@ -14,7 +14,7 @@ class R
 
     public static function upload(): string
     {
-        return route_as(Routes::upload);
+        return route_as(AuthRoutes::upload);
     }
     public static function file(File $file, ?int $width = null, ?int $height = null): string
     {
@@ -77,12 +77,12 @@ class R
 
     public static function email_verificationNotification(): string
     {
-        return route_as(Routes::email_verificationNotification);
+        return route_as(AuthRoutes::email_verificationNotification);
     }
 
     public static function profile_update(): string
     {
-        return route_as(Routes::profile_update);
+        return route_as(AuthRoutes::profile_update);
     }
 
     public static function results_popular(): string

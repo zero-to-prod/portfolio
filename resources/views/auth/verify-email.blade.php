@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\AuthRoutes;
 
 ?>
 <x-guest-layout>
@@ -15,7 +15,7 @@ use App\Helpers\Routes;
     @endif
 
     <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{ route_as(Routes::email_verificationNotification) }}">
+        <form method="POST" action="{{ route_as(AuthRoutes::email_verificationNotification) }}">
             @csrf
 
             <div>
@@ -25,7 +25,7 @@ use App\Helpers\Routes;
             </div>
         </form>
 
-        <form method="POST" action="{{ route_as(Routes::logout) }}">
+        <form method="POST" action="{{ route_as(AuthRoutes::logout) }}">
             @csrf
 
             <button type="submit"

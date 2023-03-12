@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\AuthRoutes;
 
 ?>
 <x-guest-layout>
@@ -11,7 +11,7 @@ use App\Helpers\Routes;
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')"/>
 
-    <form method="POST" action="{{ route_as(Routes::passwordReset_store) }}">
+    <form method="POST" action="{{ route_as(AuthRoutes::passwordReset_store) }}">
         @csrf
 
         <!-- Email Address -->

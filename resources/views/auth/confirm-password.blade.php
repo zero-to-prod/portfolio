@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\AuthRoutes;
 
 ?>
 <x-guest-layout>
@@ -8,7 +8,7 @@ use App\Helpers\Routes;
         {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
     </div>
 
-    <form method="POST" action="{{ route_as(Routes::password_confirm) }}">
+    <form method="POST" action="{{ route_as(AuthRoutes::password_confirm) }}">
         @csrf
 
         <!-- Password -->

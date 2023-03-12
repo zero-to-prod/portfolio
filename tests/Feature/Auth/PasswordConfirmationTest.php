@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Helpers\Routes;
+use App\Helpers\AuthRoutes;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -15,7 +15,7 @@ class PasswordConfirmationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->getAs(Routes::password_confirm);
+        $response = $this->actingAs($user)->getAs(AuthRoutes::password_confirm);
 
         $response->assertStatus(200);
     }
@@ -24,7 +24,7 @@ class PasswordConfirmationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->post(Routes::password_store->value, [
+        $response = $this->actingAs($user)->post(AuthRoutes::password_store->value, [
             'password' => 'password',
         ]);
 
@@ -36,7 +36,7 @@ class PasswordConfirmationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->post(Routes::password_store->value, [
+        $response = $this->actingAs($user)->post(AuthRoutes::password_store->value, [
             'password' => 'wrong-password',
         ]);
 

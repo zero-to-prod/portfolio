@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Helpers\Routes;
+use App\Helpers\AuthRoutes;
 use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -15,7 +15,7 @@ class PasswordResetTest extends TestCase
 
     public function test_reset_password_link_screen_can_be_rendered(): void
     {
-        $this->get(Routes::passwordReset_request->value)->assertOk();
+        $this->get(AuthRoutes::passwordReset_request->value)->assertOk();
     }
 
     public function test_reset_password_link_can_be_requested(): void
@@ -24,7 +24,7 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->postAs(Routes::passwordReset_store, ['email' => $user->email]);
+        $this->postAs(AuthRoutes::passwordReset_store, ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class);
     }
@@ -35,10 +35,10 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->postAs(Routes::passwordReset_store, ['email' => $user->email]);
+        $this->postAs(AuthRoutes::passwordReset_store, ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
-            $response = $this->get(Routes::passwordNew_create->value.$notification->token);
+            $response = $this->get(AuthRoutes::passwordNew_create->value.$notification->token);
 
             $response->assertStatus(200);
 
@@ -52,10 +52,10 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->postAs(Routes::passwordReset_store, ['email' => $user->email]);
+        $this->postAs(AuthRoutes::passwordReset_store, ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
-            $response = $this->post(Routes::passwordNew_store->value, [
+            $response = $this->post(AuthRoutes::passwordNew_store->value, [
                 'token' => $notification->token,
                 'email' => $user->email,
                 'password' => 'password',

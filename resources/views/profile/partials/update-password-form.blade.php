@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\AuthRoutes;
 
 ?>
 
@@ -15,7 +15,7 @@ use App\Helpers\Routes;
         </p>
     </header>
 
-    <form method="post" action="{{ route_as(Routes::password_update) }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route_as(AuthRoutes::password_update) }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
 

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Middleware;
 
+use App\Helpers\AuthRoutes;
 use App\Helpers\Routes;
 use App\Http\Middleware\Authenticate;
 use Tests\Support\GetRouteList;
@@ -17,7 +18,7 @@ class AuthenticateTest extends TestCase
      */
     public function redirects_to_login_when_log_logged_in(): void
     {
-        $this->getAs(Routes::dashboard)->assertRedirectAs(Routes::login);
+        $this->getAs(Routes::dashboard)->assertRedirectAs(AuthRoutes::login);
     }
 
     /**

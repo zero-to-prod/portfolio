@@ -1,11 +1,11 @@
 <?php
 
-use App\Helpers\Routes;
+use App\Helpers\AuthRoutes;
 
 ?>
 
 <x-guest-layout>
-    <form method="POST" action="{{ route_as(Routes::register_store) }}">
+    <form method="POST" action="{{ route_as(AuthRoutes::register_store) }}">
         @csrf
 
         <!-- Name -->
@@ -49,7 +49,7 @@ use App\Helpers\Routes;
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-               href="{{ route_as(Routes::login) }}">
+               href="{{ route_as(AuthRoutes::login) }}">
                 {{ __('Already registered?') }}
             </a>
 

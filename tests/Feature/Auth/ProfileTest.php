@@ -2,6 +2,7 @@
 
 namespace Auth;
 
+use App\Helpers\AuthRoutes;
 use App\Helpers\Routes;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,7 +18,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->getAs(Routes::profile_edit);
+            ->getAs(AuthRoutes::profile_edit);
 
         $response->assertOk();
     }
@@ -28,14 +29,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch(Routes::profile_update->value, [
+            ->patch(AuthRoutes::profile_update->value, [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect(Routes::profile_edit->value);
+            ->assertRedirect(AuthRoutes::profile_edit->value);
 
         $user->refresh();
 
@@ -50,14 +51,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch(Routes::profile_update->value, [
+            ->patch(AuthRoutes::profile_update->value, [
                 'name' => 'Test User',
                 'email' => $user->email,
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect(Routes::profile_edit->value);
+            ->assertRedirect(AuthRoutes::profile_edit->value);
 
         $this->assertNotNull($user->refresh()->email_verified_at);
     }
@@ -68,7 +69,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->delete(Routes::profile_destroy->value, [
+            ->delete(AuthRoutes::profile_destroy->value, [
                 'password' => 'password',
             ]);
 
@@ -86,14 +87,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->from(Routes::profile_edit->value)
-            ->delete(Routes::profile_destroy->value, [
+            ->from(AuthRoutes::profile_edit->value)
+            ->delete(AuthRoutes::profile_destroy->value, [
                 'password' => 'wrong-password',
             ]);
 
         $response
             ->assertSessionHasErrorsIn('userDeletion', 'password')
-            ->assertRedirect(Routes::profile_edit->value);
+            ->assertRedirect(AuthRoutes::profile_edit->value);
 
         $this->assertNotNull($user->fresh());
     }

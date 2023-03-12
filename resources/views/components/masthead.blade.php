@@ -10,18 +10,18 @@ $search = SearchRedirect::search;
 
 ?>
 <header class="fixed top-0 z-50 mx-auto w-full bg-primary-content">
-    <div class="flex justify-between">
+    <div class="flex justify-between gap-2">
         <button id="toggle-navbar-btn"
                 class="hidden btn-ghost min-[1312px]:block"
                 aria-label="Menu"
                 type="button">
             <x-svg :name="'hamburger'" class="m-auto block h-6 w-[64px]"/>
         </button>
-        <x-a class="mr-2 flex px-2 py-4 text-lg 2col:text-xl btn-ghost font-semibold" :href="R::welcome()">
-            <span class="rounded-l pr-1 pl-2 bg-white text-sky-600 shadow">dev</span>
-            <span class="rounded-r bg-sky-600 pr-2 pl-1 text-white shadow-md">RED</span>
+        <x-a class="flex px-2 py-4 text-lg 2col:text-xl btn-ghost font-semibold" :href="R::welcome()">
+            <span class="rounded-l pr-1 pl-2 bg-white text-sky-600 shadow my-auto">dev</span>
+            <span class="rounded-r bg-sky-600 pr-2 pl-1 text-white shadow-md my-auto">RED</span>
         </x-a>
-        <div class="mx-auto my-auto w-full max-w-2xl 2col:pr-0 pr-2">
+        <div class="mx-auto my-auto w-full max-w-2xl">
             <form action="{{R::search()}}" method="post">
                 @csrf
                 <label for="{{$search}}"></label>
@@ -38,14 +38,16 @@ $search = SearchRedirect::search;
                             ( / )
                         </kbd>
                     </div>
-                    <button class="relative -ml-px inline-flex items-center rounded-r-md px-3 2col:px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 gap-x-1.5 btn-ghost"
+                    <button class="relative shrink-0 -ml-px inline-flex items-center rounded-r-md px-3 2col:px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 gap-x-1.5 btn-ghost"
                             aria-label="Search">
                         <x-svg :name="'search'" class="!h-5 !w-5"/>
                     </button>
                 </div>
             </form>
         </div>
-        <x-a :href="R::connect()" class="ml-2 2col:block hidden px-2 py-4 text-lg btn-ghost">Contact</x-a>
+        <x-a class="flex px-2 py-2 text-lg 2col:text-xl btn-ghost  font-semibold" :href="R::welcome()">
+            <span class="rounded bg-sky-600 text-white shadow-md px-2 text-sm my-auto py-[0.25rem]">SUBSCRIBE</span>
+        </x-a>
     </div>
 </header>
 @vite('resources/js/masthead.js')

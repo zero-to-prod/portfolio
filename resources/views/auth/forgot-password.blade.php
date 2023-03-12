@@ -11,7 +11,7 @@ use App\Helpers\AuthRoutes;
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')"/>
 
-    <form method="POST" action="{{ route_as(AuthRoutes::passwordReset_store) }}">
+    <form method="POST" action="{{ to()->auth->passwordReset->store() }}">
         @csrf
 
         <!-- Email Address -->

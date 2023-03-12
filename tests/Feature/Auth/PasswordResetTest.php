@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Helpers\AuthRoutes;
 use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,7 +23,7 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->postAs(AuthRoutes::passwordReset_store, ['email' => $user->email]);
+        $this->post(to()->auth->passwordReset->store(), ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class);
     }
@@ -35,7 +34,7 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->postAs(AuthRoutes::passwordReset_store, ['email' => $user->email]);
+        $this->post(to()->auth->passwordReset->store(), ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
             $response = $this->get(to()->auth->passwordNew->create($notification->token));
@@ -52,7 +51,7 @@ class PasswordResetTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->postAs(AuthRoutes::passwordReset_store, ['email' => $user->email]);
+        $this->post(to()->auth->passwordReset->store(), ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
             $response = $this->post(to()->auth->passwordNew->store(), [

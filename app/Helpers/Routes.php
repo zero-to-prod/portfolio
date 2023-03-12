@@ -23,6 +23,9 @@ enum Routes: string
     case search = 'search';
     case results = 'results';
 
+    /* Auth */
+    case auth_upload = 'upload';
+
     /* Api */
     case subscribe = 'subscribe';
 

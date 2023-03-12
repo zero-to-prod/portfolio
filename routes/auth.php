@@ -2,6 +2,7 @@
 
 use App\Helpers\AuthRoutes;
 use App\Helpers\Middlewares;
+use App\Helpers\Routes;
 use App\Http\Controllers\Admin\File\FileUploadResponse;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -13,7 +14,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /* Files */
-Route::postAs(AuthRoutes::upload, FileUploadResponse::class);
+Route::postAs(Routes::auth_upload, FileUploadResponse::class);
 
 /* Profile */
 Route::getAs(AuthRoutes::profile_edit, [ProfileController::class, 'edit']);

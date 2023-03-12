@@ -2,7 +2,6 @@
 
 namespace Http;
 
-use App\Helpers\AuthRoutes;
 use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Http\Controllers\Admin\File\FileUploadResponse;
 use App\Models\File;
@@ -25,7 +24,7 @@ class FileUploadResponseTest extends AuthTestCase
         Storage::fake(config('filesystems.file_disk'));
         $file = UploadedFile::fake()->create('document.pdf', 1000, 'application/pdf');
 
-        $response = $this->postAs(AuthRoutes::upload, ['file' => $file]);
+        $response = $this->post(to()->auth->upload(), [FileUploadResponse::file => $file]);
 
         $response->assertRedirect();
         $this->assertDatabaseHas((new File)->getTable(), [
@@ -44,7 +43,7 @@ class FileUploadResponseTest extends AuthTestCase
     {
         Storage::fake(config('filesystems.file_disk'));
 
-        $response = $this->postAs(AuthRoutes::upload);
+        $response = $this->post(to()->auth->upload(null));
 
         $response->assertBadRequest();
         $this->assertDatabaseCount((new File)->getTable(), 0);

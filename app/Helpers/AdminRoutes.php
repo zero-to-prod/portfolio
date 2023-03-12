@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class AdminRouteHelper
+class AdminRoutes
 {
 
     public Routes $dashboard = Routes::dashboard;

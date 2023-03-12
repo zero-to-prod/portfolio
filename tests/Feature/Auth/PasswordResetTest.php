@@ -38,7 +38,7 @@ class PasswordResetTest extends TestCase
         $this->postAs(AuthRoutes::passwordReset_store, ['email' => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
-            $response = $this->get(AuthRoutes::passwordNew_create->value.$notification->token);
+            $response = $this->get(to()->auth->passwordNew->create($notification->token));
 
             $response->assertStatus(200);
 

@@ -35,6 +35,7 @@ enum Routes: string
     case auth_profile_destroy = 'profile/destroy';
     case auth_profile_edit = 'profile/edit';
     case auth_profile_update = 'profile/update';
+    case auth_passwordNew_create = 'password-new/{token}';
 
     /* Api */
     case subscribe = 'subscribe';

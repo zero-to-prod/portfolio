@@ -13,6 +13,7 @@ class AuthRoutesHelper
 
     public function __construct(
         public AuthPasswordRoutesHelper $password = new AuthPasswordRoutesHelper,
+        public AuthPasswordNewRoutesHelper $passwordNew = new AuthPasswordNewRoutesHelper,
         public AuthProfileRoutesHelper $profile = new AuthProfileRoutesHelper,
     )
     {

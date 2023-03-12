@@ -20,9 +20,6 @@ enum AuthRoutes: string
     case profile_edit = '/profile/edit';
     case profile_update = '/profile/update';
 
-    /* Guest */
-    case login = 'login';
-    case login_store = 'login/store';
     case passwordNew_create = 'password-new/{token}';
     case passwordNew_store = 'password-new/store';
     case passwordReset_request = 'password-reset/request';

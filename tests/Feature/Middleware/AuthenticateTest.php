@@ -3,7 +3,7 @@
 namespace Tests\Feature\Middleware;
 
 use App\Helpers\AdminRoutes;
-use App\Helpers\AuthRoutes;
+use App\Helpers\GuestRoutes;
 use App\Http\Middleware\Authenticate;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
@@ -18,7 +18,7 @@ class AuthenticateTest extends TestCase
      */
     public function redirects_to_login_when_log_logged_in(): void
     {
-        $this->getAs(AdminRoutes::dashboard)->assertRedirectAs(AuthRoutes::login);
+        $this->getAs(AdminRoutes::dashboard)->assertRedirectAs(GuestRoutes::login);
     }
 
     /**

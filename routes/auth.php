@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::postAs(Routes::auth_upload, FileUploadResponse::class);
 
 /* Profile */
-Route::getAs(AuthRoutes::profile_edit, [ProfileController::class, 'edit']);
+Route::getAs(Routes::auth_profile_edit, [ProfileController::class, 'edit']);
 Route::patchAs(AuthRoutes::profile_update, [ProfileController::class, 'update']);
 Route::deleteAs(Routes::auth_profile_destroy, [ProfileController::class, 'destroy']);
 

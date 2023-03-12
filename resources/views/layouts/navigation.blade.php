@@ -60,7 +60,7 @@ use App\Helpers\AuthRoutes;
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route_as(AuthRoutes::profile_edit)">
+                        <x-dropdown-link :href="to()->auth->profile->edit()">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -122,7 +122,7 @@ use App\Helpers\AuthRoutes;
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route_as(AuthRoutes::profile_edit)">
+                <x-responsive-nav-link :href="to()->auth->profile->edit()">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 

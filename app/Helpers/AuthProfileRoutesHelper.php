@@ -6,7 +6,11 @@ class AuthProfileRoutesHelper
 {
 
     public Routes $destroy = Routes::auth_profile_destroy;
-
+    public Routes $edit = Routes::auth_profile_edit;
+    public function edit(): string
+    {
+        return route_as($this->edit);
+    }
     public function destroy(): string
     {
         return route_as($this->destroy);

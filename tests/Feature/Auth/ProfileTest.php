@@ -3,6 +3,7 @@
 namespace Auth;
 
 use App\Helpers\AuthRoutes;
+use App\Helpers\Routes;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -17,7 +18,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->getAs(AuthRoutes::profile_edit);
+            ->get(to()->auth->profile->edit());
 
         $response->assertOk();
     }
@@ -35,7 +36,7 @@ class ProfileTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect(AuthRoutes::profile_edit->value);
+            ->assertRedirect(to()->auth->profile->edit());
 
         $user->refresh();
 
@@ -57,7 +58,7 @@ class ProfileTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect(AuthRoutes::profile_edit->value);
+            ->assertRedirect(Routes::auth_profile_edit->value);
 
         $this->assertNotNull($user->refresh()->email_verified_at);
     }
@@ -86,14 +87,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->from(AuthRoutes::profile_edit->value)
+            ->from(to()->auth->profile->edit())
             ->delete(to()->auth->profile->destroy(), [
                 'password' => 'wrong-password',
             ]);
 
         $response
             ->assertSessionHasErrorsIn('userDeletion', 'password')
-            ->assertRedirect(AuthRoutes::profile_edit->value);
+            ->assertRedirect(to()->auth->profile->edit());
 
         $this->assertNotNull($user->fresh());
     }

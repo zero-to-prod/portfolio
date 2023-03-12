@@ -9,6 +9,12 @@ class AuthRoutesHelper
     public Routes $emailVerificationNotice = Routes::auth_email_verificationNotice;
     public Routes $emailVerificationNotification = Routes::auth_email_verificationNotification;
     public Routes $emailVerify = Routes::auth_email_verify;
+    public Routes $logout = Routes::auth_logout;
+
+    public function logout(): string
+    {
+        return route_as($this->logout);
+    }
 
     public function emailVerify(): string
     {

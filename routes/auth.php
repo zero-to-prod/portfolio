@@ -31,5 +31,5 @@ Route::postAs(Routes::auth_email_verificationNotification, [EmailVerificationNot
 /* Auth */
 Route::getAs(AuthRoutes::password_confirm, [ConfirmablePasswordController::class, 'show']);
 Route::postAs(AuthRoutes::password_store, [ConfirmablePasswordController::class, 'store']);
-Route::postAs(AuthRoutes::logout, [AuthenticatedSessionController::class, 'destroy']);
+Route::postAs(Routes::auth_logout, [AuthenticatedSessionController::class, 'destroy']);
 Route::putAs(AuthRoutes::password_update, [PasswordController::class, 'update']);

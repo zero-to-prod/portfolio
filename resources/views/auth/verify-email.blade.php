@@ -25,7 +25,7 @@ use App\Helpers\AuthRoutes;
             </div>
         </form>
 
-        <form method="POST" action="{{ route_as(AuthRoutes::logout) }}">
+        <form method="POST" action="{{ to()->auth->logout() }}">
             @csrf
 
             <button type="submit"

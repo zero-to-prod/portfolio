@@ -1,8 +1,6 @@
 <?php
 
-
 use App\Helpers\AuthRoutes;
-
 
 ?>
 
@@ -67,9 +65,9 @@ use App\Helpers\AuthRoutes;
                         </x-dropdown-link>
 
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route_as(AuthRoutes::logout) }}">
+                        <form method="POST" action="{{ to()->auth->logout()}}">
                             @csrf
-                            <x-dropdown-link :href="route_as(AuthRoutes::logout)"
+                            <x-dropdown-link :href="to()->auth->logout()"
                                              onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
@@ -129,9 +127,9 @@ use App\Helpers\AuthRoutes;
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
-                <form method="POST" action="{{ route_as(AuthRoutes::logout) }}">
+                <form method="POST" action="{{ to()->auth->logout() }}">
                     @csrf
-                    <x-responsive-nav-link :href="route_as(AuthRoutes::logout)"
+                    <x-responsive-nav-link :href="to()->auth->logout()"
                                            onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}

@@ -8,7 +8,6 @@ namespace App\Helpers;
  */
 enum AuthRoutes: string
 {
-    case logout = 'logout';
     case password_confirm = 'password/confirm';
     case password_store = 'password/store';
     case password_update = 'password/update';

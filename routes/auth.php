@@ -1,9 +1,7 @@
 <?php
 
-use App\Helpers\AdminRoutes;
 use App\Helpers\AuthRoutes;
 use App\Helpers\Middlewares;
-use App\Helpers\Views;
 use App\Http\Controllers\Admin\File\FileUploadResponse;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -16,9 +14,6 @@ use Illuminate\Support\Facades\Route;
 
 /* Files */
 Route::postAs(AuthRoutes::upload, FileUploadResponse::class);
-
-/* Dashboard */
-Route::getAs(AdminRoutes::dashboard, Views::dashboard)->middlewareAs(Middlewares::verified);
 
 /* Profile */
 Route::getAs(AuthRoutes::profile_edit, [ProfileController::class, 'edit']);

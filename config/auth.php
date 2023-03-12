@@ -122,5 +122,5 @@ return [
     |
     */
 
-    'home' => \App\Helpers\AdminRoutes::dashboard->value
+    'home' => 'admin/dashboard',
 ];

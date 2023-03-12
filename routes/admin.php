@@ -1,6 +1,8 @@
 <?php
 
 use App\Helpers\AdminRoutes;
+use App\Helpers\Middlewares;
+use App\Helpers\Views;
 use App\Http\Controllers\Admin\Author\AuthorFormRedirect;
 use App\Http\Controllers\Admin\Author\AuthorFormView;
 use App\Http\Controllers\Admin\Author\AuthorIndexView;
@@ -13,6 +15,9 @@ use App\Http\Controllers\Admin\Tag\TagFormRedirect;
 use App\Http\Controllers\Admin\Tag\TagFormView;
 use App\Http\Controllers\Admin\Tag\TagIndexView;
 use Illuminate\Support\Facades\Route;
+
+/* Dashboard */
+Route::getAs(AdminRoutes::dashboard, Views::dashboard)->middlewareAs(Middlewares::verified);
 
 /* Posts */
 Route::getAs(AdminRoutes::post_index, PostIndexView::class);

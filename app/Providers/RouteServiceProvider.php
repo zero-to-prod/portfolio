@@ -34,7 +34,6 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::middleware([Middlewares::api->value, Middlewares::auth_sanctum->value])
-                ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
             Route::middlewareAs([Middlewares::web, Middlewares::web_group])
@@ -44,7 +43,6 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/auth.php'));
 
             Route::middlewareAs([Middlewares::web, Middlewares::auth, Middlewares::auth_group])
-                ->prefix('admin')
                 ->group(base_path('routes/admin.php'));
 
             Route::middlewareAs([Middlewares::web, Middlewares::guest_group])

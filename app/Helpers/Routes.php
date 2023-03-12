@@ -13,15 +13,16 @@ use App\Http\Controllers\Admin\Tag\TagFormView;
  */
 enum Routes: string
 {
+
     case connect = 'connect';
     case connect_store = 'connect/store';
     case cv = 'cv';
     case file = 'file/{file}';
-    case welcome = '/';
-
     case read = 'read/{post}';
-    case search = 'search';
     case results = 'results';
+    case search = 'search';
+    case welcome = '/';
+    case subscribe = 'subscribe';
 
     /* Auth */
     case auth_upload = 'upload';
@@ -43,7 +44,7 @@ enum Routes: string
     case auth_register_store = 'register/store';
 
     /* Api */
-    case subscribe = 'subscribe';
+    case api_v1_subscribe = 'api/v1/subscribe';
 
     /* Guest */
     case guest_login_index = 'login';
@@ -51,21 +52,21 @@ enum Routes: string
 
     /* Admin */
 
-    case dashboard = 'dashboard';
-    case admin_post_index = '/posts';
-    case admin_post_create = '/posts/create';
-    case admin_post_store = '/posts/store';
-    case admin_post_edit = '/posts/{' . PostFormView::post . '}/edit';
-    case admin_post_publish = '/posts/{' . PostPublishRedirect::id . '}/publish';
-    case admin_post_unPublish = '/posts/{' . PostFormView::post . '}/un-publish';
+    case dashboard = 'admin/dashboard';
+    case admin_post_index = 'admin/posts';
+    case admin_post_create = 'admin/posts/create';
+    case admin_post_store = 'admin/posts/store';
+    case admin_post_edit = 'admin/posts/{' . PostFormView::post . '}/edit';
+    case admin_post_publish = 'admin/posts/{' . PostPublishRedirect::id . '}/publish';
+    case admin_post_unPublish = 'admin//posts/{' . PostFormView::post . '}/un-publish';
 
-    case admin_tag_index = 'tags';
-    case admin_tag_create = 'tags/create';
-    case admin_tag_edit = 'tags/{' . TagFormView::tag . '}/edit';
-    case admin_tag_store = 'tags/store';
+    case admin_tag_index = 'admin/tags';
+    case admin_tag_create = 'admin/tags/create';
+    case admin_tag_edit = 'admin/tags/{' . TagFormView::tag . '}/edit';
+    case admin_tag_store = 'admin/tags/store';
 
-    case admin_author_index = 'authors';
-    case admin_author_create = 'authors/create';
-    case admin_author_edit = 'authors/{' . AuthorFormView::author . '}/edit';
-    case admin_author_store = 'authors/store';
+    case admin_author_index = 'admin/authors';
+    case admin_author_create = 'admin/authors/create';
+    case admin_author_edit = 'admin/authors/{' . AuthorFormView::author . '}/edit';
+    case admin_author_store = 'admin/authors/store';
 }

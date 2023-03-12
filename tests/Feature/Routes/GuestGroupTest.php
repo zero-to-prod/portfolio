@@ -21,7 +21,7 @@ class GuestGroupTest extends TestCase
      * @test
      * @dataProvider getRoutes
      */
-    public function check_each_route(string $route): void
+    public function check_each_route(?string $route): void
     {
         $this->get(route($route))->assertOk();
     }

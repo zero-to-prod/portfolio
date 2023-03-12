@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Helpers\GuestRoutes;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
 use Tests\Feature\Middleware\AuthenticateTest;
@@ -14,6 +13,6 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        return $request->expectsJson() ? null : route_as(GuestRoutes::login);
+        return $request->expectsJson() ? null : r()->guest->login();
     }
 }

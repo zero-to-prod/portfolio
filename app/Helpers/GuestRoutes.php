@@ -2,12 +2,15 @@
 
 namespace App\Helpers;
 
-/**
- * @property $value
- * @property $name
- */
-enum GuestRoutes: string
+class GuestRoutes
 {
-    case login = 'login';
-    case login_store = 'login/store';
+    public function login(): string
+    {
+        return 'login';
+    }
+
+    public function loginStore(): string
+    {
+        return 'login/store';
+    }
 }

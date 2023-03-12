@@ -1,11 +1,19 @@
 <?php
 
 use App\Helpers\Environments;
+use App\Helpers\RoutesHelper;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Route;
+
+if (!function_exists('r')) {
+    function r(): RoutesHelper
+    {
+        return new RoutesHelper;
+    }
+}
 
 if (!function_exists('route_as')) {
     function route_as($route, mixed $parameters = [], $absolute = true): string
@@ -35,7 +43,6 @@ if (!function_exists('route_contains')) {
         return Str::contains(request()?->url(), $route, true);
     }
 }
-
 
 if (!function_exists('redirect_as')) {
     function redirect_as($to = null, $status = 302, $headers = [], $secure = null): Redirector|RedirectResponse|Application

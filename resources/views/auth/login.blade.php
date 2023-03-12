@@ -1,14 +1,8 @@
-<?php
-
-use App\Helpers\GuestRoutes;
-
-?>
-
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')"/>
 
-    <form method="POST" action="{{ route_as(GuestRoutes::login_store) }}">
+    <form method="POST" action="{{ r()->guest->loginStore() }}">
         @csrf
 
         <!-- Email Address -->

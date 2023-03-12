@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Helpers\GuestRoutes;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -13,7 +12,7 @@ class AuthenticationTest extends TestCase
 
     public function test_login_screen_can_be_rendered(): void
     {
-        $response = $this->getAs(GuestRoutes::login);
+        $response = $this->get(r()->guest->login());
 
         $response->assertStatus(200);
     }
@@ -22,7 +21,7 @@ class AuthenticationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->postAs(GuestRoutes::login_store, [
+        $response = $this->post(r()->guest->loginStore(), [
             'email' => $user->email,
             'password' => 'password',
         ]);
@@ -35,7 +34,7 @@ class AuthenticationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->postAs(GuestRoutes::login_store, [
+        $this->post(r()->guest->loginStore(), [
             'email' => $user->email,
             'password' => 'wrong-password',
         ]);

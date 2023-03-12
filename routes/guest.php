@@ -1,8 +1,7 @@
 <?php
 
-use App\Helpers\GuestRoutes;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
-Route::getAs(GuestRoutes::login, [AuthenticatedSessionController::class, 'create']);
-Route::postAs(GuestRoutes::login_store, [AuthenticatedSessionController::class, 'store']);
+Route::get(r()->guest->login(), [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post(r()->guest->loginStore(), [AuthenticatedSessionController::class, 'store']);

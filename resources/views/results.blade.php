@@ -9,8 +9,12 @@ use Illuminate\Database\Eloquent\Collection;
 /* @var Post $post */
 /* @var Tag $tag */
 
+$title = request()->query(ResultsView::query);
+$title = request()->query(ResultsView::tag) ?? $title;
+$title = request()->query(ResultsView::topics) !== null ? 'Topics' : $title;
+$title = request()->query(ResultsView::popular) !== null ? 'Popular' : $title;
 ?>
-<x-main :title="request()->query(ResultsView::query)">
+<x-main :title="$title">
     <div class="flex flex-col gap-2 max-w-4xl mx-auto">
         <div>
             @if($tag !== null)

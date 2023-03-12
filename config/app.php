@@ -216,7 +216,6 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'Routes' => \App\Helpers\Routes::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'R' => App\Helpers\R::class,
     ])->toArray(),
 
 ];

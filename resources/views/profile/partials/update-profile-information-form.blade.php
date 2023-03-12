@@ -19,7 +19,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
         @csrf
     </form>
 
-    <form method="post" action="{{ R::profile_update() }}" class="mt-6 space-y-6">
+    <form method="post" action="{{to()->auth->profile->update() }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 

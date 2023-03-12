@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\AuthRoutes;
 use App\Helpers\Middlewares;
 use App\Helpers\Routes;
 use App\Http\Controllers\Admin\File\FileUploadResponse;
@@ -18,7 +17,7 @@ Route::postAs(Routes::auth_upload, FileUploadResponse::class);
 
 /* Profile */
 Route::getAs(Routes::auth_profile_edit, [ProfileController::class, 'edit']);
-Route::patchAs(AuthRoutes::profile_update, [ProfileController::class, 'update']);
+Route::patchAs(Routes::auth_profile_update, [ProfileController::class, 'update']);
 Route::deleteAs(Routes::auth_profile_destroy, [ProfileController::class, 'destroy']);
 
 /* Email */

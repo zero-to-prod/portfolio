@@ -2,7 +2,6 @@
 
 namespace Auth;
 
-use App\Helpers\AuthRoutes;
 use App\Helpers\Routes;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,7 +28,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch(AuthRoutes::profile_update->value, [
+            ->patch(to()->auth->profile->update(), [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
             ]);
@@ -51,7 +50,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch(AuthRoutes::profile_update->value, [
+            ->patch(to()->auth->profile->update(), [
                 'name' => 'Test User',
                 'email' => $user->email,
             ]);

@@ -15,7 +15,7 @@ use App\Helpers\AuthRoutes;
     @endif
 
     <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{ route_as(AuthRoutes::email_verificationNotification) }}">
+        <form method="POST" action="{{to()->auth->emailVerificationNotification() }}">
             @csrf
 
             <div>

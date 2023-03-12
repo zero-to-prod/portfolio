@@ -25,6 +25,9 @@ enum Routes: string
 
     /* Auth */
     case auth_upload = 'upload';
+    case auth_email_verificationNotice = 'email/verification-notice';
+    case auth_email_verificationNotification = 'email/verification-notification';
+    case auth_email_verify = 'email/verify/{id}/{hash}';
 
     /* Api */
     case subscribe = 'subscribe';

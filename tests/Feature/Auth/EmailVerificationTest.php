@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Helpers\AuthRoutes;
 use App\Models\User;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,7 +19,7 @@ class EmailVerificationTest extends TestCase
             User::email_verified_at => null,
         ]);
 
-        $response = $this->actingAs($user)->getAs(AuthRoutes::email_verificationNotice);
+        $response = $this->actingAs($user)->get(to()->auth->emailVerificationNotice());
 
         $response->assertStatus(200);
     }
@@ -34,7 +33,7 @@ class EmailVerificationTest extends TestCase
         Event::fake();
 
         $verificationUrl = URL::temporarySignedRoute(
-            AuthRoutes::email_verify->name,
+            to()->auth->emailVerify->name,
             now()->addMinutes(60),
             ['id' => $user->id, 'hash' => sha1($user->email)]
         );
@@ -53,7 +52,7 @@ class EmailVerificationTest extends TestCase
         ]);
 
         $verificationUrl = URL::temporarySignedRoute(
-            AuthRoutes::email_verify->name,
+            to()->auth->emailVerify->name,
             now()->addMinutes(60),
             ['id' => $user->id, 'hash' => sha1('wrong-email')]
         );

@@ -15,7 +15,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
         </p>
     </header>
 
-    <form id="send-verification" method="post" action="{{ R::email_verificationNotification() }}">
+    <form id="send-verification" method="post" action="{{ to()->auth->emailVerificationNotice() }}">
         @csrf
     </form>
 

@@ -2,8 +2,6 @@
 
 namespace Routes;
 
-use App\Helpers\AdminRoutes;
-use App\Helpers\AuthRoutes;
 use App\Helpers\Middlewares;
 use App\Models\User;
 use Tests\Support\GetRouteList;
@@ -32,8 +30,8 @@ class AuthGroupTest extends TestCase
     {
         return collect($this->getRouteList(Middlewares::auth_group))->filter(function ($route) {
             $blacklist = [
-                AuthRoutes::email_verificationNotice->name,
-                AuthRoutes::email_verify->name,
+                to()->auth->emailVerificationNotice->name,
+                to()->auth->emailVerify->name,
                 to()->admin->author->edit->name,
                 to()->admin->tag->edit->name,
                 to()->admin->post->edit->name,

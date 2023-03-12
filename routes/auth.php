@@ -22,10 +22,10 @@ Route::patchAs(AuthRoutes::profile_update, [ProfileController::class, 'update'])
 Route::deleteAs(AuthRoutes::profile_destroy, [ProfileController::class, 'destroy']);
 
 /* Email */
-Route::getAs(AuthRoutes::email_verificationNotice, EmailVerificationPromptController::class);
-Route::getAs(AuthRoutes::email_verify, VerifyEmailController::class)
+Route::getAs(Routes::auth_email_verificationNotice, EmailVerificationPromptController::class);
+Route::getAs(Routes::auth_email_verify, VerifyEmailController::class)
     ->middlewareAs([Middlewares::signed, Middlewares::throttle->value . ':6,1']);
-Route::postAs(AuthRoutes::email_verificationNotification, [EmailVerificationNotificationController::class, 'store'])
+Route::postAs(Routes::auth_email_verificationNotification, [EmailVerificationNotificationController::class, 'store'])
     ->middlewareAs(Middlewares::throttle->value . ':6,1');
 
 /* Auth */

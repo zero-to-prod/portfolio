@@ -122,7 +122,7 @@ $in_body = PostFormRedirect::in_body;
                                 <div class="flex gap-4 flex-wrap">
                                     @foreach(Tag::withType(Tags::post->value)->get() as $author_model)
                                         <div class="flex items-center text-white space-x-2">
-                                            <input class="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                                            <input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                                                    name="{{$tags}}"
                                                    id="tag-{{$author_model->id}}"
                                                    value="{{$author_model->id}}"

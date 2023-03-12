@@ -120,7 +120,7 @@ $email = SubscribeResponse::email;
                     <div id="cta-expanded" class="p-4 rounded-lg bg-gray-200 shadow-lg">
                         <div class="flex justify-between">
                             <div class="flex gap-2">
-                                <x-svg :name="'mail'"/>
+                                <x-svg class="my-auto" :name="'mail'"/>
                                 <span class="my-auto font-bold text-2xl">Stay Up To Date With Our Newsletter</span>
                             </div>
                             <button type="button" id="close" class="px-2 rounded hover:bg-gray-300">&#10006</button>

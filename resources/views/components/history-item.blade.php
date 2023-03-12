@@ -1,7 +1,7 @@
 <li class="relative pb-10">
     @if($hideTimeline ?? false)
     @else
-        <div class="absolute top-12 left-12 -ml-px h-full bg-sky-600 mt-0.5 w-0.5" aria-hidden="true"></div>
+        <div class="absolute top-12 left-12 -ml-px h-full bg-primary mt-0.5 w-0.5" aria-hidden="true"></div>
     @endif
 
     <div class="relative flex items-start group">

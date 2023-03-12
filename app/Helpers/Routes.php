@@ -58,7 +58,7 @@ enum Routes: string
     case admin_post_store = 'admin/posts/store';
     case admin_post_edit = 'admin/posts/{' . PostFormView::post . '}/edit';
     case admin_post_publish = 'admin/posts/{' . PostPublishRedirect::id . '}/publish';
-    case admin_post_unPublish = 'admin//posts/{' . PostFormView::post . '}/un-publish';
+    case admin_post_unPublish = 'admin/posts/{' . PostFormView::post . '}/un-publish';
 
     case admin_tag_index = 'admin/tags';
     case admin_tag_create = 'admin/tags/create';

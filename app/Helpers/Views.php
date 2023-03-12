@@ -36,4 +36,5 @@ enum Views: string
     case layouts_main = 'layouts.main';
     case profile_edit = 'profile.edit';
     case welcome = 'welcome';
+    case subscribe = 'subscribe';
 }

@@ -44,7 +44,7 @@ $search = SearchRedirect::search;
                 </div>
             </form>
         </div>
-        <x-a class="flex px-2 py-2 text-lg 2col:text-xl font-semibold btn-ghost" :href="to()->web->welcome()">
+        <x-a class="flex px-2 py-2 text-lg 2col:text-xl font-semibold btn-ghost" :href="to()->web->subscribe()">
             <span class="my-auto rounded bg-primary px-2 text-sm text-white shadow-md py-[0.25rem]">SUBSCRIBE</span>
         </x-a>
     </div>

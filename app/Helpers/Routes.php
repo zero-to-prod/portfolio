@@ -23,6 +23,11 @@ enum Routes: string
     case search = '/search';
     case results = '/results';
 
+    /* Api */
+    case subscribe = 'subscribe';
+
+    /* Admin */
+
     case dashboard = 'dashboard';
     case admin_post_index = '/posts';
     case admin_post_create = '/posts/create';

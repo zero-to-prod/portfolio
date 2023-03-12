@@ -4,10 +4,6 @@ namespace App\Helpers;
 
 use App\Models\Author;
 
-/**
- * @property $value
- * @property $name
- */
 class AuthorRoutes
 {
     public Routes $index = Routes::admin_author_index;

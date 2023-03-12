@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Http\Api;
 
-use App\Helpers\ApiRoutes;
 use App\Helpers\CacheKeys;
 use App\Http\Controllers\Api\SubscribeResponse;
 use App\Mail\EmailSubscription;
@@ -64,7 +63,7 @@ class SubscribeResponseTest extends TestCase
             ])->once();
         $data = [SubscribeResponse::email => $email];
 
-        $this->postAs(ApiRoutes::subscribe, $data, $this->headers)
+        $this->post(to()->api->subscribe(), $data, $this->headers)
             ->assertOk()
             ->assertJson(SubscribeResponse::response_success);
         Mail::assertQueued(EmailSubscription::class, 1);
@@ -80,7 +79,7 @@ class SubscribeResponseTest extends TestCase
     {
         $data = [SubscribeResponse::email => 'bogus email'];
 
-        $this->postAs(ApiRoutes::subscribe, $data, $this->headers)
+        $this->post(to()->api->subscribe(), $data, $this->headers)
             ->assertJsonValidationErrorFor(SubscribeResponse::email)
             ->assertUnprocessable();
     }
@@ -95,10 +94,10 @@ class SubscribeResponseTest extends TestCase
         $email = 'valid@gmail.com';
         $this->mailchimp->shouldReceive('addListMember')
             ->once()
-            ->andThrow(new ClientException('Mailchimp error', new Request('Post', route(ApiRoutes::subscribe->name)), new Response()));
+            ->andThrow(new ClientException('Mailchimp error', new Request('Post', to()->api->subscribe()), new Response()));
         $data = [SubscribeResponse::email => $email];
 
-        $this->postAs(ApiRoutes::subscribe, $data, $this->headers)
+        $this->post(to()->api->subscribe(), $data, $this->headers)
             ->assertStatus(500)
             ->assertJson(['message' => 'Mailchimp error']);
         Mail::assertQueued(EmailSubscription::class, 0);

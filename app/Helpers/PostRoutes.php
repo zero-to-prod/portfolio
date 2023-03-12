@@ -4,10 +4,6 @@ namespace App\Helpers;
 
 use App\Models\Post;
 
-/**
- * @property $value
- * @property $name
- */
 class PostRoutes
 {
     public Routes $index = Routes::admin_post_index;

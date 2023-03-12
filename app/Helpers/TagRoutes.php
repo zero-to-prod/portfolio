@@ -4,10 +4,6 @@ namespace App\Helpers;
 
 use App\Models\Tag;
 
-/**
- * @property $value
- * @property $name
- */
 class TagRoutes
 {
     public Routes $index = Routes::admin_tag_index;

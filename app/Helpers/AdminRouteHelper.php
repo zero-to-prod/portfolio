@@ -2,10 +2,6 @@
 
 namespace App\Helpers;
 
-/**
- * @property $value
- * @property $name
- */
 class AdminRouteHelper
 {
 

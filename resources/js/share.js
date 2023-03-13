@@ -1,19 +1,17 @@
-// Select form element
-const button = document.getElementById('share')
-const buttonMobile = document.getElementById('share-mobile')
-const title = document.getElementById('title')
-const subtitle = document.getElementById('subtitle')
-const url = window.location.href
+const shareButtons = document.querySelectorAll('#share, #share-mobile');
+const titleElement = document.getElementById('title');
+const subtitleElement = document.getElementById('subtitle');
+const currentUrl = window.location.href;
 
-function share() {
+function shareContent() {
     if (navigator.share) {
         navigator.share({
-            title: title.innerText,
-            text: subtitle.innerText,
-            url: url,
-        }).catch(console.error);
+            title: titleElement.innerText,
+            text: subtitleElement.innerText,
+            url: currentUrl,
+        })
+            .catch(console.error);
     }
 }
 
-button.addEventListener('click', share);
-buttonMobile.addEventListener('click', share);
+shareButtons.forEach(button => button.addEventListener('click', shareContent));

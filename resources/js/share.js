@@ -4,6 +4,10 @@ const title = document.getElementById('title')
 const subtitle = document.getElementById('subtitle')
 const url = window.url
 
+if(!navigator.share) {
+    button.classList.toggle('hidden')
+}
+
 button.addEventListener('click', event => {
     if (navigator.share) {
         navigator.share({

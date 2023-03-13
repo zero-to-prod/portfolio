@@ -11,10 +11,7 @@ function share() {
             title: title.innerText,
             text: subtitle.innerText,
             url: url,
-        }).then(() => {
-            console.log('Thanks for sharing!');
-        })
-            .catch(console.error);
+        }).catch(console.error);
     }
 }
 

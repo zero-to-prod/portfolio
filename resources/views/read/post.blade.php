@@ -50,7 +50,6 @@ use Illuminate\Support\Collection;
                                 <x-svg :name="'share'" class="!h-6 !w-6"/>
                                 <span class="text-sm font-bold my-auto">Share</span>
                             </button>
-                            @vite('resources/js/share.js')
                         </div>
                     </div>
 
@@ -84,20 +83,9 @@ use Illuminate\Support\Collection;
                             <x-svg :name="'share'" class="!h-6 !w-6"/>
                             <span class="text-sm font-bold my-auto">Share</span>
                         </button>
-                        <script>
-                            window.addEventListener('DOMContentLoaded', function () {
-                                const shareButton = document.querySelector('#share-mobile');
-                                shareButton.addEventListener('click', async function () {
-                                    await navigator.share({
-                                        title: '{{$post->title}}',
-                                        text: '{{$post->subtitle}}',
-                                        url: '{{to()->web->read($post)}}',
-                                    });
-                                });
-                            });
-                        </script>
                     </div>
                 </div>
+                @vite('resources/js/share.js')
                 <div class="grid max-w-none prose">
                     {!! $post->published_content !!}
                 </div>

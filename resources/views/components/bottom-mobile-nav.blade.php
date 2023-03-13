@@ -16,8 +16,8 @@ use App\Http\Controllers\ResultsView;
             <x-svg :name="'topics'" class="mx-auto"/>
             <span class="mx-auto text-xs">Topics</span>
         </a>
-        <a class="flex flex-col py-2 hover:bg-gray-300 {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-gray-200' : '' }}"
-           href="{{to()->web->resultsTopics()}}">
+        <a class="flex flex-col py-2 hover:bg-gray-300 {{ route_is(to()->web->subscribe) ? 'bg-gray-200' : '' }}"
+           href="{{to()->web->subscribe()}}">
             <x-svg :name="'mail'" class="mx-auto"/>
             <span class="mx-auto text-xs">Subscribe</span>
         </a>

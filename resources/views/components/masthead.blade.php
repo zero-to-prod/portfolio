@@ -8,7 +8,7 @@ use App\Http\Controllers\SearchRedirect;
 $search = SearchRedirect::search;
 
 ?>
-<header class="fixed top-0 z-50 mx-auto w-full bg-primary-content">
+<header class="fixed top-0 z-50 mx-auto w-full bg-primary-content shadow">
     <div class="flex justify-between gap-2">
         <button id="toggle-navbar-btn"
                 class="hidden btn-ghost min-[1312px]:block"
@@ -44,7 +44,7 @@ $search = SearchRedirect::search;
                 </div>
             </form>
         </div>
-        <x-a class="flex px-2 py-2 text-lg 2col:text-xl font-semibold btn-ghost" :href="to()->web->subscribe()">
+        <x-a class="hidden 2col:flex px-2 py-2 text-lg 2col:text-xl font-semibold btn-ghost" :href="to()->web->subscribe()">
             <span class="my-auto rounded bg-primary px-2 text-sm text-white shadow-md py-[0.25rem]">SUBSCRIBE</span>
         </x-a>
     </div>

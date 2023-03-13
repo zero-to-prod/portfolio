@@ -1,13 +1,11 @@
 <?php
 
 use App\Models\Post;
-use App\Http\Controllers\Api\SubscribeResponse;
+use Illuminate\Support\Collection;
 
 /* @var Post $post */
-/* @var string $token */
 /* @var File $feature */
-
-$email = SubscribeResponse::email;
+/* @var Collection $tags */
 ?>
 
 <x-main :title="$post->title">
@@ -53,14 +51,21 @@ $email = SubscribeResponse::email;
                                 <span class="text-sm font-bold my-auto">Share</span>
                             </button>
                             <script>
-                                window.addEventListener('DOMContentLoaded', function () {
+                                window.addEventListener('DOMContentLoaded', async function () {
                                     const shareButton = document.querySelector('#share');
                                     shareButton.addEventListener('click', async function () {
-                                        await navigator.share({
+                                        const userAgentData = await navigator.userAgentData.getHighEntropyValues(['platform', 'platformVersion']);
+                                        const shareData = {
                                             title: '{{$post->title}}',
                                             text: '{{$post->subtitle}}',
                                             url: '{{to()->web->read($post)}}',
-                                        });
+                                        };
+                                        if (userAgentData.platform === 'iOS' && parseFloat(userAgentData.platformVersion) < 14.7) {
+                                            // Handle iOS versions that don't support the Web Share API
+                                            // Redirect to a share page or display a share sheet overlay
+                                        } else {
+                                            await navigator.share(shareData);
+                                        }
                                     });
                                 });
                             </script>
@@ -113,126 +118,6 @@ $email = SubscribeResponse::email;
                 </div>
                 <div class="grid max-w-none prose">
                     {!! $post->published_content !!}
-                </div>
-                <div class="my-12">
-                    <div id="cta-expanded" class="p-4 rounded-lg bg-gray-200 shadow-lg">
-                        <div class="flex justify-between">
-                            <div class="flex gap-2">
-                                <x-svg class="my-auto" :name="'mail'"/>
-                                <span class="my-auto font-bold text-2xl">Stay Up To Date With Our Newsletter</span>
-                            </div>
-                            <button type="button" id="close" class="px-2 rounded hover:bg-gray-300">&#10006</button>
-                        </div>
-                        <div class="max-w-md mx-auto">
-                            <div class="mx-1">
-                                <p class="font-bold text-lg pt-4">The Perfect Newsletter for Web Professionals</p>
-                                <p class="pt-4">Never miss out on new tips, tutorials, and more.</p>
-                                <p class="pt-4">Each week we curate the best new information and deliver it to your
-                                    inbox.</p>
-                            </div>
-                            <form class="mt-4 mx-auto" id="form">
-                                <label for="{{$email}}" class="sr-only">Email</label>
-                                <div class="flex flex-col 2col:flex-row gap-2">
-                                    <input class="input text-lg text-center 2col:text-left"
-                                           id="{{$email}}"
-                                           type="{{$email}}"
-                                           name="{{$email}}"
-                                           required
-                                           placeholder="Your email address"/>
-                                    <button id="submit" class="btn btn-xs text-lg">Subscribe</button>
-                                </div>
-                            </form>
-                            <div class="mx-1 text-xs space-y-2 font-bold">
-                                <p id="success" class="hidden mt-2">
-                                    Success! Welcome to the club. Check your inbox for new content.
-                                </p>
-                                <p id="error" class="hidden text-error">
-                                    Something went wrong! Try another email.
-                                </p>
-                                <p class="font-normal">
-                                    No spam, ever. We'll never share your email address, and you can opt out at any
-                                    time.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <script>
-                        const getElement = (id) => document.querySelector(`#${id}`);
-                        const endpoint = "{{ to()->api->subscribe() }}";
-
-                        // const cta = getElement('cta');
-                        const ctaExpanded = getElement('cta-expanded');
-                        const close = getElement('close');
-                        const success = getElement('success');
-                        const error = getElement('error');
-                        const email = getElement('email');
-                        const submit = getElement('submit');
-                        const form = getElement('form');
-                        let submitted = false;
-
-                        email.addEventListener('click', () => {
-                            email.classList.remove('border', 'border-error');
-                            email.classList.remove('bg-green-200');
-                            if (submitted) {
-                                email.value = '';
-                                submitted = false;
-                                success.classList.add('hidden');
-                                error.classList.add('hidden');
-                            }
-                        });
-
-                        // cta.addEventListener('click', () => {
-                        //     cta.classList.toggle('hidden');
-                        //     ctaExpanded.classList.toggle('hidden');
-                        // });
-
-                        close.addEventListener('click', () => {
-                            // cta.classList.toggle('hidden');
-                            // ctaExpanded.classList.toggle('hidden');
-                            success.classList.add('hidden');
-                            error.classList.add('hidden');
-                            email.classList.remove('border', 'border-error');
-                            email.classList.remove('bg-green-200');
-                            email.value = '';
-                            submitted = false;
-                        });
-
-                        form.addEventListener('submit', async (e) => {
-                            e.preventDefault();
-                            submitted = true;
-                            submit.innerText = 'Submitting...';
-                            submit.disabled = true;
-                            success.classList.add('hidden');
-                            error.classList.add('hidden');
-                            const formData = new FormData(form);
-
-                            try {
-                                const response = await fetch(endpoint, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Accept': 'application/json',
-                                        'Authorization': 'Bearer {{ $token }}',
-                                    },
-                                    body: formData,
-                                });
-
-                                if (response.ok) {
-                                    email.classList.add('bg-green-200');
-                                    success.classList.toggle('hidden');
-                                } else {
-                                    document.querySelector('#subscribe').reset();
-                                    email.classList.add('border', 'border-error');
-                                    error.classList.toggle('hidden');
-                                }
-                            } catch (e) {
-                                email.classList.add('border', 'border-error');
-                                error.classList.toggle('hidden');
-                            } finally {
-                                submit.innerText = 'Subscribe';
-                                submit.disabled = false;
-                            }
-                        });
-                    </script>
                 </div>
             </article>
         </div>

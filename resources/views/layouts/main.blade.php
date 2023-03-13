@@ -20,7 +20,7 @@ use App\Models\Tag;
     <x-masthead/>
     <div class="mt-[60px]">
         <x-left-drawer :tags="Tag::mostViewed()"/>
-        <div id="content" class="mb-16 ml-0 2col:px-2 min-[780px]:ml-[64px] min-[1312px]:ml-[238px]">
+        <div id="content" class="mb-24 ml-0 2col:px-2 min-[780px]:ml-[64px] min-[1312px]:ml-[238px]">
             {{$slot}}
         </div>
     </div>

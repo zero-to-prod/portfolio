@@ -3,7 +3,7 @@ const button = document.getElementById('share')
 const buttonMobile = document.getElementById('share-mobile')
 const title = document.getElementById('title')
 const subtitle = document.getElementById('subtitle')
-const url = window.url
+const url = window.location.href
 
 function share() {
     if (navigator.share) {

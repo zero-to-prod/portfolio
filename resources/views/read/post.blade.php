@@ -23,8 +23,8 @@ use Illuminate\Support\Collection;
                 <div class="2col:block hidden space-y-2">
                     <div class="flex justify-between pt-2">
                         <div>
-                            <h1 class="text-2xl font-bold">{{$post->title}}</h1>
-                            <p class="text-sm">{{$post->subtitle}}</p>
+                            <h1 id="title" class="text-2xl font-bold">{{$post->title}}</h1>
+                            <p id="subtitle" class="text-sm">{{$post->subtitle}}</p>
                         </div>
                         <div class="text-right text-sm">
                             <x-published-date :post="$post"/>
@@ -50,25 +50,7 @@ use Illuminate\Support\Collection;
                                 <x-svg :name="'share'" class="!h-6 !w-6"/>
                                 <span class="text-sm font-bold my-auto">Share</span>
                             </button>
-                            <script>
-                                window.addEventListener('DOMContentLoaded', async function () {
-                                    const shareButton = document.querySelector('#share');
-                                    shareButton.addEventListener('click', async function () {
-                                        const userAgentData = await navigator.userAgentData.getHighEntropyValues(['platform', 'platformVersion']);
-                                        const shareData = {
-                                            title: '{{$post->title}}',
-                                            text: '{{$post->subtitle}}',
-                                            url: '{{to()->web->read($post)}}',
-                                        };
-                                        if (userAgentData.platform === 'iOS' && parseFloat(userAgentData.platformVersion) < 14.7) {
-                                            // Handle iOS versions that don't support the Web Share API
-                                            // Redirect to a share page or display a share sheet overlay
-                                        } else {
-                                            await navigator.share(shareData);
-                                        }
-                                    });
-                                });
-                            </script>
+                            @vite('resources/js/share.js')
                         </div>
                     </div>
 

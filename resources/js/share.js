@@ -8,22 +8,18 @@ const url = window.url
 button.addEventListener('click', shareFiles)
 
 // Share files on submit
-async function shareFiles(event) {
-    // Prevent form default behavior
-    event.preventDefault()
+async function shareFiles() {
+    const userAgentData = await navigator.userAgentData.getHighEntropyValues(['platform', 'platformVersion']);
+    const data = {
+        title: title.innerText,
+        text: subtitle.innerText,
+        url: url,
+    }
 
-    // Check if the device is able to share these files then open share dialog
-    if (navigator.canShare) {
-        try {
-            await navigator.share({
-                title: title.innerText,
-                text: subtitle.innerText,
-                url: url,
-            })
-        } catch (error) {
-            console.log('Sharing failed', error)
-        }
+    if (userAgentData.platform === 'iOS' && parseFloat(userAgentData.platformVersion) < 14.7) {
+        // Handle iOS versions that don't support the Web Share API
+        // Redirect to a share page or display a share sheet overlay
     } else {
-        console.log('This device does not support sharing files.')
+        await navigator.share(data);
     }
 }

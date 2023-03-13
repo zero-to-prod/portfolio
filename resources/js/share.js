@@ -1,14 +1,11 @@
 // Select form element
 const button = document.getElementById('share')
+const buttonMobile = document.getElementById('share-mobile')
 const title = document.getElementById('title')
 const subtitle = document.getElementById('subtitle')
 const url = window.url
 
-if(!navigator.share) {
-    button.classList.toggle('hidden')
-}
-
-button.addEventListener('click', event => {
+function share() {
     if (navigator.share) {
         navigator.share({
             title: title.innerText,
@@ -19,4 +16,7 @@ button.addEventListener('click', event => {
         })
             .catch(console.error);
     }
-});
+}
+
+button.addEventListener('click', share);
+buttonMobile.addEventListener('click', share);

@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\Middlewares;
 use App\Helpers\Routes;
 use App\Helpers\Views;
 use App\Http\Controllers\Admin\Author\AuthorFormRedirect;
@@ -16,25 +15,29 @@ use App\Http\Controllers\Admin\Tag\TagFormView;
 use App\Http\Controllers\Admin\Tag\TagIndexView;
 use Illuminate\Support\Facades\Route;
 
-/* Dashboard */
-Route::getAs(Routes::dashboard, Views::dashboard)->middlewareAs(Middlewares::verified);
+Route::middleware(['role:super_admin|contributor'])->group(function () {
+    /* Dashboard */
+    Route::getAs(Routes::dashboard, Views::dashboard);
 
-/* Posts */
-Route::getAs(Routes::admin_post_index, PostIndexView::class);
-Route::getAs(Routes::admin_post_create, PostFormView::class);
-Route::getAs(Routes::admin_post_edit, PostFormView::class);
-Route::postAs(Routes::admin_post_store, PostFormRedirect::class);
-Route::postAs(Routes::admin_post_publish, PostPublishRedirect::class);
-Route::postAs(Routes::admin_post_unPublish, PostUnPublishRedirect::class);
+    /* Posts */
+    Route::getAs(Routes::admin_post_index, PostIndexView::class);
+    Route::getAs(Routes::admin_post_create, PostFormView::class);
+    Route::getAs(Routes::admin_post_edit, PostFormView::class);
+    Route::postAs(Routes::admin_post_store, PostFormRedirect::class);
+});
 
-/* Tags */
-Route::getAs(Routes::admin_tag_index, TagIndexView::class);
-Route::getAs(Routes::admin_tag_create, TagFormView::class);
-Route::getAs(Routes::admin_tag_edit, TagFormView::class);
-Route::postAs(Routes::admin_tag_store, TagFormRedirect::class);
+Route::middleware(['role:super_admin'])->group(function () {
+    Route::postAs(Routes::admin_post_publish, PostPublishRedirect::class);
+    Route::postAs(Routes::admin_post_unPublish, PostUnPublishRedirect::class);
+    /* Tags */
+    Route::getAs(Routes::admin_tag_index, TagIndexView::class);
+    Route::getAs(Routes::admin_tag_create, TagFormView::class);
+    Route::getAs(Routes::admin_tag_edit, TagFormView::class);
+    Route::postAs(Routes::admin_tag_store, TagFormRedirect::class);
 
-/* Authors */
-Route::getAs(Routes::admin_author_index, AuthorIndexView::class);
-Route::getAs(Routes::admin_author_create, AuthorFormView::class);
-Route::getAs(Routes::admin_author_edit, AuthorFormView::class);
-Route::postAs(Routes::admin_author_store, AuthorFormRedirect::class);
+    /* Authors */
+    Route::getAs(Routes::admin_author_index, AuthorIndexView::class);
+    Route::getAs(Routes::admin_author_create, AuthorFormView::class);
+    Route::getAs(Routes::admin_author_edit, AuthorFormView::class);
+    Route::postAs(Routes::admin_author_store, AuthorFormRedirect::class);
+});

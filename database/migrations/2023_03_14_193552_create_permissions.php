@@ -14,6 +14,5 @@ return new class extends Migration
         Role::create(['name' => Roles::contributor->value]);
         $user = User::where(User::email, config('admin.user')[User::email])->firstOrFail();
         $user->assignRole(Roles::super_admin->value);
-        $user->assignRole(Roles::contributor->value);
     }
 };

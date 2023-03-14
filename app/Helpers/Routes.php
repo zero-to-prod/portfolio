@@ -21,6 +21,7 @@ enum Routes: string
     case read = 'read/{post}';
     case results = 'results';
     case search = 'search';
+    case login = 'login';
     case welcome = '/';
     case subscribe = 'subscribe';
 

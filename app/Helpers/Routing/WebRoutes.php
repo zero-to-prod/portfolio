@@ -17,10 +17,15 @@ class WebRoutes
     public Routes $file = Routes::file;
     public Routes $read = Routes::read;
     public Routes $search = Routes::search;
+    public Routes $login = Routes::login;
     public Routes $results = Routes::results;
     public Routes $welcome = Routes::welcome;
     public Routes $subscribe = Routes::subscribe;
 
+    public function login(): string
+    {
+        return route_as($this->login);
+    }
     public function welcome(): string
     {
         return route_as($this->welcome);

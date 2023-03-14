@@ -15,6 +15,6 @@ class Newsletter
     public static function subscribe(MailchimpSubscriber $subscriber): void
     {
         $mailchimp = app()->make(ApiClient::class);
-        $mailchimp->lists->addListMember(config('mail.mailchimp.list_id'), $subscriber->toArray());
+        $mailchimp->lists->addListMember(config('mailchimp.list_id'), $subscriber->toArray());
     }
 }

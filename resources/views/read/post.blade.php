@@ -1,11 +1,17 @@
 <?php
 
+use App\Http\Controllers\Api\ThanksResponse;
 use App\Models\Post;
 use Illuminate\Support\Collection;
 
 /* @var Post $post */
 /* @var File $feature */
 /* @var Collection $tags */
+$amount = ThanksResponse::amount;
+$email = ThanksResponse::email;
+$card_number = ThanksResponse::card_number;
+$expiration = ThanksResponse::expiration;
+$cvc = ThanksResponse::cvc;
 ?>
 
 <x-main :title="$post->title">
@@ -45,10 +51,16 @@ use Illuminate\Support\Collection;
                             <div class="flex gap-2">
                                 <x-logos :post="$post"/>
                             </div>
-                            <button id="share" type="button"
+                            <button id="share" type="button" title="Share this content."
                                     class="bg-gray-200 my-auto flex rounded-lg gap-2 p-2 hover:bg-gray-300">
                                 <x-svg :name="'share'" class="!h-6 !w-6"/>
                                 <span class="text-sm font-bold my-auto">Share</span>
+                            </button>
+                            <button id="thanks" type="button"
+                                    title="Buy a Thanks, which directly supports content like this."
+                                    class="bg-gray-200 my-auto flex rounded-lg gap-2 p-2 hover:bg-gray-300">
+                                <x-svg :name="'thanks'" class="!h-6 !w-6"/>
+                                <span class="text-sm font-bold my-auto">Thanks</span>
                             </button>
                         </div>
                     </div>
@@ -79,14 +91,218 @@ use Illuminate\Support\Collection;
                             <x-logos :post="$post"/>
                         </div>
                         <button id="share-mobile" type="button"
-                                class="bg-gray-200 my-auto flex rounded-lg gap-2 p-2 hover:bg-gray-300 ml-auto">
+                                class="bg-gray-200 my-auto flex rounded-lg gap-2 p-2 hover:bg-gray-300 ml-auto mr-2">
                             <x-svg :name="'share'" class="!h-6 !w-6"/>
                             <span class="text-sm font-bold my-auto">Share</span>
                         </button>
+                        <button id="thanks" type="button"
+                                title="Buy a Thanks, which directly supports content like this."
+                                class="bg-gray-200 my-auto flex rounded-lg gap-2 p-2 hover:bg-gray-300">
+                            <x-svg :name="'thanks'" class="!h-6 !w-6"/>
+                            <span class="text-sm font-bold my-auto">Thanks</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="form-wrapper" class="hidden border-t border-b my-4 py-4 ">
+                    <div class="mx-auto max-w-[380px]">
+                        <h3 class="text-xl font-bold">Say Thanks</h3>
+                        <p class="text-sm">Buy a Thanks, and directly support content like this.</p>
+                        <form id="form" class="space-y-4 mt-4">
+                            <div class="flex gap-2 justify-center">
+                                @foreach([1, 2, 5, 10] as $amount)
+                                    <label class="flex items-center p-2 rounded-lg bg-gray-300 hover:bg-base-300 cursor-pointer">
+                                        <input type="radio" id={{$amount}}1" name="amount" value="{{$amount}}"  {{$amount === 2 ? 'checked' : null}}>
+                                        <x-svg :name="'thanks-white'"/>
+                                        <span class="pl-2 font-bold">${{$amount}}</span>
+                                    </label>
+                                @endforeach
+                            </div>
+                            <div>
+                                <label class="font-bold text-sm" for="{{$email}}">Email</label>
+                                <input class="input text-lg"
+                                       id="{{$email}}"
+                                       type="{{$email}}"
+                                       name="{{$email}}"
+                                       value="{{old($email)}}"
+                                       placeholder="Your email address"
+                                />
+                                <p id="email-errors" class="text-error text-sm font-bold"></p>
+
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm">Card Information</p>
+                                <label for="{{$card_number}}" class="sr-only">Card number</label>
+                                <input class="input rounded-bl-none rounded-br-none  text-lg"
+                                       autocomplete="cc-number"
+                                       autocorrect="off"
+                                       spellcheck="false"
+                                       id="{{$card_number}}"
+                                       name="{{$card_number}}"
+                                       type="text"
+                                       inputmode="numeric"
+                                       aria-label="Card number"
+                                       placeholder="1234 1234 1234 1234"
+                                       aria-invalid="false"
+                                       value=""
+                                >
+                                <div class="flex">
+                                    <label for="{{$expiration}}" class="sr-only">Expiration Month</label>
+                                    <input class="input -mt-[1px] -mr-[.5px] text-lg rounded-none rounded-bl"
+                                           autocomplete="cc-exp"
+                                           autocorrect="off"
+                                           spellcheck="false"
+                                           id="{{$expiration}}"
+                                           name="{{$expiration}}"
+                                           type="text"
+                                           inputmode="numeric"
+                                           aria-label="Expiration"
+                                           placeholder="MM / YY"
+                                           aria-invalid="false"
+                                           value=""
+                                    >
+                                    <label for="{{$cvc}}" class="sr-only">CVC</label>
+                                    <input class="input -mt-[1px] -ml-[.5px] text-lg rounded-none rounded-br"
+                                           autocomplete="cc-csc" autocorrect="off" spellcheck="false" id="{{$cvc}}"
+                                           name="{{$cvc}}" type="text" inputmode="numeric" aria-label="CVC"
+                                           placeholder="CVC" aria-invalid="false" value="">
+                                </div>
+                                <div class="text-error text-sm font-bold">
+                                    <p id="expiration-error"></p>
+                                    <p id="card-errors"></p>
+                                    <p id="cvc-errors"></p>
+                                    <p id="expiration-errors"></p>
+                                    <p id="message-errors"></p>
+                                </div>
+                            </div>
+                            <button id="submit" class="btn btn-wide font-bold">Buy and Send</button>
+                            <div id="message-success" class="hidden font-bold text-sm">
+                                <p class="flex gap-1">
+                                    <x-svg :name="'check-green'"/>
+                                    <span class="my-auto">Thank you for supporting! A receipt will be sent to your email</span>
+                                </p>
+                            </div>
+                        </form>
+                        <script>
+                            const expirationInput = document.getElementById('expiration');
+                            const expirationError = document.getElementById('expiration-error');
+
+                            expirationInput.addEventListener('input', (event) => {
+                                // Remove any non-numeric characters
+                                let input = event.target.value.replace(/\D/g, '');
+
+                                // Add a slash between the month and year if the input length is greater than 2
+                                if (input.length > 2) {
+                                    input = input.slice(0, 2) + ' / ' + input.slice(2);
+                                }
+
+                                // Set the value of the input to the formatted value
+                                event.target.value = input;
+
+                                // Validate the input if the year is entered
+                                if (input.length === 7) {
+                                    const [month, year] = input.split(' / ');
+                                    if (validateExpiration(month, year)) {
+                                        expirationError.textContent = '';
+                                    } else {
+                                        expirationError.textContent = 'Invalid expiration date';
+                                    }
+                                } else {
+                                    expirationError.textContent = '';
+                                }
+                            });
+
+                            function validateExpiration(month, year) {
+                                const currentYear = new Date().getFullYear() % 100; // Get the last 2 digits of the current year
+                                const currentMonth = new Date().getMonth() + 1; // Get the current month (1-indexed)
+
+                                // Convert the input month and year to numbers
+                                month = parseInt(month, 10);
+                                year = parseInt(year, 10);
+
+                                // Check if the year is in the future or the current year and month are not past the input year and month
+                                return (year > currentYear || (year === currentYear && month >= currentMonth));
+                            }
+
+                            const thanksButton = document.getElementById('thanks');
+
+                            thanksButton.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                const formWrapper = document.getElementById('form-wrapper');
+                                formWrapper.classList.toggle('hidden');
+                            });
+
+                            addEventListener('keydown', function (event) {
+                                if (event.key === 'Escape') {
+                                    const formWrapper = document.getElementById('form-wrapper');
+                                    formWrapper.classList.add('hidden');
+                                }
+                            });
+
+                            const endpoint = "{{ to()->api->thanks() }}";
+                            const form = document.querySelector('#form');
+
+                            form.addEventListener('submit', (event) => {
+                                const submitButton = document.getElementById('submit');
+                                submitButton.innerHTML = 'Processing ...';
+                                event.preventDefault();
+                                const formData = new FormData(form);
+                                fetch(endpoint, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Authorization': 'Bearer {{ $token }}',
+                                    },
+                                    body: formData
+                                })
+                                    .then(response => response.json())
+                                    .then(submit)
+                                    .catch(error => console.error(error))
+                                    .finally(() => {
+                                        submitButton.innerHTML = 'Buy and Send';
+                                    });
+
+                                function submit(data) {
+                                    const submitButton = document.getElementById('submit');
+                                    submitButton.innerHTML = 'Buy and Send';
+
+                                    const fields = {
+                                        'email': {errorId: 'email-errors', inputId: '{{$email}}'},
+                                        'card_number': {errorId: 'card-errors', inputId: '{{$card_number}}'},
+                                        'cvc': {errorId: 'cvc-errors', inputId: '{{$cvc}}'},
+                                        'expiration': {errorId: 'expiration-errors', inputId: '{{$expiration}}'}
+                                    };
+
+                                    Object.keys(fields).forEach((fieldName) => {
+                                        const field = fields[fieldName];
+                                        const error = data.errors?.[fieldName];
+                                        const errorElement = document.getElementById(field.errorId);
+                                        const inputElement = document.getElementById(field.inputId);
+
+                                        if (error) {
+                                            errorElement.innerHTML = error[0];
+                                            inputElement.classList.add('ring-red-500');
+                                        } else {
+                                            errorElement.innerHTML = '';
+                                            inputElement.classList.remove('ring-red-500');
+                                        }
+                                    });
+                                    const messageSuccess = document.getElementById('message-errors');
+
+                                    if (data.message && data?.message !== 'success') {
+                                        messageSuccess.innerHTML = data.message || '';
+                                    }
+                                    if (data.message && data?.message === 'success') {
+                                        const messageElement = document.getElementById('message-success');
+                                        messageElement.classList.remove('hidden');
+                                        messageSuccess.innerHTML = '';
+                                    }
+                                }
+                            });
+                        </script>
                     </div>
                 </div>
                 @vite('resources/js/share.js')
-                <div class="grid max-w-none prose">
+                <div class="grid max-w-none prose px-2">
                     {!! $post->published_content !!}
                 </div>
             </article>

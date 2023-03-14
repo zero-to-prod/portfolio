@@ -16,8 +16,8 @@ class MailchimpProvider extends ServiceProvider implements DeferrableProvider
     {
         $this->app->bind(ApiClient::class, function (Application $app) {
             return (new ApiClient())->setConfig([
-                'apiKey' => $app['config']['mail']['mailchimp']['api_key'],
-                'server' => $app['config']['mail']['mailchimp']['server'],
+                'apiKey' => $app['config']['mailchimp']['api_key'],
+                'server' => $app['config']['mailchimp']['server'],
             ]);
         });
     }

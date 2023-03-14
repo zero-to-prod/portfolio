@@ -32,3 +32,4 @@ Route::getAs(Routes::auth_password_confirm, [ConfirmablePasswordController::clas
 Route::postAs(Routes::auth_password_store, [ConfirmablePasswordController::class, 'store']);
 Route::postAs(Routes::auth_logout, [AuthenticatedSessionController::class, 'destroy']);
 Route::putAs(Routes::auth_password_update, [PasswordController::class, 'update']);
+

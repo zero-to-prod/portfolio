@@ -22,7 +22,7 @@ class User extends Authenticatable
     use IdColumn;
     use TimeStampColumns;
 
-    protected $fillable = [self::name, self::email, self::password];
-    protected $hidden = [self::password, self::remember_token];
+    protected $fillable = [self::name, self::email, self::password, self::github_id, self::github_token, self::github_refresh_token];
+    protected $hidden = [self::password, self::github_token];
     protected $casts = [self::email_verified_at => 'datetime'];
 }

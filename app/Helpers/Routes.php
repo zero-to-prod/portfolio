@@ -43,6 +43,10 @@ enum Routes: string
     case auth_register_index = 'register';
     case auth_register_store = 'register/store';
 
+    case auth_github_index = 'auth/github';
+    case auth_github_callback = 'auth/github/callback';
+
+
     /* Api */
     case api_v1_subscribe = 'api/v1/subscribe';
     case api_v1_thanks = 'api/v1/thanks';

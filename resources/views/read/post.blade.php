@@ -15,7 +15,7 @@ $cvc = ThanksResponse::cvc;
 ?>
 
 <x-main :title="$post->title">
-    <div class="mx-auto justify-center block 3col:flex max-w-7xl 3col:flex-row gap-2">
+    <div class="mx-auto block 3col:flex max-w-7xl 3col:flex-row justify-center gap-2">
         <div class="shrink max-w-[837px]">
             <div class="relative">
                 <x-img class="h-full w-full object-cover object-center"
@@ -25,7 +25,7 @@ $cvc = ThanksResponse::cvc;
                 />
                 <x-reading-time-chip :post="$post" :text="' min read'"/>
             </div>
-            <article class="space-y-6 2col:px-0 px-2" aria-label="Body">
+            <article class="2col:px-0 px-2 space-y-6" aria-label="Body">
                 <div class="2col:block hidden space-y-2">
                     <div class="flex justify-between pt-2">
                         <div>
@@ -37,9 +37,9 @@ $cvc = ThanksResponse::cvc;
                             <x-views :post="$post"/>
                         </div>
                     </div>
-                    <div class="flex w-full mt-2 flex-wrap justify-between">
-                        <x-a class="flex gap-2 font-semibold mr-4" :href="'#'">
-                            <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
+                    <div class="mt-2 flex w-full flex-wrap justify-between">
+                        <x-a class="mr-4 flex gap-2 font-semibold" :href="'#'">
+                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80"/>
                             <div class="flex flex-col">
                                 <p class="underline">{{$post->authorList()}}</p>
                                 <p class="text-sm">{{$post->authors->first()->posts()->count()}}
@@ -52,19 +52,18 @@ $cvc = ThanksResponse::cvc;
                                 <x-logos :post="$post"/>
                             </div>
                             <button id="share" type="button" title="Share this content."
-                                    class="bg-gray-200 my-auto flex rounded-lg gap-2 p-2 hover:bg-gray-300">
+                                    class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
                                 <x-svg :name="'share'" class="!h-6 !w-6"/>
-                                <span class="text-sm font-bold my-auto">Share</span>
+                                <span class="my-auto text-sm font-bold">Share</span>
                             </button>
                             <button id="thanks" type="button"
                                     title="Buy a Thanks, which directly supports content like this."
-                                    class="bg-gray-200 my-auto flex rounded-lg gap-2 p-2 hover:bg-gray-300">
+                                    class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
                                 <x-svg :name="'thanks'" class="!h-6 !w-6"/>
-                                <span class="text-sm font-bold my-auto">Thanks</span>
+                                <span class="my-auto text-sm font-bold">Thanks</span>
                             </button>
                         </div>
                     </div>
-
                 </div>
                 <div class="2col:hidden space-y-2">
                     <div class="flex flex-col">
@@ -72,8 +71,8 @@ $cvc = ThanksResponse::cvc;
                         <p class="text-sm">{{$post->subtitle}}</p>
                     </div>
                     <div class="flex justify-between">
-                        <x-a class="flex gap-2 text-base font-semibold mr-4" :href="'#'">
-                            <x-img class="h-10 w-10 rounded-full my-auto" :file="$post->authorAvatar()" :height="80"/>
+                        <x-a class="mr-4 flex gap-2 text-base font-semibold" :href="'#'">
+                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80"/>
                             <div>
                                 <p class="underline">{{$post->authorList()}}</p>
                                 <p class="text-sm">{{$post->authors->first()->posts()->count()}}
@@ -91,26 +90,26 @@ $cvc = ThanksResponse::cvc;
                             <x-logos :post="$post"/>
                         </div>
                         <button id="share-mobile" type="button"
-                                class="bg-gray-200 my-auto flex rounded-lg gap-2 p-2 hover:bg-gray-300 ml-auto mr-2">
+                                class="my-auto mr-2 ml-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
                             <x-svg :name="'share'" class="!h-6 !w-6"/>
-                            <span class="text-sm font-bold my-auto">Share</span>
+                            <span class="my-auto text-sm font-bold">Share</span>
                         </button>
-                        <button id="thanks" type="button"
+                        <button id="thanks-mobile" type="button"
                                 title="Buy a Thanks, which directly supports content like this."
-                                class="bg-gray-200 my-auto flex rounded-lg gap-2 p-2 hover:bg-gray-300">
+                                class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
                             <x-svg :name="'thanks'" class="!h-6 !w-6"/>
-                            <span class="text-sm font-bold my-auto">Thanks</span>
+                            <span class="my-auto text-sm font-bold">Thanks</span>
                         </button>
                     </div>
                 </div>
-                <div id="form-wrapper" class="hidden border-t border-b my-4 py-4 ">
-                    <div class="mx-auto max-w-[380px]">
+                <div id="form-wrapper" class="my-4 hidden border-t border-b py-4">
+                    <div class="mx-auto p-4 bg-base-200 rounded-lg shadow max-w-[380px]">
                         <h3 class="text-xl font-bold">Say Thanks</h3>
-                        <p class="text-sm">Buy a Thanks, and directly support content like this.</p>
-                        <form id="form" class="space-y-4 mt-4">
-                            <div class="flex gap-2 justify-center">
+                        <p class="text-sm font-bold">Buy a Thanks, and directly support content like this.</p>
+                        <form id="form" class="mt-4 space-y-4">
+                            <div class="flex justify-center gap-2 flex-wrap">
                                 @foreach([1, 2, 5, 10] as $amount)
-                                    <label class="flex items-center p-2 rounded-lg bg-gray-300 hover:bg-base-300 cursor-pointer">
+                                    <label class="flex cursor-pointer items-center rounded-lg bg-gray-300 p-2 hover:bg-base-300">
                                         <input type="radio" id={{$amount}}1" name="amount" value="{{$amount}}"  {{$amount === 2 ? 'checked' : null}}>
                                         <x-svg :name="'thanks-white'"/>
                                         <span class="pl-2 font-bold">${{$amount}}</span>
@@ -118,21 +117,21 @@ $cvc = ThanksResponse::cvc;
                                 @endforeach
                             </div>
                             <div>
-                                <label class="font-bold text-sm" for="{{$email}}">Email</label>
-                                <input class="input text-lg"
+                                <label class="text-sm font-bold" for="{{$email}}">Email</label>
+                                <input class="text-lg input"
                                        id="{{$email}}"
                                        type="{{$email}}"
                                        name="{{$email}}"
                                        value="{{old($email)}}"
                                        placeholder="Your email address"
+                                       required
                                 />
-                                <p id="email-errors" class="text-error text-sm font-bold"></p>
-
+                                <p id="email-errors" class="text-sm font-bold text-error"></p>
                             </div>
                             <div>
-                                <p class="font-bold text-sm">Card Information</p>
+                                <p class="text-sm font-bold">Card Information</p>
                                 <label for="{{$card_number}}" class="sr-only">Card number</label>
-                                <input class="input rounded-bl-none rounded-br-none  text-lg"
+                                <input class="rounded-br-none rounded-bl-none text-lg input tracking-[.2rem]"
                                        autocomplete="cc-number"
                                        autocorrect="off"
                                        spellcheck="false"
@@ -144,10 +143,13 @@ $cvc = ThanksResponse::cvc;
                                        placeholder="1234 1234 1234 1234"
                                        aria-invalid="false"
                                        value=""
+                                       minlength="13"
+                                       maxlength="19"
+                                       required
                                 >
                                 <div class="flex">
                                     <label for="{{$expiration}}" class="sr-only">Expiration Month</label>
-                                    <input class="input -mt-[1px] -mr-[.5px] text-lg rounded-none rounded-bl"
+                                    <input class="rounded-none rounded-bl text-lg input -mt-[1px] -mr-[.5px]"
                                            autocomplete="cc-exp"
                                            autocorrect="off"
                                            spellcheck="false"
@@ -159,14 +161,29 @@ $cvc = ThanksResponse::cvc;
                                            placeholder="MM / YY"
                                            aria-invalid="false"
                                            value=""
+                                           maxlength="7"
+                                           minlength="7"
+                                           required
                                     >
                                     <label for="{{$cvc}}" class="sr-only">CVC</label>
-                                    <input class="input -mt-[1px] -ml-[.5px] text-lg rounded-none rounded-br"
-                                           autocomplete="cc-csc" autocorrect="off" spellcheck="false" id="{{$cvc}}"
-                                           name="{{$cvc}}" type="text" inputmode="numeric" aria-label="CVC"
-                                           placeholder="CVC" aria-invalid="false" value="">
+                                    <input class="rounded-none rounded-br text-lg input -mt-[1px] -ml-[.5px]"
+                                           autocomplete="cc-csc"
+                                           autocorrect="off"
+                                           spellcheck="false"
+                                           id="{{$cvc}}"
+                                           name="{{$cvc}}"
+                                           type="text"
+                                           inputmode="numeric"
+                                           aria-label="CVC"
+                                           placeholder="CVC"
+                                           aria-invalid="false"
+                                           value=""
+                                           minlength="3"
+                                           maxlength="4"
+                                           required
+                                    >
                                 </div>
-                                <div class="text-error text-sm font-bold">
+                                <div class="text-sm font-bold text-error">
                                     <p id="expiration-error"></p>
                                     <p id="card-errors"></p>
                                     <p id="cvc-errors"></p>
@@ -174,8 +191,8 @@ $cvc = ThanksResponse::cvc;
                                     <p id="message-errors"></p>
                                 </div>
                             </div>
-                            <button id="submit" class="btn btn-wide font-bold">Buy and Send</button>
-                            <div id="message-success" class="hidden font-bold text-sm">
+                            <button id="submit" class="font-bold btn btn-wide">Buy and Send</button>
+                            <div id="message-success" class="hidden text-sm font-bold">
                                 <p class="flex gap-1">
                                     <x-svg :name="'check-green'"/>
                                     <span class="my-auto">Thank you for supporting! A receipt will be sent to your email</span>
@@ -186,9 +203,9 @@ $cvc = ThanksResponse::cvc;
                             const expirationInput = document.getElementById('expiration');
                             const expirationError = document.getElementById('expiration-error');
 
-                            expirationInput.addEventListener('input', (event) => {
+                            function getCvcInput() {
                                 // Remove any non-numeric characters
-                                let input = event.target.value.replace(/\D/g, '');
+                                let input = expirationInput.value.replace(/\D/g, '');
 
                                 // Add a slash between the month and year if the input length is greater than 2
                                 if (input.length > 2) {
@@ -196,12 +213,17 @@ $cvc = ThanksResponse::cvc;
                                 }
 
                                 // Set the value of the input to the formatted value
-                                event.target.value = input;
+                                expirationInput.value = input;
+
+                                return input;
+                            }
+
+                            expirationInput.addEventListener('input', () => {
+                                const input = getCvcInput();
 
                                 // Validate the input if the year is entered
                                 if (input.length === 7) {
-                                    const [month, year] = input.split(' / ');
-                                    if (validateExpiration(month, year)) {
+                                    if (validateExpiration(...input.split(' / '))) {
                                         expirationError.textContent = '';
                                     } else {
                                         expirationError.textContent = 'Invalid expiration date';
@@ -223,17 +245,20 @@ $cvc = ThanksResponse::cvc;
                                 return (year > currentYear || (year === currentYear && month >= currentMonth));
                             }
 
+                            const formWrapper = document.getElementById('form-wrapper');
                             const thanksButton = document.getElementById('thanks');
+                            const thanksButtonMobile = document.getElementById('thanks-mobile');
 
-                            thanksButton.addEventListener('click', (event) => {
+                            function toggleForm(event) {
                                 event.preventDefault();
-                                const formWrapper = document.getElementById('form-wrapper');
                                 formWrapper.classList.toggle('hidden');
-                            });
+                            }
 
-                            addEventListener('keydown', function (event) {
+                            thanksButton.addEventListener('click', toggleForm);
+                            thanksButtonMobile.addEventListener('click',toggleForm);
+
+                            document.addEventListener('keydown', (event) => {
                                 if (event.key === 'Escape') {
-                                    const formWrapper = document.getElementById('form-wrapper');
                                     formWrapper.classList.add('hidden');
                                 }
                             });
@@ -242,9 +267,15 @@ $cvc = ThanksResponse::cvc;
                             const form = document.querySelector('#form');
 
                             form.addEventListener('submit', (event) => {
+                                event.preventDefault();
+                                if (!validateExpiration(...getCvcInput().split(' / '))) {
+                                    expirationError.textContent = 'Invalid expiration date';
+
+                                    return;
+                                }
                                 const submitButton = document.getElementById('submit');
                                 submitButton.innerHTML = 'Processing ...';
-                                event.preventDefault();
+                                submitButton.disabled = true
                                 const formData = new FormData(form);
                                 fetch(endpoint, {
                                     method: 'POST',
@@ -258,6 +289,7 @@ $cvc = ThanksResponse::cvc;
                                     .then(submit)
                                     .catch(error => console.error(error))
                                     .finally(() => {
+                                        submitButton.disabled = false;
                                         submitButton.innerHTML = 'Buy and Send';
                                     });
 
@@ -302,7 +334,7 @@ $cvc = ThanksResponse::cvc;
                     </div>
                 </div>
                 @vite('resources/js/share.js')
-                <div class="grid max-w-none prose px-2">
+                <div class="grid max-w-none px-2 prose">
                     {!! $post->published_content !!}
                 </div>
             </article>
@@ -334,7 +366,7 @@ $cvc = ThanksResponse::cvc;
             @endforeach
         </div>
         {{--        <div id="cta"--}}
-        {{--             class="p-4 rounded-lg bg-gray-100 btn-ghost cursor-pointer flex justify-between shadow-lg">--}}
+        {{--             class="flex cursor-pointer justify-between rounded-lg bg-gray-100 p-4 shadow-lg btn-ghost">--}}
         {{--            <div class="flex gap-2">--}}
         {{--                <x-svg :name="'mail'"/>--}}
         {{--                <span class="my-auto font-bold">Stay up to date</span>--}}
@@ -342,7 +374,7 @@ $cvc = ThanksResponse::cvc;
         {{--            <p class="my-auto text-sm">Show more...</p>--}}
         {{--        </div>--}}
 
-        <div class="mt-12 space-y-2 3col:hidden">
+        <div class="mt-12 3col:hidden space-y-2">
             <h3 class="my-auto text-lg font-semibold">Related</h3>
             <x-divider class="pt-2"/>
             <x-post-responsive :posts="$posts"/>

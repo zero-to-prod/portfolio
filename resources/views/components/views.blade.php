@@ -8,5 +8,5 @@ use App\Models\Post;
 ?>
 
 <span {{ $attributes->merge(['class' => 'whitespace-nowrap']) }}>
-    {{$post->views}} {{$post->views === 1 ? 'View' : 'Views'}}
+    {{$post->views > 1000 ? floor($post->views / 1000) . 'k' : $post->views}} {{$post->views === 1 ? 'View' : 'Views'}}
 </span>

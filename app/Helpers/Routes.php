@@ -52,8 +52,8 @@ enum Routes: string
     case api_v1_thanks = 'api/v1/thanks';
 
     /* Guest */
-    case guest_login_index = 'login';
-    case guest_login_store = 'login/store';
+    case admin_login_index = 'admin/login';
+    case admin_login_store = 'admin/login/store';
 
     /* Admin */
 

@@ -20,7 +20,7 @@ class SubscribeResponse extends Controller
 {
 
     public const email = 'email';
-    public const response_success = ['message' => 'success'];
+    public const response = ['message' => 'success'];
 
     /**
      * @throws BindingResolutionException
@@ -40,6 +40,6 @@ class SubscribeResponse extends Controller
 
         DB::commit();
 
-        return response(['message' => 'success']);
+        return response(self::response);
     }
 }

@@ -45,6 +45,7 @@ enum Routes: string
 
     /* Api */
     case api_v1_subscribe = 'api/v1/subscribe';
+    case api_v1_thanks = 'api/v1/thanks';
 
     /* Guest */
     case guest_login_index = 'login';

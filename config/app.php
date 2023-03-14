@@ -199,6 +199,7 @@ return [
         App\Providers\RedirectServiceProvider::class,
         App\Providers\BlueprintServiceProvider::class,
         App\Providers\MailchimpProvider::class,
+        App\Providers\StripeProvider::class,
 
     ],
 

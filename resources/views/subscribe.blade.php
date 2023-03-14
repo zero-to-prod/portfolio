@@ -43,7 +43,7 @@ $email = SubscribeResponse::email;
                         <div class="flex flex-col 2col:flex-row gap-2">
                             <input class="input text-lg text-center 2col:text-left"
                                    id="{{$email}}"
-                                   type="{{$email}}"
+                                   type="email"
                                    name="{{$email}}"
                                    required
                                    placeholder="Your email address"/>

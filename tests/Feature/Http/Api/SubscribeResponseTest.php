@@ -58,14 +58,14 @@ class SubscribeResponseTest extends TestCase
         $email = 'valid@gmail.com';
         $this->mailchimp->shouldReceive('addListMember')
             ->withArgs([
-                config('mail.mailchimp.list_id'),
+                config('mailchimp.list_id'),
                 (new MailchimpSubscriber($email))->toArray(),
             ])->once();
         $data = [SubscribeResponse::email => $email];
 
         $this->post(to()->api->subscribe(), $data, $this->headers)
             ->assertOk()
-            ->assertJson(SubscribeResponse::response_success);
+            ->assertJson(SubscribeResponse::response);
         Mail::assertQueued(EmailSubscription::class, 1);
         self::assertTrue(Contact::where(Contact::email, $email)->exists());
     }

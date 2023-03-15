@@ -8,7 +8,7 @@ use App\Models\Tag;
 ?>
 
 <x-main>
-    <div class="4col:mx-auto flex w-full 4col:max-w-7xl flex-col px-2">
+    <div class="4col:mx-auto flex w-full 4col:max-w-7xl flex-col 2col:px-2">
         @foreach($tags as $tag)
             <section>
                 <x-a class="mb-2 2col:mb-0 2col:ml-0 flex gap-x-2 p-2 btn-ghost" :href="to()->web->results($tag)">

@@ -13,4 +13,5 @@ trait PostColumns
     public const published_word_count = 'published_word_count';
     public const original_publish_date = 'original_publish_date';
     public const reading_time = 'reading_time';
+    public const premiere_at = 'premiere_at';
 }

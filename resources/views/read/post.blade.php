@@ -23,6 +23,13 @@ $cvc = ThanksResponse::cvc;
                        :width="837"
                        :title="''"
                 />
+                <div class="absolute m-2 bottom-0 left-0 bg-gray-700 text-white rounded-md p-2 flex gap-2">
+                    <x-svg :name="'premiere'" class="animation-pulse rounded-full w-6 h-6 m-2 my-auto"/>
+                    <div class="text-sm font-bold ">
+                        <p>Premieres {{$post->published_at->tz('EST')->format('M d, Y')}}</p>
+                        <p>{{$post->published_at->tz('EST')->format('h:i A e')}}</p>
+                    </div>
+                </div>
                 <x-reading-time-chip :post="$post" :text="' min read'"/>
             </div>
             <article class="px-4 2col:px-2 space-y-4 2col:space-y-6" aria-label="Body">
@@ -341,9 +348,16 @@ $cvc = ThanksResponse::cvc;
                     </div>
                 </div>
                 @vite('resources/js/share.js')
-                <div id="published-content" class="grid max-w-none px-2 published-content prose">
-                    {!! $post->published_content !!}
-                </div>
+                @if($post->premiere_at !== null && $post->premiere_at?->gt(now()))
+                    <div class="text-center py-12 text-2xl">
+                        <p >Premieres {{$post->published_at->tz('EST')->format('M d, Y')}}</p>
+                        <p>{{$post->published_at->tz('EST')->format('h:i A e')}}</p>
+                    </div>
+                @else
+                    <div id="published-content" class="grid max-w-none px-2 published-content prose">
+                        {!! $post->published_content !!}
+                    </div>
+                @endif
             </article>
         </div>
         <?php
@@ -372,17 +386,8 @@ $cvc = ThanksResponse::cvc;
                 </x-a>
             @endforeach
         </div>
-        {{--        <div id="cta"--}}
-        {{--             class="flex cursor-pointer justify-between rounded-lg bg-gray-100 p-4 shadow-lg btn-ghost">--}}
-        {{--            <div class="flex gap-2">--}}
-        {{--                <x-svg :name="'mail'"/>--}}
-        {{--                <span class="my-auto font-bold">Stay up to date</span>--}}
-        {{--            </div>--}}
-        {{--            <p class="my-auto text-sm">Show more...</p>--}}
-        {{--        </div>--}}
-
         <div class="mt-12 3col:hidden space-y-2">
-            <h3 class="my-auto text-lg font-semibold">Related</h3>
+            <h3 class="my-auto text-lg font-semibold ml-2 2col:ml-0">Related</h3>
             <x-divider class="pt-2"/>
             <x-post-responsive :posts="$posts"/>
         </div>

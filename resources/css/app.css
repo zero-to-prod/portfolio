@@ -2,19 +2,20 @@
 @import "themes/root.css";
 @import "tailwindcss/components";
 
-@import "post.css";
 @import "button.css";
 @import "em.css";
 @import "error.css";
+@import "footer.css";
 @import "form-control-dark.css";
 @import "form-control.css";
-@import "footer.css";
 @import "header-section.css";
 @import "history-details.css";
 @import "input.css";
 @import "label.css";
 @import "left-drawer.css";
 @import "new-chip.css";
+@import "post.css";
+@import "pulse.css";
 @import "reading-time-chip.css";
 @import "svg.css";
 @import "toast.css";

@@ -45,9 +45,10 @@ class Post extends Model implements HasRules
     use HasFiles;
     use PostScopes;
 
-    protected $fillable = [self::title, self::subtitle, self::body];
+    protected $fillable = [self::title, self::subtitle, self::body, self::premiere_at];
     protected $casts = [
         self::published_at => 'datetime',
+        self::premiere_at => 'datetime',
         self::original_publish_date => 'datetime',
         self::views => 'integer',
         self::published_word_count => 'integer',

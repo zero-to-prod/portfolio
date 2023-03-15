@@ -8,10 +8,10 @@ use App\Models\Tag;
 ?>
 
 <x-main>
-    <div class="4col:mx-auto flex w-full 4col:max-w-7xl flex-col">
+    <div class="4col:mx-auto flex w-full 4col:max-w-7xl flex-col px-2">
         @foreach($tags as $tag)
             <section>
-                <x-a class="2col:mb-0 2col:ml-0 flex gap-x-2 p-2 btn-ghost" :href="to()->web->results($tag)">
+                <x-a class="mb-2 2col:mb-0 2col:ml-0 flex gap-x-2 p-2 btn-ghost" :href="to()->web->results($tag)">
                     @if($tag->hasLogo())
                         <x-img class="my-auto w-10 rounded" :file="$tag->logo()" :width="80"/>
                     @endif
@@ -20,7 +20,7 @@ use App\Models\Tag;
                     </h2>
                 </x-a>
                 <x-divider class="mt-2 mb-4"/>
-                <div class="mb-4 grid grid-flow-row 2col:grid-cols-2 4col:grid-cols-4 2cols:gap-0 2col:gap-2 gap-4">
+                <div class="mb-4 grid grid-flow-row 2col:grid-cols-2 4col:grid-cols-4 2cols:gap-0 2col:gap-2 gap-4 ">
                     @foreach($tag->relatedPosts(limit: 4) as $post)
                         <x-a class="shadow-lg 2col:shadow-none" :href="to()->web->read($post)">
                             <div class="relative">

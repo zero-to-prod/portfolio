@@ -8,9 +8,9 @@ const footer = document.getElementById('footer');
 const isNavbarWideOpen = JSON.parse(localStorage.getItem('isNavbarWideOpen'));
 
 // Set the initial toggle state based on the stored value
-const block = 'min-[1312px]:block';
-const hidden = 'min-[1312px]:hidden';
-const ml = 'min-[1312px]:ml-[238px]';
+const block = 'nav-wide:block';
+const hidden = 'nav-wide:hidden';
+const ml = 'nav-wide:ml-wide-nav';
 if (isNavbarWideOpen) {
     navbarWide.classList.add(block);
     navbarNarrow.classList.add(hidden);

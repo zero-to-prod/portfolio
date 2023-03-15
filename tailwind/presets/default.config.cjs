@@ -19,12 +19,15 @@ module.exports = {
       '2col': '490px',
       '3col': '870px',
       '4col': '1142px',
-      '5col': '1978px',
-      '6col': '2302px',
-      'post2col': '1000px',
+      'nav-small': '780px',
+      'nav-wide': '1312px',
       ...defaultTheme.screens,
     },
     extend: {
+      spacing: {
+        'narrow-nav': '64px',
+        'wide-nav': '238px'
+      },
       colors: {
         black: '#010409',
         /* Primary */

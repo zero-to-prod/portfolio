@@ -11,10 +11,10 @@ $search = SearchRedirect::search;
 <header class="fixed top-0 z-50 mx-auto w-full bg-primary-content shadow 2col:shadow-none">
     <div class="flex justify-between 2col:gap-2">
         <button id="toggle-navbar-btn"
-                class="hidden btn-ghost min-[1312px]:block"
+                class="hidden btn-ghost nav-wide:block"
                 aria-label="Menu"
                 type="button">
-            <x-svg :name="'hamburger'" class="m-auto block h-6 w-[64px]"/>
+            <x-svg :name="'hamburger'" class="m-auto block h-6 w-narrow-nav"/>
         </button>
         <x-a class="px-2 py-4 btn-ghost" :href="to()->web->welcome()">
             <x-logo/>

@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 /* @var Collection $tags */
 /* @var Tag $tag */
 ?>
-<nav class="hidden w-[238px] mt-[60px] min-[1312px]:block" id="left-nav-wide">
+<nav class="hidden w-wide-nav mt-narrow-nav nav-wide:block" id="left-nav-wide">
     <x-a class="{{ route_is(to()->web->welcome) ? 'bg-base-200' : '' }}"
          :href="to()->web->welcome()"
          title="Home"
@@ -43,7 +43,7 @@ use Illuminate\Support\Collection;
         </x-a>
     @endforeach
 </nav>
-<nav class="hidden text-xs mt-[60px] min-[780px]:block min-[1312px]:hidden"
+<nav class="hidden text-xs mt-narrow-nav nav-small:block nav-wide:hidden"
      id="left-nav-narrow">
     <x-a class=" {{ route_is(to()->web->welcome) ? 'bg-base-200' : '' }}"
          :href="to()->web->welcome()"

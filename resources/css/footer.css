@@ -1,0 +1,8 @@
+@layer components {
+    #footer li a {
+        @apply text-sm leading-6 text-gray-600 hover:text-gray-900 hover:underline;
+    }
+    #footer h3 {
+        @apply text-sm font-semibold leading-6;
+    }
+}

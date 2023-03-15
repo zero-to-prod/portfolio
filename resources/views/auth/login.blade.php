@@ -46,12 +46,6 @@
             <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>
-            <div class="flex items-center justify-end mt-4">
-                <a class="btn" href="{{ to()->auth->github->index() }}"
-                   style="color: #ffffff; background: #24292f; padding: 10px; width: 100%; text-align: center; display: block; border-radius:3px;">
-                    Login with GitHub
-                </a>
-            </div>
         </div>
     </form>
 </x-guest-layout>

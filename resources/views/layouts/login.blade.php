@@ -20,8 +20,8 @@
             </x-a>
         </div>
     </div>
-    <div class="mt-12 flex flex-col items-center sm:justify-center">
-        <div class="w-full overflow-hidden bg-white shadow-md sm:max-w-md rounded-lg border border-gray-300">
+    <div class="mt-12 flex flex-col items-center 2col:justify-center px-4">
+        <div class="w-full overflow-hidden bg-white shadow-md 2col:max-w-md rounded-lg border border-gray-300">
             <div class="border-b border-gray-300 p-4 text-sm bg-base-200">
                 Sign In
             </div>

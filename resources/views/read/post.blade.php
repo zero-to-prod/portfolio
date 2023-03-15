@@ -23,16 +23,16 @@ $cvc = ThanksResponse::cvc;
                        :width="837"
                        :title="''"
                 />
-                <div class="absolute m-2 bottom-0 left-0 bg-gray-700 text-white rounded-md p-2 flex gap-2">
-                    <x-svg :name="'premiere'" class="animation-pulse rounded-full w-6 h-6 m-2 my-auto"/>
-                    <div class="text-sm font-bold ">
+                <div class="absolute bottom-0 left-0 m-2 flex gap-2 rounded-md bg-gray-700 p-2 text-white">
+                    <x-svg :name="'premiere'" class="m-2 my-auto h-6 w-6 rounded-full animation-pulse"/>
+                    <div class="text-sm font-bold">
                         <p>Premieres {{$post->published_at->tz('EST')->format('M d, Y')}}</p>
                         <p>{{$post->published_at->tz('EST')->format('h:i A e')}}</p>
                     </div>
                 </div>
                 <x-reading-time-chip :post="$post" :text="' min read'"/>
             </div>
-            <article class="px-4 2col:px-2 space-y-4 2col:space-y-6" aria-label="Body">
+            <article class="2col:px-2 px-4 space-y-4 2col:space-y-6" aria-label="Body">
                 <div class="2col:block hidden space-y-2">
                     <div class="flex justify-between pt-2">
                         <div class="font-bold">
@@ -44,7 +44,7 @@ $cvc = ThanksResponse::cvc;
                             <x-views :post="$post"/>
                         </div>
                     </div>
-                    <div class="mt-2 gap-2 flex w-full flex-wrap justify-between">
+                    <div class="mt-2 flex w-full flex-wrap justify-between gap-2">
                         <x-a class="mr-4 flex gap-2" title="Authors Page"
                              :href="to()->web->resultsAuthor($post->authors->first())">
                             <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page"
@@ -58,9 +58,9 @@ $cvc = ThanksResponse::cvc;
                         </x-a>
                         <div class="flex gap-2">
                             <x-a title="Subscribe to Newsletter" :href="to()->web->subscribe()"
-                                 class="my-auto flex gap-2 rounded-lg bg-gray-800 py-2 px-3 shadow-md hover:bg-gray-700">
+                                 class="my-auto flex gap-2 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
                                 <x-svg :name="'mail'" class="!h-6 !w-6"/>
-                                <span class="my-auto text-sm text-white font-bold">Subscribe</span>
+                                <span class="my-auto text-sm font-bold text-white">Subscribe</span>
                             </x-a>
                             <button id="share" type="button" title="Share this content."
                                     class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
@@ -98,9 +98,9 @@ $cvc = ThanksResponse::cvc;
                     </div>
                     <div class="flex flex-row-reverse gap-2">
                         <x-a title="Subscribe to Newsletter" :href="to()->web->subscribe()"
-                             class="flex gap-2 rounded-lg bg-gray-800 py-2 px-3 shadow-md hover:bg-gray-700">
+                             class="flex gap-2 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
                             <x-svg :name="'mail'" class="!h-6 !w-6"/>
-                            <span class="my-auto text-sm text-white font-bold">Subscribe</span>
+                            <span class="my-auto text-sm font-bold text-white">Subscribe</span>
                         </x-a>
                         <button id="share-mobile" type="button"
                                 class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
@@ -116,11 +116,11 @@ $cvc = ThanksResponse::cvc;
                     </div>
                 </div>
                 <div id="form-wrapper" class="my-4 hidden border-t border-b py-4">
-                    <div class="mx-auto p-4 bg-base-200 rounded-lg shadow max-w-[380px]">
+                    <div class="mx-auto rounded-lg p-4 shadow bg-base-200 max-w-[380px]">
                         <h3 class="text-xl font-bold">Say Thanks</h3>
                         <p class="text-sm font-bold">Buy a Thanks, and directly support content like this.</p>
                         <form id="form" class="mt-4 space-y-4">
-                            <div class="flex justify-center gap-2 flex-wrap">
+                            <div class="flex flex-wrap justify-center gap-2">
                                 @foreach([1, 2, 5, 10] as $amount)
                                     <label class="flex cursor-pointer items-center rounded-lg bg-gray-300 p-2 hover:bg-base-300">
                                         <input type="radio" id={{$amount}}1" name="amount"
@@ -349,8 +349,8 @@ $cvc = ThanksResponse::cvc;
                 </div>
                 @vite('resources/js/share.js')
                 @if($post->premiere_at !== null && $post->premiere_at?->gt(now()))
-                    <div class="text-center py-12 text-2xl">
-                        <p >Premieres {{$post->published_at->tz('EST')->format('M d, Y')}}</p>
+                    <div class="py-12 text-center text-2xl">
+                        <p>Premieres {{$post->published_at->tz('EST')->format('M d, Y')}}</p>
                         <p>{{$post->published_at->tz('EST')->format('h:i A e')}}</p>
                     </div>
                 @else
@@ -387,7 +387,7 @@ $cvc = ThanksResponse::cvc;
             @endforeach
         </div>
         <div class="mt-12 3col:hidden space-y-2">
-            <h3 class="my-auto text-lg font-semibold ml-2 2col:ml-0">Related</h3>
+            <h3 class="my-auto 2col:ml-0 ml-2 text-lg font-semibold">Related</h3>
             <x-divider class="pt-2"/>
             <x-post-responsive :posts="$posts"/>
         </div>

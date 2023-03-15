@@ -19,7 +19,7 @@ $search = SearchRedirect::search;
         <x-a class="px-2 py-4 btn-ghost" :href="to()->web->welcome()">
             <x-logo/>
         </x-a>
-        <div class="my-auto mx-auto w-full max-w-2xl">
+        <div class="my-auto  w-full max-w-2xl mr-2 2col:mx-auto">
             <form action="{{to()->web->search()}}" method="post">
                 @csrf
                 <label for="{{$search}}"></label>
@@ -43,6 +43,17 @@ $search = SearchRedirect::search;
                 </div>
             </form>
         </div>
+        @auth()
+            <form method="POST" class="hidden 2col:block my-auto mx-2 2col:mx-4 " action="{{ to()->auth->logout()}}">
+                @csrf
+                <x-a class="flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border"
+                     :href="to()->auth->logout()"
+                     onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                    <span>Sign</span> <span>Out</span>
+                </x-a>
+            </form>
+        @endauth
         @guest()
             <x-a :href="to()->web->login()"
                  class="my-auto mx-2 2col:mx-4 flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border">

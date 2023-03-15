@@ -15,9 +15,9 @@ $cvc = ThanksResponse::cvc;
 ?>
 
 <x-main :title="$post->title">
-    <div class="mx-auto block 3col:flex max-w-7xl 3col:flex-row justify-center gap-2">
+    <div class="mx-auto block 3col:flex max-w-7xl 3col:flex-row justify-center">
         <div class="shrink max-w-[837px]">
-            <div class="relative">
+            <div class="relative 2col:mx-2">
                 <x-img class="h-full w-full object-cover object-center"
                        :file="$post->featuredImage()"
                        :width="837"
@@ -25,7 +25,7 @@ $cvc = ThanksResponse::cvc;
                 />
                 <x-reading-time-chip :post="$post" :text="' min read'"/>
             </div>
-            <article class="px-4 space-y-6" aria-label="Body">
+            <article class="px-4 2col:px-2 space-y-4 2col:space-y-6" aria-label="Body">
                 <div class="2col:block hidden space-y-2">
                     <div class="flex justify-between pt-2">
                         <div class="font-bold">

@@ -19,7 +19,7 @@ $search = SearchRedirect::search;
         <x-a class="px-2 py-4 btn-ghost" :href="to()->web->welcome()">
             <x-logo/>
         </x-a>
-        <div class="my-auto  w-full max-w-2xl mr-2 2col:mx-auto">
+        <div class="my-auto w-full max-w-2xl mr-2 2col:mx-auto">
             <form action="{{to()->web->search()}}" method="post">
                 @csrf
                 <label for="{{$search}}"></label>

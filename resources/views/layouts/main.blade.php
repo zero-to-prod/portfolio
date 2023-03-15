@@ -15,7 +15,7 @@ use App\Models\Tag;
     @vite(['resources/css/app.css'])
     <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
 </head>
-<body class="min-h-screen overflow-y-scroll bg-primary-content text-base-content">
+<body class="min-h-screen overflow-y-scroll bg-primary-content text-base-content antialiased">
 <main aria-label="Main">
     <x-masthead/>
     <div class="mt-[60px]">

@@ -25,4 +25,7 @@ enum Middlewares: string
     case signed = 'signed';
     case throttle = 'throttle';
     case verified = 'verified';
+    case role = 'role';
+    case permission = 'permission';
+    case role_or_permission = 'role_or_permission';
 }

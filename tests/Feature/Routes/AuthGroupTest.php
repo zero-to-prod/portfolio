@@ -3,7 +3,8 @@
 namespace Routes;
 
 use App\Helpers\Middlewares;
-use App\Models\User;
+use App\Helpers\Roles;
+use Spatie\Permission\Models\Role;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
 
@@ -14,7 +15,8 @@ class AuthGroupTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->be(User::factory()->create());
+        Role::create(['name' => Roles::super_admin->value]);
+        $this->be(user()->assignRole(Roles::super_admin->value));
     }
 
     /**

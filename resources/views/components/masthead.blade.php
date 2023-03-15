@@ -9,7 +9,7 @@ $search = SearchRedirect::search;
 
 ?>
 <header class="fixed top-0 z-50 mx-auto w-full bg-primary-content shadow 2col:shadow-none">
-    <div class="flex justify-between gap-2">
+    <div class="flex justify-between 2col:gap-2">
         <button id="toggle-navbar-btn"
                 class="hidden btn-ghost min-[1312px]:block"
                 aria-label="Menu"
@@ -20,7 +20,7 @@ $search = SearchRedirect::search;
             <span class="my-auto rounded-l bg-white pr-1 pl-2 text-primary shadow">dev</span>
             <span class="my-auto rounded-r bg-primary pr-2 pl-1 text-white shadow-md">RED</span>
         </x-a>
-        <div class="mx-auto my-auto w-full max-w-2xl mr-2 2col:mr-0">
+        <div class="my-auto w-full max-w-2xl">
             <form action="{{to()->web->search()}}" method="post">
                 @csrf
                 <label for="{{$search}}"></label>
@@ -44,9 +44,24 @@ $search = SearchRedirect::search;
                 </div>
             </form>
         </div>
-        <x-a class="hidden 2col:flex px-2 py-2 text-lg 2col:text-xl font-semibold btn-ghost" :href="to()->web->subscribe()">
-            <span class="my-auto rounded bg-primary px-2 text-sm text-white shadow-md py-[0.25rem]">SUBSCRIBE</span>
-        </x-a>
+        <div class="my-auto pl-2 mr-2 2col:mr-4">
+            @auth()
+                <form method="POST" action="{{ to()->auth->logout()}}">
+                    @csrf
+                    <x-a class="flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border"
+                         :href="to()->auth->logout()"
+                         onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                        <span>Sign</span> <span>Out</span>
+                    </x-a>
+                </form>
+            @endauth
+            @guest()
+                <x-a :href="to()->web->login()"
+                     class="flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border">
+                    <span>Sign</span> <span>In</span></x-a>
+            @endguest
+        </div>
     </div>
 </header>
 @vite('resources/js/masthead.js')

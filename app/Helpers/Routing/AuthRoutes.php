@@ -14,6 +14,7 @@ class AuthRoutes
     public Routes $logout = Routes::auth_logout;
 
     public function __construct(
+        public GithubRoutes        $github = new GithubRoutes,
         public PasswordNewRoutes   $passwordNew = new PasswordNewRoutes,
         public PasswordResetRoutes $passwordReset = new PasswordResetRoutes,
         public PasswordRoutes      $password = new PasswordRoutes,

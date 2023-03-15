@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @mixin IdeHelperUser
@@ -21,8 +22,9 @@ class User extends Authenticatable
     use UserColumns;
     use IdColumn;
     use TimeStampColumns;
+    use HasRoles;
 
-    protected $fillable = [self::name, self::email, self::password];
-    protected $hidden = [self::password, self::remember_token];
+    protected $fillable = [self::name, self::email, self::password, self::github_id, self::github_token, self::github_refresh_token];
+    protected $hidden = [self::password, self::github_token];
     protected $casts = [self::email_verified_at => 'datetime'];
 }

@@ -21,6 +21,7 @@ enum Routes: string
     case read = 'read/{post}';
     case results = 'results';
     case search = 'search';
+    case login = 'login';
     case welcome = '/';
     case subscribe = 'subscribe';
 
@@ -43,13 +44,17 @@ enum Routes: string
     case auth_register_index = 'register';
     case auth_register_store = 'register/store';
 
+    case auth_github_index = 'auth/github';
+    case auth_github_callback = 'auth/github/callback';
+
+
     /* Api */
     case api_v1_subscribe = 'api/v1/subscribe';
     case api_v1_thanks = 'api/v1/thanks';
 
     /* Guest */
-    case guest_login_index = 'login';
-    case guest_login_store = 'login/store';
+    case admin_login_index = 'admin/login';
+    case admin_login_store = 'admin/login/store';
 
     /* Admin */
 

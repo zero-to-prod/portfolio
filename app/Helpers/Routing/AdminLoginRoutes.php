@@ -4,11 +4,11 @@ namespace App\Helpers\Routing;
 
 use App\Helpers\Routes;
 
-class LoginRoutes
+class AdminLoginRoutes
 {
 
-    public Routes $index = Routes::guest_login_index;
-    public Routes $store = Routes::guest_login_store;
+    public Routes $index = Routes::admin_login_index;
+    public Routes $store = Routes::admin_login_store;
 
     public function index(): string
     {

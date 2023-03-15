@@ -27,7 +27,7 @@ use App\Helpers\Routes;
                 </div>
             </div>
             <div class="ml-6 flex items-center">
-                <a aria-label="Connect Page" href="{{to()->web->connect()}}" class="btn btn-xs">Connect</a>
+                <a aria-label="Connect Page" href="{{to()->web->contact()}}" class="btn btn-xs">Connect</a>
             </div>
         </div>
     </div>

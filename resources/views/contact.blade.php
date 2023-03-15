@@ -17,11 +17,11 @@ $body = ConnectStoreRedirect::body;
     <div class="sm:py-6 sm:py-12">
         <div class="px-6 lg:px-8 max-w-xl mx-auto py-8">
             <div class="mx-auto max-w-2xl text-center">
-                <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Let's Connect</h1>
+                <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Contact {{config('app.name')}}</h1>
             </div>
-            <form class="mx-auto mt-8 space-y-8" action="{{to()->web->connectStore()}}" method="post">
+            <form class="mx-auto mt-8 space-y-4" action="{{to()->web->connectStore()}}" method="post">
                 @csrf
-                <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
+                <div class="grid grid-cols-1 gap-y-4 gap-x-8 sm:grid-cols-2">
                     <x-form-control>
                         <label for="{{$email}}">Email*</label>
                         <input name="{{$email}}"

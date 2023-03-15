@@ -1,6 +1,6 @@
 @layer components {
     [data-form-control] input, [data-form-control] textarea {
-        @apply input mt-2.5;
+        @apply input;
     }
     [data-form-control="control"] label {
         @apply label;

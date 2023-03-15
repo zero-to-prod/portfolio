@@ -16,9 +16,8 @@ $search = SearchRedirect::search;
                 type="button">
             <x-svg :name="'hamburger'" class="m-auto block h-6 w-[64px]"/>
         </button>
-        <x-a class="flex px-2 py-4 text-lg 2col:text-xl font-semibold btn-ghost" :href="to()->web->welcome()">
-            <span class="my-auto rounded-l bg-white pr-1 pl-2 text-primary shadow">dev</span>
-            <span class="my-auto rounded-r bg-primary pr-2 pl-1 text-white shadow-md">RED</span>
+        <x-a class="px-2 py-4 btn-ghost" :href="to()->web->welcome()">
+            <x-logo/>
         </x-a>
         <div class="my-auto mx-auto w-full max-w-2xl">
             <form action="{{to()->web->search()}}" method="post">
@@ -44,24 +43,22 @@ $search = SearchRedirect::search;
                 </div>
             </form>
         </div>
-        <div class="my-auto pl-2 mr-2 2col:mr-4">
-            @auth()
-                <form method="POST" action="{{ to()->auth->logout()}}">
-                    @csrf
-                    <x-a class="flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border"
-                         :href="to()->auth->logout()"
-                         onclick="event.preventDefault();
+        @auth()
+            <form method="POST" class="my-auto pl-2 mr-2 2col:mr-4 " action="{{ to()->auth->logout()}}">
+                @csrf
+                <x-a class="flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border"
+                     :href="to()->auth->logout()"
+                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                        <span>Sign</span> <span>Out</span>
-                    </x-a>
-                </form>
-            @endauth
-            @guest()
-                <x-a :href="to()->web->login()"
-                     class="flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border">
-                    <span>Sign</span> <span>In</span></x-a>
-            @endguest
-        </div>
+                    <span>Sign</span> <span>Out</span>
+                </x-a>
+            </form>
+        @endauth
+        @guest()
+            <x-a :href="to()->web->login()"
+                 class="my-auto pl-2 mr-2 2col:mr-4 flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border">
+                <span>Sign</span> <span>In</span></x-a>
+        @endguest
     </div>
 </header>
 @vite('resources/js/masthead.js')

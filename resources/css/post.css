@@ -5,7 +5,7 @@
 
     label:has(> [type='radio']:checked) {
         background-color: var(--primary);
-        color:white;
+        color: white;
     }
 
     [type='radio'] {
@@ -25,7 +25,7 @@
         margin-bottom: 0;
     }
 
-    .prose :where(.prose > ol > li > *:last-child):not(:where([class~="not-prose"] *)) {
+    #published-content > ul > li > code {
         background-color: #e3e6e8 !important;
         padding: 2px 4px;
         border-radius: 3px;
@@ -33,7 +33,7 @@
         font-weight: normal;
     }
 
-    .prose :where(hr):not(:where([class~="not-prose"] *)) {
+    #published-content > hr {
         margin-top: 1rem;
         margin-bottom: 0rem;
     }
@@ -42,15 +42,15 @@
         background-color: #f6f6f6 !important;
     }
 
-    .prose :where(code):not(:where([class~="not-prose"] *))::before {
+    #published-content code::before {
         content: "";
     }
 
-    .prose :where(code):not(:where([class~="not-prose"] *))::after {
+    #published-content code::after {
         content: "";
     }
 
-    .prose p :where(code):not(:where([class~="not-prose"] *)) {
+    #published-content p code {
         background-color: #e3e6e8 !important;
         padding: 2px 4px;
         border-radius: 3px;
@@ -58,11 +58,17 @@
         word-break: break-all;
     }
 
-    .prose :where(code):not(:where([class~="not-prose"] *)) {
+
+    #published-content p {
+        margin-top: 1rem;
+        margin-bottom: 0;
+    }
+
+    #published-content code {
         word-break: break-all;
     }
 
-    .prose :where(.prose > ul > li > *:last-child):not(:where([class~="not-prose"] *)) {
+    #published-content > ul > li > *:last-child {
         background-color: #e3e6e8 !important;
         padding: 2px 4px;
         border-radius: 3px;
@@ -75,12 +81,6 @@
         margin-bottom: 0;
     }
 
-
-    .prose :where(p):not(:where([class~="not-prose"] *)) {
-        margin-top: 1rem;
-        margin-bottom: 0;
-    }
-
     #content > div > div.shrink.max-w-\[837px\] > article > div.grid.max-w-none.prose > blockquote {
         margin-top: 1rem;
         margin-bottom: 0;
@@ -90,35 +90,16 @@
         margin-bottom: 1rem;
     }
 
-    .prose :where(.prose > :last-child):not(:where([class~="not-prose"] *)) {
-        margin-top: 0.5rem !important;
+    #published-content > :last-child {
+        margin-top: 0.5rem;
     }
 
-    .prose :where(h3):not(:where([class~="not-prose"] *)) {
+    #published-content h3, #published-content h2 {
         margin-top: 1rem;
         margin-bottom: 0;
     }
 
-    .prose :where(h2):not(:where([class~="not-prose"] *)) {
-        margin-bottom: 0;
-        margin-top: 1rem;
-    }
-
-    .prose :where(.prose > :last-child):not(:where([class~="not-prose"] *)) {
-        margin-top: 0;
-    }
-
-    .prose :where(ul):not(:where([class~="not-prose"] *)) {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-
-    .prose :where(li):not(:where([class~="not-prose"] *)) {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-
-    .prose :where(ol):not(:where([class~="not-prose"] *)) {
+    #published-content ul, #published-content li, #published-content ol {
         margin-top: 0;
         margin-bottom: 0;
     }

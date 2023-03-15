@@ -334,7 +334,7 @@ $cvc = ThanksResponse::cvc;
                     </div>
                 </div>
                 @vite('resources/js/share.js')
-                <div class="grid max-w-none px-2 prose">
+                <div id="published-content"  class="grid max-w-none px-2 published-content prose">
                     {!! $post->published_content !!}
                 </div>
             </article>

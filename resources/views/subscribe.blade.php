@@ -17,25 +17,10 @@ $email = SubscribeResponse::email;
                 We curate the best new information and deliver it to your inbox every Sunday morning.
             </p>
         </div>
-        <div>
-            <h2 class="text-xl font-bold">
-                The bleeding edge - to your inbox.
-            </h2>
-            <div class="flex flex-wrap justify-center mt-4">
-                @forEach($tags as $tag)
-                    <p class="p-2 flex">
-                        @if($tag->hasLogo())
-                            <x-img class="w-10" :file="$tag->logo()" :width="80"/>
-                        @endif
-                        <span class="ml-2 my-auto">{{$tag->name}}</span>
-                    </p>
-                @endforeach
-            </div>
-        </div>
         <div class="my-12">
             <div id="cta-expanded" class="p-4 rounded-lg bg-gray-200 shadow-lg">
                 <div class="max-w-md mx-auto">
-                    <p class="font-bold text-xl pt-4">The Perfect Newsletter to Stay up to Date</p>
+                    <p class="font-bold text-xl pt-4">The bleeding edge - to your inbox.</p>
                     <form class="mt-6 mx-auto" id="form">
                         <label for="{{$email}}" class="sr-only">Email</label>
                         <div class="flex flex-col 2col:flex-row gap-2">
@@ -121,5 +106,21 @@ $email = SubscribeResponse::email;
                 });
             </script>
         </div>
+        <div>
+            <h2 class="text-xl font-bold">
+                The Perfect Newsletter to Stay up to Date
+            </h2>
+            <div class="flex flex-wrap justify-center mt-4">
+                @forEach($tags as $tag)
+                    <p class="p-2 flex">
+                        @if($tag->hasLogo())
+                            <x-img class="w-10" :file="$tag->logo()" :width="80"/>
+                        @endif
+                        <span class="ml-2 my-auto">{{$tag->name}}</span>
+                    </p>
+                @endforeach
+            </div>
+        </div>
+
     </div>
 </x-main>

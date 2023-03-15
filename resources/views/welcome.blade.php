@@ -11,7 +11,10 @@ use App\Models\Tag;
     <div class="4col:mx-auto flex w-full 4col:max-w-7xl flex-col 2col:px-2">
         @foreach($tags as $tag)
             <section>
-                <x-a class="mb-2 2col:mb-0 2col:ml-0 flex gap-x-2 p-2 btn-ghost" :href="to()->web->results($tag)">
+                <x-a class="mb-2 2col:mb-0 2col:ml-0 flex gap-x-2 p-2 btn-ghost"
+                     :href="to()->web->results($tag)"
+                     title="Topic: {{$tag->name}}"
+                >
                     @if($tag->hasLogo())
                         <x-img class="my-auto w-10 rounded" :file="$tag->logo()" :width="80"/>
                     @endif

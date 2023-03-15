@@ -31,10 +31,18 @@ use Illuminate\Support\Collection;
         <x-svg :name="'topics'"/>
         Topics
     </x-a>
+    <x-a class="{{ route_is(to()->web->subscribe) ? 'bg-base-200' : '' }}"
+         :href="to()->web->subscribe()"
+         title="Subscribe to Newsletter"
+    >
+        <x-svg :name="'mail-dark'"/>
+        Newsletter
+    </x-a>
+    <x-divider class="py-2"/>
     @forEach($tags as $tag)
         <x-a class="{{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-base-200' : '' }}"
              :href="to()->web->results($tag)"
-             title="{{$tag->name}}"
+             title="Topic: {{$tag->name}}"
         >
             @if($tag->hasLogo())
                 <x-img class="w-6" :file="$tag->logo()" :width="80"/>
@@ -66,13 +74,21 @@ use Illuminate\Support\Collection;
         <x-svg class="mx-auto" :name="'topics'"/>
         Topics
     </x-a>
+    <x-a class=" {{ route_is(to()->web->subscribe) ? 'bg-base-200' : '' }}"
+         :href="to()->web->subscribe()"
+         title="Subscribe to Newsletter"
+    >
+        <x-svg class="mx-auto w-5" :name="'mail-dark'"/>
+        Newsletter
+    </x-a>
+    <x-divider class="py-2"/>
     @forEach($tags as $tag)
         <x-a class="!p-4 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-base-200' : '' }}"
              :href="to()->web->results($tag)"
              title="{{$tag->name}}"
         >
             @if($tag->hasLogo())
-                <x-img class="mx-auto w-6" :file="$tag->logo()" :width="80" title="{{$tag->name}}"/>
+                <x-img class="mx-auto w-6" :file="$tag->logo()" :width="80" title="Topic: {{$tag->name}}"/>
             @endif
         </x-a>
     @endforeach

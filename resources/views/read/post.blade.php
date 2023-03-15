@@ -23,13 +23,9 @@ $cvc = ThanksResponse::cvc;
                        :width="837"
                        :title="''"
                 />
-                <div class="absolute bottom-0 left-0 m-2 flex gap-2 rounded-md bg-gray-700 p-2 text-white">
-                    <x-svg :name="'premiere'" class="m-2 my-auto h-6 w-6 rounded-full animation-pulse"/>
-                    <div class="text-sm font-bold">
-                        <p>Premieres {{$post->published_at->tz('EST')->format('M d, Y')}}</p>
-                        <p>{{$post->published_at->tz('EST')->format('h:i A e')}}</p>
-                    </div>
-                </div>
+                @if($post->premiere_at !== null && $post->premiere_at?->gt(now()))
+                      <x-premiere-chip :post="$post"/>
+                @endif
                 <x-reading-time-chip :post="$post" :text="' min read'"/>
             </div>
             <article class="2col:px-2 px-4 space-y-4 2col:space-y-6" aria-label="Body">

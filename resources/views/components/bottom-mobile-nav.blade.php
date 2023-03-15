@@ -4,7 +4,7 @@ use App\Http\Controllers\ResultsView;
 
 ?>
 
-<nav class="fixed bottom-0 left-0 2col:hidden w-full bg-primary-content drop-shadow-[0_-3px_4px_rgba(0,0,0,0.25)]">
+<nav id="bottom-nav" class="fixed transition-all duration-500 bottom-0 left-0 2col:hidden w-full bg-primary-content drop-shadow-[0_-3px_4px_rgba(0,0,0,0.25)]">
     <div class="grid grid-cols-3">
         <a class="flex flex-col py-2 hover:bg-gray-300 {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-gray-200' : '' }}"
            href="{{to()->web->resultsPopular()}}">

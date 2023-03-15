@@ -8,7 +8,7 @@ use App\Http\Controllers\SearchRedirect;
 $search = SearchRedirect::search;
 
 ?>
-<header class="fixed top-0 z-50 mx-auto w-full bg-primary-content shadow 2col:shadow-none">
+<header id="masthead" class="fixed transition-all duration-500 top-0 z-50 mx-auto w-full bg-primary-content shadow 2col:shadow-none">
     <div class="flex justify-between 2col:gap-2">
         <button id="toggle-navbar-btn"
                 class="hidden btn-ghost nav-wide:block"

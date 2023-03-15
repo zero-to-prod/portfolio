@@ -43,7 +43,8 @@ $body = ConnectStoreRedirect::body;
                     <h3>Content Ownership and Responsibility</h3>
                     <p>
                         All content on the Site, including but not limited to text, graphics, images, and logos, is the
-                        property of {{config('app.name')}} or its content suppliers and is protected by copyright and other
+                        property of {{config('app.name')}} or its content suppliers and is protected by copyright and
+                        other
                         intellectual property laws. You agree not to reproduce, distribute, modify, or create derivative
                         works from any of the materials on the Site without our express written permission.
                     </p>
@@ -54,7 +55,8 @@ $body = ConnectStoreRedirect::body;
                         If the Site allows you to submit, post, or share content, you agree that you are solely
                         responsible for any user-generated content you submit, and you represent and warrant that you
                         have all necessary rights to submit such content. By submitting user-generated content, you
-                        grant {{config('app.name')}} a non-exclusive, royalty-free, perpetual, irrevocable, and sublicensable
+                        grant {{config('app.name')}} a non-exclusive, royalty-free, perpetual, irrevocable, and
+                        sublicensable
                         right to use, reproduce, modify, adapt, publish, translate, create derivative works from,
                         distribute, and display such content throughout the world in any media.
                     </p>
@@ -92,9 +94,11 @@ $body = ConnectStoreRedirect::body;
                         The Site is provided on an "as is" and "as available" basis. {{config('app.name')}} makes no
                         representations or warranties of any kind, express or implied, as to the operation of the Site
                         or the information, content, materials, or products included on the Site. To the full extent
-                        permissible by applicable law, {{config('app.name')}} disclaims all warranties, express or implied,
+                        permissible by applicable law, {{config('app.name')}} disclaims all warranties, express or
+                        implied,
                         including, but not limited to, implied warranties of merchantability and fitness for a
-                        particular purpose. {{config('app.name')}} will not be liable for any damages of any kind arising from
+                        particular purpose. {{config('app.name')}} will not be liable for any damages of any kind
+                        arising from
                         the use of the Site, including, but not limited to, direct,indirect, incidental, punitive, and
                         consequential damages.
                     </p>
@@ -102,7 +106,8 @@ $body = ConnectStoreRedirect::body;
                 <li>
                     <h3>Indemnification</h3>
                     <p>
-                        You agree to indemnify, defend, and hold harmless {{config('app.name')}}, its officers, directors,
+                        You agree to indemnify, defend, and hold harmless {{config('app.name')}}, its officers,
+                        directors,
                         employees, agents, licensors, and suppliers from and against all losses, expenses, damages, and
                         costs, including reasonable attorneys' fees, resulting from any violation of these Terms or any
                         activity related to your use of the Site (including negligent or wrongful conduct) by you or any
@@ -115,7 +120,8 @@ $body = ConnectStoreRedirect::body;
                         We reserve the right, in our sole discretion, to terminate your access to all or part of the
                         Site, with or without notice, for any reason, including, without limitation, if we believe that
                         you have violated or acted inconsistently with the letter or spirit of these Terms. You agree
-                        that {{config('app.name')}} shall not be liable to you or any third party for any termination of your
+                        that {{config('app.name')}} shall not be liable to you or any third party for any termination of
+                        your
                         access to the Site.
                     </p>
                 </li>
@@ -124,10 +130,10 @@ $body = ConnectStoreRedirect::body;
                     <p>
                         These Terms and any disputes or claims arising out of or in connection with them or their
                         subject matter or formation shall be governed by and construed in accordance with the laws of
-                        [Your Jurisdiction]. You agree that any legal action or proceeding between {{config('app.name')}} and
-                        you for any purpose concerning these Terms or the parties' obligations hereunder shall be
-                        brought exclusively in a federal or state court of competent jurisdiction sitting in [Your
-                        Jurisdiction].
+                        the United States Government. You agree that any legal action or proceeding
+                        between {{config('app.name')}} and you for any purpose concerning these Terms or the parties'
+                        obligations hereunder shall be brought exclusively in a federal or state court of competent
+                        jurisdiction sitting in the United States Government.
                     </p>
                 </li>
                 <li>

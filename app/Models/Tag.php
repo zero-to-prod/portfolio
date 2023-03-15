@@ -62,7 +62,7 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
 
     public function logo(): ?File
     {
-        return $this->files()->whereHas('tags', function ($builder) {
+        return $this->files()->whereHas(File::tags, function ($builder) {
             $builder->where(Tag::name . '->en', Tags::logo->value);
         })->first();
     }
@@ -77,17 +77,16 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
         return $this->logo() === null;
     }
 
-    public function relatedPosts(array|int|string|null $exclude_ids = [], int|null $limit = null): Collection
+    public function getRelatedPosts(array|int|string|null $exclude_ids = [], int|null $limit = null): Collection
     {
         $posts = $this->posts()
-            ->with(Post::authors . ':' . Author::id . ',' . Author::name)
+            ->with(Post::authors)
             ->whereNotIn(Post::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
             ->orderByDesc(Post::views)
-            ->get()
-            ->keyBy(Post::id);
+            ->get();
 
-        $latest_post = $posts->sortByDesc(Post::published_at)->first();
+        $latest = $posts->keyBy(Post::id)->filter(fn(Post $post) => $post->original_publish_date->isToday());
 
-        return $posts->forget($latest_post?->id)->prepend($latest_post)->take($limit);
+        return $latest->union($posts)->take($limit);
     }
 }

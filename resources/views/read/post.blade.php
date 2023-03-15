@@ -25,11 +25,11 @@ $cvc = ThanksResponse::cvc;
                 />
                 <x-reading-time-chip :post="$post" :text="' min read'"/>
             </div>
-            <article class="2col:px-0 px-2 space-y-6" aria-label="Body">
+            <article class="px-4 space-y-6" aria-label="Body">
                 <div class="2col:block hidden space-y-2">
                     <div class="flex justify-between pt-2">
-                        <div>
-                            <h1 id="title" class="text-2xl font-bold">{{$post->title}}</h1>
+                        <div class="font-bold">
+                            <h1 id="title" class="text-2xl">{{$post->title}}</h1>
                             <p id="subtitle" class="text-sm">{{$post->subtitle}}</p>
                         </div>
                         <div class="text-right text-sm">
@@ -37,20 +37,24 @@ $cvc = ThanksResponse::cvc;
                             <x-views :post="$post"/>
                         </div>
                     </div>
-                    <div class="mt-2 flex w-full flex-wrap justify-between">
-                        <x-a class="mr-4 flex gap-2 font-semibold" :href="'#'">
-                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80"/>
+                    <div class="mt-2 gap-2 flex w-full flex-wrap justify-between">
+                        <x-a class="mr-4 flex gap-2" title="Authors Page"
+                             :href="to()->web->resultsAuthor($post->authors->first())">
+                            <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page"
+                                   :file="$post->authorAvatar()" :height="80"/>
                             <div class="flex flex-col">
-                                <p class="underline">{{$post->authorList()}}</p>
+                                <p>{{$post->authorList()}}</p>
                                 <p class="text-sm">{{$post->authors->first()->posts()->count()}}
                                     Posts
                                 </p>
                             </div>
                         </x-a>
                         <div class="flex gap-2">
-                            <div class="flex gap-2">
-                                <x-logos :post="$post"/>
-                            </div>
+                            <x-a title="Subscribe to Newsletter" :href="to()->web->subscribe()"
+                                 class="my-auto flex gap-2 rounded-lg bg-gray-800 py-2 px-3 shadow-md hover:bg-gray-700">
+                                <x-svg :name="'mail'" class="!h-6 !w-6"/>
+                                <span class="my-auto text-sm text-white font-bold">Subscribe</span>
+                            </x-a>
                             <button id="share" type="button" title="Share this content."
                                     class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
                                 <x-svg :name="'share'" class="!h-6 !w-6"/>
@@ -85,12 +89,14 @@ $cvc = ThanksResponse::cvc;
                             <x-views :post="$post"/>
                         </div>
                     </div>
-                    <div class="flex justify-between">
-                        <div class="flex gap-2">
-                            <x-logos :post="$post"/>
-                        </div>
+                    <div class="flex flex-row-reverse gap-2">
+                        <x-a title="Subscribe to Newsletter" :href="to()->web->subscribe()"
+                             class="flex gap-2 rounded-lg bg-gray-800 py-2 px-3 shadow-md hover:bg-gray-700">
+                            <x-svg :name="'mail'" class="!h-6 !w-6"/>
+                            <span class="my-auto text-sm text-white font-bold">Subscribe</span>
+                        </x-a>
                         <button id="share-mobile" type="button"
-                                class="my-auto mr-2 ml-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
+                                class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
                             <x-svg :name="'share'" class="!h-6 !w-6"/>
                             <span class="my-auto text-sm font-bold">Share</span>
                         </button>
@@ -110,7 +116,8 @@ $cvc = ThanksResponse::cvc;
                             <div class="flex justify-center gap-2 flex-wrap">
                                 @foreach([1, 2, 5, 10] as $amount)
                                     <label class="flex cursor-pointer items-center rounded-lg bg-gray-300 p-2 hover:bg-base-300">
-                                        <input type="radio" id={{$amount}}1" name="amount" value="{{$amount}}"  {{$amount === 2 ? 'checked' : null}}>
+                                        <input type="radio" id={{$amount}}1" name="amount"
+                                               value="{{$amount}}" {{$amount === 2 ? 'checked' : null}}>
                                         <x-svg :name="'thanks-white'"/>
                                         <span class="pl-2 font-bold">${{$amount}}</span>
                                     </label>
@@ -255,7 +262,7 @@ $cvc = ThanksResponse::cvc;
                             }
 
                             thanksButton.addEventListener('click', toggleForm);
-                            thanksButtonMobile.addEventListener('click',toggleForm);
+                            thanksButtonMobile.addEventListener('click', toggleForm);
 
                             document.addEventListener('keydown', (event) => {
                                 if (event.key === 'Escape') {
@@ -334,7 +341,7 @@ $cvc = ThanksResponse::cvc;
                     </div>
                 </div>
                 @vite('resources/js/share.js')
-                <div id="published-content"  class="grid max-w-none px-2 published-content prose">
+                <div id="published-content" class="grid max-w-none px-2 published-content prose">
                     {!! $post->published_content !!}
                 </div>
             </article>

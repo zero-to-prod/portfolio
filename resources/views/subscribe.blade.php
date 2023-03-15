@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\SubscribeResponse;
 $email = SubscribeResponse::email;
 ?>
 <x-main :title="'Subscribe'">
-    <div class="text-center pt-10 2col:pt-16 max-w-3xl mx-auto space-y-10 mx-2">
+    <div class="text-center pt-10 2col:pt-16 pb-32 max-w-3xl mx-auto space-y-10 px-2">
         <h1 class="text-6xl">Weekly Newsletter</h1>
         <div>
             <h2 class="text-2xl font-semibold">Want the best content?</h2>
@@ -19,7 +19,7 @@ $email = SubscribeResponse::email;
         </div>
         <div>
             <h2 class="text-xl font-bold">
-                The best of each topic - to your inbox.
+                The bleeding edge - to your inbox.
             </h2>
             <div class="flex flex-wrap justify-center mt-4">
                 @forEach($tags as $tag)
@@ -35,10 +35,8 @@ $email = SubscribeResponse::email;
         <div class="my-12">
             <div id="cta-expanded" class="p-4 rounded-lg bg-gray-200 shadow-lg">
                 <div class="max-w-md mx-auto">
-                    <div class="mx-1">
-                        <p class="font-bold text-lg pt-4">The Perfect Newsletter to Stay up to Date</p>
-                    </div>
-                    <form class="mt-4 mx-auto" id="form">
+                    <p class="font-bold text-xl pt-4">The Perfect Newsletter to Stay up to Date</p>
+                    <form class="mt-6 mx-auto" id="form">
                         <label for="{{$email}}" class="sr-only">Email</label>
                         <div class="flex flex-col 2col:flex-row gap-2">
                             <input class="input text-lg text-center 2col:text-left"

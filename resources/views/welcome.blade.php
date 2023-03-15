@@ -21,7 +21,7 @@ use App\Models\Tag;
                 </x-a>
                 <x-divider class="mt-2 mb-4"/>
                 <div class="mb-4 grid grid-flow-row 2col:grid-cols-2 4col:grid-cols-4 2cols:gap-0 2col:gap-2 gap-4 ">
-                    @foreach($tag->relatedPosts(limit: 4) as $post)
+                    @foreach($tag->getRelatedPosts(limit: 4) as $post)
                         <x-a class="shadow-lg 2col:shadow-none" :href="to()->web->read($post)">
                             <div class="relative">
                                 <div class="overflow-hidden 2col:rounded-lg aspect-w-3 aspect-h-2">

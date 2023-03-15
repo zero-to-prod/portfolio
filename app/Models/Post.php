@@ -107,13 +107,11 @@ class Post extends Model implements HasRules
             ->whereNotIn(self::id, is_array($exclude_ids) ? $exclude_ids : [$exclude_ids])
             ->orderByDesc(self::views)
             ->limit($limit)
-            ->get()
-            ->keyBy(self::id);
+            ->get();
 
-        $latest_post = $posts->sortByDesc(self::published_at)->first();
-        $posts = $posts->forget($latest_post?->id);
+        $latest = $posts->keyBy(self::id)->filter(fn(Post $post) => $post->original_publish_date->isToday());
 
-        return $latest_post === null ? $posts : $posts->prepend($latest_post);
+        return $latest->union($posts);
     }
 
     public function featuredImage(): ?File

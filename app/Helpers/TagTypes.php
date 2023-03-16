@@ -6,7 +6,8 @@ namespace App\Helpers;
  * @property $value
  * @property $name
  */
-enum TagTypes: string
+enum TagTypes: int
 {
-    case system = 'system';
+    case system = 1;
+    case post = 2;
 }

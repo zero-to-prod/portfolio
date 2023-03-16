@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\Support\AuthorPost\AuthorPostColumns;
 use App\Models\Support\TimeStampColumns;
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 /**
@@ -12,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  */
 class AuthorPost extends Pivot
 {
-    use Cachable;
+//    use Cachable;
     use AuthorPostColumns;
     use TimeStampColumns;
 }

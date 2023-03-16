@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Helpers\Tags;
+use App\Helpers\TagTypes;
 use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
@@ -57,27 +57,27 @@ console.log(foo(5));
 MARKDOWN;
 
         $image = $this->uploadFile('php.png');
-        $php = Tag::create([Tag::name => 'PHP', Tag::type => Tags::post->value]);
+        $php = Tag::create([Tag::name => 'PHP', Tag::type => TagTypes::post->value]);
         $image->tagLogo();
         $php->files()->attach($image);
 
         $image = $this->uploadFile('laravel.png');
-        $laravel = Tag::create([Tag::name => 'Laravel', Tag::type => Tags::post->value]);
+        $laravel = Tag::create([Tag::name => 'Laravel', Tag::type => TagTypes::post->value]);
         $image->tagLogo();
         $laravel->files()->attach($image);
 
         $image = $this->uploadFile('docker.png');
-        $docker = Tag::create([Tag::name => 'Docker', Tag::type => Tags::post->value]);
+        $docker = Tag::create([Tag::name => 'Docker', Tag::type => TagTypes::post->value]);
         $image->tagLogo();
         $docker->files()->attach($image);
 
         $image = $this->uploadFile('react.png');
-        $react = Tag::create([Tag::name => 'React', Tag::type => Tags::post->value]);
+        $react = Tag::create([Tag::name => 'React', Tag::type => TagTypes::post->value]);
         $image->tagLogo();
         $react->files()->attach($image);
 
         $image = $this->uploadFile('ts.png');
-        $ts = Tag::create([Tag::name => 'TypeScript', Tag::type => Tags::post->value]);
+        $ts = Tag::create([Tag::name => 'TypeScript', Tag::type => TagTypes::post->value]);
         $image->tagLogo();
         $ts->files()->attach($image);
 

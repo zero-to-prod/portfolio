@@ -15,14 +15,15 @@ $title = request()->query(ResultsView::query);
 $title = request()->query(ResultsView::tag) ?? $title;
 $title = request()->query(ResultsView::topics) !== null ? 'Topics' : $title;
 $title = request()->query(ResultsView::popular) !== null ? 'Popular' : $title;
+$author_model = null;
 ?>
 <x-main :title="$title">
     <div class="flex flex-col gap-2 max-w-4xl mx-auto">
         <div>
             @if($tag !== null)
                 <div class="flex gap-x-2 my-2 ml-2 2col:ml-0">
-                    @if($tag->hasLogo())
-                        <x-img class="w-10 rounded" :file="$tag->logo()" :width="80"/>
+                    @if($tag->file !== null)
+                        <x-img class="w-10 rounded" :file="$tag->file" :width="80"/>
                     @endif
                     <h2 class="my-auto text-lg font-semibold">
                         {{$tag->name}}
@@ -68,10 +69,10 @@ $title = request()->query(ResultsView::popular) !== null ? 'Popular' : $title;
             </div>
         @endif
         <div class="2col:ml-12 flex mx-auto gap-4 flex-wrap justify-center">
-            @forEach(Tag::mostViewed() as $tag)
+            @forEach(Tag::mostViewed()->get() as $tag)
                 <x-a class="rounded-lg p-2 hover:bg-gray-100 flex" :href="to()->web->results($tag)">
-                    @if($tag->hasLogo())
-                        <x-img class="w-10 rounded" :file="$tag->logo()" :width="80"/>
+                    @if($tag->file !== null)
+                        <x-img class="w-10 rounded" :file="$tag->file" :width="80"/>
                     @endif
                     <span class="ml-2 my-auto">{{$tag->name}}</span>
                 </x-a>

@@ -50,7 +50,7 @@ use App\Models\Tag;
                                                     <a class="underline" href="{{to()->web->read($post)}}"
                                                        target="_blank">
                                                         <x-img class="object-cover h-[100px] rounded-lg"
-                                                               :file="$post->featuredImage()"
+                                                               :file="$post->file"
                                                                :height="100"
                                                                :title="''"/>
                                                     </a>

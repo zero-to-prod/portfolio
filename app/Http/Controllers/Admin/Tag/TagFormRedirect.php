@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Tag;
 
-use App\Helpers\Tags;
+use App\Helpers\TagTypes;
 use App\Http\Controllers\Controller;
 use App\Models\File;
 use App\Models\Tag;
@@ -32,7 +32,7 @@ class TagFormRedirect extends Controller
 
         $tag = Tag::updateOrCreate([Tag::id => $request->{self::id}], [
             Tag::name => $validated[self::name],
-            Tag::type => Tags::post->value
+            Tag::type => TagTypes::post->value
         ]);
 
         if ($request->hasFile(self::logo)) {
@@ -41,7 +41,7 @@ class TagFormRedirect extends Controller
             $tag->files()->sync([$logo?->id]);
         }
 
-        if ($tag->isMissingLogo()) {
+        if ($tag->file === null) {
             return redirect()->back()->withErrors([self::logo => 'Missing Image'])->withInput();
         }
 

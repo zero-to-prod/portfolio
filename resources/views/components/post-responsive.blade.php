@@ -14,7 +14,7 @@ use Illuminate\Support\Collection;
                 <div class="relative shrink-0">
                     <div class="overflow-hidden 2col:rounded-lg ">
                         <x-img class="h-full w-full 2col:h-[200px] 2col:w-[300px] object-cover object-center"
-                               :file="$post->featuredImage()"
+                               :file="$post->file"
                                :width="300"
                                :title="''"
                         />

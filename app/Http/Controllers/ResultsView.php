@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Tags;
+use App\Helpers\TagTypes;
 use App\Helpers\Views;
 use App\Models\Author;
 use App\Models\Post;
@@ -31,6 +31,7 @@ class ResultsView extends Controller
         $tag_name = $request->query(self::tag);
         $popular = $request->query(self::popular);
         $author = $request->query(self::author);
+        $author_model = null;
 
         if ($search !== null) {
             $posts = Post::where(static function (Builder $query) use ($search) {
@@ -48,11 +49,11 @@ class ResultsView extends Controller
 
         if ($tag_name !== null) {
             $posts = Post::related($tag_name, limit: self::limit);
-            $tag = Tag::withType(Tags::post->value)->where(Tag::slug . '->en', $tag_name)->first();
+            $tag = Tag::withType(TagTypes::post->value)->where(Tag::slug . '->en', $tag_name)->first();
         }
 
         if ($popular !== null) {
-            $posts = Post::with([Post::tags, Post::authors])
+            $posts = Post::with(['tags.file', Post::authors, 'file'])
                 ->orderByDesc(Post::views)
                 ->limit(self::limit)
                 ->get();
@@ -69,12 +70,13 @@ class ResultsView extends Controller
 
             $latest = $posts->filter(fn($post) => $post->original_publish_date->isToday());
             $posts = $latest->merge($posts);
+            $author_model = Author::where(Author::slug, $author)->first();
         }
 
         return view_as(Views::results, [
             self::posts => $posts,
             'tag' => $tag,
-            'author_model' => Author::where(Author::slug, $author)->first(),
+            'author_model' => $author_model,
         ]);
     }
 }

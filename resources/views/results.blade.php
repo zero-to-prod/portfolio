@@ -68,7 +68,7 @@ $author_model = null;
             </div>
         @endif
         <div class="2col:ml-12 flex mx-auto gap-4 flex-wrap justify-center">
-            @forEach(Tag::mostViewed()->get() as $tag)
+            @forEach(Tag::getMostViewed() as $tag)
                 <x-a class="rounded-lg p-2 hover:bg-gray-100 flex" :href="to()->web->results($tag)">
                     @if($tag->file !== null)
                         <x-img class="w-10 rounded" :file="$tag->file" :width="80"/>

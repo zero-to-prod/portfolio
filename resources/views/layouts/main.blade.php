@@ -18,7 +18,7 @@ use App\Models\Tag;
 <main class="min-h-[50vh]" aria-label="Main">
     <x-masthead/>
     <div class="mt-narrow-nav">
-        <x-left-drawer :tags="$tags ?? Tag::mostViewed()->get()"/>
+        <x-left-drawer :tags="$tags ?? Tag::getMostViewed()"/>
         <div id="content" class="ml-0 nav-small:ml-narrow-nav nav-wide:ml-wide-nav">
             {{$slot}}
         </div>

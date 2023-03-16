@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\CacheKeys;
 use App\Helpers\TagTypes;
 use App\Models\Support\HasRules;
 use App\Models\Support\IdColumn;
@@ -10,8 +11,10 @@ use App\Models\Support\Tag\TagColumns;
 use App\Models\Support\Tag\TagRelationships;
 use App\Models\Support\Tag\TagRules;
 use App\Models\Support\TimeStampColumns;
+use Cache;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 
 /**
  * @mixin IdeHelperTag
@@ -58,5 +61,15 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
             ->orderByDesc('posts_sum_views')
             ->withType(TagTypes::post->value)
             ->with(self::file);
+    }
+
+    /**
+     * @return Collection<Tag, Tag>
+     */
+    public static function getMostViewed(): Collection
+    {
+        return Cache::rememberAs(CacheKeys::most_viewed_tags, 60 * 60, static function () {
+            return self::mostViewed()->get();
+        });
     }
 }

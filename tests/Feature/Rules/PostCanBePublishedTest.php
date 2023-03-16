@@ -32,7 +32,7 @@ class PostCanBePublishedTest extends TestCase
             Post::title => null,
             Post::slug => 'slug',
             Post::body => 'body',
-        ])->withFeaturedImage()->make();
+        ])->withFile()->make();
 
         $this->assertFalse(PostCanBePublished::evaluate($post));
     }
@@ -47,7 +47,7 @@ class PostCanBePublishedTest extends TestCase
             Post::title => 'title',
             Post::slug => null,
             Post::body => 'body',
-        ])->withFeaturedImage()->make();
+        ])->withFile()->make();
 
         $this->assertFalse(PostCanBePublished::evaluate($post));
     }
@@ -62,7 +62,7 @@ class PostCanBePublishedTest extends TestCase
             Post::title => 'title',
             Post::slug => 'slug',
             Post::body => null,
-        ])->withFeaturedImage()->make();
+        ])->withFile()->make();
 
         $this->assertFalse(PostCanBePublished::evaluate($post));
     }

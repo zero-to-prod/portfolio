@@ -20,10 +20,10 @@ class AuthorFactory extends Factory
         ];
     }
 
-    public function withAvatar(): self
+    public function withFile(): self
     {
-        return $this->afterCreating(function (Author $author) {
-            $author->files()->sync([file_f()->avatar()->create()->tagAvatar()->id]);
+        return $this->state(function (): array {
+            return [Author::file_id => file_f()->create()->id];
         });
     }
 }

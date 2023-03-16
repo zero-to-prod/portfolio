@@ -23,23 +23,23 @@ class PostFactory extends Factory
 
     public function published(): self
     {
-        return $this->withFeaturedImage()->withAuthor()
+        return $this->withFile()->withAuthor()
             ->afterCreating(function (Post $post): void {
                 $post->publish();
             });
     }
 
-    public function withFeaturedImage(): self
+    public function withFile(): self
     {
-        return $this->afterCreating(function (Post $post) {
-            $post->files()->attach(file_f()->featuredImage()->create());
+        return $this->state(function (): array {
+            return [Post::file_id => file_f()->create()->id];
         });
     }
 
     public function withAuthor(): self
     {
         return $this->afterCreating(function (Post $post) {
-            $post->authors()->attach(author_f()->withAvatar()->create());
+            $post->authors()->attach(author_f()->withFile()->create());
         });
     }
 }

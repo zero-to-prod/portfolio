@@ -48,7 +48,7 @@ $cvc = ThanksResponse::cvc;
                                    :file="$post->authors->first()->file" :height="80"/>
                             <div class="flex flex-col">
                                 <p>{{$post->authorList()}}</p>
-                                <p class="text-sm">{{$post->authors->first()->posts()->count()}}
+                                <p class="text-sm">{{$post->authors->first()->posts->count()}}
                                     Posts
                                 </p>
                             </div>
@@ -358,7 +358,7 @@ $cvc = ThanksResponse::cvc;
             </article>
         </div>
         <?php
-        $posts = Post::related($post->tags, $post->id);
+        $posts = [];
         ?>
         <div class="3col:flex hidden shrink-0 flex-col gap-2 w-[400px]">
             @foreach($posts as $post)

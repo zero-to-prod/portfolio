@@ -57,28 +57,23 @@ console.log(foo(5));
 MARKDOWN;
 
         $image = $this->uploadFile('php.png');
-        $php = Tag::create([Tag::name => 'PHP', Tag::type => TagTypes::post->value]);
-        $image->tagLogo();
+        $php = Tag::create([Tag::name => 'PHP', Tag::type => TagTypes::post->value, Tag::file_id => $image->id]);
         $php->files()->attach($image);
 
         $image = $this->uploadFile('laravel.png');
-        $laravel = Tag::create([Tag::name => 'Laravel', Tag::type => TagTypes::post->value]);
-        $image->tagLogo();
+        $laravel = Tag::create([Tag::name => 'Laravel', Tag::type => TagTypes::post->value, Tag::file_id => $image->id]);
         $laravel->files()->attach($image);
 
         $image = $this->uploadFile('docker.png');
-        $docker = Tag::create([Tag::name => 'Docker', Tag::type => TagTypes::post->value]);
-        $image->tagLogo();
+        $docker = Tag::create([Tag::name => 'Docker', Tag::type => TagTypes::post->value, Tag::file_id => $image->id]);
         $docker->files()->attach($image);
 
         $image = $this->uploadFile('react.png');
-        $react = Tag::create([Tag::name => 'React', Tag::type => TagTypes::post->value]);
-        $image->tagLogo();
+        $react = Tag::create([Tag::name => 'React', Tag::type => TagTypes::post->value, Tag::file_id => $image->id]);
         $react->files()->attach($image);
 
         $image = $this->uploadFile('ts.png');
-        $ts = Tag::create([Tag::name => 'TypeScript', Tag::type => TagTypes::post->value]);
-        $image->tagLogo();
+        $ts = Tag::create([Tag::name => 'TypeScript', Tag::type => TagTypes::post->value, Tag::file_id => $image->id]);
         $ts->files()->attach($image);
 
         $featured_image = $this->uploadFile('generic.png');
@@ -87,11 +82,11 @@ MARKDOWN;
             Post::title => 'First',
             Post::body => $markdown,
             Post::subtitle => $faker->sentence,
+            Post::file_id => $featured_image->id,
         ]);
 
         $post->authors()->attach(Author::first());
-        $post->attachTags([$laravel, $docker, $php]);
-        $featured_image->tagFeaturedImage();
+        $post->attachTags([$laravel, $docker, $php]);;
         $post->files()->attach($featured_image);
 
         $post->publish();
@@ -101,11 +96,11 @@ MARKDOWN;
                 Post::title => Str::title($faker->bs),
                 Post::subtitle => $faker->sentence,
                 Post::body => $faker->paragraph,
+                Post::file_id => $featured_image->id,
             ]);
 
             $post->authors()->attach(Author::first());
             $post->attachTags([$laravel, $docker, $php, $react, $ts]);
-            $featured_image->tagFeaturedImage();
             $post->files()->attach($featured_image);
             $post->publish();
 
@@ -115,11 +110,11 @@ MARKDOWN;
             Post::title => Str::title($faker->bs),
             Post::body => $faker->paragraph,
             Post::subtitle => $faker->sentence,
+            Post::file_id => $featured_image->id,
         ]);
 
         $post->authors()->attach(Author::first());
         $post->attachTags([$php, $react]);
-        $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
         $post->publish();
 
@@ -131,18 +126,17 @@ MARKDOWN;
 
         $post->authors()->attach(Author::first());
         $post->attachTags([$laravel, $react]);
-        $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
         $post = Post::create([
             Post::title => Str::title($faker->bs),
             Post::body => $faker->paragraph,
             Post::subtitle => $faker->sentence,
+            Post::file_id => $featured_image->id,
         ]);
 
         $post->authors()->attach(Author::first());
         $post->attachTags([$php, $react, $ts]);
-        $featured_image->tagFeaturedImage();
         $post->files()->attach($featured_image);
 
         $post->publish();

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Support\IdColumn;
 use App\Models\Support\TimeStampColumns;
 use App\Models\Support\User\UserColumns;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class User extends Authenticatable
 {
-//    use Cachable;
+    use Cachable;
     use HasApiTokens;
     use HasFactory;
     use Notifiable;

@@ -21,6 +21,7 @@ class TagIndexView extends Controller
     {
         return view_as(Views::admin_tag_index, [
             self::tags => Tag::withType(TagTypes::post->value)
+                ->with( Tag::file)
                 ->withCount(Tag::posts)
                 ->withSum(Tag::posts . ' as ' . self::views, Post::views)
                 ->orderByDesc(self::views)

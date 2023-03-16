@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\File;
-use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Str;
 
@@ -23,13 +22,6 @@ class FileFactory extends Factory
             File::mime_type => 'image/jpeg',
             File::original_name => 'test.jpg',
         ];
-    }
-
-    public function featuredImage(): self
-    {
-        return $this->afterCreating(function(File $file){
-            $file->tagFeaturedImage();
-        });
     }
 
     public function avatar(): self

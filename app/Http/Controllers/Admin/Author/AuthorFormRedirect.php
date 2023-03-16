@@ -39,7 +39,7 @@ class AuthorFormRedirect extends Controller
         if ($request->hasFile(self::avatar)) {
             $avatar = File::upload($request->file(self::avatar));
             $avatar?->tagAvatar();
-            $author->files()->sync([$avatar?->id]);
+            $author->update([Author::file_id => $avatar?->id]);
         }
 
         if ($author->file === null) {

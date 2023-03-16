@@ -39,7 +39,7 @@ class PostFactory extends Factory
     public function withAuthor(): self
     {
         return $this->afterCreating(function (Post $post) {
-            $post->authors()->attach(author_f()->withFile()->create());
+            $post->authors()->attach(author_f()->withAvatar()->create());
         });
     }
 }

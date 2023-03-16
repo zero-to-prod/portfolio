@@ -44,19 +44,21 @@ use App\Models\Tag;
                             @foreach($posts as $post)
                                 <tr>
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
-                                        <div class="flex justify-between">
-                                            <div class="flex  gap-4">
-                                                <figure>
-                                                    <a class="underline" href="{{to()->web->read($post)}}"
-                                                       target="_blank">
-                                                        <x-img class="object-cover h-[100px] rounded-lg"
-                                                               :file="$post->file"
-                                                               :height="100"
-                                                               :title="''"/>
-                                                    </a>
-                                                </figure>
+                                        @if($post->file !== null)
+                                            <div class="flex justify-between">
+                                                <div class="flex  gap-4">
+                                                    <figure>
+                                                        <a class="underline" href="{{to()->web->read($post)}}"
+                                                           target="_blank">
+                                                            <x-img class="object-cover h-[100px] rounded-lg"
+                                                                   :file="$post->file"
+                                                                   :height="100"
+                                                                   :title="''"/>
+                                                        </a>
+                                                    </figure>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     </td>
                                     <td class="py-4 px-3 text-sm text-gray-300">
                                         <div>

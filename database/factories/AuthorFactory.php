@@ -20,7 +20,7 @@ class AuthorFactory extends Factory
         ];
     }
 
-    public function withFile(): self
+    public function withAvatar(): self
     {
         return $this->state(function (): array {
             return [Author::file_id => file_f()->create()->id];

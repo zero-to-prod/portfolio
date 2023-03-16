@@ -50,7 +50,8 @@ class PostFormRedirect extends Controller
         if ($request->hasFile(self::featured_image)) {
             $featured_image = File::upload($request->file(self::featured_image));
             $featured_image?->tagFeaturedImage();
-            $post->files()->sync([$featured_image?->id]);
+            $post->file_id = $featured_image?->id;
+            $post->save();
         }
 
         if($request->hasFile(self::in_body)) {

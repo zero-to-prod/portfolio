@@ -48,7 +48,7 @@ $avatar = AuthorFormRedirect::avatar;
                                 @endif
                             </x-form-control-dark>
                             <div class="flex space-x-6 sm:col-span-2">
-                                @if($author->file)
+                                @if($author?->file)
                                     <x-img class="object-cover h-[100px] rounded-lg"
                                            :file="$author->file"
                                            :height="100"
@@ -59,7 +59,7 @@ $avatar = AuthorFormRedirect::avatar;
                                     <input class="w-full"
                                            name="{{$avatar}}"
                                            id="{{$avatar}}"
-                                           {{$author->file !== null ? null  : 'required=true'}}
+                                           {{$author?->file !== null ? null  : 'required=true'}}
                                            type="file"
                                     >
                                     @if($errors->has($avatar))

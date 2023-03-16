@@ -17,7 +17,7 @@ class PostIndexView extends Controller
     public function __invoke(Request $request): View|Factory|Application
     {
         $published = Post::withoutGlobalScopes([Post::published])
-            ->with([Post::views, Post::authors, Post::tags])
+            ->with([Post::views, Post::authors, Post::tags, Post::file])
             ->whereNotNull(Post::published_at)
             ->orderByDesc(Post::published_at)
             ->limit(20)

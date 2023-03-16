@@ -38,7 +38,7 @@ class TagFormRedirect extends Controller
         if ($request->hasFile(self::logo)) {
             $logo = File::upload($request->file(self::logo));
             $logo?->tagLogo();
-            $tag->files()->sync([$logo?->id]);
+            $tag->update([Tag::file_id => $logo?->id]);
         }
 
         if ($tag->file === null) {

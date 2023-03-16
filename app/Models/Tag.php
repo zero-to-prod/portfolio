@@ -50,12 +50,15 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
 
     public static function mostViewed(int|null $limit = 20): Collection
     {
-        return self::withType(Tags::post->value)
+        return self::query()
+            ->select('tags.id', 'tags.name', 'tags.slug', DB::raw('SUM(posts.views) as total_views'))
             ->with('files')
-            ->join('taggables', 'tags.id', '=', 'taggables.tag_id')
-            ->join('posts', 'taggables.taggable_id', '=', 'posts.id')
-            ->where('taggables.taggable_type', Relations::post->value)
-            ->select('tags.id', 'tags.name', 'tags.slug', DB::raw('SUM(posts.views) AS total_views'))
+            ->leftJoin('taggables', function ($join) {
+                $join->on('tags.id', '=', 'taggables.tag_id')
+                    ->where('taggables.taggable_type', Relations::post->value);
+            })
+            ->leftJoin('posts', 'taggables.taggable_id', '=', 'posts.id')
+            ->where('tags.type', Tags::post->value)
             ->groupBy('tags.id', 'tags.name', 'tags.slug')
             ->orderByDesc('total_views')
             ->limit($limit)

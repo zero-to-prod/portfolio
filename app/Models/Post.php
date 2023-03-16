@@ -20,6 +20,7 @@ use App\Rules\PostIsPublished;
 use ArrayAccess;
 use Cache;
 use Exception;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -120,25 +121,15 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         })->get();
     }
 
-    /**
-     * @param ArrayAccess|Tag|array|string $tags
-     * @param array|int|string|null $exclude_ids
-     * @param int|null $limit
-     * @return Collection<Post, Post>
-     */
-    public static function related(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = [], int|null $limit = 20): Collection
+    public static function scopeRelated(Builder $builder, ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = [], int|null $limit = 20): Builder
     {
         $exclude_ids = is_array($exclude_ids) ? $exclude_ids : [$exclude_ids];
-        $posts = self::withAnyTags($tags, TagTypes::post->value)
+
+        return $builder->withAnyTags($tags, TagTypes::post->value)
             ->with([self::authors, self::file, self::tags . '.' . Tag::file])
             ->whereNotIn(self::id, $exclude_ids)
             ->orderByDesc(self::views)
-            ->limit($limit)
-            ->get();
-
-        $latest = $posts->keyBy(self::id)->filter(fn(Post $post) => $post->original_publish_date->isToday());
-
-        return $latest->union($posts);
+            ->limit($limit);
     }
 
     public function authorList(): string

@@ -43,12 +43,12 @@ class ResultsView extends Controller
                 ->limit(self::limit)
                 ->get();
 
-            $related = Post::related($posts->pluck(Post::tags)->flatten(), $posts->pluck(Post::id)->toArray(), limit: self::limit);
+            $related = Post::related($posts->pluck(Post::tags)->flatten(), $posts->pluck(Post::id)->toArray(), limit: self::limit)->get();
             $posts = $posts->merge($related);
         }
 
         if ($tag_name !== null) {
-            $posts = Post::related($tag_name, limit: self::limit);
+            $posts = Post::related($tag_name, limit: self::limit)->get();
             $tag = Tag::withType(TagTypes::post->value)->where(Tag::slug . '->en', $tag_name)->first();
         }
 

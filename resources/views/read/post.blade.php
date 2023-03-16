@@ -358,7 +358,7 @@ $cvc = ThanksResponse::cvc;
             </article>
         </div>
         <?php
-        $posts = [];
+        $posts = Post::related($post->tags, $post->id)->get();
         ?>
         <div class="3col:flex hidden shrink-0 flex-col gap-2 w-[400px]">
             @foreach($posts as $post)

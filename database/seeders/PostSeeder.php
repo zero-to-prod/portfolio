@@ -86,7 +86,7 @@ MARKDOWN;
         ]);
 
         $post->authors()->attach(Author::first());
-        $post->attachTags([$laravel, $docker, $php]);;
+        $post->attachTags([$laravel, $docker, $php]);
         $post->files()->attach($featured_image);
 
         $post->publish();
@@ -100,7 +100,7 @@ MARKDOWN;
             ]);
 
             $post->authors()->attach(Author::first());
-            $post->attachTags([$laravel, $docker, $php, $react, $ts]);
+            $post->attachTags([$laravel, $docker, $react, $ts]);
             $post->files()->attach($featured_image);
             $post->publish();
 
@@ -114,7 +114,7 @@ MARKDOWN;
         ]);
 
         $post->authors()->attach(Author::first());
-        $post->attachTags([$php, $react]);
+        $post->attachTags([$react]);
         $post->files()->attach($featured_image);
         $post->publish();
 

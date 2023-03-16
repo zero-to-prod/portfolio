@@ -23,6 +23,7 @@ DROP TABLE IF EXISTS `authors`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `authors` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `file_id` bigint unsigned DEFAULT NULL,
   `slug` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `bio` text COLLATE utf8mb4_unicode_ci,
@@ -31,7 +32,9 @@ CREATE TABLE `authors` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `authors_slug_unique` (`slug`)
+  UNIQUE KEY `authors_slug_unique` (`slug`),
+  KEY `authors_file_id_foreign` (`file_id`),
+  CONSTRAINT `authors_file_id_foreign` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `contacts`;
@@ -186,6 +189,7 @@ DROP TABLE IF EXISTS `posts`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `posts` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `file_id` bigint unsigned DEFAULT NULL,
   `slug` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `subtitle` char(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -196,6 +200,7 @@ CREATE TABLE `posts` (
   `original_publish_date` timestamp NULL DEFAULT NULL,
   `published_at` timestamp NULL DEFAULT NULL,
   `reading_time` varchar(255) COLLATE utf8mb4_unicode_ci GENERATED ALWAYS AS (ceiling((`published_word_count` / 183))) VIRTUAL COMMENT 'The estimated reading time in minutes. The constant 183 is the average words per minute.',
+  `premiere_at` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -203,8 +208,10 @@ CREATE TABLE `posts` (
   UNIQUE KEY `posts_slug_unique` (`slug`),
   KEY `posts_views_index` (`views`),
   KEY `posts_published_at_index` (`published_at`),
+  KEY `posts_file_id_foreign` (`file_id`),
   FULLTEXT KEY `posts_title_fulltext` (`title`),
-  FULLTEXT KEY `posts_body_fulltext` (`body`)
+  FULLTEXT KEY `posts_body_fulltext` (`body`),
+  CONSTRAINT `posts_file_id_foreign` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `role_has_permissions`;
@@ -249,13 +256,55 @@ DROP TABLE IF EXISTS `tags`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tags` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `file_id` bigint unsigned DEFAULT NULL,
   `name` json NOT NULL,
   `slug` json NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` int unsigned DEFAULT NULL,
   `order_column` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `tags_file_id_foreign` (`file_id`),
+  KEY `tags_type_index` (`type`),
+  CONSTRAINT `tags_file_id_foreign` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `telescope_entries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `telescope_entries` (
+  `sequence` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `family_hash` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `should_display_on_index` tinyint(1) NOT NULL DEFAULT '1',
+  `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`sequence`),
+  UNIQUE KEY `telescope_entries_uuid_unique` (`uuid`),
+  KEY `telescope_entries_batch_id_index` (`batch_id`),
+  KEY `telescope_entries_family_hash_index` (`family_hash`),
+  KEY `telescope_entries_created_at_index` (`created_at`),
+  KEY `telescope_entries_type_should_display_on_index_index` (`type`,`should_display_on_index`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `telescope_entries_tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `telescope_entries_tags` (
+  `entry_uuid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  KEY `telescope_entries_tags_entry_uuid_tag_index` (`entry_uuid`,`tag`),
+  KEY `telescope_entries_tags_tag_index` (`tag`),
+  CONSTRAINT `telescope_entries_tags_entry_uuid_foreign` FOREIGN KEY (`entry_uuid`) REFERENCES `telescope_entries` (`uuid`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `telescope_monitoring`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `telescope_monitoring` (
+  `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `users`;
@@ -318,3 +367,10 @@ INSERT INTO `migrations` VALUES (13,'2023_03_02_152757_create_fileable_tables',3
 INSERT INTO `migrations` VALUES (21,'2023_03_14_161425_add_github_id_to_users_table',4);
 INSERT INTO `migrations` VALUES (22,'2023_03_14_191139_create_permission_tables',5);
 INSERT INTO `migrations` VALUES (23,'2023_03_14_193552_create_permissions',6);
+INSERT INTO `migrations` VALUES (24,'2023_03_15_215110_add_premiere_columns_to_posts_table',7);
+INSERT INTO `migrations` VALUES (25,'2018_08_08_100000_create_telescope_entries_table',8);
+INSERT INTO `migrations` VALUES (37,'2023_03_16_120521_add_file_id_to_posts_table',9);
+INSERT INTO `migrations` VALUES (38,'2023_03_16_120522_add_file_id_to_authors_table',9);
+INSERT INTO `migrations` VALUES (39,'2023_03_16_120522_add_file_id_to_tags_table',9);
+INSERT INTO `migrations` VALUES (40,'2023_03_16_125153_refactor_files',10);
+INSERT INTO `migrations` VALUES (41,'2023_03_16_161417_add_index_to_tag_type',11);

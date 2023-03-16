@@ -36,9 +36,9 @@ class ResultsView extends Controller
         if ($search !== null) {
             $posts = Post::where(static function (Builder $query) use ($search) {
                 $query->whereFullText(Post::title, $search)
-                ->orWhereFullText(Post::body, $search);
+                    ->orWhereFullText(Post::body, $search);
             })
-                ->with([Post::tags, Post::authors])
+                ->with([Post::tags, Post::authors, Post::file, Post::tags . '.' . Tag::file])
                 ->orderByDesc(Post::views)
                 ->limit(self::limit)
                 ->get();

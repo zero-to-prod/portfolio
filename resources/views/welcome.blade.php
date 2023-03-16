@@ -1,3 +1,4 @@
+@props(['tags'])
 <?php
 
 use App\Models\Post;
@@ -5,9 +6,10 @@ use App\Models\Tag;
 
 /* @var Post $post */
 /* @var Tag $tag */
+$tags = $tags ?? Tag::mostViewed();
 ?>
 
-<x-main>
+<x-main :tags="$tags">
     <div class="4col:mx-auto flex w-full 4col:max-w-7xl flex-col 2col:px-2">
         @foreach($tags as $tag)
             <section>

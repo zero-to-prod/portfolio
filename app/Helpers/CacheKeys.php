@@ -9,4 +9,5 @@ namespace App\Helpers;
 enum CacheKeys: string
 {
     case newsletter = 'newsletter';
+    case most_viewed = 'most_viewed';
 }

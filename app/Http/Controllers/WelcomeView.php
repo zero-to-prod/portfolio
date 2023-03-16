@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Views;
+use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -14,6 +16,10 @@ class WelcomeView extends Controller
 
     public function __invoke(): View|Factory|Application
     {
-        return view_as(Views::welcome);
+        return view_as(Views::welcome, [
+            self::tags => Tag::mostViewed()->with([
+                Tag::posts => static fn($query) => $query->orderByDesc(Post::views)->with([Post::authors, Post::file]),
+            ])->get(),
+        ]);
     }
 }

@@ -6,8 +6,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Collection;
 
-/* @var Collection $posts */
-/* @var Post $post */
+/* @var Collection<Post, Post> $posts */
 /* @var Tag $tag */
 /* @var ?Author $author_model */
 

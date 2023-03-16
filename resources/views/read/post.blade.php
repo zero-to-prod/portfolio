@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\Api\ThanksResponse;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Support\Collection;
 
 /* @var Post $post */
 /* @var File $feature */
-/* @var Collection $tags */
+/* @var Collection<Tag, Tag> $tags */
 $amount = ThanksResponse::amount;
 $email = ThanksResponse::email;
 $card_number = ThanksResponse::card_number;

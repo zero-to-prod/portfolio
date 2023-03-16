@@ -44,11 +44,7 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
             collect($model->getTranslatedLocales(self::name))
                 ->each(function (string $locale) use ($model) {
                     if ($model->slug === null) {
-                        return $model->setTranslation(
-                            self::slug,
-                            $locale,
-                            $model->generateSlug($locale)
-                        );
+                        return $model->setTranslation(self::slug, $locale, $model->generateSlug($locale));
                     }
 
                     return $model;

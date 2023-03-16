@@ -3,17 +3,10 @@
 
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Support\Collection;
 
 /* @var Post $post */
-/* @var Tag $tag */
-$tags = Tag::mostViewed()
-    ->with([
-        'posts' => static function ($query) {
-            return $query->orderByDesc('views');
-        },
-        'posts.authors',
-        'posts.file',
-    ])->get();
+/* @var Collection<Tag, Tag> $tags */
 ?>
 
 <x-main :tags="$tags">

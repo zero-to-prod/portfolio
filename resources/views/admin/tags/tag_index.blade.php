@@ -4,7 +4,7 @@ use App\Models\Tag;
 use Illuminate\Support\Collection;
 
 /* @var Tag $tag */
-/* @var Collection<Tag> $tags */
+/* @var Collection<Tag, Tag> $tags */
 ?>
 
 <x-app-layout>

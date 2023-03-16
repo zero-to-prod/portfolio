@@ -6,8 +6,7 @@ use App\Http\Controllers\ResultsView;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
 
-/* @var Collection $tags */
-/* @var Tag $tag */
+/* @var Collection<Tag, Tag> $tags */
 ?>
 <nav class="hidden w-wide-nav mt-narrow-nav nav-wide:block" id="left-nav-wide">
     <x-a class="{{ route_is(to()->web->welcome) ? 'bg-base-200' : '' }}"

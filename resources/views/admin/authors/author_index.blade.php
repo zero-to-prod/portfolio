@@ -4,7 +4,7 @@ use App\Models\Author;
 use Illuminate\Support\Collection;
 
 /* @var Author $author */
-/* @var Collection<Author> $authors */
+/* @var Collection<Author, Author> $authors */
 ?>
 
 <x-app-layout>

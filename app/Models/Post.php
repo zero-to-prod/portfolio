@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Helpers\Tags;
+use App\Helpers\TagTypes;
 use App\Models\Support\HasRules;
 use App\Models\Support\IdColumn;
 use App\Models\Support\Polymorphic\HasFiles;
@@ -16,7 +17,6 @@ use App\Models\Support\TimeStampColumns;
 use App\Rules\PostCanBePublished;
 use App\Rules\PostIsPublished;
 use ArrayAccess;
-use Cache;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,7 +45,8 @@ class Post extends Model implements HasRules
     use HasFiles;
     use PostScopes;
 
-    protected $fillable = [self::title, self::subtitle, self::body, self::premiere_at];
+    protected $fillable = [self::file_id, self::title, self::subtitle, self::body, self::premiere_at];
+//    protected $with = [self::file];
     protected $casts = [
         self::published_at => 'datetime',
         self::premiere_at => 'datetime',
@@ -58,6 +59,11 @@ class Post extends Model implements HasRules
     protected static function booted(): void
     {
         static::addGlobalScope(self::published, self::publishedScope());
+    }
+
+    public function viewsCount(): int
+    {
+        return $this->views;
     }
 
     /**
@@ -104,8 +110,8 @@ class Post extends Model implements HasRules
     public static function related(ArrayAccess|\Spatie\Tags\Tag|array|string $tags, array|int|string|null $exclude_ids = [], int|null $limit = 20): Collection
     {
         $exclude_ids = is_array($exclude_ids) ? $exclude_ids : [$exclude_ids];
-        $posts = self::withAnyTags($tags, Tags::post->value)
-            ->with(self::authors)
+        $posts = self::withAnyTags($tags, TagTypes::post->value)
+            ->with([self::authors, self::file, 'tags.file'])
             ->whereNotIn(self::id, $exclude_ids)
             ->orderByDesc(self::views)
             ->limit($limit)
@@ -118,21 +124,21 @@ class Post extends Model implements HasRules
 
     public function featuredImage(): ?File
     {
-        return Cache::remember($this->id.Tags::featured->value, 60 * 60, function () {
-            return $this->files()->whereHas(self::tags, function ($builder) {
-                $builder->where(Tag::name . '->en', Tags::featured->value);
-            })->first();
-        });
+
+        return $this->files()->whereHas(self::tags, function ($builder) {
+            $builder->where(Tag::name . '->en', Tags::featured->value);
+        })->first();
+
     }
 
-    public function hasFeaturedImage(): bool
+    public function hasFile(): bool
     {
-        return $this->featuredImage() !== null;
+        return $this->file !== null;
     }
 
-    public function isMissingFeaturedImage(): bool
+    public function isMissingFile(): bool
     {
-        return $this->featuredImage() === null;
+        return $this->file === null;
     }
 
     public function authorAvatar(): ?File

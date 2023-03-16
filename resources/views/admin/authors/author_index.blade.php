@@ -38,9 +38,9 @@ use Illuminate\Support\Collection;
                                         <a class="flex justify-between"
                                            href="{{to()->admin->author->edit($author)}}">
                                             <div class="flex gap-4 h-[100px]">
-                                                @if($author->avatar())
+                                                @if($author->file)
                                                     <x-img class="object-cover rounded-lg"
-                                                           :file="$author->avatar()"
+                                                           :file="$author->file"
                                                            :height="100"
                                                            :title="''"/>
                                                 @endif

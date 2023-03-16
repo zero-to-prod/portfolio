@@ -44,8 +44,8 @@ use Illuminate\Support\Collection;
              :href="to()->web->results($tag)"
              title="Topic: {{$tag->name}}"
         >
-            @if($tag->hasLogo())
-                <x-img class="w-6" :file="$tag->logo()" :width="80"/>
+            @if($tag->file !== null)
+                <x-img class="w-6" :file="$tag->file" :width="80"/>
             @endif
             {{$tag->name}}
         </x-a>
@@ -87,8 +87,8 @@ use Illuminate\Support\Collection;
              :href="to()->web->results($tag)"
              title="{{$tag->name}}"
         >
-            @if($tag->hasLogo())
-                <x-img class="mx-auto w-6" :file="$tag->logo()" :width="80" title="Topic: {{$tag->name}}"/>
+            @if($tag->file !== null)
+                <x-img class="mx-auto w-6" :file="$tag->file" :width="80" title="Topic: {{$tag->name}}"/>
             @endif
         </x-a>
     @endforeach

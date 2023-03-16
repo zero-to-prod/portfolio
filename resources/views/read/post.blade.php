@@ -19,7 +19,7 @@ $cvc = ThanksResponse::cvc;
         <div class="shrink max-w-post-2col">
             <div class="relative 2col:mx-2">
                 <x-img class="h-full w-full object-cover object-center"
-                       :file="$post->featuredImage()"
+                       :file="$post->file"
                        :width="837"
                        :title="''"
                 />
@@ -365,7 +365,7 @@ $cvc = ThanksResponse::cvc;
                     <div class="relative shrink-0">
                         <div class="overflow-hidden 2col:rounded-lg">
                             <x-img class="object-cover object-center h-[112px] w-[168px]"
-                                   :file="$post->featuredImage()"
+                                   :file="$post->file"
                                    :width="250"
                                    :title="''"
                             />

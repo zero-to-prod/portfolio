@@ -4,6 +4,7 @@ namespace App\Models\Support\Post;
 
 trait PostColumns
 {
+    public const file_id = 'file_id';
     public const title = 'title';
     public const subtitle = 'subtitle';
     public const body = 'body';

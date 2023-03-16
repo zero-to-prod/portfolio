@@ -12,8 +12,8 @@ use App\Models\Support\Polymorphic\HasFiles;
 use App\Models\Support\SlugColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
-use Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -32,25 +32,24 @@ class Author extends Model implements HasRules
     use HasFiles;
     use AuthorRelationships;
 
-    protected $fillable = [self::name, self::title];
+    protected $fillable = [self::file_id, self::name, self::title];
+//    protected $with = [self::file];
+
+    public function file(): HasOne
+    {
+        return $this->hasOne(File::class, File::id, self::file_id);
+    }
 
     public function avatar(): ?File
     {
-        return Cache::remember($this->id.Tags::avatar->value, 60 * 60, function () {
-            return $this->files()->whereHas(File::tags, function ($builder) {
-                $builder->where(Tag::name . '->en', Tags::avatar->value);
-            })->first();
-        });
+        return $this->files()->whereHas(File::tags, function ($builder) {
+            $builder->where(Tag::name . '->en', Tags::avatar->value);
+        })->first();
     }
 
-    public function hasAvatar(): bool
+    public function isMissingFile(): bool
     {
-        return $this->avatar() !== null;
-    }
-
-    public function isMissingAvatar(): bool
-    {
-        return $this->avatar() === null;
+        return $this->file === null;
     }
 
 }

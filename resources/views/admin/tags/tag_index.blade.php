@@ -41,9 +41,9 @@ use Illuminate\Support\Collection;
                                         <a class="flex justify-between"
                                            href="{{to()->admin->tag->edit($tag)}}">
                                             <div class="flex gap-4">
-                                                @if($tag->logo())
+                                                @if($tag->file)
                                                     <x-img class="object-cover w-[100px] rounded-lg"
-                                                           :file="$tag->logo()"
+                                                           :file="$tag->file"
                                                            :height="100"
                                                            :title="''"/>
                                                 @endif

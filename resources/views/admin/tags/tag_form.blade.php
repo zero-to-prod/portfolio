@@ -36,9 +36,9 @@ $logo = TagFormRedirect::logo;
                                 @endif
                             </x-form-control-dark>
                             <div class="flex space-x-6 sm:col-span-2">
-                                @if($tag?->hasLogo())
+                                @if($tag?->file !== null)
                                     <x-img class="object-cover h-[100px] rounded-lg"
-                                           :file="$tag->logo()"
+                                           :file="$tag->file"
                                            :height="100"
                                     />
                                 @endif
@@ -47,7 +47,7 @@ $logo = TagFormRedirect::logo;
                                     <input class="w-full"
                                            name="{{$logo}}"
                                            id="{{$logo}}"
-                                           {{$tag?->logo() !== null ? null  : 'required=true'}}
+                                           {{$tag?->logo !== null ? null  : 'required=true'}}
                                            type="file"
                                     >
                                     @if($errors->has($logo))

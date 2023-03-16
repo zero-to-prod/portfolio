@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\Tags;
+use App\Helpers\TagTypes;
 use App\Http\Controllers\Admin\Post\PostFormRedirect;
 use App\Http\Controllers\Admin\Post\PostPublishRedirect;
 use App\Models\Author;
@@ -58,9 +59,9 @@ $in_body = PostFormRedirect::in_body;
                                        value="{{$post_model?->id}}"/>
                             </label>
                             <div class="flex space-x-6 sm:col-span-2">
-                                @if($post_model?->hasFeaturedImage())
+                                @if($post_model?->hasFile())
                                     <x-img class="object-cover h-[100px] rounded-lg"
-                                           :file="$post_model->featuredImage()"
+                                           :file="$post_model->file"
                                            :height="100"
                                     />
                                 @endif
@@ -69,7 +70,7 @@ $in_body = PostFormRedirect::in_body;
                                     <input class="w-full"
                                            name="{{$featured_image}}"
                                            id="{{$featured_image}}"
-                                           {{$post_model?->hasFeaturedImage() ? null  : 'required=true'}}
+                                           {{$post_model?->hasFile() ? null  : 'required=true'}}
                                            type="file"
                                     >
                                     @if($errors->has($featured_image))
@@ -119,7 +120,7 @@ $in_body = PostFormRedirect::in_body;
                             <div class="sm:col-span-2">
                                 <p class="text-neutral-content mb-3">Tags</p>
                                 <div class="flex gap-4 flex-wrap">
-                                    @foreach(Tag::withType(Tags::post->value)->get() as $author_model)
+                                    @foreach(Tag::withType(TagTypes::post->value)->get() as $author_model)
                                         <div class="flex items-center text-white space-x-2">
                                             <input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                                                    name="{{$tags}}"

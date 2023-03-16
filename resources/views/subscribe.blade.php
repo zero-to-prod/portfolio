@@ -1,14 +1,14 @@
 <?php
 
-use App\Models\Tag;
 use App\Http\Controllers\Api\SubscribeResponse;
+use App\Models\Tag;
 
 /* @var Tag $tag */
 /* @var string $token */
 
 $email = SubscribeResponse::email;
 ?>
-<x-main :title="'Subscribe'">
+<x-main :tags="$tags" :title="'Subscribe'">
     <div class="text-center pt-10 2col:pt-16 pb-32 max-w-3xl mx-auto space-y-10 px-2">
         <h1 class="text-6xl">Weekly Newsletter</h1>
         <div>
@@ -113,8 +113,8 @@ $email = SubscribeResponse::email;
             <div class="flex flex-wrap justify-center mt-4">
                 @forEach($tags as $tag)
                     <p class="p-2 flex">
-                        @if($tag->hasLogo())
-                            <x-img class="w-10" :file="$tag->logo()" :width="80"/>
+                        @if($tag->file !== null)
+                            <x-img class="w-10" :file="$tag->file" :width="80"/>
                         @endif
                         <span class="ml-2 my-auto">{{$tag->name}}</span>
                     </p>

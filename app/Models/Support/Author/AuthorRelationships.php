@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 trait AuthorRelationships
 {
+    public const file = 'file';
     public const posts = 'posts';
 
     public function posts(): BelongsToMany

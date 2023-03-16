@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use App\Helpers\CacheKeys;
-use App\Helpers\Relations;
 use App\Helpers\Tags;
+use App\Helpers\TagTypes;
 use App\Models\Support\HasRules;
 use App\Models\Support\IdColumn;
 use App\Models\Support\Polymorphic\HasFiles;
@@ -12,9 +11,8 @@ use App\Models\Support\Tag\TagColumns;
 use App\Models\Support\Tag\TagRelationships;
 use App\Models\Support\Tag\TagRules;
 use App\Models\Support\TimeStampColumns;
-use Cache;
-use DB;
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
 
 /**
@@ -22,7 +20,7 @@ use Illuminate\Support\Collection;
  */
 class Tag extends \Spatie\Tags\Tag implements HasRules
 {
-    use Cachable;
+//    use Cachable;
     use IdColumn;
     use TimeStampColumns;
     use TagColumns;
@@ -30,8 +28,18 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
     use TagRelationships;
     use HasFiles;
 
-    protected $fillable = [self::name, self::slug, self::type, self::order_column];
+    protected $fillable = [self::file_id, self::name, self::slug, self::type, self::order_column];
+    protected $casts = [self::type => 'integer'];
 
+
+    public function scopeWithType(Builder $query, string $type = null): Builder
+    {
+        if (is_null($type)) {
+            return $query;
+        }
+
+        return $query->where('type', (int)$type)->ordered();
+    }
     public static function bootHasSlug(): void
     {
         static::saving(static function (Tag $model) {
@@ -50,42 +58,27 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
         });
     }
 
-    public static function mostViewed(int|null $limit = 20): Collection
+    public function scopeMostViewed(): Builder|Tag
     {
-        return Cache::rememberAs(CacheKeys::most_viewed, 60 * 60, static function () use ($limit) {
-            return self::query()
-                ->select('tags.id', 'tags.name', 'tags.slug', DB::raw('SUM(posts.views) as total_views'))
-                ->with('files')
-                ->leftJoin('taggables', function ($join) {
-                    $join->on('tags.id', '=', 'taggables.tag_id')
-                        ->where('taggables.taggable_type', Relations::post->value);
-                })
-                ->leftJoin('posts', 'taggables.taggable_id', '=', 'posts.id')
-                ->where('tags.type', Tags::post->value)
-                ->groupBy('tags.id', 'tags.name', 'tags.slug')
-                ->orderByDesc('total_views')
-                ->limit($limit)
-                ->get();
-        });
+        return self::withSum('posts', 'views')
+            ->orderByDesc('posts_sum_views')
+            ->withType(TagTypes::post->value)
+            ->with('file');
     }
 
     public function logo(): ?File
     {
-        return Cache::remember($this->id.Tags::logo->value, 60 * 60, function () {
-            return $this->files()->whereHas(File::tags, function ($builder) {
-                $builder->where(Tag::name . '->en', Tags::logo->value);
-            })->first();
-        });
+        return $this->files()->whereHas(File::tags, function ($builder) {
+            $builder->where(Tag::name . '->en', Tags::logo->value);
+        })->first();
     }
 
-    public function hasLogo(): bool
+    public function relatedPosts(int|null $limit = null): MorphToMany
     {
-        return $this->logo() !== null;
-    }
-
-    public function isMissingLogo(): bool
-    {
-        return $this->logo() === null;
+        return $this->morphedByMany(Post::class, 'taggable')
+            ->with(Post::authors)
+            ->orderByDesc(Post::views)
+            ->limit($limit);
     }
 
     public function getRelatedPosts(array|int|string|null $exclude_ids = [], int|null $limit = null): Collection

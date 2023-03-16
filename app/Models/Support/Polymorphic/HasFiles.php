@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 trait HasFiles
 {
     public const fileable = 'fileable';
+    public const files = 'fileable';
     public function files(): MorphToMany
     {
         return $this->morphToMany(File::class, self::fileable);

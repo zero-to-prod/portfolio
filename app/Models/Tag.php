@@ -71,9 +71,11 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
 
     public function logo(): ?File
     {
-        return $this->files()->whereHas(File::tags, function ($builder) {
-            $builder->where(Tag::name . '->en', Tags::logo->value);
-        })->first();
+        return Cache::remember($this->id.Tags::logo->value, 60 * 60, function () {
+            return $this->files()->whereHas(File::tags, function ($builder) {
+                $builder->where(Tag::name . '->en', Tags::logo->value);
+            })->first();
+        });
     }
 
     public function hasLogo(): bool

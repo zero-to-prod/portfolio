@@ -12,6 +12,7 @@ use App\Models\Support\Polymorphic\HasFiles;
 use App\Models\Support\SlugColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
+use Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -35,9 +36,11 @@ class Author extends Model implements HasRules
 
     public function avatar(): ?File
     {
-        return $this->files()->whereHas(File::tags, function ($builder) {
-            $builder->where(Tag::name . '->en', Tags::avatar->value);
-        })->first();
+        return Cache::remember($this->id.Tags::avatar->value, 60 * 60, function () {
+            return $this->files()->whereHas(File::tags, function ($builder) {
+                $builder->where(Tag::name . '->en', Tags::avatar->value);
+            })->first();
+        });
     }
 
     public function hasAvatar(): bool

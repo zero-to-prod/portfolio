@@ -16,6 +16,7 @@ use App\Models\Support\TimeStampColumns;
 use App\Rules\PostCanBePublished;
 use App\Rules\PostIsPublished;
 use ArrayAccess;
+use Cache;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -64,7 +65,7 @@ class Post extends Model implements HasRules
      */
     public function publish(): self
     {
-        if(!PostCanBePublished::evaluate($this)) {
+        if (!PostCanBePublished::evaluate($this)) {
             throw new RuntimeException('Cannot publish post');
         }
         self::unguard();
@@ -117,9 +118,11 @@ class Post extends Model implements HasRules
 
     public function featuredImage(): ?File
     {
-        return $this->files()->whereHas(self::tags, function ($builder) {
-            $builder->where(Tag::name . '->en', Tags::featured->value);
-        })->first();
+        return Cache::remember($this->id.Tags::featured->value, 60 * 60, function () {
+            return $this->files()->whereHas(self::tags, function ($builder) {
+                $builder->where(Tag::name . '->en', Tags::featured->value);
+            })->first();
+        });
     }
 
     public function hasFeaturedImage(): bool
@@ -154,8 +157,6 @@ class Post extends Model implements HasRules
             ->saveSlugsTo(self::slug)
             ->doNotGenerateSlugsOnUpdate();
     }
-
-
 
     public function unPublish(): self
     {

@@ -196,6 +196,7 @@ return [
         App\Providers\CacheServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
         App\Providers\RedirectServiceProvider::class,
         App\Providers\BlueprintServiceProvider::class,
         App\Providers\MailchimpProvider::class,

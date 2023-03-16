@@ -43,12 +43,12 @@ $cvc = ThanksResponse::cvc;
                     </div>
                     <div class="mt-2 flex w-full flex-wrap justify-between gap-2">
                         <x-a class="mr-4 flex gap-2" title="Authors Page"
-                             :href="to()->web->resultsAuthor($post->authors->first())">
+                             :href="to()->web->resultsAuthor($post->author())">
                             <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page"
-                                   :file="$post->authors->first()->file" :height="80"/>
+                                   :file="$post->author()->file" :height="80"/>
                             <div class="flex flex-col">
                                 <p>{{$post->authorList()}}</p>
-                                <p class="text-sm">{{$post->authors->first()->posts->count()}}
+                                <p class="text-sm">{{$post->authorPostCount()}}
                                     Posts
                                 </p>
                             </div>
@@ -80,10 +80,10 @@ $cvc = ThanksResponse::cvc;
                     </div>
                     <div class="flex justify-between">
                         <x-a class="mr-4 flex gap-2 text-base font-semibold" :href="'#'">
-                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->authors->first()->file" :height="80"/>
+                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->author()->file" :height="80"/>
                             <div>
                                 <p class="underline">{{$post->authorList()}}</p>
-                                <p class="text-sm">{{$post->authors->first()->posts()->count()}}
+                                <p class="text-sm">{{$post->authorPostCount()}}
                                     Posts
                                 </p>
                             </div>

@@ -3,15 +3,14 @@
 namespace App\Http\Middleware;
 
 use App\Http\Controllers\ReadView;
+use App\Jobs\PostViewCounterJob;
 use App\Models\Post;
-use App\Models\View;
 use Closure;
-use DB;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
-class PostViewCounter
+class PostViewCounterMiddleware
 {
 
     /**
@@ -22,16 +21,7 @@ class PostViewCounter
         $post = $request->route(ReadView::post);
 
         if ($this->shouldIncrementView($request, $post)) {
-            DB::transaction(static function () use ($request, $post) {
-                $post->increment(Post::views);
-
-                View::create([
-                    View::post_id => $post->id,
-                    View::ip => $request->ip(),
-                    View::user_agent => $request->userAgent(),
-                    View::locale => app()->getLocale(),
-                ]);
-            });
+            PostViewCounterJob::dispatch($post, $request->ip(), $request->userAgent());
         }
 
         return $next($request);

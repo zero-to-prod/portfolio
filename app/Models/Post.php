@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\CacheKeys;
 use App\Helpers\Tags;
 use App\Helpers\TagTypes;
 use App\Models\Support\HasRules;
@@ -17,6 +18,7 @@ use App\Models\Support\TimeStampColumns;
 use App\Rules\PostCanBePublished;
 use App\Rules\PostIsPublished;
 use ArrayAccess;
+use Cache;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,7 +31,7 @@ use Spatie\Tags\HasTags;
 /**
  * @mixin IdeHelperPost
  */
-class Post extends Model implements HasRules
+class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
 {
     use HasFactory;
     use IdColumn;
@@ -58,6 +60,20 @@ class Post extends Model implements HasRules
     protected static function booted(): void
     {
         static::addGlobalScope(self::published, self::publishedScope());
+    }
+
+    public function author(): Author
+    {
+        return Cache::rememberAs(CacheKeys::post_author, 60 * 60, function () {
+            return $this->authors->first();
+        });
+    }
+
+    public function authorPostCount(): int
+    {
+        return Cache::rememberAs(CacheKeys::post_author_post_count, 60 * 60, function () {
+            return $this->authors->first()->posts()->count();
+        });
     }
 
     /**
@@ -127,7 +143,9 @@ class Post extends Model implements HasRules
 
     public function authorList(): string
     {
-        return $this->authors->map(fn(Author $author) => $author->name)->join(', ');
+        return Cache::rememberAs(CacheKeys::post_author_list, 60 * 60, function () {
+            return $this->authors->map(fn(Author $author) => $author->name)->join(', ');
+        });
     }
 
     public function getRouteKeyName(): string

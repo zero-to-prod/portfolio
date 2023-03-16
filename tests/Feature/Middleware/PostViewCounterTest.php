@@ -2,7 +2,7 @@
 
 namespace Middleware;
 
-use App\Http\Middleware\PostViewCounter;
+use App\Http\Middleware\PostViewCounterMiddleware;
 use App\Models\View;
 use Tests\Support\GetRouteList;
 use Tests\TestCase;
@@ -13,7 +13,7 @@ class PostViewCounterTest extends TestCase
 
     /**
      * @test
-     * @see PostViewCounter
+     * @see PostViewCounterMiddleware
      */
     public function increments_view_count(): void
     {
@@ -34,7 +34,7 @@ class PostViewCounterTest extends TestCase
 
     /**
      * @test
-     * @see PostViewCounter
+     * @see PostViewCounterMiddleware
      */
     public function increments_view_count_2_times(): void
     {
@@ -50,7 +50,7 @@ class PostViewCounterTest extends TestCase
 
     /**
      * @test
-     * @see PostViewCounter
+     * @see PostViewCounterMiddleware
      */
     public function does_not_increment_count_for_incorrect_routes(): void
     {

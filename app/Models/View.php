@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * @mixin IdeHelperView
  */
-class View extends Model
+class View extends \Illuminate\Database\Eloquent\Model
 {
     use HasFactory;
     use IdColumn;

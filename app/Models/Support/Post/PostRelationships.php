@@ -21,10 +21,10 @@ trait PostRelationships
         return $this->hasOne(File::class, File::id, self::file_id);
     }
 
-    public function views(): HasMany
-    {
-        return $this->hasMany(View::class);
-    }
+//    public function views(): HasMany
+//    {
+//        return $this->hasMany(View::class);
+//    }
 
     public function authors(): BelongsToMany
     {

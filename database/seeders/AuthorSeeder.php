@@ -16,8 +16,7 @@ class AuthorSeeder extends Seeder
         Author::unguard();
         $author = Author::firstOrCreate(config('author.default'));
         $avatar = $this->uploadFile('avatar.jpg', 'image/jpeg');
-
-        $avatar->tagAvatar();
+        $author->update([Author::file_id => $avatar->id]);
         $author->files()->sync([$avatar->id]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Helpers\Tags;
 use App\Models\Support\Author\AuthorColumns;
 use App\Models\Support\Author\AuthorRelationships;
 use App\Models\Support\Author\AuthorRules;
@@ -13,7 +12,6 @@ use App\Models\Support\SlugColumn;
 use App\Models\Support\SoftDeleteColumn;
 use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -33,23 +31,5 @@ class Author extends Model implements HasRules
     use AuthorRelationships;
 
     protected $fillable = [self::file_id, self::name, self::title];
-//    protected $with = [self::file];
-
-    public function file(): HasOne
-    {
-        return $this->hasOne(File::class, File::id, self::file_id);
-    }
-
-    public function avatar(): ?File
-    {
-        return $this->files()->whereHas(File::tags, function ($builder) {
-            $builder->where(Tag::name . '->en', Tags::avatar->value);
-        })->first();
-    }
-
-    public function isMissingFile(): bool
-    {
-        return $this->file === null;
-    }
 
 }

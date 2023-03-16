@@ -42,7 +42,7 @@ class AuthorFormRedirect extends Controller
             $author->files()->sync([$avatar?->id]);
         }
 
-        if ($author->isMissingFile()) {
+        if ($author->file === null) {
             return redirect()->back()->withErrors([self::avatar => 'Missing Image'])->withInput();
         }
 

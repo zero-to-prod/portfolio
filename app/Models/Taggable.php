@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\Support\Taggable\TaggableColumns;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * @mixin IdeHelperTaggable

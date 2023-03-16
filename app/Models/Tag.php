@@ -12,6 +12,7 @@ use App\Models\Support\Tag\TagRelationships;
 use App\Models\Support\Tag\TagRules;
 use App\Models\Support\TimeStampColumns;
 use DB;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Support\Collection;
 
 /**
@@ -19,6 +20,7 @@ use Illuminate\Support\Collection;
  */
 class Tag extends \Spatie\Tags\Tag implements HasRules
 {
+    use Cachable;
     use IdColumn;
     use TimeStampColumns;
     use TagColumns;

@@ -46,7 +46,6 @@ class Post extends Model implements HasRules
     use PostScopes;
 
     protected $fillable = [self::file_id, self::title, self::subtitle, self::body, self::premiere_at];
-//    protected $with = [self::file];
     protected $casts = [
         self::published_at => 'datetime',
         self::premiere_at => 'datetime',
@@ -59,11 +58,6 @@ class Post extends Model implements HasRules
     protected static function booted(): void
     {
         static::addGlobalScope(self::published, self::publishedScope());
-    }
-
-    public function viewsCount(): int
-    {
-        return $this->views;
     }
 
     /**
@@ -111,7 +105,7 @@ class Post extends Model implements HasRules
     {
         $exclude_ids = is_array($exclude_ids) ? $exclude_ids : [$exclude_ids];
         $posts = self::withAnyTags($tags, TagTypes::post->value)
-            ->with([self::authors, self::file, 'tags.file'])
+            ->with([self::authors, self::file, self::tags . '.' . Tag::file])
             ->whereNotIn(self::id, $exclude_ids)
             ->orderByDesc(self::views)
             ->limit($limit)
@@ -120,30 +114,6 @@ class Post extends Model implements HasRules
         $latest = $posts->keyBy(self::id)->filter(fn(Post $post) => $post->original_publish_date->isToday());
 
         return $latest->union($posts);
-    }
-
-    public function featuredImage(): ?File
-    {
-
-        return $this->files()->whereHas(self::tags, function ($builder) {
-            $builder->where(Tag::name . '->en', Tags::featured->value);
-        })->first();
-
-    }
-
-    public function hasFile(): bool
-    {
-        return $this->file !== null;
-    }
-
-    public function isMissingFile(): bool
-    {
-        return $this->file === null;
-    }
-
-    public function authorAvatar(): ?File
-    {
-        return $this->authors()->first()?->avatar();
     }
 
     public function authorList(): string

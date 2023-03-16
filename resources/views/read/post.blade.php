@@ -44,7 +44,7 @@ $cvc = ThanksResponse::cvc;
                         <x-a class="mr-4 flex gap-2" title="Authors Page"
                              :href="to()->web->resultsAuthor($post->authors->first())">
                             <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page"
-                                   :file="$post->authorAvatar()" :height="80"/>
+                                   :file="$post->authors->first()->file" :height="80"/>
                             <div class="flex flex-col">
                                 <p>{{$post->authorList()}}</p>
                                 <p class="text-sm">{{$post->authors->first()->posts()->count()}}
@@ -79,7 +79,7 @@ $cvc = ThanksResponse::cvc;
                     </div>
                     <div class="flex justify-between">
                         <x-a class="mr-4 flex gap-2 text-base font-semibold" :href="'#'">
-                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->authorAvatar()" :height="80"/>
+                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->authors->first()->file" :height="80"/>
                             <div>
                                 <p class="underline">{{$post->authorList()}}</p>
                                 <p class="text-sm">{{$post->authors->first()->posts()->count()}}

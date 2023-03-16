@@ -62,7 +62,7 @@ class PostFormRedirect extends Controller
         $post->authors()->sync($validated['authors']);
         $post->tags()->sync($validated['tags']);
 
-        if ($post->isMissingFile()) {
+        if ($post->file === null) {
             return redirect()->back()->withErrors([self::featured_image => 'Missing Image'])->withInput();
         }
 

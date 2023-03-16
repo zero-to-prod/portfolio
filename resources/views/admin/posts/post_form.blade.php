@@ -59,7 +59,7 @@ $in_body = PostFormRedirect::in_body;
                                        value="{{$post_model?->id}}"/>
                             </label>
                             <div class="flex space-x-6 sm:col-span-2">
-                                @if($post_model?->hasFile())
+                                @if($post_model?->file !== null)
                                     <x-img class="object-cover h-[100px] rounded-lg"
                                            :file="$post_model->file"
                                            :height="100"
@@ -70,7 +70,7 @@ $in_body = PostFormRedirect::in_body;
                                     <input class="w-full"
                                            name="{{$featured_image}}"
                                            id="{{$featured_image}}"
-                                           {{$post_model?->hasFile() ? null  : 'required=true'}}
+                                           {{$post_model?->file !== null ? null  : 'required=true'}}
                                            type="file"
                                     >
                                     @if($errors->has($featured_image))

@@ -65,14 +65,14 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
 
     public function author(): Author
     {
-        return Cache::rememberAs(CacheKeys::post_author, 60 * 60, function () {
-            return $this->authors->first();
+        return Cache::remember($this->id . '|' . CacheKeys::post_author->value, 60 * 60, function () {
+            return $this->authors->first()->load(Author::file);
         });
     }
 
     public function authorPostCount(): int
     {
-        return Cache::rememberAs(CacheKeys::post_author_post_count, 60 * 60, function () {
+        return Cache::remember($this->id . '|' . CacheKeys::post_author_post_count->value, 60 * 60, function () {
             return $this->authors->first()->posts()->count();
         });
     }
@@ -134,7 +134,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
 
     public function authorList(): string
     {
-        return Cache::rememberAs(CacheKeys::post_author_list, 60 * 60, function () {
+        return Cache::remember($this->id . '|' . CacheKeys::post_author_list->value, 60 * 60, function () {
             return $this->authors->map(fn(Author $author) => $author->name)->join(', ');
         });
     }

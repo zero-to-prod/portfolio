@@ -77,17 +77,17 @@
         font-weight: normal;
     }
 
-    #content > div > div.shrink.max-w-\[837px\] > article > div.grid.max-w-none.prose > pre {
+    #content > div > div.shrink.max-w-post-2col > article > div.grid.max-w-none.prose > pre {
         margin-top: .5rem;
         margin-bottom: 0;
     }
 
-    #content > div > div.shrink.max-w-\[837px\] > article > div.grid.max-w-none.prose > blockquote {
+    #content > div > div.shrink.max-w-post-2col > article > div.grid.max-w-none.prose > blockquote {
         margin-top: 1rem;
         margin-bottom: 0;
     }
 
-    #content > div > div.shrink.max-w-\[837px\] > article > div.grid.max-w-none.prose > blockquote p {
+    #content > div > div.shrink.max-w-post-2col > article > div.grid.max-w-none.prose > blockquote p {
         margin-bottom: 1rem;
     }
 

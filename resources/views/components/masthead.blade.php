@@ -60,7 +60,7 @@ $search = SearchRedirect::search;
         @guest()
             <x-a :href="to()->web->login()"
                  title="Go to Sign In Page"
-                 class="my-auto mx-2 2col:mx-4 flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border">
+                 class="my-auto mx-2 flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border">
                 <span>Sign</span> <span>In</span></x-a>
         @endguest
     </div>

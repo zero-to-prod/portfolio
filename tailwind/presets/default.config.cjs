@@ -26,7 +26,8 @@ module.exports = {
     extend: {
       spacing: {
         'narrow-nav': '64px',
-        'wide-nav': '238px'
+        'wide-nav': '238px',
+        'post-2col': '837px'
       },
       colors: {
         black: '#010409',

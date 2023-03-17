@@ -22,7 +22,7 @@ function handleScroll() {
 
     if (!navbar || !bottomNav) return;
 
-    if (currentScrollPosition > previousScrollPosition) {
+    if (currentScrollPosition >= previousScrollPosition) {
         addScrollClasses();
     } else {
         removeScrollClasses();

@@ -18,7 +18,7 @@ use App\Http\Controllers\ResultsView;
         </a>
         <a class="flex flex-col py-2 hover:bg-gray-300 {{ route_is(to()->web->subscribe) ? 'bg-gray-200' : '' }}"
            href="{{to()->web->subscribe()}}">
-            <x-svg :name="'mail-dark'" class="mx-auto"/>
+            <x-svg :name="'mail'" class="mx-auto"/>
             <span class="mx-auto text-xs">Subscribe</span>
         </a>
     </div>

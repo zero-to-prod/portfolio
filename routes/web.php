@@ -24,7 +24,7 @@ Route::getAs(Routes::login, LoginView::class);
 Route::getAs(Routes::privacy, PrivacyView::class);
 Route::getAs(Routes::read, ReadView::class);
 Route::getAs(Routes::results, ResultsView::class);
-Route::getAs(Routes::subscribe, SubscribeView::class);
+Route::getAs(Routes::newsletter, SubscribeView::class);
 Route::getAs(Routes::tos, TermsOfServiceView::class);
 Route::getAs(Routes::welcome, WelcomeView::class);
 Route::postAs(Routes::connect_store, ConnectStoreRedirect::class);

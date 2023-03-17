@@ -30,7 +30,7 @@ use Illuminate\Support\Collection;
         <x-svg :name="'topics'"/>
         Topics
     </x-a>
-    <x-a class="{{ route_is(to()->web->subscribe) ? 'bg-base-200' : '' }}"
+    <x-a class="{{ route_is(to()->web->newsletter) ? 'bg-base-200' : '' }}"
          :href="to()->web->subscribe()"
          title="Subscribe to Newsletter"
     >
@@ -73,7 +73,7 @@ use Illuminate\Support\Collection;
         <x-svg class="mx-auto" :name="'topics'"/>
         Topics
     </x-a>
-    <x-a class=" {{ route_is(to()->web->subscribe) ? 'bg-base-200' : '' }}"
+    <x-a class=" {{ route_is(to()->web->newsletter) ? 'bg-base-200' : '' }}"
          :href="to()->web->subscribe()"
          title="Subscribe to Newsletter"
     >

@@ -37,7 +37,7 @@ enum Views: string
     case profile_edit = 'profile.edit';
     case read_post = 'read.post';
     case results = 'results';
-    case subscribe = 'subscribe';
+    case newsletter = 'newsletter';
     case tos = 'tos';
     case welcome = 'welcome';
 }

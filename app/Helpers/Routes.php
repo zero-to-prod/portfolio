@@ -23,7 +23,7 @@ enum Routes: string
     case read = 'read/{post}';
     case results = 'results';
     case search = 'search';
-    case subscribe = 'subscribe';
+    case newsletter = 'newsletter';
     case tos = 'terms-of-service';
     case welcome = '/';
 

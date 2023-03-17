@@ -21,6 +21,6 @@ class SubscribeView extends Controller
             return User::first()?->createToken(CacheKeys::newsletter->value)->plainTextToken;
         });
 
-        return view_as(Views::subscribe, [self::tags => Tag::getMostViewed(), self::token => $token]);
+        return view_as(Views::newsletter, [self::tags => Tag::getMostViewed(), self::token => $token]);
     }
 }

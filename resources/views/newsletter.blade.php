@@ -30,7 +30,7 @@ $email = SubscribeResponse::email;
                                    name="{{$email}}"
                                    required
                                    placeholder="Your email address"/>
-                            <button id="subscribe" title="Subscribe to Newsletter"
+                            <button id="newsletter" title="Subscribe to Newsletter"
                                     class="flex justify-center shrink-0 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
                                 <span class="my-auto mx-auto flex gap-2">
                                     <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
@@ -98,7 +98,7 @@ $email = SubscribeResponse::email;
                             email.classList.add('bg-green-200');
                             success.classList.toggle('hidden');
                         } else {
-                            document.querySelector('#subscribe').reset();
+                            document.querySelector('#newsletter').reset();
                             email.classList.add('border', 'border-error');
                             error.classList.toggle('hidden');
                         }

@@ -33,11 +33,13 @@ enum Views: string
     case layouts_guest = 'layouts.guest';
     case layouts_login = 'layouts.login';
     case layouts_main = 'layouts.main';
+    case layouts_subscribe = 'layouts.subscribe';
     case privacy = 'privacy';
     case profile_edit = 'profile.edit';
     case read_post = 'read.post';
     case results = 'results';
     case newsletter = 'newsletter';
+    case subscribe = 'subscribe';
     case tos = 'tos';
     case welcome = 'welcome';
 }

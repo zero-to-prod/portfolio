@@ -22,6 +22,7 @@ class WebRoutes
     public Routes $results = Routes::results;
     public Routes $search = Routes::search;
     public Routes $newsletter = Routes::newsletter;
+    public Routes $subscribe = Routes::subscribe;
     public Routes $tos = Routes::tos;
     public Routes $welcome = Routes::welcome;
 
@@ -44,9 +45,14 @@ class WebRoutes
         return route_as($this->welcome);
     }
 
-    public function subscribe(): string
+    public function newsletter(): string
     {
         return route_as($this->newsletter);
+    }
+
+    public function subscribe(): string
+    {
+        return route_as($this->subscribe);
     }
 
     public function resultsTopics(): string

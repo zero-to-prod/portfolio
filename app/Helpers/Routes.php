@@ -24,6 +24,7 @@ enum Routes: string
     case results = 'results';
     case search = 'search';
     case newsletter = 'newsletter';
+    case subscribe = 'subscribe';
     case tos = 'terms-of-service';
     case welcome = '/';
 

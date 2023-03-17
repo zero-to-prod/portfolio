@@ -1,0 +1,29 @@
+@layer components {
+    #subscribe h2 {
+        @apply text-lg font-bold;
+    }
+
+    #subscribe h3 {
+        @apply text-gray-500 text-sm;
+    }
+
+    #subscribe ul {
+        @apply text-sm text-gray-500 space-y-2;
+    }
+
+    #subscribe li {
+        @apply flex gap-2;
+    }
+
+    #subscribe li img {
+        @apply h-5 w-5;
+    }
+
+    #subscribe .card {
+        @apply cursor-pointer rounded-lg border border-2 p-4 w-[384px] 2col:w-[240px] space-y-4;
+    }
+
+    #subscribe  .active {
+        @apply border-sky-600 shadow-lg;
+    }
+}

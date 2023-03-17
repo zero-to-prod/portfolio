@@ -21,7 +21,9 @@ class WebRoutes
     public Routes $read = Routes::read;
     public Routes $results = Routes::results;
     public Routes $search = Routes::search;
+    public Routes $newsletter = Routes::newsletter;
     public Routes $subscribe = Routes::subscribe;
+    public Routes $loginStore = Routes::web_login_store;
     public Routes $tos = Routes::tos;
     public Routes $welcome = Routes::welcome;
 
@@ -38,10 +40,19 @@ class WebRoutes
     {
         return route_as($this->login);
     }
+    public function loginStore(): string
+    {
+        return route_as($this->loginStore);
+    }
 
     public function welcome(): string
     {
         return route_as($this->welcome);
+    }
+
+    public function newsletter(): string
+    {
+        return route_as($this->newsletter);
     }
 
     public function subscribe(): string

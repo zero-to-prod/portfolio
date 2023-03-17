@@ -23,6 +23,7 @@ enum Routes: string
     case read = 'read/{post}';
     case results = 'results';
     case search = 'search';
+    case newsletter = 'newsletter';
     case subscribe = 'subscribe';
     case tos = 'terms-of-service';
     case welcome = '/';
@@ -48,6 +49,7 @@ enum Routes: string
     case auth_register_index = 'register';
     case auth_register_store = 'register/store';
     case auth_upload = 'upload';
+    case web_login_store = 'web/login/store';
 
 
     /* Api */

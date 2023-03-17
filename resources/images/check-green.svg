@@ -1,5 +1,9 @@
-<svg class="h-full w-full" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5"
-     stroke="#4ade80">
-    <path stroke-linecap="round" stroke-linejoin="round"
-          d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+<svg role="img" class="h-full w-full" viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke="#16a34a"
+     xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <path d="M14.6667 7.38656V7.99989C14.6659 9.4375 14.2004 10.8363 13.3396 11.9878C12.4788 13.1392 11.2689 13.9815 9.89028 14.3892C8.51166 14.7968 7.03821 14.7478 5.68969 14.2496C4.34116 13.7514 3.18981 12.8306 2.40735 11.6246C1.62488 10.4186 1.25323 8.99193 1.34783 7.55743C1.44242 6.12293 1.99818 4.75744 2.93223 3.6646C3.86628 2.57177 5.12856 1.81014 6.53083 1.49332C7.9331 1.1765 9.40022 1.32145 10.7134 1.90656"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M14.6667 2.66669L8 9.34002L6 7.34002" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+    </g>
 </svg>

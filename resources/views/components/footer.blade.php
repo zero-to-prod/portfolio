@@ -10,7 +10,7 @@
                     <h3>Membership</h3>
                     <ul role="list" class="mt-6 space-y-4">
                         <li><a href="{{to()->web->login()}}">Login</a></li>
-                        <li><a href="{{to()->web->subscribe()}}">Newsletter</a></li>
+                        <li><a href="{{to()->web->newsletter()}}">Newsletter</a></li>
                     </ul>
                 </div>
                 <div class="mt-10 md:mt-0">

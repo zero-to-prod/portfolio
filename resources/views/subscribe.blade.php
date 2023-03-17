@@ -31,9 +31,11 @@ $email = SubscribeResponse::email;
                                    required
                                    placeholder="Your email address"/>
                             <button id="subscribe" title="Subscribe to Newsletter"
-                                 class="my-auto flex gap-2 shrink-0 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
-                                <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
-                                <span class="my-auto font-bold text-white">Subscribe</span>
+                                    class="flex justify-center shrink-0 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
+                                <span class="my-auto mx-auto flex gap-2">
+                                    <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
+                                    <span class="my-auto font-bold text-white">Subscribe</span>
+                                </span>
                             </button>
                         </div>
                     </form>

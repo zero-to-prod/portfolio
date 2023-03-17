@@ -34,7 +34,7 @@ use Illuminate\Support\Collection;
          :href="to()->web->subscribe()"
          title="Subscribe to Newsletter"
     >
-        <x-svg :name="'mail-dark'"/>
+        <x-svg :name="'mail'"/>
         Newsletter
     </x-a>
     <x-divider class="py-2"/>
@@ -77,7 +77,7 @@ use Illuminate\Support\Collection;
          :href="to()->web->subscribe()"
          title="Subscribe to Newsletter"
     >
-        <x-svg class="mx-auto w-5" :name="'mail-dark'"/>
+        <x-svg class="mx-auto w-5" :name="'mail'"/>
         Newsletter
     </x-a>
     <x-divider class="py-2"/>

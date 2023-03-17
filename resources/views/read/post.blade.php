@@ -56,8 +56,8 @@ $cvc = ThanksResponse::cvc;
                         <div class="flex gap-2">
                             <x-a title="Subscribe to Newsletter" :href="to()->web->subscribe()"
                                  class="my-auto flex gap-2 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
-                                <x-svg :name="'mail'" class="!h-6 !w-6"/>
-                                <span class="my-auto text-sm font-bold text-white">Subscribe</span>
+                                <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
+                                <span class="my-auto text-sm font-bold text-white">Newsletter</span>
                             </x-a>
                             <button id="share" type="button" title="Share this content."
                                     class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
@@ -96,8 +96,8 @@ $cvc = ThanksResponse::cvc;
                     <div class="flex flex-row-reverse gap-2">
                         <x-a title="Subscribe to Newsletter" :href="to()->web->subscribe()"
                              class="flex gap-2 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
-                            <x-svg :name="'mail'" class="!h-6 !w-6"/>
-                            <span class="my-auto text-sm font-bold text-white">Subscribe</span>
+                            <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
+                            <span class="my-auto text-sm font-bold text-white">Newsletter</span>
                         </x-a>
                         <button id="share-mobile" type="button"
                                 class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">

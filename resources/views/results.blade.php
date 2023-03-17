@@ -17,7 +17,7 @@ $title = request()->query(ResultsView::popular) !== null ? 'Popular' : $title;
 $author_model = null;
 ?>
 <x-main :title="$title">
-    <div class="flex flex-col gap-2 max-w-4xl mx-auto">
+    <div class="flex flex-col gap-2 max-w-4xl 2col:px-2 mx-auto">
         <div>
             @if($tag !== null)
                 <div class="flex gap-x-2 my-2 ml-2 2col:ml-0">

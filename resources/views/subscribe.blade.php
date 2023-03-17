@@ -24,13 +24,17 @@ $email = SubscribeResponse::email;
                     <form class="mt-6 mx-auto" id="form">
                         <label for="{{$email}}" class="sr-only">Email</label>
                         <div class="flex flex-col 2col:flex-row gap-2">
-                            <input class="input text-lg text-center 2col:text-left"
+                            <input class="input text-lg text-center 2col:text-left rounded-lg"
                                    id="{{$email}}"
                                    type="email"
                                    name="{{$email}}"
                                    required
                                    placeholder="Your email address"/>
-                            <button id="submit" class="btn btn-xs text-lg">Subscribe</button>
+                            <button id="subscribe" title="Subscribe to Newsletter"
+                                 class="my-auto flex gap-2 shrink-0 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
+                                <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
+                                <span class="my-auto font-bold text-white">Subscribe</span>
+                            </button>
                         </div>
                     </form>
                     <div class="mx-1 text-xs space-y-2 font-bold">
@@ -108,7 +112,7 @@ $email = SubscribeResponse::email;
         </div>
         <div>
             <h2 class="text-xl font-bold">
-                The Perfect Newsletter to Stay up to Date
+                Get the latest updates on these topics with our newsletter:
             </h2>
             <div class="flex flex-wrap justify-center mt-4">
                 @forEach($tags as $tag)

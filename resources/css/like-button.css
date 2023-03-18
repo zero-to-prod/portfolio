@@ -1,17 +1,6 @@
 @layer components {
-    .ripple {
-        background-position: center;
-        transition: background 0.3s ease;
-    }
-    .ripple:hover {
-        background: #5253575C radial-gradient(circle, transparent 1%, #5253575C 1%) center/15000%;
-    }
-    .ripple:active {
-        background-size: 100%;
-        transition: background 0s;
-    }
     #like-buttons button {
-        @apply ripple relative bg-gray-200 space-x-2 inline-flex items-center px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-300 focus:z-10;
+        @apply relative bg-gray-200 space-x-2 inline-flex items-center px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-300 focus:z-10;
     }
 }
 

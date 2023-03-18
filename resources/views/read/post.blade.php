@@ -59,6 +59,8 @@ $cvc = ThanksResponse::cvc;
                                 <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
                                 <span class="my-auto text-sm font-bold text-white">Newsletter</span>
                             </x-a>
+                            <livewire:reactions :post="$post" />
+
                             <button id="share" type="button" title="Share this content."
                                     class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
                                 <x-svg :name="'share'" class="!h-6 !w-6"/>

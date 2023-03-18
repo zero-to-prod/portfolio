@@ -15,6 +15,7 @@
         "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.12",
+        "livewire/livewire": "^2.12",
         "mailchimp/marketing": "^3.0",
         "spatie/laravel-markdown": "^2.2",
         "spatie/laravel-permission": "^5.9",
@@ -54,7 +55,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",

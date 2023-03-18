@@ -13,4 +13,5 @@ enum Relations: int
     case file = 3;
     case author = 4;
     case tag = 5;
+    case react = 6;
 }

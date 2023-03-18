@@ -52,9 +52,9 @@ class FileServeResponseTest extends TestCase
         $cachedResponse = response('cached content', 200);
 
         // Set up the cache to return the cached response
-        Cache::shouldReceive('remember')
+        Cache::shouldReceive('rememberForever')
             ->once()
-            ->with(to()->web->file(new File([File::name => $filename])), null, Closure::class)
+            ->with(to()->web->file(new File([File::name => $filename])), Closure::class)
             ->andReturn($cachedResponse);
 
         // Call the controller method

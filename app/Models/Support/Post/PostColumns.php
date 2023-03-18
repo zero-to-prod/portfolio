@@ -9,6 +9,8 @@ trait PostColumns
     public const subtitle = 'subtitle';
     public const body = 'body';
     public const views = 'views';
+    public const likes = 'likes';
+    public const dislikes = 'dislikes';
     public const published_content = 'published_content';
     public const published_at = 'published_at';
     public const published_word_count = 'published_word_count';

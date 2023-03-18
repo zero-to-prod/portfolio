@@ -23,11 +23,13 @@ use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use RuntimeException;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Tags\HasTags;
+use Tests\Feature\Models\Post\LikeTest;
 
 /**
  * @mixin IdeHelperPost
@@ -57,6 +59,126 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         self::published_word_count => 'integer',
         self::reading_time => 'integer',
     ];
+
+    public function reactions(): MorphToMany
+    {
+        return $this->morphToMany(Reaction::class, 'reactable');
+    }
+
+    public function liked(): bool
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ($user === null) {
+            return false;
+        }
+
+        return $this->reactions()->where(Reaction::user_id, $user->id)->first()?->like === 1;
+    }
+
+    public function disliked(): bool
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ($user === null) {
+            return false;
+        }
+
+        return $this->reactions()->where(Reaction::user_id, $user->id)->first()?->like === -1;
+    }
+
+    /**
+     * @see LikeTest
+     */
+    public function like(): static
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ($user === null) {
+            return $this;
+        }
+
+        /** @var Reaction $reaction */
+        $reaction = $this->reactions()->where(Reaction::user_id, $user->id)->first();
+        if ($reaction !== null) {
+            if ($reaction->like === 1) {
+                $this->decrement(self::likes);
+                $reaction->update([Reaction::like => 0]);
+
+                return $this;
+            }
+            if ($reaction->like === 0) {
+                $this->increment(self::likes);
+                $reaction->update([Reaction::like => 1]);
+
+                return $this;
+            }
+            $this->increment(self::likes);
+            $this->decrement(self::dislikes);
+            $reaction->update([Reaction::like => 1]);
+
+            return $this;
+        }
+
+        $reaction = Reaction::create([
+            Reaction::user_id => $user->id,
+            Reaction::like => 1,
+        ]);
+        $this->reactions()->attach($reaction);
+        $this->increment(self::likes);
+
+        return $this;
+    }
+
+    /**
+     * @see LikeTest
+     */
+    public function dislike(): static
+    {
+
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ($user === null) {
+            return $this;
+        }
+
+        /** @var Reaction $reaction */
+        $reaction = $this->reactions()->where(Reaction::user_id, $user->id)->first();
+        if ($reaction !== null) {
+            if ($reaction->like === -1) {
+                $this->decrement(self::dislikes);
+                $reaction->update([Reaction::like => 0]);
+
+                return $this;
+            }
+
+            if ($reaction->like === 0) {
+                $this->increment(self::dislikes);
+                $reaction->update([Reaction::like => -1]);
+
+                return $this;
+            }
+
+            $this->increment(self::dislikes);
+            $this->decrement(self::likes);
+            $reaction->update([Reaction::like => -1]);
+
+            return $this;
+        }
+
+        $reaction = Reaction::create([
+            Reaction::user_id => $user->id,
+            Reaction::like => -1,
+        ]);
+        $this->reactions()->attach($reaction);
+        $this->increment(self::dislikes);
+
+        return $this;
+    }
 
     protected static function booted(): void
     {

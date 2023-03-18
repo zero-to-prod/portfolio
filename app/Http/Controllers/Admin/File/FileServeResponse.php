@@ -29,7 +29,7 @@ class FileServeResponse extends Controller
      */
     public function __invoke(Request $request):  Application|ResponseFactory|Response
     {
-        return Cache::remember($request->fullUrl(), null, static function () use ($request) {
+        return Cache::rememberForever($request->fullUrl(), static function () use ($request) {
             $s3_bucket_path = config('filesystems.file_disk_path');
             $path = $s3_bucket_path . explode(self::file, $request->path())[1];
 

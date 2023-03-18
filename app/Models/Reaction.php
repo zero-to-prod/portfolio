@@ -9,7 +9,7 @@ use App\Models\Support\TimeStampColumns;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * @mixin IdeHelperReact
+ * @mixin IdeHelperReaction
  */
 class Reaction extends Model
 {

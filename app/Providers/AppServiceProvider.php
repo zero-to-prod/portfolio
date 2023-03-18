@@ -11,6 +11,7 @@ use App\Helpers\Relations;
 use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
+use App\Models\React;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -38,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
             Relations::file->value => File::class,
             Relations::author->value => Author::class,
             Relations::tag->value => Tag::class,
+            Relations::react->value => React::class,
         ]);
 
         $this->registerEnvironmentAs();

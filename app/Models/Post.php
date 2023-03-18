@@ -23,6 +23,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use RuntimeException;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
@@ -57,6 +58,69 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         self::published_word_count => 'integer',
         self::reading_time => 'integer',
     ];
+
+    public function reactions(): MorphToMany
+    {
+        return $this->morphToMany(React::class, 'reactable');
+    }
+
+    public function like(): self
+    {
+        $reaction = $this->reactions()->first();
+        if ($reaction !== null) {
+            $reaction->update([React::like => 1]);
+
+            return $this;
+        }
+        $this->increment(self::likes);
+        $reaction = new React([
+            React::user_id => 1,
+            React::like => 1,
+        ]);
+        $this->reactions()->save($reaction);
+
+        return $this;
+    }
+
+    public function dislike(): self
+    {
+        $reaction = $this->reactions()->first();
+        if ($reaction !== null) {
+            $reaction->update([React::like => -1]);
+
+            return $this;
+        }
+        $this->increment(self::dislikes);
+        $reaction = new React([
+            React::user_id => 1,
+            React::like => -1,
+        ]);
+        $this->reactions()->save($reaction);
+
+        return $this;
+    }
+
+    public function removeLike(): self
+    {
+        $reaction = $this->reactions()->first();
+        if ($reaction !== null) {
+            $this->decrement(self::likes);
+            $reaction->update([React::like => 0]);
+        }
+
+        return $this;
+    }
+
+    public function removeDislike(): self
+    {
+        $reaction = $this->reactions()->first();
+        if ($reaction !== null) {
+            $this->decrement(self::dislikes);
+            $reaction->update([React::like => 0]);
+        }
+
+        return $this;
+    }
 
     protected static function booted(): void
     {

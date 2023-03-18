@@ -65,6 +65,30 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         return $this->morphToMany(Reaction::class, 'reactable');
     }
 
+    public function liked(): bool
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ($user === null) {
+            return false;
+        }
+
+        return $this->reactions()->where(Reaction::user_id, $user->id)->first()?->like === 1;
+    }
+
+    public function disliked(): bool
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ($user === null) {
+            return false;
+        }
+
+        return $this->reactions()->where(Reaction::user_id, $user->id)->first()?->like === -1;
+    }
+
     /**
      * @see LikeTest
      */
@@ -83,6 +107,12 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
             if ($reaction->like === 1) {
                 $this->decrement(self::likes);
                 $reaction->update([Reaction::like => 0]);
+
+                return $this;
+            }
+            if ($reaction->like === 0) {
+                $this->increment(self::likes);
+                $reaction->update([Reaction::like => 1]);
 
                 return $this;
             }
@@ -108,6 +138,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
      */
     public function dislike(): static
     {
+
         /** @var User $user */
         $user = auth()->user();
 
@@ -121,6 +152,13 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
             if ($reaction->like === -1) {
                 $this->decrement(self::dislikes);
                 $reaction->update([Reaction::like => 0]);
+
+                return $this;
+            }
+
+            if ($reaction->like === 0) {
+                $this->increment(self::dislikes);
+                $reaction->update([Reaction::like => -1]);
 
                 return $this;
             }

@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Drivers;
+use App\Helpers\SessionKeys;
 use App\Models\User;
 use Auth;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
+use Session;
 use Socialite;
 
 class GithubCallback extends Controller
 {
 
-    public function __invoke(Request $request): Redirector|RedirectResponse|Application
+    public function __invoke(Request $request): RedirectResponse
     {
         $githubUser = Socialite::driver(Drivers::github->value)->user();
 
@@ -26,6 +26,11 @@ class GithubCallback extends Controller
         ]);
 
         Auth::login($user);
+
+        $uri = Session::get(SessionKeys::page->value);
+        if ($uri !== null) {
+            return redirect()->intended($uri);
+        }
 
         return redirect()->intended(to()->web->welcome());
     }

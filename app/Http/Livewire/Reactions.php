@@ -2,28 +2,55 @@
 
 namespace App\Http\Livewire;
 
+use App\Helpers\SessionKeys;
 use App\Models\Post;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
+use Session;
 
 class Reactions extends Component
 {
     public Post $post;
+    public string $url;
+
+    public function mount(): void
+    {
+        $this->url = request()?->getUri();
+    }
 
     public function like(): void
     {
-        $this->post->like();
+        if (auth()->check()) {
+            $this->post->like();
+
+            return;
+        }
+
+        $this->redirectToLogin();
+
     }
 
     public function dislike(): void
     {
-        $this->post->dislike();
+        if (auth()->check()) {
+            $this->post->dislike();
+
+            return;
+        }
+
+        $this->redirectToLogin();
     }
 
     public function render(): Factory|View|Application
     {
         return view('livewire.reactions');
+    }
+
+    protected function redirectToLogin(): void
+    {
+        Session::put(SessionKeys::page->value, $this->url);
+        $this->redirect(to()->web->login());
     }
 }

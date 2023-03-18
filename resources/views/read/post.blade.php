@@ -59,8 +59,7 @@ $cvc = ThanksResponse::cvc;
                                 <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
                                 <span class="my-auto text-sm font-bold text-white">Newsletter</span>
                             </x-a>
-                            <livewire:reactions :post="$post" />
-
+                            <livewire:reactions :post="$post"/>
                             <button id="share" type="button" title="Share this content."
                                     class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
                                 <x-svg :name="'share'" class="!h-6 !w-6"/>
@@ -88,30 +87,32 @@ $cvc = ThanksResponse::cvc;
                                 <p class="text-sm">{{$post->authorPostCount()}}
                                     Posts
                                 </p>
+
                             </div>
                         </x-a>
-                        <div class="text-right text-sm">
-                            <x-published-date :post="$post"/>
-                            <x-views :post="$post"/>
-                        </div>
-                    </div>
-                    <div class="flex flex-row-reverse gap-2">
                         <x-a title="Subscribe to Newsletter" :href="to()->web->newsletter()"
-                             class="flex gap-2 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
+                             class="my-auto flex gap-2 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
                             <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
                             <span class="my-auto text-sm font-bold text-white">Newsletter</span>
                         </x-a>
-                        <button id="share-mobile" type="button"
-                                class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
-                            <x-svg :name="'share'" class="!h-6 !w-6"/>
-                            <span class="my-auto text-sm font-bold">Share</span>
-                        </button>
+                    </div>
+                    <div class="flex justify-between gap-2">
+                        <livewire:reactions :post="$post"/>
                         <button id="thanks-mobile" type="button"
                                 title="Buy a Thanks, which directly supports content like this."
                                 class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
                             <x-svg :name="'thanks'" class="!h-6 !w-6"/>
                             <span class="my-auto text-sm font-bold">Thanks</span>
                         </button>
+                        <button id="share-mobile" type="button"
+                                class="my-auto flex gap-2 rounded-lg bg-gray-200 p-2 hover:bg-gray-300">
+                            <x-svg :name="'share'" class="!h-6 !w-6"/>
+                            <span class="my-auto text-sm font-bold">Share</span>
+                        </button>
+                    </div>
+                    <div class="text-sm">
+                        <x-published-date :post="$post"/>
+                        <x-views :post="$post"/>
                     </div>
                 </div>
                 <div id="form-wrapper" class="my-4 hidden border-t border-b py-4">

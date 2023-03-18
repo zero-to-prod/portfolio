@@ -62,7 +62,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
 
     public function reactions(): MorphToMany
     {
-        return $this->morphToMany(React::class, 'reactable');
+        return $this->morphToMany(Reaction::class, 'reactable');
     }
 
     /**
@@ -77,25 +77,25 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
             return $this;
         }
 
-        /** @var React $reaction */
-        $reaction = $this->reactions()->where(React::user_id, $user->id)->first();
+        /** @var Reaction $reaction */
+        $reaction = $this->reactions()->where(Reaction::user_id, $user->id)->first();
         if ($reaction !== null) {
             if ($reaction->like === 1) {
                 $this->decrement(self::likes);
-                $reaction->update([React::like => 0]);
+                $reaction->update([Reaction::like => 0]);
 
                 return $this;
             }
             $this->increment(self::likes);
             $this->decrement(self::dislikes);
-            $reaction->update([React::like => 1]);
+            $reaction->update([Reaction::like => 1]);
 
             return $this;
         }
 
-        $reaction = React::create([
-            React::user_id => $user->id,
-            React::like => 1,
+        $reaction = Reaction::create([
+            Reaction::user_id => $user->id,
+            Reaction::like => 1,
         ]);
         $this->reactions()->attach($reaction->id);
         $this->increment(self::likes);
@@ -115,26 +115,26 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
             return $this;
         }
 
-        /** @var React $reaction */
-        $reaction = $this->reactions()->where(React::user_id, $user->id)->first();
+        /** @var Reaction $reaction */
+        $reaction = $this->reactions()->where(Reaction::user_id, $user->id)->first();
         if ($reaction !== null) {
             if ($reaction->like === -1) {
                 $this->decrement(self::dislikes);
-                $reaction->update([React::like => 0]);
+                $reaction->update([Reaction::like => 0]);
 
                 return $this;
             }
 
             $this->increment(self::dislikes);
             $this->decrement(self::likes);
-            $reaction->update([React::like => -1]);
+            $reaction->update([Reaction::like => -1]);
 
             return $this;
         }
 
-        $reaction = React::create([
-            React::user_id => $user->id,
-            React::like => -1,
+        $reaction = Reaction::create([
+            Reaction::user_id => $user->id,
+            Reaction::like => -1,
         ]);
         $this->reactions()->attach($reaction->id);
         $this->increment(self::dislikes);

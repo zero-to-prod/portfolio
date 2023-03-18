@@ -11,6 +11,6 @@ class Reactable extends Model
 {
     use ReactableColumns;
 
-    protected $fillable = [self::react_id, self::reactable_id, self::reactable_type];
+    protected $fillable = [self::reaction_id, self::reactable_id, self::reactable_type];
 
 }

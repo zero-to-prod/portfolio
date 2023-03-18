@@ -3,7 +3,7 @@
 namespace Tests\Feature\Models\Post;
 
 use App\Models\Post;
-use App\Models\React;
+use App\Models\Reaction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -24,9 +24,9 @@ class LikeTest extends TestCase
         $post->like();
 
         self::assertEquals(1, $post->likes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user1->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user1->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user1->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user1->id)->first();
         self::assertEquals(1, $reaction->like);
         self::assertEquals($user1->id, $reaction->user_id);
 
@@ -37,9 +37,9 @@ class LikeTest extends TestCase
         $post->like();
 
         self::assertEquals(2, $post->likes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user2->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user2->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user2->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user2->id)->first();
         self::assertEquals(1, $reaction->like);
         self::assertEquals($user2->id, $reaction->user_id);
         self::assertEquals(2, $post->reactions()->count());
@@ -48,9 +48,9 @@ class LikeTest extends TestCase
         $post->like();
 
         self::assertEquals(1, $post->likes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user2->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user2->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user2->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user2->id)->first();
         self::assertEquals(0, $reaction->like);
         self::assertEquals($user2->id, $reaction->user_id);
         self::assertEquals(2, $post->reactions()->count());
@@ -60,9 +60,9 @@ class LikeTest extends TestCase
         $post->like();
 
         self::assertEquals(0, $post->likes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user1->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user1->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user1->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user1->id)->first();
         self::assertEquals(0, $reaction->like);
         self::assertEquals($user1->id, $reaction->user_id);
     }
@@ -80,9 +80,9 @@ class LikeTest extends TestCase
         $post->dislike();
 
         self::assertEquals(1, $post->dislikes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user1->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user1->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user1->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user1->id)->first();
         self::assertEquals(-1, $reaction->like);
         self::assertEquals($user1->id, $reaction->user_id);
 
@@ -93,9 +93,9 @@ class LikeTest extends TestCase
         $post->dislike();
 
         self::assertEquals(2, $post->dislikes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user2->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user2->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user2->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user2->id)->first();
         self::assertEquals(-1, $reaction->like);
         self::assertEquals($user2->id, $reaction->user_id);
         self::assertEquals(2, $post->reactions()->count());
@@ -104,9 +104,9 @@ class LikeTest extends TestCase
         $post->dislike();
 
         self::assertEquals(1, $post->dislikes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user2->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user2->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user2->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user2->id)->first();
         self::assertEquals(0, $reaction->like);
         self::assertEquals($user2->id, $reaction->user_id);
         self::assertEquals(2, $post->reactions()->count());
@@ -116,9 +116,9 @@ class LikeTest extends TestCase
         $post->dislike();
 
         self::assertEquals(0, $post->dislikes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user1->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user1->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user1->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user1->id)->first();
         self::assertEquals(0, $reaction->like);
         self::assertEquals($user1->id, $reaction->user_id);
     }
@@ -139,9 +139,9 @@ class LikeTest extends TestCase
 
         self::assertEquals(0, $post->likes);
         self::assertEquals(1, $post->dislikes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user1->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user1->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user1->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user1->id)->first();
         self::assertEquals(-1, $reaction->like);
         self::assertEquals($user1->id, $reaction->user_id);
     }
@@ -162,9 +162,9 @@ class LikeTest extends TestCase
 
         self::assertEquals(1, $post->likes);
         self::assertEquals(0, $post->dislikes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user1->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user1->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user1->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user1->id)->first();
         self::assertEquals(1, $reaction->like);
         self::assertEquals($user1->id, $reaction->user_id);
     }
@@ -187,9 +187,9 @@ class LikeTest extends TestCase
 
         self::assertEquals(0, $post->likes);
         self::assertEquals(0, $post->dislikes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user1->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user1->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user1->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user1->id)->first();
         self::assertEquals(0, $reaction->like);
         self::assertEquals($user1->id, $reaction->user_id);
     }
@@ -211,9 +211,9 @@ class LikeTest extends TestCase
 
         self::assertEquals(0, $post->likes);
         self::assertEquals(0, $post->dislikes);
-        self::assertEquals(1, $post->reactions()->where(React::user_id, $user1->id)->count());
-        /** @var React $reaction */
-        $reaction = $post->reactions()->where(React::user_id, $user1->id)->first();
+        self::assertEquals(1, $post->reactions()->where(Reaction::user_id, $user1->id)->count());
+        /** @var Reaction $reaction */
+        $reaction = $post->reactions()->where(Reaction::user_id, $user1->id)->first();
         self::assertEquals(0, $reaction->like);
         self::assertEquals($user1->id, $reaction->user_id);
     }

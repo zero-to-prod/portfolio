@@ -10,14 +10,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create((new Reactable)->getTable(), static function (Blueprint $table) {
-            $table->foreignId(Reactable::react_id)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId(Reactable::reaction_id)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
 
             $table->unsignedBigInteger(Reactable::reactable_id);
             $table->smallInteger(Reactable::reactable_type);
 
             $table->index([Reactable::reactable_id, Reactable::reactable_type]);
 
-            $table->unique([Reactable::react_id, Reactable::reactable_id, Reactable::reactable_type]);
+            $table->unique([Reactable::reaction_id, Reactable::reactable_id, Reactable::reactable_type]);
         });
     }
 

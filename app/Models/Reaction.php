@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * @mixin IdeHelperReact
  */
-class React extends Model
+class Reaction extends Model
 {
     use HasFactory;
     use IdColumn;

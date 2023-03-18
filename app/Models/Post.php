@@ -29,6 +29,7 @@ use RuntimeException;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Tags\HasTags;
+use Tests\Feature\Models\Post\LikeTest;
 
 /**
  * @mixin IdeHelperPost
@@ -49,7 +50,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
     use HasFiles;
     use PostScopes;
 
-    protected $fillable = [self::file_id, self::title, self::subtitle, self::body, self::premiere_at];
+    protected $fillable = [self::file_id, self::title, self::subtitle, self::body, self::premiere_at, self::likes];
     protected $casts = [
         self::published_at => 'datetime',
         self::premiere_at => 'datetime',
@@ -64,63 +65,79 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         return $this->morphToMany(React::class, 'reactable');
     }
 
-    public function like(): self
+    /**
+     * @see LikeTest
+     */
+    public function like(): static
     {
-        $reaction = $this->reactions()->first();
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ($user === null) {
+            return $this;
+        }
+
+        /** @var React $reaction */
+        $reaction = $this->reactions()->where(React::user_id, $user->id)->first();
         if ($reaction !== null) {
+            if ($reaction->like === 1) {
+                $this->decrement(self::likes);
+                $reaction->update([React::like => 0]);
+
+                return $this;
+            }
+            $this->increment(self::likes);
+            $this->decrement(self::dislikes);
             $reaction->update([React::like => 1]);
 
             return $this;
         }
-        $this->increment(self::likes);
-        $reaction = new React([
-            React::user_id => auth()->id(),
+
+        $reaction = React::create([
+            React::user_id => $user->id,
             React::like => 1,
         ]);
-        $this->reactions()->save($reaction);
+        $this->reactions()->attach($reaction->id);
+        $this->increment(self::likes);
 
         return $this;
     }
 
-    public function dislike(): self
+    /**
+     * @see LikeTest
+     */
+    public function dislike(): static
     {
-        $reaction = $this->reactions()->first();
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ($user === null) {
+            return $this;
+        }
+
+        /** @var React $reaction */
+        $reaction = $this->reactions()->where(React::user_id, $user->id)->first();
         if ($reaction !== null) {
-            $reaction->update([React::like => -1]);
-            if($reaction->like === 1) {
-                $this->decrement(self::likes);
+            if ($reaction->like === -1) {
+                $this->decrement(self::dislikes);
+                $reaction->update([React::like => 0]);
+
+                return $this;
             }
+
+            $this->increment(self::dislikes);
+            $this->decrement(self::likes);
+            $reaction->update([React::like => -1]);
 
             return $this;
         }
-        $this->increment(self::dislikes);
-        $reaction = new React([
-            React::user_id => auth()->id(),
+
+        $reaction = React::create([
+            React::user_id => $user->id,
             React::like => -1,
         ]);
-        $this->reactions()->save($reaction);
-
-        return $this;
-    }
-
-    public function removeLike(): self
-    {
-        $reaction = $this->reactions()->first();
-        if ($reaction !== null) {
-            $this->decrement(self::likes);
-            $reaction->update([React::like => 0]);
-        }
-
-        return $this;
-    }
-
-    public function removeDislike(): self
-    {
-        $reaction = $this->reactions()->first();
-        if ($reaction !== null) {
-            $this->decrement(self::dislikes);
-            $reaction->update([React::like => 0]);
-        }
+        $this->reactions()->attach($reaction->id);
+        $this->increment(self::dislikes);
 
         return $this;
     }

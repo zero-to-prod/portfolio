@@ -28,6 +28,6 @@ class WebLoginRedirect extends Controller
             return redirect()->intended($uri);
         }
 
-        return route(to()->web->welcome());
+        return route(to()->web->welcome->name);
     }
 }

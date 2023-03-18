@@ -74,7 +74,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         }
         $this->increment(self::likes);
         $reaction = new React([
-            React::user_id => 1,
+            React::user_id => auth()->id(),
             React::like => 1,
         ]);
         $this->reactions()->save($reaction);
@@ -87,12 +87,15 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         $reaction = $this->reactions()->first();
         if ($reaction !== null) {
             $reaction->update([React::like => -1]);
+            if($reaction->like === 1) {
+                $this->decrement(self::likes);
+            }
 
             return $this;
         }
         $this->increment(self::dislikes);
         $reaction = new React([
-            React::user_id => 1,
+            React::user_id => auth()->id(),
             React::like => -1,
         ]);
         $this->reactions()->save($reaction);

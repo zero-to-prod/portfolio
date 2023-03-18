@@ -50,7 +50,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
     use HasFiles;
     use PostScopes;
 
-    protected $fillable = [self::file_id, self::title, self::subtitle, self::body, self::premiere_at, self::likes];
+    protected $fillable = [self::file_id, self::title, self::subtitle, self::body, self::premiere_at];
     protected $casts = [
         self::published_at => 'datetime',
         self::premiere_at => 'datetime',

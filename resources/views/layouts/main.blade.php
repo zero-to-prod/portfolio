@@ -28,6 +28,7 @@ use App\Models\Tag;
 </main>
 <x-footer/>
 <livewire:scripts />
+@vite(['resources/js/app.js'])
 </body>
 </html>
 

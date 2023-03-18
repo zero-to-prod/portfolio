@@ -1,7 +1,11 @@
 import.meta.glob([ '../images/**', ]);
 
-import Alpine from 'alpinejs';
+import {livewire_hot_reload} from 'virtual:livewire-hot-reload'
 
-window.Alpine = Alpine;
+livewire_hot_reload();
 
-Alpine.start();
+// import Alpine from 'alpinejs';
+//
+// window.Alpine = Alpine;
+//
+// Alpine.start();

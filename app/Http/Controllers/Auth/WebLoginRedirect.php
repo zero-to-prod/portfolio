@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\SessionKeys;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
+use Session;
 
 class WebLoginRedirect extends Controller
 {
@@ -21,6 +23,11 @@ class WebLoginRedirect extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(to()->web->welcome());
+        $uri = Session::get(SessionKeys::page->value);
+        if ($uri !== null) {
+            return redirect()->intended($uri);
+        }
+
+        return back();
     }
 }

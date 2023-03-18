@@ -3,6 +3,12 @@
 use App\Helpers\Routes;
 use App\Helpers\Views;
 use App\Http\Controllers\Admin\File\FileServeResponse;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ConnectStoreRedirect;
 use App\Http\Controllers\GithubCallback;
 use App\Http\Controllers\GithubRedirect;
@@ -17,6 +23,28 @@ use App\Http\Controllers\TermsOfServiceView;
 use App\Http\Controllers\WelcomeView;
 use Illuminate\Support\Facades\Route;
 
+Route::middleware('auth')->group(function () {
+    Route::get('verify-email', EmailVerificationPromptController::class)
+        ->name('verification.notice');
+
+    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
+        ->middleware(['signed', 'throttle:6,1'])
+        ->name('verification.verify');
+
+    Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+        ->middleware('throttle:6,1')
+        ->name('verification.send');
+
+    Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
+        ->name('password.confirm');
+
+    Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
+
+    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
+});
 Route::getAs(Routes::auth_github_callback, GithubCallback::class);
 Route::getAs(Routes::auth_github_index, GithubRedirect::class);
 Route::getAs(Routes::contact, Views::contact);
@@ -31,3 +59,8 @@ Route::getAs(Routes::tos, TermsOfServiceView::class);
 Route::getAs(Routes::welcome, WelcomeView::class);
 Route::postAs(Routes::connect_store, ConnectStoreRedirect::class);
 Route::postAs(Routes::search, SearchRedirect::class);
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+

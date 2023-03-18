@@ -48,10 +48,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middlewareAs([Middlewares::web, Middlewares::guest_group])
                 ->group(base_path('routes/guest.php'));
 
-            if (App::environment(Environments::testing->value)) {
-                Route::middlewareAs([Middlewares::web, Middlewares::guest, Middlewares::register_group])
+//            if (App::environment(Environments::testing->value)) {
+                Route::middlewareAs([Middlewares::web, Middlewares::guest])
                     ->group(base_path('routes/register.php'));
-            }
+//            }
         });
 
         $this->registerAsMethods();

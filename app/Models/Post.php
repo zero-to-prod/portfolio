@@ -97,7 +97,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
             Reaction::user_id => $user->id,
             Reaction::like => 1,
         ]);
-        $this->reactions()->attach($reaction->id);
+        $this->reactions()->attach($reaction);
         $this->increment(self::likes);
 
         return $this;
@@ -136,7 +136,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
             Reaction::user_id => $user->id,
             Reaction::like => -1,
         ]);
-        $this->reactions()->attach($reaction->id);
+        $this->reactions()->attach($reaction);
         $this->increment(self::dislikes);
 
         return $this;

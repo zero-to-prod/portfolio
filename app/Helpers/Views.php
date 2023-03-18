@@ -31,6 +31,8 @@ enum Views: string
     case dashboard = 'dashboard';
     case layouts_app = 'layouts.app';
     case layouts_guest = 'layouts.guest';
+    case login = 'login';
+    case register = 'register';
     case layouts_login = 'layouts.login';
     case layouts_main = 'layouts.main';
     case layouts_subscribe = 'layouts.subscribe';

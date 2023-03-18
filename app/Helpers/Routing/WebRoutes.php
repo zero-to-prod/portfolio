@@ -20,6 +20,8 @@ class WebRoutes
     public Routes $privacy = Routes::privacy;
     public Routes $read = Routes::read;
     public Routes $results = Routes::results;
+    public Routes $register = Routes::register;
+    public Routes $register_store = Routes::register_store;
     public Routes $search = Routes::search;
     public Routes $newsletter = Routes::newsletter;
     public Routes $subscribe = Routes::subscribe;
@@ -35,7 +37,15 @@ class WebRoutes
     {
         return route_as($this->privacy);
     }
+    public function register(): string
+    {
+        return route_as($this->register);
+    }
 
+    public function registerStore(): string
+    {
+        return route_as($this->register_store);
+    }
     public function login(): string
     {
         return route_as($this->login);

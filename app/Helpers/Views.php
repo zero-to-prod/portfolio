@@ -34,6 +34,7 @@ enum Views: string
     case login = 'login';
     case register = 'register';
     case register_notice = 'register_notice';
+    case register_success = 'register_success';
     case register_verify = 'register_verify';
     case layouts_login = 'layouts.login';
     case layouts_main = 'layouts.main';

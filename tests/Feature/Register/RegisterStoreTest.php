@@ -10,7 +10,6 @@ use Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\URL;
 use Notification;
 use Tests\TestCase;
 
@@ -55,8 +54,6 @@ class RegisterStoreTest extends TestCase
         Notification::assertSentToTimes($user, VerifyEmail::class);
 
           /* Redirect */
-        $response->assertRedirect(
-            URL::temporarySignedRoute(RegisterStoreRedirect::redirect_as->name, RegisterStoreRedirect::expiration())
-        );
+        $response->assertRedirect(RegisterStoreRedirect::redirectUrl());
     }
 }

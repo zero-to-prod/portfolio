@@ -6,7 +6,6 @@ use App\Helpers\Routes;
 use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use URL;
 
@@ -31,10 +30,11 @@ class RegisterStoreRedirect extends Controller
 
         Auth::login($user);
 
-        return redirect(Url::temporarySignedRoute( self::redirect_as->name, self::expiration()));
+        return redirect(self::redirectUrl());
     }
-    public static function expiration(): Carbon
+
+    public static function redirectUrl(): string
     {
-        return now()->addMinutes(5);
+        return Url::temporarySignedRoute(self::redirect_as->name, now()->addMinutes(5));
     }
 }

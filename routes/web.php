@@ -19,7 +19,6 @@ use App\Http\Controllers\NewsletterView;
 use App\Http\Controllers\PrivacyView;
 use App\Http\Controllers\ReadView;
 use App\Http\Controllers\RegisterStoreRedirect;
-use App\Http\Controllers\RegisterSuccessView;
 use App\Http\Controllers\ResultsView;
 use App\Http\Controllers\SearchRedirect;
 use App\Http\Controllers\SubscribeView;
@@ -39,8 +38,8 @@ Route::getAs(Routes::registerIndex, fn() => view('register'));
 Route::postAs(Routes::register_store, RegisterStoreRedirect::class);
 Route::middlewareAs(Middlewares::signed)->group(function () {
     Route::getAs(Routes::register_notice, fn() => view('register_notice'));
+    Route::getAs(Routes::register_success, fn() => view('register_success'));
 });
-Route::getAs(Routes::register_success, RegisterSuccessView::class);
 Route::getAs(Routes::privacy, PrivacyView::class);
 Route::getAs(Routes::read, ReadView::class);
 Route::getAs(Routes::results, ResultsView::class);

@@ -47,6 +47,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended(to()->web->registerNotice());
+        return redirect()->intended(to()->web->register->notice());
     }
 }

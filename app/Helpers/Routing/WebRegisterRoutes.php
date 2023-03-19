@@ -7,6 +7,8 @@ use App\Helpers\Routes;
 class WebRegisterRoutes
 {
 
+    public Routes $success = Routes::register_success;
+
     /**
      * @see RegisterIndexTest;
      * @see resources/views/register.blade.php;
@@ -34,5 +36,14 @@ class WebRegisterRoutes
     public function notice($parameters = [], $absolute = true): string
     {
         return route_as(Routes::register_notice, $parameters, $absolute);
+    }
+
+    /**
+     * @see RegisterNoticeViewTest;
+     * @see routes/web.php
+     */
+    public function success($parameters = [], $absolute = true): string
+    {
+        return route_as($this->success, $parameters, $absolute);
     }
 }

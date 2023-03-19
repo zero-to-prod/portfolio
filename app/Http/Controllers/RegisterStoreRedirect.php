@@ -7,7 +7,6 @@ use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use URL;
 
 class RegisterStoreRedirect extends Controller
 {
@@ -35,6 +34,6 @@ class RegisterStoreRedirect extends Controller
 
     public static function redirectUrl(): string
     {
-        return Url::temporarySignedRoute(self::redirect_as->name, now()->addMinutes(5));
+        return temp_signed_route(self::redirect_as->name);
     }
 }

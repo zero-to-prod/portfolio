@@ -12,7 +12,7 @@ $confirmation = Controller::password_confirmation;
         Create an Account
     </div>
     <div class="p-4 space-y-4">
-        <form class="space-y-4" method="POST" action="{{ to()->web->registerStore() }}">
+        <form class="space-y-4" method="POST" action="{{ to()->web->register->store() }}">
             @csrf
             <x-form-control>
                 <label for="{{$name}}">Name*</label>

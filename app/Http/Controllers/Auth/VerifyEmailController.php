@@ -22,6 +22,6 @@ class VerifyEmailController extends Controller
             event(new Verified($request->user()));
         }
 
-        return redirect()->intended(to()->web->registerSuccess());
+        return redirect()->intended(to()->web->register->success());
     }
 }

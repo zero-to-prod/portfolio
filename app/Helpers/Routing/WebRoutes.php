@@ -45,21 +45,6 @@ class WebRoutes
         return route_as($this->privacy);
     }
 
-    public function registerStore(): string
-    {
-        return route_as($this->register_store);
-    }
-
-    public function registerSuccess(): string
-    {
-        return route_as($this->register_success);
-    }
-
-    public function registerNotice(): string
-    {
-        return route_as($this->register_notice);
-    }
-
     public function welcome(): string
     {
         return route_as($this->welcome);

@@ -55,6 +55,17 @@ if (!function_exists('redirect_as')) {
     }
 }
 
+if (!function_exists('temp_singed_route')) {
+    function temp_signed_route($name, int $ttl = 5): string
+    {
+        if ($name instanceof \UnitEnum) {
+            return URL::temporarySignedRoute($name->name, now()->addMinutes($ttl));
+        }
+
+        return URL::temporarySignedRoute($name, now()->addMinutes($ttl));
+    }
+}
+
 if (!function_exists('view_as')) {
     function view_as($view = null, $data = [], $mergeData = []): \Illuminate\Contracts\View\View|Factory|Application
     {

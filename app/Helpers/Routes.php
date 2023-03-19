@@ -18,7 +18,8 @@ enum Routes: string
     case contact = 'contact';
     case cv = 'cv';
     case file = 'file/{file}';
-    case login = 'login';
+    case loginIndex = 'login';
+    case login_store = 'web/login/store';
     case register = 'register';
     case register_store = 'register/store';
     case register_notice = 'register/notice';
@@ -53,7 +54,6 @@ enum Routes: string
     case auth_register_index = 'admin/register';
     case auth_register_store = 'admin/register/store';
     case auth_upload = 'upload';
-    case web_login_store = 'web/login/store';
 
 
     /* Api */

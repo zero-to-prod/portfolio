@@ -6,7 +6,6 @@ use App\Helpers\Routes;
 
 class LoginRoutes
 {
-    public Routes $store = Routes::web_login_store;
 
     /**
      * @see LoginIndexTest;
@@ -15,7 +14,7 @@ class LoginRoutes
      */
     public function index($parameters = [], $absolute = true): string
     {
-        return route_as(Routes::login, $parameters, $absolute);
+        return route_as(Routes::loginIndex, $parameters, $absolute);
     }
 
     /**
@@ -24,6 +23,6 @@ class LoginRoutes
      */
     public function store($parameters = [], $absolute = true): string
     {
-        return route_as(Routes::web_login_store, $parameters, $absolute);
+        return route_as(Routes::login_store, $parameters, $absolute);
     }
 }

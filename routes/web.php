@@ -14,12 +14,12 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ConnectStoreRedirect;
 use App\Http\Controllers\GithubCallback;
 use App\Http\Controllers\GithubRedirect;
+use App\Http\Controllers\LoginStoreRedirect;
 use App\Http\Controllers\NewsletterView;
 use App\Http\Controllers\PrivacyView;
 use App\Http\Controllers\ReadView;
 use App\Http\Controllers\RegisterNoticeView;
 use App\Http\Controllers\RegisterSuccessView;
-use App\Http\Controllers\RegisterView;
 use App\Http\Controllers\ResultsView;
 use App\Http\Controllers\SearchRedirect;
 use App\Http\Controllers\SubscribeView;
@@ -31,11 +31,15 @@ Route::getAs(Routes::auth_github_callback, GithubCallback::class);
 Route::getAs(Routes::auth_github_index, GithubRedirect::class);
 Route::getAs(Routes::contact, Views::contact);
 Route::getAs(Routes::file, FileServeResponse::class);
-Route::getAs(Routes::login, fn() => view('login'));
-Route::getAs(Routes::register, RegisterView::class);
+/* Login */
+Route::getAs(Routes::loginIndex, fn() => view('login'));
+Route::postAs(Routes::login_store, LoginStoreRedirect::class);
+/* Register */
+Route::getAs(Routes::register, fn() => view('register'));
 Route::getAs(Routes::register_notice, RegisterNoticeView::class);
 Route::getAs(Routes::register_success, RegisterSuccessView::class);
 Route::postAs(Routes::register_store, [RegisteredUserController::class, 'store']);
+
 Route::getAs(Routes::privacy, PrivacyView::class);
 Route::getAs(Routes::read, ReadView::class);
 Route::getAs(Routes::results, ResultsView::class);

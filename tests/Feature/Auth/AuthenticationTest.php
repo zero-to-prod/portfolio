@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Http\Controllers\LoginStoreRedirect;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -37,6 +39,36 @@ class AuthenticationTest extends TestCase
         $this->post(to()->guest->admin_login->store(), [
             'email' => $user->email,
             'password' => 'wrong-password',
+        ]);
+
+        $this->assertGuest();
+    }
+
+    /**
+     * @test
+     * @see LoginStoreRedirect
+     */
+    public function login(): void
+    {
+        $response = $this->post(to()->web->login->store(), [
+            LoginRequest::email => user()->email,
+            LoginRequest::password => 'password',
+        ]);
+
+        $this->assertAuthenticated();
+        $response->assertRedirectAs(LoginStoreRedirect::redirect_as);
+    }
+
+    /**
+     * @test
+     * @see LoginStoreRedirect
+     */
+    public function login_rejected(): void
+    {
+        $user = user();
+        $this->post(to()->web->login->store(), [
+            LoginRequest::email => $user->email,
+            LoginRequest::password => 'wrong-password',
         ]);
 
         $this->assertGuest();

@@ -15,14 +15,15 @@ class LoginRoutes
      */
     public function index($parameters = [], $absolute = true): string
     {
-        return route(Routes::login->name, $parameters, $absolute);
+        return route_as(Routes::login, $parameters, $absolute);
     }
 
     /**
      * @see LoginStoreRedirect;
+     * @see LoginStoreTest;
      */
-    public function store(): string
+    public function store($parameters = [], $absolute = true): string
     {
-        return route_as($this->store);
+        return route_as(Routes::web_login_store, $parameters, $absolute);
     }
 }

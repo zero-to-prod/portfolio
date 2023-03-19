@@ -14,6 +14,7 @@ class LoginRequest extends FormRequest
 {
     public const email = 'email';
     public const password = 'password';
+    public const remember = 'remember';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -44,8 +45,7 @@ class LoginRequest extends FormRequest
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-
-        if (!Auth::attempt($this->only(self::email, self::password), $this->boolean('remember'))) {
+        if (!Auth::attempt($this->only(self::email, self::password), $this->boolean(self::remember))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([

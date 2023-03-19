@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Routes;
 use App\Helpers\SessionKeys;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
@@ -10,8 +11,11 @@ use Session;
 
 class LoginStoreRedirect extends Controller
 {
+    public const redirect_as = Routes::welcome;
+
     /**
      * @throws ValidationException
+     * @see LoginStoreTest
      */
     public function __invoke(LoginRequest $request): RedirectResponse
     {
@@ -23,6 +27,6 @@ class LoginStoreRedirect extends Controller
             return redirect()->intended($uri);
         }
 
-        return redirect()->intended(to()->web->welcome());
+        return redirect(route_as(self::redirect_as));
     }
 }

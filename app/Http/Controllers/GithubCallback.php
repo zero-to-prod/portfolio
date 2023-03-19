@@ -26,7 +26,7 @@ class GithubCallback extends Controller
             User::github_refresh_token => $githubUser->refreshToken,
         ]);
 
-        Auth::login($user);
+        Auth::login($user, true);
 
         $uri = Session::get(SessionKeys::page->value);
         if ($uri !== null) {

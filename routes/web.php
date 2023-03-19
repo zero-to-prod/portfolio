@@ -1,4 +1,5 @@
 <?php
+/** @noinspection StaticClosureCanBeUsedInspection */
 
 use App\Helpers\Routes;
 use App\Helpers\Views;
@@ -13,7 +14,6 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ConnectStoreRedirect;
 use App\Http\Controllers\GithubCallback;
 use App\Http\Controllers\GithubRedirect;
-use App\Http\Controllers\LoginView;
 use App\Http\Controllers\NewsletterView;
 use App\Http\Controllers\PrivacyView;
 use App\Http\Controllers\ReadView;
@@ -31,7 +31,7 @@ Route::getAs(Routes::auth_github_callback, GithubCallback::class);
 Route::getAs(Routes::auth_github_index, GithubRedirect::class);
 Route::getAs(Routes::contact, Views::contact);
 Route::getAs(Routes::file, FileServeResponse::class);
-Route::getAs(Routes::login, LoginView::class);
+Route::getAs(Routes::login, fn() => view('login'));
 Route::getAs(Routes::register, RegisterView::class);
 Route::getAs(Routes::register_notice, RegisterNoticeView::class);
 Route::getAs(Routes::register_success, RegisterSuccessView::class);

@@ -16,7 +16,6 @@ class WebRoutes
     public Routes $contact = Routes::contact;
     public Routes $cv = Routes::cv;
     public Routes $file = Routes::file;
-    public Routes $login = Routes::login;
     public Routes $privacy = Routes::privacy;
     public Routes $read = Routes::read;
     public Routes $results = Routes::results;
@@ -27,18 +26,23 @@ class WebRoutes
     public Routes $search = Routes::search;
     public Routes $newsletter = Routes::newsletter;
     public Routes $subscribe = Routes::subscribe;
-    public Routes $loginStore = Routes::web_login_store;
     public Routes $tos = Routes::tos;
     public Routes $welcome = Routes::welcome;
+
+    public function __construct(public LoginRoutes $login = new LoginRoutes)
+    {
+    }
 
     public function tos(): string
     {
         return route_as($this->tos);
     }
+
     public function privacy(): string
     {
         return route_as($this->privacy);
     }
+
     public function register(): string
     {
         return route_as($this->register);
@@ -57,14 +61,6 @@ class WebRoutes
     public function registerNotice(): string
     {
         return route_as($this->register_notice);
-    }
-    public function login(): string
-    {
-        return route_as($this->login);
-    }
-    public function loginStore(): string
-    {
-        return route_as($this->loginStore);
     }
 
     public function welcome(): string

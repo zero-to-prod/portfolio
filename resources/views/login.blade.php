@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Auth\WebLoginRedirect;
+use App\Http\Requests\Auth\LoginRequest;
 
-$email = WebLoginRedirect::email;
-$password = WebLoginRedirect::password;
+$email = LoginRequest::email;
+$password = LoginRequest::password;
 ?>
 <x-login>
     <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
@@ -25,7 +25,7 @@ $password = WebLoginRedirect::password;
                 <span class="bg-white px-2 text-sm text-gray-500">Or use your email address</span>
             </div>
         </div>
-        <form class="space-y-4" method="POST" action="{{ to()->web->loginStore() }}">
+        <form class="space-y-4" method="POST" action="{{ to()->web->login->store() }}">
             @csrf
             <x-form-control>
                 <label for="{{$email}}">Email*</label>

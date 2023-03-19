@@ -51,6 +51,7 @@ class Reactions extends Component
     protected function redirectToLogin(): void
     {
         Session::put(SessionKeys::page->value, $this->url);
-        $this->redirect(to()->web->login());
+
+        $this->redirect(to()->web->login->index());
     }
 }

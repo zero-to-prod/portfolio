@@ -9,7 +9,7 @@
                 <div>
                     <h3>Membership</h3>
                     <ul role="list" class="mt-6 space-y-4">
-                        <li><a href="{{to()->web->login()}}">Login</a></li>
+                        <li><a href="{{to()->web->login->index()}}">Login</a></li>
                         <li><a href="{{to()->web->newsletter()}}">Newsletter</a></li>
                     </ul>
                 </div>

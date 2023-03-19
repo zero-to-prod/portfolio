@@ -1,6 +1,7 @@
 <?php
 /** @noinspection StaticClosureCanBeUsedInspection */
 
+use App\Helpers\Middlewares;
 use App\Helpers\Routes;
 use App\Helpers\Views;
 use App\Http\Controllers\Admin\File\FileServeResponse;
@@ -17,7 +18,6 @@ use App\Http\Controllers\LoginStoreRedirect;
 use App\Http\Controllers\NewsletterView;
 use App\Http\Controllers\PrivacyView;
 use App\Http\Controllers\ReadView;
-use App\Http\Controllers\RegisterNoticeView;
 use App\Http\Controllers\RegisterStoreRedirect;
 use App\Http\Controllers\RegisterSuccessView;
 use App\Http\Controllers\ResultsView;
@@ -37,9 +37,10 @@ Route::postAs(Routes::login_store, LoginStoreRedirect::class);
 /* Register */
 Route::getAs(Routes::registerIndex, fn() => view('register'));
 Route::postAs(Routes::register_store, RegisterStoreRedirect::class);
-Route::getAs(Routes::register_notice, RegisterNoticeView::class);
+Route::middlewareAs(Middlewares::signed)->group(function () {
+    Route::getAs(Routes::register_notice, fn() => view('register_notice'));
+});
 Route::getAs(Routes::register_success, RegisterSuccessView::class);
-
 Route::getAs(Routes::privacy, PrivacyView::class);
 Route::getAs(Routes::read, ReadView::class);
 Route::getAs(Routes::results, ResultsView::class);

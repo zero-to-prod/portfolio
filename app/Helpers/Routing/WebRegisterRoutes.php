@@ -20,9 +20,19 @@ class WebRegisterRoutes
     /**
      * @see LoginStoreRedirect;
      * @see LoginStoreTest;
+     * @see routes/web.php
      */
     public function store($parameters = [], $absolute = true): string
     {
         return route_as(Routes::register_store, $parameters, $absolute);
+    }
+
+    /**
+     * @see RegisterNoticeViewTest;
+     * @see routes/web.php
+     */
+    public function notice($parameters = [], $absolute = true): string
+    {
+        return route_as(Routes::register_notice, $parameters, $absolute);
     }
 }

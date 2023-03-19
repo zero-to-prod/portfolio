@@ -10,6 +10,7 @@ use Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\URL;
 use Notification;
 use Tests\TestCase;
 
@@ -26,11 +27,7 @@ class RegisterStoreTest extends TestCase
     {
         Notification::fake();
         Event::fake();
-        $guest = User::make([
-            User::name => 'guest',
-            User::email => 'email@gmail.com',
-            User::password => '123456789',
-        ]);
+        $guest = user_f()->make();
 
         $response = $this->post(to()->web->register->store(), [
             RegisterStoreRedirect::name => $guest->name,
@@ -57,7 +54,9 @@ class RegisterStoreTest extends TestCase
         /* Notifications */
         Notification::assertSentToTimes($user, VerifyEmail::class);
 
-        /* Redirect */
-        $response->assertRedirectAs(RegisterStoreRedirect::redirect_as);
+          /* Redirect */
+        $response->assertRedirect(
+            URL::temporarySignedRoute(RegisterStoreRedirect::redirect_as->name, RegisterStoreRedirect::expiration())
+        );
     }
 }

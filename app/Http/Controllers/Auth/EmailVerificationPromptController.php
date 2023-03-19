@@ -17,6 +17,6 @@ class EmailVerificationPromptController extends Controller
     {
         return $request->user()->hasVerifiedEmail()
                     ? redirect()->home()
-                    : view_as(Views::auth_verifyEmail);
+                    : view_as(Views::register_verify);
     }
 }

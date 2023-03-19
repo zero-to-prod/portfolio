@@ -19,6 +19,9 @@ enum Routes: string
     case cv = 'cv';
     case file = 'file/{file}';
     case login = 'login';
+    case register = 'register';
+    case register_store = 'register/store';
+    case register_notice = 'register/notice';
     case privacy = 'privacy';
     case read = 'read/{post}';
     case results = 'results';
@@ -46,8 +49,8 @@ enum Routes: string
     case auth_profile_destroy = 'profile/destroy';
     case auth_profile_edit = 'profile/edit';
     case auth_profile_update = 'profile/update';
-    case auth_register_index = 'register';
-    case auth_register_store = 'register/store';
+    case auth_register_index = 'admin/register';
+    case auth_register_store = 'admin/register/store';
     case auth_upload = 'upload';
     case web_login_store = 'web/login/store';
 

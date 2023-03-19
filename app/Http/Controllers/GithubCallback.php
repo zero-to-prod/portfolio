@@ -18,9 +18,10 @@ class GithubCallback extends Controller
     {
         $githubUser = Socialite::driver(Drivers::github->value)->user();
 
-        $user = User::updateOrCreate([User::github_id => $githubUser->id], [
+        $user = User::updateOrCreate([User::email => $githubUser->email], [
             User::name => $githubUser->name,
             User::email => $githubUser->email,
+            User::email_verified_at => now(),
             User::github_token => $githubUser->token,
             User::github_refresh_token => $githubUser->refreshToken,
         ]);

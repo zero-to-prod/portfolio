@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisteredUserController as Controller;
 $name = Controller::name;
 $email = Controller::email;
 $password = Controller::password;
+$confirmation = Controller::password . '_confirmation';
 ?>
 <x-login>
     <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
@@ -46,6 +47,18 @@ $password = Controller::password;
                 >
                 @if($errors->has($password))
                     <p>{{ $errors->first($password) }}</p>
+                @endif
+            </x-form-control>
+            <x-form-control>
+                <label for="{{$confirmation}}">Confirm Password*</label>
+                <input name="{{$confirmation}}"
+                       id="{{$confirmation}}"
+                       value="{{old($confirmation)}}"
+                       type="password"
+                       autocomplete="password"
+                >
+                @if($errors->has($confirmation))
+                    <p>{{ $errors->first($confirmation) }}</p>
                 @endif
             </x-form-control>
             <button class="btn btn-wide">Continue</button>

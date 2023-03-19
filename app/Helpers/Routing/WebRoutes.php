@@ -22,6 +22,7 @@ class WebRoutes
     public Routes $results = Routes::results;
     public Routes $register = Routes::register;
     public Routes $register_store = Routes::register_store;
+    public Routes $register_notice = Routes::register_notice;
     public Routes $search = Routes::search;
     public Routes $newsletter = Routes::newsletter;
     public Routes $subscribe = Routes::subscribe;
@@ -45,6 +46,11 @@ class WebRoutes
     public function registerStore(): string
     {
         return route_as($this->register_store);
+    }
+
+    public function registerNotice(): string
+    {
+        return route_as($this->register_notice);
     }
     public function login(): string
     {

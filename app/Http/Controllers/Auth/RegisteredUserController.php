@@ -19,6 +19,7 @@ class RegisteredUserController extends Controller
     public const name = 'name';
     public const email = 'email';
     public const password = 'password';
+
     /**
      * Display the registration view.
      */
@@ -31,7 +32,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             self::name => ['required', 'string', 'max:255'],
-            self::email => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            self::email => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             self::password => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -42,9 +43,10 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+        $user->sendEmailVerificationNotification();
 
         Auth::login($user);
 
-        return redirect()->intended(to()->web->welcome());
+        return redirect()->intended(to()->web->registerNotice());
     }
 }

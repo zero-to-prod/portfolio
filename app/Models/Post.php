@@ -101,6 +101,12 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
             return $this;
         }
 
+        if (!$user->hasVerifiedEmail()) {
+            redirect()->intended(route('verification.notice'));
+
+            return $this;
+        }
+
         /** @var Reaction $reaction */
         $reaction = $this->reactions()->where(Reaction::user_id, $user->id)->first();
         if ($reaction !== null) {
@@ -143,6 +149,12 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         $user = auth()->user();
 
         if ($user === null) {
+            return $this;
+        }
+
+        if (!$user->hasVerifiedEmail()) {
+            redirect()->intended(route('verification.notice'));
+
             return $this;
         }
 

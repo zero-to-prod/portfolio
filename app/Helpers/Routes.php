@@ -21,6 +21,7 @@ enum Routes: string
     case login = 'login';
     case register = 'register';
     case register_store = 'register/store';
+    case register_notice = 'register/notice';
     case privacy = 'privacy';
     case read = 'read/{post}';
     case results = 'results';

@@ -33,6 +33,8 @@ enum Views: string
     case layouts_guest = 'layouts.guest';
     case login = 'login';
     case register = 'register';
+    case register_notice = 'register_notice';
+    case register_verify = 'register_verify';
     case layouts_login = 'layouts.login';
     case layouts_main = 'layouts.main';
     case layouts_subscribe = 'layouts.subscribe';

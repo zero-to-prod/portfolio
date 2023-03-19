@@ -6,6 +6,7 @@ use App\Models\Support\IdColumn;
 use App\Models\Support\TimeStampColumns;
 use App\Models\Support\User\UserColumns;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -25,6 +26,7 @@ class User extends Authenticatable
     use IdColumn;
     use TimeStampColumns;
     use HasRoles;
+    use MustVerifyEmail;
 
     protected $fillable = [self::name, self::email, self::password, self::github_id, self::github_token, self::github_refresh_token];
     protected $hidden = [self::password, self::github_token];

@@ -17,7 +17,7 @@
                 <x-logo/>
             </x-a>
             <div class="my-auto px-2">
-                <x-a :href="to()->web->register()"
+                <x-a :href="to()->web->register->index()"
                      title="Go to Sign In Page"
                      class="btn">
                     <span>Create</span> <span>account</span></x-a>

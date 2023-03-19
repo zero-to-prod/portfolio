@@ -19,7 +19,6 @@ class WebRoutes
     public Routes $privacy = Routes::privacy;
     public Routes $read = Routes::read;
     public Routes $results = Routes::results;
-    public Routes $register = Routes::register;
     public Routes $register_store = Routes::register_store;
     public Routes $register_notice = Routes::register_notice;
     public Routes $register_success = Routes::register_success;
@@ -29,7 +28,10 @@ class WebRoutes
     public Routes $tos = Routes::tos;
     public Routes $welcome = Routes::welcome;
 
-    public function __construct(public LoginRoutes $login = new LoginRoutes)
+    public function __construct(
+        public LoginRoutes       $login = new LoginRoutes,
+        public WebRegisterRoutes $register = new WebRegisterRoutes,
+    )
     {
     }
 
@@ -41,11 +43,6 @@ class WebRoutes
     public function privacy(): string
     {
         return route_as($this->privacy);
-    }
-
-    public function register(): string
-    {
-        return route_as($this->register);
     }
 
     public function registerStore(): string

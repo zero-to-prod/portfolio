@@ -27,6 +27,6 @@ class LoginStoreRedirect extends Controller
             return redirect()->intended($uri);
         }
 
-        return redirect(route_as(self::redirect_as));
+        return redirect_as(self::redirect_as);
     }
 }

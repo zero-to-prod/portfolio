@@ -20,7 +20,7 @@ enum Routes: string
     case file = 'file/{file}';
     case loginIndex = 'login';
     case login_store = 'web/login/store';
-    case register = 'register';
+    case registerIndex = 'register';
     case register_store = 'register/store';
     case register_notice = 'register/notice';
     case register_success = 'register/success';

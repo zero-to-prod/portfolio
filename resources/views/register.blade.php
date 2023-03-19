@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisteredUserController as Controller;
+use App\Http\Controllers\RegisterStoreRedirect as Controller;
 
 $name = Controller::name;
 $email = Controller::email;
 $password = Controller::password;
-$confirmation = Controller::password . '_confirmation';
+$confirmation = Controller::password_confirmation;
 ?>
 <x-login>
     <div class="border-b border-gray-300 text-sm bg-base-200 p-4">

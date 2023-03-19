@@ -9,7 +9,6 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ConnectStoreRedirect;
 use App\Http\Controllers\GithubCallback;
@@ -19,6 +18,7 @@ use App\Http\Controllers\NewsletterView;
 use App\Http\Controllers\PrivacyView;
 use App\Http\Controllers\ReadView;
 use App\Http\Controllers\RegisterNoticeView;
+use App\Http\Controllers\RegisterStoreRedirect;
 use App\Http\Controllers\RegisterSuccessView;
 use App\Http\Controllers\ResultsView;
 use App\Http\Controllers\SearchRedirect;
@@ -35,10 +35,10 @@ Route::getAs(Routes::file, FileServeResponse::class);
 Route::getAs(Routes::loginIndex, fn() => view('login'));
 Route::postAs(Routes::login_store, LoginStoreRedirect::class);
 /* Register */
-Route::getAs(Routes::register, fn() => view('register'));
+Route::getAs(Routes::registerIndex, fn() => view('register'));
+Route::postAs(Routes::register_store, RegisterStoreRedirect::class);
 Route::getAs(Routes::register_notice, RegisterNoticeView::class);
 Route::getAs(Routes::register_success, RegisterSuccessView::class);
-Route::postAs(Routes::register_store, [RegisteredUserController::class, 'store']);
 
 Route::getAs(Routes::privacy, PrivacyView::class);
 Route::getAs(Routes::read, ReadView::class);

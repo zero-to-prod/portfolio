@@ -1,17 +1,17 @@
 <?php
 
-namespace Tests\Feature\Login;
+namespace Tests\Feature\Register;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class LoginIndexTest extends TestCase
+class RegisterIndexTest extends TestCase
 {
     use RefreshDatabase;
 
     /* @test */
     public function ok(): void
     {
-        $this->get(to()->web->login->index())->assertOk();
+        $this->get(to()->web->register->index())->assertOk();
     }
 }

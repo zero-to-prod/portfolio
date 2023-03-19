@@ -7,7 +7,7 @@ use App\Helpers\Routes;
 class WebRegisterRoutes
 {
 
-    public Routes $success = Routes::register_success;
+    public Routes $verification = Routes::register_verification;
 
     /**
      * @see RegisterIndexTest;
@@ -42,8 +42,8 @@ class WebRegisterRoutes
      * @see RegisterNoticeViewTest;
      * @see routes/web.php
      */
-    public function success($parameters = [], $absolute = true): string
+    public function verification($parameters = [], $absolute = true): string
     {
-        return route_as($this->success, $parameters, $absolute);
+        return route_as($this->verification, $parameters, $absolute);
     }
 }

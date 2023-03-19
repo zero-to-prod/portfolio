@@ -34,11 +34,11 @@ Route::getAs(Routes::file, FileServeResponse::class);
 Route::getAs(Routes::loginIndex, fn() => view('login'));
 Route::postAs(Routes::login_store, LoginStoreRedirect::class);
 /* Register */
-Route::getAs(Routes::registerIndex, fn() => view('register'));
+Route::getAs(Routes::registerIndex, fn() => view('register.index'));
 Route::postAs(Routes::register_store, RegisterStoreRedirect::class);
 Route::middlewareAs(Middlewares::signed)->group(function () {
-    Route::getAs(Routes::register_notice, fn() => view('register_notice'));
-    Route::getAs(Routes::register_success, fn() => view('register_success'));
+    Route::getAs(Routes::register_notice, fn() => view('register.notice'));
+    Route::getAs(Routes::register_verification, fn() => view('register.verification'));
 });
 Route::getAs(Routes::privacy, PrivacyView::class);
 Route::getAs(Routes::read, ReadView::class);

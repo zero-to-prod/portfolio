@@ -5,7 +5,7 @@ namespace Register;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class RegisterSuccessTest extends TestCase
+class RegisterVerificationTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -15,7 +15,7 @@ class RegisterSuccessTest extends TestCase
      */
     public function ok(): void
     {
-        $this->get(temp_signed_route(to()->web->register->success))->assertOk();
+        $this->get(temp_signed_route(to()->web->register->verification))->assertOk();
     }
 
     /**
@@ -24,6 +24,6 @@ class RegisterSuccessTest extends TestCase
      */
     public function requires_signed_url(): void
     {
-        $this->getAs(to()->web->register->success())->assertForbidden();
+        $this->getAs(to()->web->register->verification())->assertForbidden();
     }
 }

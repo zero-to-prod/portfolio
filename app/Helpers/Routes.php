@@ -23,7 +23,7 @@ enum Routes: string
     case registerIndex = 'register';
     case register_store = 'register/store';
     case register_notice = 'register/notice';
-    case register_success = 'register/success';
+    case register_verification = 'register/verification';
     case privacy = 'privacy';
     case read = 'read/{post}';
     case results = 'results';

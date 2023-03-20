@@ -3,7 +3,6 @@
 
 use App\Helpers\Drivers;
 use App\Helpers\Middlewares;
-use App\Helpers\Routes;
 use App\Helpers\Views;
 use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Http\Controllers\Auth\GithubCallback;
@@ -21,24 +20,30 @@ Route::getAs(to()->welcome, WelcomeView::class);
 Route::getAs(to()->read, ReadView::class);
 Route::postAs(to()->search, SearchRedirect::class);
 Route::getAs(to()->results, ResultsView::class);
-Route::getAs(to()->tos, fn() => view('tos'));
-Route::getAs(to()->privacy, fn() => view('privacy'));
+Route::getAs(to()->file, FileServeResponse::class);
+
+/* Subscription */
 Route::getAs(to()->newsletter, NewsletterView::class);
 Route::getAs(to()->subscribe, fn() => view('subscribe'));
 
-Route::getAs(Routes::auth_github_callback, GithubCallback::class);
-Route::getAs(Routes::auth_github_index, fn() => Socialite::driver(Drivers::github->value)->redirect());
-Route::getAs(to()->contact, Views::contact);
-Route::getAs(to()->file, FileServeResponse::class);
 /* Login */
 Route::getAs(to()->login->index, fn() => view('login'));
 Route::postAs(to()->login->store, Login::class);
+Route::getAs(to()->auth->github->callback, GithubCallback::class);
+Route::getAs(to()->auth->github->index, fn() => Socialite::driver(Drivers::github->value)->redirect());
+
 /* Register */
 Route::getAs(to()->register->index, fn() => view('register.index'));
 Route::postAs(to()->register->store, RegisterStoreRedirect::class);
 Route::middlewareAs(Middlewares::signed)->group(function () {
-    Route::getAs(Routes::register_notice, fn() => view('register.notice'));
-    Route::getAs(Routes::register_verification, fn() => view('register.verification'));
+    Route::getAs(to()->register->notice, fn() => view('register.notice'));
+    Route::getAs(to()->register->verification, fn() => view('register.verification'));
 });
 
-Route::postAs(Routes::contact_store, ConnectStoreRedirect::class);
+/* Contact */
+Route::getAs(to()->contact, Views::contact);
+Route::postAs(to()->contact_store, ConnectStoreRedirect::class);
+
+/* Legal */
+Route::getAs(to()->tos, fn() => view('tos'));
+Route::getAs(to()->privacy, fn() => view('privacy'));

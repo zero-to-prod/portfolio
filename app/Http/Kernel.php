@@ -46,7 +46,6 @@ class Kernel extends HttpKernel
         ],
         Middlewares::web_group->value => [],
         Middlewares::auth_group->value => [],
-        Middlewares::guest_group->value => [],
         Middlewares::register_group->value => [],
     ];
 

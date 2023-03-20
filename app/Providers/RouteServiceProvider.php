@@ -45,9 +45,6 @@ class RouteServiceProvider extends ServiceProvider
             Route::middlewareAs([Middlewares::web, Middlewares::auth, Middlewares::auth_group])
                 ->group(base_path('routes/admin.php'));
 
-            Route::middlewareAs([Middlewares::web, Middlewares::guest_group])
-                ->group(base_path('routes/guest.php'));
-
             if (App::environment(Environments::testing->value)) {
                 Route::middlewareAs([Middlewares::web, Middlewares::guest, Middlewares::register_group])
                     ->group(base_path('routes/register.php'));

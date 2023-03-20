@@ -61,6 +61,6 @@ class VerificationVerifyTest extends TestCase
 
         $response = $this->actingAs($user)->get($url);
 
-        $response->assertRedirect(to()->web->welcome());
+        $response->assertRedirect(to()->welcome());
     }
 }

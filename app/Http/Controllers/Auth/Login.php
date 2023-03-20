@@ -32,6 +32,6 @@ class Login extends Controller
 
     public static function redirectUrl(): Routes
     {
-        return to()->web->welcome;
+        return to()->welcome;
     }
 }

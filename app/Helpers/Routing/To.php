@@ -2,8 +2,11 @@
 
 namespace App\Helpers\Routing;
 
+use App\Helpers\Routes;
+
 class To
 {
+    public Routes $welcome = Routes::welcome;
 
     public function __construct(
         public AdminRoutes $admin = new AdminRoutes,
@@ -13,5 +16,13 @@ class To
         public WebRoutes   $web = new WebRoutes,
     )
     {
+    }
+
+    /**
+     * @see WelcomeTest
+     */
+    public function welcome(): string
+    {
+        return route_as($this->welcome);
     }
 }

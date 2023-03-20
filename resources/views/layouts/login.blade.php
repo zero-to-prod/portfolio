@@ -13,7 +13,7 @@
 <main aria-label="Main">
     <div class="bg-primary-content">
         <div class="mx-auto flex justify-between max-w-7xl">
-            <x-a class="px-2 py-4 btn-ghost" :href="to()->web->welcome()">
+            <x-a class="px-2 py-4 btn-ghost" :href="to()->welcome()">
                 <x-logo/>
             </x-a>
             <div class="my-auto px-2">

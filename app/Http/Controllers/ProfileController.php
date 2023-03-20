@@ -56,6 +56,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to(to()->web->welcome());
+        return Redirect::to(to()->welcome());
     }
 }

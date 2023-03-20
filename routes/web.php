@@ -9,15 +9,18 @@ use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Http\Controllers\Auth\GithubCallback;
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\ConnectStoreRedirect;
-use App\Http\Controllers\GithubRedirect;
 use App\Http\Controllers\NewsletterView;
-use App\Http\Controllers\PrivacyView;
 use App\Http\Controllers\ReadView;
 use App\Http\Controllers\Register\StoreRedirect as RegisterStoreRedirect;
 use App\Http\Controllers\ResultsView;
 use App\Http\Controllers\SearchRedirect;
 use App\Http\Controllers\WelcomeView;
 use Illuminate\Support\Facades\Route;
+
+Route::getAs(to()->welcome, WelcomeView::class);
+Route::postAs(to()->web->search, SearchRedirect::class);
+
+
 
 Route::getAs(Routes::auth_github_callback, GithubCallback::class);
 Route::getAs(Routes::auth_github_index, fn() => Socialite::driver(Drivers::github->value)->redirect());
@@ -39,6 +42,4 @@ Route::getAs(Routes::results, ResultsView::class);
 Route::getAs(Routes::newsletter, NewsletterView::class);
 Route::getAs(Routes::subscribe, fn() => view('subscribe'));
 Route::getAs(Routes::tos, fn() => view('tos'));
-Route::getAs(to()->web->welcome, WelcomeView::class);
 Route::postAs(Routes::contact_store, ConnectStoreRedirect::class);
-Route::postAs(Routes::search, SearchRedirect::class);

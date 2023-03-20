@@ -26,6 +26,6 @@ class VerificationSend extends Controller
 
     public static function redirectUrl(): string
     {
-        return to()->web->welcome();
+        return to()->welcome();
     }
 }

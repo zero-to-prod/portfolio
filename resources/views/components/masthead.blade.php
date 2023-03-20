@@ -18,7 +18,7 @@ $search = SearchRedirect::search;
                 type="button">
             <x-svg :name="'hamburger'" class="m-auto block h-6 w-narrow-nav"/>
         </button>
-        <x-a class="px-2 py-4 btn-ghost" :href="to()->web->welcome()" title="Home">
+        <x-a class="px-2 py-4 btn-ghost" :href="to()->welcome()" title="Home">
             <x-logo/>
         </x-a>
         <div class="my-auto w-full max-w-2xl mr-2 2col:mx-auto">

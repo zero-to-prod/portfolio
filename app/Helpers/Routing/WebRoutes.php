@@ -9,7 +9,6 @@ use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
 use App\Models\Tag;
-use Http\WelcomeTest;
 
 class WebRoutes
 {
@@ -23,7 +22,6 @@ class WebRoutes
     public Routes $newsletter = Routes::newsletter;
     public Routes $subscribe = Routes::subscribe;
     public Routes $tos = Routes::tos;
-    public Routes $welcome = Routes::welcome;
 
     public function __construct(
         public LoginRoutes    $login = new LoginRoutes,
@@ -40,14 +38,6 @@ class WebRoutes
     public function privacy(): string
     {
         return route_as($this->privacy);
-    }
-
-    /**
-     * @see WelcomeTest
-     */
-    public function welcome(): string
-    {
-        return route_as($this->welcome);
     }
 
     public function newsletter(): string

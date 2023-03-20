@@ -7,7 +7,7 @@
         <p>You've just been sent an email to confirm your email address.</p>
         <p>Please click on the link in the email to confirm your Signup and access new features.</p>
         <p>
-            <x-a :href="to()->web->welcome()" class="underline">Click here</x-a>
+            <x-a :href="to()->welcome()" class="underline">Click here</x-a>
             to return to the home page.
         </p>
     </div>

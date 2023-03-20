@@ -34,6 +34,6 @@ class GithubCallback extends Controller
             return redirect()->intended($uri);
         }
 
-        return redirect()->intended(to()->web->welcome());
+        return redirect()->intended(to()->welcome());
     }
 }

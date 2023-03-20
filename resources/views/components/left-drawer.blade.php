@@ -9,8 +9,8 @@ use Illuminate\Support\Collection;
 /* @var Collection<Tag, Tag> $tags */
 ?>
 <nav class="hidden w-wide-nav mt-narrow-nav nav-wide:block" id="left-nav-wide">
-    <x-a class="{{ route_is(to()->web->welcome) ? 'bg-base-200' : '' }}"
-         :href="to()->web->welcome()"
+    <x-a class="{{ route_is(to()->welcome) ? 'bg-base-200' : '' }}"
+         :href="to()->welcome()"
          title="Home"
     >
         <x-svg :name="'home'"/>
@@ -52,8 +52,8 @@ use Illuminate\Support\Collection;
 </nav>
 <nav class="hidden text-xs mt-narrow-nav nav-small:block nav-wide:hidden"
      id="left-nav-narrow">
-    <x-a class=" {{ route_is(to()->web->welcome) ? 'bg-base-200' : '' }}"
-         :href="to()->web->welcome()"
+    <x-a class=" {{ route_is(to()->welcome) ? 'bg-base-200' : '' }}"
+         :href="to()->welcome()"
          title="Home"
     >
         <x-svg :name="'home'" class="mx-auto"/>

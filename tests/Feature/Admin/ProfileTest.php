@@ -74,7 +74,7 @@ class ProfileTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect(to()->web->welcome());
+            ->assertRedirect(to()->welcome());
 
         $this->assertGuest();
         $this->assertNull($user->fresh());

@@ -5,7 +5,7 @@ namespace Tests\Feature\Register;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class RegisterIndexTest extends TestCase
+class IndexTest extends TestCase
 {
     use RefreshDatabase;
 

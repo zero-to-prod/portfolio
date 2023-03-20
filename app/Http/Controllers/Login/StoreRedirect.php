@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Login;
 
 use App\Helpers\Routes;
 use App\Helpers\SessionKeys;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 use Session;
 
-class LoginStoreRedirect extends Controller
+class StoreRedirect extends Controller
 {
     public const redirect_as = Routes::welcome;
 

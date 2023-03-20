@@ -2,7 +2,7 @@
 
 namespace Register;
 
-use App\Http\Controllers\Auth\VerificationNotice;
+use App\Http\Controllers\Register\VerificationNotice;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -12,7 +12,7 @@ class VerificationNoticeTest extends TestCase
 
     /**
      * @test
-     * @see VerificationNotice
+     * @see \App\Http\Controllers\Register\VerificationNotice
      */
     public function ok(): void
     {
@@ -22,7 +22,7 @@ class VerificationNoticeTest extends TestCase
 
     /**
      * @test
-     * @see VerificationNotice
+     * @see \App\Http\Controllers\Register\VerificationNotice
      */
     public function does_not_access_when_verified(): void
     {
@@ -34,7 +34,7 @@ class VerificationNoticeTest extends TestCase
 
     /**
      * @test
-     * @see VerificationNotice
+     * @see \App\Http\Controllers\Register\VerificationNotice
      */
     public function does_not_access_when_not_logged_in(): void
     {

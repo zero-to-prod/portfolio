@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\RegisterStoreRedirect as Controller;
+use App\Http\Controllers\Register\StoreRedirect as Controller;
 
 $name = Controller::name;
 $email = Controller::email;

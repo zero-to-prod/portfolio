@@ -2,11 +2,10 @@
 
 namespace Register;
 
-use App\Http\Controllers\RegisterStoreRedirect;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class RegisterNoticeViewTest extends TestCase
+class VerificationTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -16,7 +15,7 @@ class RegisterNoticeViewTest extends TestCase
      */
     public function ok(): void
     {
-        $this->get(RegisterStoreRedirect::redirectUrl())->assertOk();
+        $this->get(temp_signed_route(to()->web->register->verification))->assertOk();
     }
 
     /**
@@ -25,7 +24,6 @@ class RegisterNoticeViewTest extends TestCase
      */
     public function requires_signed_url(): void
     {
-        $this->getAs(to()->web->register->notice())
-            ->assertForbidden();
+        $this->getAs(to()->web->register->verification())->assertForbidden();
     }
 }

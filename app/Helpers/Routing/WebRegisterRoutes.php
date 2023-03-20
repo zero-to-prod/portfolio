@@ -3,8 +3,9 @@
 namespace App\Helpers\Routing;
 
 use App\Helpers\Routes;
-use App\Http\Controllers\Auth\VerificationNotice;
-use Register\RegisterVerificationNoticeTest;
+use App\Http\Controllers\Login\StoreRedirect;
+use App\Http\Controllers\Register\VerificationNotice;
+use App\Http\Controllers\Register\VerificationSend;
 
 class WebRegisterRoutes
 {
@@ -22,7 +23,7 @@ class WebRegisterRoutes
     }
 
     /**
-     * @see LoginStoreRedirect;
+     * @see StoreRedirect;
      * @see LoginStoreTest;
      * @see routes/web.php
      */
@@ -51,7 +52,7 @@ class WebRegisterRoutes
 
     /**
      * @see VerificationNoticeTest
-     * @see VerificationNotice
+     * @see \App\Http\Controllers\Register\VerificationNotice
      * @see routes/web.php
      */
     public function verification_notice($parameters = [], $absolute = true): string

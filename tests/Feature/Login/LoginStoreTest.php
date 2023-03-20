@@ -2,7 +2,7 @@
 
 namespace Login;
 
-use App\Http\Controllers\LoginStoreRedirect;
+use App\Http\Controllers\Login\StoreRedirect;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -13,7 +13,7 @@ class LoginStoreTest extends TestCase
 
     /**
      * @test
-     * @see LoginStoreRedirect
+     * @see \App\Http\Controllers\Login\StoreRedirect
      */
     public function login(): void
     {
@@ -23,12 +23,12 @@ class LoginStoreTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirectAs(LoginStoreRedirect::redirect_as);
+        $response->assertRedirectAs(StoreRedirect::redirect_as);
     }
 
     /**
      * @test
-     * @see LoginStoreRedirect
+     * @see StoreRedirect
      */
     public function login_rejected(): void
     {

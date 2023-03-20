@@ -2,7 +2,7 @@
 
 namespace Register;
 
-use App\Http\Controllers\Auth\VerificationSend;
+use App\Http\Controllers\Register\VerificationSend;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Notification;
@@ -14,7 +14,7 @@ class VerificationSendTest extends TestCase
 
     /**
      * @test
-     * @see VerificationSend
+     * @see \App\Http\Controllers\Register\VerificationSend
      */
     public function verified_user_is_redirected(): void
     {

@@ -6,8 +6,8 @@ use App\Http\Controllers\Admin\File\FileUploadResponse;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\VerificationSend;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Register\VerificationSend;
 use Illuminate\Support\Facades\Route;
 
 /* Files */

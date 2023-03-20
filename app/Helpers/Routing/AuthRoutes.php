@@ -10,7 +10,6 @@ class AuthRoutes
     public Routes $upload = Routes::auth_upload;
     public Routes $emailVerificationNotice = Routes::auth_email_verificationNotice;
     public Routes $emailVerificationNotification = Routes::auth_email_verificationNotification;
-    public Routes $emailVerify = Routes::register_verify;
     public Routes $logout = Routes::auth_logout;
 
     public function __construct(

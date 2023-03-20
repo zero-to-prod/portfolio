@@ -12,6 +12,12 @@ class To
     public Routes $welcome = Routes::welcome;
     public Routes $search = Routes::search;
     public Routes $results = Routes::results;
+    public Routes $tos = Routes::tos;
+    public Routes $privacy = Routes::privacy;
+    public Routes $newsletter = Routes::newsletter;
+    public Routes $subscribe = Routes::subscribe;
+    public Routes $contact = Routes::contact;
+    public Routes $contact_store = Routes::contact_store;
 
     public function __construct(
         public AdminRoutes $admin = new AdminRoutes,
@@ -45,8 +51,9 @@ class To
             return route_as($this->results);
         }
 
-        return route_as($this->results, [ResultsView::tag => $tag->slug]);
+        return route_as($this->results, [ResultsView::topic => $tag->slug]);
     }
+
     public function resultsTopics(): string
     {
         return route_as($this->results, [ResultsView::topics => true]);
@@ -57,12 +64,40 @@ class To
         return route_as($this->results, [ResultsView::popular => true]);
     }
 
-    public function resultsAuthor(?Author $author = null): string
+    public function resultsAuthor(?Author $author): string
     {
         if (is_null($author)) {
             return route_as($this->results);
         }
 
-        return route_as($this->results, [ResultsView::author => $author->slug]);
+        return route_as($this->results, [ResultsView::author => $author]);
+    }
+
+    public function tos(): string
+    {
+        return route_as($this->tos);
+    }
+
+    public function privacy(): string
+    {
+        return route_as($this->privacy);
+    }
+    public function newsletter(): string
+    {
+        return route_as($this->newsletter);
+    }
+
+    public function subscribe(): string
+    {
+        return route_as($this->subscribe);
+    }
+
+    public function contact(): string
+    {
+        return route_as($this->contact);
+    }
+    public function contact_store(): string
+    {
+        return route_as($this->contact_store);
     }
 }

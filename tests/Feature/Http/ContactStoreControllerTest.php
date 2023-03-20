@@ -10,7 +10,7 @@ use Mail;
 use Route;
 use Tests\TestCase;
 
-class ConnectStoreControllerTest extends TestCase
+class ContactStoreControllerTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -30,7 +30,7 @@ class ConnectStoreControllerTest extends TestCase
             Message::body => 'body',
         ];
 
-        $this->post(to()->web->connectStore(), $data)->assertRedirect()->assertSessionHas('email', $email);
+        $this->post(to()->contact_store(), $data)->assertRedirect()->assertSessionHas('email', $email);
 
         $message = Message::whereSubject($subject)->first();
         $contact = $message?->contact;
@@ -46,7 +46,7 @@ class ConnectStoreControllerTest extends TestCase
             Message::body => 'body',
         ];
 
-        $this->post(to()->web->connectStore(), $data)->assertRedirect();
+        $this->post(to()->contact_store(), $data)->assertRedirect();
 
         self::assertEquals(2, $contact->messages()->count(), 'The contact does not have the correct number of messages.');
         Mail::assertQueued(ConnectRequest::class, 2);
@@ -58,7 +58,7 @@ class ConnectStoreControllerTest extends TestCase
      */
     public function fails_if_nothing_is_not_passed(): void
     {
-        $this->post(to()->web->connectStore())->assertFound();
+        $this->post(to()->contact_store())->assertFound();
     }
 
     /**

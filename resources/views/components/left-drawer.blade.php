@@ -30,8 +30,8 @@ use Illuminate\Support\Collection;
         <x-svg :name="'topics'"/>
         Topics
     </x-a>
-    <x-a class="{{ route_is(to()->web->newsletter) ? 'bg-base-200' : '' }}"
-         :href="to()->web->newsletter()"
+    <x-a class="{{ route_is(to()->newsletter) ? 'bg-base-200' : '' }}"
+         :href="to()->newsletter()"
          title="Subscribe to Newsletter"
     >
         <x-svg :name="'mail'"/>
@@ -39,7 +39,7 @@ use Illuminate\Support\Collection;
     </x-a>
     <x-divider class="py-2"/>
     @forEach($tags as $tag)
-        <x-a class="{{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-base-200' : '' }}"
+        <x-a class="{{ request()->query(ResultsView::topic) === $tag->slug ? 'bg-base-200' : '' }}"
              :href="to()->results($tag)"
              title="Topic: {{$tag->name}}"
         >
@@ -73,8 +73,8 @@ use Illuminate\Support\Collection;
         <x-svg class="mx-auto" :name="'topics'"/>
         Topics
     </x-a>
-    <x-a class=" {{ route_is(to()->web->newsletter) ? 'bg-base-200' : '' }}"
-         :href="to()->web->newsletter()"
+    <x-a class=" {{ route_is(to()->newsletter) ? 'bg-base-200' : '' }}"
+         :href="to()->newsletter()"
          title="Subscribe to Newsletter"
     >
         <x-svg class="mx-auto w-5" :name="'mail'"/>
@@ -82,7 +82,7 @@ use Illuminate\Support\Collection;
     </x-a>
     <x-divider class="py-2"/>
     @forEach($tags as $tag)
-        <x-a class="!p-4 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-base-200' : '' }}"
+        <x-a class="!p-4 {{ request()->query(ResultsView::topic) === $tag->slug ? 'bg-base-200' : '' }}"
              :href="to()->results($tag)"
              title="{{$tag->name}}"
         >

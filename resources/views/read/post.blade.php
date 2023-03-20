@@ -54,7 +54,7 @@ $cvc = ThanksResponse::cvc;
                             </div>
                         </x-a>
                         <div class="flex gap-2">
-                            <x-a title="Subscribe to Newsletter" :href="to()->web->newsletter()"
+                            <x-a title="Subscribe to Newsletter" :href="to()->newsletter()"
                                  class="my-auto flex gap-2 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
                                 <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
                                 <span class="my-auto text-sm font-bold text-white">Newsletter</span>
@@ -90,7 +90,7 @@ $cvc = ThanksResponse::cvc;
 
                             </div>
                         </x-a>
-                        <x-a title="Subscribe to Newsletter" :href="to()->web->newsletter()"
+                        <x-a title="Subscribe to Newsletter" :href="to()->newsletter()"
                              class="my-auto flex gap-2 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
                             <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
                             <span class="my-auto text-sm font-bold text-white">Newsletter</span>

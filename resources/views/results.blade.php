@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 /* @var ?Author $author_model */
 
 $title = request()->query(ResultsView::query);
-$title = request()->query(ResultsView::tag) ?? $title;
+$title = request()->query(ResultsView::topic) ?? $title;
 $title = request()->query(ResultsView::topics) !== null ? 'Topics' : $title;
 $title = request()->query(ResultsView::popular) !== null ? 'Popular' : $title;
 $author_model = null;

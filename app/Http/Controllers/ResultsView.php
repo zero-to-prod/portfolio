@@ -16,7 +16,9 @@ use Illuminate\Http\Request;
 class ResultsView extends Controller
 {
     public const query = 'query';
-    public const tag = 'topic';
+    public const topic = 'topic';
+    public const tag = 'tag';
+    public const author_model = 'author_model';
     public const topics = 'topics';
     public const popular = 'popular';
     public const posts = 'posts';
@@ -28,7 +30,7 @@ class ResultsView extends Controller
         $posts = null;
         $tag = null;
         $search = $request->query(self::query);
-        $tag_name = $request->query(self::tag);
+        $tag_name = $request->query(self::topic);
         $popular = $request->query(self::popular);
         $author = $request->query(self::author);
         $author_model = null;
@@ -53,7 +55,7 @@ class ResultsView extends Controller
         }
 
         if ($popular !== null) {
-            $posts = Post::with(['tags.file', Post::authors, 'file'])
+            $posts = Post::with([Post::tags . '.' . Tag::file, Post::authors, Post::file])
                 ->orderByDesc(Post::views)
                 ->limit(self::limit)
                 ->get();
@@ -64,6 +66,7 @@ class ResultsView extends Controller
                 ->whereHas(Post::authors, static function (Builder $query) use ($author) {
                     $query->where(Author::slug, $author);
                 })
+                ->with([Post::file, Post::tags . '.' . Tag::file])
                 ->orderByDesc(Post::views)
                 ->limit(self::limit)
                 ->get();
@@ -75,8 +78,8 @@ class ResultsView extends Controller
 
         return view_as(Views::results, [
             self::posts => $posts,
-            'tag' => $tag,
-            'author_model' => $author_model,
+            self::tag => $tag,
+            self::author_model => $author_model,
         ]);
     }
 }

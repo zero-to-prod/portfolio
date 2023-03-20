@@ -9,14 +9,14 @@
                 <div>
                     <h3>Membership</h3>
                     <ul role="list" class="mt-6 space-y-4">
-                        <li><a href="{{to()->web->login->index()}}">Login</a></li>
-                        <li><a href="{{to()->web->newsletter()}}">Newsletter</a></li>
+                        <li><x-a :href="to()->web->login->index()">Login</x-a></li>
+                        <li><x-a :href="to()->newsletter()">Newsletter</x-a></li>
                     </ul>
                 </div>
                 <div class="mt-10 md:mt-0">
                     <h3>Support</h3>
                     <ul role="list" class="mt-6 space-y-4">
-                        <li><a href="{{to()->web->contact()}}">Contact</a></li>
+                        <li><x-a :href="to()->contact()">Contact</x-a></li>
                     </ul>
                 </div>
             </div>
@@ -24,17 +24,17 @@
                 <div>
                     <h3>Pages</h3>
                     <ul role="list" class="mt-6 space-y-4">
-                        <li><a href="{{to()->welcome()}}" class="">Home</a></li>
-                        <li><a href="{{to()->results()}}">Search</a></li>
-                        <li><a href="{{to()->resultsPopular()}}">Popular</a></li>
-                        <li><a href="{{to()->resultsTopics()}}">Topics</a></li>
+                        <li><x-a :href="to()->welcome()" class="">Home</x-a></li>
+                        <li><x-a :href="to()->results()">Search</x-a></li>
+                        <li><x-a :href="to()->resultsPopular()">Popular</x-a></li>
+                        <li><x-a :href="to()->resultsTopics()">Topics</x-a></li>
                     </ul>
                 </div>
                 <div class="mt-10 md:mt-0">
                     <h3>Legal</h3>
                     <ul role="list" class="mt-6 space-y-4">
-                        <li><a href="{{to()->web->privacy()}}">Privacy Policy</a></li>
-                        <li><a href="{{to()->web->tos()}}">Terms of Service</a></li>
+                        <li><x-a :href="to()->privacy()">Privacy Policy</x-a></li>
+                        <li><x-a :href="to()->tos()">Terms of Service</x-a></li>
                     </ul>
                 </div>
             </div>

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Helpers\Drivers;
 use App\Helpers\SessionKeys;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\RedirectResponse;

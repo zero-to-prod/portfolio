@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Views;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
@@ -20,6 +19,6 @@ class WelcomeView extends Controller
             Tag::posts => static fn($query) => $query->orderByDesc(Post::views)->with([Post::authors, Post::file]),
         ])->get();
 
-        return view_as(Views::welcome, [self::tags => $tags]);
+        return view('welcome', [self::tags => $tags]);
     }
 }

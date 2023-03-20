@@ -12,11 +12,10 @@ use Session;
 
 class Login extends Controller
 {
-    public const redirect_as = Routes::welcome;
 
     /**
      * @throws ValidationException
-     * @see LoginStoreTest
+     * @see LoginTest
      */
     public function __invoke(LoginRequest $request): RedirectResponse
     {
@@ -28,6 +27,11 @@ class Login extends Controller
             return redirect()->intended($uri);
         }
 
-        return redirect_as(self::redirect_as);
+        return redirect_as(self::redirectUrl());
+    }
+
+    public static function redirectUrl(): Routes
+    {
+        return to()->web->welcome;
     }
 }

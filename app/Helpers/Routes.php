@@ -13,13 +13,13 @@ use App\Http\Controllers\Admin\Tag\TagFormView;
  */
 enum Routes: string
 {
-
+    case welcome = '/';
     case contact_store = 'contact/store/';
     case contact = 'contact/';
     case file = 'file/{file}/';
     case loginIndex = 'login/';
-    case login = 'login/store/';
-    case logout = 'logout/';
+    case login = 'auth/login/store/';
+    case logout = 'auth/logout/';
     case registerIndex = 'register/';
     case register_store = 'register/store/';
     case register_notice = 'register/notice/';
@@ -34,7 +34,7 @@ enum Routes: string
     case newsletter = 'newsletter/';
     case subscribe = 'subscribe/';
     case tos = 'terms-of-service/';
-    case welcome = '/';
+
 
     /* Auth */
     case auth_github_callback = 'auth/github/callback/';

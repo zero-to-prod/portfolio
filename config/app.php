@@ -200,6 +200,7 @@ return [
         App\Providers\BlueprintServiceProvider::class,
         App\Providers\MailchimpProvider::class,
         App\Providers\StripeProvider::class,
+        App\Providers\ToProvider::class,
 
     ],
 

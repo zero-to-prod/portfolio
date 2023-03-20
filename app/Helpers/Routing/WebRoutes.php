@@ -9,6 +9,7 @@ use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
 use App\Models\Tag;
+use Http\WelcomeTest;
 
 class WebRoutes
 {
@@ -41,6 +42,9 @@ class WebRoutes
         return route_as($this->privacy);
     }
 
+    /**
+     * @see WelcomeTest
+     */
     public function welcome(): string
     {
         return route_as($this->welcome);

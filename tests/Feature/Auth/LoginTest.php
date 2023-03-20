@@ -23,7 +23,7 @@ class LoginTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirectAs(Login::redirect_as);
+        $response->assertRedirectAs(Login::redirectUrl());
     }
 
     /**

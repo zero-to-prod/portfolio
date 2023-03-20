@@ -11,7 +11,7 @@ use App\Models\Post;
 
 <div {{ $attributes->merge(['class' => 'flex']) }}>
     @foreach($post->tags->take(3) as $tag)
-        <x-a class="btn-ghost my-auto" :href="to()->web->results($tag)">
+        <x-a class="btn-ghost my-auto" :href="to()->results($tag)">
             <x-img class="w-10 p-2" :file="$tag->file" :width="80" :title="$tag->name"/>
         </x-a>
     @endforeach

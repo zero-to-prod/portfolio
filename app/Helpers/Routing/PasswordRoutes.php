@@ -7,8 +7,8 @@ use App\Helpers\Routes;
 class PasswordRoutes
 {
 
-    public Routes $store = Routes::auth_password_store;
-    public Routes $confirm = Routes::auth_password_confirm;
+    public Routes $store = Routes::password_store;
+    public Routes $confirm = Routes::password_confirm;
     public Routes $update = Routes::auth_password_update;
 
     public function update(): string

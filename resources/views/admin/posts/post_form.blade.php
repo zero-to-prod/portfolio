@@ -2,8 +2,8 @@
 
 use App\Helpers\Tags;
 use App\Helpers\TagTypes;
-use App\Http\Controllers\Admin\Post\PostFormRedirect;
-use App\Http\Controllers\Admin\Post\PostPublishRedirect;
+use App\Http\Controllers\Admin\Post\PostStore;
+use App\Http\Controllers\Admin\Post\PostPublish;
 use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
@@ -12,13 +12,13 @@ use App\Models\Tag;
 /* @var Post $post_model */
 /* @var File $file */
 
-$title = PostFormRedirect::title;
-$subtitle = PostFormRedirect::subtitle;
-$authors = PostFormRedirect::authors;
-$tags = PostFormRedirect::tags;
-$body = PostFormRedirect::body;
-$featured_image = PostFormRedirect::featured_image;
-$in_body = PostFormRedirect::in_body;
+$title = PostStore::title;
+$subtitle = PostStore::subtitle;
+$authors = PostStore::authors;
+$tags = PostStore::tags;
+$body = PostStore::body;
+$featured_image = PostStore::featured_image;
+$in_body = PostStore::in_body;
 ?>
 
 <x-app-layout>
@@ -30,7 +30,7 @@ $in_body = PostFormRedirect::in_body;
                         @isset($post_model)
                             <form action="{{to()->admin->post->publish($post_model)}}" method="post">
                                 @csrf
-                                <input name="{{PostPublishRedirect::id}}" type="hidden" value="{{$post_model->id}}">
+                                <input name="{{PostPublish::id}}" type="hidden" value="{{$post_model->id}}">
                                 @if($post_model->isPublished())
                                     <button class="btn btn-xs bg-gray-600 hover:bg-gray-500">
                                         Re-Publish
@@ -41,7 +41,7 @@ $in_body = PostFormRedirect::in_body;
                             </form>
                             @if($post_model->isPublished())
                                 <a class="btn btn-xs"
-                                   href="{{to()->web->read($post_model)}}"
+                                   href="{{to()->read($post_model)}}"
                                    target="_blank">
                                     View
                                 </a>
@@ -54,7 +54,7 @@ $in_body = PostFormRedirect::in_body;
                         @csrf
                         <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
                             <label>
-                                <input name="{{PostFormRedirect::id}}"
+                                <input name="{{PostStore::id}}"
                                        hidden
                                        value="{{$post_model?->id}}"/>
                             </label>

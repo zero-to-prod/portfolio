@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\Tag\TagFormRedirect;
+use App\Http\Controllers\Admin\Tag\TagFormStore;
 use App\Models\Tag;
 
 /* @var Tag $tag */
 
-$name = TagFormRedirect::name;
-$logo = TagFormRedirect::logo;
+$name = TagFormStore::name;
+$logo = TagFormStore::logo;
 
 ?>
 
@@ -21,7 +21,7 @@ $logo = TagFormRedirect::logo;
                         @csrf
                         <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
                             <label>
-                                <input name="{{TagFormRedirect::id}}"
+                                <input name="{{TagFormStore::id}}"
                                        hidden
                                        value="{{$tag?->id}}"/>
                             </label>

@@ -2,36 +2,36 @@
 
 <?php
 
-use App\Http\Controllers\ResultsView;
+use App\Http\Controllers\Results;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
 
 /* @var Collection<Tag, Tag> $tags */
 ?>
 <nav class="hidden w-wide-nav mt-narrow-nav nav-wide:block" id="left-nav-wide">
-    <x-a class="{{ route_is(to()->web->welcome) ? 'bg-base-200' : '' }}"
-         :href="to()->web->welcome()"
+    <x-a class="{{ route_is(to()->welcome) ? 'bg-base-200' : '' }}"
+         :href="to()->welcome()"
          title="Home"
     >
         <x-svg :name="'home'"/>
         Home
     </x-a>
-    <x-a class="{{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="to()->web->resultsPopular()"
+    <x-a class="{{ request()->query(Results::popular ?? null) !== null ? 'bg-base-200' : '' }}"
+         :href="to()->resultsPopular()"
          title="Popular"
     >
         <x-svg :name="'popular'"/>
         Popular
     </x-a>
-    <x-a class="{{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="to()->web->resultsTopics()"
+    <x-a class="{{ request()->query(Results::topics ?? null) !== null ? 'bg-base-200' : '' }}"
+         :href="to()->resultsTopics()"
          title="Topics"
     >
         <x-svg :name="'topics'"/>
         Topics
     </x-a>
-    <x-a class="{{ route_is(to()->web->newsletter) ? 'bg-base-200' : '' }}"
-         :href="to()->web->newsletter()"
+    <x-a class="{{ route_is(to()->newsletter) ? 'bg-base-200' : '' }}"
+         :href="to()->newsletter()"
          title="Subscribe to Newsletter"
     >
         <x-svg :name="'mail'"/>
@@ -39,8 +39,8 @@ use Illuminate\Support\Collection;
     </x-a>
     <x-divider class="py-2"/>
     @forEach($tags as $tag)
-        <x-a class="{{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-base-200' : '' }}"
-             :href="to()->web->results($tag)"
+        <x-a class="{{ request()->query(Results::topic) === $tag->slug ? 'bg-base-200' : '' }}"
+             :href="to()->results($tag)"
              title="Topic: {{$tag->name}}"
         >
             @if($tag->file !== null)
@@ -52,29 +52,29 @@ use Illuminate\Support\Collection;
 </nav>
 <nav class="hidden text-xs mt-narrow-nav nav-small:block nav-wide:hidden"
      id="left-nav-narrow">
-    <x-a class=" {{ route_is(to()->web->welcome) ? 'bg-base-200' : '' }}"
-         :href="to()->web->welcome()"
+    <x-a class=" {{ route_is(to()->welcome) ? 'bg-base-200' : '' }}"
+         :href="to()->welcome()"
          title="Home"
     >
         <x-svg :name="'home'" class="mx-auto"/>
         Home
     </x-a>
-    <x-a class=" {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="to()->web->resultsPopular()"
+    <x-a class=" {{ request()->query(Results::popular ?? null) !== null ? 'bg-base-200' : '' }}"
+         :href="to()->resultsPopular()"
          title="Popular"
     >
         <x-svg class="mx-auto" :name="'popular'"/>
         Popular
     </x-a>
-    <x-a class=" {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="to()->web->resultsTopics()"
+    <x-a class=" {{ request()->query(Results::topics ?? null) !== null ? 'bg-base-200' : '' }}"
+         :href="to()->resultsTopics()"
          title="Topics"
     >
         <x-svg class="mx-auto" :name="'topics'"/>
         Topics
     </x-a>
-    <x-a class=" {{ route_is(to()->web->newsletter) ? 'bg-base-200' : '' }}"
-         :href="to()->web->newsletter()"
+    <x-a class=" {{ route_is(to()->newsletter) ? 'bg-base-200' : '' }}"
+         :href="to()->newsletter()"
          title="Subscribe to Newsletter"
     >
         <x-svg class="mx-auto w-5" :name="'mail'"/>
@@ -82,8 +82,8 @@ use Illuminate\Support\Collection;
     </x-a>
     <x-divider class="py-2"/>
     @forEach($tags as $tag)
-        <x-a class="!p-4 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-base-200' : '' }}"
-             :href="to()->web->results($tag)"
+        <x-a class="!p-4 {{ request()->query(Results::topic) === $tag->slug ? 'bg-base-200' : '' }}"
+             :href="to()->results($tag)"
              title="{{$tag->name}}"
         >
             @if($tag->file !== null)

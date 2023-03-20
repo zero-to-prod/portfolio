@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Controllers\ReadView;
+use App\Http\Controllers\Read;
 use App\Jobs\PostViewCounterJob;
 use App\Models\Post;
 use Closure;
@@ -18,7 +18,7 @@ class PostViewCounterMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $post = $request->route(ReadView::post);
+        $post = $request->route(Read::post);
 
         if ($this->shouldIncrementView($request, $post)) {
             PostViewCounterJob::dispatch($post, $request->ip(), $request->userAgent());
@@ -29,6 +29,6 @@ class PostViewCounterMiddleware
 
     protected function shouldIncrementView(Request $request, Post|string|null $post): bool
     {
-        return $post instanceof Post && route_is(to()->web->read);
+        return $post instanceof Post && route_is(to()->read);
     }
 }

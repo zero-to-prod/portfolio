@@ -10,24 +10,24 @@ use App\Helpers\Routes;
         <div class="flex h-16 justify-between">
             <div class="flex">
                 <div class="flex">
-                    <a aria-label="Home Page" href="{{route_as(to()->web->welcome)}}"
+                    <a aria-label="Home Page" href="{{route_as(to()->welcome)}}"
                             @class([
                                 'inline-flex items-center border-b-2 sm:text-lg text-gray-600',
-                                'border-primary' => route_name_is(to()->web->welcome),
-                                'border-transparent hover:border-gray-300 hover:text-gray-700' => route_name_isnt(to()->web->welcome),
+                                'border-primary' => route_name_is(to()->welcome),
+                                'border-transparent hover:border-gray-300 hover:text-gray-700' => route_name_isnt(to()->welcome),
                                 ])
                     >david<span class="text-primary font-semibold ">DESIGN</span></a>
-                    <a aria-label="CV Page" href="{{to()->web->cv()}}"
+                    <a aria-label="CV Page" href="/cv/"
                             @class([
                                 'inline-flex items-center border-b-2 text-sm font-medium px-8 text-gray-600',
-                                'border-primary' => route_name_is(to()->web->cv->name),
-                                'border-transparent hover:border-gray-300 hover:text-gray-700' => route_name_isnt(to()->web->cv->name),
+                                'border-primary' => false,
+                                'border-transparent hover:border-gray-300 hover:text-gray-700' => false,
                                 ])
                     >CV</a>
                 </div>
             </div>
             <div class="ml-6 flex items-center">
-                <a aria-label="Connect Page" href="{{to()->web->contact()}}" class="btn btn-xs">Connect</a>
+                <a aria-label="Connect Page" href="{{to()->contact()}}" class="btn btn-xs">Connect</a>
             </div>
         </div>
     </div>

@@ -8,6 +8,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'resources/js/web.js',
                 'resources/js/left_drawer.js',
                 'resources/js/masthead.js',
                 'resources/js/share.js',

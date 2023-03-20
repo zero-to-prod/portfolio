@@ -12,7 +12,6 @@ enum Middlewares: string
     case api = 'api';
     case web_group = 'web_group';
     case auth_group = 'auth_group';
-    case guest_group = 'guest_group';
     case register_group = 'register_group';
     case auth = 'auth';
     case auth_basic = 'auth.basic';

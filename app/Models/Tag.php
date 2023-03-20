@@ -32,6 +32,11 @@ class Tag extends \Spatie\Tags\Tag implements HasRules
     protected $fillable = [self::file_id, self::name, self::slug, self::type, self::order_column];
     protected $casts = [self::type => 'integer'];
 
+    public function getRouteKeyName(): string
+    {
+        return self::slug;
+    }
+
     public function scopeWithType(Builder $query, string $type = null): Builder
     {
         if (is_null($type)) {

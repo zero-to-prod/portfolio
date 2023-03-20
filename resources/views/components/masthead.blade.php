@@ -2,10 +2,10 @@
 
 <?php
 
-use App\Http\Controllers\ResultsView;
-use App\Http\Controllers\SearchRedirect;
+use App\Http\Controllers\Results;
+use App\Http\Controllers\Search;
 
-$search = SearchRedirect::search;
+$search = Search::search;
 
 ?>
 <header id="masthead"
@@ -18,11 +18,11 @@ $search = SearchRedirect::search;
                 type="button">
             <x-svg :name="'hamburger'" class="m-auto block h-6 w-narrow-nav"/>
         </button>
-        <x-a class="px-2 py-4 btn-ghost" :href="to()->web->welcome()" title="Home">
+        <x-a class="px-2 py-4 btn-ghost" :href="to()->welcome()" title="Home">
             <x-logo/>
         </x-a>
         <div class="my-auto w-full max-w-2xl mr-2 2col:mx-auto">
-            <form action="{{to()->web->search()}}" method="post">
+            <form action="{{to()->search()}}" method="post">
                 @csrf
                 <label for="{{$search}}"></label>
                 <div class="relative flex rounded-md">
@@ -30,7 +30,7 @@ $search = SearchRedirect::search;
                         <input class="block w-full appearance-none rounded-none rounded-l-md border-0 pl-4 ring-1 ring-inset ring-gray-300 h-[40px] py-1.5 focus:ring-primary focus:ring-2 focus:ring-inset"
                                name="{{$search}}"
                                id="{{$search}}"
-                               value="{{request()->query(ResultsView::query)}}"
+                               value="{{request()->query(Results::query)}}"
                                placeholder="Search">
                     </div>
                     <div class="absolute inset-y-0 right-14 2col:flex flex hidden py-1.5 pr-1.5">
@@ -58,7 +58,7 @@ $search = SearchRedirect::search;
             </form>
         @endauth
         @guest()
-            <x-a :href="to()->web->login()"
+            <x-a :href="to()->login->index()"
                  title="Go to Sign In Page"
                  class="my-auto mx-2 flex flex-no-wrap gap-1 hover:bg-base-200 p-2 text-sm font-bold rounded border">
                 <span>Sign</span> <span>In</span></x-a>

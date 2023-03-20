@@ -2,6 +2,7 @@
 
 use App\Helpers\Environments;
 use App\Helpers\Routing\To;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -9,9 +10,13 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Route;
 
 if (!function_exists('to')) {
+
     function to(): To
     {
-        return new To;
+        try {
+            return app()->make(To::class);
+        } catch (BindingResolutionException) {
+        }
     }
 }
 
@@ -52,6 +57,17 @@ if (!function_exists('redirect_as')) {
         }
 
         return redirect($to->value, $status, $headers, $secure);
+    }
+}
+
+if (!function_exists('temp_singed_route')) {
+    function temp_signed_route($name, $expiration = 5, $parameters = [], $absolute = true): string
+    {
+        if ($name instanceof \UnitEnum) {
+            return URL::temporarySignedRoute($name->name, now()->addMinutes($expiration), $parameters, $absolute);
+        }
+
+        return URL::temporarySignedRoute($name, now()->addMinutes($expiration), $parameters, $absolute);
     }
 }
 

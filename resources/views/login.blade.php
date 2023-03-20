@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Auth\WebLoginRedirect;
+use App\Http\Requests\Auth\LoginRequest;
 
-$email = WebLoginRedirect::email;
-$password = WebLoginRedirect::password;
+$email = LoginRequest::email;
+$password = LoginRequest::password;
+$remember = LoginRequest::remember;
 ?>
 <x-login>
     <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
@@ -25,7 +26,7 @@ $password = WebLoginRedirect::password;
                 <span class="bg-white px-2 text-sm text-gray-500">Or use your email address</span>
             </div>
         </div>
-        <form class="space-y-4" method="POST" action="{{ to()->web->loginStore() }}">
+        <form class="space-y-4" method="POST" action="{{ to()->login->store() }}">
             @csrf
             <x-form-control>
                 <label for="{{$email}}">Email*</label>
@@ -36,7 +37,7 @@ $password = WebLoginRedirect::password;
                        autocomplete="email"
                 >
                 @if($errors->has($email))
-                    <p>{{ $errors->first($email) }}</p>
+                    <p class="!text-red-500">{{ $errors->first($email) }}</p>
                 @endif
             </x-form-control>
             <x-form-control>
@@ -48,9 +49,21 @@ $password = WebLoginRedirect::password;
                        autocomplete="password"
                 >
                 @if($errors->has($password))
-                    <p>{{ $errors->first($password) }}</p>
+                    <p class="!text-red-500">{{ $errors->first($password) }}</p>
                 @endif
             </x-form-control>
+            <div>
+                <input class="rounded"
+                        name="{{$remember}}"
+                       id="{{$remember}}"
+                       value="{{old($remember)}}"
+                       type="checkbox"
+                >
+                <label class="text-sm font-bold" for="{{$remember}}">Remember me</label>
+                @if($errors->has($remember))
+                    <p class="!text-red-500">{{ $errors->first($remember) }}</p>
+                @endif
+            </div>
             <button class="btn btn-wide">Continue</button>
         </form>
     </div>

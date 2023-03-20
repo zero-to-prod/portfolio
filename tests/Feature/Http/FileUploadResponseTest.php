@@ -2,7 +2,7 @@
 
 namespace Http;
 
-use App\Http\Controllers\Admin\File\FileServeResponse;
+use App\Http\Controllers\Admin\File\FileResponse;
 use App\Http\Controllers\Admin\File\FileUploadResponse;
 use App\Models\File;
 use Config;
@@ -37,7 +37,7 @@ class FileUploadResponseTest extends AuthTestCase
 
     /**
      * @test
-     * @see FileServeResponse
+     * @see FileResponse
      */
     public function cache_retrieval(): void
     {

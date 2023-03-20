@@ -32,8 +32,7 @@ class AuthGroupTest extends TestCase
     {
         return collect($this->getRouteList(Middlewares::auth_group))->filter(function ($route) {
             $blacklist = [
-                to()->auth->emailVerificationNotice->name,
-                to()->auth->emailVerify->name,
+                to()->register->verification->name,
                 to()->admin->author->edit->name,
                 to()->admin->tag->edit->name,
                 to()->admin->post->edit->name,

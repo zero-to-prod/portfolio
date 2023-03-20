@@ -43,7 +43,7 @@ $cvc = ThanksResponse::cvc;
                     </div>
                     <div class="mt-2 flex w-full flex-wrap justify-between gap-2">
                         <x-a class="mr-4 flex gap-2" title="Authors Page"
-                             :href="to()->web->resultsAuthor($post->author())">
+                             :href="to()->resultsAuthor($post->author())">
                             <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page"
                                    :file="$post->author()->file" :height="80"/>
                             <div class="flex flex-col">
@@ -54,7 +54,7 @@ $cvc = ThanksResponse::cvc;
                             </div>
                         </x-a>
                         <div class="flex gap-2">
-                            <x-a title="Subscribe to Newsletter" :href="to()->web->newsletter()"
+                            <x-a title="Subscribe to Newsletter" :href="to()->newsletter()"
                                  class="my-auto flex gap-2 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
                                 <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
                                 <span class="my-auto text-sm font-bold text-white">Newsletter</span>
@@ -90,7 +90,7 @@ $cvc = ThanksResponse::cvc;
 
                             </div>
                         </x-a>
-                        <x-a title="Subscribe to Newsletter" :href="to()->web->newsletter()"
+                        <x-a title="Subscribe to Newsletter" :href="to()->newsletter()"
                              class="my-auto flex gap-2 rounded-lg bg-gray-800 px-3 py-2 shadow-md hover:bg-gray-700">
                             <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
                             <span class="my-auto text-sm font-bold text-white">Newsletter</span>
@@ -365,7 +365,7 @@ $cvc = ThanksResponse::cvc;
         ?>
         <div class="3col:flex hidden shrink-0 flex-col gap-2 w-[400px]">
             @foreach($posts as $post)
-                <x-a :href="to()->web->read($post)" class="flex flex-row gap-2">
+                <x-a :href="to()->read($post)" class="flex flex-row gap-2">
                     <div class="relative shrink-0">
                         <div class="overflow-hidden 2col:rounded-lg">
                             <x-img class="object-cover object-center h-[112px] w-[168px]"

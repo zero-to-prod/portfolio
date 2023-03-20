@@ -32,4 +32,9 @@ class Author extends Model implements HasRules
 
     protected $fillable = [self::file_id, self::name, self::title];
 
+    public function getRouteKeyName(): string
+    {
+        return self::slug;
+    }
+
 }

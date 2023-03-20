@@ -14,7 +14,7 @@ use Illuminate\Support\Collection;
         @foreach($tags as $tag)
             <section>
                 <x-a class="mb-2 2col:mb-0 2col:ml-0 flex gap-x-2 p-2 btn-ghost"
-                     :href="to()->web->results($tag)"
+                     :href="to()->results($tag)"
                      title="Topic: {{$tag->name}}"
                 >
                     @if($tag->file !== null)
@@ -27,7 +27,7 @@ use Illuminate\Support\Collection;
                 <x-divider class="mt-2 mb-4"/>
                 <div class="mb-4 grid grid-flow-row 2col:grid-cols-2 4col:grid-cols-4 2cols:gap-0 2col:gap-2 gap-4 ">
                     @foreach($tag->posts as $post)
-                        <x-a class="shadow-lg 2col:shadow-none" :href="to()->web->read($post)">
+                        <x-a class="shadow-lg 2col:shadow-none" :href="to()->read($post)">
                             <div class="relative">
                                 <div class="overflow-hidden 2col:rounded-lg aspect-w-3 aspect-h-2">
                                     <x-img class="h-full w-full object-cover object-center"

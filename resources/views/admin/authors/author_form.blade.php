@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin\Author\AuthorFormRedirect;
+use App\Http\Controllers\Admin\Author\AuthorStore;
 use App\Models\Author;
 
 /* @var Author $author */
 
-$name = AuthorFormRedirect::name;
-$title = AuthorFormRedirect::title;
-$avatar = AuthorFormRedirect::avatar;
+$name = AuthorStore::name;
+$title = AuthorStore::title;
+$avatar = AuthorStore::avatar;
 
 ?>
 
@@ -22,7 +22,7 @@ $avatar = AuthorFormRedirect::avatar;
                         @csrf
                         <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
                             <label>
-                                <input name="{{AuthorFormRedirect::id}}"
+                                <input name="{{AuthorStore::id}}"
                                        hidden
                                        value="{{$author?->id}}"/>
                             </label>

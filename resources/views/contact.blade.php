@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\ConnectStoreRedirect;
+use App\Http\Controllers\Store;
 
-$email = ConnectStoreRedirect::email;
-$subject = ConnectStoreRedirect::subject;
-$body = ConnectStoreRedirect::body;
+$email = Store::email;
+$subject = Store::subject;
+$body = Store::body;
 
 ?>
 <x-main :title="'Connect'">
@@ -19,7 +19,7 @@ $body = ConnectStoreRedirect::body;
             <div class="mx-auto max-w-2xl text-center">
                 <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Contact {{config('app.name')}}</h1>
             </div>
-            <form class="mx-auto mt-8 space-y-4" action="{{to()->web->connectStore()}}" method="post">
+            <form class="mx-auto mt-8 space-y-4" action="{{to()->contact_store()}}" method="post">
                 @csrf
                 <div class="grid grid-cols-1 gap-y-4 gap-x-8 sm:grid-cols-2">
                     <x-form-control>

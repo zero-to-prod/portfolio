@@ -18,7 +18,7 @@ class DenyUnpublishedPostsTest extends TestCase
      */
     public function denies_unpublished_posts(): void
     {
-        $this->get(to()->web->read(post()))->assertNotFound();
+        $this->get(to()->read(post()))->assertNotFound();
     }
 
     /**
@@ -27,7 +27,7 @@ class DenyUnpublishedPostsTest extends TestCase
      */
     public function denies_nonexistent_posts(): void
     {
-        $this->get(to()->web->read(post_f()->make([Post::slug => 'bogus'])))->assertNotFound();
+        $this->get(to()->read(post_f()->make([Post::slug => 'bogus'])))->assertNotFound();
     }
 
     /**
@@ -39,6 +39,6 @@ class DenyUnpublishedPostsTest extends TestCase
         User::factory()->create();
         $post = post_f()->published()->create();
 
-        $this->get(to()->web->read($post))->assertOk();
+        $this->get(to()->read($post))->assertOk();
     }
 }

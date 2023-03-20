@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\Post\PostPublishRedirect;
+use App\Http\Controllers\Admin\Post\PostPublish;
 use App\Models\Post;
 use App\Models\Tag;
 
@@ -48,7 +48,7 @@ use App\Models\Tag;
                                             <div class="flex justify-between">
                                                 <div class="flex  gap-4">
                                                     <figure>
-                                                        <a class="underline" href="{{to()->web->read($post)}}"
+                                                        <a class="underline" href="{{to()->read($post)}}"
                                                            target="_blank">
                                                             <x-img class="object-cover h-[100px] rounded-lg"
                                                                    :file="$post->file"
@@ -87,7 +87,7 @@ use App\Models\Tag;
                                                 <form action="{{to()->admin->post->publish($post)}}"
                                                       method="post">
                                                     @csrf
-                                                    <input name="{{PostPublishRedirect::id}}"
+                                                    <input name="{{PostPublish::id}}"
                                                            type="hidden"
                                                            value="{{$post->id}}">
                                                     <button class="btn btn-xs">Publish</button>

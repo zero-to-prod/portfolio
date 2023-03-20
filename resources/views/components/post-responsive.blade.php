@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 <div {{$attributes->merge(['class' => '2col:space-y-2 space-y-4'])}}>
     @foreach($posts as $post)
         <div class="2col:flex 2col:flex-row shadow-lg 2col:shadow-none">
-            <x-a class="relative" :href="to()->web->read($post)">
+            <x-a class="relative" :href="to()->read($post)">
                 <div class="relative shrink-0">
                     <div class="overflow-hidden 2col:rounded-lg ">
                         <x-img class="h-full w-full 2col:h-[200px] 2col:w-[300px] object-cover object-center"
@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
                 </div>
             </x-a>
             <div class="flex flex-1 flex-col 2col:my-0 p-2 2col:py-0">
-                <x-a class="2col:pb-4" :href="to()->web->read($post)">
+                <x-a class="2col:pb-4" :href="to()->read($post)">
                     <h3 class="font-bold break-word tracking-tight leading-5" title="{{ $post->title }}">
                         {{ $post->title }}
                     </h3>

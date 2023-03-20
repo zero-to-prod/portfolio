@@ -19,7 +19,7 @@ class PostViewCounterTest extends TestCase
     {
         $post = post_f()->published()->create();
 
-        $this->get(to()->web->read($post));
+        $this->get(to()->read($post));
 
         $post->refresh();
         self::assertEquals(1, $post->views);
@@ -40,8 +40,8 @@ class PostViewCounterTest extends TestCase
     {
         $post = post_f()->published()->create();
 
-        $this->get(to()->web->read($post));
-        $this->get(to()->web->read($post));
+        $this->get(to()->read($post));
+        $this->get(to()->read($post));
 
         $post->refresh();
         self::assertEquals(2, $post->views);

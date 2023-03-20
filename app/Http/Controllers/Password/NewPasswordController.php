@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Password;
 
 use App\Helpers\Views;
 use App\Http\Controllers\Controller;

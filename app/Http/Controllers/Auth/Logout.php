@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Login;
+namespace App\Http\Controllers\Auth;
 
 use App\Helpers\Middlewares;
 use App\Http\Controllers\Controller;

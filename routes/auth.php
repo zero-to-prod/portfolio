@@ -3,8 +3,8 @@
 use App\Helpers\Middlewares;
 use App\Helpers\Routes;
 use App\Http\Controllers\Admin\File\FileUploadResponse;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Password\ConfirmablePasswordController;
+use App\Http\Controllers\Password\PasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Register\VerificationSend;
 use Illuminate\Support\Facades\Route;

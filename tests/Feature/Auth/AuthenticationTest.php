@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Http\Controllers\Login\Login;
+use App\Http\Controllers\Auth\Login;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;

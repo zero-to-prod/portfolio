@@ -14,8 +14,6 @@ class WebRoutes
     public Routes $file = Routes::file;
     public Routes $privacy = Routes::privacy;
     public Routes $read = Routes::read;
-    public Routes $results = Routes::results;
-    public Routes $search = Routes::search;
     public Routes $newsletter = Routes::newsletter;
     public Routes $subscribe = Routes::subscribe;
     public Routes $tos = Routes::tos;

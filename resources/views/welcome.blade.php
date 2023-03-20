@@ -14,7 +14,7 @@ use Illuminate\Support\Collection;
         @foreach($tags as $tag)
             <section>
                 <x-a class="mb-2 2col:mb-0 2col:ml-0 flex gap-x-2 p-2 btn-ghost"
-                     :href="to()->web->results($tag)"
+                     :href="to()->results($tag)"
                      title="Topic: {{$tag->name}}"
                 >
                     @if($tag->file !== null)

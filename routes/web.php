@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::getAs(to()->welcome, WelcomeView::class);
 Route::postAs(to()->search, SearchRedirect::class);
-
+Route::getAs(Routes::results, ResultsView::class);
 
 
 Route::getAs(Routes::auth_github_callback, GithubCallback::class);
@@ -38,7 +38,7 @@ Route::middlewareAs(Middlewares::signed)->group(function () {
 });
 Route::getAs(Routes::privacy, fn()=> view('privacy'));
 Route::getAs(Routes::read, ReadView::class);
-Route::getAs(Routes::results, ResultsView::class);
+
 Route::getAs(Routes::newsletter, NewsletterView::class);
 Route::getAs(Routes::subscribe, fn() => view('subscribe'));
 Route::getAs(Routes::tos, fn() => view('tos'));

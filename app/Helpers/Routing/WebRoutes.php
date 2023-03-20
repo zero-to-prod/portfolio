@@ -4,11 +4,8 @@ namespace App\Helpers\Routing;
 
 use App\Helpers\Routes;
 use App\Http\Controllers\Admin\File\FileServeResponse;
-use App\Http\Controllers\ResultsView;
-use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
-use App\Models\Tag;
 
 class WebRoutes
 {
@@ -48,34 +45,6 @@ class WebRoutes
     public function subscribe(): string
     {
         return route_as($this->subscribe);
-    }
-
-    public function resultsTopics(): string
-    {
-        return route_as($this->results, [ResultsView::topics => true]);
-    }
-
-    public function resultsPopular(): string
-    {
-        return route_as($this->results, [ResultsView::popular => true]);
-    }
-
-    public function results(?Tag $tag = null): string
-    {
-        if (is_null($tag)) {
-            return route_as($this->results);
-        }
-
-        return route_as($this->results, [ResultsView::tag => $tag->slug]);
-    }
-
-    public function resultsAuthor(?Author $author = null): string
-    {
-        if (is_null($author)) {
-            return route_as($this->results);
-        }
-
-        return route_as($this->results, [ResultsView::author => $author->slug]);
     }
 
     public function read(Post $post): string

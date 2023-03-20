@@ -25,9 +25,9 @@
                     <h3>Pages</h3>
                     <ul role="list" class="mt-6 space-y-4">
                         <li><a href="{{to()->welcome()}}" class="">Home</a></li>
-                        <li><a href="{{to()->web->results()}}">Search</a></li>
-                        <li><a href="{{to()->web->resultsPopular()}}">Popular</a></li>
-                        <li><a href="{{to()->web->resultsTopics()}}">Topics</a></li>
+                        <li><a href="{{to()->results()}}">Search</a></li>
+                        <li><a href="{{to()->resultsPopular()}}">Popular</a></li>
+                        <li><a href="{{to()->resultsTopics()}}">Topics</a></li>
                     </ul>
                 </div>
                 <div class="mt-10 md:mt-0">

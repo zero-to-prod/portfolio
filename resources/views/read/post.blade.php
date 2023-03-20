@@ -43,7 +43,7 @@ $cvc = ThanksResponse::cvc;
                     </div>
                     <div class="mt-2 flex w-full flex-wrap justify-between gap-2">
                         <x-a class="mr-4 flex gap-2" title="Authors Page"
-                             :href="to()->web->resultsAuthor($post->author())">
+                             :href="to()->resultsAuthor($post->author())">
                             <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page"
                                    :file="$post->author()->file" :height="80"/>
                             <div class="flex flex-col">

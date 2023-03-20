@@ -17,14 +17,14 @@ use Illuminate\Support\Collection;
         Home
     </x-a>
     <x-a class="{{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="to()->web->resultsPopular()"
+         :href="to()->resultsPopular()"
          title="Popular"
     >
         <x-svg :name="'popular'"/>
         Popular
     </x-a>
     <x-a class="{{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="to()->web->resultsTopics()"
+         :href="to()->resultsTopics()"
          title="Topics"
     >
         <x-svg :name="'topics'"/>
@@ -40,7 +40,7 @@ use Illuminate\Support\Collection;
     <x-divider class="py-2"/>
     @forEach($tags as $tag)
         <x-a class="{{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-base-200' : '' }}"
-             :href="to()->web->results($tag)"
+             :href="to()->results($tag)"
              title="Topic: {{$tag->name}}"
         >
             @if($tag->file !== null)
@@ -60,14 +60,14 @@ use Illuminate\Support\Collection;
         Home
     </x-a>
     <x-a class=" {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="to()->web->resultsPopular()"
+         :href="to()->resultsPopular()"
          title="Popular"
     >
         <x-svg class="mx-auto" :name="'popular'"/>
         Popular
     </x-a>
     <x-a class=" {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-base-200' : '' }}"
-         :href="to()->web->resultsTopics()"
+         :href="to()->resultsTopics()"
          title="Topics"
     >
         <x-svg class="mx-auto" :name="'topics'"/>
@@ -83,7 +83,7 @@ use Illuminate\Support\Collection;
     <x-divider class="py-2"/>
     @forEach($tags as $tag)
         <x-a class="!p-4 {{ request()->query(ResultsView::tag) === $tag->slug ? 'bg-base-200' : '' }}"
-             :href="to()->web->results($tag)"
+             :href="to()->results($tag)"
              title="{{$tag->name}}"
         >
             @if($tag->file !== null)

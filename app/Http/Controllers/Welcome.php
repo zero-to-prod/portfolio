@@ -8,7 +8,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-class WelcomeView extends Controller
+class Welcome extends Controller
 {
 
     public const tags = 'tags';

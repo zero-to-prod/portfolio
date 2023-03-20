@@ -17,7 +17,7 @@ class ContactStoreTest extends TestCase
     /**
      * @test
      * @see To::contact_store()
-     * @see ConnectStoreRedirect::__invoke
+     * @see Store::__invoke
      */
     public function stores_a_message_and_creates_a_related_contact(): void
     {
@@ -56,7 +56,7 @@ class ContactStoreTest extends TestCase
     /**
      * @test
      * @see To::contact_store()
-     * @see ConnectStoreRedirect::__invoke
+     * @see Store::__invoke
      */
     public function fails_if_nothing_is_not_passed(): void
     {

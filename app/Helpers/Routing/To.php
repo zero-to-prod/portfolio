@@ -3,8 +3,8 @@
 namespace App\Helpers\Routing;
 
 use App\Helpers\Routes;
-use App\Http\Controllers\Admin\File\FileServeResponse;
-use App\Http\Controllers\ResultsView;
+use App\Http\Controllers\Admin\File\FileResponse;
+use App\Http\Controllers\Results;
 use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
@@ -67,7 +67,7 @@ class To
             return route_as($this->results);
         }
 
-        return route_as($this->results, [ResultsView::topic => $tag]);
+        return route_as($this->results, [Results::topic => $tag]);
     }
 
     /**
@@ -75,7 +75,7 @@ class To
      */
     public function resultsTopics(): string
     {
-        return route_as($this->results, [ResultsView::topics => true]);
+        return route_as($this->results, [Results::topics => true]);
     }
 
     /**
@@ -83,7 +83,7 @@ class To
      */
     public function resultsPopular(): string
     {
-        return route_as($this->results, [ResultsView::popular => true]);
+        return route_as($this->results, [Results::popular => true]);
     }
 
     /**
@@ -95,19 +95,19 @@ class To
             return route_as($this->results);
         }
 
-        return route_as($this->results, [ResultsView::author => $author]);
+        return route_as($this->results, [Results::author => $author]);
     }
 
     /**
      * @see FileTest
-     * @see FileServeResponse
+     * @see File
      */
     public function file(File $file, ?int $width = null, ?int $height = null): string
     {
         return route_as($this->file, [
-            FileServeResponse::file => $file->name,
-            FileServeResponse::width => $width,
-            FileServeResponse::height => $height,
+            FileResponse::file => $file->name,
+            FileResponse::width => $width,
+            FileResponse::height => $height,
         ]);
     }
 

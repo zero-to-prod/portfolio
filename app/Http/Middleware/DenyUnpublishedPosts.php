@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Controllers\ReadView;
+use App\Http\Controllers\Read;
 use App\Models\Post;
 use Closure;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class DenyUnpublishedPosts
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $post = $request->route(ReadView::post);
+        $post = $request->route(Read::post);
 
         if ($post instanceof Post && $post->isNotPublished() && route_is(to()->read)) {
             abort(404);

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ResultsView;
+use App\Http\Controllers\Results;
 use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Collection;
 /* @var Tag $tag */
 /* @var ?Author $author_model */
 
-$title = request()->query(ResultsView::query);
-$title = request()->query(ResultsView::topic) ?? $title;
-$title = request()->query(ResultsView::topics) !== null ? 'Topics' : $title;
-$title = request()->query(ResultsView::popular) !== null ? 'Popular' : $title;
+$title = request()->query(Results::query);
+$title = request()->query(Results::topic) ?? $title;
+$title = request()->query(Results::topics) !== null ? 'Topics' : $title;
+$title = request()->query(Results::popular) !== null ? 'Popular' : $title;
 $author_model = null;
 ?>
 <x-main :title="$title">
@@ -30,7 +30,7 @@ $author_model = null;
                 </div>
                 <x-divider/>
             @endif
-            @if(request()->query(ResultsView::query) !== null)
+            @if(request()->query(Results::query) !== null)
                 <div class="flex gap-x-2 my-2 ml-2 2col:ml-0">
                     <x-svg :name="'search'" class="!h-10 !w-10"/>
                     <h2 class="my-auto text-lg font-semibold">
@@ -39,7 +39,7 @@ $author_model = null;
                 </div>
                 <x-divider/>
             @endif
-            @if($author_model !== null && request()->query(ResultsView::author) !== null)
+            @if($author_model !== null && request()->query(Results::author) !== null)
                 <div class="flex gap-x-2 my-2 ml-2 2col:ml-0">
                     <x-svg :name="'search'" class="!h-10 !w-10"/>
                     <h2 class="my-auto text-lg font-semibold">
@@ -48,7 +48,7 @@ $author_model = null;
                 </div>
                 <x-divider/>
             @endif
-            @if(request()->query(ResultsView::popular) !== null)
+            @if(request()->query(Results::popular) !== null)
                 <div class="mb-2 flex gap-x-2 pt-2 ml-2 2col:ml-0" title="Popular">
                     <x-svg :name="'popular'" class="!h-10 !w-10"/>
                     <h2 class="-mx-1 my-auto text-lg font-semibold">

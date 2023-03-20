@@ -2,7 +2,7 @@
 
 <?php
 
-use App\Http\Controllers\ResultsView;
+use App\Http\Controllers\Results;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
 
@@ -16,14 +16,14 @@ use Illuminate\Support\Collection;
         <x-svg :name="'home'"/>
         Home
     </x-a>
-    <x-a class="{{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-base-200' : '' }}"
+    <x-a class="{{ request()->query(Results::popular ?? null) !== null ? 'bg-base-200' : '' }}"
          :href="to()->resultsPopular()"
          title="Popular"
     >
         <x-svg :name="'popular'"/>
         Popular
     </x-a>
-    <x-a class="{{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-base-200' : '' }}"
+    <x-a class="{{ request()->query(Results::topics ?? null) !== null ? 'bg-base-200' : '' }}"
          :href="to()->resultsTopics()"
          title="Topics"
     >
@@ -39,7 +39,7 @@ use Illuminate\Support\Collection;
     </x-a>
     <x-divider class="py-2"/>
     @forEach($tags as $tag)
-        <x-a class="{{ request()->query(ResultsView::topic) === $tag->slug ? 'bg-base-200' : '' }}"
+        <x-a class="{{ request()->query(Results::topic) === $tag->slug ? 'bg-base-200' : '' }}"
              :href="to()->results($tag)"
              title="Topic: {{$tag->name}}"
         >
@@ -59,14 +59,14 @@ use Illuminate\Support\Collection;
         <x-svg :name="'home'" class="mx-auto"/>
         Home
     </x-a>
-    <x-a class=" {{ request()->query(ResultsView::popular ?? null) !== null ? 'bg-base-200' : '' }}"
+    <x-a class=" {{ request()->query(Results::popular ?? null) !== null ? 'bg-base-200' : '' }}"
          :href="to()->resultsPopular()"
          title="Popular"
     >
         <x-svg class="mx-auto" :name="'popular'"/>
         Popular
     </x-a>
-    <x-a class=" {{ request()->query(ResultsView::topics ?? null) !== null ? 'bg-base-200' : '' }}"
+    <x-a class=" {{ request()->query(Results::topics ?? null) !== null ? 'bg-base-200' : '' }}"
          :href="to()->resultsTopics()"
          title="Topics"
     >
@@ -82,7 +82,7 @@ use Illuminate\Support\Collection;
     </x-a>
     <x-divider class="py-2"/>
     @forEach($tags as $tag)
-        <x-a class="!p-4 {{ request()->query(ResultsView::topic) === $tag->slug ? 'bg-base-200' : '' }}"
+        <x-a class="!p-4 {{ request()->query(Results::topic) === $tag->slug ? 'bg-base-200' : '' }}"
              :href="to()->results($tag)"
              title="{{$tag->name}}"
         >

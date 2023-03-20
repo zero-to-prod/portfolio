@@ -2,7 +2,7 @@
 
 namespace Register;
 
-use App\Http\Controllers\Register\StoreRedirect;
+use App\Http\Controllers\Register\Store;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -16,7 +16,7 @@ class NoticeTest extends TestCase
      */
     public function ok(): void
     {
-        $this->get(StoreRedirect::redirectUrl())->assertOk();
+        $this->get(Store::redirectUrl())->assertOk();
     }
 
     /**

@@ -12,7 +12,7 @@ use Image;
 use Storage;
 use Str;
 
-class FileServeResponse extends Controller
+class FileResponse extends Controller
 {
     public const file = 'file';
     public const width = 'width';

@@ -9,7 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
-class StoreRedirect extends Controller
+class Store extends Controller
 {
 
     public const name = 'name';

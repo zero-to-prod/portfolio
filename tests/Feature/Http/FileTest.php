@@ -2,7 +2,7 @@
 
 namespace Http;
 
-use App\Http\Controllers\Admin\File\FileServeResponse;
+use App\Http\Controllers\Admin\File\FileResponse;
 use App\Models\File;
 use Cache;
 use Closure;
@@ -16,7 +16,7 @@ class FileTest extends TestCase
 
     /**
      * @test
-     * @see FileServeResponse
+     * @see FileResponse
      */
     public function file_download(): void
     {
@@ -40,7 +40,7 @@ class FileTest extends TestCase
 
     /**
      * @test
-     * @see FileServeResponse
+     * @see FileResponse
      */
     public function returns_cached_response_when_available(): void
     {

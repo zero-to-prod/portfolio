@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\ConnectStoreRedirect;
+use App\Http\Controllers\Store;
 
-$email = ConnectStoreRedirect::email;
-$subject = ConnectStoreRedirect::subject;
-$body = ConnectStoreRedirect::body;
+$email = Store::email;
+$subject = Store::subject;
+$body = Store::body;
 
 ?>
 <x-main :title="'Privacy'">

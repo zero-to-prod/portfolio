@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\TagTypes;
-use App\Helpers\Views;
 use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
@@ -13,7 +12,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class ResultsView extends Controller
+class Results extends Controller
 {
     public const query = 'query';
     public const topic = 'topic';
@@ -76,7 +75,7 @@ class ResultsView extends Controller
             $author_model = Author::where(Author::slug, $author)->first();
         }
 
-        return view_as(Views::results, [
+        return view('results', [
             self::posts => $posts,
             self::tag => $tag,
             self::author_model => $author_model,

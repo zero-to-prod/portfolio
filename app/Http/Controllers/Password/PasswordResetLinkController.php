@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Password;
 
-use App\Helpers\Views;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,7 +15,7 @@ class PasswordResetLinkController extends Controller
      */
     public function create(): View
     {
-        return view_as(Views::auth_forgotPassword);
+        return view('auth.forgot-password');
     }
 
     /**

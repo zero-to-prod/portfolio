@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Password;
 
-use App\Helpers\Views;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +19,7 @@ class NewPasswordController extends Controller
      */
     public function create(Request $request): View
     {
-        return view_as(Views::auth_resetPassword, ['request' => $request]);
+        return view('auth.reset-password', ['request' => $request]);
     }
 
     /**

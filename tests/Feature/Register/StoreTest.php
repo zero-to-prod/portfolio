@@ -2,7 +2,7 @@
 
 namespace Register;
 
-use App\Http\Controllers\Register\StoreRedirect;
+use App\Http\Controllers\Register\Store;
 use App\Models\User;
 use Event;
 use Exception;
@@ -20,7 +20,7 @@ class StoreTest extends TestCase
     /**
      * @test
      * @throws Exception
-     * @see \App\Http\Controllers\Register\StoreRedirect
+     * @see \App\Http\Controllers\Register\Store
      */
     public function register(): void
     {
@@ -29,10 +29,10 @@ class StoreTest extends TestCase
         $guest = user_f()->make();
 
         $response = $this->post(to()->register->store(), [
-            StoreRedirect::name => $guest->name,
-            StoreRedirect::email => $guest->email,
-            StoreRedirect::password => $guest->password,
-            StoreRedirect::password_confirmation => $guest->password,
+            Store::name => $guest->name,
+            Store::email => $guest->email,
+            Store::password => $guest->password,
+            Store::password_confirmation => $guest->password,
         ]);
 
         /* Authentication */
@@ -54,6 +54,6 @@ class StoreTest extends TestCase
         Notification::assertSentToTimes($user, VerifyEmail::class);
 
           /* Redirect */
-        $response->assertRedirect(StoreRedirect::redirectUrl());
+        $response->assertRedirect(Store::redirectUrl());
     }
 }

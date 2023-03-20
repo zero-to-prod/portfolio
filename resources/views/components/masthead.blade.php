@@ -2,10 +2,10 @@
 
 <?php
 
-use App\Http\Controllers\ResultsView;
-use App\Http\Controllers\SearchRedirect;
+use App\Http\Controllers\Results;
+use App\Http\Controllers\Search;
 
-$search = SearchRedirect::search;
+$search = Search::search;
 
 ?>
 <header id="masthead"
@@ -30,7 +30,7 @@ $search = SearchRedirect::search;
                         <input class="block w-full appearance-none rounded-none rounded-l-md border-0 pl-4 ring-1 ring-inset ring-gray-300 h-[40px] py-1.5 focus:ring-primary focus:ring-2 focus:ring-inset"
                                name="{{$search}}"
                                id="{{$search}}"
-                               value="{{request()->query(ResultsView::query)}}"
+                               value="{{request()->query(Results::query)}}"
                                placeholder="Search">
                     </div>
                     <div class="absolute inset-y-0 right-14 2col:flex flex hidden py-1.5 pr-1.5">

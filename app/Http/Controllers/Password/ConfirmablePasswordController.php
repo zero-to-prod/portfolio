@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Password;
 
-use App\Helpers\Views;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,7 +16,7 @@ class ConfirmablePasswordController extends Controller
      */
     public function show(): View
     {
-        return view_as(Views::auth_confirmPassword);
+        return view('auth.confirm-password');
     }
 
     /**

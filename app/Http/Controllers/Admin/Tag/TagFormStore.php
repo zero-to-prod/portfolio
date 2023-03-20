@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Throwable;
 
-class TagFormRedirect extends Controller
+class TagFormStore extends Controller
 {
     public const id = 'id';
     public const name = 'name';

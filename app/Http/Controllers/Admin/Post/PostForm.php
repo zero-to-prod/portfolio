@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
-use App\Helpers\Views;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Contracts\Foundation\Application;
@@ -10,7 +9,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class PostFormView extends Controller
+class PostForm extends Controller
 {
     public const post_model = 'post_model';
     public const post = 'post';
@@ -26,7 +25,7 @@ class PostFormView extends Controller
             $author_model = $post_model?->authors->first();
         }
 
-        return view_as(Views::admin_post_form, [
+        return view('admin.posts.post_form', [
             self::post_model => $post_model,
             self::author_model => $author_model
         ]);

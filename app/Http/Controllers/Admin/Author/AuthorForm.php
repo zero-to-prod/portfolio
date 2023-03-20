@@ -10,15 +10,12 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class AuthorIndexView extends Controller
+class AuthorForm extends Controller
 {
-    public const authors = 'authors';
-    public const views = 'views';
+    public const author = 'author';
 
     public function __invoke(Request $request): View|Factory|Application
     {
-        return view_as(Views::admin_author_index, [
-            self::authors => Author::with(Author::file)->get(),
-        ]);
+        return view_as(Views::admin_author_form, [self::author => Author::find($request->{self::author})]);
     }
 }

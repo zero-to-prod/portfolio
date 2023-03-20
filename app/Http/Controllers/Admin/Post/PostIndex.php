@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
-use App\Helpers\Views;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Contracts\Foundation\Application;
@@ -10,7 +9,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class PostIndexView extends Controller
+class PostIndex extends Controller
 {
     public const posts = 'posts';
 
@@ -28,6 +27,6 @@ class PostIndexView extends Controller
             ->limit(20)
             ->get();
 
-        return view_as(Views::admin_post_index, [self::posts => $unpublished->merge($published)]);
+        return view('admin.posts.post_index', [self::posts => $unpublished->merge($published)]);
     }
 }

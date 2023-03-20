@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class TagFormView extends Controller
+class TagForm extends Controller
 {
     public const tag = 'tag';
 

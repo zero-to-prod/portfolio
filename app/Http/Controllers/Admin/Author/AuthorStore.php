@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Throwable;
 
-class AuthorFormRedirect extends Controller
+class AuthorStore extends Controller
 {
     public const id = 'id';
     public const name = 'name';

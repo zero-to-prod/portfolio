@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Throwable;
 
-class PostUnPublishRedirect extends Controller
+class PostUnPublish extends Controller
 {
     public const id = 'id';
 

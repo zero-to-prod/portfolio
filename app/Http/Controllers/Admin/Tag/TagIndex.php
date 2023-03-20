@@ -12,7 +12,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class TagIndexView extends Controller
+class TagIndex extends Controller
 {
     public const tags = 'tags';
     public const views = 'views';

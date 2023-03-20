@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Throwable;
 use Upload;
 
-class PostFormRedirect extends Controller
+class PostStore extends Controller
 {
     public const id = 'id';
     public const title = 'title';

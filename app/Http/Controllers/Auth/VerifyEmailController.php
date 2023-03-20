@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 class VerifyEmailController extends Controller
 {
     /**
-     * Mark the authenticated user's email address as verified.
+     * @see VerificationVerifyTest
      */
     public function __invoke(EmailVerificationRequest $request): RedirectResponse
     {
@@ -22,6 +22,11 @@ class VerifyEmailController extends Controller
             event(new Verified($request->user()));
         }
 
-        return redirect(temp_signed_route(to()->web->register->verification));
+        return redirect(self::redirectUrl());
+    }
+
+    public static function redirectUrl(): string
+    {
+        return temp_signed_route(to()->web->register->verification);
     }
 }

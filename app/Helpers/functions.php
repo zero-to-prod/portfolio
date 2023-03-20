@@ -56,13 +56,13 @@ if (!function_exists('redirect_as')) {
 }
 
 if (!function_exists('temp_singed_route')) {
-    function temp_signed_route($name, int $ttl = 5): string
+    function temp_signed_route($name, $expiration = 5, $parameters = [], $absolute = true): string
     {
         if ($name instanceof \UnitEnum) {
-            return URL::temporarySignedRoute($name->name, now()->addMinutes($ttl));
+            return URL::temporarySignedRoute($name->name, now()->addMinutes($expiration), $parameters, $absolute);
         }
 
-        return URL::temporarySignedRoute($name, now()->addMinutes($ttl));
+        return URL::temporarySignedRoute($name, now()->addMinutes($expiration), $parameters, $absolute);
     }
 }
 

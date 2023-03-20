@@ -12,9 +12,8 @@ use App\Models\Tag;
 
 class WebRoutes
 {
-    public Routes $connect_store = Routes::connect_store;
+    public Routes $connect_store = Routes::contact_store;
     public Routes $contact = Routes::contact;
-    public Routes $cv = Routes::cv;
     public Routes $file = Routes::file;
     public Routes $privacy = Routes::privacy;
     public Routes $read = Routes::read;
@@ -102,11 +101,6 @@ class WebRoutes
             FileServeResponse::width => $width,
             FileServeResponse::height => $height,
         ]);
-    }
-
-    public function cv(): string
-    {
-        return route_as($this->cv);
     }
 
     public function contact(): string

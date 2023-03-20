@@ -17,7 +17,7 @@ use App\Helpers\Routes;
                                 'border-transparent hover:border-gray-300 hover:text-gray-700' => route_name_isnt(to()->web->welcome),
                                 ])
                     >david<span class="text-primary font-semibold ">DESIGN</span></a>
-                    <a aria-label="CV Page" href="{{to()->web->cv()}}"
+                    <a aria-label="CV Page" href="/cv/"
                             @class([
                                 'inline-flex items-center border-b-2 text-sm font-medium px-8 text-gray-600',
                                 'border-primary' => route_name_is(to()->web->cv->name),

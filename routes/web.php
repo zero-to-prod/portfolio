@@ -47,7 +47,7 @@ Route::getAs(Routes::newsletter, NewsletterView::class);
 Route::getAs(Routes::subscribe, SubscribeView::class);
 Route::getAs(Routes::tos, TermsOfServiceView::class);
 Route::getAs(Routes::welcome, WelcomeView::class);
-Route::postAs(Routes::connect_store, ConnectStoreRedirect::class);
+Route::postAs(Routes::contact_store, ConnectStoreRedirect::class);
 Route::postAs(Routes::search, SearchRedirect::class);
 
 Route::middleware('auth')->group(function () {

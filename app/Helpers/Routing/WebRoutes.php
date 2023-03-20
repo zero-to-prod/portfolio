@@ -78,11 +78,6 @@ class WebRoutes
         return route_as($this->results, [ResultsView::author => $author->slug]);
     }
 
-    public function search(): string
-    {
-        return route_as($this->search);
-    }
-
     public function read(Post $post): string
     {
         return route_as($this->read, $post);

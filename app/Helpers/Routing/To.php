@@ -7,6 +7,7 @@ use App\Helpers\Routes;
 class To
 {
     public Routes $welcome = Routes::welcome;
+    public Routes $search = Routes::search;
 
     public function __construct(
         public AdminRoutes $admin = new AdminRoutes,
@@ -24,5 +25,13 @@ class To
     public function welcome(): string
     {
         return route_as($this->welcome);
+    }
+
+    /**
+     * @see SearchRedirectTest
+     */
+    public function search(): string
+    {
+        return route_as($this->search);
     }
 }

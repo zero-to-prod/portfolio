@@ -18,7 +18,7 @@ use App\Http\Controllers\WelcomeView;
 use Illuminate\Support\Facades\Route;
 
 Route::getAs(to()->welcome, WelcomeView::class);
-Route::postAs(to()->web->search, SearchRedirect::class);
+Route::postAs(to()->search, SearchRedirect::class);
 
 
 

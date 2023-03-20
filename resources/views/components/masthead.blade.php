@@ -22,7 +22,7 @@ $search = SearchRedirect::search;
             <x-logo/>
         </x-a>
         <div class="my-auto w-full max-w-2xl mr-2 2col:mx-auto">
-            <form action="{{to()->web->search()}}" method="post">
+            <form action="{{to()->search()}}" method="post">
                 @csrf
                 <label for="{{$search}}"></label>
                 <div class="relative flex rounded-md">

@@ -1,19 +1,19 @@
 <?php
 
-namespace Login;
+namespace Tests\Feature\Login;
 
-use App\Http\Controllers\Login\StoreRedirect;
+use App\Http\Controllers\Login\Login;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class LoginStoreTest extends TestCase
+class LoginTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
      * @test
-     * @see \App\Http\Controllers\Login\StoreRedirect
+     * @see Login
      */
     public function login(): void
     {
@@ -23,12 +23,12 @@ class LoginStoreTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirectAs(StoreRedirect::redirect_as);
+        $response->assertRedirectAs(Login::redirect_as);
     }
 
     /**
      * @test
-     * @see StoreRedirect
+     * @see Login
      */
     public function login_rejected(): void
     {

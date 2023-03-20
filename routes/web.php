@@ -5,13 +5,13 @@ use App\Helpers\Middlewares;
 use App\Helpers\Routes;
 use App\Helpers\Views;
 use App\Http\Controllers\Admin\File\FileServeResponse;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\ConnectStoreRedirect;
 use App\Http\Controllers\GithubCallback;
 use App\Http\Controllers\GithubRedirect;
-use App\Http\Controllers\Login\StoreRedirect as LoginStoreRedirect;
+use App\Http\Controllers\Login\Login;
+use App\Http\Controllers\Login\Logout;
 use App\Http\Controllers\NewsletterView;
 use App\Http\Controllers\PrivacyView;
 use App\Http\Controllers\ReadView;
@@ -32,7 +32,7 @@ Route::getAs(Routes::contact, Views::contact);
 Route::getAs(Routes::file, FileServeResponse::class);
 /* Login */
 Route::getAs(Routes::loginIndex, fn() => view('login'));
-Route::postAs(Routes::login_store, LoginStoreRedirect::class);
+Route::postAs(Routes::login, Login::class);
 /* Register */
 Route::getAs(Routes::registerIndex, fn() => view('register.index'));
 Route::postAs(Routes::register_store, RegisterStoreRedirect::class);
@@ -69,6 +69,5 @@ Route::middleware('auth')->group(function () {
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('logout');
+    Route::postAs(Routes::logout, Logout::class);
 });

@@ -9,7 +9,10 @@ class LoginIndexTest extends TestCase
 {
     use RefreshDatabase;
 
-    /* @test */
+    /**
+     * @test
+     * @see routes/web.php
+     */
     public function ok(): void
     {
         $this->get(to()->web->login->index())->assertOk();

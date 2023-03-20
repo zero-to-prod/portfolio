@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 use Session;
 
-class StoreRedirect extends Controller
+class Login extends Controller
 {
     public const redirect_as = Routes::welcome;
 

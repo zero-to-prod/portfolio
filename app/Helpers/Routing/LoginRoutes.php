@@ -3,7 +3,7 @@
 namespace App\Helpers\Routing;
 
 use App\Helpers\Routes;
-use App\Http\Controllers\Login\StoreRedirect;
+use App\Http\Controllers\Login\Login;
 
 class LoginRoutes
 {
@@ -19,11 +19,11 @@ class LoginRoutes
     }
 
     /**
-     * @see StoreRedirect;
+     * @see Login;
      * @see LoginStoreTest;
      */
     public function store($parameters = [], $absolute = true): string
     {
-        return route_as(Routes::login_store, $parameters, $absolute);
+        return route_as(Routes::login, $parameters, $absolute);
     }
 }

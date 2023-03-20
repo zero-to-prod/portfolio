@@ -3,7 +3,7 @@
 namespace App\Helpers\Routing;
 
 use App\Helpers\Routes;
-use App\Http\Controllers\Login\StoreRedirect;
+use App\Http\Controllers\Login\Login;
 use App\Http\Controllers\Register\VerificationNotice;
 use App\Http\Controllers\Register\VerificationSend;
 
@@ -23,7 +23,7 @@ class WebRegisterRoutes
     }
 
     /**
-     * @see StoreRedirect;
+     * @see Login;
      * @see LoginStoreTest;
      * @see routes/web.php
      */

@@ -10,7 +10,6 @@ class AuthRoutes
     public Routes $upload = Routes::auth_upload;
     public Routes $emailVerificationNotice = Routes::auth_email_verificationNotice;
     public Routes $emailVerificationNotification = Routes::auth_email_verificationNotification;
-    public Routes $logout = Routes::auth_logout;
 
     public function __construct(
         public GithubRoutes        $github = new GithubRoutes,
@@ -25,7 +24,7 @@ class AuthRoutes
 
     public function logout(): string
     {
-        return route_as($this->logout);
+        return route_as(Routes::logout);
     }
 
     public function emailVerificationNotice(): string

@@ -19,7 +19,8 @@ enum Routes: string
     case cv = 'cv';
     case file = 'file/{file}';
     case loginIndex = 'login';
-    case login_store = 'web/login/store';
+    case login = 'login/store';
+    case logout = 'logout';
     case registerIndex = 'register';
     case register_store = 'register/store';
     case register_notice = 'register/notice';
@@ -43,7 +44,7 @@ enum Routes: string
 
     case auth_github_callback = 'auth/github/callback';
     case auth_github_index = 'auth/github';
-    case auth_logout = 'logout';
+
     case auth_passwordNew_create = 'password-new/{token}';
     case auth_passwordNew_store = 'password-new/store';
     case auth_passwordReset_request = 'password-reset/request';

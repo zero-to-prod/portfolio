@@ -6,6 +6,8 @@ use App\Helpers\Routes;
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Register\VerificationNotice;
 use App\Http\Controllers\Register\VerificationSend;
+use Register\NoticeTest;
+use Tests\Feature\Register\IndexTest;
 
 class RegisterRoutes
 {
@@ -16,8 +18,8 @@ class RegisterRoutes
     public Routes $store = Routes::register_store;
 
     /**
-     * @see RegisterIndexTest;
-     * @see resources/views/register.blade.php;
+     * @see IndexTest;
+     * @see resources/views/register/index.blade.php;
      * @see routes/web.php
      */
     public function index($parameters = [], $absolute = true): string
@@ -27,7 +29,7 @@ class RegisterRoutes
 
     /**
      * @see Login;
-     * @see LoginStoreTest;
+     * @see LoginTest;
      * @see routes/web.php
      */
     public function store($parameters = [], $absolute = true): string
@@ -36,7 +38,8 @@ class RegisterRoutes
     }
 
     /**
-     * @see RegisterNoticeViewTest;
+     * @see NoticeTest;
+     * @see resources/views/register/notice.blade.php;
      * @see routes/web.php
      */
     public function notice($parameters = [], $absolute = true): string
@@ -45,7 +48,8 @@ class RegisterRoutes
     }
 
     /**
-     * @see RegisterNoticeViewTest;
+     * @see VerificationTest;
+     * @see resources/views/register/verification.blade.php;
      * @see routes/web.php
      */
     public function verification($parameters = [], $absolute = true): string
@@ -55,7 +59,8 @@ class RegisterRoutes
 
     /**
      * @see VerificationNoticeTest
-     * @see \App\Http\Controllers\Register\VerificationNotice
+     * @see VerificationNotice
+     * @see resources/views/register/verification_notice.blade.php;
      * @see routes/web.php
      */
     public function verification_notice($parameters = [], $absolute = true): string

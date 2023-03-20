@@ -25,8 +25,8 @@ class WebRoutes
     public Routes $welcome = Routes::welcome;
 
     public function __construct(
-        public LoginRoutes       $login = new LoginRoutes,
-        public WebRegisterRoutes $register = new WebRegisterRoutes,
+        public LoginRoutes    $login = new LoginRoutes,
+        public RegisterRoutes $register = new RegisterRoutes,
     )
     {
     }

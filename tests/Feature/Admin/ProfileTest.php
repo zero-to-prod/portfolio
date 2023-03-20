@@ -57,7 +57,7 @@ class ProfileTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect(Routes::auth_profile_edit->value);
+            ->assertRedirect(Routes::profile_edit->value);
 
         $this->assertNotNull($user->refresh()->email_verified_at);
     }

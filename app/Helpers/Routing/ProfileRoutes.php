@@ -7,9 +7,9 @@ use App\Helpers\Routes;
 class ProfileRoutes
 {
 
-    public Routes $destroy = Routes::auth_profile_destroy;
-    public Routes $edit = Routes::auth_profile_edit;
-    public Routes $update = Routes::auth_profile_update;
+    public Routes $destroy = Routes::profile_destroy;
+    public Routes $edit = Routes::profile_edit;
+    public Routes $update = Routes::profile_update;
 
     public function update(): string
     {

@@ -37,25 +37,19 @@ enum Routes: string
     case welcome = '/';
 
     /* Auth */
-
-    case auth_email_verificationNotice = 'email/verification-notice/';
-    case auth_email_verificationNotification = 'email/verification-notification/';
-
     case auth_github_callback = 'auth/github/callback/';
     case auth_github_index = 'auth/github/';
 
-    case auth_passwordNew_create = 'password-new/{token}/';
-    case auth_passwordNew_store = 'password-new/store/';
-    case auth_passwordReset_request = 'password-reset/request/';
-    case auth_passwordReset_store = 'password-reset/email/';
-    case auth_password_confirm = 'password/confirm/';
-    case auth_password_store = 'password/store/';
+    case passwordNew_create = 'password-new/{token}/';
+    case passwordNew_store = 'password-new/store/';
+    case passwordReset_request = 'password-reset/request/';
+    case passwordReset_store = 'password-reset/email/';
+    case password_confirm = 'password/confirm/';
+    case password_store = 'password/store/';
     case auth_password_update = 'password/update/';
-    case auth_profile_destroy = 'profile/destroy/';
-    case auth_profile_edit = 'profile/edit/';
-    case auth_profile_update = 'profile/update/';
-    case auth_register_index = 'admin/register/';
-    case auth_register_store = 'admin/register/store/';
+    case profile_destroy = 'profile/destroy/';
+    case profile_edit = 'profile/edit/';
+    case profile_update = 'profile/update/';
     case auth_upload = 'upload/';
 
     /* Api */

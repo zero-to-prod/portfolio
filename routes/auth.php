@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 Route::postAs(Routes::auth_upload, FileUploadResponse::class);
 
 /* Profile */
-Route::getAs(Routes::auth_profile_edit, [ProfileController::class, 'edit']);
-Route::patchAs(Routes::auth_profile_update, [ProfileController::class, 'update']);
-Route::deleteAs(Routes::auth_profile_destroy, [ProfileController::class, 'destroy']);
+Route::getAs(Routes::profile_edit, [ProfileController::class, 'edit']);
+Route::patchAs(Routes::profile_update, [ProfileController::class, 'update']);
+Route::deleteAs(Routes::profile_destroy, [ProfileController::class, 'destroy']);
 
 /* Auth */
-Route::getAs(Routes::auth_password_confirm, [ConfirmablePasswordController::class, 'show']);
-Route::postAs(Routes::auth_password_store, [ConfirmablePasswordController::class, 'store']);
+Route::getAs(Routes::password_confirm, [ConfirmablePasswordController::class, 'show']);
+Route::postAs(Routes::password_store, [ConfirmablePasswordController::class, 'store']);
 Route::putAs(Routes::auth_password_update, [PasswordController::class, 'update']);
 
 Route::get(Routes::register_verification_notice->value, VerificationNotice::class)

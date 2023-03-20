@@ -15,7 +15,6 @@ class AuthRoutes
         public PasswordResetRoutes $passwordReset = new PasswordResetRoutes,
         public PasswordRoutes      $password = new PasswordRoutes,
         public ProfileRoutes       $profile = new ProfileRoutes,
-        public RegisterRoutes      $register = new RegisterRoutes,
     )
     {
     }

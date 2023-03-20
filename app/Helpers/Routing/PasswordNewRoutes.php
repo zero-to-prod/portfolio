@@ -7,8 +7,8 @@ use App\Helpers\Routes;
 class PasswordNewRoutes
 {
 
-    public Routes $create = Routes::auth_passwordNew_create;
-    public Routes $store = Routes::auth_passwordNew_store;
+    public Routes $create = Routes::passwordNew_create;
+    public Routes $store = Routes::passwordNew_store;
     public function store(): string
     {
         return route_as('password.store');

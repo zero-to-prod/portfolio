@@ -19,7 +19,7 @@ class DenyUnpublishedPosts
     {
         $post = $request->route(ReadView::post);
 
-        if ($post instanceof Post && $post->isNotPublished() && route_is(to()->web->read)) {
+        if ($post instanceof Post && $post->isNotPublished() && route_is(to()->read)) {
             abort(404);
         }
 

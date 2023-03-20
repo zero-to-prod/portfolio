@@ -15,6 +15,6 @@ class SearchRedirectTest extends TestCase
      */
     public function ok(): void
     {
-        $this->post(to()->welcome())->assertOk();
+        $this->get(to()->welcome())->assertOk();
     }
 }

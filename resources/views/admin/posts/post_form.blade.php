@@ -41,7 +41,7 @@ $in_body = PostFormRedirect::in_body;
                             </form>
                             @if($post_model->isPublished())
                                 <a class="btn btn-xs"
-                                   href="{{to()->web->read($post_model)}}"
+                                   href="{{to()->read($post_model)}}"
                                    target="_blank">
                                     View
                                 </a>

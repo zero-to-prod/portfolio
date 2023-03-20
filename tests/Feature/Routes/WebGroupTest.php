@@ -23,7 +23,7 @@ class WebGroupTest extends TestCase
     {
         return collect($this->getRouteList(Middlewares::web_group))->filter(function ($route) {
             $blacklist = [
-                to()->web->read->name,
+                to()->read->name,
                 to()->web->file->name,
                 to()->web->register->notice->name,
                 to()->web->register->verification->name,

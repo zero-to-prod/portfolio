@@ -48,7 +48,7 @@ use App\Models\Tag;
                                             <div class="flex justify-between">
                                                 <div class="flex  gap-4">
                                                     <figure>
-                                                        <a class="underline" href="{{to()->web->read($post)}}"
+                                                        <a class="underline" href="{{to()->read($post)}}"
                                                            target="_blank">
                                                             <x-img class="object-cover h-[100px] rounded-lg"
                                                                    :file="$post->file"

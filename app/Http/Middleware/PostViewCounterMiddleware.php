@@ -29,6 +29,6 @@ class PostViewCounterMiddleware
 
     protected function shouldIncrementView(Request $request, Post|string|null $post): bool
     {
-        return $post instanceof Post && route_is(to()->web->read);
+        return $post instanceof Post && route_is(to()->read);
     }
 }

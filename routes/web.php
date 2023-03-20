@@ -24,7 +24,7 @@ Route::getAs(to()->tos, fn() => view('tos'));
 Route::getAs(to()->privacy, fn()=> view('privacy'));
 Route::getAs(to()->newsletter, NewsletterView::class);
 Route::getAs(to()->subscribe, fn() => view('subscribe'));
-
+Route::getAs(to()->read, ReadView::class);
 
 Route::getAs(Routes::auth_github_callback, GithubCallback::class);
 Route::getAs(Routes::auth_github_index, fn() => Socialite::driver(Drivers::github->value)->redirect());
@@ -41,7 +41,7 @@ Route::middlewareAs(Middlewares::signed)->group(function () {
     Route::getAs(Routes::register_verification, fn() => view('register.verification'));
 });
 Route::getAs(Routes::privacy, fn()=> view('privacy'));
-Route::getAs(Routes::read, ReadView::class);
+
 
 
 

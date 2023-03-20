@@ -365,7 +365,7 @@ $cvc = ThanksResponse::cvc;
         ?>
         <div class="3col:flex hidden shrink-0 flex-col gap-2 w-[400px]">
             @foreach($posts as $post)
-                <x-a :href="to()->web->read($post)" class="flex flex-row gap-2">
+                <x-a :href="to()->read($post)" class="flex flex-row gap-2">
                     <div class="relative shrink-0">
                         <div class="overflow-hidden 2col:rounded-lg">
                             <x-img class="object-cover object-center h-[112px] w-[168px]"

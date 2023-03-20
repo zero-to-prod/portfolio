@@ -5,6 +5,7 @@ namespace App\Helpers\Routing;
 use App\Helpers\Routes;
 use App\Http\Controllers\ResultsView;
 use App\Models\Author;
+use App\Models\Post;
 use App\Models\Tag;
 
 class To
@@ -18,6 +19,7 @@ class To
     public Routes $subscribe = Routes::subscribe;
     public Routes $contact = Routes::contact;
     public Routes $contact_store = Routes::contact_store;
+    public Routes $read = Routes::read;
 
     public function __construct(
         public AdminRoutes $admin = new AdminRoutes,
@@ -99,5 +101,10 @@ class To
     public function contact_store(): string
     {
         return route_as($this->contact_store);
+    }
+
+    public function read(Post $post): string
+    {
+        return route_as($this->read, $post);
     }
 }

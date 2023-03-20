@@ -20,8 +20,8 @@ use App\Helpers\Routes;
                     <a aria-label="CV Page" href="/cv/"
                             @class([
                                 'inline-flex items-center border-b-2 text-sm font-medium px-8 text-gray-600',
-                                'border-primary' => route_name_is(to()->web->cv->name),
-                                'border-transparent hover:border-gray-300 hover:text-gray-700' => route_name_isnt(to()->web->cv->name),
+                                'border-primary' => false,
+                                'border-transparent hover:border-gray-300 hover:text-gray-700' => false,
                                 ])
                     >CV</a>
                 </div>

@@ -17,7 +17,7 @@ class VerificationNoticeTest extends TestCase
     public function ok(): void
     {
         $this->be(user_f()->unverified()->create());
-        $this->get(to()->web->register->verification_notice())->assertOk();
+        $this->get(to()->register->verification_notice())->assertOk();
     }
 
     /**
@@ -28,7 +28,7 @@ class VerificationNoticeTest extends TestCase
     {
         $this->be(user());
 
-        $this->get(to()->web->register->verification_notice())
+        $this->get(to()->register->verification_notice())
             ->assertRedirect(VerificationNotice::redirectUrl());
     }
 
@@ -38,6 +38,6 @@ class VerificationNoticeTest extends TestCase
      */
     public function does_not_access_when_not_logged_in(): void
     {
-        $this->get(to()->web->register->verification_notice())->assertRedirect();
+        $this->get(to()->register->verification_notice())->assertRedirect();
     }
 }

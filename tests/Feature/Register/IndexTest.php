@@ -12,6 +12,6 @@ class IndexTest extends TestCase
     /* @test */
     public function ok(): void
     {
-        $this->get(to()->web->register->index())->assertOk();
+        $this->get(to()->register->index())->assertOk();
     }
 }

@@ -13,7 +13,7 @@ use App\Models\File;
 
 
 <img {{ $attributes->merge(['class' => '']) }}
-     src="{{ to()->web->file($file, $width, $height) }}"
+     src="{{ to()->file($file, $width, $height) }}"
      title="{{$title ?? $file->original_name}}"
      alt="{{$alt ?? $file->original_name}}"
      height="{{$height}}"

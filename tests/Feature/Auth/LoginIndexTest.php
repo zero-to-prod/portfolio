@@ -15,6 +15,6 @@ class LoginIndexTest extends TestCase
      */
     public function ok(): void
     {
-        $this->get(to()->web->login->index())->assertOk();
+        $this->get(to()->login->index())->assertOk();
     }
 }

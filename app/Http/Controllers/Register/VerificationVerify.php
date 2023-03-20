@@ -27,6 +27,6 @@ class VerificationVerify extends Controller
 
     public static function redirectUrl(): string
     {
-        return temp_signed_route(to()->web->register->verification);
+        return temp_signed_route(to()->register->verification);
     }
 }

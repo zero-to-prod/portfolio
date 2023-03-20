@@ -18,13 +18,13 @@ use App\Http\Controllers\WelcomeView;
 use Illuminate\Support\Facades\Route;
 
 Route::getAs(to()->welcome, WelcomeView::class);
+Route::getAs(to()->read, ReadView::class);
 Route::postAs(to()->search, SearchRedirect::class);
 Route::getAs(to()->results, ResultsView::class);
 Route::getAs(to()->tos, fn() => view('tos'));
 Route::getAs(to()->privacy, fn()=> view('privacy'));
 Route::getAs(to()->newsletter, NewsletterView::class);
 Route::getAs(to()->subscribe, fn() => view('subscribe'));
-Route::getAs(to()->read, ReadView::class);
 
 Route::getAs(Routes::auth_github_callback, GithubCallback::class);
 Route::getAs(Routes::auth_github_index, fn() => Socialite::driver(Drivers::github->value)->redirect());
@@ -40,7 +40,7 @@ Route::middlewareAs(Middlewares::signed)->group(function () {
     Route::getAs(Routes::register_notice, fn() => view('register.notice'));
     Route::getAs(Routes::register_verification, fn() => view('register.verification'));
 });
-Route::getAs(Routes::privacy, fn()=> view('privacy'));
+
 
 
 

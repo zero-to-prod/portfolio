@@ -12,7 +12,7 @@
             </div>
         @endif
         <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{to()->web->register->verification_send() }}">
+            <form method="POST" action="{{to()->register->verification_send() }}">
                 @csrf
                 <x-primary-button>
                     {{ __('Resend Verification Email') }}

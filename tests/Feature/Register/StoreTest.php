@@ -28,7 +28,7 @@ class StoreTest extends TestCase
         Event::fake();
         $guest = user_f()->make();
 
-        $response = $this->post(to()->web->register->store(), [
+        $response = $this->post(to()->register->store(), [
             StoreRedirect::name => $guest->name,
             StoreRedirect::email => $guest->email,
             StoreRedirect::password => $guest->password,

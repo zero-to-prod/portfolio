@@ -26,7 +26,7 @@ $remember = LoginRequest::remember;
                 <span class="bg-white px-2 text-sm text-gray-500">Or use your email address</span>
             </div>
         </div>
-        <form class="space-y-4" method="POST" action="{{ to()->web->login->store() }}">
+        <form class="space-y-4" method="POST" action="{{ to()->login->store() }}">
             @csrf
             <x-form-control>
                 <label for="{{$email}}">Email*</label>

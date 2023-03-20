@@ -52,6 +52,6 @@ class Reactions extends Component
     {
         Session::put(SessionKeys::page->value, $this->url);
 
-        $this->redirect(to()->web->login->index());
+        $this->redirect(to()->login->index());
     }
 }

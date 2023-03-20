@@ -20,7 +20,7 @@ class VerificationSendTest extends TestCase
     {
         $this->be(user());
 
-        $this->post(to()->web->register->verification_send())
+        $this->post(to()->register->verification_send())
             ->assertRedirect(VerificationSend::redirectUrl());
     }
 
@@ -34,7 +34,7 @@ class VerificationSendTest extends TestCase
         $user = user_f()->unverified()->create();
         $this->be($user);
 
-        $this->post(to()->web->register->verification_send())
+        $this->post(to()->register->verification_send())
             ->assertRedirect();
 
         Notification::assertSentToTimes($user, VerifyEmail::class);

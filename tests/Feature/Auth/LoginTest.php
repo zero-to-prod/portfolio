@@ -17,7 +17,7 @@ class LoginTest extends TestCase
      */
     public function login(): void
     {
-        $response = $this->post(to()->web->login->store(), [
+        $response = $this->post(to()->login->store(), [
             LoginRequest::email => user()->email,
             LoginRequest::password => 'password',
         ]);
@@ -32,7 +32,7 @@ class LoginTest extends TestCase
      */
     public function login_rejected(): void
     {
-        $this->post(to()->web->login->store(), [
+        $this->post(to()->login->store(), [
             LoginRequest::email => user()->email,
             LoginRequest::password => 'wrong-password',
         ]);

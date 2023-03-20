@@ -25,7 +25,7 @@ class NoticeTest extends TestCase
      */
     public function requires_signed_url(): void
     {
-        $this->getAs(to()->web->register->notice())
+        $this->getAs(to()->register->notice())
             ->assertForbidden();
     }
 }

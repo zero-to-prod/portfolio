@@ -5,16 +5,17 @@ namespace Http;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class SearchRedirectTest extends TestCase
+class ReadTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
      * @test
-     * @see To::search()
+     * @see To::read()
      */
     public function ok(): void
     {
-        $this->post(to()->search())->assertRedirect();
+        $post = post_f()->published()->create();
+        $this->get(to()->read($post))->assertOk();
     }
 }

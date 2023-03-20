@@ -20,7 +20,10 @@ Route::getAs(to()->welcome, WelcomeView::class);
 Route::getAs(to()->read, ReadView::class);
 Route::postAs(to()->search, SearchRedirect::class);
 Route::getAs(to()->results, ResultsView::class);
-Route::getAs(to()->file, FileServeResponse::class);
+/* 2592000 = 30 days */
+Route::middleware('cache.headers:public;max_age=2592000;etag')->group(function () {
+    Route::getAs(to()->file, FileServeResponse::class);
+});
 
 /* Subscription */
 Route::getAs(to()->newsletter, NewsletterView::class);

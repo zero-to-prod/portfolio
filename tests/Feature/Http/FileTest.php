@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Storage;
 use Tests\TestCase;
 
-class FileServeResponseTest extends TestCase
+class FileTest extends TestCase
 {
     use RefreshDatabase;
 

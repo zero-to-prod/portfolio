@@ -3,10 +3,12 @@
 use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Database\Factories\AuthorFactory;
 use Database\Factories\FileFactory;
 use Database\Factories\PostFactory;
+use Database\Factories\TagFactory;
 use Database\Factories\UserFactory;
 use Illuminate\Support\Collection;
 
@@ -44,6 +46,18 @@ if (!function_exists('post_f')) {
     function post_f($attributes = null, array $state = []): PostFactory
     {
         return Post::factory($attributes, $state);
+    }
+}
+if (!function_exists('tag')) {
+    function tag(array $attributes = [], $count = null, array $state = []): Tag|Collection
+    {
+        return tag_f($count, $state)->create($attributes);
+    }
+}
+if (!function_exists('tag_f')) {
+    function tag_f($attributes = null, array $state = []): TagFactory
+    {
+        return Tag::factory($attributes, $state);
     }
 }
 if (!function_exists('user')) {

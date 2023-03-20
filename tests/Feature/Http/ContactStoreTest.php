@@ -10,12 +10,13 @@ use Mail;
 use Route;
 use Tests\TestCase;
 
-class ContactStoreControllerTest extends TestCase
+class ContactStoreTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
      * @test
+     * @see To::contact_store()
      * @see ConnectStoreRedirect::__invoke
      */
     public function stores_a_message_and_creates_a_related_contact(): void
@@ -54,6 +55,7 @@ class ContactStoreControllerTest extends TestCase
 
     /**
      * @test
+     * @see To::contact_store()
      * @see ConnectStoreRedirect::__invoke
      */
     public function fails_if_nothing_is_not_passed(): void
@@ -63,6 +65,7 @@ class ContactStoreControllerTest extends TestCase
 
     /**
      * @test
+     * @see To::contact_store()
      * @dataProvider getRoutes
      */
     public function check_each_route(string $route): void

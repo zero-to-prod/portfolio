@@ -11,6 +11,7 @@ class WebRegisterRoutes
 {
 
     public Routes $verification = Routes::register_verification;
+    public Routes $notice = Routes::register_notice;
 
     /**
      * @see RegisterIndexTest;
@@ -38,7 +39,7 @@ class WebRegisterRoutes
      */
     public function notice($parameters = [], $absolute = true): string
     {
-        return route_as(Routes::register_notice, $parameters, $absolute);
+        return route_as($this->notice, $parameters, $absolute);
     }
 
     /**

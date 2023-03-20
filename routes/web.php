@@ -6,19 +6,13 @@ use App\Helpers\Routes;
 use App\Helpers\Views;
 use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Http\Controllers\Auth\Login;
-use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\ConnectStoreRedirect;
 use App\Http\Controllers\GithubCallback;
 use App\Http\Controllers\GithubRedirect;
 use App\Http\Controllers\NewsletterView;
-use App\Http\Controllers\Password\ConfirmablePasswordController;
-use App\Http\Controllers\Password\PasswordController;
 use App\Http\Controllers\PrivacyView;
 use App\Http\Controllers\ReadView;
 use App\Http\Controllers\Register\StoreRedirect as RegisterStoreRedirect;
-use App\Http\Controllers\Register\VerificationNotice;
-use App\Http\Controllers\Register\VerificationSend;
-use App\Http\Controllers\Register\VerificationVerify;
 use App\Http\Controllers\ResultsView;
 use App\Http\Controllers\SearchRedirect;
 use App\Http\Controllers\SubscribeView;
@@ -49,25 +43,3 @@ Route::getAs(Routes::tos, TermsOfServiceView::class);
 Route::getAs(Routes::welcome, WelcomeView::class);
 Route::postAs(Routes::contact_store, ConnectStoreRedirect::class);
 Route::postAs(Routes::search, SearchRedirect::class);
-
-Route::middleware('auth')->group(function () {
-    Route::get(Routes::register_verification_notice->value, VerificationNotice::class)
-        ->name('verification.notice');
-
-    Route::get(Routes::register_verify->value, VerificationVerify::class)
-        ->middleware(['throttle:6,1'])
-        ->name('verification.verify');
-
-    Route::post(Routes::register_verification_send->value, VerificationSend::class)
-        ->middleware('throttle:6,1')
-        ->name('verification.send');
-
-    Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
-        ->name('password.confirm');
-
-    Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
-
-    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
-
-    Route::postAs(Routes::logout, Logout::class);
-});

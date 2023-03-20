@@ -25,6 +25,8 @@ class WebGroupTest extends TestCase
             $blacklist = [
                 to()->web->read->name,
                 to()->web->file->name,
+                to()->web->register->notice->name,
+                to()->web->register->verification->name,
                 to()->auth->github->index->name,
                 to()->auth->github->callback->name,
             ];

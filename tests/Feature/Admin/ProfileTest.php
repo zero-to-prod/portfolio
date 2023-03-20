@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth;
+namespace Admin;
 
 use App\Helpers\Routes;
 use App\Models\User;

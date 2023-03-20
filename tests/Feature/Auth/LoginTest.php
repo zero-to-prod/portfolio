@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Login;
+namespace Auth;
 
 use App\Http\Controllers\Auth\Login;
 use App\Http\Requests\Auth\LoginRequest;

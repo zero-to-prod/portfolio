@@ -10,7 +10,7 @@
     @endif
 
     <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{to()->auth->emailVerificationNotification() }}">
+        <form method="POST" action="{{to()->web->register->verification_notice() }}">
             @csrf
 
             <div>

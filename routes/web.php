@@ -8,8 +8,8 @@ use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Auth\VerificationNotice;
 use App\Http\Controllers\Auth\VerificationVerify;
 use App\Http\Controllers\ConnectStoreRedirect;
 use App\Http\Controllers\GithubCallback;
@@ -51,7 +51,7 @@ Route::postAs(Routes::connect_store, ConnectStoreRedirect::class);
 Route::postAs(Routes::search, SearchRedirect::class);
 
 Route::middleware('auth')->group(function () {
-    Route::get('verify-email', EmailVerificationPromptController::class)
+    Route::get(Routes::register_verification_notice->value, VerificationNotice::class)
         ->name('verification.notice');
 
     Route::get(Routes::register_verify->value, VerificationVerify::class)

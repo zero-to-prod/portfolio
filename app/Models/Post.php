@@ -102,7 +102,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         }
 
         if (!$user->hasVerifiedEmail()) {
-            redirect()->intended(route('verification.notice'));
+            redirect(route('verification.notice'));
 
             return $this;
         }
@@ -153,7 +153,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         }
 
         if (!$user->hasVerifiedEmail()) {
-            redirect()->intended(route('verification.notice'));
+            redirect(route('verification.notice'));
 
             return $this;
         }

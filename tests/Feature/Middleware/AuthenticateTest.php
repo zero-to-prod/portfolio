@@ -16,7 +16,7 @@ class AuthenticateTest extends TestCase
      */
     public function redirects_to_login_when_log_logged_in(): void
     {
-        $this->get(to()->admin->dashboard())->assertRedirect(to()->guest->admin_login->index());
+        $this->get(to()->admin->dashboard())->assertRedirect(to()->web->login->index());
     }
 
     /**

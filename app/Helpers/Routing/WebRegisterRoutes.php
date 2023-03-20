@@ -3,6 +3,8 @@
 namespace App\Helpers\Routing;
 
 use App\Helpers\Routes;
+use App\Http\Controllers\Auth\VerificationNotice;
+use Register\RegisterVerificationNoticeTest;
 
 class WebRegisterRoutes
 {
@@ -45,5 +47,15 @@ class WebRegisterRoutes
     public function verification($parameters = [], $absolute = true): string
     {
         return route_as($this->verification, $parameters, $absolute);
+    }
+
+    /**
+     * @see RegisterVerificationNoticeTest
+     * @see VerificationNotice
+     * @see routes/web.php
+     */
+    public function verification_notice($parameters = [], $absolute = true): string
+    {
+        return route('verification.notice', $parameters, $absolute);
     }
 }

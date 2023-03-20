@@ -22,27 +22,23 @@ Route::getAs(to()->read, ReadView::class);
 Route::postAs(to()->search, SearchRedirect::class);
 Route::getAs(to()->results, ResultsView::class);
 Route::getAs(to()->tos, fn() => view('tos'));
-Route::getAs(to()->privacy, fn()=> view('privacy'));
+Route::getAs(to()->privacy, fn() => view('privacy'));
 Route::getAs(to()->newsletter, NewsletterView::class);
 Route::getAs(to()->subscribe, fn() => view('subscribe'));
 
 Route::getAs(Routes::auth_github_callback, GithubCallback::class);
 Route::getAs(Routes::auth_github_index, fn() => Socialite::driver(Drivers::github->value)->redirect());
-Route::getAs(Routes::contact, Views::contact);
-Route::getAs(Routes::file, FileServeResponse::class);
+Route::getAs(to()->contact, Views::contact);
+Route::getAs(to()->file, FileServeResponse::class);
 /* Login */
-Route::getAs(Routes::loginIndex, fn() => view('login'));
-Route::postAs(Routes::login, Login::class);
+Route::getAs(to()->login->index, fn() => view('login'));
+Route::postAs(to()->login->store, Login::class);
 /* Register */
-Route::getAs(Routes::registerIndex, fn() => view('register.index'));
-Route::postAs(Routes::register_store, RegisterStoreRedirect::class);
+Route::getAs(to()->register->index, fn() => view('register.index'));
+Route::postAs(to()->register->store, RegisterStoreRedirect::class);
 Route::middlewareAs(Middlewares::signed)->group(function () {
     Route::getAs(Routes::register_notice, fn() => view('register.notice'));
     Route::getAs(Routes::register_verification, fn() => view('register.verification'));
 });
-
-
-
-
 
 Route::postAs(Routes::contact_store, ConnectStoreRedirect::class);

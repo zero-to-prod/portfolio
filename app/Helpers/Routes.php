@@ -18,7 +18,7 @@ enum Routes: string
     case contact = 'contact/';
     case file = 'file/{file}/';
     case loginIndex = 'login/';
-    case login = 'auth/login/store/';
+    case login_store = 'auth/login/store/';
     case logout = 'auth/logout/';
     case registerIndex = 'register/';
     case register_store = 'register/store/';

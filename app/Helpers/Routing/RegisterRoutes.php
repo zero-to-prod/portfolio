@@ -12,6 +12,8 @@ class RegisterRoutes
 
     public Routes $verification = Routes::register_verification;
     public Routes $notice = Routes::register_notice;
+    public Routes $index = Routes::registerIndex;
+    public Routes $store = Routes::register_store;
 
     /**
      * @see RegisterIndexTest;
@@ -20,7 +22,7 @@ class RegisterRoutes
      */
     public function index($parameters = [], $absolute = true): string
     {
-        return route_as(Routes::registerIndex, $parameters, $absolute);
+        return route_as($this->index, $parameters, $absolute);
     }
 
     /**
@@ -30,7 +32,7 @@ class RegisterRoutes
      */
     public function store($parameters = [], $absolute = true): string
     {
-        return route_as(Routes::register_store, $parameters, $absolute);
+        return route_as($this->store, $parameters, $absolute);
     }
 
     /**

@@ -8,6 +8,9 @@ use App\Http\Controllers\Auth\Login;
 class LoginRoutes
 {
 
+    public Routes $index = Routes::loginIndex;
+    public Routes $store = Routes::login_store;
+
     /**
      * @see LoginIndexTest;
      * @see resources/views/login.blade.php;
@@ -15,7 +18,7 @@ class LoginRoutes
      */
     public function index($parameters = [], $absolute = true): string
     {
-        return route_as(Routes::loginIndex, $parameters, $absolute);
+        return route_as($this->index, $parameters, $absolute);
     }
 
     /**
@@ -24,6 +27,6 @@ class LoginRoutes
      */
     public function store($parameters = [], $absolute = true): string
     {
-        return route_as(Routes::login, $parameters, $absolute);
+        return route_as($this->store, $parameters, $absolute);
     }
 }

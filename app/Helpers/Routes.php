@@ -25,6 +25,7 @@ enum Routes: string
     case register_notice = 'register/notice';
     case register_verification = 'register/verification';
     case register_verification_notice = 'register/verification/notice';
+    case register_verification_send = 'register/verification/send';
     case register_verify = 'register/verify/{id}/{hash}';
     case privacy = 'privacy';
     case read = 'read/{post}';

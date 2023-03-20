@@ -7,9 +7,9 @@ use App\Helpers\Views;
 use App\Http\Controllers\Admin\File\FileServeResponse;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\VerificationNotice;
+use App\Http\Controllers\Auth\VerificationSend;
 use App\Http\Controllers\Auth\VerificationVerify;
 use App\Http\Controllers\ConnectStoreRedirect;
 use App\Http\Controllers\GithubCallback;
@@ -58,7 +58,7 @@ Route::middleware('auth')->group(function () {
         ->middleware(['throttle:6,1'])
         ->name('verification.verify');
 
-    Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+    Route::post(Routes::register_verification_send->value, VerificationSend::class)
         ->middleware('throttle:6,1')
         ->name('verification.send');
 

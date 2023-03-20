@@ -50,12 +50,22 @@ class WebRegisterRoutes
     }
 
     /**
-     * @see RegisterVerificationNoticeTest
+     * @see VerificationNoticeTest
      * @see VerificationNotice
      * @see routes/web.php
      */
     public function verification_notice($parameters = [], $absolute = true): string
     {
         return route('verification.notice', $parameters, $absolute);
+    }
+
+    /**
+     * @see VerificationSendTest
+     * @see VerificationSend
+     * @see routes/web.php
+     */
+    public function verification_send($parameters = [], $absolute = true): string
+    {
+        return route('verification.send', $parameters, $absolute);
     }
 }

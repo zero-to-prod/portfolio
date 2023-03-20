@@ -1,12 +1,3 @@
-<?php
-
-use App\Http\Controllers\Auth\RegisteredUserController as Controller;
-
-$name = Controller::name;
-$email = Controller::email;
-$password = Controller::password;
-$confirmation = Controller::password . '_confirmation';
-?>
 <x-login>
     <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
         Verify Your Email Address

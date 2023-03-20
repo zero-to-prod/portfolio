@@ -2,7 +2,7 @@
 
 namespace Register;
 
-use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\VerificationVerify;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -15,7 +15,7 @@ class VerificationVerifyTest extends TestCase
     /**
      * @test
      * @see routes/web.php
-     * @see VerifyEmailController
+     * @see VerificationVerify
      */
     public function email_can_be_verified(): void
     {
@@ -28,13 +28,13 @@ class VerificationVerifyTest extends TestCase
 
         Event::assertDispatched(Verified::class);
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
-        $response->assertRedirect(VerifyEmailController::redirectUrl());
+        $response->assertRedirect(VerificationVerify::redirectUrl());
     }
 
     /**
      * @test
      * @see routes/web.php
-     * @see VerifyEmailController
+     * @see VerificationVerify
      */
     public function email_is_not_verified_with_invalid_hash(): void
     {
@@ -51,7 +51,7 @@ class VerificationVerifyTest extends TestCase
     /**
      * @test
      * @see routes/web.php
-     * @see VerifyEmailController
+     * @see VerificationVerify
      */
     public function verified_user_is_redirected_home(): void
     {

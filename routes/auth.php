@@ -6,9 +6,7 @@ use App\Http\Controllers\Admin\File\FileUploadResponse;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +19,6 @@ Route::patchAs(Routes::auth_profile_update, [ProfileController::class, 'update']
 Route::deleteAs(Routes::auth_profile_destroy, [ProfileController::class, 'destroy']);
 
 /* Email */
-Route::getAs(Routes::auth_email_verificationNotice, EmailVerificationPromptController::class);
-//Route::getAs(Routes::auth_email_verify, VerifyEmailController::class)
-//    ->middlewareAs([Middlewares::signed, Middlewares::throttle->value . ':6,1']);
 Route::postAs(Routes::auth_email_verificationNotification, [EmailVerificationNotificationController::class, 'store'])
     ->middlewareAs(Middlewares::throttle->value . ':6,1');
 

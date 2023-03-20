@@ -24,6 +24,7 @@ enum Routes: string
     case register_store = 'register/store';
     case register_notice = 'register/notice';
     case register_verification = 'register/verification';
+    case register_verify = 'register/verify/{id}/{hash}';
     case privacy = 'privacy';
     case read = 'read/{post}';
     case results = 'results';
@@ -37,7 +38,7 @@ enum Routes: string
 
     case auth_email_verificationNotice = 'email/verification-notice';
     case auth_email_verificationNotification = 'email/verification-notification';
-    case auth_email_verify = 'email/verify/{id}/{hash}';
+
     case auth_github_callback = 'auth/github/callback';
     case auth_github_index = 'auth/github';
     case auth_logout = 'logout';

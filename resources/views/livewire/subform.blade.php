@@ -226,7 +226,7 @@
                             @endfor
                         </select>
                         <label for="cvc" class="sr-only">CVC</label>
-                        <input wire:model="cvc"
+                        <input wire:model.lazy="cvc"
                                @class([
                                    'rounded-none rounded-br text-lg input -ml-[.5px]',
                                    'ring-red-500' => $errors->has('cvc'),
@@ -244,7 +244,7 @@
                                required
                                minlength="3"
                                maxlength="4"
-                        >
+                        />
                     </div>
                     <div class="text-sm font-bold text-error">
                         @error('month') <p>{{ $message }}</p> @enderror

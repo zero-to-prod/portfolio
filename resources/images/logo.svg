@@ -1,0 +1,10 @@
+<svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132.29167 132.29167">
+    <g transform="matrix(3.9133359,0,0,3.9024826,-214.84916,-206.26859)">
+        <path style="fill:#ff8d00;fill-opacity:1;fill-rule:evenodd;stroke:#323232;stroke-width:8;stroke-linejoin:round"
+              transform="matrix(0.207923,0,0,0.16998199,14.79579,26.038145)"
+              d="m 334.54404,266.8058 -62.84443,43.19531 -62.84442,43.19532 -5.98603,-76.02253 -5.98602,-76.02253 68.83045,32.82721 z"/>
+        <path style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#323232;stroke-width:8;stroke-linejoin:round"
+              transform="matrix(0.207923,0,0,0.16998199,18.314917,19.343464)"
+              d="m 334.54404,266.8058 -62.84443,43.19531 -62.84442,43.19532 -5.98603,-76.02253 -5.98602,-76.02253 68.83045,32.82721 z"/>
+    </g>
+</svg>

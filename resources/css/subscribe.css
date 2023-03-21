@@ -24,6 +24,6 @@
     }
 
     #subscribe  .active {
-        @apply border-sky-600 shadow-lg;
+        @apply border-sky-600 shadow-lg bg-gray-50;
     }
 }

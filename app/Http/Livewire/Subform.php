@@ -74,6 +74,7 @@ class Subform extends Component
                     ['price' => $this->plan === 'month' ? config('stripe.monthly_plan') : config('stripe.yearly_plan')],
                 ],
                 'default_payment_method' => $payment_method->id,
+                'trial_period_days' => 7,
             ]);
             $user = User::updateOrCreate([User::email => $this->email], [
                 User::stripe_id => $customer->id,

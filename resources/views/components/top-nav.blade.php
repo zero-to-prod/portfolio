@@ -1,9 +1,3 @@
-<?php
-
-use App\Helpers\Routes;
-
-?>
-
 <nav aria-label="Top Navigation Bar" id="nav"
      class="sticky top-0 z-50 bg-sky-200 transition-all duration-500 hover:shadow">
     <div class="mx-auto max-w-7xl px-2 lg:px-0">

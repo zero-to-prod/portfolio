@@ -11,11 +11,15 @@
             <ul>
                 <li>
                     <x-svg :name="'check-green'"/>
-                    <span>Access to Public Content</span>
+                    <span class="font-bold">Free for 7 days</span>
+                </li>
+                <li class="flex gap-2 line-through">
+                    <x-svg :name="'x-gray'"/>
+                    <span>Save %17</span>
                 </li>
                 <li>
                     <x-svg :name="'check-green'"/>
-                    <span>Social Reactions</span>
+                    <span>Exclusive Content</span>
                 </li>
                 <li>
                     <x-svg :name="'check-green'"/>
@@ -23,18 +27,18 @@
                 </li>
                 <li>
                     <x-svg :name="'check-green'"/>
-                    <span>Exclusive Content</span>
+                    <span>Social Reactions</span>
                 </li>
-                <li class="flex gap-2 line-through">
-                    <x-svg :name="'x-gray'"/>
-                    <span>Save %17</span>
+                <li>
+                    <x-svg :name="'check-green'"/>
+                    <span>Access to Public Content</span>
                 </li>
             </ul>
         </div>
         <div @click="plan='year'" class="card" :class="plan === 'year' ? 'active' : ''">
             <div class="flex justify-between">
                 <div>
-                    <h2>Yearly</h2>
+                    <h2>Yearly <span class="text-sm font-bold text-gray-500">save 17%</span></h2>
                     <h3>$60/year ($5/month)</h3>
                 </div>
                 <x-svg style="display: none" x-show="plan === 'year'" :name="'check-green'"/>
@@ -42,15 +46,11 @@
             <ul>
                 <li>
                     <x-svg :name="'check-green'"/>
-                    <span>Access to Public Content</span>
+                    <span class="font-bold">Free for 7 days</span>
                 </li>
                 <li>
                     <x-svg :name="'check-green'"/>
-                    <span>Social Reactions</span>
-                </li>
-                <li>
-                    <x-svg :name="'check-green'"/>
-                    <span>Early Access</span>
+                    <span>Save 17%</span>
                 </li>
                 <li>
                     <x-svg :name="'check-green'"/>
@@ -58,7 +58,15 @@
                 </li>
                 <li>
                     <x-svg :name="'check-green'"/>
-                    <span>Save %17</span>
+                    <span>Early Access</span>
+                </li>
+                <li>
+                    <x-svg :name="'check-green'"/>
+                    <span>Social Reactions</span>
+                </li>
+                <li>
+                    <x-svg :name="'check-green'"/>
+                    <span>Access to Public Content</span>
                 </li>
             </ul>
         </div>

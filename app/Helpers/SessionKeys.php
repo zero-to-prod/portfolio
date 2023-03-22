@@ -8,5 +8,5 @@ namespace App\Helpers;
  */
 enum SessionKeys: string
 {
-    case page = 'page';
+    case post = 'post';
 }

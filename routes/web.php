@@ -12,6 +12,8 @@ use App\Http\Controllers\Register\Store as RegisterStore;
 use App\Http\Controllers\Results;
 use App\Http\Controllers\Search;
 use App\Http\Controllers\Store as ConnectStore;
+use App\Http\Controllers\SubscribeAddPassword;
+use App\Http\Controllers\SubscribeSuccess;
 use App\Http\Controllers\Welcome;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,8 @@ Route::middleware('cache.headers:public;max_age=2592000;etag')->group(function (
 /* Subscription */
 Route::getAs(to()->newsletter, Newsletter::class);
 Route::getAs(to()->subscribe, fn() => view('subscribe'));
+Route::getAs(to()->subscribe_success, SubscribeSuccess::class);
+Route::getAs(to()->subscribe_addPassword, SubscribeAddPassword::class);
 
 /* Login */
 Route::getAs(to()->login->index, fn() => view('login'));

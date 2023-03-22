@@ -118,7 +118,7 @@
         </div>
     </div>
     <x-divider class="py-8 !block "/>
-    <div class="mx-auto max-w-[380px] min-h-[300px] ">
+    <div class="mx-auto max-w-[380px] min-h-[300px]">
         <div x-show="plan === 'member'" style="display: none">
             <x-a :href="to()->register->index()"
                  class="flex rounded-lg border-2 border border-gray-300 border-sky-600 p-2 font-bold hover:shadow-lg">
@@ -250,10 +250,15 @@
                         @error('month') <p>{{ $message }}</p> @enderror
                         @error('year') <p>{{ $message }}</p> @enderror
                         @error('cvc') <p>{{ $message }}</p> @enderror
-                        @error('stripe') <p>{{ $message }}</p> @enderror
+                        @error('errors') <p>{{ $message }}</p> @enderror
                     </div>
                 </div>
-                <button class="font-bold btn btn-wide">Subscribe</button>
+                <button wire:loading.attr="disabled" class="font-bold btn btn-wide">
+                    <span wire:loading.remove.delay>
+                        Subscribe
+                    </span>
+                    <span wire:loading.delay>Processing...</span>
+                </button>
             </form>
         </div>
     </div>

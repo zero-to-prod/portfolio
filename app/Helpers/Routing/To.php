@@ -9,6 +9,7 @@ use App\Models\Author;
 use App\Models\File;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 
 class To
 {
@@ -21,6 +22,8 @@ class To
     public Routes $privacy = Routes::privacy;
     public Routes $newsletter = Routes::newsletter;
     public Routes $subscribe = Routes::subscribe;
+    public Routes $subscribe_success = Routes::subscribe_success;
+    public Routes $subscribe_addPassword = Routes::subscribe_addPassword;
     public Routes $contact = Routes::contact;
     public Routes $contact_store = Routes::contact_store;
 
@@ -142,10 +145,19 @@ class To
     {
         return route_as($this->subscribe);
     }
-
     /**
      * @see SubscribeTest
      */
+    public function subscribe_success(): string
+    {
+        return route_as($this->subscribe_success);
+    }
+
+    public function subscribe_addPassword(User $user): string
+    {
+        return route_as($this->subscribe_addPassword, $user);
+    }
+
     public function contact(): string
     {
         return route_as($this->contact);

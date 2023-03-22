@@ -5,6 +5,7 @@ namespace App\Models\Support\User;
 trait UserColumns
 {
     public const github_id = 'github_id';
+    public const stripe_id = 'stripe_id';
     public const name = 'name';
     public const email = 'email';
     public const email_verified_at = 'email_verified_at';

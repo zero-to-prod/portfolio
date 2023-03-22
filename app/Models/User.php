@@ -28,7 +28,7 @@ class User extends Authenticatable
     use HasRoles;
     use MustVerifyEmail;
 
-    protected $fillable = [self::name, self::email, self::password, self::github_id, self::github_token, self::github_refresh_token];
+    protected $fillable = [self::name, self::email, self::password, self::github_id, self::github_token, self::github_refresh_token, self::subscribed_at];
     protected $hidden = [self::password, self::github_token];
     protected $casts = [self::email_verified_at => 'datetime'];
 }

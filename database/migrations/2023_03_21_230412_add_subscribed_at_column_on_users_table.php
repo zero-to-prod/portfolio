@@ -10,6 +10,8 @@ return new class extends Migration {
     {
         Schema::table((new User)->getTable(), static function (Blueprint $table) {
             $table->timestamp(User::subscribed_at)->after(User::github_refresh_token)->nullable();
+            $table->string(User::stripe_id)->after(User::github_id)->nullable();
+            $table->string(User::name)->nullable()->change();
         });
     }
 
@@ -17,6 +19,8 @@ return new class extends Migration {
     {
         Schema::table((new User)->getTable(), static function (Blueprint $table) {
             $table->dropColumn(User::subscribed_at);
+            $table->dropColumn(User::stripe_id);
+            $table->string(User::name)->nullable(false)->change();
         });
     }
 };

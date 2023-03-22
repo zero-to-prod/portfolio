@@ -22,7 +22,7 @@ class Login extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        $uri = Session::get(SessionKeys::page->value);
+        $uri = Session::get(SessionKeys::post->value);
         if ($uri !== null) {
             return redirect()->intended($uri);
         }

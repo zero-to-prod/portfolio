@@ -23,6 +23,9 @@ class Subform extends Component
     public const month = 'month';
     public const year = 'year';
     public const cvc = 'cvc';
+    public const errors = 'errors';
+    public const member = 'member';
+    public const none = 'none';
 
     public $plan = 'year';
     public $email;
@@ -90,9 +93,9 @@ class Subform extends Component
             }
 
         } catch (Exception $e) {
-            $this->addError('errors', $e->getMessage());
+            $this->addError(self::errors, $e->getMessage());
         } catch (Throwable $e) {
-            $this->addError('errors', $e->getMessage());
+            $this->addError(self::errors, $e->getMessage());
         }
     }
 

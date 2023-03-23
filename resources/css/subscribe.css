@@ -19,6 +19,14 @@
         @apply h-5 w-5;
     }
 
+    #subscribe .na {
+        @apply flex gap-2 line-through;
+    }
+
+    #subscribe .error {
+        @apply flex gap-2 line-through;
+    }
+
     #subscribe .card {
         @apply cursor-pointer rounded-lg border border-2 p-4 w-[384px] 2col:w-[240px] space-y-4;
     }

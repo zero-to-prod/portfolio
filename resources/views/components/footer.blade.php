@@ -11,6 +11,7 @@
                     <ul role="list" class="mt-6 space-y-4">
                         <li><x-a :href="to()->login->index()">Login</x-a></li>
                         <li><x-a :href="to()->newsletter()">Newsletter</x-a></li>
+                        <li><x-a :href="to()->subscribe()">Subscribe</x-a></li>
                     </ul>
                 </div>
                 <div class="mt-10 md:mt-0">

@@ -145,6 +145,7 @@ class To
     {
         return route_as($this->subscribe);
     }
+
     /**
      * @see SubscribeTest
      */
@@ -158,6 +159,9 @@ class To
         return route_as($this->subscribe_addPassword, $user);
     }
 
+    /**
+     * @see ContactTest
+     */
     public function contact(): string
     {
         return route_as($this->contact);

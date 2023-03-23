@@ -27,12 +27,12 @@ class Subform extends Component
     public const member = 'member';
     public const none = 'none';
 
-    public $plan = 'year';
-    public $email;
-    public $card;
-    public $month = '';
-    public $year = '';
-    public $cvc;
+    public string $plan = 'year';
+    public ?string $email;
+    public ?string $card;
+    public string $month = '';
+    public string $year = '';
+    public ?string $cvc;
 
     public function rules(): array
     {

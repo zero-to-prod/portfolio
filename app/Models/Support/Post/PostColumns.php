@@ -13,6 +13,7 @@ trait PostColumns
     public const likes = 'likes';
     public const dislikes = 'dislikes';
     public const published_public_content = 'published_public_content';
+    public const published_exclusive_content = 'published_exclusive_content';
     public const published_at = 'published_at';
     public const published_word_count = 'published_word_count';
     public const original_publish_date = 'original_publish_date';

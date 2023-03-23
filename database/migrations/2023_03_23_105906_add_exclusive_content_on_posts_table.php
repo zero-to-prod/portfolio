@@ -9,14 +9,14 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
-            $table->renameColumn('body', Post::public_content);
+            $table->longText(Post::exclusive_content)->nullable()->after(Post::public_content);
         });
     }
 
     public function down(): void
     {
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
-            $table->renameColumn(Post::public_content, 'body');
+            $table->dropColumn(Post::exclusive_content);
         });
     }
 };

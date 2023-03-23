@@ -8,6 +8,7 @@ trait PostColumns
     public const title = 'title';
     public const subtitle = 'subtitle';
     public const public_content = 'public_content';
+    public const exclusive_content = 'exclusive_content';
     public const views = 'views';
     public const likes = 'likes';
     public const dislikes = 'dislikes';

@@ -20,11 +20,4 @@ return new class extends Migration {
                 ->comment("The estimated reading time in minutes. The constant 183 is the average words per minute.");
         });
     }
-
-    public function down(): void
-    {
-        Schema::table((new Post)->getTable(), static function (Blueprint $table) {
-            $table->renameColumn(Post::public_word_count, 'published_word_count');
-        });
-    }
 };

@@ -15,7 +15,7 @@ $title = PostStore::title;
 $subtitle = PostStore::subtitle;
 $authors = PostStore::authors;
 $tags = PostStore::tags;
-$body = PostStore::body;
+$public_content = PostStore::public_content;
 $featured_image = PostStore::featured_image;
 $in_body = PostStore::in_body;
 ?>
@@ -137,15 +137,15 @@ $in_body = PostStore::in_body;
                                 </div>
                             </div>
                             <x-form-control-dark>
-                                <label for="{{$body}}">Body</label>
-                                <textarea name="{{$body}}"
-                                          id="{{$body}}"
+                                <label for="{{$public_content}}">Public Content</label>
+                                <textarea name="{{$public_content}}"
+                                          id="{{$public_content}}"
                                           required
                                           rows="4">
-{{$post_model !== null ? $post_model->body : old($body)}}
+{{$post_model !== null ? $post_model->public_content : old($public_content)}}
                                 </textarea>
-                                @if($errors->has($body))
-                                    <p>{{ $errors->first($body) }}</p>
+                                @if($errors->has($public_content))
+                                    <p>{{ $errors->first($public_content) }}</p>
                                 @endif
                             </x-form-control-dark>
                             <x-form-control-dark>

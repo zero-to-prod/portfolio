@@ -19,7 +19,7 @@ class PostStore extends Controller
     public const subtitle = 'subtitle';
     public const authors = 'authors[]';
     public const tags = 'tags[]';
-    public const body = 'body';
+    public const public_content = 'public_content';
     public const featured_image = 'featured_image';
     public const in_body = 'in_body';
 
@@ -34,7 +34,7 @@ class PostStore extends Controller
             self::subtitle => Post::rules(Post::subtitle),
             'authors' => 'required|array|min:1',
             'tags' => 'required|array|min:1',
-            self::body => Post::rules(Post::body),
+            self::public_content => Post::rules(Post::public_content),
             self::featured_image => 'nullable|image',
             self::in_body => 'nullable|image',
         ]);
@@ -44,7 +44,7 @@ class PostStore extends Controller
         $post = Post::withoutGlobalScopes([Post::published])->updateOrCreate([Post::id => $request->{self::id}], [
             Post::title => $validated[self::title],
             Post::subtitle => $validated[self::subtitle],
-            Post::body => $validated[self::body],
+            Post::public_content => $validated[self::public_content],
         ]);
 
         if ($request->hasFile(self::featured_image)) {

@@ -1,14 +1,4 @@
-<?php
-
-use App\Http\Controllers\Store;
-
-$email = Store::email;
-$subject = Store::subject;
-$body = Store::body;
-
-?>
 <x-main :title="'Privacy'">
-
     <div class="sm:py-6 sm:py-12">
         <div class="mx-auto py-8 prose px-4 2col:px0">
             <h1>Privacy Policy for {{config('app.name')}}</h1>

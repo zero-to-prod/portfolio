@@ -7,7 +7,7 @@ trait PostColumns
     public const file_id = 'file_id';
     public const title = 'title';
     public const subtitle = 'subtitle';
-    public const body = 'body';
+    public const public_content = 'public_content';
     public const views = 'views';
     public const likes = 'likes';
     public const dislikes = 'dislikes';

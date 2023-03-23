@@ -50,7 +50,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
     use HasFiles;
     use PostScopes;
 
-    protected $fillable = [self::file_id, self::title, self::subtitle, self::body, self::premiere_at];
+    protected $fillable = [self::file_id, self::title, self::subtitle, self::public_content, self::premiere_at];
     protected $casts = [
         self::published_at => 'datetime',
         self::premiere_at => 'datetime',
@@ -221,7 +221,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         }
         self::unguard();
 
-        $published_content = app(MarkdownRenderer::class)->toHtml($this->body);
+        $published_content = app(MarkdownRenderer::class)->toHtml($this->public_content);
 
         $this->update([
             self::published_content => $published_content,

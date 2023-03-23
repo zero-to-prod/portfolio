@@ -1,12 +1,3 @@
-<?php
-
-use App\Http\Controllers\Store;
-
-$email = Store::email;
-$subject = Store::subject;
-$body = Store::body;
-
-?>
 <x-main :title="'Privacy'">
 
     <div class="sm:py-6 sm:py-12">

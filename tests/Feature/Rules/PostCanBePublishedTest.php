@@ -31,7 +31,7 @@ class PostCanBePublishedTest extends TestCase
         $post = post_f([
             Post::title => null,
             Post::slug => 'slug',
-            Post::body => 'body',
+            Post::public_content => 'public_content',
         ])->withFile()->make();
 
         $this->assertFalse(PostCanBePublished::evaluate($post));
@@ -46,7 +46,7 @@ class PostCanBePublishedTest extends TestCase
         $post = post_f([
             Post::title => 'title',
             Post::slug => null,
-            Post::body => 'body',
+            Post::public_content => 'public_content',
         ])->withFile()->make();
 
         $this->assertFalse(PostCanBePublished::evaluate($post));
@@ -56,12 +56,12 @@ class PostCanBePublishedTest extends TestCase
      * @test
      * @see PostCanBePublished
      */
-    public function missing_body(): void
+    public function missing_public_content(): void
     {
         $post = post_f([
             Post::title => 'title',
             Post::slug => 'slug',
-            Post::body => null,
+            Post::public_content => null,
         ])->withFile()->make();
 
         $this->assertFalse(PostCanBePublished::evaluate($post));
@@ -76,7 +76,7 @@ class PostCanBePublishedTest extends TestCase
         $post = post_f([
             Post::title => 'title',
             Post::slug => 'slug',
-            Post::body => 'body',
+            Post::public_content => 'public_content',
         ])->make();
 
         $this->assertFalse(PostCanBePublished::evaluate($post));

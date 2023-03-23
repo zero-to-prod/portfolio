@@ -17,7 +17,7 @@ class PostFactory extends Factory
     {
         return [
             Post::title => $this->faker->sentence,
-            Post::body => $this->faker->paragraph,
+            Post::public_content => $this->faker->paragraph,
         ];
     }
 

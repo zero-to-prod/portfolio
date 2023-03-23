@@ -13,7 +13,7 @@ class VerificationNotice extends Controller
     {
         return $request->user()->hasVerifiedEmail()
                     ? redirect(self::redirectUrl())
-                    : view('register.verification_notice');
+                    : view('pages.register.verification_notice');
     }
 
     public static function redirectUrl(): string

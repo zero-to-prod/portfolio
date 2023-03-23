@@ -13,6 +13,6 @@ class SubscribeAddPassword extends Controller
     public function __invoke(User $user): View|Factory|Application
     {
 
-        return view('subscribe_add_password', ['user' => $user]);
+        return view('pages.subscribe.add_password', ['user' => $user]);
     }
 }

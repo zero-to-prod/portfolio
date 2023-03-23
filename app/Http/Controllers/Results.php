@@ -75,7 +75,7 @@ class Results extends Controller
             $author_model = Author::where(Author::slug, $author)->first();
         }
 
-        return view('results', [
+        return view('pages.results', [
             self::posts => $posts,
             self::tag => $tag,
             self::author_model => $author_model,

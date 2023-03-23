@@ -15,6 +15,6 @@ class TagForm extends Controller
 
     public function __invoke(Request $request): View|Factory|Application
     {
-        return view('admin.tags.tag_form', [self::tag => Tag::find($request->{self::tag})]);
+        return view('pages.admin.tags.form', [self::tag => Tag::find($request->{self::tag})]);
     }
 }

@@ -18,7 +18,7 @@ class TagIndex extends Controller
 
     public function __invoke(Request $request): View|Factory|Application
     {
-        return view('admin.tags.tag_index', [
+        return view('pages.admin.tags.index', [
             self::tags => Tag::withType(TagTypes::post->value)
                 ->with(Tag::file)
                 ->withCount(Tag::posts)

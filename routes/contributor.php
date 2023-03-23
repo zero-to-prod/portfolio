@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\Post\PostStore;
 use Illuminate\Support\Facades\Route;
 
 /* Dashboard */
-Route::getAs(to()->admin->dashboard, fn() => view('dashboard'));
+Route::getAs(to()->admin->dashboard, fn() => view('pages.admin.dashboard'));
 
 /* Posts */
 Route::getAs(to()->admin->post->index, PostIndex::class);

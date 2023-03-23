@@ -15,6 +15,6 @@ class AuthorForm extends Controller
 
     public function __invoke(Request $request): View|Factory|Application
     {
-        return view('admin.authors.author_form', [self::author => Author::find($request->{self::author})]);
+        return view('pages.admin.authors.form', [self::author => Author::find($request->{self::author})]);
     }
 }

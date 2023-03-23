@@ -29,6 +29,7 @@ class WebGroupTest extends TestCase
                 to()->register->verification->name,
                 to()->auth->github->index->name,
                 to()->auth->github->callback->name,
+                to()->subscribe_addPassword->name,
             ];
 
             return !in_array($route[0], $blacklist, true);

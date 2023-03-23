@@ -29,28 +29,28 @@ Route::middleware('cache.headers:public;max_age=2592000;etag')->group(function (
 
 /* Subscription */
 Route::getAs(to()->newsletter, Newsletter::class);
-Route::getAs(to()->subscribe, fn() => view('subscribe'));
+Route::getAs(to()->subscribe, fn() => view('pages.subscribe.index'));
 Route::getAs(to()->subscribe_success, SubscribeSuccess::class);
 Route::getAs(to()->subscribe_addPassword, SubscribeAddPassword::class);
 
 /* Login */
-Route::getAs(to()->login->index, fn() => view('login'));
+Route::getAs(to()->login->index, fn() => view('pages.login'));
 Route::postAs(to()->login->store, Login::class);
 Route::getAs(to()->auth->github->callback, GithubCallback::class);
 Route::getAs(to()->auth->github->index, fn() => Socialite::driver(Drivers::github->value)->redirect());
 
 /* Register */
-Route::getAs(to()->register->index, fn() => view('register.index'));
+Route::getAs(to()->register->index, fn() => view('pages.register.index'));
 Route::postAs(to()->register->store, RegisterStore::class);
 Route::middlewareAs(Middlewares::signed)->group(function () {
-    Route::getAs(to()->register->notice, fn() => view('register.notice'));
-    Route::getAs(to()->register->verification, fn() => view('register.verification'));
+    Route::getAs(to()->register->notice, fn() => view('pages.register.notice'));
+    Route::getAs(to()->register->verification, fn() => view('pages.register.verification'));
 });
 
 /* Contact */
-Route::getAs(to()->contact, fn() => view('contact'));
+Route::getAs(to()->contact, fn() => view('pages.contact'));
 Route::postAs(to()->contact_store, ConnectStore::class);
 
 /* Legal */
-Route::getAs(to()->tos, fn() => view('tos'));
-Route::getAs(to()->privacy, fn() => view('privacy'));
+Route::getAs(to()->tos, fn() => view('pages.tos'));
+Route::getAs(to()->privacy, fn() => view('pages.privacy'));

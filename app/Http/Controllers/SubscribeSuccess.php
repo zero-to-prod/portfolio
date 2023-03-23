@@ -13,6 +13,6 @@ class SubscribeSuccess extends Controller
     public function __invoke(User $user): View|Factory|Application
     {
 
-        return view('subscribe_success', ['user' => $user]);
+        return view('pages.subscribe.success', ['user' => $user]);
     }
 }

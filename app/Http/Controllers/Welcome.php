@@ -19,6 +19,6 @@ class Welcome extends Controller
             Tag::posts => static fn($query) => $query->orderByDesc(Post::views)->with([Post::authors, Post::file]),
         ])->get();
 
-        return view('welcome', [self::tags => $tags]);
+        return view('pages.welcome', [self::tags => $tags]);
     }
 }

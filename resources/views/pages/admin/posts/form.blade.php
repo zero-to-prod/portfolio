@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\Tags;
 use App\Helpers\TagTypes;
 use App\Http\Controllers\Admin\Post\PostStore;
 use App\Http\Controllers\Admin\Post\PostPublish;

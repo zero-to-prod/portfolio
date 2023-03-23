@@ -27,6 +27,6 @@ class PostIndex extends Controller
             ->limit(20)
             ->get();
 
-        return view('admin.posts.post_index', [self::posts => $unpublished->merge($published)]);
+        return view('pages.admin.posts.index', [self::posts => $unpublished->merge($published)]);
     }
 }

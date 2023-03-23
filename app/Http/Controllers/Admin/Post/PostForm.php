@@ -25,7 +25,7 @@ class PostForm extends Controller
             $author_model = $post_model?->authors->first();
         }
 
-        return view('admin.posts.post_form', [
+        return view('pages.admin.posts.form', [
             self::post_model => $post_model,
             self::author_model => $author_model
         ]);

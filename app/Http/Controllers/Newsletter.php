@@ -20,6 +20,6 @@ class Newsletter extends Controller
             return User::first()?->createToken(CacheKeys::newsletter->value)->plainTextToken;
         });
 
-        return view('newsletter', [self::tags => Tag::getMostViewed(), self::token => $token]);
+        return view('pages.newsletter', [self::tags => Tag::getMostViewed(), self::token => $token]);
     }
 }

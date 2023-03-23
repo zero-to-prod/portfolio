@@ -22,6 +22,6 @@ class Read extends Controller
             return User::first()?->createToken(CacheKeys::newsletter->value)->plainTextToken;
         });
 
-        return view('read.post', [self::post => $post, self::token => $token]);
+        return view('pages.read.post', [self::post => $post, self::token => $token]);
     }
 }

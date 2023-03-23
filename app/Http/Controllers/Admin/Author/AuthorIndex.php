@@ -16,7 +16,7 @@ class AuthorIndex extends Controller
 
     public function __invoke(Request $request): View|Factory|Application
     {
-        return view('admin.authors.author_index', [
+        return view('pages.admin.authors.index', [
             self::authors => Author::with(Author::file)->get(),
         ]);
     }

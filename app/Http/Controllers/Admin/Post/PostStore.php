@@ -20,6 +20,7 @@ class PostStore extends Controller
     public const authors = 'authors[]';
     public const tags = 'tags[]';
     public const public_content = 'public_content';
+    public const exclusive_content = 'exclusive_content';
     public const featured_image = 'featured_image';
     public const in_body = 'in_body';
 
@@ -35,6 +36,7 @@ class PostStore extends Controller
             'authors' => 'required|array|min:1',
             'tags' => 'required|array|min:1',
             self::public_content => Post::rules(Post::public_content),
+            self::exclusive_content => Post::rules(Post::exclusive_content),
             self::featured_image => 'nullable|image',
             self::in_body => 'nullable|image',
         ]);
@@ -45,6 +47,7 @@ class PostStore extends Controller
             Post::title => $validated[self::title],
             Post::subtitle => $validated[self::subtitle],
             Post::public_content => $validated[self::public_content],
+            Post::exclusive_content => $validated[self::exclusive_content],
         ]);
 
         if ($request->hasFile(self::featured_image)) {

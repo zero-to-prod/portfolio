@@ -357,6 +357,12 @@ $cvc = ThanksResponse::cvc;
                     <div id="published-content" class="grid max-w-none px-2 published-content prose">
                         {!! $post->published_public_content !!}
                     </div>
+                    @if(auth()->user()->subscribed_at !== null)
+                        <x-svg :name="'unlocked'"/>
+                        <div id="published-content" class="grid max-w-none px-2 published-content prose">
+                            {!! $post->published_exclusive_content !!}
+                        </div>
+                    @endif
                 @endif
             </article>
         </div>

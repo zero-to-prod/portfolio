@@ -16,6 +16,7 @@ $subtitle = PostStore::subtitle;
 $authors = PostStore::authors;
 $tags = PostStore::tags;
 $public_content = PostStore::public_content;
+$exclusive_content = PostStore::exclusive_content;
 $featured_image = PostStore::featured_image;
 $in_body = PostStore::in_body;
 ?>
@@ -146,6 +147,18 @@ $in_body = PostStore::in_body;
                                 </textarea>
                                 @if($errors->has($public_content))
                                     <p>{{ $errors->first($public_content) }}</p>
+                                @endif
+                            </x-form-control-dark>
+                            <x-form-control-dark>
+                                <label for="{{$exclusive_content}}">Exclusive Content</label>
+                                <textarea name="{{$exclusive_content}}"
+                                          id="{{$exclusive_content}}"
+                                          required
+                                          rows="4">
+{{$post_model !== null ? $post_model->exclusive_content : old($exclusive_content)}}
+                                </textarea>
+                                @if($errors->has($exclusive_content))
+                                    <p>{{ $errors->first($exclusive_content) }}</p>
                                 @endif
                             </x-form-control-dark>
                             <x-form-control-dark>

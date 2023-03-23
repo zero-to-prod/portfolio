@@ -429,7 +429,7 @@ $cvc = ThanksResponse::cvc;
                             {!! $post->published_cta !!}
                         @endif
                     </div>
-                    @if(auth()->user()?->subscribed_at === null)
+                    @if($post->published_exclusive_content !== null && auth()->user()?->subscribed_at === null)
                         <div class="flex justify-center">
                             <x-a :href="to()->subscribe()"
                                  title="Go to Subscribe Page"

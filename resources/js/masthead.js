@@ -19,7 +19,7 @@ let previousScrollPosition = 0;
 
 function handleScroll() {
     const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    if(currentScrollPosition < 64) return;
+    if(currentScrollPosition < 70) return;
     if (!navbar || !bottomNav) return;
 
     if (currentScrollPosition >= previousScrollPosition) {
@@ -31,7 +31,7 @@ function handleScroll() {
     previousScrollPosition = currentScrollPosition;
 }
 
-const classes = ['2col:m-0', '-my-[64px]'];
+const classes = ['2col:m-0', '-my-[70px]'];
 
 function addScrollClasses() {
     navbar.classList.add(...classes);

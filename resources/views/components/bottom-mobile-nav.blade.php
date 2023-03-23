@@ -17,10 +17,10 @@ use App\Http\Controllers\Results;
             <x-svg :name="'topics'" class="mx-auto"/>
             <span class="mx-auto text-xs">Topics</span>
         </a>
-        <a class="flex flex-col py-2 hover:bg-gray-300 {{ route_is(to()->subscribe) ? 'bg-gray-200' : '' }}"
-           href="{{to()->subscribe()}}">
-            <x-svg :name="'thanks'" class="mx-auto"/>
-            <span class="mx-auto text-xs">Subscribe</span>
+        <a class="flex flex-col py-2 hover:bg-gray-300 {{ route_is(to()->newsletter) ? 'bg-gray-200' : '' }}"
+           href="{{to()->newsletter()}}">
+            <x-svg :name="'mail'" class="mx-auto"/>
+            <span class="mx-auto text-xs">Newsletter</span>
         </a>
     </div>
 </nav>

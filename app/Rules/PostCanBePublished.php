@@ -24,7 +24,7 @@ class PostCanBePublished implements BusinessRule
     {
         return $this->post->title !== null
             && $this->post->slug !== null
-            && $this->post->body !== null
+            && $this->post->public_content !== null
             && $this->post->file_id !== null;
     }
 }

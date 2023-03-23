@@ -195,6 +195,8 @@ CREATE TABLE `posts` (
   `subtitle` char(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `views` bigint unsigned NOT NULL DEFAULT '0',
+  `likes` int unsigned NOT NULL DEFAULT '0',
+  `dislikes` int unsigned NOT NULL DEFAULT '0',
   `published_content` longtext COLLATE utf8mb4_unicode_ci,
   `published_word_count` int unsigned DEFAULT NULL,
   `original_publish_date` timestamp NULL DEFAULT NULL,
@@ -209,9 +211,38 @@ CREATE TABLE `posts` (
   KEY `posts_views_index` (`views`),
   KEY `posts_published_at_index` (`published_at`),
   KEY `posts_file_id_foreign` (`file_id`),
+  KEY `posts_slug_index` (`slug`),
+  KEY `posts_dislikes_index` (`dislikes`),
+  KEY `posts_likes_index` (`likes`),
   FULLTEXT KEY `posts_title_fulltext` (`title`),
   FULLTEXT KEY `posts_body_fulltext` (`body`),
   CONSTRAINT `posts_file_id_foreign` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `reactables`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reactables` (
+  `reaction_id` bigint unsigned NOT NULL,
+  `reactable_id` bigint unsigned NOT NULL,
+  `reactable_type` smallint NOT NULL,
+  UNIQUE KEY `reactables_reaction_id_reactable_id_reactable_type_unique` (`reaction_id`,`reactable_id`,`reactable_type`),
+  KEY `reactables_reactable_id_reactable_type_index` (`reactable_id`,`reactable_type`),
+  CONSTRAINT `reactables_reaction_id_foreign` FOREIGN KEY (`reaction_id`) REFERENCES `reactions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `reactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reactions` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint unsigned NOT NULL,
+  `like` tinyint DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `reactions_user_id_foreign` (`user_id`),
+  CONSTRAINT `reactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `role_has_permissions`;
@@ -313,13 +344,15 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `github_id` char(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `stripe_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `github_token` char(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `github_refresh_token` char(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subscribed_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -374,3 +407,9 @@ INSERT INTO `migrations` VALUES (38,'2023_03_16_120522_add_file_id_to_authors_ta
 INSERT INTO `migrations` VALUES (39,'2023_03_16_120522_add_file_id_to_tags_table',9);
 INSERT INTO `migrations` VALUES (40,'2023_03_16_125153_refactor_files',10);
 INSERT INTO `migrations` VALUES (41,'2023_03_16_161417_add_index_to_tag_type',11);
+INSERT INTO `migrations` VALUES (42,'2023_03_16_184358_create_index_on_slug_column',12);
+INSERT INTO `migrations` VALUES (48,'2023_03_17_204226_make_reacts_table',13);
+INSERT INTO `migrations` VALUES (66,'2023_03_17_204227_make_reactable_table',14);
+INSERT INTO `migrations` VALUES (67,'2023_03_17_210946_create_likes_column_on_posts_table',14);
+INSERT INTO `migrations` VALUES (68,'2023_03_21_230412_add_subscribed_at_column_on_users_table',14);
+INSERT INTO `migrations` VALUES (69,'2023_03_21_230946_create_likes_column_on_posts_table',14);

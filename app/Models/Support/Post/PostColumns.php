@@ -7,14 +7,21 @@ trait PostColumns
     public const file_id = 'file_id';
     public const title = 'title';
     public const subtitle = 'subtitle';
-    public const body = 'body';
+    public const public_content = 'public_content';
+    public const cta = 'cta';
+    public const exclusive_content = 'exclusive_content';
     public const views = 'views';
     public const likes = 'likes';
     public const dislikes = 'dislikes';
-    public const published_content = 'published_content';
-    public const published_at = 'published_at';
-    public const published_word_count = 'published_word_count';
+    public const published_public_content = 'published_public_content';
+    public const published_cta = 'published_cta';
+    public const published_exclusive_content = 'published_exclusive_content';
+    public const public_word_count = 'public_word_count';
+    public const public_reading_time = 'public_reading_time';
+    public const exclusive_word_count = 'exclusive_word_count';
+    public const exclusive_reading_time = 'exclusive_reading_time';
+
     public const original_publish_date = 'original_publish_date';
-    public const reading_time = 'reading_time';
+    public const published_at = 'published_at';
     public const premiere_at = 'premiere_at';
 }

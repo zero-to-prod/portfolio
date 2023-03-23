@@ -9,16 +9,14 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
-            $table->unsignedInteger(Post::dislikes)->after(Post::views)->default(0);
-            $table->unsignedInteger(Post::likes)->after(Post::views)->default(0);
+            $table->longText(Post::exclusive_content)->nullable()->after(Post::public_content);
         });
     }
 
     public function down(): void
     {
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
-            $table->dropColumn(Post::dislikes);
-            $table->dropColumn(Post::likes);
+            $table->dropColumn(Post::exclusive_content);
         });
     }
 };

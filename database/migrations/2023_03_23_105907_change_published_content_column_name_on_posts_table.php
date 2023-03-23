@@ -9,16 +9,14 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
-            $table->unsignedInteger(Post::dislikes)->after(Post::views)->index()->default(0)->change();
-            $table->unsignedInteger(Post::likes)->after(Post::views)->index()->default(0)->change();
+            $table->renameColumn('published_content', Post::published_public_content);
         });
     }
 
     public function down(): void
     {
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
-            $table->dropIndex([Post::dislikes]);
-            $table->dropIndex([Post::likes]);
+            $table->renameColumn(Post::published_public_content, 'published_content');
         });
     }
 };

@@ -80,7 +80,7 @@ MARKDOWN;
         $faker = Factory::create();
         $post = Post::create([
             Post::title => 'First',
-            Post::body => $markdown,
+            Post::public_content => $markdown,
             Post::subtitle => $faker->sentence,
             Post::file_id => $featured_image->id,
         ]);
@@ -95,7 +95,7 @@ MARKDOWN;
             $post = Post::create([
                 Post::title => Str::title($faker->bs),
                 Post::subtitle => $faker->sentence,
-                Post::body => $faker->paragraph,
+                Post::public_content => $faker->paragraph,
                 Post::file_id => $featured_image->id,
             ]);
 
@@ -108,7 +108,7 @@ MARKDOWN;
 
         $post = Post::create([
             Post::title => Str::title($faker->bs),
-            Post::body => $faker->paragraph,
+            Post::public_content => $faker->paragraph,
             Post::subtitle => $faker->sentence,
             Post::file_id => $featured_image->id,
         ]);
@@ -120,7 +120,7 @@ MARKDOWN;
 
         $post = Post::create([
             Post::title => Str::title($faker->bs),
-            Post::body => $faker->paragraph,
+            Post::public_content => $faker->paragraph,
             Post::subtitle => $faker->sentence,
         ]);
 
@@ -130,7 +130,7 @@ MARKDOWN;
 
         $post = Post::create([
             Post::title => Str::title($faker->bs),
-            Post::body => $faker->paragraph,
+            Post::public_content => $faker->paragraph,
             Post::subtitle => $faker->sentence,
             Post::file_id => $featured_image->id,
         ]);

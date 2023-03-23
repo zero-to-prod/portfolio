@@ -349,14 +349,96 @@ $cvc = ThanksResponse::cvc;
                 </div>
                 @vite('resources/js/share.js')
                 @if($post->premiere_at !== null && $post->premiere_at?->gt(now()))
-                    <div class="py-12 text-center text-2xl">
-                        <p>Premieres {{$post->published_at->tz('EST')->format('M d, Y')}}</p>
-                        <p>{{$post->published_at->tz('EST')->format('h:i A e')}}</p>
-                    </div>
+                    @if(auth()->user()?->subscribed_at !== null)
+                        <div id="published-content" class="grid max-w-none px-2 published-content prose">
+                            <div class="relative">
+                                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                    <div class="w-full border-t border-gray-300"></div>
+                                </div>
+                                <div class="relative flex justify-center">
+                                <span class="bg-white px-2 text-gray-500 flex gap-2">
+                                    <span class="my-auto">
+                                         <x-svg :name="'clock-rotate-left'"/>
+                                    </span>
+                                    Early Access
+                                </span>
+                                </div>
+                            </div>
+                            {!! $post->published_public_content !!}
+                            <x-a :href="to()->subscribe()" class="pt-6 !no-underline">
+                                <div class="relative">
+                                    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                        <div class="w-full border-t border-gray-300"></div>
+                                    </div>
+                                    <div class="relative flex justify-center">
+                                        <span class="bg-white px-2 text-gray-500 flex gap-2">
+                                            <x-svg :name="auth()->user()?->subscribed_at === null ? 'locked' : 'unlocked'"/>
+                                            Exclusive Content
+                                        </span>
+                                    </div>
+                                </div>
+                            </x-a>
+                            {!! $post->published_exclusive_content !!}
+                        </div>
+                    @else
+                        <x-a :href="to()->subscribe()" class="block py-12 text-center text-2xl bg-gray-100">
+                            <p>Premieres {{$post->published_at->tz('EST')->format('M d, Y')}}</p>
+                            <p>{{$post->published_at->tz('EST')->format('h:i A e')}}</p>
+                            <div class="flex justify-center mt-6">
+                                <div title="Go to Subscribe Page"
+                                     class="btn flex gap-1">
+                                    <x-svg :name="'unlocked-white'"/>
+                                    Subscribe to get instant access
+                                </div>
+                            </div>
+                        </x-a>
+                        <div id="published-content" class="grid max-w-none px-2 published-content prose">
+                            {!! $post->published_cta !!}
+                        </div>
+                    @endif
                 @else
                     <div id="published-content" class="grid max-w-none px-2 published-content prose">
-                        {!! $post->published_content !!}
+                        {!! $post->published_public_content !!}
+                        @if($post->published_exclusive_content !== null)
+                            <x-a :href="to()->subscribe()" class=" pt-6 !no-underline">
+                                <div class="relative">
+                                    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                        <div class="w-full border-t border-gray-300"></div>
+                                    </div>
+                                    <div class="relative flex justify-center">
+                                <span class="bg-white px-2 text-gray-500 flex gap-2">
+                                    <x-svg :name="auth()->user()?->subscribed_at === null ? 'locked' : 'unlocked'"/>
+                                    Exclusive Content
+                                </span>
+                                    </div>
+                                </div>
+                            </x-a>
+                            @else
+                            <div class="flex justify-center py-4">
+                                <x-a :href="to()->subscribe()"
+                                     title="Go to Subscribe Page"
+                                     class="btn flex gap-1 no-underline">
+                                    <x-svg :name="'unlocked-white'"/>
+                                    Subscribe to get exclusive content
+                                </x-a>
+                            </div>
+                        @endif
+                        @if(auth()->user()?->subscribed_at !== null)
+                            {!! $post->published_exclusive_content !!}
+                        @else
+                            {!! $post->published_cta !!}
+                        @endif
                     </div>
+                    @if($post->published_exclusive_content !== null && auth()->user()?->subscribed_at === null)
+                        <div class="flex justify-center">
+                            <x-a :href="to()->subscribe()"
+                                 title="Go to Subscribe Page"
+                                 class="btn flex gap-1">
+                                <x-svg :name="'unlocked-white'"/>
+                                Subscribe to get instant access
+                            </x-a>
+                        </div>
+                    @endif
                 @endif
             </article>
         </div>

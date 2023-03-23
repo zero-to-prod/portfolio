@@ -224,7 +224,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         $published_content = app(MarkdownRenderer::class)->toHtml($this->public_content);
 
         $this->update([
-            self::published_content => $published_content,
+            self::published_public_content => $published_content,
             self::original_publish_date => $this->original_publish_date ?? now(),
             self::published_at => now(),
             self::published_word_count => str_word_count(strip_tags($published_content)),

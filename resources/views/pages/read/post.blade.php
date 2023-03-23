@@ -355,7 +355,7 @@ $cvc = ThanksResponse::cvc;
                     </div>
                 @else
                     <div id="published-content" class="grid max-w-none px-2 published-content prose">
-                        {!! $post->published_content !!}
+                        {!! $post->published_public_content !!}
                     </div>
                 @endif
             </article>

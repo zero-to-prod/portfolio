@@ -1,12 +1,11 @@
-@props(['title', 'tags' => null])
-
+@props(['title'])
         <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="DevLeak dev leak">
-    <title>{{ $title ?? config('app.name', 'Home') }}</title>
+    <title>{{ $title ?? config('app.name', 'Subscribe') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
     <livewire:styles />

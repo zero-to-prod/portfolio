@@ -16,6 +16,7 @@ $subtitle = PostStore::subtitle;
 $authors = PostStore::authors;
 $tags = PostStore::tags;
 $public_content = PostStore::public_content;
+$cta = PostStore::cta;
 $exclusive_content = PostStore::exclusive_content;
 $featured_image = PostStore::featured_image;
 $in_body = PostStore::in_body;
@@ -147,6 +148,18 @@ $in_body = PostStore::in_body;
                                 </textarea>
                                 @if($errors->has($public_content))
                                     <p>{{ $errors->first($public_content) }}</p>
+                                @endif
+                            </x-form-control-dark>
+                            <x-form-control-dark>
+                                <label for="{{$cta}}">CTA</label>
+                                <textarea name="{{$cta}}"
+                                          id="{{$cta}}"
+                                          required
+                                          rows="4">
+{{$post_model !== null ? $post_model->cta : old($cta)}}
+                                </textarea>
+                                @if($errors->has($cta))
+                                    <p>{{ $errors->first($cta) }}</p>
                                 @endif
                             </x-form-control-dark>
                             <x-form-control-dark>

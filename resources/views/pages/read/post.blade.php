@@ -356,29 +356,34 @@ $cvc = ThanksResponse::cvc;
                 @else
                     <div id="published-content" class="grid max-w-none px-2 published-content prose">
                         {!! $post->published_public_content !!}
-                        <div class="relative mt-6">
-                            <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                                <div class="w-full border-t border-gray-300"></div>
-                            </div>
-                            <div class="relative flex justify-center">
+                        <x-a :href="to()->subscribe()" class=" pt-6 !no-underline">
+                            <div class="relative">
+                                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                    <div class="w-full border-t border-gray-300"></div>
+                                </div>
+                                <div class="relative flex justify-center">
                                 <span class="bg-white px-2 text-gray-500 flex gap-2">
                                     <x-svg :name="auth()->user()?->subscribed_at === null ? 'locked' : 'unlocked'"/>
                                     Exclusive Content
                                 </span>
+                                </div>
                             </div>
-                        </div>
+                        </x-a>
                         @if(auth()->user()?->subscribed_at !== null)
                             {!! $post->published_exclusive_content !!}
                         @else
-                            <div class="mt-6">
-                                <x-a :href="to()->subscribe()"
-                                     class="bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                    <x-svg name="lock" class="w-4 h-4 mr-2"/>
-                                    Subscribe to read
-                                </x-a>
-                            </div>
+                            {!! $post->published_cta !!}
                         @endif
                     </div>
+                    @if(auth()->user()?->subscribed_at === null)
+                        <div class="flex justify-center">
+                            <x-a :href="to()->subscribe()"
+                                 title="Go to Subscribe Page"
+                                 class="btn">
+                                Subscribe to get instant access
+                            </x-a>
+                        </div>
+                    @endif
                 @endif
             </article>
         </div>

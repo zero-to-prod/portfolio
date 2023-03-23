@@ -12,8 +12,8 @@ use App\Models\Post;
      title="{{ $post->published_word_count  . ' words'}}"
 >
     @if($text === null)
-        {{$post->reading_time . ' min'}}
+        {{$post->public_reading_time . ' min'}}
     @else
-        {{$post->reading_time . ' ' .$text}}
+        {{$post->public_reading_time . ' ' .$text}}
     @endif
 </div>

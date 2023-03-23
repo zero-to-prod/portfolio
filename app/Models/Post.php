@@ -56,8 +56,8 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         self::premiere_at => 'datetime',
         self::original_publish_date => 'datetime',
         self::views => 'integer',
-        self::published_word_count => 'integer',
-        self::reading_time => 'integer',
+        self::public_word_count => 'integer',
+        self::public_reading_time => 'integer',
     ];
 
     public function reactions(): MorphToMany
@@ -227,7 +227,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
             self::published_public_content => $published_content,
             self::original_publish_date => $this->original_publish_date ?? now(),
             self::published_at => now(),
-            self::published_word_count => str_word_count(strip_tags($published_content)),
+            self::public_word_count => str_word_count(strip_tags($published_content)),
         ]);
 
         self::reguard();

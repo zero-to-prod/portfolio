@@ -83,7 +83,7 @@ $in_body = PostStore::in_body;
                             <x-form-control-dark>
                                 <label>Post Markdown</label>
                                 <span class="text-sm text-white">
-                                    [![{{$post_model->file->original_name}}](/file/{{$post_model->file->name}}?width=200)]({{$post_model->slug}})
+                                    [![{{$post_model->file->original_name}}](/file/{{$post_model->file->name}}?width=250)]({{$post_model->slug}})
                                     [{{$post_model->title}}]({{$post_model->slug}})
                                 </span>
                             </x-form-control-dark>

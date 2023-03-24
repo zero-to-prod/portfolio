@@ -26,7 +26,12 @@ use Illuminate\Support\Collection;
                 </x-a>
                 <x-divider class="mt-2 mb-4"/>
                 <div class="mb-4 grid grid-flow-row 2col:grid-cols-2 4col:grid-cols-4 2cols:gap-0 2col:gap-2 gap-4 ">
-                    @foreach($tag->posts as $post)
+                    <?php
+                        [$latest_posts, $older_posts] = $tag->posts->partition(
+                            fn (Post $post) => $post->original_publish_date->gt(now()->subDays(3))
+                        );
+                        ?>
+                    @foreach($latest_posts->merge($older_posts) as $post)
                         <x-a class="shadow-lg 2col:shadow-none" :href="to()->read($post)">
                             <div class="relative">
                                 <div class="overflow-hidden 2col:rounded-lg aspect-w-3 aspect-h-2">

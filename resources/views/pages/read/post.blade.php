@@ -383,9 +383,6 @@ $cvc = ThanksResponse::cvc;
                             @endif
                         </div>
                     @else
-                        <div id="published-content" class="grid max-w-none px-2 published-content prose">
-                            {!! $post->published_cta !!}
-                        </div>
                         <x-a :href="to()->subscribe()" class="block py-12 text-center text-2xl bg-gray-100">
                             <p>Premieres {{$post->premiere_at->tz('EST')->format('M d, Y')}}</p>
                             <p>{{$post->premiere_at->tz('EST')->format('h:i A e')}}</p>
@@ -397,6 +394,9 @@ $cvc = ThanksResponse::cvc;
                                 </div>
                             </div>
                         </x-a>
+                        <div id="published-content" class="grid max-w-none px-2 published-content prose">
+                            {!! $post->published_cta !!}
+                        </div>
                     @endif
                 @else
                     <div id="published-content" class="grid max-w-none px-2 published-content prose">

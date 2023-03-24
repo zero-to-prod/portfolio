@@ -397,6 +397,14 @@ $cvc = ThanksResponse::cvc;
                         <div id="published-content" class="grid max-w-none px-2 published-content prose">
                             {!! $post->published_cta !!}
                         </div>
+                        <div class="flex justify-center">
+                            <x-a :href="to()->subscribe()"
+                                 title="Go to Subscribe Page"
+                                 class="btn flex gap-1">
+                                <x-svg :name="'unlocked-white'"/>
+                                Subscribe to unlock exclusive content
+                            </x-a>
+                        </div>
                     @endif
                 @else
                     <div id="published-content" class="grid max-w-none px-2 published-content prose">

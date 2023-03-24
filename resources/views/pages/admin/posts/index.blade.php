@@ -86,7 +86,6 @@ use App\Models\Tag;
                                             {{$post->tags->implode(Tag::name, ', ')}}
                                         </p>
                                     </td>
-
                                     <td class="break-all text-xs max-w-xs text-white">
                                         [![{{$post->file->original_name}}](/file/{{$post->file->name}}?width=250)]({{$post->slug}})
                                         [{{$post->title}}]({{$post->slug}})

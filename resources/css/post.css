@@ -69,7 +69,7 @@
         word-break: break-all;
     }
 
-    #published-content > ul > li > code:last-child {
+    #published-content > ul > li > code:last-child, #published-content > ol > li > code {
         background-color: #e3e6e8 !important;
         padding: 2px 4px;
         border-radius: 3px;

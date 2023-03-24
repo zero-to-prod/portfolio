@@ -381,9 +381,12 @@ $cvc = ThanksResponse::cvc;
                             {!! $post->published_exclusive_content !!}
                         </div>
                     @else
+                        <div id="published-content" class="grid max-w-none px-2 published-content prose">
+                            {!! $post->published_cta !!}
+                        </div>
                         <x-a :href="to()->subscribe()" class="block py-12 text-center text-2xl bg-gray-100">
-                            <p>Premieres {{$post->published_at->tz('EST')->format('M d, Y')}}</p>
-                            <p>{{$post->published_at->tz('EST')->format('h:i A e')}}</p>
+                            <p>Premieres {{$post->premiere_at->tz('EST')->format('M d, Y')}}</p>
+                            <p>{{$post->premiere_at->tz('EST')->format('h:i A e')}}</p>
                             <div class="flex justify-center mt-6">
                                 <div title="Go to Subscribe Page"
                                      class="btn flex gap-1">
@@ -392,9 +395,6 @@ $cvc = ThanksResponse::cvc;
                                 </div>
                             </div>
                         </x-a>
-                        <div id="published-content" class="grid max-w-none px-2 published-content prose">
-                            {!! $post->published_cta !!}
-                        </div>
                     @endif
                 @else
                     <div id="published-content" class="grid max-w-none px-2 published-content prose">
@@ -413,20 +413,22 @@ $cvc = ThanksResponse::cvc;
                                     </div>
                                 </div>
                             </x-a>
-                            @else
+                        @else
                             <div class="flex justify-center py-4">
                                 <x-a :href="to()->subscribe()"
                                      title="Go to Subscribe Page"
                                      class="btn flex gap-1 no-underline">
                                     <x-svg :name="'unlocked-white'"/>
-                                    Subscribe to get exclusive content
+                                    Subscribe to access exclusive content
                                 </x-a>
                             </div>
                         @endif
                         @if(auth()->user()?->subscribed_at !== null)
                             {!! $post->published_exclusive_content !!}
                         @else
-                            {!! $post->published_cta !!}
+                            @if($post->published_exclusive_content !== null)
+                                {!! $post->published_cta !!}
+                            @endif
                         @endif
                     </div>
                     @if($post->published_exclusive_content !== null && auth()->user()?->subscribed_at === null)

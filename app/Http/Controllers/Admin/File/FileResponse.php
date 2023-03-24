@@ -30,6 +30,10 @@ class FileResponse extends Controller
             $file = Storage::disk(config('filesystems.file_disk'))->get($path);
             $mime = Storage::disk(config('filesystems.file_disk'))->mimeType($path);
 
+            if (Str::contains($mime, 'gif')) {
+                return response($file, 200, ['Content-Type' => $mime]);
+            }
+
             if (Str::contains($mime, 'image')) {
                 $img = Image::make($file);
                 if ($request->hasAny([self::width, self::height])) {

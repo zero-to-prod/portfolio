@@ -75,8 +75,12 @@ class Results extends Controller
             $author_model = Author::where(Author::slug, $author)->first();
         }
 
+        [$latest_posts, $older_posts] = $posts?->partition(
+            fn(Post $post) => $post->original_publish_date->gt(now()->subDays(3))
+        );
+
         return view('pages.results', [
-            self::posts => $posts,
+            self::posts => $latest_posts?->merge($older_posts),
             self::tag => $tag,
             self::author_model => $author_model,
         ]);

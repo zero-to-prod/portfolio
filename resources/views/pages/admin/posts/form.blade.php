@@ -74,11 +74,19 @@ $in_body = PostStore::in_body;
                                            {{$post_model?->file !== null ? null  : 'required=true'}}
                                            type="file"
                                     >
+
                                     @if($errors->has($featured_image))
                                         <p>{{ $errors->first($featured_image) }}</p>
                                     @endif
                                 </x-form-control-dark>
                             </div>
+                            <x-form-control-dark>
+                                <label>Post Markdown</label>
+                                <span class="text-sm text-white">
+                                    [![{{$post_model->file->original_name}}](/file/{{$post_model->file->name}}?width=200)]({{$post_model->slug}})
+                                    [{{$post_model->title}}]({{$post_model->slug}})
+                                </span>
+                            </x-form-control-dark>
                             <x-form-control-dark>
                                 <label for="{{$title}}">Title</label>
                                 <input name="{{$title}}"

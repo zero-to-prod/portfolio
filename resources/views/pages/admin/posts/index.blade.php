@@ -30,13 +30,16 @@ use App\Models\Tag;
                                     class="py-3.5 px-3 text-left text-sm font-semibold text-white">Posts
                                 </th>
                                 <th scope="col"
+                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Views
+                                </th>
+                                <th scope="col"
                                     class="py-3.5 px-3 text-left text-sm font-semibold text-white">Tags
                                 </th>
                                 <th scope="col"
-                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Action
+                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Link
                                 </th>
                                 <th scope="col"
-                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Views
+                                    class="py-3.5 px-3 text-left text-sm font-semibold text-white">Action
                                 </th>
                             </tr>
                             </thead>
@@ -60,7 +63,7 @@ use App\Models\Tag;
                                             </div>
                                         @endif
                                     </td>
-                                    <td class="py-4 px-3 text-sm text-gray-300">
+                                    <td class="py-4 px-3 text-sm text-gray-300 max-w-md">
                                         <div>
                                             <div>
                                                 <div>
@@ -70,16 +73,23 @@ use App\Models\Tag;
                                                     <p title="{{$post->subtitle}}">{{$post->subtitle}}</p>
                                                     @if($post->isPublished())
                                                         <p>{{$post->original_publish_date?->format('m/d/Y')}}</p>
-                                                        <p>Words: {{$post->published_word_count}}</p>
                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
+                                        <p>{{$post->views}}</p>
+                                    </td>
+                                    <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
                                         <p>
                                             {{$post->tags->implode(Tag::name, ', ')}}
                                         </p>
+                                    </td>
+
+                                    <td class="break-all text-xs max-w-xs text-white">
+                                        [![{{$post->file->original_name}}](/file/{{$post->file->name}}?width=200)]({{$post->slug}})
+                                        [{{$post->title}}]({{$post->slug}})
                                     </td>
                                     <td>
                                         <div class="my-auto">
@@ -94,9 +104,6 @@ use App\Models\Tag;
                                                 </form>
                                             @endif
                                         </div>
-                                    </td>
-                                    <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
-                                        <p>{{$post->views}}</p>
                                     </td>
                                 </tr>
                             @endforeach

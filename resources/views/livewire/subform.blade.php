@@ -33,15 +33,15 @@ $none = Subform::none;
                     <span>Save %17</span>
                 </li>
                 <li>
-                    <x-svg :name="'unlocked-green'"/>
+                    <x-svg :name="'check-green'"/>
                     <span>Exclusive Content</span>
                 </li>
                 <li>
-                    <x-svg :name="'clock-rotate-left-green'"/>
+                    <x-svg :name="'check-green'"/>
                     <span>Early Access</span>
                 </li>
                 <li>
-                    <x-svg :name="'thumb-up-filled-green'"/>
+                    <x-svg :name="'check-green'"/>
                     <span>Social Reactions</span>
                 </li>
                 <li>
@@ -68,15 +68,15 @@ $none = Subform::none;
                     <span>Save 17%</span>
                 </li>
                 <li>
-                    <x-svg :name="'unlocked-green'"/>
+                    <x-svg :name="'check-green'"/>
                     <span>Exclusive Content</span>
                 </li>
                 <li>
-                    <x-svg :name="'clock-rotate-left-green'"/>
+                    <x-svg :name="'check-green'"/>
                     <span>Early Access</span>
                 </li>
                 <li>
-                    <x-svg :name="'thumb-up-filled-green'"/>
+                    <x-svg :name="'check-green'"/>
                     <span>Social Reactions</span>
                 </li>
                 <li>
@@ -99,15 +99,15 @@ $none = Subform::none;
                     <span>Access to Public Content</span>
                 </li>
                 <li>
-                    <x-svg :name="'thumb-up-filled-green'"/>
+                    <x-svg :name="'check-green'"/>
                     <span>Social Reactions</span>
                 </li>
                 <li class="na">
-                    <x-svg :name="'clock-rotate-left-gray'"/>
+                    <x-svg :name="'x-gray'"/>
                     <span>Early Access</span>
                 </li>
                 <li class="na">
-                    <x-svg :name="'unlocked-gray'"/>
+                    <x-svg :name="'x-gray'"/>
                     <span>Exclusive Content</span>
                 </li>
             </ul>
@@ -126,15 +126,15 @@ $none = Subform::none;
                     <span>Access to Public Content</span>
                 </li>
                 <li class="na">
-                    <x-svg :name="'thumb-up-filled-gray'"/>
+                    <x-svg :name="'x-gray'"/>
                     <span>Social Reactions</span>
                 </li>
                 <li class="na">
-                    <x-svg :name="'clock-rotate-left-gray'"/>
+                    <x-svg :name="'x-gray'"/>
                     <span>Early Access</span>
                 </li>
                 <li class="na">
-                    <x-svg :name="'unlocked-gray'"/>
+                    <x-svg :name="'x-gray'"/>
                     <span>Exclusive Content</span>
                 </li>
             </ul>

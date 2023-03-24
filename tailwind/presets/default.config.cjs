@@ -25,7 +25,7 @@ module.exports = {
     },
     extend: {
       spacing: {
-        'narrow-nav': '64px',
+        'narrow-nav': '68px',
         'wide-nav': '238px',
         'post-2col': '837px'
       },

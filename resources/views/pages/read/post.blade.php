@@ -448,9 +448,12 @@ $cvc = ThanksResponse::cvc;
         </div>
         <?php
         $posts = Post::related($post->tags, $post->id)->get();
+        [$latest_posts, $older_posts] = $posts->partition(
+            fn(Post $post) => $post->original_publish_date->gt(now()->subDays(3))
+        );
         ?>
         <div class="3col:flex hidden shrink-0 flex-col gap-2 w-[400px]">
-            @foreach($posts as $post)
+            @foreach($latest_posts->merge($older_posts) as $post)
                 <x-a :href="to()->read($post)" class="flex flex-row gap-2">
                     <div class="relative shrink-0">
                         <div class="overflow-hidden 2col:rounded-lg">

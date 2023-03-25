@@ -16,7 +16,13 @@ class Welcome extends Controller
     public function __invoke(): View|Factory|Application
     {
         $tags = Tag::mostViewed()->with([
-            Tag::posts => static fn($query) => $query->orderByDesc(Post::views)->with([Post::authors, Post::file]),
+            Tag::posts => static fn($query) => $query->orderByDesc(Post::views)
+                ->with([
+                    Post::authors,
+                    Post::file,
+                    Post::altFile,
+                    Post::animationFile,
+                ]),
         ])->get();
 
         return view('pages.welcome', [self::tags => $tags]);

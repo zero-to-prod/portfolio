@@ -16,6 +16,12 @@ return new class extends Migration {
                 ->constrained((new File)->getTable())
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+            $table->foreignId(Post::animation_file_id)
+                ->nullable()
+                ->after(Post::alt_file_id)
+                ->constrained((new File)->getTable())
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->text(Post::public_content)
                 ->nullable()
                 ->change();
@@ -27,9 +33,6 @@ return new class extends Migration {
         Schema::table((new Post)->getTable(), static function (Blueprint $table) {
             $table->dropForeign([Post::alt_file_id]);
             $table->dropColumn(Post::alt_file_id);
-            $table->text(Post::public_content)
-                ->nullable(false)
-                ->change();
         });
     }
 };

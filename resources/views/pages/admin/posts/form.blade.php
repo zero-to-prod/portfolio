@@ -20,6 +20,7 @@ $cta = PostStore::cta;
 $exclusive_content = PostStore::exclusive_content;
 $featured_image = PostStore::featured_image;
 $alt_image = PostStore::alt_image;
+$animation_image = PostStore::animation_image;
 $in_body = PostStore::in_body;
 ?>
 
@@ -86,6 +87,25 @@ $in_body = PostStore::in_body;
                                     >
                                     @if($errors->has($featured_image))
                                         <p>{{ $errors->first($featured_image) }}</p>
+                                    @endif
+                                </x-form-control-dark>
+                            </div>
+                            <div class="flex space-x-6 sm:col-span-2">
+                                @if($post_model?->animationFile !== null)
+                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                           :file="$post_model->animationFile"
+                                           :height="100"
+                                    />
+                                @endif
+                                <x-form-control-dark>
+                                    <label for="{{$animation_image}}">Animation Image</label>
+                                    <input class="w-full"
+                                           name="{{$animation_image}}"
+                                           id="{{$animation_image}}"
+                                           type="file"
+                                    >
+                                    @if($errors->has($animation_image))
+                                        <p>{{ $errors->first($animation_image) }}</p>
                                     @endif
                                 </x-form-control-dark>
                             </div>

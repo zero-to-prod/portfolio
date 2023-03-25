@@ -39,7 +39,7 @@ class Results extends Controller
                 $query->whereFullText(Post::title, $search)
                     ->orWhereFullText(Post::public_content, $search);
             })
-                ->with([Post::tags, Post::authors, Post::file, Post::tags . '.' . Tag::file])
+                ->with([Post::tags, Post::authors, Post::file, Post::altFile, Post::animationFile, Post::tags . '.' . Tag::file])
                 ->orderByDesc(Post::views)
                 ->limit(self::limit)
                 ->get();
@@ -54,7 +54,7 @@ class Results extends Controller
         }
 
         if ($popular !== null) {
-            $posts = Post::with([Post::tags . '.' . Tag::file, Post::authors, Post::file])
+            $posts = Post::with([Post::tags . '.' . Tag::file, Post::authors, Post::file, Post::altFile, Post::animationFile,])
                 ->orderByDesc(Post::views)
                 ->limit(self::limit)
                 ->get();
@@ -65,7 +65,7 @@ class Results extends Controller
                 ->whereHas(Post::authors, static function (Builder $query) use ($author) {
                     $query->where(Author::slug, $author);
                 })
-                ->with([Post::file, Post::tags . '.' . Tag::file])
+                ->with([Post::file, Post::tags . '.' . Tag::file, Post::altFile, Post::animationFile,])
                 ->orderByDesc(Post::views)
                 ->limit(self::limit)
                 ->get();

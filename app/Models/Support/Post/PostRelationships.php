@@ -15,6 +15,8 @@ trait PostRelationships
     public const authors = 'authors';
 
     public const file = 'file';
+    public const altFile = 'altFile';
+    public const animationFile = 'animationFile';
 
     public function file(): HasOne
     {
@@ -24,6 +26,11 @@ trait PostRelationships
     public function altFile(): HasOne
     {
         return $this->hasOne(File::class, File::id, self::alt_file_id);
+    }
+
+    public function animationFile(): HasOne
+    {
+        return $this->hasOne(File::class, File::id, self::animation_file_id);
     }
 
     public function views(): HasMany

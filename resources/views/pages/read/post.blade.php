@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\PostTypes;
 use App\Http\Controllers\Api\ThanksResponse;
 use App\Models\Post;
 use App\Models\Tag;
@@ -20,7 +21,7 @@ $cvc = ThanksResponse::cvc;
         <div class="shrink max-w-post-2col">
             <div class="relative 2col:mx-2">
                 <x-img class="h-full w-full object-cover object-center"
-                       :file="$post->altFile ?? $post->file"
+                       :file="$post->file"
                        :width="837"
                        :title="''"
                 />
@@ -464,12 +465,25 @@ $cvc = ThanksResponse::cvc;
             @foreach($latest_posts->merge($older_posts) as $post)
                 <x-a :href="to()->read($post)" class="flex flex-row gap-2">
                     <div class="relative shrink-0">
-                        <div class="overflow-hidden 2col:rounded-lg">
-                            <x-img class="object-cover object-center h-[112px] w-[168px]"
-                                   :file="$post->file"
-                                   :width="250"
-                                   :title="''"
-                            />
+                        <div class="relative overflow-hidden 2col:rounded-lg h-[112px] w-[168px]">
+                            @if($post->post_type_id === PostTypes::animation)
+                                <x-img class="absolute top-0 h-full w-full object-cover object-center hover:opacity-0 z-50"
+                                       :file="$post->animationFile"
+                                       :width="250"
+                                       :title="''"
+                                />
+                                <x-img class="absolute top-0 h-full w-full object-cover object-center block"
+                                       :file="$post->altFile"
+                                       :width="250"
+                                       :title="''"
+                                />
+                            @else
+                                <x-img class="object-cover object-center"
+                                       :file="$post->file"
+                                       :width="250"
+                                       :title="''"
+                                />
+                            @endif
                         </div>
                         <x-reading-time-chip :post="$post"/>
                     </div>

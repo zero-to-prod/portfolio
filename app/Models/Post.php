@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Helpers\CacheKeys;
+use App\Helpers\PostTypes;
 use App\Helpers\Tags;
 use App\Helpers\TagTypes;
 use App\Models\Support\HasRules;
@@ -50,8 +51,12 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
     use HasFiles;
     use PostScopes;
 
-    protected $fillable = [self::file_id, self::alt_file_id, self::title, self::subtitle, self::public_content, self::cta, self::exclusive_content, self::premiere_at];
+    protected $fillable = [self::file_id, self::alt_file_id, self::animation_file_id, self::title, self::subtitle, self::public_content, self::cta, self::exclusive_content, self::premiere_at];
     protected $casts = [
+        self::post_type_id => PostTypes::class,
+        self::file_id => 'integer',
+        self::alt_file_id => 'integer',
+        self::animation_file_id => 'integer',
         self::published_at => 'datetime',
         self::premiere_at => 'datetime',
         self::original_publish_date => 'datetime',
@@ -266,7 +271,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         $exclude_ids = is_array($exclude_ids) ? $exclude_ids : [$exclude_ids];
 
         return $builder->withAnyTags($tags, TagTypes::post->value)
-            ->with([self::authors, self::file, self::tags . '.' . Tag::file])
+            ->with([self::authors, self::file, self::tags . '.' . Tag::file, self::altFile, self::animationFile])
             ->whereNotIn(self::id, $exclude_ids)
             ->orderByDesc(self::views)
             ->limit($limit);

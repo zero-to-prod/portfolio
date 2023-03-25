@@ -151,36 +151,39 @@ $in_body = PostStore::in_body;
                                     <p>{{ $errors->first($subtitle) }}</p>
                                 @endif
                             </x-form-control-dark>
-                            <x-form-control-dark>
-                                <label for="{{$authors}}">Author</label>
-                                <select class="bg-gray-900 rounded-md ring-gray-700"
-                                        name="{{$authors}}"
-                                        id="{{$authors}}"
-                                        multiple
-                                        required>
-                                    @foreach(Author::all() as $author_model)
-                                        <option {{$author_model?->id === $author_model->id ? 'selected' :null}} value="{{$author_model->id}}">
-                                            {{$author_model->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has($authors))
-                                    <p>{{ $errors->first($authors) }}</p>
-                                @endif
-                            </x-form-control-dark>
                             <div class="sm:col-span-2">
-                                <p class="text-neutral-content mb-3">Tags</p>
+                                <p class="text-neutral-content mb-3">Authors</p>
                                 <div class="flex gap-4 flex-wrap">
-                                    @foreach(Tag::withType(TagTypes::post->value)->get() as $author_model)
+                                    @foreach(Author::all() as $author_model)
                                         <div class="flex items-center text-white space-x-2">
                                             <input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
-                                                   name="{{$tags}}"
+                                                   name="{{$authors}}"
                                                    id="tag-{{$author_model->id}}"
                                                    value="{{$author_model->id}}"
                                                    type="checkbox"
-                                                    {{$post_model?->tags->where(Tag::slug, $author_model->slug)->count() ? 'checked' : null}}
+                                                    {{$post_model?->authors->where(Author::id, $author_model->id)->count() ? 'checked' : null}}
                                             />
                                             <label for="tag-{{$author_model->id}}">{{$author_model->name}}</label>
+                                        </div>
+                                    @endforeach
+                                    @if($errors->has($authors))
+                                        <p class="error">{{ $errors->first($authors) }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-neutral-content mb-3">Tags</p>
+                                <div class="flex gap-4 flex-wrap">
+                                    @foreach(Tag::withType(TagTypes::post->value)->get() as $tag_model)
+                                        <div class="flex items-center text-white space-x-2">
+                                            <input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                                                   name="{{$tags}}"
+                                                   id="tag-{{$tag_model->id}}"
+                                                   value="{{$tag_model->id}}"
+                                                   type="checkbox"
+                                                    {{$post_model?->tags->where(Tag::slug, $tag_model->slug)->count() ? 'checked' : null}}
+                                            />
+                                            <label for="tag-{{$tag_model->id}}">{{$tag_model->name}}</label>
                                         </div>
                                     @endforeach
                                     @if($errors->has($tags))

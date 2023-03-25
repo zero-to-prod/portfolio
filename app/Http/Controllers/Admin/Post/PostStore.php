@@ -18,6 +18,7 @@ class PostStore extends Controller
 {
     public const id = 'id';
     public const title = 'title';
+    public const type = 'type';
     public const subtitle = 'subtitle';
     public const authors = 'authors[]';
     public const tags = 'tags[]';
@@ -36,6 +37,7 @@ class PostStore extends Controller
     {
         $validated = $request->validate([
             self::id => 'nullable|integer',
+            self::type => 'nullable',
             self::title => Post::rules(Post::title),
             self::subtitle => Post::rules(Post::subtitle),
             'authors' => 'required|array|min:1',
@@ -52,6 +54,7 @@ class PostStore extends Controller
         DB::beginTransaction();
 
         $post = Post::withoutGlobalScopes([Post::published])->updateOrCreate([Post::id => $request->{self::id}], [
+            Post::post_type_id => $validated[self::type],
             Post::title => $validated[self::title],
             Post::subtitle => $validated[self::subtitle],
             Post::public_content => $validated[self::public_content],

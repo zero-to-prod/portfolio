@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\PostTypes;
 use App\Helpers\TagTypes;
 use App\Http\Controllers\Admin\Post\PostStore;
 use App\Http\Controllers\Admin\Post\PostPublish;
@@ -12,6 +13,7 @@ use App\Models\Tag;
 /* @var File $file */
 
 $title = PostStore::title;
+$type = PostStore::type;
 $subtitle = PostStore::subtitle;
 $authors = PostStore::authors;
 $tags = PostStore::tags;
@@ -61,6 +63,18 @@ $in_body = PostStore::in_body;
                                        hidden
                                        value="{{$post_model?->id}}"/>
                             </label>
+                            <div class="col-span-2 gap-2 flex">
+                                <fieldset>
+                                    <legend class="text-white">Post Type:</legend>
+                                    @foreach(PostTypes::cases() as $post_type)
+                                        <label class="text-white">
+                                            <input type="radio" id="{{$post_type->value}}" name="{{$type}}"
+                                                   value="{{$post_type->value}}" {{$post_type === $post_model?->post_type_id ? 'checked' : null}}>
+                                            <span>{{$post_type->name}}</span>
+                                        </label>
+                                    @endforeach
+                                </fieldset>
+                            </div>
                             @if($post_model?->file !== null)
                                 <x-form-control-dark>
                                     <label>Post Markdown Link</label>

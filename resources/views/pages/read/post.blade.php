@@ -88,7 +88,6 @@ $cvc = ThanksResponse::cvc;
                                 <p class="text-sm">{{$post->authorPostCount()}}
                                     Posts
                                 </p>
-
                             </div>
                         </x-a>
                         <x-a title="Subscribe to Newsletter" :href="to()->newsletter()"
@@ -120,7 +119,7 @@ $cvc = ThanksResponse::cvc;
                     <div class="mx-auto rounded-lg p-4 shadow bg-base-200 max-w-[380px]">
                         <h3 class="text-xl font-bold">Say Thanks</h3>
                         <p class="text-sm font-bold">Buy a Thanks, and directly support content like this.</p>
-                        <form id="form" class="mt-4 space-y-4">
+                        <form id="thanks-form" class="mt-4 space-y-4">
                             <div class="flex flex-wrap justify-center gap-2">
                                 @foreach([1, 2, 5, 10] as $amount)
                                     <label class="flex cursor-pointer items-center rounded-lg bg-gray-300 p-2 hover:bg-base-300">

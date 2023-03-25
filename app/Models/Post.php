@@ -51,7 +51,18 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
     use HasFiles;
     use PostScopes;
 
-    protected $fillable = [self::file_id, self::alt_file_id, self::animation_file_id, self::title, self::subtitle, self::public_content, self::cta, self::exclusive_content, self::premiere_at];
+    protected $fillable = [
+        self::post_type_id,
+        self::file_id,
+        self::alt_file_id,
+        self::animation_file_id,
+        self::title,
+        self::subtitle,
+        self::public_content,
+        self::cta,
+        self::exclusive_content,
+        self::premiere_at
+    ];
     protected $casts = [
         self::post_type_id => PostTypes::class,
         self::file_id => 'integer',

@@ -18,7 +18,7 @@ use Tests\Feature\Models\File\FileUploadTest;
 /**
  * @mixin IdeHelperFile
  */
-class File extends Model
+class File extends \Illuminate\Database\Eloquent\Model
 {
     use HasFactory;
     use IdColumn;

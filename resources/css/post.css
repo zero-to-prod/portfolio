@@ -3,18 +3,18 @@
         /*@apply border border-red-200;*/
     }
 
-    label:has(> [type='radio']:checked) {
+    #thanks-form label:has(> [type='radio']:checked) {
         background-color: var(--primary);
         color: white;
     }
 
-    [type='radio'] {
+    #thanks-form [type='radio'] {
         visibility: hidden;
         height: 0;
         width: 0;
     }
 
-    [type='radio']:checked {
+    #thanks-form [type='radio']:checked {
         visibility: hidden;
         height: 0;
         width: 0;

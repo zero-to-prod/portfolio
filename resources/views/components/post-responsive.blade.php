@@ -1,6 +1,7 @@
 @props(['posts'])
 <?php
 
+use App\Helpers\PostTypes;
 use App\Models\Post;
 use Illuminate\Support\Collection;
 
@@ -13,11 +14,24 @@ use Illuminate\Support\Collection;
             <x-a class="relative" :href="to()->read($post)">
                 <div class="relative shrink-0">
                     <div class="overflow-hidden 2col:rounded-lg ">
-                        <x-img class="h-full w-full 2col:h-[200px] 2col:w-[300px] object-cover object-center"
-                               :file="$post->file"
-                               :width="300"
-                               :title="''"
-                        />
+                        @if($post->post_type_id === PostTypes::animation)
+                            <x-img class="2col:rounded-lg relative h-full w-full 2col:h-[200px] 2col:w-[300px] object-cover object-center z-50 opacity-0 2col:opacity-100 hover:opacity-0"
+                                   :file="$post->animationFile"
+                                   :width="300"
+                                   :title="''"
+                            />
+                            <x-img class="2col:rounded-lg absolute top-0 h-full w-full 2col:h-[200px] 2col:w-[300px] object-cover object-center"
+                                   :file="$post->altFile"
+                                   :width="300"
+                                   :title="''"
+                            />
+                        @else
+                            <x-img class="h-full w-full 2col:h-[200px] 2col:w-[300px] object-cover object-center"
+                                   :file="$post->file"
+                                   :width="250"
+                                   :title="''"
+                            />
+                        @endif
                     </div>
                     <x-new-chip :post="$post"/>
                     <x-reading-time-chip :post="$post"/>

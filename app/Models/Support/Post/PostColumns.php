@@ -5,6 +5,9 @@ namespace App\Models\Support\Post;
 trait PostColumns
 {
     public const file_id = 'file_id';
+    public const alt_file_id = 'alt_file_id';
+    public const animation_file_id = 'animation_file_id';
+    public const post_type_id = 'post_type_id';
     public const title = 'title';
     public const subtitle = 'subtitle';
     public const public_content = 'public_content';

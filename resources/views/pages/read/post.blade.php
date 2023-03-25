@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\PostTypes;
 use App\Http\Controllers\Api\ThanksResponse;
 use App\Models\Post;
 use App\Models\Tag;
@@ -87,7 +88,6 @@ $cvc = ThanksResponse::cvc;
                                 <p class="text-sm">{{$post->authorPostCount()}}
                                     Posts
                                 </p>
-
                             </div>
                         </x-a>
                         <x-a title="Subscribe to Newsletter" :href="to()->newsletter()"
@@ -119,7 +119,7 @@ $cvc = ThanksResponse::cvc;
                     <div class="mx-auto rounded-lg p-4 shadow bg-base-200 max-w-[380px]">
                         <h3 class="text-xl font-bold">Say Thanks</h3>
                         <p class="text-sm font-bold">Buy a Thanks, and directly support content like this.</p>
-                        <form id="form" class="mt-4 space-y-4">
+                        <form id="thanks-form" class="mt-4 space-y-4">
                             <div class="flex flex-wrap justify-center gap-2">
                                 @foreach([1, 2, 5, 10] as $amount)
                                     <label class="flex cursor-pointer items-center rounded-lg bg-gray-300 p-2 hover:bg-base-300">
@@ -464,12 +464,25 @@ $cvc = ThanksResponse::cvc;
             @foreach($latest_posts->merge($older_posts) as $post)
                 <x-a :href="to()->read($post)" class="flex flex-row gap-2">
                     <div class="relative shrink-0">
-                        <div class="overflow-hidden 2col:rounded-lg">
-                            <x-img class="object-cover object-center h-[112px] w-[168px]"
-                                   :file="$post->file"
-                                   :width="250"
-                                   :title="''"
-                            />
+                        <div class="relative overflow-hidden 2col:rounded-lg h-[112px] w-[168px]">
+                            @if($post->post_type_id === PostTypes::animation)
+                                <x-img class="absolute top-0 h-full w-full object-cover object-center hover:opacity-0 z-50"
+                                       :file="$post->animationFile"
+                                       :width="250"
+                                       :title="''"
+                                />
+                                <x-img class="absolute top-0 h-full w-full object-cover object-center block"
+                                       :file="$post->altFile"
+                                       :width="250"
+                                       :title="''"
+                                />
+                            @else
+                                <x-img class="object-cover object-center"
+                                       :file="$post->file"
+                                       :width="250"
+                                       :title="''"
+                                />
+                            @endif
                         </div>
                         <x-reading-time-chip :post="$post"/>
                     </div>

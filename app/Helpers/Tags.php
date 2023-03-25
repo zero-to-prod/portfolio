@@ -10,6 +10,8 @@ enum Tags: string
 {
     case avatar = 'avatar';
     case featured = 'featured';
+    case alt_file = 'alt_file';
+    case animation_file = 'animation_file';
     case logo = 'logo';
     case post = 'post';
     case in_body = 'in_body';

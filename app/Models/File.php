@@ -52,6 +52,16 @@ class File extends Model
         return $this->attachTag(Tags::featured->value, TagTypes::system->value);
     }
 
+    public function tagAltFile(): File
+    {
+        return $this->attachTag(Tags::alt_file->value, TagTypes::system->value);
+    }
+
+    public function tagAnimationFile(): File
+    {
+        return $this->attachTag(Tags::animation_file->value, TagTypes::system->value);
+    }
+
     public function tagInBodyImage(): File
     {
         return $this->attachTag(Tags::in_body->value, TagTypes::system->value);

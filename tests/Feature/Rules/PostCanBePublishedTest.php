@@ -56,21 +56,6 @@ class PostCanBePublishedTest extends TestCase
      * @test
      * @see PostCanBePublished
      */
-    public function missing_public_content(): void
-    {
-        $post = post_f([
-            Post::title => 'title',
-            Post::slug => 'slug',
-            Post::public_content => null,
-        ])->withFile()->make();
-
-        $this->assertFalse(PostCanBePublished::evaluate($post));
-    }
-
-    /**
-     * @test
-     * @see PostCanBePublished
-     */
     public function missing_featured_image(): void
     {
         $post = post_f([

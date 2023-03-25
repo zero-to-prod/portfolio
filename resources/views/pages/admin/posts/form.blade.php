@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\PostTypes;
 use App\Helpers\TagTypes;
 use App\Http\Controllers\Admin\Post\PostStore;
 use App\Http\Controllers\Admin\Post\PostPublish;
@@ -12,6 +13,7 @@ use App\Models\Tag;
 /* @var File $file */
 
 $title = PostStore::title;
+$type = PostStore::type;
 $subtitle = PostStore::subtitle;
 $authors = PostStore::authors;
 $tags = PostStore::tags;
@@ -19,6 +21,8 @@ $public_content = PostStore::public_content;
 $cta = PostStore::cta;
 $exclusive_content = PostStore::exclusive_content;
 $featured_image = PostStore::featured_image;
+$alt_image = PostStore::alt_image;
+$animation_image = PostStore::animation_image;
 $in_body = PostStore::in_body;
 ?>
 
@@ -59,6 +63,27 @@ $in_body = PostStore::in_body;
                                        hidden
                                        value="{{$post_model?->id}}"/>
                             </label>
+                            <div class="col-span-2 gap-2 flex">
+                                <fieldset>
+                                    <legend class="text-white">Post Type:</legend>
+                                    @foreach(PostTypes::cases() as $post_type)
+                                        <label class="text-white">
+                                            <input type="radio" id="{{$post_type->value}}" name="{{$type}}"
+                                                   value="{{$post_type->value}}" {{$post_type === $post_model?->post_type_id ? 'checked' : null}}>
+                                            <span>{{$post_type->name}}</span>
+                                        </label>
+                                    @endforeach
+                                </fieldset>
+                            </div>
+                            @if($post_model?->file !== null)
+                                <x-form-control-dark>
+                                    <label>Post Markdown Link</label>
+                                    <span class="text-sm text-white">
+                                    [![{{$post_model->file->original_name}}](/file/{{$post_model->file->name}}?width=250)]({{$post_model->slug}})
+                                    [{{$post_model->title}}]({{$post_model->slug}})
+                                </span>
+                                </x-form-control-dark>
+                            @endif
                             <div class="flex space-x-6 sm:col-span-2">
                                 @if($post_model?->file !== null)
                                     <x-img class="object-cover h-[100px] rounded-lg"
@@ -74,19 +99,50 @@ $in_body = PostStore::in_body;
                                            {{$post_model?->file !== null ? null  : 'required=true'}}
                                            type="file"
                                     >
-
                                     @if($errors->has($featured_image))
                                         <p>{{ $errors->first($featured_image) }}</p>
                                     @endif
                                 </x-form-control-dark>
                             </div>
-                            <x-form-control-dark>
-                                <label>Post Markdown</label>
-                                <span class="text-sm text-white">
-                                    [![{{$post_model->file->original_name}}](/file/{{$post_model->file->name}}?width=250)]({{$post_model->slug}})
-                                    [{{$post_model->title}}]({{$post_model->slug}})
-                                </span>
-                            </x-form-control-dark>
+                            <div class="flex space-x-6 sm:col-span-2">
+                                @if($post_model?->animationFile !== null)
+                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                           :file="$post_model->animationFile"
+                                           :height="100"
+                                    />
+                                @endif
+                                <x-form-control-dark>
+                                    <label for="{{$animation_image}}">Animation Image</label>
+                                    <input class="w-full"
+                                           name="{{$animation_image}}"
+                                           id="{{$animation_image}}"
+                                           type="file"
+                                    >
+                                    @if($errors->has($animation_image))
+                                        <p>{{ $errors->first($animation_image) }}</p>
+                                    @endif
+                                </x-form-control-dark>
+                            </div>
+                            <div class="flex space-x-6 sm:col-span-2">
+                                @if($post_model?->altFile !== null)
+                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                           :file="$post_model->altFile"
+                                           :height="100"
+                                    />
+                                @endif
+                                <x-form-control-dark>
+                                    <label for="{{$alt_image}}">Alt Image</label>
+                                    <input class="w-full"
+                                           name="{{$alt_image}}"
+                                           id="{{$alt_image}}"
+                                           type="file"
+                                    >
+
+                                    @if($errors->has($alt_image))
+                                        <p>{{ $errors->first($alt_image) }}</p>
+                                    @endif
+                                </x-form-control-dark>
+                            </div>
                             <x-form-control-dark>
                                 <label for="{{$title}}">Title</label>
                                 <input name="{{$title}}"
@@ -109,36 +165,39 @@ $in_body = PostStore::in_body;
                                     <p>{{ $errors->first($subtitle) }}</p>
                                 @endif
                             </x-form-control-dark>
-                            <x-form-control-dark>
-                                <label for="{{$authors}}">Author</label>
-                                <select class="bg-gray-900 rounded-md ring-gray-700"
-                                        name="{{$authors}}"
-                                        id="{{$authors}}"
-                                        multiple
-                                        required>
-                                    @foreach(Author::all() as $author_model)
-                                        <option {{$author_model?->id === $author_model->id ? 'selected' :null}} value="{{$author_model->id}}">
-                                            {{$author_model->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has($authors))
-                                    <p>{{ $errors->first($authors) }}</p>
-                                @endif
-                            </x-form-control-dark>
                             <div class="sm:col-span-2">
-                                <p class="text-neutral-content mb-3">Tags</p>
+                                <p class="text-neutral-content mb-3">Authors</p>
                                 <div class="flex gap-4 flex-wrap">
-                                    @foreach(Tag::withType(TagTypes::post->value)->get() as $author_model)
+                                    @foreach(Author::all() as $author_model)
                                         <div class="flex items-center text-white space-x-2">
                                             <input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
-                                                   name="{{$tags}}"
+                                                   name="{{$authors}}"
                                                    id="tag-{{$author_model->id}}"
                                                    value="{{$author_model->id}}"
                                                    type="checkbox"
-                                                    {{$post_model?->tags->where(Tag::slug, $author_model->slug)->count() ? 'checked' : null}}
+                                                    {{$post_model?->authors->where(Author::id, $author_model->id)->count() ? 'checked' : null}}
                                             />
                                             <label for="tag-{{$author_model->id}}">{{$author_model->name}}</label>
+                                        </div>
+                                    @endforeach
+                                    @if($errors->has($authors))
+                                        <p class="error">{{ $errors->first($authors) }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-neutral-content mb-3">Tags</p>
+                                <div class="flex gap-4 flex-wrap">
+                                    @foreach(Tag::withType(TagTypes::post->value)->get() as $tag_model)
+                                        <div class="flex items-center text-white space-x-2">
+                                            <input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                                                   name="{{$tags}}"
+                                                   id="tag-{{$tag_model->id}}"
+                                                   value="{{$tag_model->id}}"
+                                                   type="checkbox"
+                                                    {{$post_model?->tags->where(Tag::slug, $tag_model->slug)->count() ? 'checked' : null}}
+                                            />
+                                            <label for="tag-{{$tag_model->id}}">{{$tag_model->name}}</label>
                                         </div>
                                     @endforeach
                                     @if($errors->has($tags))

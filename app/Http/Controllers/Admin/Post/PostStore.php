@@ -3,9 +3,11 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
+use App\Helpers\CacheKeys;
 use App\Http\Controllers\Controller;
 use App\Models\File;
 use App\Models\Post;
+use Cache;
 use DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,6 +18,7 @@ class PostStore extends Controller
 {
     public const id = 'id';
     public const title = 'title';
+    public const type = 'type';
     public const subtitle = 'subtitle';
     public const authors = 'authors[]';
     public const tags = 'tags[]';
@@ -23,6 +26,8 @@ class PostStore extends Controller
     public const cta = 'cta';
     public const exclusive_content = 'exclusive_content';
     public const featured_image = 'featured_image';
+    public const alt_image = 'alt_image';
+    public const animation_image = 'animation_image';
     public const in_body = 'in_body';
 
     /**
@@ -32,6 +37,7 @@ class PostStore extends Controller
     {
         $validated = $request->validate([
             self::id => 'nullable|integer',
+            self::type => 'nullable',
             self::title => Post::rules(Post::title),
             self::subtitle => Post::rules(Post::subtitle),
             'authors' => 'required|array|min:1',
@@ -40,12 +46,15 @@ class PostStore extends Controller
             self::cta => Post::rules(Post::cta),
             self::exclusive_content => Post::rules(Post::exclusive_content),
             self::featured_image => 'nullable|image',
+            self::alt_image => 'nullable|image',
+            self::animation_image => 'nullable|image',
             self::in_body => 'nullable|image',
         ]);
 
         DB::beginTransaction();
 
         $post = Post::withoutGlobalScopes([Post::published])->updateOrCreate([Post::id => $request->{self::id}], [
+            Post::post_type_id => $validated[self::type],
             Post::title => $validated[self::title],
             Post::subtitle => $validated[self::subtitle],
             Post::public_content => $validated[self::public_content],
@@ -59,14 +68,27 @@ class PostStore extends Controller
             $post->file_id = $featured_image?->id;
             $post->save();
         }
+        if ($request->hasFile(self::animation_image)) {
+            $animation_image = File::upload($request->file(self::animation_image));
+            $animation_image?->tagAltFile();
+            $post->animation_file_id = $animation_image?->id;
+            $post->save();
+        }
+        if ($request->hasFile(self::alt_image)) {
+            $alt_image = File::upload($request->file(self::alt_image));
+            $alt_image?->tagAltFile();
+            $post->alt_file_id = $alt_image?->id;
+            $post->save();
+        }
 
-        if($request->hasFile(self::in_body)) {
+        if ($request->hasFile(self::in_body)) {
             $in_body = File::upload($request->file(self::in_body));
             $in_body?->tagInBodyImage();
             $post->files()->syncWithoutDetaching([$in_body?->id]);
         }
 
         $post->authors()->sync($validated['authors']);
+        Cache::forget($post->id . '|' . CacheKeys::post_author_list->value);
         $post->tags()->sync($validated['tags']);
 
         if ($post->file === null) {

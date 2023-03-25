@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  */
 class AuthorPost extends Pivot
 {
-//    use Cachable;
     use AuthorPostColumns;
     use TimeStampColumns;
 }

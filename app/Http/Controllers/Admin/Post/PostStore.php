@@ -3,9 +3,11 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
+use App\Helpers\CacheKeys;
 use App\Http\Controllers\Controller;
 use App\Models\File;
 use App\Models\Post;
+use Cache;
 use DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -76,13 +78,14 @@ class PostStore extends Controller
             $post->save();
         }
 
-        if($request->hasFile(self::in_body)) {
+        if ($request->hasFile(self::in_body)) {
             $in_body = File::upload($request->file(self::in_body));
             $in_body?->tagInBodyImage();
             $post->files()->syncWithoutDetaching([$in_body?->id]);
         }
 
         $post->authors()->sync($validated['authors']);
+        Cache::forget($post->id . '|' . CacheKeys::post_author_list->value);
         $post->tags()->sync($validated['tags']);
 
         if ($post->file === null) {

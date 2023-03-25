@@ -9,7 +9,7 @@ use App\Models\Post;
 ?>
 
 @if($post->original_publish_date->gt(now()->subDays(3)))
-    <div data-new-chip title="{{$post->original_publish_date->diffForHumans()}}">
+    <div {{ $attributes->merge(['class' => 'z-50']) }} data-new-chip title="{{$post->original_publish_date->diffForHumans()}}">
         new
     </div>
 @endif

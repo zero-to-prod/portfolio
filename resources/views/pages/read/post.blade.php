@@ -20,7 +20,7 @@ $cvc = ThanksResponse::cvc;
         <div class="shrink max-w-post-2col">
             <div class="relative 2col:mx-2">
                 <x-img class="h-full w-full object-cover object-center"
-                       :file="$post->file"
+                       :file="$post->altFile ?? $post->file"
                        :width="837"
                        :title="''"
                 />

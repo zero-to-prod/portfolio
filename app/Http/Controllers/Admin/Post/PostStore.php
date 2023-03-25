@@ -23,6 +23,7 @@ class PostStore extends Controller
     public const cta = 'cta';
     public const exclusive_content = 'exclusive_content';
     public const featured_image = 'featured_image';
+    public const alt_image = 'alt_image';
     public const in_body = 'in_body';
 
     /**
@@ -40,6 +41,7 @@ class PostStore extends Controller
             self::cta => Post::rules(Post::cta),
             self::exclusive_content => Post::rules(Post::exclusive_content),
             self::featured_image => 'nullable|image',
+            self::alt_image => 'nullable|image',
             self::in_body => 'nullable|image',
         ]);
 
@@ -57,6 +59,12 @@ class PostStore extends Controller
             $featured_image = File::upload($request->file(self::featured_image));
             $featured_image?->tagFeaturedImage();
             $post->file_id = $featured_image?->id;
+            $post->save();
+        }
+        if ($request->hasFile(self::alt_image)) {
+            $alt_image = File::upload($request->file(self::alt_image));
+            $alt_image?->tagAltFile();
+            $post->alt_file_id = $alt_image?->id;
             $post->save();
         }
 

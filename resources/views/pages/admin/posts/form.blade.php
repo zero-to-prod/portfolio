@@ -19,6 +19,7 @@ $public_content = PostStore::public_content;
 $cta = PostStore::cta;
 $exclusive_content = PostStore::exclusive_content;
 $featured_image = PostStore::featured_image;
+$alt_image = PostStore::alt_image;
 $in_body = PostStore::in_body;
 ?>
 
@@ -59,6 +60,15 @@ $in_body = PostStore::in_body;
                                        hidden
                                        value="{{$post_model?->id}}"/>
                             </label>
+                            @if($post_model?->file !== null)
+                                <x-form-control-dark>
+                                    <label>Post Markdown Link</label>
+                                    <span class="text-sm text-white">
+                                    [![{{$post_model->file->original_name}}](/file/{{$post_model->file->name}}?width=250)]({{$post_model->slug}})
+                                    [{{$post_model->title}}]({{$post_model->slug}})
+                                </span>
+                                </x-form-control-dark>
+                            @endif
                             <div class="flex space-x-6 sm:col-span-2">
                                 @if($post_model?->file !== null)
                                     <x-img class="object-cover h-[100px] rounded-lg"
@@ -74,19 +84,31 @@ $in_body = PostStore::in_body;
                                            {{$post_model?->file !== null ? null  : 'required=true'}}
                                            type="file"
                                     >
-
                                     @if($errors->has($featured_image))
                                         <p>{{ $errors->first($featured_image) }}</p>
                                     @endif
                                 </x-form-control-dark>
                             </div>
-                            <x-form-control-dark>
-                                <label>Post Markdown</label>
-                                <span class="text-sm text-white">
-                                    [![{{$post_model->file->original_name}}](/file/{{$post_model->file->name}}?width=250)]({{$post_model->slug}})
-                                    [{{$post_model->title}}]({{$post_model->slug}})
-                                </span>
-                            </x-form-control-dark>
+                            <div class="flex space-x-6 sm:col-span-2">
+                                @if($post_model?->altFile !== null)
+                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                           :file="$post_model->altFile"
+                                           :height="100"
+                                    />
+                                @endif
+                                <x-form-control-dark>
+                                    <label for="{{$alt_image}}">Alt Image</label>
+                                    <input class="w-full"
+                                           name="{{$alt_image}}"
+                                           id="{{$alt_image}}"
+                                           type="file"
+                                    >
+
+                                    @if($errors->has($alt_image))
+                                        <p>{{ $errors->first($alt_image) }}</p>
+                                    @endif
+                                </x-form-control-dark>
+                            </div>
                             <x-form-control-dark>
                                 <label for="{{$title}}">Title</label>
                                 <input name="{{$title}}"

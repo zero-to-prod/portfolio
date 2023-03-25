@@ -21,6 +21,11 @@ trait PostRelationships
         return $this->hasOne(File::class, File::id, self::file_id);
     }
 
+    public function altFile(): HasOne
+    {
+        return $this->hasOne(File::class, File::id, self::alt_file_id);
+    }
+
     public function views(): HasMany
     {
         return $this->hasMany(View::class);

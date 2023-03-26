@@ -92,4 +92,3 @@ use Illuminate\Support\Collection;
         </x-a>
     @endforeach
 </nav>
-@vite('resources/js/left_drawer.js')

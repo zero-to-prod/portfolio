@@ -11,13 +11,6 @@ $search = Search::search;
 <header id="masthead"
         class="fixed transition-all duration-500 top-0 z-50 mx-auto w-full bg-primary-content shadow 2col:shadow-none">
     <div class="flex justify-between">
-        <button id="toggle-navbar-btn"
-                class="hidden btn-ghost nav-wide:block"
-                aria-label="Menu"
-                title="Toggle Navigation"
-                type="button">
-            <x-svg :name="'hamburger'" class="m-auto block h-6 w-narrow-nav"/>
-        </button>
         <x-a class="px-2 py-4 btn-ghost" :href="to()->welcome()" title="Home">
             <x-logo/>
         </x-a>

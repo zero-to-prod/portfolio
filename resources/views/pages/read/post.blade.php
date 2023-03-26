@@ -383,17 +383,19 @@ $cvc = ThanksResponse::cvc;
                             @endif
                         </div>
                     @else
-                        <x-a :href="to()->subscribe()" class="block py-12 text-center text-2xl bg-gray-100">
-                            <p>Premieres {{$post->premiere_at->tz('EST')->format('M d, Y')}}</p>
-                            <p>{{$post->premiere_at->tz('EST')->format('h:i A e')}}</p>
-                            <div class="flex justify-center mt-6">
-                                <div title="Go to Subscribe Page"
-                                     class="btn flex gap-1">
-                                    <x-svg :name="'unlocked-white'"/>
-                                    Subscribe to get instant access
+                        @if($post->post_type_id !== PostTypes::animation)
+                            <x-a :href="to()->subscribe()" class="block py-12 text-center text-2xl bg-gray-100">
+                                <p>Premieres {{$post->premiere_at->tz('EST')->format('M d, Y')}}</p>
+                                <p>{{$post->premiere_at->tz('EST')->format('h:i A e')}}</p>
+                                <div class="flex justify-center mt-6">
+                                    <div title="Go to Subscribe Page"
+                                         class="btn flex gap-1">
+                                        <x-svg :name="'unlocked-white'"/>
+                                        Subscribe to get instant access
+                                    </div>
                                 </div>
-                            </div>
-                        </x-a>
+                            </x-a>
+                        @endif
                         <div id="published-content" class="grid max-w-none px-2 published-content prose">
                             {!! $post->published_cta !!}
                         </div>
@@ -496,7 +498,7 @@ $cvc = ThanksResponse::cvc;
                 </x-a>
             @endforeach
         </div>
-        <div class="mt-12 3col:hidden space-y-2">
+        <div class="mt-12 3col:hidden space-y-2 px-2">
             <h3 class="my-auto 2col:ml-0 ml-2 text-lg font-semibold">Related</h3>
             <x-divider class="pt-2"/>
             <x-post-responsive :posts="$posts"/>

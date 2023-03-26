@@ -393,7 +393,7 @@ $cvc = ThanksResponse::cvc;
                                     <div title="Go to Subscribe Page"
                                          class="btn flex gap-1">
                                         <x-svg :name="'unlocked-white'"/>
-                                        Subscribe to get instant access
+                                        Subscribe for instant access
                                     </div>
                                 </div>
                             </x-a>
@@ -406,7 +406,7 @@ $cvc = ThanksResponse::cvc;
                                  title="Go to Subscribe Page"
                                  class="btn flex gap-1">
                                 <x-svg :name="'unlocked-white'"/>
-                                Subscribe to unlock exclusive content
+                                Subscribe for exclusive content
                             </x-a>
                         </div>
                     @endif
@@ -420,10 +420,10 @@ $cvc = ThanksResponse::cvc;
                                         <div class="w-full border-t border-gray-300"></div>
                                     </div>
                                     <div class="relative flex justify-center">
-                                <span class="bg-white px-2 text-gray-500 flex gap-2">
-                                    <x-svg :name="auth()->user()?->subscribed_at === null ? 'locked' : 'unlocked'"/>
-                                    Exclusive Content
-                                </span>
+                                        <span class="bg-white px-2 text-gray-500 flex gap-2">
+                                            <x-svg :name="auth()->user()?->subscribed_at === null ? 'locked' : 'unlocked'"/>
+                                            Exclusive Content
+                                        </span>
                                     </div>
                                 </div>
                             </x-a>
@@ -433,7 +433,7 @@ $cvc = ThanksResponse::cvc;
                                      title="Go to Subscribe Page"
                                      class="btn flex gap-1 no-underline">
                                     <x-svg :name="'unlocked-white'"/>
-                                    Subscribe to access exclusive content
+                                    Subscribe for exclusive content
                                 </x-a>
                             </div>
                         @endif
@@ -451,7 +451,7 @@ $cvc = ThanksResponse::cvc;
                                  title="Go to Subscribe Page"
                                  class="btn flex gap-1">
                                 <x-svg :name="'unlocked-white'"/>
-                                Subscribe to get instant access
+                                    Subscribe for instant access
                             </x-a>
                         </div>
                     @endif

@@ -351,19 +351,21 @@ $cvc = ThanksResponse::cvc;
                 @if($post->premiere_at !== null && $post->premiere_at?->gt(now()))
                     @if(auth()->user()?->subscribed_at !== null)
                         <div id="published-content" class="grid max-w-none px-2 published-content prose">
-                            <div class="relative">
-                                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                                    <div class="w-full border-t border-gray-300"></div>
-                                </div>
-                                <div class="relative flex justify-center">
+                            @if($post->post_type_id !== PostTypes::animation)
+                                <div class="relative">
+                                    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                        <div class="w-full border-t border-gray-300"></div>
+                                    </div>
+                                    <div class="relative flex justify-center">
                                 <span class="bg-white px-2 text-gray-500 flex gap-2">
                                     <span class="my-auto">
                                          <x-svg :name="'clock-rotate-left'"/>
                                     </span>
                                     Early Access
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             {!! $post->published_public_content !!}
                             @if($post->published_exclusive_content !== null)
                                 <x-a :href="to()->subscribe()" class="pt-6 !no-underline">

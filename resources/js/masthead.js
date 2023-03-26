@@ -19,7 +19,7 @@ let previousScrollPosition = 0;
 
 function handleScroll() {
     const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    if(currentScrollPosition < 70) return;
+    if(currentScrollPosition < 35) return;
     if (!navbar || !bottomNav) return;
 
     if (currentScrollPosition >= previousScrollPosition) {

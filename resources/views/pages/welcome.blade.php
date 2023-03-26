@@ -37,7 +37,7 @@ use Illuminate\Support\Collection;
                             <div class="relative">
                                 <div class="overflow-hidden 2col:rounded-lg aspect-w-3 aspect-h-2">
                                     @if($post->post_type_id === PostTypes::animation)
-                                        <x-img class="h-full w-full object-cover object-center opacity-0 2col:opacity-100 hover:opacity-0 z-50"
+                                        <x-img class="h-full w-full object-cover object-center opacity-0 2col:opacity-100 hover:opacity-0 z-10"
                                                :file="$post->animationFile"
                                                :width="300"
                                                :title="''"

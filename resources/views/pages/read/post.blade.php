@@ -466,7 +466,7 @@ $cvc = ThanksResponse::cvc;
                     <div class="relative shrink-0">
                         <div class="relative overflow-hidden 2col:rounded-lg h-[112px] w-[168px]">
                             @if($post->post_type_id === PostTypes::animation)
-                                <x-img class="absolute top-0 h-full w-full object-cover object-center hover:opacity-0 z-50"
+                                <x-img class="absolute top-0 h-full w-full object-cover object-center hover:opacity-0 z-10"
                                        :file="$post->animationFile"
                                        :width="250"
                                        :title="''"

@@ -9,7 +9,7 @@ use App\Models\Post;
 ?>
 
 @if($post->public_reading_time > 0)
-    <div data-reading-time-chip {{ $attributes->merge(['class' => 'z-50']) }}
+    <div data-reading-time-chip {{ $attributes->merge(['class' => 'z-10']) }}
     title="{{ $post->public_word_count  . ' words'}}"
     >
         @if($text === null)

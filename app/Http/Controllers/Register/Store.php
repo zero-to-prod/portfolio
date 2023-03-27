@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Register;
 use App\Helpers\Routes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class Store extends Controller
     public const email = 'email';
     public const password = 'password';
     public const password_confirmation = 'password_confirmation';
-    public const redirect_as = Routes::register_notice;
+    public const redirect_as = Routes::register_verification;
 
     /**
      * @see RegisterStoreTest
@@ -26,8 +27,10 @@ class Store extends Controller
         $user = $request->createUser();
 
         event(new Registered($user));
-        $user->sendEmailVerificationNotification();
 
+        User::unguard();
+        $user->update([User::email_verified_at => now()]);
+        User::reguard();
         Auth::login($user);
 
         return redirect(self::redirectUrl());

@@ -14,7 +14,6 @@ use App\Models\Post;
 use App\Models\Reaction;
 use App\Models\Tag;
 use App\Models\User;
-use App\Observers\UserObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
@@ -44,8 +43,6 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         $this->registerEnvironmentAs();
-
-        User::observe(UserObserver::class);
     }
 
     /**

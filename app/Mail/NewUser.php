@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use App\Models\User;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -14,7 +15,7 @@ class NewUser extends Mailable
     use Queueable;
     use SerializesModels;
 
-    public function __construct(public User $user)
+    public function __construct(public Authenticatable|User $user)
     {
     }
 

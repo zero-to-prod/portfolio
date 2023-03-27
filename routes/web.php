@@ -42,9 +42,9 @@ Route::getAs(to()->auth->github->index, fn() => Socialite::driver(Drivers::githu
 /* Register */
 Route::getAs(to()->register->index, fn() => view('pages.register.index'));
 Route::postAs(to()->register->store, RegisterStore::class);
-Route::getAs(to()->register->verification, fn() => view('pages.register.verification'));
 Route::middlewareAs(Middlewares::signed)->group(function () {
     Route::getAs(to()->register->notice, fn() => view('pages.register.notice'));
+    Route::getAs(to()->register->verification, fn() => view('pages.register.verification'));
 });
 
 /* Contact */

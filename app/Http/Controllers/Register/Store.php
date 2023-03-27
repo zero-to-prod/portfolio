@@ -38,6 +38,6 @@ class Store extends Controller
 
     public static function redirectUrl(): string
     {
-        return temp_signed_route(self::redirect_as->name);
+        return temp_signed_route(self::redirect_as);
     }
 }

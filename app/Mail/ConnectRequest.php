@@ -14,7 +14,6 @@ class ConnectRequest extends Mailable
     use Queueable;
     use SerializesModels;
 
-
     public function __construct(public Message $message_model)
     {
     }
@@ -24,17 +23,11 @@ class ConnectRequest extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            to: 'dasmith@zero-to-prod.com',
-            subject: $this->message_model->subject,
-        );
+        return new Envelope(to: 'dasmith@zero-to-prod.com', subject: $this->message_model->subject);
     }
-
 
     public function content(): Content
     {
-        return new Content(
-            view: 'mail.connect_request'
-        );
+        return new Content(view: 'mail.connect_request');
     }
 }

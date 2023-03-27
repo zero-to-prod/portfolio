@@ -241,10 +241,10 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         $cta = $this->cta !== null ? app(MarkdownRenderer::class)->toHtml($this->cta) : null;
         $exclusive_content = $this->exclusive_content !== null ? app(MarkdownRenderer::class)->toHtml($this->exclusive_content) : null;
 
-        $premiere_at = $this->premiere_at;
-        if ($this->post_type_id !== PostTypes::animation) {
-            $premiere_at = $this->premiere_at ?? now()->addWeek();
-        }
+//        $premiere_at = $this->premiere_at;
+//        if ($this->post_type_id !== PostTypes::animation) {
+//            $premiere_at = $this->premiere_at ?? now()->addWeek();
+//        }
 
         $this->update([
             self::published_public_content => $public_content,
@@ -252,7 +252,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
             self::published_exclusive_content => $exclusive_content,
             self::original_publish_date => $this->original_publish_date ?? now(),
             self::published_at => now(),
-            self::premiere_at => $premiere_at,
+//            self::premiere_at => $premiere_at,
             self::public_word_count => str_word_count(strip_tags($public_content)),
             self::exclusive_word_count => str_word_count(strip_tags($exclusive_content)),
         ]);

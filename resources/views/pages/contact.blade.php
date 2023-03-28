@@ -7,7 +7,7 @@ $subject = Store::subject;
 $body = Store::body;
 
 ?>
-<x-main :title="'Contact' . ' | ' . config('app.name')">
+<x-main :title="'Contact' . ' | ' . config('app.name')" :description="'Contact DevLeak'">
     @if(session()->has($email))
         <x-toast>
             <p>Message sent!</p>

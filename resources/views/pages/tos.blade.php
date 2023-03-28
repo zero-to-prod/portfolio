@@ -1,4 +1,4 @@
-<x-main :title="'Privacy' . ' | ' . config('app.name')">
+<x-main :title="'Privacy' . ' | ' . config('app.name')" :description="'Terms of Service'">
     <div class="sm:py-6 sm:py-12">
         <div class="mx-auto py-8 prose px-4 2col:px0">
             <h1>Terms of Service for {{config('app.name')}}</h1>

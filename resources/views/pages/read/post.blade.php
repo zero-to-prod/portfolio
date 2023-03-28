@@ -17,7 +17,7 @@ $expiration = ThanksResponse::expiration;
 $cvc = ThanksResponse::cvc;
 ?>
 
-<x-main :title="$post->title . ' | ' . config('app.name')">
+<x-main :title="$post->title . ' | ' . config('app.name')" :description="$post->subtitle">
     @push('data')
         <?php
         $author = Schema::person()->name($post->author()->name)->url(to()->resultsAuthor($post->author()));

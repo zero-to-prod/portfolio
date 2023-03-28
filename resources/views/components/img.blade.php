@@ -18,4 +18,5 @@ use App\Models\File;
      alt="{{$alt ?? $file->original_name}}"
      height="{{$height ?? 0}}"
      width="{{$width ?? 0}}"
+     itemprop="image"
 />

@@ -30,11 +30,11 @@ $cvc = ThanksResponse::cvc;
                 @endif
                 <x-reading-time-chip :post="$post" :text="' min read'"/>
             </div>
-            <article class="2col:px-2 px-4 space-y-4 2col:space-y-6" aria-label="Body">
+            <article class="2col:px-2 px-4 space-y-4 2col:space-y-6" aria-label="Body" itemscope itemtype="{{to()->read($post)}}">
                 <div class="2col:block hidden space-y-2">
                     <div class="flex justify-between pt-2">
                         <div class="font-bold">
-                            <h1 id="title" class="text-2xl">{{$post->title}}</h1>
+                            <h1 id="title" class="text-2xl" itemprop="headline">{{$post->title}}</h1>
                             <p id="subtitle" class="text-sm">{{$post->subtitle}}</p>
                         </div>
                         <div class="text-right text-sm">
@@ -42,13 +42,13 @@ $cvc = ThanksResponse::cvc;
                             <x-views :post="$post"/>
                         </div>
                     </div>
-                    <div class="mt-2 flex w-full flex-wrap justify-between gap-2">
+                    <div class="mt-2 flex w-full flex-wrap justify-between gap-2" itemprop="author" itemscope itemtype="https://schema.org/Person">
                         <x-a class="mr-4 flex gap-2" title="Authors Page"
                              :href="to()->resultsAuthor($post->author())">
-                            <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page"
+                            <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page" itemprop="url"
                                    :file="$post->author()->file" :height="80"/>
                             <div class="flex flex-col">
-                                <p>{{$post->authorList()}}</p>
+                                <p itemprop="name">{{$post->authorList()}}</p>
                                 <p class="text-sm">{{$post->authorPostCount()}}
                                     Posts
                                 </p>

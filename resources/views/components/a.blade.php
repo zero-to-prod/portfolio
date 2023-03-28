@@ -1,3 +1,1 @@
-@props(['href' => ''])
-
-<a href="{{$href}}" {{$attributes->merge(['class' => '']) }}>{{$slot}}</a>
+@props(['href' => ''])<a href="{{$href}}" {{$attributes->merge(['class' => '']) }} rel="nofollow">{{$slot}}</a>

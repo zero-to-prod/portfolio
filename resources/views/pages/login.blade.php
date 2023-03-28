@@ -1,12 +1,21 @@
 <?php
 
 use App\Http\Requests\Auth\LoginRequest;
+use Spatie\SchemaOrg\Schema;
 
 $email = LoginRequest::email;
 $password = LoginRequest::password;
 $remember = LoginRequest::remember;
 ?>
 <x-login :title="'Sign In' . ' | ' . config('app.name')" :description="'Login to DevLeak'">
+    @push('data')
+        <?php
+            $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+            Schema::listItem()->position(1)->item(Schema::webPage()->name('Login')->url(to()->login->index())),
+        ]);
+        echo $breadcrumbs->toScript();
+        ?>
+    @endpush
     <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
         Sign in
     </div>

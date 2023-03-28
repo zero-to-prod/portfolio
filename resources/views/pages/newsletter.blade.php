@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\SubscribeResponse;
 use App\Models\Tag;
+use Spatie\SchemaOrg\Schema;
 
 /* @var Tag $tag */
 /* @var string $token */
@@ -9,6 +10,14 @@ use App\Models\Tag;
 $email = SubscribeResponse::email;
 ?>
 <x-main :tags="$tags" :title="'Newsletter' . ' | ' . config('app.name')" :description="'Subscribe to our newsletter'">
+    @push('data')
+        <?php
+        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+            Schema::listItem()->position(1)->item(Schema::webPage()->name('Results')->url(to()->newsletter())),
+        ]);
+        echo $breadcrumbs->toScript();
+        ?>
+    @endpush
     <div class="text-center pt-10 2col:pt-16 pb-32 max-w-3xl mx-auto space-y-10 px-2">
         <h1 class="text-6xl">Weekly Newsletter</h1>
         <div>

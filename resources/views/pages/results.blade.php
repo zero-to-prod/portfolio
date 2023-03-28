@@ -5,6 +5,7 @@ use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Collection;
+use Spatie\SchemaOrg\Schema;
 
 /* @var Collection<Post, Post> $posts */
 /* @var Tag $tag */
@@ -17,6 +18,14 @@ $title = request()->query(Results::popular) !== null ? 'Popular' : $title;
 $author_model = null;
 ?>
 <x-main :title="$title . ' | ' . config('app.name')" :description="'Search results for: ' . $title">
+    @push('data')
+        <?php
+        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+            Schema::listItem()->position(1)->item(Schema::webPage()->name('Results')->url(to()->results())),
+        ]);
+        echo $breadcrumbs->toScript();
+        ?>
+    @endpush
     <div class="flex flex-col gap-2 max-w-4xl 2col:px-2 mx-auto">
         <div>
             @if($tag !== null)

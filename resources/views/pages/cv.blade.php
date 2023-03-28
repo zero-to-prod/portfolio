@@ -1,4 +1,17 @@
+<?php
+
+use Spatie\SchemaOrg\Schema;
+
+?>
 <x-main :title="'CV' . ' | ' . config('app.name')" :description="'Resume and CV'">
+    @push('data')
+        <?php
+        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+            Schema::listItem()->position(1)->item(Schema::webPage()->name('CV')->url(to()->cv())),
+        ]);
+        echo $breadcrumbs->toScript();
+        ?>
+    @endpush
     <x-header-section>
         <h1 role="heading">CV and Work History</h1>
         <p aria-label="Subtitle" role="doc-subtitle">

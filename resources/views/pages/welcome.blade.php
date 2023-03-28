@@ -5,12 +5,21 @@ use App\Helpers\PostTypes;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
+use Spatie\SchemaOrg\Schema;
 
 /* @var Post $post */
 /* @var Collection<Tag, Tag> $tags */
 ?>
 
 <x-main :tags="$tags">
+    @push('data')
+        <?php
+        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+            Schema::listItem()->position(1)->item(Schema::webPage()->name('Home')->url(to()->welcome())),
+        ]);
+        echo $breadcrumbs->toScript();
+        ?>
+    @endpush
     <div class="4col:mx-auto flex w-full 4col:max-w-7xl flex-col 2col:px-2">
         @foreach($tags as $tag)
             <section>

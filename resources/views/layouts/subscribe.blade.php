@@ -8,6 +8,7 @@
     <title>{{ $title ?? config('app.name', 'Subscribe') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
+    @stack('data')
     <livewire:styles />
 </head>
 <body class="min-h-screen overflow-y-scroll antialiased bg-primary-content text-base-content">

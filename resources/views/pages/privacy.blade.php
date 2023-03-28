@@ -1,4 +1,17 @@
+<?php
+
+use Spatie\SchemaOrg\Schema;
+
+?>
 <x-main :title="'Privacy' . ' | ' . config('app.name')" :description="'Privacy Policy'">
+    @push('data')
+        <?php
+        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+            Schema::listItem()->position(1)->item(Schema::webPage()->name('Privacy')->url(to()->privacy())),
+        ]);
+        echo $breadcrumbs->toScript();
+        ?>
+    @endpush
     <div class="sm:py-6 sm:py-12">
         <div class="mx-auto py-8 prose px-4 2col:px0">
             <h1>Privacy Policy for {{config('app.name')}}</h1>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Store;
+use Spatie\SchemaOrg\Schema;
 
 $email = Store::email;
 $subject = Store::subject;
@@ -8,6 +9,14 @@ $body = Store::body;
 
 ?>
 <x-main :title="'Contact' . ' | ' . config('app.name')" :description="'Contact DevLeak'">
+    @push('data')
+        <?php
+        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+            Schema::listItem()->position(1)->item(Schema::webPage()->name('Contact')->url(to()->contact())),
+        ]);
+        echo $breadcrumbs->toScript();
+        ?>
+    @endpush
     @if(session()->has($email))
         <x-toast>
             <p>Message sent!</p>

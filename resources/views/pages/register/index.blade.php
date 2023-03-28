@@ -1,13 +1,21 @@
 <?php
 
 use App\Http\Controllers\Register\Store as Controller;
-
+use Spatie\SchemaOrg\Schema;
 $name = Controller::name;
 $email = Controller::email;
 $password = Controller::password;
 $confirmation = Controller::password_confirmation;
 ?>
 <x-login :title="'Register' . ' | ' . config('app.name')" :description="'Register'">
+    @push('data')
+        <?php
+        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+            Schema::listItem()->position(1)->item(Schema::webPage()->name('Register')->url(to()->register->index())),
+        ]);
+        echo $breadcrumbs->toScript();
+        ?>
+    @endpush
     <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
         Create an Account
     </div>

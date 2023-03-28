@@ -8,6 +8,7 @@
     <title>{{ $title ?? config('app.name', 'Home') }}</title>
     @vite(['resources/css/app.css'])
     <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
+    @stack('data')
 </head>
 <body class="min-h-screen text-base-content bg-base-200">
 <main aria-label="Main">

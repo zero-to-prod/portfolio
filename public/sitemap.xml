@@ -2,205 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>http://localhost/</loc>
-        <lastmod>2023-03-28T13:25:20+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost</loc>
-        <lastmod>2023-03-28T13:25:20+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/subscribe</loc>
-        <lastmod>2023-03-28T13:25:21+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/login</loc>
-        <lastmod>2023-03-28T13:25:21+00:00</lastmod>
+        <lastmod>2023-03-28T19:34:21+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>http://localhost/results?popular=1</loc>
-        <lastmod>2023-03-28T13:25:21+00:00</lastmod>
+        <lastmod>2023-03-28T19:34:21+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>http://localhost/results?topics=1</loc>
-        <lastmod>2023-03-28T13:25:21+00:00</lastmod>
+        <lastmod>2023-03-28T19:34:21+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>http://localhost/newsletter</loc>
-        <lastmod>2023-03-28T13:25:21+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/results?topic=laravel</loc>
-        <lastmod>2023-03-28T13:25:22+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/results?topic=foundation</loc>
-        <lastmod>2023-03-28T13:25:22+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/results?topic=docker</loc>
-        <lastmod>2023-03-28T13:25:22+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/results?topic=debugging</loc>
-        <lastmod>2023-03-28T13:25:22+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/results?topic=web</loc>
-        <lastmod>2023-03-28T13:25:23+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/results?topic=politics</loc>
-        <lastmod>2023-03-28T13:25:23+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/results?topic=animation</loc>
-        <lastmod>2023-03-28T13:25:23+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/run-phpunit-in-phpstorm</loc>
-        <lastmod>2023-03-28T13:25:24+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/a-string-helper-for-estimating-read-time</loc>
-        <lastmod>2023-03-28T13:25:24+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/a-string-helper-for-apostrophes</loc>
-        <lastmod>2023-03-28T13:25:24+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/setup-phpunit-in-phpstorm-for-a-laravel-project</loc>
-        <lastmod>2023-03-28T13:25:25+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/setup-larvel-sail-in-phpstorm</loc>
-        <lastmod>2023-03-28T13:25:25+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/getting-started-with-laravel-and-wsl</loc>
-        <lastmod>2023-03-28T13:25:26+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/using-macros-to-simplify-migrations</loc>
-        <lastmod>2023-03-28T13:25:26+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/fixing-docker-permission-errors-with-laravel-sail</loc>
-        <lastmod>2023-03-28T13:25:26+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/getting-started-with-laravel-and-docker</loc>
-        <lastmod>2023-03-28T13:25:27+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/configure-phpstorm-to-run-laravel-sail</loc>
-        <lastmod>2023-03-28T13:25:27+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/fix-button-accessibility-in-lighthouse</loc>
-        <lastmod>2023-03-28T13:25:28+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/read/sdfsf</loc>
-        <lastmod>2023-03-28T13:25:28+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/contact</loc>
-        <lastmod>2023-03-28T13:25:28+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/results</loc>
-        <lastmod>2023-03-28T13:25:28+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/privacy</loc>
-        <lastmod>2023-03-28T13:25:28+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/terms-of-service</loc>
-        <lastmod>2023-03-28T13:25:28+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/register</loc>
-        <lastmod>2023-03-28T13:25:28+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/auth/github</loc>
-        <lastmod>2023-03-28T13:25:28+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/results?author=david-smith</loc>
-        <lastmod>2023-03-28T13:25:29+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/subscribe/</loc>
-        <lastmod>2023-03-28T13:25:29+00:00</lastmod>
+        <lastmod>2023-03-28T19:34:21+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>

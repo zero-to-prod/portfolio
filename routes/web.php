@@ -22,8 +22,8 @@ Route::getAs(to()->read, Read::class);
 Route::postAs(to()->search, Search::class);
 Route::getAs(to()->results, Results::class);
 
-/* 2592000 = 30 days */
-Route::middleware('cache.headers:public;max_age=2592000;etag')->group(function () {
+/* 31536000 = 1 year */
+Route::middleware('cache.headers:public;max_age=31536000;etag')->group(function () {
     Route::getAs(to()->file, FileResponse::class);
 });
 

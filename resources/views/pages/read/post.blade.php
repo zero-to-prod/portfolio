@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ThanksResponse;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
+use Spatie\SchemaOrg\Schema;
 
 /* @var Post $post */
 /* @var File $feature */
@@ -17,6 +18,43 @@ $cvc = ThanksResponse::cvc;
 ?>
 
 <x-main :title="$post->title">
+    @push('data')
+        <?php
+        $author = Schema::person()->name($post->author()->name)->url(to()->resultsAuthor($post->author()));
+        $publisher = Schema::organization()
+            ->name(config('app.name'))
+            ->email(config('mail.from.address'))
+            ->url(to()->welcome())
+            ->brand(Schema::brand()
+                ->name(config('app.name'))
+                ->logo(to()->file($post->file, 837, 0))
+                ->url(to()->welcome())
+            )
+        ->founder(Schema::person()->name('David Smith'));
+        $localBusiness = Schema::article()
+            ->url(to()->read($post))
+            ->about($post->subtitle)
+            ->wordCount($post->public_word_count)
+            ->description($post->subtitle)
+            ->inLanguage('en-US')
+            ->isAccessibleForFree(true)
+            ->isFamilyFriendly(true)
+            ->articleBody($post->public_content)
+            ->text($post->public_content)
+            ->abstract($post->subtitle)
+            ->countryOfOrigin('US')
+            ->thumbnailUrl(to()->file($post->file, 100, 0))
+            ->dateCreated($post->created_at)
+            ->headline($post->title)
+            ->name($post->title)
+            ->publisher($publisher)
+            ->image(to()->file($post->file, 837, 0))
+            ->datePublished($post->original_publish_date)
+            ->dateModified($post->updated_at)
+            ->author([$author]);
+        echo $localBusiness->toScript();
+        ?>
+    @endpush
     <div class="mx-auto block 3col:flex max-w-7xl 3col:flex-row justify-center">
         <div class="shrink max-w-post-2col">
             <div class="relative 2col:mx-2">
@@ -30,7 +68,8 @@ $cvc = ThanksResponse::cvc;
                 @endif
                 <x-reading-time-chip :post="$post" :text="' min read'"/>
             </div>
-            <article class="2col:px-2 px-4 space-y-4 2col:space-y-6" aria-label="Body" itemscope itemtype="{{to()->read($post)}}">
+            <article class="2col:px-2 px-4 space-y-4 2col:space-y-6" aria-label="Body" itemscope
+                     itemtype="{{to()->read($post)}}">
                 <div class="2col:block hidden space-y-2">
                     <div class="flex justify-between pt-2">
                         <div class="font-bold">
@@ -42,7 +81,8 @@ $cvc = ThanksResponse::cvc;
                             <x-views :post="$post"/>
                         </div>
                     </div>
-                    <div class="mt-2 flex w-full flex-wrap justify-between gap-2" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <div class="mt-2 flex w-full flex-wrap justify-between gap-2" itemprop="author" itemscope
+                         itemtype="https://schema.org/Person">
                         <x-a class="mr-4 flex gap-2" title="Authors Page"
                              :href="to()->resultsAuthor($post->author())">
                             <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page" itemprop="url"
@@ -451,7 +491,7 @@ $cvc = ThanksResponse::cvc;
                                  title="Go to Subscribe Page"
                                  class="btn flex gap-1">
                                 <x-svg :name="'unlocked-white'"/>
-                                    Subscribe for instant access
+                                Subscribe for instant access
                             </x-a>
                         </div>
                     @endif

@@ -13,6 +13,7 @@ use App\Models\Tag;
     <title>{{ $title ?? config('app.name', 'Home') }}</title>
     @vite(['resources/css/app.css'])
     <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
+    @stack('data')
 </head>
 <body class="min-h-screen overflow-y-scroll antialiased bg-primary-content text-base-content">
 <main class="min-h-[50vh]" aria-label="Main">

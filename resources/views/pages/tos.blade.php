@@ -6,7 +6,7 @@ use Spatie\SchemaOrg\Schema;
 <x-main :title="'Privacy' . ' | ' . config('app.name')" :description="'Terms of Service'">
     @push('data')
         <?php
-        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+        $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
             Schema::listItem()->position(1)->item(Schema::webPage()->name('Terms of Service')->url(to()->tos())),
         ]);
         echo $breadcrumbs->toScript();

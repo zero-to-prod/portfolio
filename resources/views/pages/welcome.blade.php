@@ -14,7 +14,7 @@ use Spatie\SchemaOrg\Schema;
 <x-main :tags="$tags">
     @push('data')
         <?php
-        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+        $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
             Schema::listItem()->position(1)->item(Schema::webPage()->name('Home')->url(to()->welcome())),
         ]);
         echo $breadcrumbs->toScript();

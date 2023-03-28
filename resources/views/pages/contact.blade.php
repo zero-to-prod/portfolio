@@ -11,7 +11,7 @@ $body = Store::body;
 <x-main :title="'Contact' . ' | ' . config('app.name')" :description="'Contact DevLeak'">
     @push('data')
         <?php
-        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+        $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
             Schema::listItem()->position(1)->item(Schema::webPage()->name('Contact')->url(to()->contact())),
         ]);
         echo $breadcrumbs->toScript();

@@ -10,7 +10,7 @@ $confirmation = Controller::password_confirmation;
 <x-login :title="'Register' . ' | ' . config('app.name')" :description="'Register'">
     @push('data')
         <?php
-        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+        $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
             Schema::listItem()->position(1)->item(Schema::webPage()->name('Register')->url(to()->register->index())),
         ]);
         echo $breadcrumbs->toScript();

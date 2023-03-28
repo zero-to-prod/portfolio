@@ -20,7 +20,7 @@ $author_model = null;
 <x-main :title="$title . ' | ' . config('app.name')" :description="'Search results for: ' . $title">
     @push('data')
         <?php
-        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+        $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
             Schema::listItem()->position(1)->item(Schema::webPage()->name('Results')->url(to()->results())),
         ]);
         echo $breadcrumbs->toScript();

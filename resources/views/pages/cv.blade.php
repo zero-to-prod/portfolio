@@ -6,7 +6,7 @@ use Spatie\SchemaOrg\Schema;
 <x-main :title="'CV' . ' | ' . config('app.name')" :description="'Resume and CV'">
     @push('data')
         <?php
-        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+        $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
             Schema::listItem()->position(1)->item(Schema::webPage()->name('CV')->url(to()->cv())),
         ]);
         echo $breadcrumbs->toScript();

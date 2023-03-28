@@ -10,7 +10,7 @@ $remember = LoginRequest::remember;
 <x-login :title="'Sign In' . ' | ' . config('app.name')" :description="'Login to DevLeak'">
     @push('data')
         <?php
-            $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+            $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
             Schema::listItem()->position(1)->item(Schema::webPage()->name('Login')->url(to()->login->index())),
         ]);
         echo $breadcrumbs->toScript();

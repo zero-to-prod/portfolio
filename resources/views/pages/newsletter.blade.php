@@ -12,7 +12,7 @@ $email = SubscribeResponse::email;
 <x-main :tags="$tags" :title="'Newsletter' . ' | ' . config('app.name')" :description="'Subscribe to our newsletter'">
     @push('data')
         <?php
-        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+        $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
             Schema::listItem()->position(1)->item(Schema::webPage()->name('Results')->url(to()->newsletter())),
         ]);
         echo $breadcrumbs->toScript();

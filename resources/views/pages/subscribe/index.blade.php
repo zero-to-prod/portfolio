@@ -7,7 +7,7 @@ use Spatie\SchemaOrg\Schema;
              :description="'Subscribe'">
     @push('data')
         <?php
-        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+        $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
             Schema::listItem()->position(1)->item(Schema::webPage()->name('Subscribe')->url(to()->subscribe())),
         ]);
         echo $breadcrumbs->toScript();

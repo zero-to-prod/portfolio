@@ -16,6 +16,6 @@ use App\Models\File;
      src="{{ to()->file($file, $width, $height) }}"
      title="{{$title ?? $file->original_name}}"
      alt="{{$alt ?? $file->original_name}}"
-     height="{{$height}}"
-     width="{{$width}}"
+     height="{{$height ?? 0}}"
+     width="{{$width ?? 0}}"
 />

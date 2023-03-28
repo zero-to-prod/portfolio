@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Tag;
+use Spatie\SchemaOrg\Schema;
 
 ?>
 @props(['title', 'tags' => null, 'description' => null])
@@ -22,10 +23,15 @@ use App\Models\Tag;
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "name": "DevLeak Logo",
       "url": "{{config('app.url')}}",
       "logo": "{{ Vite::asset('resources/images/favicon/android-chrome-512x512.png') }}"
     }
     </script>
+    <?php
+        $site = Schema::webSite()->name(config('app.name'))->url(to()->welcome());
+        echo $site->toScript();
+    ?>
     @stack('data')
 </head>
 <body class="min-h-screen overflow-y-scroll antialiased bg-primary-content text-base-content">

@@ -278,7 +278,7 @@ $cvc = ThanksResponse::cvc;
                             });
 
                             const endpoint = "{{ to()->api->thanks() }}";
-                            const form = document.querySelector('#form');
+                            const form = document.querySelector('#thanks-form');
 
                             form.addEventListener('submit', (event) => {
                                 event.preventDefault();

@@ -18,6 +18,14 @@ use App\Models\Tag;
     <link rel="icon" type="image/png" sizes="32x32" href="{{ Vite::asset('resources/images/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ Vite::asset('resources/images/favicon/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ Vite::asset('resources/images/favicon/site.webmanifest') }}">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "{{config('app.url')}}",
+      "logo": "{{ Vite::asset('resources/images/favicon/android-chrome-512x512.png') }}"
+    }
+    </script>
     @stack('data')
 </head>
 <body class="min-h-screen overflow-y-scroll antialiased bg-primary-content text-base-content">

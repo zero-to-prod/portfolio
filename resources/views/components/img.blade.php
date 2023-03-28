@@ -11,12 +11,15 @@ use App\Models\File;
 /* @var string|null $alt */
 ?>
 
-
-<img {{ $attributes->merge(['class' => '']) }}
-     src="{{ to()->file($file, $width, $height) }}"
-     title="{{$title ?? $file->original_name}}"
-     alt="{{$alt ?? $file->original_name}}"
-     height="{{$height ?? 0}}"
-     width="{{$width ?? 0}}"
-     itemprop="image"
-/>
+<picture>
+     <source media="(max-width: 490px)" srcset="{{ to()->file($file, 480) }}" />
+     <img {{ $attributes->merge(['class' => '']) }}
+          srcset="{{ to()->file($file, 100) }}, {{ to()->file($file, $width, $height) }} 2x"
+          src="{{ to()->file($file, $width, $height) }}"
+          title="{{$title ?? $file->original_name}}"
+          alt="{{$alt ?? $file->original_name}}"
+          height="{{$height ?? 0}}"
+          width="{{$width ?? 0}}"
+          itemprop="image"
+     />
+</picture>

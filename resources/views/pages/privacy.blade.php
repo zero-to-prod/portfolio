@@ -1,4 +1,4 @@
-<x-main :title="'Privacy'">
+<x-main :title="'Privacy' . ' | ' . config('app.name')">
     <div class="sm:py-6 sm:py-12">
         <div class="mx-auto py-8 prose px-4 2col:px0">
             <h1>Privacy Policy for {{config('app.name')}}</h1>

@@ -7,7 +7,7 @@ $email = Controller::email;
 $password = Controller::password;
 $confirmation = Controller::password_confirmation;
 ?>
-<x-login>
+<x-login :title="'Register' . ' | ' . config('app.name')">
     <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
         Create an Account
     </div>

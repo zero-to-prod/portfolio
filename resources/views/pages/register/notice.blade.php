@@ -1,4 +1,4 @@
-<x-login>
+<x-login :title="'Email Verification' . ' | ' . config('app.name')">
     <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
         Verify Your Email Address
     </div>

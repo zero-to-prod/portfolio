@@ -6,7 +6,7 @@ $email = LoginRequest::email;
 $password = LoginRequest::password;
 $remember = LoginRequest::remember;
 ?>
-<x-login>
+<x-login :title="'Sign In' . ' | ' . config('app.name')">
     <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
         Sign in
     </div>

@@ -1,4 +1,4 @@
-<x-main :title="'CV'">
+<x-main :title="'CV' . ' | ' . config('app.name')">
     <x-header-section>
         <h1 role="heading">CV and Work History</h1>
         <p aria-label="Subtitle" role="doc-subtitle">

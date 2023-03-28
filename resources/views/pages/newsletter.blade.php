@@ -8,7 +8,7 @@ use App\Models\Tag;
 
 $email = SubscribeResponse::email;
 ?>
-<x-main :tags="$tags" :title="'Newsletter'">
+<x-main :tags="$tags" :title="'Newsletter' . ' | ' . config('app.name')">
     <div class="text-center pt-10 2col:pt-16 pb-32 max-w-3xl mx-auto space-y-10 px-2">
         <h1 class="text-6xl">Weekly Newsletter</h1>
         <div>

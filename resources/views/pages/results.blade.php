@@ -16,7 +16,7 @@ $title = request()->query(Results::topics) !== null ? 'Topics' : $title;
 $title = request()->query(Results::popular) !== null ? 'Popular' : $title;
 $author_model = null;
 ?>
-<x-main :title="$title">
+<x-main :title="$title . ' | ' . config('app.name')">
     <div class="flex flex-col gap-2 max-w-4xl 2col:px-2 mx-auto">
         <div>
             @if($tag !== null)

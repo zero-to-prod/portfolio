@@ -7,7 +7,7 @@ $subject = Store::subject;
 $body = Store::body;
 
 ?>
-<x-main :title="'Connect'">
+<x-main :title="'Contact' . ' | ' . config('app.name')">
     @if(session()->has($email))
         <x-toast>
             <p>Message sent!</p>

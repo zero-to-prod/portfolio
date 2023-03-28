@@ -53,7 +53,7 @@ $cvc = ThanksResponse::cvc;
             ->dateModified($post->updated_at)
             ->author([$author]);
         echo $localBusiness->toScript();
-        $breadcrumbs = Schema::breadcrumbList()->itemListElement([
+        $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
             Schema::listItem()->position(1)->item(Schema::webPage()->name($post->title)->url(to()->read($post))),
         ]);
         echo $breadcrumbs->toScript();

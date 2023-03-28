@@ -13,7 +13,10 @@ use App\Models\Tag;
     <meta name="robots" content="nofollow">
     <title>{{ $title ?? config('app.name', 'Home') }}</title>
     @vite(['resources/css/app.css'])
-    <link rel="icon" href="{{ Vite::asset('resources/images/favicon/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ Vite::asset('resources/images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ Vite::asset('resources/images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ Vite::asset('resources/images/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ Vite::asset('resources/images/favicon/site.webmanifest') }}">
     @stack('data')
 </head>
 <body class="min-h-screen overflow-y-scroll antialiased bg-primary-content text-base-content">

@@ -12,6 +12,7 @@ use Spatie\SchemaOrg\Schema;
 ?>
 
 <x-main :tags="$tags">
+    <h1 class="sr-only">DevLeak Home Page</h1>
     @push('data')
         <?php
         $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([

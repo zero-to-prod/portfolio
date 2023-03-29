@@ -18,6 +18,7 @@ $title = request()->query(Results::popular) !== null ? 'Popular' : $title;
 $author_model = null;
 ?>
 <x-main :title="$title . ' | ' . config('app.name')" :description="'Search results for: ' . $title">
+    <h1 class="sr-only">Results for {{$title}}</h1>
     @push('data')
         <?php
         $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([

@@ -24,13 +24,6 @@
 @endforeach
 @foreach($items as $item)
     <entry>
-        @if($item->image !== null)
-            <image>
-                <url>{{$item->image}}</url>
-                <link>{{ url($item->link) }}</link>
-                <title>{!! \Spatie\Feed\Helpers\Cdata::out($item->title) !!}</title>
-            </image>
-        @endif
         <title>{!! \Spatie\Feed\Helpers\Cdata::out($item->title) !!}</title>
         <link rel="alternate" href="{{ url($item->link) }}"/>
         <id>{{ url($item->id) }}</id>

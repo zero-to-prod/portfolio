@@ -5,6 +5,7 @@ use App\Helpers\Drivers;
 use App\Helpers\Middlewares;
 use App\Http\Controllers\Admin\File\FileResponse;
 use App\Http\Controllers\Auth\GithubCallback;
+use App\Http\Controllers\Auth\GoogleCallback;
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Newsletter;
 use App\Http\Controllers\Read;
@@ -36,8 +37,12 @@ Route::getAs(to()->subscribe_addPassword, SubscribeAddPassword::class);
 /* Login */
 Route::getAs(to()->login->index, fn() => view('pages.login'));
 Route::postAs(to()->login->store, Login::class);
+/* Github */
 Route::getAs(to()->auth->github->callback, GithubCallback::class);
 Route::getAs(to()->auth->github->index, fn() => Socialite::driver(Drivers::github->value)->redirect());
+/* Google */
+Route::getAs(to()->auth->google->callback, GoogleCallback::class);
+Route::getAs(to()->auth->google->index, fn() => Socialite::driver(Drivers::google->value)->redirect());
 
 /* Register */
 Route::getAs(to()->register->index, fn() => view('pages.register.index'));

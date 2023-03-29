@@ -26,6 +26,11 @@ $remember = LoginRequest::remember;
                 <x-svg class="h-6 w-6" :name="'github'"/>
                 <span class="mx-auto">Continue With GitHub</span>
             </a>
+            <a class="btn btn-wide bg-white hover:bg-gray-100 flex text-gray-900 border border-gray-300"
+               href="{{to()->auth->google->index()}}">
+                <x-svg class="h-6 w-6" :name="'google'"/>
+                <span class="mx-auto">Continue With Google</span>
+            </a>
         </div>
         <div class="relative">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">

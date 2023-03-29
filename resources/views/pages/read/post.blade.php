@@ -121,7 +121,7 @@ $cvc = ThanksResponse::cvc;
                 </div>
                 <div class="2col:hidden space-y-2">
                     <div class="flex flex-col">
-                        <h1 class="text-2xl font-bold">{{$post->title}}</h1>
+                        <h2 class="text-2xl font-bold">{{$post->title}}</h2>
                         <p class="text-sm">{{$post->subtitle}}</p>
                     </div>
                     <div class="flex justify-between">

@@ -25,11 +25,15 @@ class WebGroupTest extends TestCase
             $blacklist = [
                 to()->read->name,
                 to()->file->name,
+                to()->logo->name,
                 to()->register->notice->name,
                 to()->register->verification->name,
                 to()->auth->github->index->name,
                 to()->auth->github->callback->name,
+                to()->auth->google->index->name,
+                to()->auth->google->callback->name,
                 to()->subscribe_addPassword->name,
+                'feeds.main'
             ];
 
             return !in_array($route[0], $blacklist, true);

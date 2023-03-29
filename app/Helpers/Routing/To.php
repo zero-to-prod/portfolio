@@ -17,6 +17,7 @@ class To
     public Routes $read = Routes::read;
     public Routes $search = Routes::search;
     public Routes $results = Routes::results;
+    public Routes $logo = Routes::logo;
     public Routes $file = Routes::file;
     public Routes $tos = Routes::tos;
     public Routes $privacy = Routes::privacy;

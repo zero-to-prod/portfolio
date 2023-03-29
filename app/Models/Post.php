@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use RuntimeException;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Tags\HasTags;
@@ -35,7 +37,7 @@ use Tests\Feature\Models\Post\LikeTest;
 /**
  * @mixin IdeHelperPost
  */
-class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
+class Post extends \Illuminate\Database\Eloquent\Model implements HasRules, Feedable
 {
     use HasFactory;
     use IdColumn;
@@ -75,6 +77,22 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules
         self::public_word_count => 'integer',
         self::public_reading_time => 'integer',
     ];
+
+    public static function getFeedItems(): Collection|array
+    {
+        return self::with([self::file, self::authors])->orderByDesc(self::published_at)->get();
+    }
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->slug)
+            ->image(to()->file($this->file, 300))
+            ->title($this->title)
+            ->summary($this->subtitle)
+            ->updated($this->updated_at)
+            ->link(to()->read($this))
+            ->authorName($this->author()->name);
+    }
 
     public function reactions(): MorphToMany
     {

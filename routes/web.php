@@ -18,10 +18,14 @@ use App\Http\Controllers\SubscribeSuccess;
 use App\Http\Controllers\Welcome;
 use Illuminate\Support\Facades\Route;
 
+Route::feeds();
+
 Route::getAs(to()->welcome, Welcome::class);
 Route::getAs(to()->read, Read::class);
 Route::postAs(to()->search, Search::class);
 Route::getAs(to()->results, Results::class);
+Route::getAs(to()->results, Results::class);
+Route::getAs(to()->logo, fn() => response(file_get_contents('logo.png'), headers: ['Content-Type' => 'image/png']));
 
 /* 31536000 = 1 year */
 Route::middleware('cache.headers:public;max_age=31536000;etag')->group(function () {

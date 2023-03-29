@@ -30,6 +30,7 @@ enum Routes: string
     case privacy = 'privacy/';
     case read = 'read/{post}/';
     case results = 'results/';
+    case logo = 'logo/';
     case search = 'search/';
     case newsletter = 'newsletter/';
     case subscribe = 'subscribe/';

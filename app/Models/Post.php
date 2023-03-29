@@ -91,7 +91,8 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules, Feed
             ->summary($this->subtitle ?? $this->title)
             ->updated($this->updated_at)
             ->link(to()->read($this))
-            ->authorName($this->author()->name);
+            ->authorName($this->author()->name)
+            ->authorEmail(config('mail.from.address'));
     }
 
     public function reactions(): MorphToMany

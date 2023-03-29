@@ -86,7 +86,7 @@ $in_body = PostStore::in_body;
                             @endif
                             <div class="flex space-x-6 sm:col-span-2">
                                 @if($post_model?->file !== null)
-                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                    <x-img class="object-cover w-[100px] rounded-lg"
                                            :file="$post_model->file"
                                            :height="100"
                                     />
@@ -106,7 +106,7 @@ $in_body = PostStore::in_body;
                             </div>
                             <div class="flex space-x-6 sm:col-span-2">
                                 @if($post_model?->animationFile !== null)
-                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                    <x-img class="object-cover w-[100px] rounded-lg"
                                            :file="$post_model->animationFile"
                                            :height="100"
                                     />
@@ -125,7 +125,7 @@ $in_body = PostStore::in_body;
                             </div>
                             <div class="flex space-x-6 sm:col-span-2">
                                 @if($post_model?->altFile !== null)
-                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                    <x-img class="object-cover w-[100px] rounded-lg"
                                            :file="$post_model->altFile"
                                            :height="100"
                                     />
@@ -255,7 +255,7 @@ $in_body = PostStore::in_body;
                             @if($post_model?->inBodyFiles()->count())
                                 @foreach($post_model->inBodyFiles() as $file)
                                     <div class="flex space-x-6 sm:col-span-2">
-                                        <x-img class="object-cover h-[100px] rounded-lg"
+                                        <x-img class="object-cover w-[100px] rounded-lg"
                                                :file="$file"
                                                :height="100"
                                         />

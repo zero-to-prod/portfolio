@@ -37,7 +37,7 @@ $logo = TagFormStore::logo;
                             </x-form-control-dark>
                             <div class="flex space-x-6 sm:col-span-2">
                                 @if($tag?->file !== null)
-                                    <x-img class="object-cover h-[100px] rounded-lg"
+                                    <x-img class="object-cover w-[100px] rounded-lg"
                                            :file="$tag->file"
                                            :height="100"
                                     />

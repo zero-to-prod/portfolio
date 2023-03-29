@@ -53,7 +53,7 @@ use App\Models\Tag;
                                                     <figure>
                                                         <a class="underline" href="{{to()->read($post)}}"
                                                            target="_blank">
-                                                            <x-img class="object-cover h-[100px] rounded-lg"
+                                                            <x-img class="object-cover w-[100px] rounded-lg"
                                                                    :file="$post->file"
                                                                    :height="100"
                                                                    :title="''"/>

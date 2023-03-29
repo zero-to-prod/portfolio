@@ -23,13 +23,12 @@
     @endforeach
     @foreach($items as $item)
         <entry>
+            @if($item->image !== null)
+                <p><img src="{{$item->image}}" alt="{{$item->title}}"/></p>
+            @endif
             <title>{!! \Spatie\Feed\Helpers\Cdata::out($item->title) !!}</title>
             <link rel="alternate" href="{{ url($item->link) }}" />
             <id>{{ url($item->id) }}</id>
-            @if($item->image !== null)
-                <logo>{{ $item->image }}</logo>
-                <icon>{{ $item->image }}</icon>
-            @endif
             <author>
                 <name>{!! \Spatie\Feed\Helpers\Cdata::out($item->authorName) !!}</name>
 @if(!empty($item->authorEmail))

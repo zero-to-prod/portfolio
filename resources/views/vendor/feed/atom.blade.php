@@ -42,7 +42,7 @@
             @foreach($item->category as $category)
             <category term="{{ $category }}" />
             @endforeach
-            <updated>{{ $item->timestamp() }}</updated>
+            <updated>{{ $item->updated->toRfc3339String() }}</updated>
         </entry>
     @endforeach
 </feed>

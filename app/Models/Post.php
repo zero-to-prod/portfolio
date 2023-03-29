@@ -88,7 +88,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules, Feed
             ->id($this->slug)
             ->image(to()->file($this->file, 300))
             ->title($this->title)
-            ->summary($this->subtitle)
+            ->summary($this->subtitle ?? $this->title)
             ->updated($this->updated_at)
             ->link(to()->read($this))
             ->authorName($this->author()->name);

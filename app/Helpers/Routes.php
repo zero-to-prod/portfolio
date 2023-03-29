@@ -42,6 +42,9 @@ enum Routes: string
     case auth_github_callback = 'auth/github/callback/';
     case auth_github_index = 'auth/github/';
 
+    case auth_google_callback = 'auth/google/callback/';
+    case auth_google_index = 'auth/google/';
+
     case passwordNew_create = 'password-new/{token}/';
     case passwordNew_store = 'password-new/store/';
     case passwordReset_request = 'password-reset/request/';

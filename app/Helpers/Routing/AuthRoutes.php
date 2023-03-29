@@ -11,6 +11,7 @@ class AuthRoutes
 
     public function __construct(
         public GithubRoutes        $github = new GithubRoutes,
+        public GoogleRoutes        $google = new GoogleRoutes,
         public PasswordNewRoutes   $passwordNew = new PasswordNewRoutes,
         public PasswordResetRoutes $passwordReset = new PasswordResetRoutes,
         public PasswordRoutes      $password = new PasswordRoutes,

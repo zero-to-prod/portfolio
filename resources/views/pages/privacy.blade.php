@@ -125,8 +125,8 @@ use Spatie\SchemaOrg\Schema;
                 <li>
                     <h3> Contact Us </h3>
                     <p>
-                        If you have any questions or concerns regarding this Privacy Policy, please contact us at
-                        <a href="mailto:{{config('mail.from.address')}}">{{config('mail.from.address')}}</a>.
+                        If you have any questions or concerns regarding this Privacy Policy, please contact us
+                        <a href="{{to()->contact()}}">here</a>.
                     </p>
                 </li>
             </ol>

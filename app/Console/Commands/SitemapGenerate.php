@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Tags\Url;
 
 class SitemapGenerate extends Command
 {
@@ -13,7 +14,15 @@ class SitemapGenerate extends Command
 
     public function handle(): int
     {
-        SitemapGenerator::create(config('app.url'))->writeToFile(public_path('sitemap.xml'));
+        SitemapGenerator::create(config('app.url'))
+            ->hasCrawled(function (Url $url) {
+                if (\Str::contains($url->path(), '/auth', true)) {
+                    return;
+                }
+
+                return $url;
+            })
+            ->writeToFile(public_path('sitemap.xml'));
 
         return 0;
     }

@@ -160,7 +160,7 @@ use Spatie\SchemaOrg\Schema;
                     <h3>Contact Information</h3>
                     <p>
                         If you have any questions, concerns, or comments about these Terms or the Site, you may contact
-                        us at <a href="mailto:{{config('mail.from.address')}}">{{config('mail.from.address')}}</a>.
+                        us <a href="{{to()->contact()}}">here</a>.
                     </p>
                 </li>
             </ol>

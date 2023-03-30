@@ -25,7 +25,7 @@
         margin-bottom: 0;
     }
 
-    #published-content > ul > li > code, #published-content > ol > li > ul > li > code{
+    #published-content > ul > li > code, #published-content > ol > li > ul > li > code, #published-content > h2 > code{
         background-color: #e3e6e8 !important;
         padding: 2px 4px;
         border-radius: 3px;

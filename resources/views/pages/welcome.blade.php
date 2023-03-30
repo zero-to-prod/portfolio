@@ -11,7 +11,7 @@ use Spatie\SchemaOrg\Schema;
 /* @var Collection<Tag, Tag> $tags */
 ?>
 
-<x-main :tags="$tags">
+<x-main :tags="$tags" :title="config('app.name') . ': Web Development News, Articles, and more...'">
     <h1 class="sr-only">The Home Page for DevLeak</h1>
     @push('data')
         <?php

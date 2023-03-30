@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Register\Store as Controller;
 use Spatie\SchemaOrg\Schema;
+
 $name = Controller::name;
 $email = Controller::email;
 $password = Controller::password;
@@ -16,9 +17,10 @@ $confirmation = Controller::password_confirmation;
         echo $breadcrumbs->toScript();
         ?>
     @endpush
-    <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
+    <h1 class="border-b border-gray-300 text-sm bg-base-200 p-4">
         Create an Account
-    </div>
+    </h1>
+    <p class="sr-only">Sign Up to get access to public content and social features!</p>
     <div class="p-4 space-y-4">
         <form class="space-y-4" method="POST" action="{{ to()->register->store() }}">
             @csrf

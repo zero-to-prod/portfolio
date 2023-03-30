@@ -28,6 +28,7 @@ $body = Store::body;
         <div class="px-6 lg:px-8 max-w-xl mx-auto py-8">
             <div class="mx-auto max-w-2xl text-center">
                 <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Contact {{config('app.name')}}</h1>
+                <p class="sr-only">Get in touch with {{config('app.name')}} with your questions, media requests, or other support-related inquiries. Our support team will respond as soon as possible.</p>
             </div>
             <form class="mx-auto mt-8 space-y-4" action="{{to()->contact_store()}}" method="post">
                 @csrf

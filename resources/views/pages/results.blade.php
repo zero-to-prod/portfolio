@@ -17,7 +17,7 @@ $title = request()->query(Results::topics) !== null ? 'Topics' : $title;
 $title = request()->query(Results::popular) !== null ? 'Popular' : $title;
 $author_model = null;
 ?>
-<x-main :title="$title . ' | ' . config('app.name')" :description="'Search results for: ' . $title">
+<x-main :title="$title . ' - Topic | ' . config('app.name')" :description="'Search results for: ' . $title">
     <h1 class="sr-only">Showing Results for: {{$title}}</h1>
     @push('data')
         <?php

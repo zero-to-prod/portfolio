@@ -12,7 +12,7 @@ use Spatie\SchemaOrg\Schema;
 ?>
 
 <x-main :tags="$tags" :title="config('app.name') . ': Web Development News, Articles, and more...'">
-    <h1 class="sr-only">The Home Page for DevLeak</h1>
+    <h1 class="sr-only">{{config('app.name')}} : Web Development News, Articles, and more...</h1>
     @push('data')
         <?php
         $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([

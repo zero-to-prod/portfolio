@@ -10,9 +10,10 @@ use Spatie\SchemaOrg\Schema;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{$description ?? 'Stay up to date with the latest in web development.'}}">
+    <meta name="description" content="{{$description ?? config('app.name') . ' is a web development source for news, articles, tutorials, and more.'}}">
     <meta name="robots" content="max-image-preview:large">
     <title>{{ $title ?? config('app.name', 'Home') }}</title>
+    <meta name="title" content="{{ $title ?? config('app.name', 'Home') }}">
     @vite(['resources/css/app.css'])
     <link rel="apple-touch-icon" sizes="180x180" href="{{ Vite::asset('resources/images/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ Vite::asset('resources/images/favicon/favicon-32x32.png') }}">

@@ -16,9 +16,9 @@ $remember = LoginRequest::remember;
         echo $breadcrumbs->toScript();
         ?>
     @endpush
-    <div class="border-b border-gray-300 text-sm bg-base-200 p-4">
+    <h1 class="border-b border-gray-300 text-sm bg-base-200 p-4">
         Sign in
-    </div>
+    </h1>
     <div class="p-4 space-y-4">
         <div class="space-y-2">
             <a class="btn btn-wide bg-[#24292f] flex hover:bg-[#24292fdb]"

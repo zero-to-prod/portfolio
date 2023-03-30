@@ -8,7 +8,8 @@ $subject = Store::subject;
 $body = Store::body;
 
 ?>
-<x-main :title="'Contact' . ' | ' . config('app.name')" :description="'Contact DevLeak'">
+<x-main :title="'Contact Us' . ' - ' . config('app.name')"
+        :description="'Get in touch with '.config('app.name').' with your questions, media requests, or other support-related inquiries. Our support team will respond as soon as possible.'">
     @push('data')
         <?php
         $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([

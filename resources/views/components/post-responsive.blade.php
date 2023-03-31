@@ -18,18 +18,21 @@ use Illuminate\Support\Collection;
                             <x-img class="2col:rounded-lg relative h-full w-full 2col:h-[200px] 2col:w-[300px] object-cover object-center z-10 opacity-0 2col:opacity-100 hover:opacity-0"
                                    :file="$post->animationFile"
                                    :width="300"
-                                   :title="''"
+                                   :title="$post->title"
+                                   :alt="$post->title"
                             />
                             <x-img class="2col:rounded-lg absolute top-0 h-full w-full 2col:h-[200px] 2col:w-[300px] object-cover object-center"
                                    :file="$post->altFile"
                                    :width="300"
-                                   :title="''"
+                                   :title="$post->title"
+                                   :alt="$post->title"
                             />
                         @else
                             <x-img class="h-full w-full 2col:h-[200px] 2col:w-[300px] object-cover object-center"
                                    :file="$post->file"
                                    :width="250"
-                                   :title="''"
+                                   :title="$post->title"
+                                   :alt="$post->title"
                             />
                         @endif
                     </div>

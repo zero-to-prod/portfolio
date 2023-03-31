@@ -44,7 +44,7 @@ use Illuminate\Support\Collection;
              title="Topic: {{$tag->name}}"
         >
             @if($tag->file !== null)
-                <x-img class="w-6" :file="$tag->file" :width="80"/>
+                <x-img class="w-6" :file="$tag->file" :width="80" :title="'Topic: '.$tag->name" :alt="'Topic: '.$tag->name" />
             @endif
             {{$tag->name}}
         </x-a>
@@ -87,7 +87,7 @@ use Illuminate\Support\Collection;
              title="{{$tag->name}}"
         >
             @if($tag->file !== null)
-                <x-img class="mx-auto w-6" :file="$tag->file" :width="80" title="Topic: {{$tag->name}}"/>
+                <x-img class="mx-auto w-6" :file="$tag->file" :width="80" :title="'Topic: '.$tag->name" :alt="'Topic: '.$tag->name"/>
             @endif
         </x-a>
     @endforeach

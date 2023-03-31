@@ -65,7 +65,8 @@ $cvc = ThanksResponse::cvc;
                 <x-img class="h-full w-full object-cover object-center"
                        :file="$post->file"
                        :width="837"
-                       :title="''"
+                       :title="$post->title"
+                       :alt="$post->title"
                 />
                 @if($post->premiere_at !== null && $post->premiere_at?->gt(now()))
                     <x-premiere-chip :post="$post"/>
@@ -90,7 +91,7 @@ $cvc = ThanksResponse::cvc;
                         <x-a class="mr-4 flex gap-2" title="Authors Page"
                              :href="to()->resultsAuthor($post->author())">
                             <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page" itemprop="url"
-                                   :file="$post->author()->file" :height="80"/>
+                                   :file="$post->author()->file" :height="80" :title="$post->author()->name" :alt="$post->author()->name"/>
                             <div class="flex flex-col">
                                 <p itemprop="name">{{$post->authorList()}}</p>
                                 <p class="text-sm">{{$post->authorPostCount()}}
@@ -126,7 +127,7 @@ $cvc = ThanksResponse::cvc;
                     </div>
                     <div class="flex justify-between">
                         <x-a class="mr-4 flex gap-2 text-base font-semibold" :href="'#'">
-                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->author()->file" :height="80"/>
+                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->author()->file" :height="80" :title="$post->author()->name" :alt="$post->author()->name"/>
                             <div>
                                 <p class="underline">{{$post->authorList()}}</p>
                                 <p class="text-sm">{{$post->authorPostCount()}}
@@ -517,18 +518,21 @@ $cvc = ThanksResponse::cvc;
                                 <x-img class="absolute top-0 h-full w-full object-cover object-center hover:opacity-0 z-10"
                                        :file="$post->animationFile"
                                        :width="250"
-                                       :title="''"
+                                       :title="$post->title"
+                                       :alt="$post->title"
                                 />
                                 <x-img class="absolute top-0 h-full w-full object-cover object-center block"
                                        :file="$post->altFile"
                                        :width="250"
-                                       :title="''"
+                                       :title="$post->title"
+                                       :alt="$post->title"
                                 />
                             @else
                                 <x-img class="object-cover object-center"
                                        :file="$post->file"
                                        :width="250"
-                                       :title="''"
+                                       :title="$post->title"
+                                       :alt="$post->title"
                                 />
                             @endif
                         </div>

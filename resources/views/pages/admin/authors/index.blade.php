@@ -42,7 +42,9 @@ use Illuminate\Support\Collection;
                                                     <x-img class="object-cover rounded-lg"
                                                            :file="$author->file"
                                                            :height="100"
-                                                           :title="''"/>
+                                                           :title="$author->name"
+                                                           :alt="$author->name"
+                                                    />
                                                 @endif
                                                 <div>
                                                     <p class="font-bold">

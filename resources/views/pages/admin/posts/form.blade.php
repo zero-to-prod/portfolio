@@ -89,6 +89,8 @@ $in_body = PostStore::in_body;
                                     <x-img class="object-cover w-[100px] rounded-lg"
                                            :file="$post_model->file"
                                            :height="100"
+                                           :title="$post_model->title"
+                                           :alt="$post_model->title"
                                     />
                                 @endif
                                 <x-form-control-dark>
@@ -109,6 +111,8 @@ $in_body = PostStore::in_body;
                                     <x-img class="object-cover w-[100px] rounded-lg"
                                            :file="$post_model->animationFile"
                                            :height="100"
+                                           :title="$post_model->title"
+                                           :alt="$post_model->title"
                                     />
                                 @endif
                                 <x-form-control-dark>
@@ -127,6 +131,8 @@ $in_body = PostStore::in_body;
                                 @if($post_model?->altFile !== null)
                                     <x-img class="object-cover w-[100px] rounded-lg"
                                            :file="$post_model->altFile"
+                                           :title="$post_model->title"
+                                           :alt="$post_model->title"
                                            :height="100"
                                     />
                                 @endif
@@ -262,7 +268,6 @@ $in_body = PostStore::in_body;
                                         <p class=" text-white">
                                             ![{{$file->original_name}}](/file/{{$file->name}})
                                         </p>
-
                                     </div>
                                 @endforeach
                             @endif

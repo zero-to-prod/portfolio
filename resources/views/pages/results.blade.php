@@ -32,7 +32,7 @@ $author_model = null;
             @if($tag !== null)
                 <div class="flex gap-x-2 my-2 ml-2 2col:ml-0">
                     @if($tag->file !== null)
-                        <x-img class="w-10 rounded" :file="$tag->file" :width="80"/>
+                        <x-img class="w-10 rounded" :file="$tag->file" :width="80" :title="$tag->name" :alt="$tag->name" />
                     @endif
                     <h2 class="my-auto text-lg font-semibold">
                         {{$tag->name}}
@@ -81,7 +81,7 @@ $author_model = null;
             @forEach(Tag::getMostViewed() as $tag)
                 <x-a class="rounded-lg p-2 hover:bg-gray-100 flex" :href="to()->results($tag)">
                     @if($tag->file !== null)
-                        <x-img class="w-10 rounded" :file="$tag->file" :width="80"/>
+                        <x-img class="w-10 rounded" :file="$tag->file" :width="80" :title="$tag->name" :alt="$tag->name"/>
                     @endif
                     <span class="ml-2 my-auto">{{$tag->name}}</span>
                 </x-a>

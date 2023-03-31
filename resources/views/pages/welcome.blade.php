@@ -29,7 +29,7 @@ use Spatie\SchemaOrg\Schema;
                      title="Topic: {{$tag->name}}"
                 >
                     @if($tag->file !== null)
-                        <x-img class="my-auto w-10 rounded" :file="$tag->file" :width="80"/>
+                        <x-img class="my-auto w-10 rounded" :file="$tag->file" :title="$tag->name" :alt="$tag->name" :width="80"/>
                     @endif
                     <h2 class="my-auto text-lg font-semibold">
                         {{$tag->name}}
@@ -50,18 +50,21 @@ use Spatie\SchemaOrg\Schema;
                                         <x-img class="h-full w-full object-cover object-center opacity-0 2col:opacity-100 hover:opacity-0 z-10"
                                                :file="$post->animationFile"
                                                :width="300"
-                                               :title="''"
+                                               :title="$post->title"
+                                               :alt="$post->title"
                                         />
                                         <x-img class="h-full w-full object-cover object-center"
                                                :file="$post->altFile"
                                                :width="300"
-                                               :title="''"
+                                               :title="$post->title"
+                                               :alt="$post->title"
                                         />
                                     @else
                                         <x-img class="h-full w-full object-cover object-center"
                                                :file="$post->file"
                                                :width="300"
-                                               :title="''"
+                                               :title="$post->title"
+                                               :alt="$post->title"
                                         />
                                     @endif
                                 </div>

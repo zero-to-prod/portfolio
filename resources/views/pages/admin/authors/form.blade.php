@@ -52,6 +52,8 @@ $avatar = AuthorStore::avatar;
                                     <x-img class="object-cover h-[100px] rounded-lg"
                                            :file="$author->file"
                                            :height="100"
+                                           :title="$author->name"
+                                           :alt="$author->name"
                                     />
                                 @endif
                                 <x-form-control-dark>

@@ -56,7 +56,9 @@ use App\Models\Tag;
                                                             <x-img class="object-cover w-[100px] rounded-lg"
                                                                    :file="$post->file"
                                                                    :height="100"
-                                                                   :title="''"/>
+                                                                   :title="$post->title"
+                                                                   :alt="$post->title"
+                                                            />
                                                         </a>
                                                     </figure>
                                                 </div>

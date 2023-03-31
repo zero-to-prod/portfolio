@@ -40,6 +40,8 @@ $logo = TagFormStore::logo;
                                     <x-img class="object-cover w-[100px] rounded-lg"
                                            :file="$tag->file"
                                            :height="100"
+                                           :title="$tag->name"
+                                           :alt="$tag->name"
                                     />
                                 @endif
                                 <x-form-control-dark>

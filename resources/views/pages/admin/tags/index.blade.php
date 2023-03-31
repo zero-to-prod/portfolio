@@ -45,7 +45,9 @@ use Illuminate\Support\Collection;
                                                     <x-img class="object-cover w-[100px] rounded-lg"
                                                            :file="$tag->file"
                                                            :height="100"
-                                                           :title="''"/>
+                                                           :title="$tag->name"
+                                                           :alt="$tag->name"
+                                                    />
                                                 @endif
                                                 <div>
                                                     <p class="font-bold">

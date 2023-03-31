@@ -129,13 +129,12 @@ $email = SubscribeResponse::email;
                 @forEach($tags as $tag)
                     <p class="p-2 flex">
                         @if($tag->file !== null)
-                            <x-img class="w-10" :file="$tag->file" :width="80"/>
+                            <x-img class="w-10" :file="$tag->file" :width="80" :title="$tag->name" :alt="$tag->name"/>
                         @endif
                         <span class="ml-2 my-auto">{{$tag->name}}</span>
                     </p>
                 @endforeach
             </div>
         </div>
-
     </div>
 </x-main>

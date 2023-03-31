@@ -1,1 +1,1 @@
-@props(['name'])<img src="{{ Vite::asset('resources/images/'.$name.'.svg') }}" alt="{{$name}}" {{$attributes->merge(['class' => 'svg'])}}/>
+@props(['name'])<img src="{{ Vite::asset('resources/images/'.$name.'.svg') }}" alt="{{$name}}" title="{{$name}}" {{$attributes->merge(['class' => 'svg'])}}/>

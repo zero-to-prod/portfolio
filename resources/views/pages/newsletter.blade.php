@@ -27,7 +27,7 @@ $email = SubscribeResponse::email;
             </p>
         </div>
         <div class="my-12">
-            <div id="cta-expanded" class="p-4 rounded-lg bg-gray-200 shadow-lg">
+            <div id="cta-expanded" class="p-4 rounded-lg bg-gray-100 border shadow">
                 <div class="max-w-md mx-auto">
                     <p class="font-bold text-xl pt-4">The bleeding edge - to your inbox.</p>
                     <form class="mt-6 mx-auto" id="form">

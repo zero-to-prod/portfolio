@@ -22,6 +22,7 @@ class To
     public Routes $tos = Routes::tos;
     public Routes $privacy = Routes::privacy;
     public Routes $newsletter = Routes::newsletter;
+    public Routes $newsletter_success = Routes::newsletter_success;
     public Routes $subscribe = Routes::subscribe;
     public Routes $subscribe_success = Routes::subscribe_success;
     public Routes $subscribe_addPassword = Routes::subscribe_addPassword;
@@ -137,6 +138,14 @@ class To
     public function newsletter(): string
     {
         return route_as($this->newsletter);
+    }
+
+    /**
+     * @see NewsletterSuccessTest
+     */
+    public function newsletter_success(): string
+    {
+        return route_as($this->newsletter_success);
     }
 
     /**

@@ -50,6 +50,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->registerAsMethods();
+        $this->registerViewAs();
         $this->registerMiddlewareAs();
     }
 
@@ -106,6 +107,17 @@ class RouteServiceProvider extends ServiceProvider
                 return $this;
             });
         }
+    }
+
+    protected function registerViewAs(): void
+    {
+        Route::macro('viewAs', function ($uri, $view, $data = [], $status = 200, $headers = []) {
+            if ($uri instanceof UnitEnum) {
+                return Route::view($uri->value, $view, $data, $status, $headers)->name($uri->name);
+            }
+
+            return Route::view($uri, $view, $data, $status, $headers);
+        });
     }
 
     protected function registerMiddlewareAs(): void

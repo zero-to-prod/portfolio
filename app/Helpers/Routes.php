@@ -33,6 +33,7 @@ enum Routes: string
     case logo = 'logo/';
     case search = 'search/';
     case newsletter = 'newsletter/';
+    case newsletter_success = 'newsletter/success/';
     case subscribe = 'subscribe/';
     case subscribe_success = 'subscribe/success/';
     case subscribe_addPassword = 'subscribe/add-password/{user}/';

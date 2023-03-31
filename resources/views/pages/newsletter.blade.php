@@ -13,7 +13,7 @@ $email = SubscribeResponse::email;
     @push('data')
         <?php
         $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
-            Schema::listItem()->position(1)->item(Schema::webPage()->name('Results')->url(to()->newsletter())),
+            Schema::listItem()->position(1)->item(Schema::webPage()->name(Str::title(to()->newsletter->name))->url(to()->newsletter())),
         ]);
         echo $breadcrumbs->toScript();
         ?>
@@ -30,96 +30,9 @@ $email = SubscribeResponse::email;
             <div id="cta-expanded" class="p-4 rounded-lg bg-gray-100 border shadow">
                 <div class="max-w-md mx-auto">
                     <p class="font-bold text-xl pt-4">The bleeding edge - to your inbox.</p>
-                    <form class="mt-6 mx-auto" id="form">
-                        <label for="{{$email}}" class="sr-only">Email</label>
-                        <div class="flex flex-col 2col:flex-row gap-2">
-                            <input class="input text-lg text-center 2col:text-left rounded-lg"
-                                   id="{{$email}}"
-                                   type="email"
-                                   name="{{$email}}"
-                                   required
-                                   placeholder="Your email address"/>
-                            <button id="newsletter" title="Subscribe to Newsletter"
-                                    class="btn flex justify-center shrink-0 px-3 py-2">
-                                <span class="my-auto mx-auto flex gap-2">
-                                    <x-svg :name="'mail-dark'" class="!h-6 !w-6"/>
-                                    <span class="my-auto font-bold text-white">Subscribe</span>
-                                </span>
-                            </button>
-                        </div>
-                    </form>
-                    <div class="mx-1 text-xs space-y-2 font-bold">
-                        <p id="success" class="hidden mt-2">
-                            Success! Welcome to the club. Check your inbox for new content.
-                        </p>
-                        <p id="error" class="hidden text-error">
-                            Something went wrong! Try another email.
-                        </p>
-                        <p class="font-normal">
-                            No spam, ever. We'll never share your email address, and you can opt out at any
-                            time.
-                        </p>
-                    </div>
+                    <livewire:newsletter/>
                 </div>
             </div>
-            <script>
-                const getElement = (id) => document.querySelector(`#${id}`);
-                const endpoint = "{{ to()->api->subscribe() }}";
-                const ctaExpanded = getElement('cta-expanded');
-                const success = getElement('success');
-                const error = getElement('error');
-                const email = getElement('email');
-                const submit = getElement('newsletter');
-                const form = getElement('form');
-                let submitted = false;
-
-                email.addEventListener('click', () => {
-                    email.classList.remove('border', 'border-error');
-                    email.classList.remove('bg-green-200');
-                    if (submitted) {
-                        email.value = '';
-                        submitted = false;
-                        success.classList.add('hidden');
-                        error.classList.add('hidden');
-                    }
-                });
-
-                form.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    submitted = true;
-                    submit.innerText = 'Submitting...';
-                    submit.disabled = true;
-                    success.classList.add('hidden');
-                    error.classList.add('hidden');
-                    const formData = new FormData(form);
-
-                    try {
-                        const response = await fetch(endpoint, {
-                            method: 'POST',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Authorization': 'Bearer {{ $token }}',
-                            },
-                            body: formData,
-                        });
-
-                        if (response.ok) {
-                            email.classList.add('bg-green-200');
-                            success.classList.toggle('hidden');
-                        } else {
-                            document.querySelector('#newsletter').reset();
-                            email.classList.add('border', 'border-error');
-                            error.classList.toggle('hidden');
-                        }
-                    } catch (e) {
-                        email.classList.add('border', 'border-error');
-                        error.classList.toggle('hidden');
-                    } finally {
-                        submit.innerText = 'Subscribe';
-                        submit.disabled = false;
-                    }
-                });
-            </script>
         </div>
         <div>
             <h2 class="text-xl font-bold">
@@ -137,4 +50,10 @@ $email = SubscribeResponse::email;
             </div>
         </div>
     </div>
+        @push('data')
+            <livewire:styles/>
+        @endpush
+        @push('scripts')
+            <livewire:scripts/>
+        @endpush
 </x-main>

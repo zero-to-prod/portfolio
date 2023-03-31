@@ -34,6 +34,7 @@ Route::middleware('cache.headers:public;max_age=31536000;etag')->group(function 
 
 /* Subscription */
 Route::getAs(to()->newsletter, Newsletter::class);
+Route::getAs(to()->newsletter_success, fn() => view('pages.newsletter_success'));
 Route::getAs(to()->subscribe, fn() => view('pages.subscribe.index'));
 Route::getAs(to()->subscribe_success, SubscribeSuccess::class);
 Route::getAs(to()->subscribe_addPassword, SubscribeAddPassword::class);

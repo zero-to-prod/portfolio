@@ -44,11 +44,10 @@ class Newsletter extends Component
             Contact::firstOrCreate([Contact::email => $email]);
             Mail::queue(new EmailSubscription($email));
             DB::commit();
-
+            $this->redirect(to()->newsletter_success());
         } catch (Exception) {
             $this->addError(self::errors, 'Something went wrong. Try another email.');
         }
-        $this->redirect(to()->newsletter_success());
     }
 
     public function render(): Factory|View|Application

@@ -30,7 +30,7 @@ $cvc = ThanksResponse::cvc;
                 ->logo(to()->file($post->file, 837, 0))
                 ->url(to()->welcome())
             )
-        ->founder(Schema::person()->name('David Smith'));
+            ->founder(Schema::person()->name('David Smith'));
         $localBusiness = Schema::article()
             ->url(to()->read($post))
             ->about($post->subtitle)
@@ -91,7 +91,8 @@ $cvc = ThanksResponse::cvc;
                         <x-a class="mr-4 flex gap-2" title="Authors Page"
                              :href="to()->resultsAuthor($post->author())">
                             <x-img class="my-auto h-10 w-10 rounded-full" title="Authors Page" itemprop="url"
-                                   :file="$post->author()->file" :height="80" :title="$post->author()->name" :alt="$post->author()->name"/>
+                                   :file="$post->author()->file" :height="80" :title="$post->author()->name"
+                                   :alt="$post->author()->name"/>
                             <div class="flex flex-col">
                                 <p itemprop="name">{{$post->authorList()}}</p>
                                 <p class="text-sm">{{$post->authorPostCount()}}
@@ -127,7 +128,8 @@ $cvc = ThanksResponse::cvc;
                     </div>
                     <div class="flex justify-between">
                         <x-a class="mr-4 flex gap-2 text-base font-semibold" :href="'#'">
-                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->author()->file" :height="80" :title="$post->author()->name" :alt="$post->author()->name"/>
+                            <x-img class="my-auto h-10 w-10 rounded-full" :file="$post->author()->file" :height="80"
+                                   :title="$post->author()->name" :alt="$post->author()->name"/>
                             <div>
                                 <p class="underline">{{$post->authorList()}}</p>
                                 <p class="text-sm">{{$post->authorPostCount()}}
@@ -554,4 +556,10 @@ $cvc = ThanksResponse::cvc;
             <x-post-responsive :posts="$posts"/>
         </div>
     </div>
+    @push('data')
+        <livewire:styles/>
+    @endpush
+    @push('scripts')
+        <livewire:scripts/>
+    @endpush
 </x-main>

@@ -49,6 +49,7 @@ use Spatie\SchemaOrg\Schema;
 </main>
 <x-footer/>
 @vite(['resources/js/web.js'])
+@stack('scripts')
 </body>
 </html>
 

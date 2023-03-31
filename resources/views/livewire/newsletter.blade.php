@@ -9,7 +9,7 @@ $form_errors = Newsletter::errors;
     <form wire:submit.prevent="submit" class="mt-6 mx-auto" id="form">
         <label for="{{$email}}" class="sr-only">Email</label>
         <div class="flex flex-col 2col:flex-row gap-2">
-            <input wire:model.lazy="{{$email}}"
+            <input wire:model="{{$email}}"
                    @class([
                       'input text-lg text-center 2col:text-left rounded-lg',
                       'ring-red-500' => $errors->has($email),

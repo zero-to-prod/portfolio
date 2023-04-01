@@ -63,7 +63,7 @@ class RegisterRoutes
      * @see resources/views/register/verification_notice.blade.php;
      * @see routes/web.php
      */
-    public function verification_notice($parameters = [], $absolute = true): string
+    public function verification_notice($parameters = [], $absolute = false): string
     {
         return route('verification.notice', $parameters, $absolute);
     }
@@ -73,7 +73,7 @@ class RegisterRoutes
      * @see VerificationSend
      * @see routes/web.php
      */
-    public function verification_send($parameters = [], $absolute = true): string
+    public function verification_send($parameters = [], $absolute = false): string
     {
         return route('verification.send', $parameters, $absolute);
     }

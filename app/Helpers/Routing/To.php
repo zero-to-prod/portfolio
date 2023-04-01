@@ -107,13 +107,13 @@ class To
      * @see FileTest
      * @see File
      */
-    public function file(File $file, ?int $width = null, ?int $height = null): string
+    public function file(File $file, ?int $width = null, ?int $height = null, $absolute = false): string
     {
         return route_as($this->file, [
             FileResponse::file => $file->name,
             FileResponse::width => $width,
             FileResponse::height => $height,
-        ]);
+        ], absolute: $absolute);
     }
 
     /**

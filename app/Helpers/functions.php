@@ -21,7 +21,7 @@ if (!function_exists('to')) {
 }
 
 if (!function_exists('route_as')) {
-    function route_as($route, mixed $parameters = [], $absolute = true): string
+    function route_as($route, mixed $parameters = [], $absolute = false): string
     {
         if ($route instanceof \UnitEnum) {
             return route($route->name, $parameters, $absolute);

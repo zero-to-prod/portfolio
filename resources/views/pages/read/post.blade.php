@@ -73,8 +73,7 @@ $cvc = ThanksResponse::cvc;
                 @endif
                 <x-reading-time-chip :post="$post" :text="' min read'"/>
             </div>
-            <article class="2col:px-2 px-4 space-y-4 2col:space-y-6" aria-label="Body" itemscope
-                     itemtype="{{to()->read($post)}}">
+            <article class="2col:px-2 px-4 space-y-4 2col:space-y-6" aria-label="Body">
                 <div class="2col:block hidden space-y-2">
                     <div class="flex justify-between pt-2">
                         <div class="font-bold">

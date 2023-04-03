@@ -42,17 +42,17 @@ class To
     /**
      * @see WelcomeTest
      */
-    public function welcome(): string
+    public function welcome(bool $absolute = false): string
     {
-        return route_as($this->welcome);
+        return route_as($this->welcome, absolute: $absolute);
     }
 
     /**
      * @see ReadTest
      */
-    public function read(Post $post): string
+    public function read(Post $post, bool $absolute = false): string
     {
-        return route_as($this->read, $post);
+        return route_as($this->read, $post, absolute: $absolute);
     }
 
     /**
@@ -61,6 +61,14 @@ class To
     public function search(): string
     {
         return route_as($this->search);
+    }
+
+    /**
+     * @see LogoTest
+     */
+    public function logo(bool $absolute = false): string
+    {
+        return route_as($this->logo, absolute: $absolute);
     }
 
     /**

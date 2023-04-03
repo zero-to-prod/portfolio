@@ -16,6 +16,7 @@ use Spatie\SchemaOrg\Schema;
     <meta name="robots" content="all" />
     <title>{{ $title ?? config('app.name', 'Home') }}</title>
     <meta name="title" content="{{ $title ?? config('app.name', 'Home') }}">
+    @stack('head')
     @vite(['resources/css/app.css'])
     <link rel="apple-touch-icon" sizes="180x180" href="{{ Vite::asset('resources/images/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ Vite::asset('resources/images/favicon/favicon-32x32.png') }}">

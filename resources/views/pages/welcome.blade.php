@@ -13,6 +13,17 @@ use Spatie\SchemaOrg\Schema;
 
 <x-main :tags="$tags" :title="config('app.name') . ': Web Development News, Articles, and more...'">
     <h1 class="sr-only">{{config('app.name')}} : Web Development News, Articles, and more...</h1>
+    @push('head')
+        <meta property="og:title" content="{{ config('app.name') . ': Web Development News, Articles, and more...' }}">
+        <meta property="og:type" content="article">
+        <meta property="og:image" content="{{to()->logo(absolute: true)}}">
+        <meta property="og:url" content="{{to()->welcome(absolute: true)}}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@realdevleak">
+        <meta name="twitter:description" content="{{ config('app.name') . ': Web Development News, Articles, and more...' }}">
+        <meta name="twitter:title" content="{{ config('app.name') . ': Web Development News, Articles, and more...' }}">
+        <meta name="twitter:image" content="{{to()->logo(absolute: true)}}">
+    @endpush
     @push('data')
         <?php
         $breadcrumbs = Schema::breadcrumbList()->name('Breadcrumbs')->itemListElement([
@@ -29,7 +40,8 @@ use Spatie\SchemaOrg\Schema;
                      title="Topic: {{$tag->name}}"
                 >
                     @if($tag->file !== null)
-                        <x-img class="my-auto w-10 rounded" :file="$tag->file" :title="$tag->name" :alt="$tag->name" :width="80"/>
+                        <x-img class="my-auto w-10 rounded" :file="$tag->file" :title="$tag->name" :alt="$tag->name"
+                               :width="80"/>
                     @endif
                     <h2 class="my-auto text-lg font-semibold">
                         {{$tag->name}}

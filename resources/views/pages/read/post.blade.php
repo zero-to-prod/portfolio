@@ -18,6 +18,17 @@ $cvc = ThanksResponse::cvc;
 ?>
 
 <x-main :title="$post->title . ' | ' . config('app.name')" :description="$post->subtitle">
+    @push('head')
+        <meta property="og:title" content="{{ $post->title . ' | ' . config('app.name') }}">
+        <meta property="og:type" content="article">
+        <meta property="og:image" content="{{ to()->file($post->file, absolute: true) }}">
+        <meta property="og:url" content="{{to()->read($post, absolute: true)}}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@realdevleak">
+        <meta name="twitter:title" content="{{ $post->title }}">
+        <meta name="twitter:description" content="{{ $post->subtitle }}">
+        <meta name="twitter:image" content="{{to()->file($post->file, absolute: true)}}">
+    @endpush
     @push('data')
         <?php
         $author = Schema::person()->name($post->author()->name)->url(to()->resultsAuthor($post->author()));

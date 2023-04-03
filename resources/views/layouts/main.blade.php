@@ -10,7 +10,7 @@ use Spatie\SchemaOrg\Schema;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Where developers stay up-to-date and grow their careers.">
+    <meta name="description" content="{{$description ?? config('app.name', 'Home') . ' | Where developers stay up-to-date and grow their careers.'}}">
     <meta name="robots" content="max-image-preview:large">
     <link rel="canonical" href="{{request()->url()}}" />
     <meta name="robots" content="all" />

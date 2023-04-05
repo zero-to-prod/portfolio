@@ -14,7 +14,6 @@ use Spatie\SchemaOrg\Schema;
     <meta name="robots" content="max-image-preview:large">
     <link rel="canonical" href="{{request()->url()}}" />
     <meta name="robots" content="all" />
-    <meta name="p:domain_verify" content="fcda880adc7c4ef0ba593ef5f66cc359"/>
     <title>{{ $title ?? config('app.name', 'Home') }}</title>
     <meta name="title" content="{{ $title ?? config('app.name', 'Home') }}">
     @stack('head')

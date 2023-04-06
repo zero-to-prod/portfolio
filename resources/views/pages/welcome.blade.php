@@ -14,6 +14,7 @@ use Spatie\SchemaOrg\Schema;
 <x-main :tags="$tags" :title="config('app.name') . ': Web Development News, Articles, and more...'">
     <h1 class="sr-only">{{config('app.name')}} : Web Development News, Articles, and more...</h1>
     @push('head')
+        <link rel="canonical" href="{{request()->url()}}" />
         <meta property="og:title" content="{{ config('app.name') . ': Web Development News, Articles, and more...' }}">
         <meta property="og:type" content="article">
         <meta property="og:image" content="{{to()->logo(absolute: true)}}">

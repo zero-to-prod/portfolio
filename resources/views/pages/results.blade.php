@@ -16,8 +16,10 @@ $title = request()->query(Results::topic) ?? $title;
 $title = request()->query(Results::topics) !== null ? 'Topics' : $title;
 $title = request()->query(Results::popular) !== null ? 'Popular' : $title;
 $author_model = null;
+$tags = Tag::getMostViewed();
+$title = $title !== null ? $title . ' - Topic | ' . config('app.name') : 'Topics: ' . implode(', ', $tags->pluck('name')->toArray());
 ?>
-<x-main :title="$title . ' - Topic | ' . config('app.name')" :description="'Search results for: ' . $title">
+<x-main :title="Str::title($title)" :description="'Search results for: ' . $title">
     <h1 class="sr-only">Showing Results for: {{$title}}</h1>
     @push('data')
         <?php
@@ -78,7 +80,7 @@ $author_model = null;
             </div>
         @endif
         <div class="2col:ml-12 flex mx-auto gap-4 flex-wrap justify-center">
-            @forEach(Tag::getMostViewed() as $tag)
+            @forEach($tags as $tag)
                 <x-a class="rounded-lg p-2 hover:bg-gray-100 flex" :href="to()->results($tag)">
                     @if($tag->file !== null)
                         <x-img class="w-10 rounded" :file="$tag->file" :width="80" :title="$tag->name" :alt="$tag->name"/>

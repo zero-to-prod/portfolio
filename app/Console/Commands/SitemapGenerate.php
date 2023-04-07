@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\SitemapGenerator;
 use Spatie\Sitemap\Tags\Url;
+use Str;
 
 class SitemapGenerate extends Command
 {
@@ -16,7 +17,7 @@ class SitemapGenerate extends Command
     {
         SitemapGenerator::create(config('app.url'))
             ->hasCrawled(function (Url $url) {
-                if (\Str::contains($url->path(), '/auth', true)) {
+                if (Str::contains($url->path(), '/auth', true)) {
                     return;
                 }
 

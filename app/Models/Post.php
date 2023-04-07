@@ -6,6 +6,7 @@ use App\Helpers\CacheKeys;
 use App\Helpers\PostTypes;
 use App\Helpers\Tags;
 use App\Helpers\TagTypes;
+use App\Jobs\SitemapGenerateJob;
 use App\Models\Support\HasRules;
 use App\Models\Support\IdColumn;
 use App\Models\Support\Polymorphic\HasFiles;
@@ -82,6 +83,7 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules, Feed
     {
         return self::with([self::file, self::authors])->orderByDesc(self::published_at)->get();
     }
+
     public function toFeedItem(): FeedItem
     {
         return FeedItem::create()
@@ -277,6 +279,8 @@ class Post extends \Illuminate\Database\Eloquent\Model implements HasRules, Feed
         ]);
 
         self::reguard();
+
+        SitemapGenerateJob::dispatch();
 
         return $this;
     }

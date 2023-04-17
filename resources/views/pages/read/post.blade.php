@@ -19,7 +19,7 @@ $cvc = ThanksResponse::cvc;
 
 <x-main :title="$post->title . ' | ' . config('app.name')" :description="$post->subtitle">
     @push('head')
-        <link rel="canonical" href="{{request()->url()}}" />
+        <link rel="canonical" href="{{to()->read($post, absolute: true)}}" />
         <meta property="og:title" content="{{ $post->title . ' | ' . config('app.name') }}">
         <meta property="og:type" content="article">
         <meta property="og:image" content="{{ to()->file($post->file, absolute: true) }}">

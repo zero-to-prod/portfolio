@@ -7,6 +7,7 @@
 namespace App\Providers;
 
 use App;
+use App\Helpers\Environments;
 use App\Helpers\Relations;
 use App\Models\Author;
 use App\Models\File;
@@ -19,11 +20,12 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Tests\Feature\Macros\App\EnvironmentAsTest;
 use UnitEnum;
+use URL;
 
 class AppServiceProvider extends ServiceProvider
 {
 
-    public function boot(UrlGenerator $url): void
+    public function boot(): void
     {
 
         if ($this->app->environment('local')) {
@@ -31,9 +33,9 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(TelescopeServiceProvider::class);
         }
 
-        if($this->app->environment(Environment::production()->value))
+        if($this->app->environment(Environments::production->value))
         {
-            $url->forceSchema('https');
+            URL::forceScheme('https');
         }
 
         Model::preventLazyLoading(!$this->app->isProduction());

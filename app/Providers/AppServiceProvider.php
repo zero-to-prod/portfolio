@@ -23,12 +23,17 @@ use UnitEnum;
 class AppServiceProvider extends ServiceProvider
 {
 
-    public function boot(): void
+    public function boot(UrlGenerator $url): void
     {
 
         if ($this->app->environment('local')) {
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
+        }
+
+        if($this->app->environment(Environment::production()->value))
+        {
+            $url->forceSchema('https');
         }
 
         Model::preventLazyLoading(!$this->app->isProduction());

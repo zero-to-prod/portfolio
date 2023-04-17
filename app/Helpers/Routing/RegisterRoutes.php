@@ -22,7 +22,7 @@ class RegisterRoutes
      * @see resources/views/register/index.blade.php;
      * @see routes/web.php
      */
-    public function index($parameters = [], $absolute = true): string
+    public function index($parameters = [], $absolute = false): string
     {
         return route_as($this->index, $parameters, $absolute);
     }

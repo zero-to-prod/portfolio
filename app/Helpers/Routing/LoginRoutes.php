@@ -3,7 +3,6 @@
 namespace App\Helpers\Routing;
 
 use App\Helpers\Routes;
-use App\Http\Controllers\Auth\Login;
 
 class LoginRoutes
 {
@@ -16,7 +15,7 @@ class LoginRoutes
      * @see resources/views/login.blade.php;
      * @see routes/web.php
      */
-    public function index($parameters = [], $absolute = true): string
+    public function index($parameters = [], $absolute = false): string
     {
         return route_as($this->index, $parameters, $absolute);
     }
